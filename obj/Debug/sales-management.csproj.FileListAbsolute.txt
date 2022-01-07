@@ -1,0 +1,13 @@
+E:\C#\sales-management\bin\Debug\sales-management.exe.config
+E:\C#\sales-management\bin\Debug\sales-management.exe
+E:\C#\sales-management\bin\Debug\sales-management.pdb
+E:\C#\sales-management\obj\Debug\sales-management.csproj.AssemblyReference.cache
+E:\C#\sales-management\obj\Debug\sales_management.Properties.Resources.resources
+E:\C#\sales-management\obj\Debug\sales-management.csproj.GenerateResource.cache
+E:\C#\sales-management\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
+E:\C#\sales-management\obj\Debug\sales-management.exe
+E:\C#\sales-management\obj\Debug\sales-management.pdb
+E:\C#\sales-management\bin\Debug\ar\sales-management.resources.dll
+E:\C#\sales-management\obj\Debug\sales_management.UI.Main.resources
+E:\C#\sales-management\obj\Debug\sales_management.UI.Main.ar.resources
+E:\C#\sales-management\obj\Debug\ar\sales-management.resources.dll
