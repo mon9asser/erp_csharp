@@ -1,1 +1,1 @@
-{"Id":1,"ServerId":"192.168.1.12","Port":"3000","DatabaseName":"database1","UserName":"montasser","Password":"mon666666"}
+{"Id":1,"ServerId":"192.168.100.100","Port":"1433","DatabaseName":"mon_db_tester","UserName":"sa","Password":"666666"}

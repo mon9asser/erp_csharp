@@ -55,6 +55,10 @@ namespace sales_management.UI
 
 
             // Test The Connection 
+            DB.DataAccessLayer database = new DB.DataAccessLayer();
+            database.Open();
+            MessageBox.Show(database.CheckStatus().ToString());
+            database.Close();
 
 
         }
