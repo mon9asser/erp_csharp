@@ -40,25 +40,41 @@ namespace sales_management.UI
         private void button1_Click(object sender, EventArgs e)
         {
 
-            // Store Json File 
-            DB.Server serverInformation = new DB.Server()
+            try
             {
-                Id = 1,
-                ServerId = networkid_text.Text.ToString(),
-                Port = networkpost_text.Text.ToString(),
-                DatabaseName = databasename_text.Text.ToString(),
-                UserName = username_text.Text.ToString(),
-                Password = password_text.Text.ToString() 
-            };
+                // Store Json File 
+                DB.Server serverInformation = new DB.Server()
+                {
+                    Id = 1,
+                    ServerId = networkid_text.Text.ToString(),
+                    Port = networkpost_text.Text.ToString(),
+                    DatabaseName = databasename_text.Text.ToString(),
+                    UserName = username_text.Text.ToString(),
+                    Password = password_text.Text.ToString()
+                };
 
-            SystemConf.CreateServerInformation(serverInformation);
+                SystemConf.CreateServerInformation(serverInformation);
 
 
-            // Test The Connection 
-            DB.DataAccessLayer database = new DB.DataAccessLayer();
-            database.Open();
-            MessageBox.Show(database.CheckStatus().ToString());
-            database.Close();
+                // Test The Connection 
+                DB.DataAccessLayer database = new DB.DataAccessLayer();
+
+                database.Open();
+
+                if (database.CheckStatus().ToString() != "Open")
+                {
+                    MessageBox.Show("Failed Connection");
+                }
+                else
+                {
+                    MessageBox.Show("Connection Successfully");
+                }
+
+                database.Close();
+            } catch
+            {
+                MessageBox.Show("Failed Connection");
+            }
 
 
         }
