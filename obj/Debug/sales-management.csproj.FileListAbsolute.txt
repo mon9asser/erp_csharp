@@ -11,3 +11,7 @@ E:\C#\sales-management\bin\Debug\ar\sales-management.resources.dll
 E:\C#\sales-management\obj\Debug\sales_management.UI.Main.resources
 E:\C#\sales-management\obj\Debug\sales_management.UI.Main.ar.resources
 E:\C#\sales-management\obj\Debug\ar\sales-management.resources.dll
+E:\C#\sales-management\bin\Debug\Newtonsoft.Json.dll
+E:\C#\sales-management\bin\Debug\Newtonsoft.Json.xml
+E:\C#\sales-management\obj\Debug\sales_management.UI.ServerSettings.resources
+E:\C#\sales-management\obj\Debug\sales-management.csproj.CopyComplete

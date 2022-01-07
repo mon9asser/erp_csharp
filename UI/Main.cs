@@ -39,6 +39,11 @@ namespace sales_management.UI
         {
             InitializeComponent();
         }
-         
+
+        private void فحصالإتصالبالسيرفرToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.ServerSettings serverSettings = new UI.ServerSettings();
+            serverSettings.Show();
+        }
     }
 }
