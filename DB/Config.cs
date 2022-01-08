@@ -23,6 +23,8 @@ namespace sales_management.DB
 
         public string UserName { get; set; }
 
+        public bool isIntegrated { get; set; }
+
         public String Password { get; set; }
 
     }
@@ -40,6 +42,7 @@ namespace sales_management.DB
         private string port;
         private string userName;
         private string password;
+        private bool isIntegrated;
 
         public string GetNetworkId() {
             return this.networkId;
@@ -65,8 +68,13 @@ namespace sales_management.DB
             return this.userName;
         }
 
-        public bool isFileExists() {
-            return File.Exists(this.dir + this.fileName );
+        public bool isIntegratedSecurity() {
+            return this.isIntegrated;
+        }
+
+        public bool isFileExists()
+        {
+            return File.Exists(this.dir + this.fileName);
         }
 
         public void LoadSystemConfiguration() {
@@ -97,6 +105,10 @@ namespace sales_management.DB
 
                     case "Port":
                         this.port = entry.Value.ToString();
+                        break;
+
+                    case "isIntegrated":
+                        this.isIntegrated = Convert.ToBoolean(entry.Value);
                         break;
                 } 
 

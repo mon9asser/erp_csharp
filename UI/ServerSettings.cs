@@ -33,6 +33,7 @@ namespace sales_management.UI
                 password_text.Text = SystemConf.GetPassword();
                 username_text.Text = SystemConf.GetUserName();
                 networkpost_text.Text = SystemConf.GetPort();
+                isIntegratedCheckbox.Checked = Convert.ToBoolean(SystemConf.isIntegratedSecurity());
 
             }
         }
@@ -50,7 +51,8 @@ namespace sales_management.UI
                     Port = networkpost_text.Text.ToString(),
                     DatabaseName = databasename_text.Text.ToString(),
                     UserName = username_text.Text.ToString(),
-                    Password = password_text.Text.ToString()
+                    Password = password_text.Text.ToString(),
+                    isIntegrated = Convert.ToBoolean(isIntegratedCheckbox.Checked) 
                 };
 
                 SystemConf.CreateServerInformation(serverInformation);
@@ -71,6 +73,7 @@ namespace sales_management.UI
                 }
 
                 database.Close();
+
             } catch
             {
                 MessageBox.Show("Failed Connection");
@@ -82,6 +85,23 @@ namespace sales_management.UI
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void isIntegratedCheckbox_CheckedChanged(object sender, EventArgs e)
+        { 
+            if (isIntegratedCheckbox.Checked)
+            {
+                networkpost_text.Enabled = true;
+                username_text.Enabled = true;
+                password_text.Enabled = true;
+
+            }
+            else
+            {
+                networkpost_text.Enabled = false;
+                username_text.Enabled = false;
+                password_text.Enabled = false;
+            }
         }
     }
 }

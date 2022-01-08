@@ -41,6 +41,7 @@ namespace sales_management.UI
             this.password_text = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.isIntegratedCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -97,6 +98,7 @@ namespace sales_management.UI
             // 
             // networkpost_text
             // 
+            this.networkpost_text.Enabled = false;
             this.networkpost_text.Location = new System.Drawing.Point(129, 68);
             this.networkpost_text.Name = "networkpost_text";
             this.networkpost_text.Size = new System.Drawing.Size(303, 20);
@@ -111,6 +113,7 @@ namespace sales_management.UI
             // 
             // username_text
             // 
+            this.username_text.Enabled = false;
             this.username_text.Location = new System.Drawing.Point(129, 149);
             this.username_text.Name = "username_text";
             this.username_text.Size = new System.Drawing.Size(303, 20);
@@ -118,6 +121,7 @@ namespace sales_management.UI
             // 
             // password_text
             // 
+            this.password_text.Enabled = false;
             this.password_text.Location = new System.Drawing.Point(129, 192);
             this.password_text.Name = "password_text";
             this.password_text.Size = new System.Drawing.Size(303, 20);
@@ -125,7 +129,7 @@ namespace sales_management.UI
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(315, 240);
+            this.button1.Location = new System.Drawing.Point(315, 276);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 34);
             this.button1.TabIndex = 10;
@@ -135,7 +139,7 @@ namespace sales_management.UI
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(192, 240);
+            this.button2.Location = new System.Drawing.Point(192, 276);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 34);
             this.button2.TabIndex = 11;
@@ -143,11 +147,23 @@ namespace sales_management.UI
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // isIntegratedCheckbox
+            // 
+            this.isIntegratedCheckbox.AutoSize = true;
+            this.isIntegratedCheckbox.Location = new System.Drawing.Point(129, 235);
+            this.isIntegratedCheckbox.Name = "isIntegratedCheckbox";
+            this.isIntegratedCheckbox.Size = new System.Drawing.Size(126, 17);
+            this.isIntegratedCheckbox.TabIndex = 12;
+            this.isIntegratedCheckbox.Text = "Is Integrated Security";
+            this.isIntegratedCheckbox.UseVisualStyleBackColor = true;
+            this.isIntegratedCheckbox.CheckedChanged += new System.EventHandler(this.isIntegratedCheckbox_CheckedChanged);
+            // 
             // ServerSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 296);
+            this.ClientSize = new System.Drawing.Size(458, 328);
+            this.Controls.Add(this.isIntegratedCheckbox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.password_text);
@@ -185,5 +201,6 @@ namespace sales_management.UI
         private System.Windows.Forms.TextBox password_text;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox isIntegratedCheckbox;
     }
 }

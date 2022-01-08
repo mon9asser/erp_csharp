@@ -17,6 +17,25 @@ namespace sales_management.UI
         private string userName;
         private string fullName;
 
+        public static Main frm;
+        static void frm_formClosed(object sernder, FormClosedEventArgs e) {
+            frm = null; 
+        }
+        public static Main getMainForm
+        {
+            get
+            {
+                
+                if (frm == null ) {
+                    frm = new Main();
+                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
+                }
+
+                return frm;
+
+            }
+        }
+
         public void setUserInfo( int userId, string userName, string fullName ) {
             this.userId = userId;
             this.userName = userName;
@@ -38,12 +57,22 @@ namespace sales_management.UI
         public Main()
         {
             InitializeComponent();
+            if( frm == null )
+            {
+                frm = this;
+            }
         }
 
         private void فحصالإتصالبالسيرفرToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UI.ServerSettings serverSettings = new UI.ServerSettings();
             serverSettings.Show();
+        }
+
+        private void إعداداتالنظامToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings settings = new UI.SystemSettings();
+            settings.Show(); 
         }
     }
 }
