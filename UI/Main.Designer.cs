@@ -133,6 +133,7 @@ namespace sales_management.UI
             // 
             this.نسخةإحتياطيةToolStripMenuItem.Name = "نسخةإحتياطيةToolStripMenuItem";
             resources.ApplyResources(this.نسخةإحتياطيةToolStripMenuItem, "نسخةإحتياطيةToolStripMenuItem");
+            this.نسخةإحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.نسخةإحتياطيةToolStripMenuItem_Click);
             // 
             // تسجيلالخروجToolStripMenuItem
             // 
@@ -462,6 +463,7 @@ namespace sales_management.UI
             // 
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Name = "تهيةالبياناتالأفتراضيةToolStripMenuItem";
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
+            this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -481,8 +483,6 @@ namespace sales_management.UI
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ملفToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تسجيلالدخولToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem إعداداتالنظامToolStripMenuItem;
@@ -542,5 +542,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem تسجيلدخولمديرالنظامToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem دفترالأستاذToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قائمةالمركزالماليToolStripMenuItem;
+        public System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

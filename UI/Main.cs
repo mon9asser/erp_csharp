@@ -13,9 +13,9 @@ namespace sales_management.UI
     public partial class Main : Form
     {
         
-        private int userId;
-        private string userName;
-        private string fullName;
+        private int userId = 1;
+        private string userName = "Montasser";
+        private string fullName = "Montasser Mossallem";
 
         public static Main frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e) {
@@ -73,6 +73,18 @@ namespace sales_management.UI
         {
             UI.SystemSettings settings = new UI.SystemSettings();
             settings.Show(); 
+        }
+
+        private void تهيةالبياناتالأفتراضيةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.DefaultData defData = new UI.DefaultData();
+            defData.Show();
+        }
+
+        private void نسخةإحتياطيةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Backups beackup = new UI.Backups();
+            beackup.Show();
         }
     }
 }

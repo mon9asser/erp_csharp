@@ -26,10 +26,10 @@ namespace sales_management.UI
         {
 
             // Add Default User
-            if (this.enable_default_user.Checked) { 
-                    
-            }
+            PL.Installings install = new PL.Installings();
+            install.Install_Default_data();
 
+            MessageBox.Show("Default Data are ready now");
 
         }
     }

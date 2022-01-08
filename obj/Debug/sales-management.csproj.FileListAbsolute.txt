@@ -16,3 +16,5 @@ E:\C#\sales-management\bin\Debug\Newtonsoft.Json.xml
 E:\C#\sales-management\obj\Debug\sales_management.UI.ServerSettings.resources
 E:\C#\sales-management\obj\Debug\sales-management.csproj.CopyComplete
 E:\C#\sales-management\obj\Debug\sales_management.UI.SystemSettings.resources
+E:\C#\sales-management\obj\Debug\sales_management.UI.DefaultData.resources
+E:\C#\sales-management\obj\Debug\sales_management.UI.Backups.resources
