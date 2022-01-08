@@ -86,5 +86,11 @@ namespace sales_management.UI
             UI.Backups beackup = new UI.Backups();
             beackup.Show();
         }
+
+        private void إدارةصلاحياتالموظفينToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Permissions Perm = new UI.Permissions();
+            Perm.Show();
+        }
     }
 }

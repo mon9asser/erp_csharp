@@ -65,6 +65,12 @@
     <Compile Include="UI\DefaultData.Designer.cs">
       <DependentUpon>DefaultData.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Permissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Permissions.Designer.cs">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\Backups.resx">
       <DependentUpon>Backups.cs</DependentUpon>
@@ -103,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Permissions.resx">
+      <DependentUpon>Permissions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>
@@ -124,6 +134,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\8675160_ic_fluent_next_regular_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
