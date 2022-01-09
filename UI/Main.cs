@@ -92,5 +92,16 @@ namespace sales_management.UI
             UI.Permissions Perm = new UI.Permissions();
             Perm.Show();
         }
+
+        private void إدارةالمنتجاتوالفئاتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void إدارةالفئاتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Categories cats = new UI.Categories();
+            cats.Show();
+        }
     }
 }

@@ -65,6 +65,7 @@ namespace sales_management.UI
             this.إذنصرفبضاعةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالوحداتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالمنتجاتوالفئاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.إدارةالفئاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالخصوماتوالعروضToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.القيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.قيدتسويةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -286,6 +287,7 @@ namespace sales_management.UI
             this.إذنصرفبضاعةToolStripMenuItem,
             this.إدارةالوحداتToolStripMenuItem,
             this.إدارةالمنتجاتوالفئاتToolStripMenuItem,
+            this.إدارةالفئاتToolStripMenuItem,
             this.إدارةالخصوماتوالعروضToolStripMenuItem});
             resources.ApplyResources(this.المخزونToolStripMenuItem, "المخزونToolStripMenuItem");
             this.المخزونToolStripMenuItem.Name = "المخزونToolStripMenuItem";
@@ -314,6 +316,13 @@ namespace sales_management.UI
             // 
             this.إدارةالمنتجاتوالفئاتToolStripMenuItem.Name = "إدارةالمنتجاتوالفئاتToolStripMenuItem";
             resources.ApplyResources(this.إدارةالمنتجاتوالفئاتToolStripMenuItem, "إدارةالمنتجاتوالفئاتToolStripMenuItem");
+            this.إدارةالمنتجاتوالفئاتToolStripMenuItem.Click += new System.EventHandler(this.إدارةالمنتجاتوالفئاتToolStripMenuItem_Click);
+            // 
+            // إدارةالفئاتToolStripMenuItem
+            // 
+            this.إدارةالفئاتToolStripMenuItem.Name = "إدارةالفئاتToolStripMenuItem";
+            resources.ApplyResources(this.إدارةالفئاتToolStripMenuItem, "إدارةالفئاتToolStripMenuItem");
+            this.إدارةالفئاتToolStripMenuItem.Click += new System.EventHandler(this.إدارةالفئاتToolStripMenuItem_Click);
             // 
             // إدارةالخصوماتوالعروضToolStripMenuItem
             // 
@@ -544,5 +553,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem دفترالأستاذToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قائمةالمركزالماليToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem إدارةالفئاتToolStripMenuItem;
     }
 }

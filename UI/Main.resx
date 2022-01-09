@@ -203,7 +203,7 @@
     <value>187, 22</value>
   </data>
   <data name="مرتجعToolStripMenuItem.Text" xml:space="preserve">
-    <value>مرتجع</value>
+    <value>مردود مبيعات</value>
   </data>
   <data name="العملاءوالمناديبToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
@@ -254,7 +254,7 @@
     <value>184, 22</value>
   </data>
   <data name="مسترداتToolStripMenuItem.Text" xml:space="preserve">
-    <value>مستردات</value>
+    <value>مردود مشتريات</value>
   </data>
   <data name="الموردينوالتجارToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
@@ -329,7 +329,13 @@
     <value>201, 22</value>
   </data>
   <data name="إدارةالمنتجاتوالفئاتToolStripMenuItem.Text" xml:space="preserve">
-    <value>إدارة المنتجات والفئات</value>
+    <value>إدارة المنتجات</value>
+  </data>
+  <data name="إدارةالفئاتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="إدارةالفئاتToolStripMenuItem.Text" xml:space="preserve">
+    <value>إدارة الفئات</value>
   </data>
   <data name="إدارةالخصوماتوالعروضToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -751,6 +757,12 @@
     <value>إدارةالمنتجاتوالفئاتToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;إدارةالمنتجاتوالفئاتToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;إدارةالفئاتToolStripMenuItem.Name" xml:space="preserve">
+    <value>إدارةالفئاتToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;إدارةالفئاتToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;إدارةالخصوماتوالعروضToolStripMenuItem.Name" xml:space="preserve">
