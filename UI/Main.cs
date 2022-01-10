@@ -103,5 +103,11 @@ namespace sales_management.UI
             UI.Categories cats = new UI.Categories();
             cats.Show();
         }
+
+        private void إدارةالوحداتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Units units = new UI.Units();
+            units.Show();
+        }
     }
 }

@@ -311,6 +311,7 @@ namespace sales_management.UI
             // 
             this.إدارةالوحداتToolStripMenuItem.Name = "إدارةالوحداتToolStripMenuItem";
             resources.ApplyResources(this.إدارةالوحداتToolStripMenuItem, "إدارةالوحداتToolStripMenuItem");
+            this.إدارةالوحداتToolStripMenuItem.Click += new System.EventHandler(this.إدارةالوحداتToolStripMenuItem_Click);
             // 
             // إدارةالمنتجاتوالفئاتToolStripMenuItem
             // 

@@ -21,3 +21,4 @@ E:\C#\sales-management\obj\Debug\sales_management.UI.Backups.resources
 E:\C#\sales-management\obj\Debug\sales_management.UI.Permissions.resources
 E:\C#\sales-management\obj\Debug\sales_management.UI.Categories.resources
 E:\C#\sales-management\obj\Debug\sales_management.UI.Products.resources
+E:\C#\sales-management\obj\Debug\sales_management.UI.Units.resources
