@@ -95,7 +95,8 @@ namespace sales_management.UI
 
         private void إدارةالمنتجاتوالفئاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UI.Products prods = new UI.Products();
+            prods.Show();
         }
 
         private void إدارةالفئاتToolStripMenuItem_Click(object sender, EventArgs e)
