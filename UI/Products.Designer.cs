@@ -79,6 +79,7 @@ namespace sales_management.UI
             this.button13 = new System.Windows.Forms.Button();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -107,6 +108,7 @@ namespace sales_management.UI
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 14);
             this.panel1.Name = "panel1";
@@ -212,7 +214,7 @@ namespace sales_management.UI
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(252, 68);
+            this.checkBox1.Location = new System.Drawing.Point(171, 25);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(118, 17);
             this.checkBox1.TabIndex = 1;
@@ -233,6 +235,7 @@ namespace sales_management.UI
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBox4);
             this.tabPage1.Controls.Add(this.checkBox3);
             this.tabPage1.Controls.Add(this.textBox12);
             this.tabPage1.Controls.Add(this.label10);
@@ -248,7 +251,6 @@ namespace sales_management.UI
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.textBox4);
             this.tabPage1.Controls.Add(this.checkBox2);
-            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -424,6 +426,7 @@ namespace sales_management.UI
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(102, 131);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(179, 101);
@@ -569,7 +572,7 @@ namespace sales_management.UI
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(171, 97);
+            this.checkBox3.Location = new System.Drawing.Point(172, 63);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(198, 17);
             this.checkBox3.TabIndex = 30;
@@ -597,15 +600,15 @@ namespace sales_management.UI
             this.button13.BackColor = System.Drawing.Color.Transparent;
             this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.Location = new System.Drawing.Point(287, 17);
+            this.button13.Location = new System.Drawing.Point(353, 16);
             this.button13.Name = "button13";
             this.button13.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.button13.Size = new System.Drawing.Size(86, 31);
+            this.button13.Size = new System.Drawing.Size(32, 31);
             this.button13.TabIndex = 10;
-            this.button13.Text = "بحث";
             this.button13.UseVisualStyleBackColor = false;
             // 
             // textBox13
@@ -623,6 +626,16 @@ namespace sales_management.UI
             this.label14.Size = new System.Drawing.Size(26, 13);
             this.label14.TabIndex = 16;
             this.label14.Text = "بحث";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(116, 91);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(254, 17);
+            this.checkBox4.TabIndex = 31;
+            this.checkBox4.Text = "إشعاري عند وصول المخزون للحد الأدني او الأقصي";
+            this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // Products
             // 
@@ -707,5 +720,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }
