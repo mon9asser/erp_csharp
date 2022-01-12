@@ -61,11 +61,11 @@ namespace sales_management.PL
 
         }
         
-        public void Update_Settings_System( int id, string name, string address, string vat_number, int vat_percentage, string vat_percentage_value, int product_barcode_type, bool enable_delete_invoices, bool enable_edit_invoices, bool show_address_in_invoice, int created_by_id, int update_by_id, DateTime mod_date, DateTime date_made) {
+        public void Update_Settings_System( int id, string name, string address, string vat_number, int vat_percentage, string vat_percentage_value, int product_barcode_type, bool enable_delete_invoices, bool enable_edit_invoices, bool show_address_in_invoice, int created_by_id, int update_by_id, DateTime mod_date, DateTime date_made, bool isEnabledVat) {
             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[14];
+            SqlParameter[] param = new SqlParameter[15];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -109,6 +109,10 @@ namespace sales_management.PL
             param[13] = new SqlParameter("@date_made", SqlDbType.DateTime);
             param[13].Value = date_made;
 
+            param[14] = new SqlParameter("@is_enabled_vat", SqlDbType.Bit);
+            param[14].Value = isEnabledVat;
+
+            
             Layer.Open();
             Layer.ExecuteCommand("Update_System_Settings", param);
             Layer.Close();

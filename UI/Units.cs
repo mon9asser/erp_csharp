@@ -14,7 +14,7 @@ namespace sales_management.UI
     {
         
         PL.Products prods = new PL.Products();
-
+        
         public static Units frm;
         
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
@@ -62,20 +62,19 @@ namespace sales_management.UI
 
             dataGridView1.Columns["title"].Visible = true;
             dataGridView1.Columns["shortcut"].Visible = true;
-            dataGridView1.Columns["unit_counts"].Visible = true; 
-            dataGridView1.Columns["mod_date"].Visible = true;
-            dataGridView1.Columns["mod_date"].ReadOnly = true; 
+            //dataGridView1.Columns["unit_counts"].Visible = true; 
+           // dataGridView1.Columns["mod_date"].Visible = true;
+            //dataGridView1.Columns["mod_date"].ReadOnly = true; 
             dataGridView1.Columns["id"].ReadOnly = true;
 
             dataGridView1.Columns["title"].HeaderText = "نوع الوحدة";
             dataGridView1.Columns["shortcut"].HeaderText = "إختصار الوحدة";
-            dataGridView1.Columns["unit_counts"].HeaderText = "عدد الوحدات";
-            dataGridView1.Columns["mod_date"].HeaderText = "تاريخ التحديث";
+            //dataGridView1.Columns["unit_counts"].HeaderText = "عامل التحويل";
+           // dataGridView1.Columns["mod_date"].HeaderText = "تاريخ التحديث";
 
-            dataGridView1.Columns["title"].Width = 250;
+            dataGridView1.Columns["title"].Width = 550;
             dataGridView1.Columns["shortcut"].Width = 183;
-            dataGridView1.Columns["unit_counts"].Width = 140;
-            dataGridView1.Columns["mod_date"].Width = 140;
+           // dataGridView1.Columns["unit_counts"].Width = 350; 
              
 
         }
@@ -137,17 +136,23 @@ namespace sales_management.UI
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (UI.Products.getForm.isOpenUints) {
-
-                UI.Products.getForm.isOpenUints = false;
+            /*
+            if (UI.Products.getForm.isOpenUints == true) {
 
                 if (dataGridView1.CurrentRow != null)
                 {
-                    MessageBox.Show(dataGridView1.CurrentRow.Index.ToString());
+
+                    // here we need to get back with needed id and shortcut value  
+                    UI.Products.getForm.shortcutUnitName_Text.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[2].Value.ToString();
+                    UI.Products.getForm.defaultUnitId_Text.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+
                 }
 
-                this.Close();
+                UI.Products.getForm.isOpenUints = false;
+
+                UI.Units.getMainForm.Hide();
             }
+            */
         }
     }
 }

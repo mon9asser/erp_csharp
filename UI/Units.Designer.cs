@@ -32,7 +32,7 @@ namespace sales_management.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addnew_button = new System.Windows.Forms.Button();
             this.delete_button = new System.Windows.Forms.Button();
             this.save_button = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -42,7 +42,7 @@ namespace sales_management.UI
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.addnew_button);
             this.groupBox1.Controls.Add(this.delete_button);
             this.groupBox1.Controls.Add(this.save_button);
             this.groupBox1.Location = new System.Drawing.Point(12, 308);
@@ -51,21 +51,21 @@ namespace sales_management.UI
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // addnew_button
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button1.Location = new System.Drawing.Point(642, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 34);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "إضافة وحدة جديدة";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addnew_button.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.addnew_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addnew_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.addnew_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addnew_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addnew_button.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.addnew_button.Location = new System.Drawing.Point(642, 19);
+            this.addnew_button.Name = "addnew_button";
+            this.addnew_button.Size = new System.Drawing.Size(129, 34);
+            this.addnew_button.TabIndex = 25;
+            this.addnew_button.Text = "إضافة وحدة جديدة";
+            this.addnew_button.UseVisualStyleBackColor = false;
+            this.addnew_button.Click += new System.EventHandler(this.button1_Click);
             // 
             // delete_button
             // 
@@ -150,9 +150,9 @@ namespace sales_management.UI
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button delete_button;
-        private System.Windows.Forms.Button save_button;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button delete_button;
+        public System.Windows.Forms.Button save_button;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Button addnew_button;
     }
 }

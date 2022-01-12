@@ -15,11 +15,43 @@ namespace sales_management.UI
         
         PL.Products prod = new PL.Products();
 
+        public bool isOpenForm = false;
+
+        public static Categories frm;
+
+        static void frm_formClosed(object sernder, FormClosedEventArgs e)
+        {
+            frm = null;
+        }
+
+        public static Categories getForm
+        {
+            get
+            {
+
+                if (frm == null)
+                {
+                    frm = new Categories();
+                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
+                }
+
+                return frm;
+
+            }
+        }
+
         public Categories()
         {
+            
             InitializeComponent();
 
+            if (frm == null)
+            {
+                frm = this;
+            }
+
             this.load_categories_data_gridview(); 
+        
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -119,6 +151,24 @@ namespace sales_management.UI
                 this.is_enabled_categories_add_new(false);
 
             }
+        }
+
+        private void datagridview_cats_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (UI.Products.getForm.isOpenCatsForm == true)
+            {
+                if (datagridview_cats.CurrentRow != null) {
+
+                    UI.Products.getForm.category_text_id.Text = datagridview_cats.Rows[datagridview_cats.CurrentRow.Index].Cells[0].Value.ToString();
+                    UI.Products.getForm.product_cats.Text = datagridview_cats.Rows[datagridview_cats.CurrentRow.Index].Cells[1].Value.ToString();
+
+                }
+
+                UI.Products.getForm.isOpenCatsForm = false;
+                UI.Categories.getForm.Hide();
+
+            }
+
         }
     }
 }

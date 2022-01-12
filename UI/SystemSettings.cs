@@ -65,6 +65,11 @@ namespace sales_management.UI
                 isIncludeAddress.Checked = Convert.ToBoolean(drow["show_address_in_invoice"]);
                 isIncludeUpdate.Checked = Convert.ToBoolean(drow["enable_edit_invoices"]);
                 isIncludeDelete.Checked = Convert.ToBoolean(drow["enable_delete_invoices"]);
+                checkbox_enable_vat.Checked = (bool) drow["enabled_vat"];
+
+                if ( (bool)drow["enabled_vat"] == true) {
+                    panel1.Enabled = true;
+                }
 
                 byte[] imageData = (byte []) drow["logo"];
 
@@ -100,11 +105,11 @@ namespace sales_management.UI
             bool address_enable = Convert.ToBoolean(isIncludeAddress.Checked);
             bool edit_enable = Convert.ToBoolean(isIncludeUpdate.Checked);
             bool delete_enable = Convert.ToBoolean(isIncludeDelete.Checked); 
-            int userId = Convert.ToInt32(Main.getMainForm.getUserInfo()[0]); 
-
+            int userId = Convert.ToInt32(Main.getMainForm.getUserInfo()[0]);
+            bool isEnabledVat = Convert.ToBoolean(checkbox_enable_vat.Checked);
 
             PL.Installings sysSettings = new PL.Installings();
-            sysSettings.Update_Settings_System(settingsID, name, address, vat_number, vat_percentage, vat_value, barcode_type, delete_enable, edit_enable, address_enable, userId, userId, DateTime.Now, DateTime.Now );
+            sysSettings.Update_Settings_System(settingsID, name, address, vat_number, vat_percentage, vat_value, barcode_type, delete_enable, edit_enable, address_enable, userId, userId, DateTime.Now, DateTime.Now, isEnabledVat );
 
             if ( logoImage_byte.ImageLocation != "" && logoImage_byte.ImageLocation != null ) {
 
@@ -112,6 +117,17 @@ namespace sales_management.UI
 
             }
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkbox_enable_vat.Checked == true)
+            {
+                panel1.Enabled = true;
+            }
+            else {
+                panel1.Enabled = false;
+            }
         }
     }
 }

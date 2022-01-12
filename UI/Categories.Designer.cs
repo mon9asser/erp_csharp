@@ -93,6 +93,7 @@ namespace sales_management.UI
             this.datagridview_cats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridview_cats.Size = new System.Drawing.Size(626, 235);
             this.datagridview_cats.TabIndex = 4;
+            this.datagridview_cats.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_cats_CellDoubleClick);
             this.datagridview_cats.SelectionChanged += new System.EventHandler(this.datagridview_cats_SelectionChanged);
             // 
             // edit_button
@@ -195,10 +196,10 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox cat_code_text;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView datagridview_cats;
         private System.Windows.Forms.Button edit_button;
         private System.Windows.Forms.Button delete_button;
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.DataGridView datagridview_cats;
     }
 }

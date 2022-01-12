@@ -156,5 +156,23 @@ namespace sales_management.PL
             return tbl;
 
         }
+
+
+        public DataTable Create_Product_ID() {
+            
+            DB.DataAccessLayer Layer = new DB.DataAccessLayer();
+
+            Layer.Open();
+
+            DataTable tbl = new DataTable();
+
+            tbl = Layer.SelectData("Create_Product_Code", null);
+
+            Layer.Close();
+
+            return tbl;
+
+        }
+
     }
 }
