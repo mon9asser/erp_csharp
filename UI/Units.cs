@@ -15,11 +15,40 @@ namespace sales_management.UI
         
         PL.Products prods = new PL.Products();
 
+        public static Units frm;
+        
+        static void frm_formClosed(object sernder, FormClosedEventArgs e)
+        {
+            frm = null;
+        }
+
+        public static Units getMainForm
+        {
+            get
+            {
+
+                if (frm == null)
+                {
+                    frm = new Units();
+                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
+                }
+
+                return frm;
+
+            }
+        }
+    
+
         public Units()
         {
             InitializeComponent();
+            
+            if (frm == null) {
+                frm = this;
+            }
 
             this.load_datagridview_units(); 
+        
         }
 
          
@@ -104,6 +133,21 @@ namespace sales_management.UI
             ds.Rows.InsertAt(dr, (dataGridView1.Rows.Count - 1  ) + 1);
             dataGridView1.DataSource = ds;
 
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (UI.Products.getForm.isOpenUints) {
+
+                UI.Products.getForm.isOpenUints = false;
+
+                if (dataGridView1.CurrentRow != null)
+                {
+                    MessageBox.Show(dataGridView1.CurrentRow.Index.ToString());
+                }
+
+                this.Close();
+            }
         }
     }
 }
