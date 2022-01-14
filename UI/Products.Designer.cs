@@ -67,8 +67,6 @@ namespace sales_management.UI
             this.combo_unit_name = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.purchase_default_price = new System.Windows.Forms.TextBox();
-            this.minmax_limit_notify = new System.Windows.Forms.CheckBox();
-            this.request_limit_notify = new System.Windows.Forms.CheckBox();
             this.defaultUnitId_Text = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.default_price_barcode = new System.Windows.Forms.TextBox();
@@ -179,6 +177,11 @@ namespace sales_management.UI
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.datepicker_expiration_date = new System.Windows.Forms.DateTimePicker();
+            this.enable_expiration_date = new System.Windows.Forms.CheckBox();
+            this.minmax_limit_notify = new System.Windows.Forms.CheckBox();
+            this.request_limit_notify = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.delete_button = new System.Windows.Forms.Button();
             this.update_button = new System.Windows.Forms.Button();
@@ -197,6 +200,7 @@ namespace sales_management.UI
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -482,6 +486,7 @@ namespace sales_management.UI
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(13, 167);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -501,8 +506,6 @@ namespace sales_management.UI
             this.tabPage1.Controls.Add(this.combo_unit_name);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.purchase_default_price);
-            this.tabPage1.Controls.Add(this.minmax_limit_notify);
-            this.tabPage1.Controls.Add(this.request_limit_notify);
             this.tabPage1.Controls.Add(this.defaultUnitId_Text);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.default_price_barcode);
@@ -594,6 +597,7 @@ namespace sales_management.UI
             this.combo_unit_name.Name = "combo_unit_name";
             this.combo_unit_name.Size = new System.Drawing.Size(135, 21);
             this.combo_unit_name.TabIndex = 34;
+            this.combo_unit_name.SelectedIndexChanged += new System.EventHandler(this.combo_unit_name_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -611,28 +615,6 @@ namespace sales_management.UI
             this.purchase_default_price.Name = "purchase_default_price";
             this.purchase_default_price.Size = new System.Drawing.Size(135, 20);
             this.purchase_default_price.TabIndex = 32;
-            // 
-            // minmax_limit_notify
-            // 
-            this.minmax_limit_notify.AutoSize = true;
-            this.minmax_limit_notify.Enabled = false;
-            this.minmax_limit_notify.Location = new System.Drawing.Point(112, 275);
-            this.minmax_limit_notify.Name = "minmax_limit_notify";
-            this.minmax_limit_notify.Size = new System.Drawing.Size(254, 17);
-            this.minmax_limit_notify.TabIndex = 31;
-            this.minmax_limit_notify.Text = "إشعاري عند وصول المخزون للحد الأدني او الأقصي";
-            this.minmax_limit_notify.UseVisualStyleBackColor = true;
-            // 
-            // request_limit_notify
-            // 
-            this.request_limit_notify.AutoSize = true;
-            this.request_limit_notify.Enabled = false;
-            this.request_limit_notify.Location = new System.Drawing.Point(168, 245);
-            this.request_limit_notify.Name = "request_limit_notify";
-            this.request_limit_notify.Size = new System.Drawing.Size(198, 17);
-            this.request_limit_notify.TabIndex = 30;
-            this.request_limit_notify.Text = "إشعاري عند وصول المخزون لحد الطلب";
-            this.request_limit_notify.UseVisualStyleBackColor = true;
             // 
             // defaultUnitId_Text
             // 
@@ -657,6 +639,7 @@ namespace sales_management.UI
             this.default_price_barcode.Enabled = false;
             this.default_price_barcode.Location = new System.Drawing.Point(609, 187);
             this.default_price_barcode.Name = "default_price_barcode";
+            this.default_price_barcode.ReadOnly = true;
             this.default_price_barcode.Size = new System.Drawing.Size(135, 20);
             this.default_price_barcode.TabIndex = 27;
             // 
@@ -703,8 +686,10 @@ namespace sales_management.UI
             this.pictureImage.Location = new System.Drawing.Point(167, 98);
             this.pictureImage.Name = "pictureImage";
             this.pictureImage.Size = new System.Drawing.Size(199, 119);
+            this.pictureImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureImage.TabIndex = 22;
             this.pictureImage.TabStop = false;
+            this.pictureImage.Click += new System.EventHandler(this.pictureImage_Click);
             // 
             // label11
             // 
@@ -807,6 +792,7 @@ namespace sales_management.UI
             // 
             this.gr3_barcode_text.Location = new System.Drawing.Point(17, 228);
             this.gr3_barcode_text.Name = "gr3_barcode_text";
+            this.gr3_barcode_text.ReadOnly = true;
             this.gr3_barcode_text.Size = new System.Drawing.Size(133, 20);
             this.gr3_barcode_text.TabIndex = 22;
             // 
@@ -850,11 +836,11 @@ namespace sales_management.UI
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(198, 233);
+            this.label30.Location = new System.Drawing.Point(177, 233);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(44, 13);
+            this.label30.Size = new System.Drawing.Size(62, 13);
             this.label30.TabIndex = 5;
-            this.label30.Text = "الباركود";
+            this.label30.Text = "كود التسعير";
             // 
             // label31
             // 
@@ -954,6 +940,7 @@ namespace sales_management.UI
             // 
             this.gr2_barcode_text.Location = new System.Drawing.Point(17, 228);
             this.gr2_barcode_text.Name = "gr2_barcode_text";
+            this.gr2_barcode_text.ReadOnly = true;
             this.gr2_barcode_text.Size = new System.Drawing.Size(140, 20);
             this.gr2_barcode_text.TabIndex = 22;
             // 
@@ -997,11 +984,11 @@ namespace sales_management.UI
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(198, 234);
+            this.label23.Location = new System.Drawing.Point(176, 234);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 13);
+            this.label23.Size = new System.Drawing.Size(62, 13);
             this.label23.TabIndex = 5;
-            this.label23.Text = "الباركود";
+            this.label23.Text = "كود التسعير";
             // 
             // label24
             // 
@@ -1101,6 +1088,7 @@ namespace sales_management.UI
             // 
             this.gr1_barcode_text.Location = new System.Drawing.Point(17, 228);
             this.gr1_barcode_text.Name = "gr1_barcode_text";
+            this.gr1_barcode_text.ReadOnly = true;
             this.gr1_barcode_text.Size = new System.Drawing.Size(132, 20);
             this.gr1_barcode_text.TabIndex = 22;
             // 
@@ -1144,11 +1132,11 @@ namespace sales_management.UI
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(200, 233);
+            this.label21.Location = new System.Drawing.Point(182, 231);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 13);
+            this.label21.Size = new System.Drawing.Size(62, 13);
             this.label21.TabIndex = 5;
-            this.label21.Text = "الباركود";
+            this.label21.Text = "كود التسعير";
             // 
             // label20
             // 
@@ -1261,6 +1249,7 @@ namespace sales_management.UI
             // 
             this.gr6_barcode_text.Location = new System.Drawing.Point(17, 228);
             this.gr6_barcode_text.Name = "gr6_barcode_text";
+            this.gr6_barcode_text.ReadOnly = true;
             this.gr6_barcode_text.Size = new System.Drawing.Size(133, 20);
             this.gr6_barcode_text.TabIndex = 22;
             // 
@@ -1304,11 +1293,11 @@ namespace sales_management.UI
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(198, 233);
+            this.label39.Location = new System.Drawing.Point(175, 233);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(44, 13);
+            this.label39.Size = new System.Drawing.Size(62, 13);
             this.label39.TabIndex = 5;
-            this.label39.Text = "الباركود";
+            this.label39.Text = "كود التسعير";
             // 
             // label41
             // 
@@ -1408,6 +1397,7 @@ namespace sales_management.UI
             // 
             this.gr5_barcode_text.Location = new System.Drawing.Point(17, 228);
             this.gr5_barcode_text.Name = "gr5_barcode_text";
+            this.gr5_barcode_text.ReadOnly = true;
             this.gr5_barcode_text.Size = new System.Drawing.Size(140, 20);
             this.gr5_barcode_text.TabIndex = 22;
             // 
@@ -1451,11 +1441,11 @@ namespace sales_management.UI
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(198, 234);
+            this.label49.Location = new System.Drawing.Point(178, 234);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(44, 13);
+            this.label49.Size = new System.Drawing.Size(62, 13);
             this.label49.TabIndex = 5;
-            this.label49.Text = "الباركود";
+            this.label49.Text = "كود التسعير";
             // 
             // label50
             // 
@@ -1555,6 +1545,7 @@ namespace sales_management.UI
             // 
             this.gr4_barcode_text.Location = new System.Drawing.Point(17, 228);
             this.gr4_barcode_text.Name = "gr4_barcode_text";
+            this.gr4_barcode_text.ReadOnly = true;
             this.gr4_barcode_text.Size = new System.Drawing.Size(132, 20);
             this.gr4_barcode_text.TabIndex = 22;
             // 
@@ -1598,11 +1589,11 @@ namespace sales_management.UI
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(200, 233);
+            this.label56.Location = new System.Drawing.Point(179, 233);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(44, 13);
+            this.label56.Size = new System.Drawing.Size(62, 13);
             this.label56.TabIndex = 5;
-            this.label56.Text = "الباركود";
+            this.label56.Text = "كود التسعير";
             // 
             // label57
             // 
@@ -1648,6 +1639,61 @@ namespace sales_management.UI
             this.label61.Size = new System.Drawing.Size(37, 13);
             this.label61.TabIndex = 0;
             this.label61.Text = "الوحدة";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.datepicker_expiration_date);
+            this.tabPage4.Controls.Add(this.enable_expiration_date);
+            this.tabPage4.Controls.Add(this.minmax_limit_notify);
+            this.tabPage4.Controls.Add(this.request_limit_notify);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(889, 315);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "إعدادات الصنف";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // datepicker_expiration_date
+            // 
+            this.datepicker_expiration_date.Enabled = false;
+            this.datepicker_expiration_date.Location = new System.Drawing.Point(486, 101);
+            this.datepicker_expiration_date.Name = "datepicker_expiration_date";
+            this.datepicker_expiration_date.Size = new System.Drawing.Size(200, 20);
+            this.datepicker_expiration_date.TabIndex = 35;
+            // 
+            // enable_expiration_date
+            // 
+            this.enable_expiration_date.AutoSize = true;
+            this.enable_expiration_date.Enabled = false;
+            this.enable_expiration_date.Location = new System.Drawing.Point(700, 102);
+            this.enable_expiration_date.Name = "enable_expiration_date";
+            this.enable_expiration_date.Size = new System.Drawing.Size(161, 17);
+            this.enable_expiration_date.TabIndex = 34;
+            this.enable_expiration_date.Text = "تفعيل اشعار الصلاحية وتاريخة";
+            this.enable_expiration_date.UseVisualStyleBackColor = true;
+            // 
+            // minmax_limit_notify
+            // 
+            this.minmax_limit_notify.AutoSize = true;
+            this.minmax_limit_notify.Enabled = false;
+            this.minmax_limit_notify.Location = new System.Drawing.Point(608, 66);
+            this.minmax_limit_notify.Name = "minmax_limit_notify";
+            this.minmax_limit_notify.Size = new System.Drawing.Size(254, 17);
+            this.minmax_limit_notify.TabIndex = 33;
+            this.minmax_limit_notify.Text = "إشعاري عند وصول المخزون للحد الأدني او الأقصي";
+            this.minmax_limit_notify.UseVisualStyleBackColor = true;
+            // 
+            // request_limit_notify
+            // 
+            this.request_limit_notify.AutoSize = true;
+            this.request_limit_notify.Enabled = false;
+            this.request_limit_notify.Location = new System.Drawing.Point(664, 30);
+            this.request_limit_notify.Name = "request_limit_notify";
+            this.request_limit_notify.Size = new System.Drawing.Size(198, 17);
+            this.request_limit_notify.TabIndex = 32;
+            this.request_limit_notify.Text = "إشعاري عند وصول المخزون لحد الطلب";
+            this.request_limit_notify.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -1772,6 +1818,8 @@ namespace sales_management.UI
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -1817,11 +1865,9 @@ namespace sales_management.UI
         private System.Windows.Forms.Button delete_button;
         private System.Windows.Forms.Button update_button;
         private System.Windows.Forms.Button add_new;
-        private System.Windows.Forms.CheckBox request_limit_notify;
         private System.Windows.Forms.Button search_button;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox search_textbox;
-        private System.Windows.Forms.CheckBox minmax_limit_notify;
         public System.Windows.Forms.TextBox defaultUnitId_Text;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.TextBox purchase_default_price;
@@ -1934,5 +1980,10 @@ namespace sales_management.UI
         private System.Windows.Forms.TextBox gr4_unitId_text;
         private System.Windows.Forms.ComboBox default_price_combo;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.CheckBox enable_expiration_date;
+        private System.Windows.Forms.CheckBox minmax_limit_notify;
+        private System.Windows.Forms.CheckBox request_limit_notify;
+        private System.Windows.Forms.DateTimePicker datepicker_expiration_date;
     }
 }

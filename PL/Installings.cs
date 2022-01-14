@@ -40,6 +40,7 @@ namespace sales_management.PL
             //When you use BinaryReader, you need to supply number of bytes to read from file.
             //In this case we want to read entire file. So supplying total number of bytes.
             data = br.ReadBytes((int)numBytes);
+
             return data;
         }
 
