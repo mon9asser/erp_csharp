@@ -150,7 +150,7 @@ namespace sales_management.PL
             DataTable tbl = new DataTable();
 
             tbl = Layer.SelectData("Update_Product_Units", param);
-
+             
             Layer.Close();
 
             return tbl;
@@ -162,12 +162,18 @@ namespace sales_management.PL
             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
+            SqlParameter[] param = new SqlParameter[2];
+
+            param[0] = new SqlParameter("@user_id", SqlDbType.Int);
+            param[0].Value = Convert.ToInt32(UI.Main.getMainForm.getUserInfo()[0]);
+
+            param[1] = new SqlParameter("@current_date", SqlDbType.DateTime);
+            param[1].Value = DateTime.Now;
+
             Layer.Open();
-
-            DataTable tbl = new DataTable();
-
-            tbl = Layer.SelectData("Create_Product_Code", null);
-
+             
+            DataTable tbl = Layer.SelectData("Create_Product_Code", param);
+            Console.WriteLine(tbl.Rows.Count);
             Layer.Close();
 
             return tbl;

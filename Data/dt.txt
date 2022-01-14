@@ -91,8 +91,74 @@ item_number_in_all
 
 
 
-TAKE AN ACTION
----------------------------------
-Add new Item > 
-	Store null values and get item code number
+------------------------------------------------------------------------------
+
+[id] [int] IDENTITY(1,1) NOT NULL,
+	[code] AS [id] + 100000,
+
+	[min_limit] VARCHAR(50) NULL, 
+	[max_limit] VARCHAR(50) NULL, 
+	[request_limit] VARCHAR(50) NULL, 
+	[name] VARCHAR(50) NULL,
+	[invetory_value] VARCHAR(50) NULL,
+	[purchase_price] VARCHAR(50) NULL,
+	[less_sale_price] VARCHAR(50) NULL,
+	[wholesale_sale] VARCHAR(50) NULL, 
+	[request_limit_notify] VARCHAR(50) NULL,
+	[minmax_limit_notify] VARCHAR(50) NULL, 
+	[allowed_discount] VARCHAR(50) NULL,
+	[discount_percentage_val] VARCHAR(50) NULL, 
+	[image] IMAGE NULL,
+
+	[gr1_unit_id] int null,
+	[gr1_purchase_price] varchar(50) null, 
+	[gr1_sale_price] varchar(50) null,
+	[gr1_less_sale_price] varchar(50) null,
+	[gr1_wholesale_sale] varchar(50) null,
+	[gr1_transform] varchar(50) null,
+	[gr1_barcode] AS 'gr1-' + [id] + 100000, 
+
+	[gr2_unit_id] int null,
+	[gr2_purchase_price] varchar(50) null, 
+	[gr2_sale_price] varchar(50) null,
+	[gr2_less_sale_price] varchar(50) null,
+	[gr2_wholesale_sale] varchar(50) null,
+	[gr2_transform] varchar(50) null,
+	[gr2_barcode] AS 'gr2-' + [id] + 100000, 
+
+	[gr3_unit_id] int null,
+	[gr3_purchase_price] varchar(50) null, 
+	[gr3_sale_price] varchar(50) null,
+	[gr3_less_sale_price] varchar(50) null,
+	[gr3_wholesale_sale] varchar(50) null,
+	[gr3_transform] varchar(50) null,
+	[gr3_barcode] AS 'gr3-' + [id] + 100000, 
+
+	[gr4_unit_id] int null,
+	[gr4_purchase_price] varchar(50) null, 
+	[gr4_sale_price] varchar(50) null,
+	[gr4_less_sale_price] varchar(50) null,
+	[gr4_wholesale_sale] varchar(50) null,
+	[gr4_transform] varchar(50) null,
+	[gr4_barcode] AS 'gr4-' + [id] + 100000, 
+
+	[gr5_unit_id] int null,
+	[gr5_purchase_price] varchar(50) null, 
+	[gr5_sale_price] varchar(50) null,
+	[gr5_less_sale_price] varchar(50) null,
+	[gr5_wholesale_sale] varchar(50) null,
+	[gr5_transform] varchar(50) null,
+	[gr5_barcode] AS 'gr5-' + [id] + 100000, 
+
+	[gr6_unit_id] int null,
+	[gr6_purchase_price] varchar(50) null, 
+	[gr6_sale_price] varchar(50) null,
+	[gr6_less_sale_price] varchar(50) null,
+	[gr6_wholesale_sale] varchar(50) null,
+	[gr6_transform] varchar(50) null,
+	[gr6_barcode] AS 'gr6-' + [id] + 100000, 
+
+	[unit_id] INT NULL,
+	[category_id] INT NULL,
+
 	

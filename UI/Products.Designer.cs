@@ -31,15 +31,13 @@ namespace sales_management.UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Products));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.category_text_id = new System.Windows.Forms.TextBox();
             this.search_type_combobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.search_textbox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.item_number_in_all = new System.Windows.Forms.Label();
-            this.button_play_prev = new System.Windows.Forms.Button();
-            this.button_play_next = new System.Windows.Forms.Button();
-            this.button_last_record = new System.Windows.Forms.Button();
-            this.button_first_record = new System.Windows.Forms.Button();
+            this.get_inventory_value = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.product_max_limit_box = new System.Windows.Forms.TextBox();
             this.search_button = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,13 +51,20 @@ namespace sales_management.UI
             this.label2 = new System.Windows.Forms.Label();
             this.product_num_box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.item_number_in_all = new System.Windows.Forms.Label();
+            this.button_play_prev = new System.Windows.Forms.Button();
+            this.button_play_next = new System.Windows.Forms.Button();
+            this.button_last_record = new System.Windows.Forms.Button();
+            this.button_first_record = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.default_price_combo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.gather_price_sub = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.less_sales_price_sub = new System.Windows.Forms.TextBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.combo_unit_name = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.purchase_default_price = new System.Windows.Forms.TextBox();
             this.minmax_limit_notify = new System.Windows.Forms.CheckBox();
@@ -77,42 +82,8 @@ namespace sales_management.UI
             this.label7 = new System.Windows.Forms.Label();
             this.default_price_textbox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.gr1_less_sell_text = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.gr1_barcode_text = new System.Windows.Forms.TextBox();
-            this.gr1_transform_pr_text = new System.Windows.Forms.TextBox();
-            this.gr1_gather_sell_text = new System.Windows.Forms.TextBox();
-            this.gr1_sell_text = new System.Windows.Forms.TextBox();
-            this.gr1_purchase_text = new System.Windows.Forms.TextBox();
-            this.gr1_unit_text = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.delete_button = new System.Windows.Forms.Button();
-            this.update_button = new System.Windows.Forms.Button();
-            this.save_button = new System.Windows.Forms.Button();
-            this.add_new = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.gr2_less_sell_text = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.gr2_barcode_text = new System.Windows.Forms.TextBox();
-            this.gr2_transform_pr_text = new System.Windows.Forms.TextBox();
-            this.gr2_gather_sell_text = new System.Windows.Forms.TextBox();
-            this.gr2_sell_text = new System.Windows.Forms.TextBox();
-            this.gr2_purchase_text = new System.Windows.Forms.TextBox();
-            this.gr2_unit_text = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.gr3_unitId_text = new System.Windows.Forms.TextBox();
             this.gr3_less_sell_text = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.gr3_barcode_text = new System.Windows.Forms.TextBox();
@@ -127,10 +98,41 @@ namespace sales_management.UI
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.get_inventory_value = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gr2_unitId_text = new System.Windows.Forms.TextBox();
+            this.gr2_less_sell_text = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.gr2_barcode_text = new System.Windows.Forms.TextBox();
+            this.gr2_transform_pr_text = new System.Windows.Forms.TextBox();
+            this.gr2_gather_sell_text = new System.Windows.Forms.TextBox();
+            this.gr2_sell_text = new System.Windows.Forms.TextBox();
+            this.gr2_purchase_text = new System.Windows.Forms.TextBox();
+            this.gr2_unit_text = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gr1_unitId_text = new System.Windows.Forms.TextBox();
+            this.gr1_less_sell_text = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.gr1_barcode_text = new System.Windows.Forms.TextBox();
+            this.gr1_transform_pr_text = new System.Windows.Forms.TextBox();
+            this.gr1_gather_sell_text = new System.Windows.Forms.TextBox();
+            this.gr1_sell_text = new System.Windows.Forms.TextBox();
+            this.gr1_purchase_text = new System.Windows.Forms.TextBox();
+            this.gr1_unit_text = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.gr6_unitId_text = new System.Windows.Forms.TextBox();
             this.gr6_less_sell_text = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.gr6_barcode_text = new System.Windows.Forms.TextBox();
@@ -146,6 +148,7 @@ namespace sales_management.UI
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.gr5_unitId_text = new System.Windows.Forms.TextBox();
             this.gr5_less_sell_text = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.gr5_barcode_text = new System.Windows.Forms.TextBox();
@@ -161,6 +164,7 @@ namespace sales_management.UI
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.gr4_unitId_text = new System.Windows.Forms.TextBox();
             this.gr4_less_sell_text = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
             this.gr4_barcode_text = new System.Windows.Forms.TextBox();
@@ -175,30 +179,25 @@ namespace sales_management.UI
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
-            this.category_text_id = new System.Windows.Forms.TextBox();
-            this.gr1_unitId_text = new System.Windows.Forms.TextBox();
-            this.gr2_unitId_text = new System.Windows.Forms.TextBox();
-            this.gr3_unitId_text = new System.Windows.Forms.TextBox();
-            this.gr4_unitId_text = new System.Windows.Forms.TextBox();
-            this.gr5_unitId_text = new System.Windows.Forms.TextBox();
-            this.gr6_unitId_text = new System.Windows.Forms.TextBox();
-            this.price_included = new System.Windows.Forms.CheckBox();
-            this.default_price_combo = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.delete_button = new System.Windows.Forms.Button();
+            this.update_button = new System.Windows.Forms.Button();
+            this.save_button = new System.Windows.Forms.Button();
+            this.add_new = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureImage)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -226,6 +225,14 @@ namespace sales_management.UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(897, 144);
             this.panel1.TabIndex = 0;
+            // 
+            // category_text_id
+            // 
+            this.category_text_id.Location = new System.Drawing.Point(811, 79);
+            this.category_text_id.Name = "category_text_id";
+            this.category_text_id.Size = new System.Drawing.Size(16, 20);
+            this.category_text_id.TabIndex = 18;
+            this.category_text_id.Visible = false;
             // 
             // search_type_combobox
             // 
@@ -268,68 +275,25 @@ namespace sales_management.UI
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
-            // item_number_in_all
+            // get_inventory_value
             // 
-            this.item_number_in_all.AutoSize = true;
-            this.item_number_in_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_number_in_all.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.item_number_in_all.Location = new System.Drawing.Point(346, 29);
-            this.item_number_in_all.Name = "item_number_in_all";
-            this.item_number_in_all.Size = new System.Drawing.Size(42, 13);
-            this.item_number_in_all.TabIndex = 8;
-            this.item_number_in_all.Text = "1 / 16";
+            this.get_inventory_value.AutoSize = true;
+            this.get_inventory_value.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.get_inventory_value.ForeColor = System.Drawing.Color.Blue;
+            this.get_inventory_value.Location = new System.Drawing.Point(95, 17);
+            this.get_inventory_value.Name = "get_inventory_value";
+            this.get_inventory_value.Size = new System.Drawing.Size(59, 21);
+            this.get_inventory_value.TabIndex = 19;
+            this.get_inventory_value.Text = "15,154";
             // 
-            // button_play_prev
+            // label36
             // 
-            this.button_play_prev.BackColor = System.Drawing.Color.Transparent;
-            this.button_play_prev.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_play_prev.FlatAppearance.BorderSize = 0;
-            this.button_play_prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_play_prev.Image = ((System.Drawing.Image)(resources.GetObject("button_play_prev.Image")));
-            this.button_play_prev.Location = new System.Drawing.Point(279, 20);
-            this.button_play_prev.Name = "button_play_prev";
-            this.button_play_prev.Size = new System.Drawing.Size(37, 31);
-            this.button_play_prev.TabIndex = 7;
-            this.button_play_prev.UseVisualStyleBackColor = false;
-            // 
-            // button_play_next
-            // 
-            this.button_play_next.BackColor = System.Drawing.Color.Transparent;
-            this.button_play_next.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_play_next.FlatAppearance.BorderSize = 0;
-            this.button_play_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_play_next.Image = ((System.Drawing.Image)(resources.GetObject("button_play_next.Image")));
-            this.button_play_next.Location = new System.Drawing.Point(415, 20);
-            this.button_play_next.Name = "button_play_next";
-            this.button_play_next.Size = new System.Drawing.Size(37, 31);
-            this.button_play_next.TabIndex = 6;
-            this.button_play_next.UseVisualStyleBackColor = false;
-            // 
-            // button_last_record
-            // 
-            this.button_last_record.BackColor = System.Drawing.Color.Transparent;
-            this.button_last_record.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_last_record.FlatAppearance.BorderSize = 0;
-            this.button_last_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_last_record.Image = ((System.Drawing.Image)(resources.GetObject("button_last_record.Image")));
-            this.button_last_record.Location = new System.Drawing.Point(458, 20);
-            this.button_last_record.Name = "button_last_record";
-            this.button_last_record.Size = new System.Drawing.Size(37, 31);
-            this.button_last_record.TabIndex = 5;
-            this.button_last_record.UseVisualStyleBackColor = false;
-            // 
-            // button_first_record
-            // 
-            this.button_first_record.BackColor = System.Drawing.Color.Transparent;
-            this.button_first_record.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_first_record.FlatAppearance.BorderSize = 0;
-            this.button_first_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_first_record.Image = ((System.Drawing.Image)(resources.GetObject("button_first_record.Image")));
-            this.button_first_record.Location = new System.Drawing.Point(236, 20);
-            this.button_first_record.Name = "button_first_record";
-            this.button_first_record.Size = new System.Drawing.Size(37, 31);
-            this.button_first_record.TabIndex = 4;
-            this.button_first_record.UseVisualStyleBackColor = false;
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(174, 21);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(88, 13);
+            this.label36.TabIndex = 18;
+            this.label36.Text = "المخزون الحــالي :";
             // 
             // product_max_limit_box
             // 
@@ -450,6 +414,69 @@ namespace sales_management.UI
             this.label1.TabIndex = 1;
             this.label1.Text = "رقم الصنف :";
             // 
+            // item_number_in_all
+            // 
+            this.item_number_in_all.AutoSize = true;
+            this.item_number_in_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.item_number_in_all.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.item_number_in_all.Location = new System.Drawing.Point(346, 29);
+            this.item_number_in_all.Name = "item_number_in_all";
+            this.item_number_in_all.Size = new System.Drawing.Size(42, 13);
+            this.item_number_in_all.TabIndex = 8;
+            this.item_number_in_all.Text = "1 / 16";
+            // 
+            // button_play_prev
+            // 
+            this.button_play_prev.BackColor = System.Drawing.Color.Transparent;
+            this.button_play_prev.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_play_prev.FlatAppearance.BorderSize = 0;
+            this.button_play_prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_play_prev.Image = ((System.Drawing.Image)(resources.GetObject("button_play_prev.Image")));
+            this.button_play_prev.Location = new System.Drawing.Point(279, 20);
+            this.button_play_prev.Name = "button_play_prev";
+            this.button_play_prev.Size = new System.Drawing.Size(37, 31);
+            this.button_play_prev.TabIndex = 7;
+            this.button_play_prev.UseVisualStyleBackColor = false;
+            // 
+            // button_play_next
+            // 
+            this.button_play_next.BackColor = System.Drawing.Color.Transparent;
+            this.button_play_next.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_play_next.FlatAppearance.BorderSize = 0;
+            this.button_play_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_play_next.Image = ((System.Drawing.Image)(resources.GetObject("button_play_next.Image")));
+            this.button_play_next.Location = new System.Drawing.Point(415, 20);
+            this.button_play_next.Name = "button_play_next";
+            this.button_play_next.Size = new System.Drawing.Size(37, 31);
+            this.button_play_next.TabIndex = 6;
+            this.button_play_next.UseVisualStyleBackColor = false;
+            // 
+            // button_last_record
+            // 
+            this.button_last_record.BackColor = System.Drawing.Color.Transparent;
+            this.button_last_record.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_last_record.FlatAppearance.BorderSize = 0;
+            this.button_last_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_last_record.Image = ((System.Drawing.Image)(resources.GetObject("button_last_record.Image")));
+            this.button_last_record.Location = new System.Drawing.Point(458, 20);
+            this.button_last_record.Name = "button_last_record";
+            this.button_last_record.Size = new System.Drawing.Size(37, 31);
+            this.button_last_record.TabIndex = 5;
+            this.button_last_record.UseVisualStyleBackColor = false;
+            // 
+            // button_first_record
+            // 
+            this.button_first_record.BackColor = System.Drawing.Color.Transparent;
+            this.button_first_record.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_first_record.FlatAppearance.BorderSize = 0;
+            this.button_first_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_first_record.Image = ((System.Drawing.Image)(resources.GetObject("button_first_record.Image")));
+            this.button_first_record.Location = new System.Drawing.Point(236, 20);
+            this.button_first_record.Name = "button_first_record";
+            this.button_first_record.Size = new System.Drawing.Size(37, 31);
+            this.button_first_record.TabIndex = 4;
+            this.button_first_record.UseVisualStyleBackColor = false;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -467,12 +494,11 @@ namespace sales_management.UI
             // 
             this.tabPage1.Controls.Add(this.default_price_combo);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.price_included);
             this.tabPage1.Controls.Add(this.label45);
             this.tabPage1.Controls.Add(this.gather_price_sub);
             this.tabPage1.Controls.Add(this.label44);
             this.tabPage1.Controls.Add(this.less_sales_price_sub);
-            this.tabPage1.Controls.Add(this.comboBox6);
+            this.tabPage1.Controls.Add(this.combo_unit_name);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.purchase_default_price);
             this.tabPage1.Controls.Add(this.minmax_limit_notify);
@@ -497,6 +523,33 @@ namespace sales_management.UI
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "بيانات الصنف";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // default_price_combo
+            // 
+            this.default_price_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.default_price_combo.Enabled = false;
+            this.default_price_combo.FormattingEnabled = true;
+            this.default_price_combo.Items.AddRange(new object[] {
+            "السعر الإفتراضي",
+            "المجموعه الأولي",
+            "المجموعه الثانيه",
+            "المجموعه الثالثه",
+            "المجموع الرابعه",
+            "المجموعه الخامسه",
+            "المجموعه السادسه"});
+            this.default_price_combo.Location = new System.Drawing.Point(610, 225);
+            this.default_price_combo.Name = "default_price_combo";
+            this.default_price_combo.Size = new System.Drawing.Size(135, 21);
+            this.default_price_combo.TabIndex = 41;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(769, 228);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "التسعير الإفتراضي";
             // 
             // label45
             // 
@@ -532,14 +585,15 @@ namespace sales_management.UI
             this.less_sales_price_sub.Size = new System.Drawing.Size(135, 20);
             this.less_sales_price_sub.TabIndex = 35;
             // 
-            // comboBox6
+            // combo_unit_name
             // 
-            this.comboBox6.Enabled = false;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(609, 18);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(135, 21);
-            this.comboBox6.TabIndex = 34;
+            this.combo_unit_name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_unit_name.Enabled = false;
+            this.combo_unit_name.FormattingEnabled = true;
+            this.combo_unit_name.Location = new System.Drawing.Point(609, 18);
+            this.combo_unit_name.Name = "combo_unit_name";
+            this.combo_unit_name.Size = new System.Drawing.Size(135, 21);
+            this.combo_unit_name.TabIndex = 34;
             // 
             // label16
             // 
@@ -592,11 +646,11 @@ namespace sales_management.UI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(788, 190);
+            this.label10.Location = new System.Drawing.Point(795, 190);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 28;
-            this.label10.Text = "باركود الصنف :";
+            this.label10.Text = "كود الصنف :";
             // 
             // default_price_barcode
             // 
@@ -700,366 +754,6 @@ namespace sales_management.UI
             this.tabPage2.Text = "التجزئة والجملة ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.gr1_unitId_text);
-            this.groupBox3.Controls.Add(this.gr1_less_sell_text);
-            this.groupBox3.Controls.Add(this.label40);
-            this.groupBox3.Controls.Add(this.gr1_barcode_text);
-            this.groupBox3.Controls.Add(this.gr1_transform_pr_text);
-            this.groupBox3.Controls.Add(this.gr1_gather_sell_text);
-            this.groupBox3.Controls.Add(this.gr1_sell_text);
-            this.groupBox3.Controls.Add(this.gr1_purchase_text);
-            this.groupBox3.Controls.Add(this.gr1_unit_text);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(602, 17);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(260, 265);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "المجموعة 1";
-            // 
-            // gr1_less_sell_text
-            // 
-            this.gr1_less_sell_text.Location = new System.Drawing.Point(16, 129);
-            this.gr1_less_sell_text.Name = "gr1_less_sell_text";
-            this.gr1_less_sell_text.Size = new System.Drawing.Size(132, 20);
-            this.gr1_less_sell_text.TabIndex = 24;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(173, 131);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(72, 13);
-            this.label40.TabIndex = 23;
-            this.label40.Text = "أقل سعر البيع";
-            // 
-            // gr1_barcode_text
-            // 
-            this.gr1_barcode_text.Location = new System.Drawing.Point(17, 228);
-            this.gr1_barcode_text.Name = "gr1_barcode_text";
-            this.gr1_barcode_text.Size = new System.Drawing.Size(132, 20);
-            this.gr1_barcode_text.TabIndex = 22;
-            // 
-            // gr1_transform_pr_text
-            // 
-            this.gr1_transform_pr_text.Location = new System.Drawing.Point(17, 197);
-            this.gr1_transform_pr_text.Name = "gr1_transform_pr_text";
-            this.gr1_transform_pr_text.Size = new System.Drawing.Size(132, 20);
-            this.gr1_transform_pr_text.TabIndex = 21;
-            // 
-            // gr1_gather_sell_text
-            // 
-            this.gr1_gather_sell_text.Location = new System.Drawing.Point(17, 164);
-            this.gr1_gather_sell_text.Name = "gr1_gather_sell_text";
-            this.gr1_gather_sell_text.Size = new System.Drawing.Size(132, 20);
-            this.gr1_gather_sell_text.TabIndex = 20;
-            // 
-            // gr1_sell_text
-            // 
-            this.gr1_sell_text.Location = new System.Drawing.Point(17, 96);
-            this.gr1_sell_text.Name = "gr1_sell_text";
-            this.gr1_sell_text.Size = new System.Drawing.Size(132, 20);
-            this.gr1_sell_text.TabIndex = 19;
-            // 
-            // gr1_purchase_text
-            // 
-            this.gr1_purchase_text.Location = new System.Drawing.Point(17, 62);
-            this.gr1_purchase_text.Name = "gr1_purchase_text";
-            this.gr1_purchase_text.Size = new System.Drawing.Size(132, 20);
-            this.gr1_purchase_text.TabIndex = 18;
-            // 
-            // gr1_unit_text
-            // 
-            this.gr1_unit_text.FormattingEnabled = true;
-            this.gr1_unit_text.Location = new System.Drawing.Point(17, 27);
-            this.gr1_unit_text.Name = "gr1_unit_text";
-            this.gr1_unit_text.Size = new System.Drawing.Size(132, 21);
-            this.gr1_unit_text.TabIndex = 6;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(200, 233);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 13);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "الباركود";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(174, 200);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 13);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "عامل التحويل";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(187, 167);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 13);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "سعر الجملة";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(190, 96);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 13);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "سعر البيع";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(185, 62);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 13);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "سعر الشراء";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(207, 30);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "الوحدة";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.item_number_in_all);
-            this.groupBox1.Controls.Add(this.delete_button);
-            this.groupBox1.Controls.Add(this.update_button);
-            this.groupBox1.Controls.Add(this.button_play_prev);
-            this.groupBox1.Controls.Add(this.save_button);
-            this.groupBox1.Controls.Add(this.add_new);
-            this.groupBox1.Controls.Add(this.button_play_next);
-            this.groupBox1.Controls.Add(this.button_first_record);
-            this.groupBox1.Controls.Add(this.button_last_record);
-            this.groupBox1.Location = new System.Drawing.Point(12, 514);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(893, 65);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
-            // delete_button
-            // 
-            this.delete_button.BackColor = System.Drawing.Color.Transparent;
-            this.delete_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.delete_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delete_button.Image = ((System.Drawing.Image)(resources.GetObject("delete_button.Image")));
-            this.delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delete_button.Location = new System.Drawing.Point(794, 21);
-            this.delete_button.Name = "delete_button";
-            this.delete_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.delete_button.Size = new System.Drawing.Size(86, 31);
-            this.delete_button.TabIndex = 10;
-            this.delete_button.Text = "حذف";
-            this.delete_button.UseVisualStyleBackColor = false;
-            // 
-            // update_button
-            // 
-            this.update_button.BackColor = System.Drawing.Color.Transparent;
-            this.update_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.update_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.update_button.Image = ((System.Drawing.Image)(resources.GetObject("update_button.Image")));
-            this.update_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.update_button.Location = new System.Drawing.Point(699, 21);
-            this.update_button.Name = "update_button";
-            this.update_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.update_button.Size = new System.Drawing.Size(86, 31);
-            this.update_button.TabIndex = 12;
-            this.update_button.Text = "تعديل";
-            this.update_button.UseVisualStyleBackColor = false;
-            // 
-            // save_button
-            // 
-            this.save_button.BackColor = System.Drawing.Color.Transparent;
-            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.save_button.Enabled = false;
-            this.save_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
-            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.save_button.Location = new System.Drawing.Point(603, 21);
-            this.save_button.Name = "save_button";
-            this.save_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.save_button.Size = new System.Drawing.Size(86, 31);
-            this.save_button.TabIndex = 9;
-            this.save_button.Text = "حفظ";
-            this.save_button.UseVisualStyleBackColor = false;
-            this.save_button.Click += new System.EventHandler(this.save_button_Click);
-            // 
-            // add_new
-            // 
-            this.add_new.BackColor = System.Drawing.Color.Transparent;
-            this.add_new.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.add_new.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.add_new.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_new.Image = ((System.Drawing.Image)(resources.GetObject("add_new.Image")));
-            this.add_new.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new.Location = new System.Drawing.Point(14, 20);
-            this.add_new.Name = "add_new";
-            this.add_new.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.add_new.Size = new System.Drawing.Size(119, 31);
-            this.add_new.TabIndex = 13;
-            this.add_new.Text = "إضافة جديد";
-            this.add_new.UseVisualStyleBackColor = false;
-            this.add_new.Click += new System.EventHandler(this.add_new_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.gr2_unitId_text);
-            this.groupBox4.Controls.Add(this.gr2_less_sell_text);
-            this.groupBox4.Controls.Add(this.label22);
-            this.groupBox4.Controls.Add(this.gr2_barcode_text);
-            this.groupBox4.Controls.Add(this.gr2_transform_pr_text);
-            this.groupBox4.Controls.Add(this.gr2_gather_sell_text);
-            this.groupBox4.Controls.Add(this.gr2_sell_text);
-            this.groupBox4.Controls.Add(this.gr2_purchase_text);
-            this.groupBox4.Controls.Add(this.gr2_unit_text);
-            this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.label24);
-            this.groupBox4.Controls.Add(this.label25);
-            this.groupBox4.Controls.Add(this.label26);
-            this.groupBox4.Controls.Add(this.label27);
-            this.groupBox4.Controls.Add(this.label28);
-            this.groupBox4.Enabled = false;
-            this.groupBox4.Location = new System.Drawing.Point(315, 17);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(260, 265);
-            this.groupBox4.TabIndex = 25;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "المجموعة 2";
-            // 
-            // gr2_less_sell_text
-            // 
-            this.gr2_less_sell_text.Location = new System.Drawing.Point(16, 129);
-            this.gr2_less_sell_text.Name = "gr2_less_sell_text";
-            this.gr2_less_sell_text.Size = new System.Drawing.Size(140, 20);
-            this.gr2_less_sell_text.TabIndex = 24;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(171, 132);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(72, 13);
-            this.label22.TabIndex = 23;
-            this.label22.Text = "أقل سعر البيع";
-            // 
-            // gr2_barcode_text
-            // 
-            this.gr2_barcode_text.Location = new System.Drawing.Point(17, 228);
-            this.gr2_barcode_text.Name = "gr2_barcode_text";
-            this.gr2_barcode_text.Size = new System.Drawing.Size(140, 20);
-            this.gr2_barcode_text.TabIndex = 22;
-            // 
-            // gr2_transform_pr_text
-            // 
-            this.gr2_transform_pr_text.Location = new System.Drawing.Point(17, 197);
-            this.gr2_transform_pr_text.Name = "gr2_transform_pr_text";
-            this.gr2_transform_pr_text.Size = new System.Drawing.Size(140, 20);
-            this.gr2_transform_pr_text.TabIndex = 21;
-            // 
-            // gr2_gather_sell_text
-            // 
-            this.gr2_gather_sell_text.Location = new System.Drawing.Point(17, 164);
-            this.gr2_gather_sell_text.Name = "gr2_gather_sell_text";
-            this.gr2_gather_sell_text.Size = new System.Drawing.Size(140, 20);
-            this.gr2_gather_sell_text.TabIndex = 20;
-            // 
-            // gr2_sell_text
-            // 
-            this.gr2_sell_text.Location = new System.Drawing.Point(17, 96);
-            this.gr2_sell_text.Name = "gr2_sell_text";
-            this.gr2_sell_text.Size = new System.Drawing.Size(140, 20);
-            this.gr2_sell_text.TabIndex = 19;
-            // 
-            // gr2_purchase_text
-            // 
-            this.gr2_purchase_text.Location = new System.Drawing.Point(17, 62);
-            this.gr2_purchase_text.Name = "gr2_purchase_text";
-            this.gr2_purchase_text.Size = new System.Drawing.Size(140, 20);
-            this.gr2_purchase_text.TabIndex = 18;
-            // 
-            // gr2_unit_text
-            // 
-            this.gr2_unit_text.FormattingEnabled = true;
-            this.gr2_unit_text.Location = new System.Drawing.Point(17, 27);
-            this.gr2_unit_text.Name = "gr2_unit_text";
-            this.gr2_unit_text.Size = new System.Drawing.Size(140, 21);
-            this.gr2_unit_text.TabIndex = 6;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(198, 234);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 13);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "الباركود";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(172, 201);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(67, 13);
-            this.label24.TabIndex = 4;
-            this.label24.Text = "عامل التحويل";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(185, 168);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(56, 13);
-            this.label25.TabIndex = 3;
-            this.label25.Text = "سعر الجملة";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(188, 97);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(51, 13);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "سعر البيع";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(183, 63);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(59, 13);
-            this.label27.TabIndex = 1;
-            this.label27.Text = "سعر الشراء";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(205, 31);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(37, 13);
-            this.label28.TabIndex = 0;
-            this.label28.Text = "الوحدة";
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.gr3_unitId_text);
@@ -1084,6 +778,14 @@ namespace sales_management.UI
             this.groupBox5.TabIndex = 26;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "المجموعة 3";
+            // 
+            // gr3_unitId_text
+            // 
+            this.gr3_unitId_text.Location = new System.Drawing.Point(156, 27);
+            this.gr3_unitId_text.Name = "gr3_unitId_text";
+            this.gr3_unitId_text.Size = new System.Drawing.Size(14, 20);
+            this.gr3_unitId_text.TabIndex = 27;
+            this.gr3_unitId_text.Visible = false;
             // 
             // gr3_less_sell_text
             // 
@@ -1138,6 +840,7 @@ namespace sales_management.UI
             // 
             // gr3_unit_text
             // 
+            this.gr3_unit_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gr3_unit_text.FormattingEnabled = true;
             this.gr3_unit_text.Location = new System.Drawing.Point(17, 27);
             this.gr3_unit_text.Name = "gr3_unit_text";
@@ -1198,25 +901,299 @@ namespace sales_management.UI
             this.label35.TabIndex = 0;
             this.label35.Text = "الوحدة";
             // 
-            // label36
+            // groupBox4
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(174, 21);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(88, 13);
-            this.label36.TabIndex = 18;
-            this.label36.Text = "المخزون الحــالي :";
+            this.groupBox4.Controls.Add(this.gr2_unitId_text);
+            this.groupBox4.Controls.Add(this.gr2_less_sell_text);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.gr2_barcode_text);
+            this.groupBox4.Controls.Add(this.gr2_transform_pr_text);
+            this.groupBox4.Controls.Add(this.gr2_gather_sell_text);
+            this.groupBox4.Controls.Add(this.gr2_sell_text);
+            this.groupBox4.Controls.Add(this.gr2_purchase_text);
+            this.groupBox4.Controls.Add(this.gr2_unit_text);
+            this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Controls.Add(this.label24);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.label26);
+            this.groupBox4.Controls.Add(this.label27);
+            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Enabled = false;
+            this.groupBox4.Location = new System.Drawing.Point(315, 17);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(260, 265);
+            this.groupBox4.TabIndex = 25;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "المجموعة 2";
             // 
-            // get_inventory_value
+            // gr2_unitId_text
             // 
-            this.get_inventory_value.AutoSize = true;
-            this.get_inventory_value.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.get_inventory_value.ForeColor = System.Drawing.Color.Blue;
-            this.get_inventory_value.Location = new System.Drawing.Point(95, 17);
-            this.get_inventory_value.Name = "get_inventory_value";
-            this.get_inventory_value.Size = new System.Drawing.Size(59, 21);
-            this.get_inventory_value.TabIndex = 19;
-            this.get_inventory_value.Text = "15,154";
+            this.gr2_unitId_text.Location = new System.Drawing.Point(163, 27);
+            this.gr2_unitId_text.Name = "gr2_unitId_text";
+            this.gr2_unitId_text.Size = new System.Drawing.Size(14, 20);
+            this.gr2_unitId_text.TabIndex = 26;
+            this.gr2_unitId_text.Visible = false;
+            // 
+            // gr2_less_sell_text
+            // 
+            this.gr2_less_sell_text.Location = new System.Drawing.Point(16, 129);
+            this.gr2_less_sell_text.Name = "gr2_less_sell_text";
+            this.gr2_less_sell_text.Size = new System.Drawing.Size(140, 20);
+            this.gr2_less_sell_text.TabIndex = 24;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(171, 132);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(72, 13);
+            this.label22.TabIndex = 23;
+            this.label22.Text = "أقل سعر البيع";
+            // 
+            // gr2_barcode_text
+            // 
+            this.gr2_barcode_text.Location = new System.Drawing.Point(17, 228);
+            this.gr2_barcode_text.Name = "gr2_barcode_text";
+            this.gr2_barcode_text.Size = new System.Drawing.Size(140, 20);
+            this.gr2_barcode_text.TabIndex = 22;
+            // 
+            // gr2_transform_pr_text
+            // 
+            this.gr2_transform_pr_text.Location = new System.Drawing.Point(17, 197);
+            this.gr2_transform_pr_text.Name = "gr2_transform_pr_text";
+            this.gr2_transform_pr_text.Size = new System.Drawing.Size(140, 20);
+            this.gr2_transform_pr_text.TabIndex = 21;
+            // 
+            // gr2_gather_sell_text
+            // 
+            this.gr2_gather_sell_text.Location = new System.Drawing.Point(17, 164);
+            this.gr2_gather_sell_text.Name = "gr2_gather_sell_text";
+            this.gr2_gather_sell_text.Size = new System.Drawing.Size(140, 20);
+            this.gr2_gather_sell_text.TabIndex = 20;
+            // 
+            // gr2_sell_text
+            // 
+            this.gr2_sell_text.Location = new System.Drawing.Point(17, 96);
+            this.gr2_sell_text.Name = "gr2_sell_text";
+            this.gr2_sell_text.Size = new System.Drawing.Size(140, 20);
+            this.gr2_sell_text.TabIndex = 19;
+            // 
+            // gr2_purchase_text
+            // 
+            this.gr2_purchase_text.Location = new System.Drawing.Point(17, 62);
+            this.gr2_purchase_text.Name = "gr2_purchase_text";
+            this.gr2_purchase_text.Size = new System.Drawing.Size(140, 20);
+            this.gr2_purchase_text.TabIndex = 18;
+            // 
+            // gr2_unit_text
+            // 
+            this.gr2_unit_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gr2_unit_text.FormattingEnabled = true;
+            this.gr2_unit_text.Location = new System.Drawing.Point(17, 27);
+            this.gr2_unit_text.Name = "gr2_unit_text";
+            this.gr2_unit_text.Size = new System.Drawing.Size(140, 21);
+            this.gr2_unit_text.TabIndex = 6;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(198, 234);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 13);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "الباركود";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(172, 201);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 13);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "عامل التحويل";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(185, 168);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(56, 13);
+            this.label25.TabIndex = 3;
+            this.label25.Text = "سعر الجملة";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(188, 97);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(51, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "سعر البيع";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(183, 63);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(59, 13);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "سعر الشراء";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(205, 31);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(37, 13);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "الوحدة";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.gr1_unitId_text);
+            this.groupBox3.Controls.Add(this.gr1_less_sell_text);
+            this.groupBox3.Controls.Add(this.label40);
+            this.groupBox3.Controls.Add(this.gr1_barcode_text);
+            this.groupBox3.Controls.Add(this.gr1_transform_pr_text);
+            this.groupBox3.Controls.Add(this.gr1_gather_sell_text);
+            this.groupBox3.Controls.Add(this.gr1_sell_text);
+            this.groupBox3.Controls.Add(this.gr1_purchase_text);
+            this.groupBox3.Controls.Add(this.gr1_unit_text);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Enabled = false;
+            this.groupBox3.Location = new System.Drawing.Point(602, 17);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(260, 265);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "المجموعة 1";
+            // 
+            // gr1_unitId_text
+            // 
+            this.gr1_unitId_text.Location = new System.Drawing.Point(155, 27);
+            this.gr1_unitId_text.Name = "gr1_unitId_text";
+            this.gr1_unitId_text.Size = new System.Drawing.Size(14, 20);
+            this.gr1_unitId_text.TabIndex = 25;
+            this.gr1_unitId_text.Visible = false;
+            // 
+            // gr1_less_sell_text
+            // 
+            this.gr1_less_sell_text.Location = new System.Drawing.Point(16, 129);
+            this.gr1_less_sell_text.Name = "gr1_less_sell_text";
+            this.gr1_less_sell_text.Size = new System.Drawing.Size(132, 20);
+            this.gr1_less_sell_text.TabIndex = 24;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(173, 131);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(72, 13);
+            this.label40.TabIndex = 23;
+            this.label40.Text = "أقل سعر البيع";
+            // 
+            // gr1_barcode_text
+            // 
+            this.gr1_barcode_text.Location = new System.Drawing.Point(17, 228);
+            this.gr1_barcode_text.Name = "gr1_barcode_text";
+            this.gr1_barcode_text.Size = new System.Drawing.Size(132, 20);
+            this.gr1_barcode_text.TabIndex = 22;
+            // 
+            // gr1_transform_pr_text
+            // 
+            this.gr1_transform_pr_text.Location = new System.Drawing.Point(17, 197);
+            this.gr1_transform_pr_text.Name = "gr1_transform_pr_text";
+            this.gr1_transform_pr_text.Size = new System.Drawing.Size(132, 20);
+            this.gr1_transform_pr_text.TabIndex = 21;
+            // 
+            // gr1_gather_sell_text
+            // 
+            this.gr1_gather_sell_text.Location = new System.Drawing.Point(17, 164);
+            this.gr1_gather_sell_text.Name = "gr1_gather_sell_text";
+            this.gr1_gather_sell_text.Size = new System.Drawing.Size(132, 20);
+            this.gr1_gather_sell_text.TabIndex = 20;
+            // 
+            // gr1_sell_text
+            // 
+            this.gr1_sell_text.Location = new System.Drawing.Point(17, 96);
+            this.gr1_sell_text.Name = "gr1_sell_text";
+            this.gr1_sell_text.Size = new System.Drawing.Size(132, 20);
+            this.gr1_sell_text.TabIndex = 19;
+            // 
+            // gr1_purchase_text
+            // 
+            this.gr1_purchase_text.Location = new System.Drawing.Point(17, 62);
+            this.gr1_purchase_text.Name = "gr1_purchase_text";
+            this.gr1_purchase_text.Size = new System.Drawing.Size(132, 20);
+            this.gr1_purchase_text.TabIndex = 18;
+            // 
+            // gr1_unit_text
+            // 
+            this.gr1_unit_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gr1_unit_text.FormattingEnabled = true;
+            this.gr1_unit_text.Location = new System.Drawing.Point(17, 27);
+            this.gr1_unit_text.Name = "gr1_unit_text";
+            this.gr1_unit_text.Size = new System.Drawing.Size(132, 21);
+            this.gr1_unit_text.TabIndex = 6;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(200, 233);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(44, 13);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "الباركود";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(174, 200);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "عامل التحويل";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(187, 167);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(56, 13);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "سعر الجملة";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(190, 96);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(51, 13);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "سعر البيع";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(185, 62);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "سعر الشراء";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(207, 30);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "الوحدة";
             // 
             // tabPage3
             // 
@@ -1255,6 +1232,14 @@ namespace sales_management.UI
             this.groupBox6.TabIndex = 29;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "  المجموعة 6  ";
+            // 
+            // gr6_unitId_text
+            // 
+            this.gr6_unitId_text.Location = new System.Drawing.Point(156, 27);
+            this.gr6_unitId_text.Name = "gr6_unitId_text";
+            this.gr6_unitId_text.Size = new System.Drawing.Size(14, 20);
+            this.gr6_unitId_text.TabIndex = 28;
+            this.gr6_unitId_text.Visible = false;
             // 
             // gr6_less_sell_text
             // 
@@ -1309,6 +1294,7 @@ namespace sales_management.UI
             // 
             // gr6_unit_text
             // 
+            this.gr6_unit_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gr6_unit_text.FormattingEnabled = true;
             this.gr6_unit_text.Location = new System.Drawing.Point(17, 27);
             this.gr6_unit_text.Name = "gr6_unit_text";
@@ -1394,6 +1380,14 @@ namespace sales_management.UI
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "  المجموعة 5  ";
             // 
+            // gr5_unitId_text
+            // 
+            this.gr5_unitId_text.Location = new System.Drawing.Point(163, 28);
+            this.gr5_unitId_text.Name = "gr5_unitId_text";
+            this.gr5_unitId_text.Size = new System.Drawing.Size(14, 20);
+            this.gr5_unitId_text.TabIndex = 27;
+            this.gr5_unitId_text.Visible = false;
+            // 
             // gr5_less_sell_text
             // 
             this.gr5_less_sell_text.Location = new System.Drawing.Point(16, 129);
@@ -1447,6 +1441,7 @@ namespace sales_management.UI
             // 
             // gr5_unit_text
             // 
+            this.gr5_unit_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gr5_unit_text.FormattingEnabled = true;
             this.gr5_unit_text.Location = new System.Drawing.Point(17, 27);
             this.gr5_unit_text.Name = "gr5_unit_text";
@@ -1532,6 +1527,14 @@ namespace sales_management.UI
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "  المجموعة 4  ";
             // 
+            // gr4_unitId_text
+            // 
+            this.gr4_unitId_text.Location = new System.Drawing.Point(155, 27);
+            this.gr4_unitId_text.Name = "gr4_unitId_text";
+            this.gr4_unitId_text.Size = new System.Drawing.Size(14, 20);
+            this.gr4_unitId_text.TabIndex = 26;
+            this.gr4_unitId_text.Visible = false;
+            // 
             // gr4_less_sell_text
             // 
             this.gr4_less_sell_text.Location = new System.Drawing.Point(16, 129);
@@ -1585,6 +1588,7 @@ namespace sales_management.UI
             // 
             // gr4_unit_text
             // 
+            this.gr4_unit_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gr4_unit_text.FormattingEnabled = true;
             this.gr4_unit_text.Location = new System.Drawing.Point(17, 27);
             this.gr4_unit_text.Name = "gr4_unit_text";
@@ -1645,99 +1649,89 @@ namespace sales_management.UI
             this.label61.TabIndex = 0;
             this.label61.Text = "الوحدة";
             // 
-            // category_text_id
+            // groupBox1
             // 
-            this.category_text_id.Location = new System.Drawing.Point(811, 79);
-            this.category_text_id.Name = "category_text_id";
-            this.category_text_id.Size = new System.Drawing.Size(16, 20);
-            this.category_text_id.TabIndex = 18;
-            this.category_text_id.Visible = false;
+            this.groupBox1.Controls.Add(this.item_number_in_all);
+            this.groupBox1.Controls.Add(this.delete_button);
+            this.groupBox1.Controls.Add(this.update_button);
+            this.groupBox1.Controls.Add(this.button_play_prev);
+            this.groupBox1.Controls.Add(this.save_button);
+            this.groupBox1.Controls.Add(this.add_new);
+            this.groupBox1.Controls.Add(this.button_play_next);
+            this.groupBox1.Controls.Add(this.button_first_record);
+            this.groupBox1.Controls.Add(this.button_last_record);
+            this.groupBox1.Location = new System.Drawing.Point(12, 514);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(893, 65);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
             // 
-            // gr1_unitId_text
+            // delete_button
             // 
-            this.gr1_unitId_text.Location = new System.Drawing.Point(155, 27);
-            this.gr1_unitId_text.Name = "gr1_unitId_text";
-            this.gr1_unitId_text.Size = new System.Drawing.Size(14, 20);
-            this.gr1_unitId_text.TabIndex = 25;
-            this.gr1_unitId_text.Visible = false;
+            this.delete_button.BackColor = System.Drawing.Color.Transparent;
+            this.delete_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.delete_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delete_button.Image = ((System.Drawing.Image)(resources.GetObject("delete_button.Image")));
+            this.delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.delete_button.Location = new System.Drawing.Point(794, 21);
+            this.delete_button.Name = "delete_button";
+            this.delete_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.delete_button.Size = new System.Drawing.Size(86, 31);
+            this.delete_button.TabIndex = 10;
+            this.delete_button.Text = "حذف";
+            this.delete_button.UseVisualStyleBackColor = false;
             // 
-            // gr2_unitId_text
+            // update_button
             // 
-            this.gr2_unitId_text.Location = new System.Drawing.Point(163, 27);
-            this.gr2_unitId_text.Name = "gr2_unitId_text";
-            this.gr2_unitId_text.Size = new System.Drawing.Size(14, 20);
-            this.gr2_unitId_text.TabIndex = 26;
-            this.gr2_unitId_text.Visible = false;
+            this.update_button.BackColor = System.Drawing.Color.Transparent;
+            this.update_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.update_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.update_button.Image = ((System.Drawing.Image)(resources.GetObject("update_button.Image")));
+            this.update_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.update_button.Location = new System.Drawing.Point(699, 21);
+            this.update_button.Name = "update_button";
+            this.update_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.update_button.Size = new System.Drawing.Size(86, 31);
+            this.update_button.TabIndex = 12;
+            this.update_button.Text = "تعديل";
+            this.update_button.UseVisualStyleBackColor = false;
             // 
-            // gr3_unitId_text
+            // save_button
             // 
-            this.gr3_unitId_text.Location = new System.Drawing.Point(156, 27);
-            this.gr3_unitId_text.Name = "gr3_unitId_text";
-            this.gr3_unitId_text.Size = new System.Drawing.Size(14, 20);
-            this.gr3_unitId_text.TabIndex = 27;
-            this.gr3_unitId_text.Visible = false;
+            this.save_button.BackColor = System.Drawing.Color.Transparent;
+            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.save_button.Enabled = false;
+            this.save_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
+            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.save_button.Location = new System.Drawing.Point(603, 21);
+            this.save_button.Name = "save_button";
+            this.save_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.save_button.Size = new System.Drawing.Size(86, 31);
+            this.save_button.TabIndex = 9;
+            this.save_button.Text = "حفظ";
+            this.save_button.UseVisualStyleBackColor = false;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
-            // gr4_unitId_text
+            // add_new
             // 
-            this.gr4_unitId_text.Location = new System.Drawing.Point(155, 27);
-            this.gr4_unitId_text.Name = "gr4_unitId_text";
-            this.gr4_unitId_text.Size = new System.Drawing.Size(14, 20);
-            this.gr4_unitId_text.TabIndex = 26;
-            this.gr4_unitId_text.Visible = false;
-            // 
-            // gr5_unitId_text
-            // 
-            this.gr5_unitId_text.Location = new System.Drawing.Point(163, 28);
-            this.gr5_unitId_text.Name = "gr5_unitId_text";
-            this.gr5_unitId_text.Size = new System.Drawing.Size(14, 20);
-            this.gr5_unitId_text.TabIndex = 27;
-            this.gr5_unitId_text.Visible = false;
-            // 
-            // gr6_unitId_text
-            // 
-            this.gr6_unitId_text.Location = new System.Drawing.Point(156, 27);
-            this.gr6_unitId_text.Name = "gr6_unitId_text";
-            this.gr6_unitId_text.Size = new System.Drawing.Size(14, 20);
-            this.gr6_unitId_text.TabIndex = 28;
-            this.gr6_unitId_text.Visible = false;
-            // 
-            // price_included
-            // 
-            this.price_included.AutoSize = true;
-            this.price_included.Enabled = false;
-            this.price_included.Location = new System.Drawing.Point(478, 228);
-            this.price_included.Name = "price_included";
-            this.price_included.Size = new System.Drawing.Size(116, 17);
-            this.price_included.TabIndex = 39;
-            this.price_included.Text = "السعر شامل الضريبة";
-            this.price_included.UseVisualStyleBackColor = true;
-            // 
-            // default_price_combo
-            // 
-            this.default_price_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.default_price_combo.Enabled = false;
-            this.default_price_combo.FormattingEnabled = true;
-            this.default_price_combo.Items.AddRange(new object[] {
-            "السعر الإفتراضي",
-            "المجموعه الأولي",
-            "المجموعه الثانيه",
-            "المجموعه الثالثه",
-            "المجموع الرابعه",
-            "المجموعه الخامسه",
-            "المجموعه السادسه"});
-            this.default_price_combo.Location = new System.Drawing.Point(610, 225);
-            this.default_price_combo.Name = "default_price_combo";
-            this.default_price_combo.Size = new System.Drawing.Size(135, 21);
-            this.default_price_combo.TabIndex = 41;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(769, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "التسعير الإفتراضي";
+            this.add_new.BackColor = System.Drawing.Color.Transparent;
+            this.add_new.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.add_new.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.add_new.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new.Image = ((System.Drawing.Image)(resources.GetObject("add_new.Image")));
+            this.add_new.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.add_new.Location = new System.Drawing.Point(14, 20);
+            this.add_new.Name = "add_new";
+            this.add_new.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.add_new.Size = new System.Drawing.Size(119, 31);
+            this.add_new.TabIndex = 13;
+            this.add_new.Text = "إضافة جديد";
+            this.add_new.UseVisualStyleBackColor = false;
+            this.add_new.Click += new System.EventHandler(this.add_new_Click);
             // 
             // Products
             // 
@@ -1765,14 +1759,12 @@ namespace sales_management.UI
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureImage)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -1780,6 +1772,8 @@ namespace sales_management.UI
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1849,7 +1843,7 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox less_sales_price_sub;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox combo_unit_name;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox gather_price_sub;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -1938,7 +1932,6 @@ namespace sales_management.UI
         private System.Windows.Forms.TextBox gr6_unitId_text;
         private System.Windows.Forms.TextBox gr5_unitId_text;
         private System.Windows.Forms.TextBox gr4_unitId_text;
-        private System.Windows.Forms.CheckBox price_included;
         private System.Windows.Forms.ComboBox default_price_combo;
         private System.Windows.Forms.Label label4;
     }
