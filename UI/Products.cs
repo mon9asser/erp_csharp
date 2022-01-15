@@ -16,7 +16,11 @@ namespace sales_management.UI
     {
         public bool isOpenUints = false;
         public bool isOpenCatsForm = false;
+        public int prodIndex = 0;
+
+        
         PL.Products prd = new PL.Products();
+        DataTable table;
 
         public static Products frm;
 
@@ -43,6 +47,8 @@ namespace sales_management.UI
 
         public Products()
         {
+            table = this.prd.Get_All_Products(); 
+
             InitializeComponent();
             
             if(frm == null )
@@ -86,17 +92,15 @@ namespace sales_management.UI
 
         public void load_last_record() {
 
-            DataTable table = prd.Get_All_Products();
+            
 
             if (table.Rows.Count > 0) {
 
-
-                DataTable gtable = new DataTable();
-                gtable.Rows.InsertAt(table.Rows[table.Rows.Count - 1], 0);
-                this.fill_product_ui_elements( gtable );
+                this.prodIndex = table.Rows.Count - 1 ;
+                this.fill_product_ui_elements(table, (this.prodIndex));
+                item_number_in_all.Text = table.Rows.Count.ToString() + " / " + table.Rows.Count.ToString();
 
             }
-
         }
 
         public void enalbe_proccess_inputs( bool isEnabled ) {
@@ -148,12 +152,12 @@ namespace sales_management.UI
 
 
 
-        public void fill_product_ui_elements( DataTable table ) {
+        public void fill_product_ui_elements( DataTable table, int index = 0 ) {
 
             if (table.Rows.Count > 0)
             {
 
-                DataRow row = table.Rows[0];
+                DataRow row = table.Rows[index];
                 DataColumnCollection columns = table.Columns;
 
                 DataTable units_dt = prd.Get_All_Product_Units();
@@ -203,10 +207,11 @@ namespace sales_management.UI
                     discount_percentage_val.Text = row["discount_percentage_val"].ToString();
                     default_price_combo.SelectedIndex = Convert.ToInt32(row["default_group"]);
 
-                     
+
                     // pictureImage 
-                    if ( row["image"] != System.DBNull.Value) {
-                        
+                    if (row["image"] != System.DBNull.Value)
+                    {
+
                         byte[] imageData = (byte[])row["image"];
 
                         //Initialize image variable
@@ -220,10 +225,13 @@ namespace sales_management.UI
                             //Set image variable value using memory stream.
                             newImage = Image.FromStream(ms, true);
                         }
-                        
+
                         //set picture
                         pictureImage.Image = newImage;
 
+                    }
+                    else {
+                        pictureImage.Image = null ;
                     }
 
 
@@ -479,6 +487,55 @@ namespace sales_management.UI
         private void combo_unit_name_SelectedIndexChanged(object sender, EventArgs e)
         {
             gr1_unitId_text.Text = combo_unit_name.SelectedValue.ToString();
+        }
+
+        private void button_last_record_Click(object sender, EventArgs e)
+        {
+            if ( this.prodIndex != (table.Rows.Count - 1)) {
+
+                this.prodIndex = table.Rows.Count - 1;
+
+                this.fill_product_ui_elements(table, (this.prodIndex));
+                item_number_in_all.Text = table.Rows.Count.ToString() + " / " + table.Rows.Count.ToString();
+
+            }
+        }
+
+        private void button_first_record_Click(object sender, EventArgs e)
+        {
+            if (this.prodIndex != 0 )
+            {
+
+                this.prodIndex = 0;
+
+                this.fill_product_ui_elements(table, (this.prodIndex));
+                item_number_in_all.Text = table.Rows.Count.ToString() + " / " + ( this.prodIndex + 1 ).ToString();
+
+            }
+        }
+
+        private void button_play_prev_Click(object sender, EventArgs e)
+        {
+
+            this.prodIndex = (this.prodIndex - 1);
+            if (this.prodIndex == -1) {
+                this.prodIndex = 0;
+            }
+
+            this.fill_product_ui_elements(table, (this.prodIndex));
+            item_number_in_all.Text = table.Rows.Count.ToString() + " / " + (this.prodIndex + 1).ToString();
+        }
+
+        private void button_play_next_Click(object sender, EventArgs e)
+        {
+            this.prodIndex = (this.prodIndex + 1);
+            if (this.prodIndex >= table.Rows.Count )
+            {
+                this.prodIndex = (table.Rows.Count - 1 );
+            }
+
+            this.fill_product_ui_elements(table, (this.prodIndex));
+            item_number_in_all.Text = table.Rows.Count.ToString() + " / " + (this.prodIndex + 1).ToString();
         }
     }
 }

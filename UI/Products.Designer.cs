@@ -182,11 +182,11 @@ namespace sales_management.UI
             this.enable_expiration_date = new System.Windows.Forms.CheckBox();
             this.minmax_limit_notify = new System.Windows.Forms.CheckBox();
             this.request_limit_notify = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.delete_button = new System.Windows.Forms.Button();
             this.update_button = new System.Windows.Forms.Button();
             this.save_button = new System.Windows.Forms.Button();
             this.add_new = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -201,7 +201,7 @@ namespace sales_management.UI
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -421,13 +421,15 @@ namespace sales_management.UI
             // item_number_in_all
             // 
             this.item_number_in_all.AutoSize = true;
+            this.item_number_in_all.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.item_number_in_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.item_number_in_all.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.item_number_in_all.Location = new System.Drawing.Point(346, 29);
+            this.item_number_in_all.Location = new System.Drawing.Point(354, 30);
             this.item_number_in_all.Name = "item_number_in_all";
             this.item_number_in_all.Size = new System.Drawing.Size(42, 13);
             this.item_number_in_all.TabIndex = 8;
-            this.item_number_in_all.Text = "1 / 16";
+            this.item_number_in_all.Text = "0 / 00";
+            this.item_number_in_all.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_play_prev
             // 
@@ -436,11 +438,12 @@ namespace sales_management.UI
             this.button_play_prev.FlatAppearance.BorderSize = 0;
             this.button_play_prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_play_prev.Image = ((System.Drawing.Image)(resources.GetObject("button_play_prev.Image")));
-            this.button_play_prev.Location = new System.Drawing.Point(279, 20);
+            this.button_play_prev.Location = new System.Drawing.Point(287, 21);
             this.button_play_prev.Name = "button_play_prev";
             this.button_play_prev.Size = new System.Drawing.Size(37, 31);
             this.button_play_prev.TabIndex = 7;
             this.button_play_prev.UseVisualStyleBackColor = false;
+            this.button_play_prev.Click += new System.EventHandler(this.button_play_prev_Click);
             // 
             // button_play_next
             // 
@@ -449,11 +452,12 @@ namespace sales_management.UI
             this.button_play_next.FlatAppearance.BorderSize = 0;
             this.button_play_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_play_next.Image = ((System.Drawing.Image)(resources.GetObject("button_play_next.Image")));
-            this.button_play_next.Location = new System.Drawing.Point(415, 20);
+            this.button_play_next.Location = new System.Drawing.Point(423, 21);
             this.button_play_next.Name = "button_play_next";
             this.button_play_next.Size = new System.Drawing.Size(37, 31);
             this.button_play_next.TabIndex = 6;
             this.button_play_next.UseVisualStyleBackColor = false;
+            this.button_play_next.Click += new System.EventHandler(this.button_play_next_Click);
             // 
             // button_last_record
             // 
@@ -462,11 +466,12 @@ namespace sales_management.UI
             this.button_last_record.FlatAppearance.BorderSize = 0;
             this.button_last_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_last_record.Image = ((System.Drawing.Image)(resources.GetObject("button_last_record.Image")));
-            this.button_last_record.Location = new System.Drawing.Point(458, 20);
+            this.button_last_record.Location = new System.Drawing.Point(466, 21);
             this.button_last_record.Name = "button_last_record";
             this.button_last_record.Size = new System.Drawing.Size(37, 31);
             this.button_last_record.TabIndex = 5;
             this.button_last_record.UseVisualStyleBackColor = false;
+            this.button_last_record.Click += new System.EventHandler(this.button_last_record_Click);
             // 
             // button_first_record
             // 
@@ -475,11 +480,12 @@ namespace sales_management.UI
             this.button_first_record.FlatAppearance.BorderSize = 0;
             this.button_first_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_first_record.Image = ((System.Drawing.Image)(resources.GetObject("button_first_record.Image")));
-            this.button_first_record.Location = new System.Drawing.Point(236, 20);
+            this.button_first_record.Location = new System.Drawing.Point(244, 21);
             this.button_first_record.Name = "button_first_record";
             this.button_first_record.Size = new System.Drawing.Size(37, 31);
             this.button_first_record.TabIndex = 4;
             this.button_first_record.UseVisualStyleBackColor = false;
+            this.button_first_record.Click += new System.EventHandler(this.button_first_record_Click);
             // 
             // tabControl1
             // 
@@ -1695,23 +1701,6 @@ namespace sales_management.UI
             this.request_limit_notify.Text = "إشعاري عند وصول المخزون لحد الطلب";
             this.request_limit_notify.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.item_number_in_all);
-            this.groupBox1.Controls.Add(this.delete_button);
-            this.groupBox1.Controls.Add(this.update_button);
-            this.groupBox1.Controls.Add(this.button_play_prev);
-            this.groupBox1.Controls.Add(this.save_button);
-            this.groupBox1.Controls.Add(this.add_new);
-            this.groupBox1.Controls.Add(this.button_play_next);
-            this.groupBox1.Controls.Add(this.button_first_record);
-            this.groupBox1.Controls.Add(this.button_last_record);
-            this.groupBox1.Location = new System.Drawing.Point(12, 514);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(893, 65);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
             // delete_button
             // 
             this.delete_button.BackColor = System.Drawing.Color.Transparent;
@@ -1720,7 +1709,7 @@ namespace sales_management.UI
             this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delete_button.Image = ((System.Drawing.Image)(resources.GetObject("delete_button.Image")));
             this.delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delete_button.Location = new System.Drawing.Point(794, 21);
+            this.delete_button.Location = new System.Drawing.Point(815, 22);
             this.delete_button.Name = "delete_button";
             this.delete_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.delete_button.Size = new System.Drawing.Size(86, 31);
@@ -1736,7 +1725,7 @@ namespace sales_management.UI
             this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_button.Image = ((System.Drawing.Image)(resources.GetObject("update_button.Image")));
             this.update_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.update_button.Location = new System.Drawing.Point(699, 21);
+            this.update_button.Location = new System.Drawing.Point(720, 22);
             this.update_button.Name = "update_button";
             this.update_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.update_button.Size = new System.Drawing.Size(86, 31);
@@ -1753,7 +1742,7 @@ namespace sales_management.UI
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.save_button.Location = new System.Drawing.Point(603, 21);
+            this.save_button.Location = new System.Drawing.Point(624, 22);
             this.save_button.Name = "save_button";
             this.save_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.save_button.Size = new System.Drawing.Size(86, 31);
@@ -1770,7 +1759,7 @@ namespace sales_management.UI
             this.add_new.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.add_new.Image = ((System.Drawing.Image)(resources.GetObject("add_new.Image")));
             this.add_new.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new.Location = new System.Drawing.Point(14, 20);
+            this.add_new.Location = new System.Drawing.Point(17, 21);
             this.add_new.Name = "add_new";
             this.add_new.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.add_new.Size = new System.Drawing.Size(119, 31);
@@ -1779,13 +1768,30 @@ namespace sales_management.UI
             this.add_new.UseVisualStyleBackColor = false;
             this.add_new.Click += new System.EventHandler(this.add_new_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightBlue;
+            this.panel2.Controls.Add(this.item_number_in_all);
+            this.panel2.Controls.Add(this.add_new);
+            this.panel2.Controls.Add(this.button_last_record);
+            this.panel2.Controls.Add(this.delete_button);
+            this.panel2.Controls.Add(this.button_first_record);
+            this.panel2.Controls.Add(this.button_play_next);
+            this.panel2.Controls.Add(this.update_button);
+            this.panel2.Controls.Add(this.save_button);
+            this.panel2.Controls.Add(this.button_play_prev);
+            this.panel2.Location = new System.Drawing.Point(0, 515);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(921, 71);
+            this.panel2.TabIndex = 2;
+            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 586);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1820,8 +1826,8 @@ namespace sales_management.UI
             this.groupBox8.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1842,7 +1848,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button_last_record;
@@ -1985,5 +1990,6 @@ namespace sales_management.UI
         private System.Windows.Forms.CheckBox minmax_limit_notify;
         private System.Windows.Forms.CheckBox request_limit_notify;
         private System.Windows.Forms.DateTimePicker datepicker_expiration_date;
+        private System.Windows.Forms.Panel panel2;
     }
 }
