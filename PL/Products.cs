@@ -214,6 +214,24 @@ namespace sales_management.PL
             return tbl; 
         }
 
+        public void Delete_Product_By_Id(int id)
+        {
+
+            DB.DataAccessLayer Layer = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter( "@id", SqlDbType.Int );
+            param[0].Value = id; 
+
+            Layer.Open();
+
+            Layer.ExecuteCommand("Delete_Product_By_Id", param);
+
+            Layer.Close(); 
+
+        }
+
         public void Update_Product_Data( 
             int id , 
             string min_limit, 

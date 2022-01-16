@@ -424,7 +424,7 @@ namespace sales_management.UI
             this.item_number_in_all.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.item_number_in_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.item_number_in_all.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.item_number_in_all.Location = new System.Drawing.Point(354, 30);
+            this.item_number_in_all.Location = new System.Drawing.Point(354, 23);
             this.item_number_in_all.Name = "item_number_in_all";
             this.item_number_in_all.Size = new System.Drawing.Size(42, 13);
             this.item_number_in_all.TabIndex = 8;
@@ -438,7 +438,7 @@ namespace sales_management.UI
             this.button_play_prev.FlatAppearance.BorderSize = 0;
             this.button_play_prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_play_prev.Image = ((System.Drawing.Image)(resources.GetObject("button_play_prev.Image")));
-            this.button_play_prev.Location = new System.Drawing.Point(287, 21);
+            this.button_play_prev.Location = new System.Drawing.Point(287, 14);
             this.button_play_prev.Name = "button_play_prev";
             this.button_play_prev.Size = new System.Drawing.Size(37, 31);
             this.button_play_prev.TabIndex = 7;
@@ -452,7 +452,7 @@ namespace sales_management.UI
             this.button_play_next.FlatAppearance.BorderSize = 0;
             this.button_play_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_play_next.Image = ((System.Drawing.Image)(resources.GetObject("button_play_next.Image")));
-            this.button_play_next.Location = new System.Drawing.Point(423, 21);
+            this.button_play_next.Location = new System.Drawing.Point(423, 14);
             this.button_play_next.Name = "button_play_next";
             this.button_play_next.Size = new System.Drawing.Size(37, 31);
             this.button_play_next.TabIndex = 6;
@@ -466,7 +466,7 @@ namespace sales_management.UI
             this.button_last_record.FlatAppearance.BorderSize = 0;
             this.button_last_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_last_record.Image = ((System.Drawing.Image)(resources.GetObject("button_last_record.Image")));
-            this.button_last_record.Location = new System.Drawing.Point(466, 21);
+            this.button_last_record.Location = new System.Drawing.Point(466, 14);
             this.button_last_record.Name = "button_last_record";
             this.button_last_record.Size = new System.Drawing.Size(37, 31);
             this.button_last_record.TabIndex = 5;
@@ -480,7 +480,7 @@ namespace sales_management.UI
             this.button_first_record.FlatAppearance.BorderSize = 0;
             this.button_first_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_first_record.Image = ((System.Drawing.Image)(resources.GetObject("button_first_record.Image")));
-            this.button_first_record.Location = new System.Drawing.Point(244, 21);
+            this.button_first_record.Location = new System.Drawing.Point(244, 14);
             this.button_first_record.Name = "button_first_record";
             this.button_first_record.Size = new System.Drawing.Size(37, 31);
             this.button_first_record.TabIndex = 4;
@@ -1709,13 +1709,14 @@ namespace sales_management.UI
             this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delete_button.Image = ((System.Drawing.Image)(resources.GetObject("delete_button.Image")));
             this.delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delete_button.Location = new System.Drawing.Point(815, 22);
+            this.delete_button.Location = new System.Drawing.Point(788, 13);
             this.delete_button.Name = "delete_button";
             this.delete_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.delete_button.Size = new System.Drawing.Size(86, 31);
             this.delete_button.TabIndex = 10;
             this.delete_button.Text = "حذف";
             this.delete_button.UseVisualStyleBackColor = false;
+            this.delete_button.Click += new System.EventHandler(this.delete_button_Click);
             // 
             // update_button
             // 
@@ -1725,13 +1726,14 @@ namespace sales_management.UI
             this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_button.Image = ((System.Drawing.Image)(resources.GetObject("update_button.Image")));
             this.update_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.update_button.Location = new System.Drawing.Point(720, 22);
+            this.update_button.Location = new System.Drawing.Point(693, 13);
             this.update_button.Name = "update_button";
             this.update_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.update_button.Size = new System.Drawing.Size(86, 31);
             this.update_button.TabIndex = 12;
             this.update_button.Text = "تعديل";
             this.update_button.UseVisualStyleBackColor = false;
+            this.update_button.Click += new System.EventHandler(this.update_button_Click);
             // 
             // save_button
             // 
@@ -1742,7 +1744,7 @@ namespace sales_management.UI
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.save_button.Image = ((System.Drawing.Image)(resources.GetObject("save_button.Image")));
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.save_button.Location = new System.Drawing.Point(624, 22);
+            this.save_button.Location = new System.Drawing.Point(597, 13);
             this.save_button.Name = "save_button";
             this.save_button.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.save_button.Size = new System.Drawing.Size(86, 31);
@@ -1759,7 +1761,7 @@ namespace sales_management.UI
             this.add_new.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.add_new.Image = ((System.Drawing.Image)(resources.GetObject("add_new.Image")));
             this.add_new.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new.Location = new System.Drawing.Point(17, 21);
+            this.add_new.Location = new System.Drawing.Point(17, 12);
             this.add_new.Name = "add_new";
             this.add_new.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.add_new.Size = new System.Drawing.Size(119, 31);
@@ -1770,7 +1772,8 @@ namespace sales_management.UI
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightBlue;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.item_number_in_all);
             this.panel2.Controls.Add(this.add_new);
             this.panel2.Controls.Add(this.button_last_record);
@@ -1780,9 +1783,9 @@ namespace sales_management.UI
             this.panel2.Controls.Add(this.update_button);
             this.panel2.Controls.Add(this.save_button);
             this.panel2.Controls.Add(this.button_play_prev);
-            this.panel2.Location = new System.Drawing.Point(0, 515);
+            this.panel2.Location = new System.Drawing.Point(17, 515);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(921, 71);
+            this.panel2.Size = new System.Drawing.Size(889, 59);
             this.panel2.TabIndex = 2;
             // 
             // Products

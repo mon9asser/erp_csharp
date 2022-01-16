@@ -467,8 +467,8 @@ namespace sales_management.UI
                 
             }
 
-            
 
+            table = prd.Get_All_Products();
             this.enalbe_proccess_inputs(false);
 
         }
@@ -536,6 +536,29 @@ namespace sales_management.UI
 
             this.fill_product_ui_elements(table, (this.prodIndex));
             item_number_in_all.Text = table.Rows.Count.ToString() + " / " + (this.prodIndex + 1).ToString();
+        }
+
+        private void update_button_Click(object sender, EventArgs e)
+        {
+            this.enalbe_proccess_inputs(true);
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+
+            int prod_id = -1;
+            if (product_num_box.Text.ToString() != null) {
+                prod_id = Convert.ToInt32(product_num_box.Text);
+            }
+
+            prd.Delete_Product_By_Id(prod_id);
+
+            table = prd.Get_All_Products();
+
+            if (table.Rows.Count != 0) { 
+                this.fill_product_ui_elements(table, (table.Rows.Count - 1 ));
+                item_number_in_all.Text = table.Rows.Count.ToString() + " / " + (table.Rows.Count).ToString();
+            }
         }
     }
 }
