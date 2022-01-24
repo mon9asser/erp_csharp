@@ -232,6 +232,30 @@ namespace sales_management.PL
 
         }
 
+
+        public DataTable Selcted_By_Searched_Value( string searched_value ) {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            DataTable table = new DataTable();
+            DAL.Open();
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@search_value", SqlDbType.VarChar);
+            param[0].Value = searched_value;
+
+            
+            table = DAL.SelectData("Search_In_Products", param);
+
+            DAL.Close();
+
+            return table; 
+
+
+
+        }
+
+
         public void Update_Product_Data( 
             int id , 
             string min_limit, 

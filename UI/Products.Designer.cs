@@ -32,7 +32,6 @@ namespace sales_management.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Products));
             this.panel1 = new System.Windows.Forms.Panel();
             this.category_text_id = new System.Windows.Forms.TextBox();
-            this.search_type_combobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.search_textbox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -208,7 +207,6 @@ namespace sales_management.UI
             // 
             this.panel1.BackColor = System.Drawing.Color.LightYellow;
             this.panel1.Controls.Add(this.category_text_id);
-            this.panel1.Controls.Add(this.search_type_combobox);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.search_textbox);
             this.panel1.Controls.Add(this.groupBox2);
@@ -238,21 +236,6 @@ namespace sales_management.UI
             this.category_text_id.TabIndex = 18;
             this.category_text_id.Visible = false;
             // 
-            // search_type_combobox
-            // 
-            this.search_type_combobox.DisplayMember = "fdsf";
-            this.search_type_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.search_type_combobox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.search_type_combobox.FormattingEnabled = true;
-            this.search_type_combobox.Items.AddRange(new object[] {
-            "كود الصنف",
-            "رقم الصنف",
-            "إسم الصنف"});
-            this.search_type_combobox.Location = new System.Drawing.Point(723, 13);
-            this.search_type_combobox.Name = "search_type_combobox";
-            this.search_type_combobox.Size = new System.Drawing.Size(82, 21);
-            this.search_type_combobox.TabIndex = 17;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -266,7 +249,7 @@ namespace sales_management.UI
             // 
             this.search_textbox.Location = new System.Drawing.Point(58, 14);
             this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(649, 20);
+            this.search_textbox.Size = new System.Drawing.Size(747, 20);
             this.search_textbox.TabIndex = 15;
             // 
             // groupBox2
@@ -322,6 +305,7 @@ namespace sales_management.UI
             this.search_button.Size = new System.Drawing.Size(32, 31);
             this.search_button.TabIndex = 10;
             this.search_button.UseVisualStyleBackColor = false;
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // label9
             // 
@@ -1886,7 +1870,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox search_type_combobox;
         private System.Windows.Forms.ComboBox gr1_unit_text;
         private System.Windows.Forms.TextBox gr1_barcode_text;
         private System.Windows.Forms.TextBox gr1_transform_pr_text;

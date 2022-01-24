@@ -52,6 +52,7 @@
     <Compile Include="DB\DataAccessLayer.cs" />
     <Compile Include="PL\Installings.cs" />
     <Compile Include="PL\Products.cs" />
+    <Compile Include="PL\Resources.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Backups.cs">
@@ -95,6 +96,12 @@
     </Compile>
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Resource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Resource.Designer.cs">
+      <DependentUpon>Resource.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SystemSettings.cs">
       <SubType>Form</SubType>
@@ -141,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Resource.resx">
+      <DependentUpon>Resource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SystemSettings.resx">
       <DependentUpon>SystemSettings.cs</DependentUpon>

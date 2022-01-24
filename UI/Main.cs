@@ -108,5 +108,28 @@ namespace sales_management.UI
             UI.Units units = new UI.Units();
             units.Show();
         }
+
+        private void شجرةالحساباتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void الموردينوالتجارToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Resource.GetForm.displayForm(0);
+        }
+
+        private void كشفالرواتبالشهريToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void العملاءوالمناديبToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            UI.Resource.GetForm.displayForm(1);
+           
+
+        }
     }
 }

@@ -165,6 +165,7 @@ namespace sales_management.UI
             // 
             this.كشفالرواتبالشهريToolStripMenuItem.Name = "كشفالرواتبالشهريToolStripMenuItem";
             resources.ApplyResources(this.كشفالرواتبالشهريToolStripMenuItem, "كشفالرواتبالشهريToolStripMenuItem");
+            this.كشفالرواتبالشهريToolStripMenuItem.Click += new System.EventHandler(this.كشفالرواتبالشهريToolStripMenuItem_Click);
             // 
             // تقريرالرواتبعنالفترةToolStripMenuItem
             // 
@@ -204,6 +205,7 @@ namespace sales_management.UI
             // 
             this.العملاءوالمناديبToolStripMenuItem.Name = "العملاءوالمناديبToolStripMenuItem";
             resources.ApplyResources(this.العملاءوالمناديبToolStripMenuItem, "العملاءوالمناديبToolStripMenuItem");
+            this.العملاءوالمناديبToolStripMenuItem.Click += new System.EventHandler(this.العملاءوالمناديبToolStripMenuItem_Click);
             // 
             // تقريرالمبيعاتToolStripMenuItem
             // 
@@ -253,6 +255,7 @@ namespace sales_management.UI
             // 
             this.الموردينوالتجارToolStripMenuItem.Name = "الموردينوالتجارToolStripMenuItem";
             resources.ApplyResources(this.الموردينوالتجارToolStripMenuItem, "الموردينوالتجارToolStripMenuItem");
+            this.الموردينوالتجارToolStripMenuItem.Click += new System.EventHandler(this.الموردينوالتجارToolStripMenuItem_Click);
             // 
             // تقريرالمشترياتToolStripMenuItem
             // 

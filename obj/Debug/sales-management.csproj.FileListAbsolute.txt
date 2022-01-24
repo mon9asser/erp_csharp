@@ -70,3 +70,4 @@ E:\C#\sales-app\obj\Debug\ar\sales-management.resources.dll
 E:\C#\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 E:\C#\sales-app\obj\Debug\sales-management.exe
 E:\C#\sales-app\obj\Debug\sales-management.pdb
+E:\C#\sales-app\obj\Debug\sales_management.UI.Resource.resources

@@ -80,10 +80,10 @@ namespace sales_management.DB
         // Method to store and delete, update db 
         public void ExecuteCommand(string stored_proc, SqlParameter[] param ) {
 
-            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd  = new SqlCommand();
             sqlcmd.CommandType = CommandType.StoredProcedure;
             sqlcmd.CommandText = stored_proc;
-            sqlcmd.Connection = sqlConnectionState;
+            sqlcmd.Connection  = sqlConnectionState;
 
             if (param != null)
             {
@@ -91,6 +91,7 @@ namespace sales_management.DB
             }
 
             sqlcmd.ExecuteNonQuery();
+
         }
 
     }

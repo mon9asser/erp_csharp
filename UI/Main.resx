@@ -121,44 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 10, 0, 10</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 39</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ملفToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt, style=Bold</value>
-  </data>
-  <data name="ملفToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 19</value>
-  </data>
-  <data name="ملفToolStripMenuItem.Text" xml:space="preserve">
-    <value>ملف</value>
-  </data>
   <data name="تسجيلالدخولToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 22</value>
   </data>
@@ -189,14 +151,14 @@
   <data name="إغــــلاقToolStripMenuItem.Text" xml:space="preserve">
     <value>إغــــلاق</value>
   </data>
-  <data name="الموظفينToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="ملفToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="الموظفينToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 19</value>
+  <data name="ملفToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 19</value>
   </data>
-  <data name="الموظفينToolStripMenuItem.Text" xml:space="preserve">
-    <value>الموظفين</value>
+  <data name="ملفToolStripMenuItem.Text" xml:space="preserve">
+    <value>ملف</value>
   </data>
   <data name="إدارةالموظفينToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
@@ -222,14 +184,14 @@
   <data name="إدارةصلاحياتالموظفينToolStripMenuItem.Text" xml:space="preserve">
     <value>إدارة صلاحيات الموظفين</value>
   </data>
-  <data name="إدارةالمبيعاتToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="الموظفينToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="إدارةالمبيعاتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 19</value>
+  <data name="الموظفينToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 19</value>
   </data>
-  <data name="إدارةالمبيعاتToolStripMenuItem.Text" xml:space="preserve">
-    <value>إدارة المبيعات</value>
+  <data name="الموظفينToolStripMenuItem.Text" xml:space="preserve">
+    <value>الموظفين</value>
   </data>
   <data name="فاتورةالمبيعاتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
@@ -273,14 +235,14 @@
   <data name="قيدتسويةحسابعميلToolStripMenuItem.Text" xml:space="preserve">
     <value>قيد تسوية حساب عميل</value>
   </data>
-  <data name="إدارةالمشترياتToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="إدارةالمبيعاتToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="إدارةالمشترياتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 19</value>
+  <data name="إدارةالمبيعاتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 19</value>
   </data>
-  <data name="إدارةالمشترياتToolStripMenuItem.Text" xml:space="preserve">
-    <value>إدارة المشتريات</value>
+  <data name="إدارةالمبيعاتToolStripMenuItem.Text" xml:space="preserve">
+    <value>إدارة المبيعات</value>
   </data>
   <data name="فاتورةالمشترياتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
@@ -330,14 +292,14 @@
   <data name="قيدتسويةحسابموردToolStripMenuItem.Text" xml:space="preserve">
     <value>قيد تسوية حساب مورد</value>
   </data>
-  <data name="المخزونToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="إدارةالمشترياتToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="المخزونToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 19</value>
+  <data name="إدارةالمشترياتToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 19</value>
   </data>
-  <data name="المخزونToolStripMenuItem.Text" xml:space="preserve">
-    <value>المخزون</value>
+  <data name="إدارةالمشترياتToolStripMenuItem.Text" xml:space="preserve">
+    <value>إدارة المشتريات</value>
   </data>
   <data name="تقريرالكمياتالحاليةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -381,14 +343,14 @@
   <data name="إدارةالخصوماتوالعروضToolStripMenuItem.Text" xml:space="preserve">
     <value>إدارة الخصومات والعروض</value>
   </data>
-  <data name="القيوداليوميةToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="المخزونToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="القيوداليوميةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
+  <data name="المخزونToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 19</value>
   </data>
-  <data name="القيوداليوميةToolStripMenuItem.Text" xml:space="preserve">
-    <value>القيود اليومية</value>
+  <data name="المخزونToolStripMenuItem.Text" xml:space="preserve">
+    <value>المخزون</value>
   </data>
   <data name="قيدتسويةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 22</value>
@@ -420,14 +382,14 @@
   <data name="دفترالأستاذToolStripMenuItem.Text" xml:space="preserve">
     <value>دفتر الأستاذ</value>
   </data>
-  <data name="التقاريرToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="القيوداليوميةToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="التقاريرToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 19</value>
+  <data name="القيوداليوميةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 19</value>
   </data>
-  <data name="التقاريرToolStripMenuItem.Text" xml:space="preserve">
-    <value>التقارير</value>
+  <data name="القيوداليوميةToolStripMenuItem.Text" xml:space="preserve">
+    <value>سندات</value>
   </data>
   <data name="تقريرالمبيعاتToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
@@ -495,14 +457,14 @@
   <data name="قائمةالمركزالماليToolStripMenuItem.Text" xml:space="preserve">
     <value>قائمة المركز المالي</value>
   </data>
-  <data name="مديرالنظامToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="التقاريرToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
-  <data name="مديرالنظامToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 19</value>
+  <data name="التقاريرToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 19</value>
   </data>
-  <data name="مديرالنظامToolStripMenuItem.Text" xml:space="preserve">
-    <value>مدير النظام</value>
+  <data name="التقاريرToolStripMenuItem.Text" xml:space="preserve">
+    <value>التقارير</value>
   </data>
   <data name="تسجيلدخولمديرالنظامToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 22</value>
@@ -533,6 +495,44 @@
   </data>
   <data name="تهيةالبياناتالأفتراضيةToolStripMenuItem.Text" xml:space="preserve">
     <value>تهيئة البيانات الإفتراضية</value>
+  </data>
+  <data name="مديرالنظامToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="مديرالنظامToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="مديرالنظامToolStripMenuItem.Text" xml:space="preserve">
+    <value>مدير النظام</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 10, 0, 10</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 39</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

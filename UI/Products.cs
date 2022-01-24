@@ -64,7 +64,7 @@ namespace sales_management.UI
 
         // load combbox of search type 
         public void load_combobox_search_type() {
-            search_type_combobox.SelectedIndex = 2;
+             
         }
 
         // Disply uniit management
@@ -136,8 +136,7 @@ namespace sales_management.UI
             button_play_prev.Enabled = !isEnabled;
             button_play_next.Enabled = !isEnabled;
             item_number_in_all.Enabled = !isEnabled;
-
-            search_type_combobox.Enabled = !isEnabled;
+             
             search_textbox.Enabled = !isEnabled;
             search_button.Enabled = !isEnabled;
             add_new.Enabled = !isEnabled;
@@ -152,7 +151,12 @@ namespace sales_management.UI
 
 
 
-        public void fill_product_ui_elements( DataTable table, int index = 0 ) {
+        public void fill_product_ui_elements( DataTable table, int index = 0, string msg = null ) {
+
+            string message = msg;
+            if (msg == null) {
+                message = "حدث خطأ .. من فضلك تأكد من إتصال السيرفر المحلي ويفضل الإتصال بالدعم الفني";
+            }
 
             if (table.Rows.Count > 0)
             {
@@ -373,8 +377,9 @@ namespace sales_management.UI
                 }
             } else
             {
-                MessageBox.Show("حدث خطأ .. من فضلك تأكد من إتصال السيرفر المحلي ويفضل الإتصال بالدعم الفني");
-                UI.Products.getForm.Close();
+                MessageBox.Show(message.ToString());
+                if(msg == null) 
+                    UI.Products.getForm.Close();
             }
 
         }
@@ -559,6 +564,20 @@ namespace sales_management.UI
                 this.fill_product_ui_elements(table, (table.Rows.Count - 1 ));
                 item_number_in_all.Text = table.Rows.Count.ToString() + " / " + (table.Rows.Count).ToString();
             }
+        }
+
+        private void search_button_Click(object sender, EventArgs e)
+        {
+
+            if (search_textbox.Text != null && search_textbox.Text != "" ) {
+
+                string seached_val = search_textbox.Text.ToString();
+                DataTable table = prd.Selcted_By_Searched_Value(seached_val);
+
+                this.fill_product_ui_elements(table, 0, "لم يتم العثور علي المنتج");
+
+            }
+
         }
     }
 }
