@@ -10,27 +10,27 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class Resource : Form
+    public partial class Customer : Form
     {
 
-        public int resource_type;
+        public int resource_type = 1;
 
         PL.Resources Sup = new PL.Resources();
 
 
-        public static Resource frm;
+        public static Customer frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
-        public static Resource GetForm
+        public static Customer GetForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new Resource();
+                    frm = new Customer();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -44,7 +44,7 @@ namespace sales_management.UI
             this.Show();
         }
 
-        public Resource()
+        public Customer()
         {
 
             if (frm == null)
@@ -81,7 +81,7 @@ namespace sales_management.UI
             dataGridView1.Columns[8].Visible = false;
 
             dataGridView1.Columns[1].HeaderText = this.resource_type == 0 ? "كـود المورد" : "كـود العميل";
-            dataGridView1.Columns[3].HeaderText = this.resource_type == 0 ?"إسم المورد" : "إسم العميل";
+            dataGridView1.Columns[3].HeaderText = this.resource_type == 0 ? "إسم المورد" : "إسم العميل";
             dataGridView1.Columns[4].HeaderText = "الهاتف";
             dataGridView1.Columns[5].HeaderText = "العنوان";
 

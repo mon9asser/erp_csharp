@@ -85,6 +85,12 @@
     <Compile Include="UI\Products.Designer.cs">
       <DependentUpon>Products.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Customer.Designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,11 +103,11 @@
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Resource.cs">
+    <Compile Include="UI\Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Resource.Designer.cs">
-      <DependentUpon>Resource.cs</DependentUpon>
+    <Compile Include="UI\Suppliers.Designer.cs">
+      <DependentUpon>Suppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SystemSettings.cs">
       <SubType>Form</SubType>
@@ -146,11 +152,14 @@
     <EmbeddedResource Include="UI\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Resource.resx">
-      <DependentUpon>Resource.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Suppliers.resx">
+      <DependentUpon>Suppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SystemSettings.resx">
       <DependentUpon>SystemSettings.cs</DependentUpon>

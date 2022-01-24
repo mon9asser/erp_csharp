@@ -116,7 +116,7 @@ namespace sales_management.UI
 
         private void الموردينوالتجارToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Resource.GetForm.displayForm(0);
+            UI.Resource.GetForm.Show();
         }
 
         private void كشفالرواتبالشهريToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,7 +127,7 @@ namespace sales_management.UI
         private void العملاءوالمناديبToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            UI.Resource.GetForm.displayForm(1);
+            UI.Customer.GetForm.Show();
            
 
         }
