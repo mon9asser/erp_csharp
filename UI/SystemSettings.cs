@@ -71,22 +71,26 @@ namespace sales_management.UI
                     panel1.Enabled = true;
                 }
 
-                byte[] imageData = (byte []) drow["logo"];
+                if (drow["logo"] != System.DBNull.Value ) { 
 
-                //Initialize image variable
-                Image newImage;
-                //Read image data into a memory stream
-                using (MemoryStream ms = new MemoryStream(imageData, 0, imageData.Length))
-                {
-                    ms.Write(imageData, 0, imageData.Length);
+                    byte[] imageData = (byte []) drow["logo"];
 
-                    //Set image variable value using memory stream.
-                    newImage = Image.FromStream(ms, true);
+                    //Initialize image variable
+                    Image newImage;
+                    
+                    //Read image data into a memory stream
+                    using (MemoryStream ms = new MemoryStream(imageData, 0, imageData.Length))
+                    {
+                        ms.Write(imageData, 0, imageData.Length);
+
+                        //Set image variable value using memory stream.
+                        newImage = Image.FromStream(ms, true);
+                    }
+
+                    //
+                    //set picture
+                    logoImage_byte.Image = newImage;
                 }
-                //
-                //set picture
-                logoImage_byte.Image = newImage;
-
             }
             
 

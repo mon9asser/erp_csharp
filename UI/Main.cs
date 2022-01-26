@@ -131,5 +131,11 @@ namespace sales_management.UI
            
 
         }
+
+        private void شجرةالحساباتToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            UI.Tree tree = new UI.Tree();
+            tree.Show();
+        }
     }
 }

@@ -85,7 +85,7 @@ namespace sales_management.DB
 
             foreach(DictionaryEntry entry in dirctionary)
             {
-                switch ( entry.Key) {
+                switch ( entry.Key.ToString()) {
                     
                     case "ServerId":
                         this.networkId = entry.Value.ToString();
