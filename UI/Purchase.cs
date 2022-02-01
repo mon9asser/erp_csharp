@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Forms; 
 
 namespace sales_management.UI
 {
@@ -15,6 +15,16 @@ namespace sales_management.UI
         public Purchase()
         {
             InitializeComponent();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Purchase_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

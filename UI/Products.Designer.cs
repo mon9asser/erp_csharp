@@ -241,7 +241,7 @@ namespace sales_management.UI
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(835, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 13);
+            this.label14.Size = new System.Drawing.Size(46, 13);
             this.label14.TabIndex = 16;
             this.label14.Text = "بحث بــ :";
             // 
@@ -269,16 +269,16 @@ namespace sales_management.UI
             this.get_inventory_value.ForeColor = System.Drawing.Color.Blue;
             this.get_inventory_value.Location = new System.Drawing.Point(95, 17);
             this.get_inventory_value.Name = "get_inventory_value";
-            this.get_inventory_value.Size = new System.Drawing.Size(59, 21);
+            this.get_inventory_value.Size = new System.Drawing.Size(60, 21);
             this.get_inventory_value.TabIndex = 19;
-            this.get_inventory_value.Text = "15,154";
+            this.get_inventory_value.Text = "00,000";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(174, 21);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(88, 13);
+            this.label36.Size = new System.Drawing.Size(90, 13);
             this.label36.TabIndex = 18;
             this.label36.Text = "المخزون الحــالي :";
             // 
@@ -312,7 +312,7 @@ namespace sales_management.UI
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(232, 53);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 13);
+            this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 13;
             this.label9.Text = "الحد الأقصي";
             // 
@@ -329,7 +329,7 @@ namespace sales_management.UI
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(522, 83);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "حد الطلب";
             // 
@@ -346,7 +346,7 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(522, 53);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "الحد الأدني";
             // 
@@ -363,7 +363,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(833, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "التصنيف :";
             // 
@@ -381,7 +381,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(820, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "إسم الصنف :";
             // 
@@ -398,7 +398,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(822, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "رقم الصنف :";
             // 
@@ -540,7 +540,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(769, 228);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 40;
             this.label4.Text = "التسعير الإفتراضي";
             // 
@@ -549,7 +549,7 @@ namespace sales_management.UI
             this.label45.AutoSize = true;
             this.label45.Location = new System.Drawing.Point(767, 154);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(96, 13);
+            this.label45.Size = new System.Drawing.Size(103, 13);
             this.label45.TabIndex = 38;
             this.label45.Text = "سعر الجملة ( تجزئة )";
             // 
@@ -566,7 +566,7 @@ namespace sales_management.UI
             this.label44.AutoSize = true;
             this.label44.Location = new System.Drawing.Point(762, 119);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(106, 13);
+            this.label44.Size = new System.Drawing.Size(105, 13);
             this.label44.TabIndex = 36;
             this.label44.Text = "أقل سعر بيع ( تجزئة )";
             // 
@@ -594,7 +594,7 @@ namespace sales_management.UI
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(768, 54);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(98, 13);
+            this.label16.Size = new System.Drawing.Size(99, 13);
             this.label16.TabIndex = 33;
             this.label16.Text = "سعر الشراء بالتجزئة";
             // 
@@ -620,7 +620,7 @@ namespace sales_management.UI
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(795, 190);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 28;
             this.label10.Text = "كود الصنف :";
             // 
@@ -638,7 +638,7 @@ namespace sales_management.UI
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(420, 58);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 13);
+            this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 26;
             this.label12.Text = "نسبة الخصم :";
             // 
@@ -655,7 +655,7 @@ namespace sales_management.UI
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(391, 26);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 13);
+            this.label13.Size = new System.Drawing.Size(103, 13);
             this.label13.TabIndex = 24;
             this.label13.Text = "الخصم المسموح به :";
             // 
@@ -686,7 +686,7 @@ namespace sales_management.UI
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(415, 98);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 13);
+            this.label11.Size = new System.Drawing.Size(69, 13);
             this.label11.TabIndex = 21;
             this.label11.Text = "صورة الصنف :";
             // 
@@ -695,7 +695,7 @@ namespace sales_management.UI
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(761, 21);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 13);
+            this.label8.Size = new System.Drawing.Size(102, 13);
             this.label8.TabIndex = 18;
             this.label8.Text = "وحدة البيع ( بالوحدة )";
             // 
@@ -704,7 +704,7 @@ namespace sales_management.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(775, 85);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 13);
+            this.label7.Size = new System.Drawing.Size(93, 13);
             this.label7.TabIndex = 16;
             this.label7.Text = "سعر البيع ( تجزئة )";
             // 
@@ -774,7 +774,7 @@ namespace sales_management.UI
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(171, 131);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(72, 13);
+            this.label29.Size = new System.Drawing.Size(71, 13);
             this.label29.TabIndex = 23;
             this.label29.Text = "أقل سعر البيع";
             // 
@@ -846,7 +846,7 @@ namespace sales_management.UI
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(185, 167);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(56, 13);
+            this.label32.Size = new System.Drawing.Size(62, 13);
             this.label32.TabIndex = 3;
             this.label32.Text = "سعر الجملة";
             // 
@@ -855,7 +855,7 @@ namespace sales_management.UI
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(188, 96);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(51, 13);
+            this.label33.Size = new System.Drawing.Size(52, 13);
             this.label33.TabIndex = 2;
             this.label33.Text = "سعر البيع";
             // 
@@ -864,7 +864,7 @@ namespace sales_management.UI
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(183, 62);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(59, 13);
+            this.label34.Size = new System.Drawing.Size(62, 13);
             this.label34.TabIndex = 1;
             this.label34.Text = "سعر الشراء";
             // 
@@ -873,7 +873,7 @@ namespace sales_management.UI
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(205, 30);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(37, 13);
+            this.label35.Size = new System.Drawing.Size(36, 13);
             this.label35.TabIndex = 0;
             this.label35.Text = "الوحدة";
             // 
@@ -922,7 +922,7 @@ namespace sales_management.UI
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(171, 132);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(72, 13);
+            this.label22.Size = new System.Drawing.Size(71, 13);
             this.label22.TabIndex = 23;
             this.label22.Text = "أقل سعر البيع";
             // 
@@ -994,7 +994,7 @@ namespace sales_management.UI
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(185, 168);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(56, 13);
+            this.label25.Size = new System.Drawing.Size(62, 13);
             this.label25.TabIndex = 3;
             this.label25.Text = "سعر الجملة";
             // 
@@ -1003,7 +1003,7 @@ namespace sales_management.UI
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(188, 97);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(51, 13);
+            this.label26.Size = new System.Drawing.Size(52, 13);
             this.label26.TabIndex = 2;
             this.label26.Text = "سعر البيع";
             // 
@@ -1012,7 +1012,7 @@ namespace sales_management.UI
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(183, 63);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(59, 13);
+            this.label27.Size = new System.Drawing.Size(62, 13);
             this.label27.TabIndex = 1;
             this.label27.Text = "سعر الشراء";
             // 
@@ -1021,7 +1021,7 @@ namespace sales_management.UI
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(205, 31);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(37, 13);
+            this.label28.Size = new System.Drawing.Size(36, 13);
             this.label28.TabIndex = 0;
             this.label28.Text = "الوحدة";
             // 
@@ -1070,7 +1070,7 @@ namespace sales_management.UI
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(173, 131);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(72, 13);
+            this.label40.Size = new System.Drawing.Size(71, 13);
             this.label40.TabIndex = 23;
             this.label40.Text = "أقل سعر البيع";
             // 
@@ -1142,7 +1142,7 @@ namespace sales_management.UI
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(187, 167);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 13);
+            this.label19.Size = new System.Drawing.Size(62, 13);
             this.label19.TabIndex = 3;
             this.label19.Text = "سعر الجملة";
             // 
@@ -1151,7 +1151,7 @@ namespace sales_management.UI
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(190, 96);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 13);
+            this.label18.Size = new System.Drawing.Size(52, 13);
             this.label18.TabIndex = 2;
             this.label18.Text = "سعر البيع";
             // 
@@ -1160,7 +1160,7 @@ namespace sales_management.UI
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(185, 62);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 13);
+            this.label17.Size = new System.Drawing.Size(62, 13);
             this.label17.TabIndex = 1;
             this.label17.Text = "سعر الشراء";
             // 
@@ -1169,7 +1169,7 @@ namespace sales_management.UI
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(207, 30);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.Size = new System.Drawing.Size(36, 13);
             this.label15.TabIndex = 0;
             this.label15.Text = "الوحدة";
             // 
@@ -1231,7 +1231,7 @@ namespace sales_management.UI
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(171, 131);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(72, 13);
+            this.label38.Size = new System.Drawing.Size(71, 13);
             this.label38.TabIndex = 23;
             this.label38.Text = "أقل سعر البيع";
             // 
@@ -1303,7 +1303,7 @@ namespace sales_management.UI
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(185, 167);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(56, 13);
+            this.label42.Size = new System.Drawing.Size(62, 13);
             this.label42.TabIndex = 3;
             this.label42.Text = "سعر الجملة";
             // 
@@ -1312,7 +1312,7 @@ namespace sales_management.UI
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(188, 96);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(51, 13);
+            this.label43.Size = new System.Drawing.Size(52, 13);
             this.label43.TabIndex = 2;
             this.label43.Text = "سعر البيع";
             // 
@@ -1321,7 +1321,7 @@ namespace sales_management.UI
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(183, 62);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(59, 13);
+            this.label46.Size = new System.Drawing.Size(62, 13);
             this.label46.TabIndex = 1;
             this.label46.Text = "سعر الشراء";
             // 
@@ -1330,7 +1330,7 @@ namespace sales_management.UI
             this.label47.AutoSize = true;
             this.label47.Location = new System.Drawing.Point(205, 30);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(37, 13);
+            this.label47.Size = new System.Drawing.Size(36, 13);
             this.label47.TabIndex = 0;
             this.label47.Text = "الوحدة";
             // 
@@ -1379,7 +1379,7 @@ namespace sales_management.UI
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(171, 132);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(72, 13);
+            this.label48.Size = new System.Drawing.Size(71, 13);
             this.label48.TabIndex = 23;
             this.label48.Text = "أقل سعر البيع";
             // 
@@ -1451,7 +1451,7 @@ namespace sales_management.UI
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(185, 168);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(56, 13);
+            this.label51.Size = new System.Drawing.Size(62, 13);
             this.label51.TabIndex = 3;
             this.label51.Text = "سعر الجملة";
             // 
@@ -1460,7 +1460,7 @@ namespace sales_management.UI
             this.label52.AutoSize = true;
             this.label52.Location = new System.Drawing.Point(188, 97);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(51, 13);
+            this.label52.Size = new System.Drawing.Size(52, 13);
             this.label52.TabIndex = 2;
             this.label52.Text = "سعر البيع";
             // 
@@ -1469,7 +1469,7 @@ namespace sales_management.UI
             this.label53.AutoSize = true;
             this.label53.Location = new System.Drawing.Point(183, 63);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(59, 13);
+            this.label53.Size = new System.Drawing.Size(62, 13);
             this.label53.TabIndex = 1;
             this.label53.Text = "سعر الشراء";
             // 
@@ -1478,7 +1478,7 @@ namespace sales_management.UI
             this.label54.AutoSize = true;
             this.label54.Location = new System.Drawing.Point(205, 31);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(37, 13);
+            this.label54.Size = new System.Drawing.Size(36, 13);
             this.label54.TabIndex = 0;
             this.label54.Text = "الوحدة";
             // 
@@ -1527,7 +1527,7 @@ namespace sales_management.UI
             this.label55.AutoSize = true;
             this.label55.Location = new System.Drawing.Point(173, 131);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(72, 13);
+            this.label55.Size = new System.Drawing.Size(71, 13);
             this.label55.TabIndex = 23;
             this.label55.Text = "أقل سعر البيع";
             // 
@@ -1599,7 +1599,7 @@ namespace sales_management.UI
             this.label58.AutoSize = true;
             this.label58.Location = new System.Drawing.Point(187, 167);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(56, 13);
+            this.label58.Size = new System.Drawing.Size(62, 13);
             this.label58.TabIndex = 3;
             this.label58.Text = "سعر الجملة";
             // 
@@ -1608,7 +1608,7 @@ namespace sales_management.UI
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(190, 96);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(51, 13);
+            this.label59.Size = new System.Drawing.Size(52, 13);
             this.label59.TabIndex = 2;
             this.label59.Text = "سعر البيع";
             // 
@@ -1617,7 +1617,7 @@ namespace sales_management.UI
             this.label60.AutoSize = true;
             this.label60.Location = new System.Drawing.Point(185, 62);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(59, 13);
+            this.label60.Size = new System.Drawing.Size(62, 13);
             this.label60.TabIndex = 1;
             this.label60.Text = "سعر الشراء";
             // 
@@ -1626,7 +1626,7 @@ namespace sales_management.UI
             this.label61.AutoSize = true;
             this.label61.Location = new System.Drawing.Point(207, 30);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(37, 13);
+            this.label61.Size = new System.Drawing.Size(36, 13);
             this.label61.TabIndex = 0;
             this.label61.Text = "الوحدة";
             // 
@@ -1658,7 +1658,7 @@ namespace sales_management.UI
             this.enable_expiration_date.Enabled = false;
             this.enable_expiration_date.Location = new System.Drawing.Point(700, 102);
             this.enable_expiration_date.Name = "enable_expiration_date";
-            this.enable_expiration_date.Size = new System.Drawing.Size(161, 17);
+            this.enable_expiration_date.Size = new System.Drawing.Size(160, 17);
             this.enable_expiration_date.TabIndex = 34;
             this.enable_expiration_date.Text = "تفعيل اشعار الصلاحية وتاريخة";
             this.enable_expiration_date.UseVisualStyleBackColor = true;
@@ -1669,7 +1669,7 @@ namespace sales_management.UI
             this.minmax_limit_notify.Enabled = false;
             this.minmax_limit_notify.Location = new System.Drawing.Point(608, 66);
             this.minmax_limit_notify.Name = "minmax_limit_notify";
-            this.minmax_limit_notify.Size = new System.Drawing.Size(254, 17);
+            this.minmax_limit_notify.Size = new System.Drawing.Size(256, 17);
             this.minmax_limit_notify.TabIndex = 33;
             this.minmax_limit_notify.Text = "إشعاري عند وصول المخزون للحد الأدني او الأقصي";
             this.minmax_limit_notify.UseVisualStyleBackColor = true;
@@ -1680,7 +1680,7 @@ namespace sales_management.UI
             this.request_limit_notify.Enabled = false;
             this.request_limit_notify.Location = new System.Drawing.Point(664, 30);
             this.request_limit_notify.Name = "request_limit_notify";
-            this.request_limit_notify.Size = new System.Drawing.Size(198, 17);
+            this.request_limit_notify.Size = new System.Drawing.Size(202, 17);
             this.request_limit_notify.TabIndex = 32;
             this.request_limit_notify.Text = "إشعاري عند وصول المخزون لحد الطلب";
             this.request_limit_notify.UseVisualStyleBackColor = true;

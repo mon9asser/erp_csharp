@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace sales_management.UI
 {
     public partial class Main : Form
@@ -57,6 +58,9 @@ namespace sales_management.UI
         public Main()
         {
             InitializeComponent();
+
+           // this.skinEngines.SkinFile = "Skins/SteelBlack.ssk";
+
             if( frm == null )
             {
                 frm = this;
@@ -134,8 +138,15 @@ namespace sales_management.UI
 
         private void شجرةالحساباتToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            UI.Tree tree = new UI.Tree();
-            tree.Show();
+            
         }
+
+        private void فاتورةالمشترياتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Purchase pur = new UI.Purchase();
+            pur.Show();
+        }
+
+         
     }
 }

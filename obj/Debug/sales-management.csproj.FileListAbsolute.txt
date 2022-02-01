@@ -96,4 +96,4 @@ D:\sales-app\bin\Debug\Newtonsoft.Json.dll
 D:\sales-app\bin\Debug\Newtonsoft.Json.xml
 D:\sales-app\obj\Debug\ar\sales-management.resources.dll
 D:\sales-app\obj\Debug\sales-management.exe
-D:\sales-app\obj\Debug\sales_management.UI.Tree.resources
+D:\sales-app\obj\Debug\sales_management.UI.Purchase.resources

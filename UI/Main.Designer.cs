@@ -1,4 +1,4 @@
-﻿
+﻿ 
 namespace sales_management.UI
 {
     partial class Main
@@ -91,7 +91,7 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.شجرةالحساباتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.شجرةالحساباToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +114,7 @@ namespace sales_management.UI
             this.ملفToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.تسجيلالدخولToolStripMenuItem,
             this.إعداداتالنظامToolStripMenuItem,
-            this.شجرةالحساباتToolStripMenuItem,
+            this.شجرةالحساباToolStripMenuItem,
             this.نسخةإحتياطيةToolStripMenuItem,
             this.تسجيلالخروجToolStripMenuItem,
             this.إغــــلاقToolStripMenuItem});
@@ -247,6 +247,7 @@ namespace sales_management.UI
             // 
             this.فاتورةالمشترياتToolStripMenuItem.Name = "فاتورةالمشترياتToolStripMenuItem";
             resources.ApplyResources(this.فاتورةالمشترياتToolStripMenuItem, "فاتورةالمشترياتToolStripMenuItem");
+            this.فاتورةالمشترياتToolStripMenuItem.Click += new System.EventHandler(this.فاتورةالمشترياتToolStripMenuItem_Click);
             // 
             // مسترداتToolStripMenuItem
             // 
@@ -481,11 +482,10 @@ namespace sales_management.UI
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
-            // شجرةالحساباتToolStripMenuItem
+            // شجرةالحساباToolStripMenuItem
             // 
-            this.شجرةالحساباتToolStripMenuItem.Name = "شجرةالحساباتToolStripMenuItem";
-            resources.ApplyResources(this.شجرةالحساباتToolStripMenuItem, "شجرةالحساباتToolStripMenuItem");
-            this.شجرةالحساباتToolStripMenuItem.Click += new System.EventHandler(this.شجرةالحساباتToolStripMenuItem_Click_1);
+            this.شجرةالحساباToolStripMenuItem.Name = "شجرةالحساباToolStripMenuItem";
+            resources.ApplyResources(this.شجرةالحساباToolStripMenuItem, "شجرةالحساباToolStripMenuItem"); 
             // 
             // Main
             // 
@@ -566,6 +566,7 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem قائمةالمركزالماليToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem إدارةالفئاتToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem شجرةالحساباتToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem شجرةالحساباToolStripMenuItem;
+       
     }
 }
