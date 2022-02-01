@@ -6,8 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-
+using System.Windows.Forms; 
 
 namespace sales_management.UI
 {
@@ -17,6 +16,7 @@ namespace sales_management.UI
         private int userId = 1;
         private string userName = "Montasser";
         private string fullName = "Montasser Mossallem";
+        
 
         public static Main frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e) {
@@ -58,6 +58,10 @@ namespace sales_management.UI
         public Main()
         {
             InitializeComponent();
+
+            Sunisoft.IrisSkin.SkinEngine skin = new Sunisoft.IrisSkin.SkinEngine();
+            skin.SerialNumber = "kUb2DF5pvGF3X9dKPFvIdkXQ0sE8LkAVp9fMme9wCnjZ+ArdRVlxKw==";
+            skin.SkinFile = "Skins/SteelBlack.ssk";
 
            // this.skinEngines.SkinFile = "Skins/SteelBlack.ssk";
 

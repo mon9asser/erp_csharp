@@ -52,7 +52,6 @@ E:\C#\sales-app\bin\Debug\sales-management.pdb
 E:\C#\sales-app\bin\Debug\ar\sales-management.resources.dll
 E:\C#\sales-app\bin\Debug\Newtonsoft.Json.dll
 E:\C#\sales-app\bin\Debug\Newtonsoft.Json.xml
-E:\C#\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
 E:\C#\sales-app\obj\Debug\sales_management.Properties.Resources.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Backups.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Categories.resources
@@ -65,9 +64,7 @@ E:\C#\sales-app\obj\Debug\sales_management.UI.SystemSettings.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Units.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Main.ar.resources
 E:\C#\sales-app\obj\Debug\sales-management.csproj.GenerateResource.cache
-E:\C#\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 E:\C#\sales-app\obj\Debug\ar\sales-management.resources.dll
-E:\C#\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 E:\C#\sales-app\obj\Debug\sales-management.exe
 E:\C#\sales-app\obj\Debug\sales-management.pdb
 E:\C#\sales-app\obj\Debug\sales_management.UI.Resource.resources
@@ -97,3 +94,13 @@ D:\sales-app\bin\Debug\Newtonsoft.Json.xml
 D:\sales-app\obj\Debug\ar\sales-management.resources.dll
 D:\sales-app\obj\Debug\sales-management.exe
 D:\sales-app\obj\Debug\sales_management.UI.Purchase.resources
+E:\C#\sales-app\bin\Debug\IrisSkin4.dll
+E:\C#\sales-app\bin\Debug\mscorlib.dll
+E:\C#\sales-app\bin\Debug\ar\mscorlib.resources.dll
+E:\C#\sales-app\bin\Debug\normidna.nlp
+E:\C#\sales-app\bin\Debug\normnfc.nlp
+E:\C#\sales-app\bin\Debug\normnfd.nlp
+E:\C#\sales-app\bin\Debug\normnfkc.nlp
+E:\C#\sales-app\bin\Debug\normnfkd.nlp
+E:\C#\sales-app\obj\Debug\sales-management.csprojResolveAssemblyReference.cache
+E:\C#\sales-app\obj\Debug\sales_management.UI.Purchase.resources
