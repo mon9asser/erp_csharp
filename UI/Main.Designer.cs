@@ -34,6 +34,7 @@ namespace sales_management.UI
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تسجيلالدخولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالنظامToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.شجرةالحساباToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.نسخةإحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تسجيلالخروجToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إغــــلاقToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +92,6 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.شجرةالحساباToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +131,12 @@ namespace sales_management.UI
             this.إعداداتالنظامToolStripMenuItem.Name = "إعداداتالنظامToolStripMenuItem";
             resources.ApplyResources(this.إعداداتالنظامToolStripMenuItem, "إعداداتالنظامToolStripMenuItem");
             this.إعداداتالنظامToolStripMenuItem.Click += new System.EventHandler(this.إعداداتالنظامToolStripMenuItem_Click);
+            // 
+            // شجرةالحساباToolStripMenuItem
+            // 
+            this.شجرةالحساباToolStripMenuItem.Name = "شجرةالحساباToolStripMenuItem";
+            resources.ApplyResources(this.شجرةالحساباToolStripMenuItem, "شجرةالحساباToolStripMenuItem");
+            this.شجرةالحساباToolStripMenuItem.Click += new System.EventHandler(this.شجرةالحساباToolStripMenuItem_Click);
             // 
             // نسخةإحتياطيةToolStripMenuItem
             // 
@@ -481,11 +487,6 @@ namespace sales_management.UI
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Name = "تهيةالبياناتالأفتراضيةToolStripMenuItem";
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
-            // 
-            // شجرةالحساباToolStripMenuItem
-            // 
-            this.شجرةالحساباToolStripMenuItem.Name = "شجرةالحساباToolStripMenuItem";
-            resources.ApplyResources(this.شجرةالحساباToolStripMenuItem, "شجرةالحساباToolStripMenuItem"); 
             // 
             // Main
             // 

@@ -579,6 +579,12 @@
   <data name="&gt;&gt;إعداداتالنظامToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;شجرةالحساباToolStripMenuItem.Name" xml:space="preserve">
+    <value>شجرةالحساباToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;شجرةالحساباToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;نسخةإحتياطيةToolStripMenuItem.Name" xml:space="preserve">
     <value>نسخةإحتياطيةToolStripMenuItem</value>
   </data>
@@ -919,12 +925,6 @@
     <value>تهيةالبياناتالأفتراضيةToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;تهيةالبياناتالأفتراضيةToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;شجرةالحساباToolStripMenuItem.Name" xml:space="preserve">
-    <value>شجرةالحساباToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;شجرةالحساباToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

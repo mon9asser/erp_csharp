@@ -15,8 +15,8 @@ namespace sales_management.UI
         
         private int userId = 1;
         private string userName = "Montasser";
-        private string fullName = "Montasser Mossallem";
-        
+        private string fullName = "Montasser Mossallem"; 
+        public Sunisoft.IrisSkin.SkinEngine skin;
 
         public static Main frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e) {
@@ -57,11 +57,10 @@ namespace sales_management.UI
 
         public Main()
         {
+
             InitializeComponent();
 
-            Sunisoft.IrisSkin.SkinEngine skin = new Sunisoft.IrisSkin.SkinEngine();
-            skin.SerialNumber = "kUb2DF5pvGF3X9dKPFvIdkXQ0sE8LkAVp9fMme9wCnjZ+ArdRVlxKw==";
-            skin.SkinFile = "Skins/SteelBlack.ssk";
+            
 
            // this.skinEngines.SkinFile = "Skins/SteelBlack.ssk";
 
@@ -69,6 +68,19 @@ namespace sales_management.UI
             {
                 frm = this;
             }
+
+            this.ChangeLayoutTheme( "SteelBlack.ssk" );
+           
+            
+        }
+
+        public void ChangeLayoutTheme( string skinName ) {
+
+            // Change Layout Theme 
+            UI.Main.getMainForm.skin = new Sunisoft.IrisSkin.SkinEngine();
+            UI.Main.getMainForm.skin.SerialNumber = "kUb2DF5pvGF3X9dKPFvIdkXQ0sE8LkAVp9fMme9wCnjZ+ArdRVlxKw==";
+            UI.Main.getMainForm.skin.SkinFile = "Skins/" + skinName;
+
         }
 
         private void فحصالإتصالبالسيرفرToolStripMenuItem_Click(object sender, EventArgs e)
@@ -150,6 +162,20 @@ namespace sales_management.UI
             UI.Purchase pur = new UI.Purchase();
             pur.Show();
         }
+
+        private void شجرةالحساباToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.AccTree tree = new UI.AccTree();
+            tree.Show();
+        }
+
+        private void تغييرالتصميمToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.DesignChange design = new UI.DesignChange();
+            design.ShowDialog();
+        }
+
+         
 
          
     }

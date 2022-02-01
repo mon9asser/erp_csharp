@@ -104,3 +104,6 @@ E:\C#\sales-app\bin\Debug\normnfkc.nlp
 E:\C#\sales-app\bin\Debug\normnfkd.nlp
 E:\C#\sales-app\obj\Debug\sales-management.csprojResolveAssemblyReference.cache
 E:\C#\sales-app\obj\Debug\sales_management.UI.Purchase.resources
+D:\sales-app\obj\Debug\sales_management.UI.Tree.resources
+D:\sales-app\obj\Debug\sales_management.UI.DesignChange.resources
+D:\sales-app\obj\Debug\sales_management.UI.AccTree.resources
