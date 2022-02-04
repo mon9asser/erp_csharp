@@ -29,101 +29,103 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.main_account_number = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.account_name_en = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.account_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.account_number = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.accounting_tree = new System.Windows.Forms.TreeView();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.progress_panel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.progress_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(264, 159);
+            this.label4.Location = new System.Drawing.Point(259, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 13);
+            this.label4.Size = new System.Drawing.Size(115, 13);
             this.label4.TabIndex = 19;
-            this.label4.Text = "الحساب الرئيسي :";
+            this.label4.Text = "رقم الحساب الرئيسي :";
             // 
-            // textBox4
+            // main_account_number
             // 
-            this.textBox4.Location = new System.Drawing.Point(31, 156);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(218, 20);
-            this.textBox4.TabIndex = 18;
+            this.main_account_number.Location = new System.Drawing.Point(26, 52);
+            this.main_account_number.Name = "main_account_number";
+            this.main_account_number.ReadOnly = true;
+            this.main_account_number.Size = new System.Drawing.Size(218, 20);
+            this.main_account_number.TabIndex = 18;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(270, 113);
+            this.label3.Location = new System.Drawing.Point(285, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 17;
             this.label3.Text = "الإسم الإنجليزي :";
             // 
-            // textBox3
+            // account_name_en
             // 
-            this.textBox3.Location = new System.Drawing.Point(31, 110);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(218, 20);
-            this.textBox3.TabIndex = 16;
+            this.account_name_en.Location = new System.Drawing.Point(26, 178);
+            this.account_name_en.Name = "account_name_en";
+            this.account_name_en.Size = new System.Drawing.Size(218, 20);
+            this.account_name_en.TabIndex = 16;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(283, 69);
+            this.label2.Location = new System.Drawing.Point(298, 137);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "إسم الحساب :";
             // 
-            // textBox2
+            // account_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(31, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 14;
+            this.account_name.Location = new System.Drawing.Point(26, 134);
+            this.account_name.Name = "account_name";
+            this.account_name.Size = new System.Drawing.Size(218, 20);
+            this.account_name.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(288, 27);
+            this.label1.Location = new System.Drawing.Point(303, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "رقم الحساب :";
             // 
-            // textBox1
+            // account_number
             // 
-            this.textBox1.Location = new System.Drawing.Point(31, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(218, 20);
-            this.textBox1.TabIndex = 12;
+            this.account_number.Location = new System.Drawing.Point(26, 90);
+            this.account_number.Name = "account_number";
+            this.account_number.Size = new System.Drawing.Size(218, 20);
+            this.account_number.TabIndex = 12;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.account_number);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.account_name);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.main_account_number);
+            this.panel1.Controls.Add(this.account_name_en);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(325, 12);
             this.panel1.Name = "panel1";
@@ -132,40 +134,20 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.treeView1);
+            this.panel2.Controls.Add(this.accounting_tree);
             this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(307, 269);
             this.panel2.TabIndex = 23;
             // 
-            // treeView1
+            // accounting_tree
             // 
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(301, 263);
-            this.treeView1.TabIndex = 0;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "مدين",
-            "دائن"});
-            this.comboBox2.Location = new System.Drawing.Point(31, 207);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(218, 21);
-            this.comboBox2.TabIndex = 23;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(274, 211);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "طبيعية الحساب :";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.accounting_tree.Location = new System.Drawing.Point(3, 3);
+            this.accounting_tree.Name = "accounting_tree";
+            this.accounting_tree.RightToLeftLayout = true;
+            this.accounting_tree.Size = new System.Drawing.Size(301, 263);
+            this.accounting_tree.TabIndex = 0;
+            this.accounting_tree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.accounting_tree_AfterSelect);
             // 
             // button4
             // 
@@ -207,12 +189,57 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "حفظ";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Location = new System.Drawing.Point(367, 300);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 34);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "حذف حساب";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // progress_panel
+            // 
+            this.progress_panel.Controls.Add(this.label5);
+            this.progress_panel.Location = new System.Drawing.Point(6, 1);
+            this.progress_panel.Name = "progress_panel";
+            this.progress_panel.Size = new System.Drawing.Size(49, 352);
+            this.progress_panel.TabIndex = 28;
+            this.progress_panel.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(229, 147);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(258, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "من فضلك إنتظر .. جاري إعداد شجرة الحسابات ...";
+            // 
+            // button6
+            // 
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.Location = new System.Drawing.Point(167, 300);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(149, 34);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "حذف الشجرة الحالية";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // AccTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 351);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.progress_panel);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button1);
@@ -230,6 +257,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.progress_panel.ResumeLayout(false);
+            this.progress_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -237,21 +266,23 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox main_account_number;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox account_name_en;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox account_name;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox account_number;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TreeView accounting_tree;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel progress_panel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button6;
     }
 }

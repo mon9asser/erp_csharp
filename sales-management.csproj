@@ -35,6 +35,11 @@
     <Reference Include="IrisSkin4">
       <HintPath>C:\Users\Montasser Mossallem\Desktop\skin\IrisSkin4.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\dell\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -54,6 +59,7 @@
   <ItemGroup>
     <Compile Include="DB\Config.cs" />
     <Compile Include="DB\DataAccessLayer.cs" />
+    <Compile Include="PL\AccountingTree.cs" />
     <Compile Include="PL\Installings.cs" />
     <Compile Include="PL\Products.cs" />
     <Compile Include="PL\Resources.cs" />
