@@ -107,3 +107,6 @@ E:\C#\sales-app\obj\Debug\sales_management.UI.Purchase.resources
 D:\sales-app\obj\Debug\sales_management.UI.Tree.resources
 D:\sales-app\obj\Debug\sales_management.UI.DesignChange.resources
 D:\sales-app\obj\Debug\sales_management.UI.AccTree.resources
+E:\C#\sales-app\obj\Debug\sales_management.UI.AccTree.resources
+E:\C#\sales-app\obj\Debug\sales_management.UI.DesignChange.resources
+E:\C#\sales-app\obj\Debug\sales_management.UI.Tree.resources

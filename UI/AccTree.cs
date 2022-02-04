@@ -30,7 +30,7 @@ namespace sales_management.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter ="Excel Files|*.xls;*.xlsx;*.xlsm";
             string dirPath = Directory.GetCurrentDirectory().ToString() + "\\Trees";
@@ -44,6 +44,7 @@ namespace sales_management.UI
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 progress_panel.Visible = true;
+                this.StartBackgroundWork();
                 this.LoadAccountingTree( openFileDialog1.FileName.ToString() );  
             }
         }
@@ -62,7 +63,9 @@ namespace sales_management.UI
         }
 
         public void Fill_Accounting_Tree() {
-            
+
+            accounting_tree.Nodes.Clear();
+
             table = tree.Get_Accounting_Tree();
 
             foreach (DataRow row in table.Rows) {
@@ -155,11 +158,22 @@ namespace sales_management.UI
             }
         }
 
-        public void disable( bool isDisalbe ) {
+        public void disable( bool isDisalbe, bool emptyValue = true ) {
             account_name.Enabled = !isDisalbe;
             account_number.Enabled =  !isDisalbe;
             account_name_en.Enabled = !isDisalbe;
             main_account_number.Enabled = !isDisalbe;
+            account_type.Enabled = !isDisalbe;
+
+            if (isDisalbe == false && emptyValue )
+            {
+                account_type.SelectedIndex = 0;
+                account_name.Text = "";
+                account_number.Text = "";
+                account_name_en.Text = "";
+                main_account_number.Text = "";
+                main_account_number.ReadOnly = false;
+            }
         }
         private void accounting_tree_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -183,6 +197,11 @@ namespace sales_management.UI
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+
+            tree.Create_Tree_Account(-1, account_number.Text.ToString(), account_name.Text.ToString(), account_name_en.Text.ToString(), main_account_number.Text.ToString(), account_type.SelectedIndex.ToString(), "0", false);
+            this.Fill_Accounting_Tree();
+            this.disable(true);
 
         }
 
@@ -224,10 +243,32 @@ namespace sales_management.UI
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.disable(false);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.disable(false, false);
+        }
+
+
+        private void StartBackgroundWork()
+        {
+           
+                progressBar.Style = ProgressBarStyle.Continuous;
+                progressBar.Maximum = 100;
+                progressBar.Value = 0;
+                timer.Enabled = true; 
+        }
          
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (progressBar.Value < 100)
+             progressBar.Value += 5; 
+        }
 
-
-       
-
+         
     }
 }
