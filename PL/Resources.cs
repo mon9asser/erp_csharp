@@ -32,10 +32,10 @@ namespace sales_management.PL
             return table;
         }
 
-        public void Update_Resource_Data( int id, string sup_name, string sup_mob_numbber, string sup_address, string sup_email, int type ) {
+        public void Update_Resource_Data( int id, string sup_name, string sup_mob_numbber, string sup_address, string sup_email, string establishment_name, string vat_number, int type ) {
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-            SqlParameter[] param = new SqlParameter[8];
+            SqlParameter[] param = new SqlParameter[10];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int );
             param[0].Value = id;
@@ -60,7 +60,13 @@ namespace sales_management.PL
 
             param[7] = new SqlParameter("@type", SqlDbType.Int);
             param[7].Value = type;
-             
+
+            param[8] = new SqlParameter("@establishment_name", SqlDbType.VarChar);
+            param[8].Value = establishment_name;
+
+
+            param[9] = new SqlParameter("@vat_number", SqlDbType.VarChar);
+            param[9].Value = vat_number;
 
             DAL.Open();
             DAL.ExecuteCommand("Update_Resource_Data", param);

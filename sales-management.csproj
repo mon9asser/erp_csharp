@@ -71,6 +71,12 @@
     <Compile Include="UI\AccTree.Designer.cs">
       <DependentUpon>AccTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\AddSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddSupplier.Designer.cs">
+      <DependentUpon>AddSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Backups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,12 @@
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +154,6 @@
     </Compile>
     <Compile Include="UI\SystemSettings.Designer.cs">
       <DependentUpon>SystemSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Tree.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Tree.Designer.cs">
-      <DependentUpon>Tree.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Units.cs">
       <SubType>Form</SubType>
@@ -167,6 +173,9 @@
     </Compile>
     <EmbeddedResource Include="UI\AccTree.resx">
       <DependentUpon>AccTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AddSupplier.resx">
+      <DependentUpon>AddSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Backups.resx">
       <DependentUpon>Backups.cs</DependentUpon>
@@ -201,14 +210,14 @@
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Suppliers.resx">
       <DependentUpon>Suppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SystemSettings.resx">
       <DependentUpon>SystemSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Tree.resx">
-      <DependentUpon>Tree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Units.resx">
       <DependentUpon>Units.cs</DependentUpon>

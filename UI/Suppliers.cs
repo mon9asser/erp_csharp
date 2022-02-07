@@ -93,6 +93,7 @@ namespace sales_management.UI
         }
 
         private void disableFields( bool isDisable = false ) {
+
             resource_name.Enabled = isDisable;
             resource_phone.Enabled = isDisable;
             resource_address.Enabled = isDisable;
@@ -103,6 +104,7 @@ namespace sales_management.UI
             delete_button.Enabled = !isDisable;
             edit_button.Enabled = !isDisable;
             save_button.Enabled = isDisable;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -114,7 +116,7 @@ namespace sales_management.UI
             string resource_email_text = resource_email.Text.ToString();
             string resource_id_text = resource_id.Text.ToString();
              
-            Sup.Update_Resource_Data(Convert.ToInt32(resource_id_text), resource_name_text, resource_phone_text, resource_address_text, resource_email_text, this.resource_type);
+            //Sup.Update_Resource_Data(Convert.ToInt32(resource_id_text), resource_name_text, resource_phone_text, resource_address_text, resource_email_text, this.resource_type);
             
             this.Read_All_resources();
             this.disableFields();

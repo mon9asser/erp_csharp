@@ -136,7 +136,8 @@ namespace sales_management.UI
 
         private void الموردينوالتجارToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Resource.GetForm.Show();
+            UI.Supplier Suppliers = new UI.Supplier();
+            Suppliers.Show();
         }
 
         private void كشفالرواتبالشهريToolStripMenuItem_Click(object sender, EventArgs e)

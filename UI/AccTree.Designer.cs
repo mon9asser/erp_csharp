@@ -38,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.account_number = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.account_type = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.accounting_tree = new System.Windows.Forms.TreeView();
             this.button4 = new System.Windows.Forms.Button();
@@ -46,11 +48,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.account_type = new System.Windows.Forms.ComboBox();
             this.progress_panel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,7 +62,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(261, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.Size = new System.Drawing.Size(108, 13);
             this.label4.TabIndex = 19;
             this.label4.Text = "رقم الحساب التابع له :";
             // 
@@ -79,7 +79,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(285, 167);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 17;
             this.label3.Text = "الإسم الإنجليزي :";
             // 
@@ -95,7 +95,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(298, 123);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "إسم الحساب :";
             // 
@@ -111,7 +111,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(303, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "رقم الحساب :";
             // 
@@ -138,6 +138,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(397, 269);
             this.panel1.TabIndex = 22;
+            // 
+            // account_type
+            // 
+            this.account_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.account_type.FormattingEnabled = true;
+            this.account_type.Items.AddRange(new object[] {
+            "مدين",
+            "دائن"});
+            this.account_type.Location = new System.Drawing.Point(26, 212);
+            this.account_type.Name = "account_type";
+            this.account_type.Size = new System.Drawing.Size(218, 21);
+            this.account_type.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(302, 212);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "نوع الحساب :";
             // 
             // panel2
             // 
@@ -222,36 +243,22 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(302, 212);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "نوع الحساب :";
-            // 
-            // account_type
-            // 
-            this.account_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.account_type.FormattingEnabled = true;
-            this.account_type.Items.AddRange(new object[] {
-            "مدين",
-            "دائن"});
-            this.account_type.Location = new System.Drawing.Point(26, 212);
-            this.account_type.Name = "account_type";
-            this.account_type.Size = new System.Drawing.Size(218, 21);
-            this.account_type.TabIndex = 21;
-            // 
             // progress_panel
             // 
             this.progress_panel.Controls.Add(this.progressBar);
             this.progress_panel.Controls.Add(this.label5);
             this.progress_panel.Location = new System.Drawing.Point(4, -1);
             this.progress_panel.Name = "progress_panel";
-            this.progress_panel.Size = new System.Drawing.Size(730, 356);
+            this.progress_panel.Size = new System.Drawing.Size(730, 352);
             this.progress_panel.TabIndex = 30;
             this.progress_panel.Visible = false;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(167, 141);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(396, 12);
+            this.progressBar.TabIndex = 1;
             // 
             // label5
             // 
@@ -262,13 +269,6 @@
             this.label5.Size = new System.Drawing.Size(258, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "من فضلك إنتظر .. جاري إعداد شجرة الحسابات ...";
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(167, 141);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(396, 12);
-            this.progressBar.TabIndex = 1;
             // 
             // timer
             // 

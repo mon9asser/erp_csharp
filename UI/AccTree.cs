@@ -195,12 +195,27 @@ namespace sales_management.UI
 
         }
 
+        public void add_new_account_to_tree( string account_number, string account_name, string main_account_number ){
+            foreach (var node in Collect(accounting_tree.Nodes)){
+                int main_acc_number = Convert.ToInt32(main_account_number);
+                
+                if (Convert.ToInt32(node.Tag).Equals(main_acc_number)) {
+
+                    TreeNode child = new TreeNode();
+                    child.Text = account_name.ToString();
+                    child.Tag = account_number.ToString();
+                    node.Nodes.Add(child);
+  
+                }
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
 
 
             tree.Create_Tree_Account(-1, account_number.Text.ToString(), account_name.Text.ToString(), account_name_en.Text.ToString(), main_account_number.Text.ToString(), account_type.SelectedIndex.ToString(), "0", false);
-            this.Fill_Accounting_Tree();
+            this.add_new_account_to_tree(account_number.Text.ToString(), account_name.Text.ToString(), main_account_number.Text.ToString());
             this.disable(true);
 
         }
