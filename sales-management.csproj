@@ -61,6 +61,8 @@
     <Compile Include="DB\DataAccessLayer.cs" />
     <Compile Include="PL\AccountingTree.cs" />
     <Compile Include="PL\Installings.cs" />
+    <Compile Include="PL\Invoice.cs" />
+    <Compile Include="PL\Journals.cs" />
     <Compile Include="PL\Products.cs" />
     <Compile Include="PL\Resources.cs" />
     <Compile Include="Program.cs" />
@@ -94,12 +96,6 @@
     </Compile>
     <Compile Include="UI\DefaultData.Designer.cs">
       <DependentUpon>DefaultData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\DesignChange.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\DesignChange.Designer.cs">
-      <DependentUpon>DesignChange.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Permissions.cs">
       <SubType>Form</SubType>
@@ -185,9 +181,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DefaultData.resx">
       <DependentUpon>DefaultData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\DesignChange.resx">
-      <DependentUpon>DesignChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Main.ar.resx">
       <DependentUpon>Main.cs</DependentUpon>

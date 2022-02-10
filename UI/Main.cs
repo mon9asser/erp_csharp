@@ -69,7 +69,8 @@ namespace sales_management.UI
                 frm = this;
             }
 
-            this.ChangeLayoutTheme( "SteelBlack.ssk" );
+            //this.ChangeLayoutTheme( "SteelBlack.ssk" );
+            //this.ChangeLayoutTheme("office2007.ssk");
            
             
         }
@@ -170,11 +171,7 @@ namespace sales_management.UI
             tree.Show();
         }
 
-        private void تغييرالتصميمToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UI.DesignChange design = new UI.DesignChange();
-            design.ShowDialog();
-        }
+        
 
          
 
