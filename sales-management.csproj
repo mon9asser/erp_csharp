@@ -97,11 +97,23 @@
     <Compile Include="UI\DefaultData.Designer.cs">
       <DependentUpon>DefaultData.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items.Designer.cs">
+      <DependentUpon>Items.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Permissions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Permissions.Designer.cs">
       <DependentUpon>Permissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Price.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Price.Designer.cs">
+      <DependentUpon>Price.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Products.cs">
       <SubType>Form</SubType>
@@ -182,6 +194,9 @@
     <EmbeddedResource Include="UI\DefaultData.resx">
       <DependentUpon>DefaultData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items.resx">
+      <DependentUpon>Items.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Main.ar.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Permissions.resx">
       <DependentUpon>Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Price.resx">
+      <DependentUpon>Price.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>

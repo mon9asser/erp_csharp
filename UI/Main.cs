@@ -161,8 +161,8 @@ namespace sales_management.UI
 
         private void فاتورةالمشترياتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Purchase pur = new UI.Purchase();
-            pur.Show();
+
+            UI.Purchase.GetForm.Show();
         }
 
         private void شجرةالحساباToolStripMenuItem_Click(object sender, EventArgs e)

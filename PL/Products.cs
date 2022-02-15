@@ -214,6 +214,25 @@ namespace sales_management.PL
             return tbl; 
         }
 
+        public DataTable Get_Product_By_Id( int id )
+        {
+
+            DB.DataAccessLayer Layer = new DB.DataAccessLayer();
+
+            Layer.Open();
+            
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@id", SqlDbType.Int);
+            param[0].Value = id;
+
+            DataTable tbl = Layer.SelectData( "Get_All_Product_By_Id", param );
+
+            Layer.Close();
+
+            return tbl;
+        }
+        
         public void Delete_Product_By_Id(int id)
         {
 

@@ -94,11 +94,7 @@ namespace sales_management.UI
             }
         }
 
-        public void Add_New_Supplier_Form() {
-
-            
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
