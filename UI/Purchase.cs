@@ -82,6 +82,9 @@ namespace sales_management.UI
             total_with_vat.Enabled = !isDisabled;
             invoice_serial.Enabled = !isDisabled;
 
+            not_more_than.Enabled = !isDisabled;
+            percentage_discount.Enabled = !isDisabled;
+
             newInvoiceBtn.Enabled = isDisabled;
             deleteInvoiceBtn.Enabled = isDisabled;
             editInvoiceBtn.Enabled = isDisabled;
@@ -148,6 +151,7 @@ namespace sales_management.UI
                 invoice_detail_datagridview.Columns["unit_price"].Visible = true;
                 invoice_detail_datagridview.Columns["quantity"].Visible = true;
                 invoice_detail_datagridview.Columns["total_price"].Visible = true;
+                //invoice_detail_datagridview.Columns["factor"].Visible = true;
 
                 invoice_detail_datagridview.Columns["product_name"].HeaderText = "الصنف";
                 invoice_detail_datagridview.Columns["quantity"].HeaderText = "الكمية";
@@ -158,6 +162,7 @@ namespace sales_management.UI
                 invoice_detail_datagridview.Columns["product_name"].ReadOnly = true;
                 invoice_detail_datagridview.Columns["shortcut"].ReadOnly = true;
                 invoice_detail_datagridview.Columns["unit_price"].ReadOnly = true;
+                invoice_detail_datagridview.Columns["total_price"].ReadOnly = true;
 
                 invoice_detail_datagridview.Columns["product_name"].Width = 340;
                 invoice_detail_datagridview.Columns["quantity"].Width = 80;
@@ -273,13 +278,7 @@ namespace sales_management.UI
 
             this.Calculate_Row(index, Convert.ToDecimal(1), unit_price, productName, unit_shortcut, unit_id, unit_factor, productId);
 
-            // Calculate Totals 
-            this.Calculate_Totals();
-
-            // Calculate Inventories 
-
-
-           // MessageBox.Show(purchase_price.ToString() + " | " + default_sale_price.ToString() + " | " +  default_group.ToString());
+            
         }
 
         public void Calculate_Row( int rowIndex, decimal quantity, decimal unit_price, string productName, string shortcut, int unit_id, decimal unit_factor, int productId) {
@@ -297,20 +296,71 @@ namespace sales_management.UI
             invoice_detail_datagridview.Rows[rowIndex].Cells["total_quantity"].Value = Convert.ToDecimal(unit_factor) * quantity;
             invoice_detail_datagridview.Rows[rowIndex].Cells["factor"].Value = unit_factor.ToString();
             
-            //MessageBox.Show(productName.ToString());
+           
         }
 
-        public void Calculate_Totals() {
-
+        public decimal Calculate_Invoice_Prices() {
+            
             decimal net_total = 0;
-            for (int i = 0; i < invoice_detail_datagridview.Rows.Count; i ++) {
-                if( System.DBNull.Value != invoice_detail_datagridview.Rows[i].Cells["total_price"].Value)
-                net_total += Convert.ToDecimal(invoice_detail_datagridview.Rows[i].Cells["total_price"].Value);
+            
+            for (int i = 0; i < invoice_detail_datagridview.Rows.Count; i++)
+            {
+                if (System.DBNull.Value != invoice_detail_datagridview.Rows[i].Cells["total_price"].Value)
+                    net_total += Convert.ToDecimal(invoice_detail_datagridview.Rows[i].Cells["total_price"].Value);
+            }
+            
+            return net_total;
+
+        }
+
+        public Decimal Extract_Vat( decimal amount ) {
+            
+            return amount - (amount / Convert.ToDecimal(1.15));
+
+        }
+
+        public Decimal Total_Without_Vat() {
+
+            decimal net = this.Calculate_Invoice_Prices();
+            decimal discount_val = discount_value.Text == "" ? 0 : Convert.ToDecimal(discount_value.Text);
+            decimal total_without_vat = net - discount_val;
+
+            if (enable_vat.Checked) {
+                total_without_vat = total_without_vat - this.Extract_Vat(total_without_vat);
             }
 
-            // Calculate Vat 
-            this.Calculate_Vat_Total( net_total );
+            return total_without_vat;
+        }
 
+        public decimal Get_Vat_Amount() {
+
+            decimal net = this.Calculate_Invoice_Prices();
+            decimal discount_val = discount_value.Text == "" ? 0 : Convert.ToDecimal(discount_value.Text);
+            decimal netval = net - discount_val;
+            decimal vat = this.Extract_Vat(netval);
+
+            if ( !enable_vat.Checked)
+            {
+                vat = (netval * Convert.ToDecimal(1.15) ) - netval;
+            }
+
+            return vat;
+
+        }
+
+        public decimal Calculate_Total_With_Vat() {
+            
+            decimal net = this.Calculate_Invoice_Prices();
+            decimal discount_val = discount_value.Text == "" ? 0 : Convert.ToDecimal(discount_value.Text);
+            decimal netval = net - discount_val;
+            decimal total = netval;
+
+            if (!enable_vat.Checked)
+            {
+                total = total * Convert.ToDecimal(1.15);
+            }
+
+            return total;
         }
 
         private void invoice_detail_datagridview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -319,22 +369,37 @@ namespace sales_management.UI
             if (e.RowIndex == -1) return;
 
             // Stor Index of Row 
-            
-            
-            
+            UI.Purchase.GetForm.lastRow = e.RowIndex;
+
+
             // Item Name 
             if ( e.ColumnIndex == 10) {
-                UI.Purchase.GetForm.lastRow = e.RowIndex;
                 UI.Items.GetForm.ShowDialog();
             }
              
             if ((e.ColumnIndex == 81 || e.ColumnIndex == 5 ) && invoice_detail_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString() != "") {
-                
                 UI.Price.GetForm.ShowDialog();
             }
+
+            // Calculate Total Amounts  
+            net_total.Text = this.Calculate_Invoice_Prices().ToString();
+            total_without_vat.Text = Math.Round(this.Total_Without_Vat(), 2).ToString();
+            short_vat_amount.Text = Math.Round(this.Get_Vat_Amount(), 2).ToString();
+            vat_amount.Text = this.Get_Vat_Amount().ToString();
+            total_with_vat.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
+
+            this.Calculate_Discount_Percentage();
+            decimal discount_val = Calculate_Discount_Percentage();
+            discount_value.Text = discount_val.ToString();
+
         }
         private void invoice_detail_datagridview_KeyDown(object sender, KeyEventArgs e)
         {
+             
+            if (invoice_detail_datagridview.CurrentCell.OwningRow.Index == -1) return;
+
+            UI.Purchase.GetForm.lastRow = invoice_detail_datagridview.CurrentCell.OwningRow.Index;
+
             if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
             {
 
@@ -346,7 +411,6 @@ namespace sales_management.UI
                 // Item Name 
                 if (invoice_detail_datagridview.CurrentCell.OwningColumn.Index == 10)
                 {
-                    UI.Purchase.GetForm.lastRow = invoice_detail_datagridview.CurrentCell.OwningRow.Index;
                     UI.Items.GetForm.ShowDialog();
                 }
 
@@ -356,16 +420,35 @@ namespace sales_management.UI
                     UI.Price.GetForm.ShowDialog();
                 }
 
+
+                // Fill Net total 
+                net_total.Text = this.Calculate_Invoice_Prices().ToString();
+                total_without_vat.Text = Math.Round(this.Total_Without_Vat(), 2).ToString();
+                short_vat_amount.Text = Math.Round(this.Get_Vat_Amount(), 2).ToString();
+                vat_amount.Text = this.Get_Vat_Amount().ToString();
+                total_with_vat.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
+
+                this.Calculate_Discount_Percentage();
+                decimal discount_val = Calculate_Discount_Percentage();
+                discount_value.Text = discount_val.ToString();
             }
 
         }
         private void invoice_detail_datagridview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if ( e.RowIndex == -1 ) return;
+           
+
+            UI.Purchase.GetForm.lastRow = e.RowIndex;
+
+             
 
             // Change Value 
             if (e.ColumnIndex == 7 && System.DBNull.Value != invoice_detail_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value) {
-                decimal quantity = Convert.ToDecimal(invoice_detail_datagridview.Rows[e.RowIndex].Cells["quantity"].Value);
+
+                 
+
+                decimal quantity = invoice_detail_datagridview.Rows[e.RowIndex].Cells["quantity"].Value == System.DBNull.Value ? 0 : Convert.ToDecimal(invoice_detail_datagridview.Rows[e.RowIndex].Cells["quantity"].Value);
                 string productName = invoice_detail_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString();
                 string shortcut = invoice_detail_datagridview.Rows[e.RowIndex].Cells["shortcut"].Value.ToString();
                 int unit_id = Convert.ToInt32(invoice_detail_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value);
@@ -374,21 +457,36 @@ namespace sales_management.UI
                 int product_id = Convert.ToInt32(invoice_detail_datagridview.Rows[e.RowIndex].Cells["product_id"].Value);
 
                 this.Calculate_Row(e.RowIndex, quantity, Convert.ToDecimal(unit_price), productName, shortcut, unit_id, Convert.ToDecimal(factor), product_id);
-                this.Calculate_Totals();
+                 
             }
+
+            // Fill Net total 
+            net_total.Text = this.Calculate_Invoice_Prices().ToString();
+            total_without_vat.Text = Math.Round(this.Total_Without_Vat(), 2).ToString();
+            short_vat_amount.Text = Math.Round(this.Get_Vat_Amount(), 2).ToString();
+            vat_amount.Text = this.Get_Vat_Amount().ToString();
+            total_with_vat.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
+
+            this.Calculate_Discount_Percentage();
+            decimal discount_val = Calculate_Discount_Percentage();
+            discount_value.Text = discount_val.ToString();
+
         }
 
-       
-
-        private void discount_value_TextChanged(object sender, EventArgs e)
-        {
-            this.Calculate_Totals();
-        }
+        
 
         private void enable_vat_CheckedChanged(object sender, EventArgs e)
         {
-            
-            this.Calculate_Totals();
+            // Calculate Total Amounts  
+            net_total.Text = this.Calculate_Invoice_Prices().ToString();
+            total_without_vat.Text = Math.Round(this.Total_Without_Vat(), 2).ToString();
+            short_vat_amount.Text = Math.Round(this.Get_Vat_Amount(), 2).ToString();
+            vat_amount.Text = this.Get_Vat_Amount().ToString();
+            total_with_vat.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
+
+            this.Calculate_Discount_Percentage();
+            decimal discount_val = Calculate_Discount_Percentage();
+            discount_value.Text = discount_val.ToString();
 
         }
 
@@ -404,35 +502,93 @@ namespace sales_management.UI
             int product_id = Convert.ToInt32(invoice_detail_datagridview.Rows[index].Cells["product_id"].Value);
 
             this.Calculate_Row(index, quantity, Convert.ToDecimal(price), productName, shortcut, unit_id, Convert.ToDecimal(factor), product_id);
-            this.Calculate_Totals();
-        }
-        
-        public void Calculate_Vat_Total( decimal net_total ) {
-
-            Decimal net_out_disc = Convert.ToDecimal(net_total);
-            Decimal vat_cal = 0;
-            Decimal total_invoice = 0;
-            Decimal discount = discount_value.Text == "" ? 0 : Convert.ToDecimal(discount_value.Text);
-            Decimal net_after_discount = (net_out_disc - discount);
-
-            if (enable_vat.Checked == true)
-            {
-                vat_cal = net_after_discount - (net_after_discount / Convert.ToDecimal(1.15));
-                total_invoice = net_after_discount;
-            }
-            else
-            {
-                vat_cal = (net_after_discount * Convert.ToDecimal(1.15)) - net_after_discount;
-                total_invoice = net_after_discount + vat_cal;
-            }
-
-
-            total_without_vat.Text = Math.Round((net_after_discount - vat_cal),2).ToString();
-            vat_amount.Text = vat_cal.ToString(); 
-            short_vat_amount.Text = Math.Round(Convert.ToDecimal(vat_cal),2).ToString();
-            total_with_vat.Text = total_invoice.ToString();
+             
         }
 
-         
+        private void discount_value_TextChanged_1(object sender, EventArgs e)
+        {
+            // Calculate Total Amounts  
+            net_total.Text = this.Calculate_Invoice_Prices().ToString();
+            total_without_vat.Text = Math.Round(this.Total_Without_Vat(), 2).ToString();
+            short_vat_amount.Text = Math.Round(this.Get_Vat_Amount(), 2).ToString();
+            vat_amount.Text = this.Get_Vat_Amount().ToString();
+            total_with_vat.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
+        }
+
+
+        public decimal Calculate_Discount_Percentage() {
+
+            decimal net_total = this.Calculate_Invoice_Prices();
+            decimal discount_val = percentage_discount.Text == "" ? 0: (net_total * Convert.ToDecimal(percentage_discount.Text)) / 100;
+            if (not_more_than.Text != "")
+            {
+
+                decimal not_more = Convert.ToDecimal(not_more_than.Text);
+
+                if (discount_val >= not_more)
+                {
+                    discount_val = not_more;
+                }
+
+            }
+
+            return discount_val;
+        }
+
+        private void percentage_discount_TextChanged(object sender, EventArgs e)
+        {
+
+            if (percentage_discount.Text == "")
+            {
+                discount_value.Text = "";
+                return;
+            }
+
+            this.Calculate_Discount_Percentage();
+            decimal discount_val = Calculate_Discount_Percentage();
+            discount_value.Text = discount_val.ToString();
+
+        }
+
+        private void not_more_than_TextChanged(object sender, EventArgs e)
+        {
+            if (percentage_discount.Text == "")
+            {
+                discount_value.Text = "";
+                return;
+            }
+
+            this.Calculate_Discount_Percentage();
+            decimal discount_val = Calculate_Discount_Percentage();
+            discount_value.Text = discount_val.ToString();
+        }
+
+        private void invoice_detail_datagridview_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+             
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (invoice_detail_datagridview.CurrentCell.ColumnIndex == 7) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void storeInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Saving Invoice Data");
+        }
     }
 }

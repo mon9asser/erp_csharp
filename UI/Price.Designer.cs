@@ -60,6 +60,7 @@ namespace sales_management.UI
             this.datagridview_prices.Size = new System.Drawing.Size(360, 263);
             this.datagridview_prices.TabIndex = 0;
             this.datagridview_prices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_prices_CellDoubleClick);
+            this.datagridview_prices.KeyDown += new System.Windows.Forms.KeyEventHandler(this.datagridview_prices_KeyDown);
             // 
             // Price
             // 

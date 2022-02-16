@@ -203,5 +203,25 @@ namespace sales_management.UI
 
             this.Close();
         }
+
+        private void datagridview_prices_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space)
+            {
+                return;
+            }
+
+            int rowIndex = datagridview_prices.CurrentCell.OwningRow.Index;
+
+
+            int index = UI.Price.GetForm.DGRowIndex;
+            int unit_id = Convert.ToInt32(datagridview_prices.Rows[rowIndex].Cells["unit_id"].Value);
+            string factor = datagridview_prices.Rows[rowIndex].Cells["factor"].Value.ToString();
+            string price = datagridview_prices.Rows[rowIndex].Cells["price"].Value.ToString();
+            string shortcut = datagridview_prices.Rows[rowIndex].Cells["unit_shortcut"].Value.ToString();
+            UI.Purchase.GetForm.Set_Datagrid_View_New_Price(index, unit_id, factor, price, shortcut);
+
+            this.Close();
+        }
     }
 }
