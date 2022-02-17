@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.invoice_detail_datagridview = new System.Windows.Forms.DataGridView();
             this.newInvoiceBtn = new System.Windows.Forms.Button();
             this.deleteInvoiceBtn = new System.Windows.Forms.Button();
@@ -70,19 +70,19 @@
             this.invoice_detail_datagridview.AllowUserToDeleteRows = false;
             this.invoice_detail_datagridview.AllowUserToResizeColumns = false;
             this.invoice_detail_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
-            this.invoice_detail_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.invoice_detail_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.invoice_detail_datagridview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.invoice_detail_datagridview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.invoice_detail_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.invoice_detail_datagridview.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.invoice_detail_datagridview.DefaultCellStyle = dataGridViewCellStyle2;
             this.invoice_detail_datagridview.Enabled = false;
             this.invoice_detail_datagridview.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.invoice_detail_datagridview.Location = new System.Drawing.Point(15, 90);

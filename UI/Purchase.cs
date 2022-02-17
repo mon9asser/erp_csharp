@@ -16,6 +16,7 @@ namespace sales_management.UI
         PL.Invoice Invoice = new PL.Invoice();
         
         public int InvoiceType = 1;
+        public int isOutInventory = 0;
         public int lastRow = -1;
 
         DataTable Products;
@@ -113,9 +114,9 @@ namespace sales_management.UI
                 bool is_paid_vat = row["is_paid_vat"].Equals(System.DBNull.Value)? false: Convert.ToBoolean(row["is_paid_vat"]);
 
                 invoice_number.Text = id;
-                payment_methods.SelectedIndex = 0;
+                payment_methods.SelectedIndex = Convert.ToInt32(payment_method);
                 datemade.Value = date;
-                enable_vat.Checked = true;
+                enable_vat.Checked = is_include_vat;
                 details.Text = detailss;
                 total_without_vat.Text = total_without_vats;
                 discount_value.Text = discounts;
@@ -144,7 +145,7 @@ namespace sales_management.UI
                 //invoice_detail_datagridview.Columns.OfType<DataGridViewColumn>().ToList().ForEach(col => col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight);
                
 
-                invoice_detail_datagridview.Columns["id"].Visible = false;
+               // invoice_detail_datagridview.Columns["id"].Visible = false;
 
                 invoice_detail_datagridview.Columns["product_name"].Visible = true;
                 invoice_detail_datagridview.Columns["shortcut"].Visible = true;
@@ -192,6 +193,7 @@ namespace sales_management.UI
             DataTable ds = (DataTable)invoice_detail_datagridview.DataSource;
             for (int i = 0; i < 10; i++) {
                 DataRow dr = ds.NewRow();
+                dr["datagride_id"] = Guid.NewGuid().ToString();
                 ds.Rows.InsertAt(dr, (invoice_detail_datagridview.Rows.Count - 1) + 1);
                 invoice_detail_datagridview.DataSource = ds;
             }
@@ -281,9 +283,10 @@ namespace sales_management.UI
             
         }
 
-        public void Calculate_Row( int rowIndex, decimal quantity, decimal unit_price, string productName, string shortcut, int unit_id, decimal unit_factor, int productId) {
+        public void Calculate_Row( int rowIndex, decimal quantity, decimal unit_price, string productName, string shortcut, int unit_id, decimal unit_factor, int productId, int gridId = -1) {
 
             Decimal total = quantity * unit_price;
+            invoice_detail_datagridview.Rows[rowIndex].Cells["id"].Value = gridId.ToString();
             invoice_detail_datagridview.Rows[rowIndex].Cells["quantity"].Value = quantity.ToString();
             
             if ( unit_price != 0 )
@@ -295,6 +298,8 @@ namespace sales_management.UI
             invoice_detail_datagridview.Rows[rowIndex].Cells["unit_id"].Value = unit_id.ToString();
             invoice_detail_datagridview.Rows[rowIndex].Cells["total_quantity"].Value = Convert.ToDecimal(unit_factor) * quantity;
             invoice_detail_datagridview.Rows[rowIndex].Cells["factor"].Value = unit_factor.ToString();
+            invoice_detail_datagridview.Rows[rowIndex].Cells["document_type"].Value = UI.Purchase.GetForm.InvoiceType;
+            invoice_detail_datagridview.Rows[rowIndex].Cells["is_out"].Value = UI.Purchase.GetForm.isOutInventory;
             
            
         }
@@ -373,11 +378,11 @@ namespace sales_management.UI
 
 
             // Item Name 
-            if ( e.ColumnIndex == 10) {
+            if ( e.ColumnIndex == 9) {
                 UI.Items.GetForm.ShowDialog();
             }
              
-            if ((e.ColumnIndex == 81 || e.ColumnIndex == 5 ) && invoice_detail_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString() != "") {
+            if ((e.ColumnIndex == 80 || e.ColumnIndex == 4 ) && invoice_detail_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString() != "") {
                 UI.Price.GetForm.ShowDialog();
             }
 
@@ -409,13 +414,13 @@ namespace sales_management.UI
 
 
                 // Item Name 
-                if (invoice_detail_datagridview.CurrentCell.OwningColumn.Index == 10)
+                if (invoice_detail_datagridview.CurrentCell.OwningColumn.Index == 9)
                 {
                     UI.Items.GetForm.ShowDialog();
                 }
 
 
-                if ((colIndex == 81 || colIndex == 5) && invoice_detail_datagridview.Rows[rowIndex].Cells["product_name"].Value.ToString() != "")
+                if ((colIndex == 80 || colIndex == 4) && invoice_detail_datagridview.Rows[rowIndex].Cells["product_name"].Value.ToString() != "")
                 {
                     UI.Price.GetForm.ShowDialog();
                 }
@@ -444,9 +449,8 @@ namespace sales_management.UI
              
 
             // Change Value 
-            if (e.ColumnIndex == 7 && System.DBNull.Value != invoice_detail_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value) {
+            if (e.ColumnIndex == 6 && System.DBNull.Value != invoice_detail_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value) {
 
-                 
 
                 decimal quantity = invoice_detail_datagridview.Rows[e.RowIndex].Cells["quantity"].Value == System.DBNull.Value ? 0 : Convert.ToDecimal(invoice_detail_datagridview.Rows[e.RowIndex].Cells["quantity"].Value);
                 string productName = invoice_detail_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString();
@@ -567,7 +571,7 @@ namespace sales_management.UI
         {
              
             e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
-            if (invoice_detail_datagridview.CurrentCell.ColumnIndex == 7) //Desired Column
+            if (invoice_detail_datagridview.CurrentCell.ColumnIndex == 6) //Desired Column
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
@@ -586,9 +590,63 @@ namespace sales_management.UI
             }
         }
 
+        public void Store_Invoice_Data() {
+
+
+
+            // Storing Invoice Data 
+            Invoice.Store_Invoice_Data(
+                Convert.ToInt32(invoice_number.Text),
+                invoice_serial.Text.ToString(),
+                Convert.ToInt32(payment_methods.SelectedIndex),
+                details.Text.ToString(),
+                total_with_vat.Text.ToString(),
+                total_without_vat.Text.ToString(),
+                discount_value.Text.ToString(),
+                vat_amount.Text.ToString(), 
+                Convert.ToBoolean(enable_vat.Checked),
+                net_total.Text.ToString(),
+                percentage_discount.Text.ToString(),
+                not_more_than.Text.ToString(), 
+                Convert.ToInt32( UI.Purchase.GetForm.InvoiceType )
+            );
+
+            // Invoice.Store_Invoice_Data();
+
+            foreach (DataGridViewRow row in invoice_detail_datagridview.Rows) {
+                
+                if (row.Cells["product_name"].Value != System.DBNull.Value) {
+                     
+                    Invoice.Store_Invoice_Details(
+                        row.Cells["datagride_id"].Value.ToString(),
+                        Convert.ToInt32(UI.Purchase.GetForm.InvoiceType),
+                        Convert.ToInt32(UI.Purchase.GetForm.isOutInventory),
+                        row.Cells["factor"].Value.ToString(),
+                        row.Cells["product_name"].Value.ToString(),
+                        row.Cells["total_quantity"].Value.ToString(),
+                        row.Cells["total_price"].Value.ToString(),
+                        row.Cells["quantity"].Value.ToString(),
+                        Convert.ToInt32(row.Cells["unit_id"].Value),
+                        row.Cells["unit_price"].Value.ToString(),
+                        row.Cells["product_id"].Value.ToString(),
+                        Convert.ToInt32(invoice_number.Text)
+                    );
+                    
+                }
+                  
+            }
+
+            
+
+
+        }
+
         private void storeInvoiceBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Saving Invoice Data");
+             
+
+            // Storing Invoice Data
+            this.Store_Invoice_Data();
         }
     }
 }
