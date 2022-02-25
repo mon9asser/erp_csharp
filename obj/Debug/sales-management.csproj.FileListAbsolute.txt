@@ -114,3 +114,4 @@ D:\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-app\obj\Debug\sales_management.UI.Items.resources
 D:\sales-app\obj\Debug\sales_management.UI.Price.resources
+D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources

@@ -171,10 +171,10 @@ namespace sales_management.UI
             tree.Show();
         }
 
-        
-
-         
-
-         
+        private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.salesInvoice sales = new UI.salesInvoice();
+            sales.Show();
+        }
     }
 }

@@ -205,5 +205,89 @@ namespace sales_management.PL
             DAL.Close();
         }
 
+
+        public void Delete_Item_In_Invoice(string id, int invoiceType, int invoiceId = -1  ) {
+
+            string procName = this.Create_Proc_Name(invoiceType, "Delete", "Item");
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[3];
+
+            param[0] = new SqlParameter("@id", SqlDbType.VarChar);
+            param[0].Value = id;
+
+            param[1] = new SqlParameter("@invoice_id", SqlDbType.Int);
+            param[1].Value = invoiceId;
+
+            param[2] = new SqlParameter("@document_type", SqlDbType.Int);
+            param[2].Value = invoiceType;
+
+            DAL.Open();
+            DAL.ExecuteCommand(procName, param);
+            DAL.Close();
+        }
+
+        public DataTable Get_All_Invoices_Data(  int invoiceType) {
+
+            string procName = this.Create_Proc_Name(invoiceType, "Retrieve", "All_Data");
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+             
+
+            DAL.Open();
+            table = DAL.SelectData(procName, null );
+            DAL.Close();
+
+            return table; 
+
+        }
+
+        public DataTable Get_All_Invoices_Details(int invoiceType ) {
+
+            string procName = this.Create_Proc_Name(invoiceType, "Retrieve", "All_Details");
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@invoice_type", SqlDbType.Int);
+            param[0].Value = invoiceType;
+
+            DAL.Open();
+            
+            table = DAL.SelectData(procName, param );
+
+            DAL.Close();
+
+            return table;
+
+        }
+
+        public DataTable Get_Invoice_Details_By_Id( int invoiceType, int invoiceId = -1 ) {
+
+            string procName = this.Create_Proc_Name(invoiceType, "Retrieve", "Details");
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@invoice_id", SqlDbType.Int);
+            param[0].Value = invoiceId;
+
+            param[1] = new SqlParameter("@document_type", SqlDbType.Int);
+            param[1].Value = invoiceId;
+
+            DAL.Open();
+            table = DAL.SelectData(procName, param);
+            DAL.Close();
+
+            return table;
+
+        }
     }
 }

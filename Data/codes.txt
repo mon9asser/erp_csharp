@@ -1,4 +1,22 @@
-﻿using System;
+
+
+
+
+net total 
+total after discount 
+final total
+vat total 
+discount ammount
+discount percentage
+discount not more than 
+
+
+
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

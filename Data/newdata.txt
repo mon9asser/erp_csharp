@@ -1,0 +1,34 @@
+invoice_serial
+invoice_number
+datemade
+payment_methods
+details
+invoice_detail_datagridview
+net_total
+short_vat_amount
+vat_amount
+total_with_vat
+discount_value
+percentage_discount
+not_more_than
+total_without_vat
+enable_vat
+
+
+
+
+ALTER PROC Retrieve_Purchase_Invoice_All_Data
+
+AS
+
+SELECT * FROM purchase_invoice
+
+
+ALTER PROC Retrieve_Purchase_Invoice_All_Details
+
+@invoice_type INT
+
+AS
+
+SELECT * FROM invoice_details where document_type = @invoice_type
+

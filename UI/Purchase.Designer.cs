@@ -88,12 +88,14 @@
             this.invoice_detail_datagridview.Location = new System.Drawing.Point(15, 90);
             this.invoice_detail_datagridview.MultiSelect = false;
             this.invoice_detail_datagridview.Name = "invoice_detail_datagridview";
+            this.invoice_detail_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.invoice_detail_datagridview.RowTemplate.Height = 35;
             this.invoice_detail_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.invoice_detail_datagridview.Size = new System.Drawing.Size(911, 273);
             this.invoice_detail_datagridview.StandardTab = true;
             this.invoice_detail_datagridview.TabIndex = 16;
             this.invoice_detail_datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoice_detail_datagridview_CellClick);
+            this.invoice_detail_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoice_detail_datagridview_CellContentClick);
             this.invoice_detail_datagridview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoice_detail_datagridview_CellValueChanged);
             this.invoice_detail_datagridview.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.invoice_detail_datagridview_EditingControlShowing);
             this.invoice_detail_datagridview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.invoice_detail_datagridview_KeyDown);
@@ -118,6 +120,7 @@
             this.deleteInvoiceBtn.TabIndex = 5;
             this.deleteInvoiceBtn.Text = "حذف";
             this.deleteInvoiceBtn.UseVisualStyleBackColor = true;
+            this.deleteInvoiceBtn.Click += new System.EventHandler(this.deleteInvoiceBtn_Click);
             // 
             // editInvoiceBtn
             // 
@@ -180,7 +183,7 @@
             // invoice_number
             // 
             this.invoice_number.Enabled = false;
-            this.invoice_number.Location = new System.Drawing.Point(289, 17);
+            this.invoice_number.Location = new System.Drawing.Point(289, 18);
             this.invoice_number.Name = "invoice_number";
             this.invoice_number.Size = new System.Drawing.Size(18, 20);
             this.invoice_number.TabIndex = 0;

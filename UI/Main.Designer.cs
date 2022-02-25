@@ -203,6 +203,7 @@ namespace sales_management.UI
             // 
             this.فاتورةالمبيعاتToolStripMenuItem.Name = "فاتورةالمبيعاتToolStripMenuItem";
             resources.ApplyResources(this.فاتورةالمبيعاتToolStripMenuItem, "فاتورةالمبيعاتToolStripMenuItem");
+            this.فاتورةالمبيعاتToolStripMenuItem.Click += new System.EventHandler(this.فاتورةالمبيعاتToolStripMenuItem_Click);
             // 
             // مرتجعToolStripMenuItem
             // 
