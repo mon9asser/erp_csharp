@@ -29,6 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.invoice_serial = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,14 +75,15 @@ namespace sales_management.UI
             this.delete_button = new System.Windows.Forms.Button();
             this.total = new System.Windows.Forms.TextBox();
             this.search_button = new System.Windows.Forms.Button();
+            this.payment_condition = new System.Windows.Forms.ComboBox();
+            this.current_invoice_page = new System.Windows.Forms.Label();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.first_record_button = new System.Windows.Forms.Button();
             this.last_record_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
             this.previous_button = new System.Windows.Forms.Button();
             this.save_button = new System.Windows.Forms.Button();
             this.add_new_button = new System.Windows.Forms.Button();
-            this.payment_condition = new System.Windows.Forms.ComboBox();
-            this.current_invoice_page = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +93,7 @@ namespace sales_management.UI
             this.invoice_serial.Name = "invoice_serial";
             this.invoice_serial.Size = new System.Drawing.Size(151, 20);
             this.invoice_serial.TabIndex = 31;
+            this.invoice_serial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.invoice_serial_KeyPress);
             // 
             // label2
             // 
@@ -182,10 +186,25 @@ namespace sales_management.UI
             // 
             // items_datagridview
             // 
-            this.items_datagridview.BackgroundColor = System.Drawing.Color.FloralWhite;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Location = new System.Drawing.Point(13, 134);
             this.items_datagridview.Name = "items_datagridview";
+            this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.items_datagridview.RowTemplate.Height = 35;
+            this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.items_datagridview.Size = new System.Drawing.Size(993, 294);
             this.items_datagridview.TabIndex = 39;
             // 
@@ -468,87 +487,7 @@ namespace sales_management.UI
             this.search_button.TabIndex = 81;
             this.search_button.Text = "بحث";
             this.search_button.UseVisualStyleBackColor = false;
-            // 
-            // first_record_button
-            // 
-            this.first_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.first_record_button.Image = global::sales_management.Properties.Resources.icons8_fast_forward_30;
-            this.first_record_button.Location = new System.Drawing.Point(271, 585);
-            this.first_record_button.Name = "first_record_button";
-            this.first_record_button.Size = new System.Drawing.Size(50, 38);
-            this.first_record_button.TabIndex = 80;
-            this.first_record_button.UseVisualStyleBackColor = false;
-            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
-            // 
-            // last_record_button
-            // 
-            this.last_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.last_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.last_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.last_record_button.Image = global::sales_management.Properties.Resources.icons8_rewind_30;
-            this.last_record_button.Location = new System.Drawing.Point(587, 585);
-            this.last_record_button.Name = "last_record_button";
-            this.last_record_button.Size = new System.Drawing.Size(50, 38);
-            this.last_record_button.TabIndex = 79;
-            this.last_record_button.UseVisualStyleBackColor = false;
-            this.last_record_button.Click += new System.EventHandler(this.last_record_button_Click);
-            // 
-            // next_button
-            // 
-            this.next_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.next_button.Image = global::sales_management.Properties.Resources.last_16_right;
-            this.next_button.Location = new System.Drawing.Point(327, 585);
-            this.next_button.Name = "next_button";
-            this.next_button.Size = new System.Drawing.Size(50, 38);
-            this.next_button.TabIndex = 78;
-            this.next_button.UseVisualStyleBackColor = false;
-            // 
-            // previous_button
-            // 
-            this.previous_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previous_button.Image = global::sales_management.Properties.Resources.last_16_left;
-            this.previous_button.Location = new System.Drawing.Point(531, 585);
-            this.previous_button.Name = "previous_button";
-            this.previous_button.Size = new System.Drawing.Size(50, 38);
-            this.previous_button.TabIndex = 77;
-            this.previous_button.UseVisualStyleBackColor = false;
-            // 
-            // save_button
-            // 
-            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save_button.Image = global::sales_management.Properties.Resources.icons8_save_all_30__1_;
-            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(170, 584);
-            this.save_button.Name = "save_button";
-            this.save_button.Padding = new System.Windows.Forms.Padding(20, 0, 5, 0);
-            this.save_button.Size = new System.Drawing.Size(92, 38);
-            this.save_button.TabIndex = 70;
-            this.save_button.Text = "حفظ";
-            this.save_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.save_button.UseVisualStyleBackColor = true;
-            // 
-            // add_new_button
-            // 
-            this.add_new_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_new_button.Image = global::sales_management.Properties.Resources.icons8_add_new_30;
-            this.add_new_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_new_button.Location = new System.Drawing.Point(13, 584);
-            this.add_new_button.Name = "add_new_button";
-            this.add_new_button.Padding = new System.Windows.Forms.Padding(10, 0, 5, 0);
-            this.add_new_button.Size = new System.Drawing.Size(151, 39);
-            this.add_new_button.TabIndex = 69;
-            this.add_new_button.Text = "إضافة فاتورة جديدة";
-            this.add_new_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new_button.UseVisualStyleBackColor = true;
-            this.add_new_button.Click += new System.EventHandler(this.add_new_button_Click);
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // payment_condition
             // 
@@ -574,6 +513,87 @@ namespace sales_management.UI
             this.current_invoice_page.TabIndex = 83;
             this.current_invoice_page.Text = "10 / 1";
             this.current_invoice_page.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // first_record_button
+            // 
+            this.first_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.first_record_button.Location = new System.Drawing.Point(271, 585);
+            this.first_record_button.Name = "first_record_button";
+            this.first_record_button.Size = new System.Drawing.Size(50, 38);
+            this.first_record_button.TabIndex = 80;
+            this.first_record_button.UseVisualStyleBackColor = false;
+            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
+            // 
+            // last_record_button
+            // 
+            this.last_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.last_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.last_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.last_record_button.Location = new System.Drawing.Point(587, 585);
+            this.last_record_button.Name = "last_record_button";
+            this.last_record_button.Size = new System.Drawing.Size(50, 38);
+            this.last_record_button.TabIndex = 79;
+            this.last_record_button.UseVisualStyleBackColor = false;
+            this.last_record_button.Click += new System.EventHandler(this.last_record_button_Click);
+            // 
+            // next_button
+            // 
+            this.next_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.next_button.Location = new System.Drawing.Point(327, 585);
+            this.next_button.Name = "next_button";
+            this.next_button.Size = new System.Drawing.Size(50, 38);
+            this.next_button.TabIndex = 78;
+            this.next_button.UseVisualStyleBackColor = false;
+            this.next_button.Click += new System.EventHandler(this.next_button_Click);
+            // 
+            // previous_button
+            // 
+            this.previous_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previous_button.Location = new System.Drawing.Point(531, 585);
+            this.previous_button.Name = "previous_button";
+            this.previous_button.Size = new System.Drawing.Size(50, 38);
+            this.previous_button.TabIndex = 77;
+            this.previous_button.UseVisualStyleBackColor = false;
+            this.previous_button.Click += new System.EventHandler(this.previous_button_Click);
+            // 
+            // save_button
+            // 
+            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.save_button.Location = new System.Drawing.Point(170, 584);
+            this.save_button.Name = "save_button";
+            this.save_button.Padding = new System.Windows.Forms.Padding(20, 0, 5, 0);
+            this.save_button.Size = new System.Drawing.Size(92, 38);
+            this.save_button.TabIndex = 70;
+            this.save_button.Text = "حفظ";
+            this.save_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.save_button.UseVisualStyleBackColor = true;
+            // 
+            // add_new_button
+            // 
+            this.add_new_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add_new_button.Location = new System.Drawing.Point(13, 584);
+            this.add_new_button.Name = "add_new_button";
+            this.add_new_button.Padding = new System.Windows.Forms.Padding(10, 0, 5, 0);
+            this.add_new_button.Size = new System.Drawing.Size(151, 39);
+            this.add_new_button.TabIndex = 69;
+            this.add_new_button.Text = "إضافة فاتورة جديدة";
+            this.add_new_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.add_new_button.UseVisualStyleBackColor = true;
+            this.add_new_button.Click += new System.EventHandler(this.add_new_button_Click);
             // 
             // salesInvoice
             // 
@@ -642,7 +662,6 @@ namespace sales_management.UI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "فاتورة مبيعات";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.salesInvoice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).EndInit();
             this.ResumeLayout(false);
@@ -704,5 +723,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button search_button;
         private System.Windows.Forms.ComboBox payment_condition;
         private System.Windows.Forms.Label current_invoice_page;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }

@@ -22,8 +22,7 @@ namespace sales_management.UI
         public salesInvoice()
         {
             InitializeComponent();
-             
-
+              
             // Head Sales Invoices 
             this.Sales_Table = Sales.Get_All_Sales_Invoices();
             this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
@@ -53,12 +52,18 @@ namespace sales_management.UI
             this.Set_Invoice_Row_Page_Index();
 
             //items_datagridview.Columns["product_code"].
-            items_datagridview.Columns[1].Width = 360;
+            items_datagridview.Columns[1].Width = 330;
+            items_datagridview.ColumnHeadersHeight = 40;
+            //items_datagridview.Columns["deletion_btn"].DisplayIndex = items_datagridview.Columns.Count - 1;
             //items_datagridview.Columns["unit_name"].ColumnName = "اسم الوحدة";
             //items_datagridview.Columns["quantity"].ColumnName = "الكميات";
             //items_datagridview.Columns["total_price"].ColumnName = "إجمالي السعر";
             //items_datagridview.Columns["unit_price"].ColumnName = "سعر الوحدة";
+
+            // Add Columns for icon to datagrid view 
+
         }
+    
 
         public void Set_Invoice_Row_Page_Index() {
 
@@ -128,14 +133,59 @@ namespace sales_management.UI
         }
 
         private DataTable Get_All_Invoice_Items( int invoiceId ) {
+            
+            DataTable table = new DataTable();
 
-            DataTable table = this.Sales_Details.AsEnumerable().Where(r => r.Field<int>("id") == 9 );
-            /*
-            var rows = dataTable.AsEnumerable().Where(r => r.Field<DateTime>("colDate").Day == 9
-           && r.Field<DateTime>("colDate").Month == 3);
-            */
+            // Copy Column From Main Table 
+            table.Columns.Add("id");
+            table.Columns.Add("doc_id");
+            table.Columns.Add("doc_type");
+            table.Columns.Add("product_id");
+            table.Columns.Add("product_name");
+            table.Columns.Add("unit_id");
+            table.Columns.Add("unit_name");
+            table.Columns.Add("unit_price");
+            table.Columns.Add("factor");
+            table.Columns.Add("quantity");
+            table.Columns.Add("total_quantity");
+            table.Columns.Add("datagrid_id");
+            table.Columns.Add("is_out");    
+            table.Columns.Add("product_code");    
+            table.Columns.Add("total_price");
+
+
+            table.Columns["product_code"].SetOrdinal(0);
+            table.Columns["product_name"].SetOrdinal(1);
+            table.Columns["unit_price"].SetOrdinal(2);
+            table.Columns["unit_name"].SetOrdinal(3);
+            table.Columns["quantity"].SetOrdinal(4);
+            table.Columns["total_price"].SetOrdinal(5);
+
+
+            table.Columns["product_code"].ColumnName = "كود الصنف";
+            table.Columns["product_name"].ColumnName = "الصنف";
+            table.Columns["unit_name"].ColumnName = "اسم الوحدة";
+            table.Columns["quantity"].ColumnName = "الكميات";
+            table.Columns["total_price"].ColumnName = "إجمالي السعر";
+            table.Columns["unit_price"].ColumnName = "سعر الوحدة";
+
+            DataRow rox;
+            foreach (DataRow row in this.Sales_Details.Rows) {
+
+                if (Convert.ToInt32(row["doc_id"]).Equals(invoiceId) ) {
+                    rox = table.NewRow();
+
+                    foreach (DataColumn col in this.Sales_Details.Columns) {
+                        rox[col] = row["col"]; 
+                    }
+
+                    table.Rows.Add(rox);
+                }
+
+            }
 
             return table;
+
         }
 
         private void first_record_button_Click(object sender, EventArgs e)
@@ -148,6 +198,7 @@ namespace sales_management.UI
             this.Fill_Invoice_Fields(rw);
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
+            
             items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
         }
 
@@ -160,7 +211,82 @@ namespace sales_management.UI
             this.Fill_Invoice_Fields(rw);
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
+            
+           items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
+        }
+
+        private void previous_button_Click(object sender, EventArgs e)
+        {
+            this.currentInvoiceRowIndex = (this.currentInvoiceRowIndex - 1);
+            if (this.currentInvoiceRowIndex < 0) {
+                this.currentInvoiceRowIndex = 0;
+            }
+
+            this.Set_Invoice_Row_Page_Index();
+
+            DataRow rw = this.Sales_Table.Rows[this.currentInvoiceRowIndex];
+            this.Fill_Invoice_Fields(rw);
+
+            int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
+
             items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
+        }
+
+        private void next_button_Click(object sender, EventArgs e)
+        {
+            this.currentInvoiceRowIndex = (this.currentInvoiceRowIndex + 1);
+            if (this.currentInvoiceRowIndex >= this.Sales_Table.Rows.Count) {
+                this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
+            }
+
+            this.Set_Invoice_Row_Page_Index();
+
+            DataRow rw = this.Sales_Table.Rows[this.currentInvoiceRowIndex];
+            this.Fill_Invoice_Fields(rw);
+
+            int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
+
+            items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
+        }
+
+        private void search_button_Click(object sender, EventArgs e)
+        {
+
+            if (invoice_serial.Text == "") {
+                return;
+            }
+
+            int id = Convert.ToInt32(invoice_serial.Text);
+            int index = 0;
+            foreach (DataRow row in this.Sales_Table.Rows) {
+                
+                if (Convert.ToInt32(row["serial"]).Equals(id)) {
+
+                    this.currentInvoiceRowIndex = index;
+
+                    this.Set_Invoice_Row_Page_Index();
+
+                    DataRow rw = this.Sales_Table.Rows[this.currentInvoiceRowIndex];
+                    this.Fill_Invoice_Fields(rw); 
+
+                    items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
+
+                    break;
+                }
+
+                index++;
+            }
+
+        }
+
+        private void invoice_serial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            {
+                e.Handled = true;
+            }
+            
         }
     }
 }

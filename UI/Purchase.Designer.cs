@@ -89,7 +89,7 @@
             this.invoice_detail_datagridview.MultiSelect = false;
             this.invoice_detail_datagridview.Name = "invoice_detail_datagridview";
             this.invoice_detail_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.invoice_detail_datagridview.RowTemplate.Height = 35;
+            this.invoice_detail_datagridview.RowTemplate.Height = 45;
             this.invoice_detail_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.invoice_detail_datagridview.Size = new System.Drawing.Size(911, 273);
             this.invoice_detail_datagridview.StandardTab = true;
