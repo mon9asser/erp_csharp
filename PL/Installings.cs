@@ -62,11 +62,20 @@ namespace sales_management.PL
 
         }
         
-        public void Update_Settings_System( int id, string name, string address, string vat_number, int vat_percentage, string vat_percentage_value, int product_barcode_type, bool enable_delete_invoices, bool enable_edit_invoices, bool show_address_in_invoice, int created_by_id, int update_by_id, DateTime mod_date, DateTime date_made, bool isEnabledVat) {
+        public void Update_Settings_System( int id, string name, string address, string vat_number, int vat_percentage, string vat_percentage_value, int product_barcode_type, bool enable_delete_invoices, bool enable_edit_invoices, bool show_address_in_invoice, int created_by_id, int update_by_id, DateTime mod_date, DateTime date_made, bool isEnabledVat, string sales_cash_acc_number, string sales_credit_acc_number, string sales_bank_acc_number, string vat_acc_number, string purchase_cash_acc_number, string purchase_credit_acc_number, string purchase_bank_acc_number,
+            string part_2_sales_cash_acc_number,
+            string part_2_sales_credit_acc_number,
+            string part_2_sales_bank_acc_number,
+            string part_2_purchase_cash_acc_number,
+            string part_2_purchase_credit_acc_number,
+            string part_2_purchase_bank_acc_number,
+            string product_cost_acc_number,
+            string inventory_acc_number
+            ) {
             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[15];
+            SqlParameter[] param = new SqlParameter[30];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -111,9 +120,54 @@ namespace sales_management.PL
             param[13].Value = date_made;
 
             param[14] = new SqlParameter("@is_enabled_vat", SqlDbType.Bit);
-            param[14].Value = isEnabledVat;
+            param[14].Value = isEnabledVat;     
 
-            
+            param[15] = new SqlParameter("@sales_cash_acc_number", SqlDbType.VarChar);
+            param[15].Value = sales_cash_acc_number;
+
+            param[16] = new SqlParameter("@sales_credit_acc_number", SqlDbType.VarChar);
+            param[16].Value = sales_credit_acc_number;
+
+            param[17] = new SqlParameter("@sales_bank_acc_number", SqlDbType.VarChar);
+            param[17].Value = sales_bank_acc_number;
+
+            param[18] = new SqlParameter("@vat_acc_number", SqlDbType.VarChar);
+            param[18].Value = vat_acc_number;
+
+            param[19] = new SqlParameter("@purchase_cash_acc_number", SqlDbType.VarChar);
+            param[19].Value = purchase_cash_acc_number;
+
+            param[20] = new SqlParameter("@purchase_credit_acc_number", SqlDbType.VarChar);
+            param[20].Value = purchase_credit_acc_number;
+
+            param[21] = new SqlParameter("@purchase_bank_acc_number", SqlDbType.VarChar);
+            param[21].Value = purchase_bank_acc_number;
+
+             
+            param[22] = new SqlParameter("@part_2_sales_cash_acc_number", SqlDbType.VarChar);
+            param[22].Value = part_2_sales_cash_acc_number;
+
+            param[23] = new SqlParameter("@part_2_sales_credit_acc_number", SqlDbType.VarChar);
+            param[23].Value = part_2_sales_credit_acc_number;
+
+            param[24] = new SqlParameter("@part_2_sales_bank_acc_number", SqlDbType.VarChar);
+            param[24].Value = part_2_sales_bank_acc_number;
+
+            param[25] = new SqlParameter("@part_2_purchase_cash_acc_number", SqlDbType.VarChar);
+            param[25].Value = part_2_purchase_cash_acc_number;
+
+            param[26] = new SqlParameter("@part_2_purchase_credit_acc_number", SqlDbType.VarChar);
+            param[26].Value = part_2_purchase_credit_acc_number;
+
+            param[27] = new SqlParameter("@part_2_purchase_bank_acc_number", SqlDbType.VarChar);
+            param[27].Value = part_2_purchase_bank_acc_number;
+
+            param[28] = new SqlParameter("@product_cost_acc_number", SqlDbType.VarChar);
+            param[28].Value = product_cost_acc_number;
+
+            param[29] = new SqlParameter("@inventory_acc_number", SqlDbType.VarChar);
+            param[29].Value = inventory_acc_number;
+
             Layer.Open();
             Layer.ExecuteCommand("Update_System_Settings", param);
             Layer.Close();

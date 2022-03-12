@@ -81,14 +81,33 @@ namespace sales_management.PL
             table.Columns["unit_name"].SetOrdinal(3);
             table.Columns["quantity"].SetOrdinal(4);
             table.Columns["total_price"].SetOrdinal(5);
+                          
+            DataRow emptyRow;
+            for (int i = 0; i < 15; i++)
+            {
 
+                emptyRow = table.NewRow();
+                foreach (DataColumn col in table.Columns)
+                {
 
-            table.Columns["product_code"].ColumnName = "كود الصنف";
-            table.Columns["product_name"].ColumnName = "الصنف";
-            table.Columns["unit_name"].ColumnName = "اسم الوحدة";
-            table.Columns["quantity"].ColumnName = "الكميات";
-            table.Columns["total_price"].ColumnName = "إجمالي السعر";
-            table.Columns["unit_price"].ColumnName = "سعر الوحدة";
+                    if (col.GetType().ToString() == "Int32") {
+                        emptyRow[col] = 0;
+                    }
+
+                    if (col.GetType().ToString() == "String")
+                    {
+                        emptyRow[col] = "";
+                    }
+
+                    if (col.ToString() == "datagrid_id")
+                    {
+                        emptyRow[col] = Guid.NewGuid().ToString();
+                    }
+
+                 }
+
+                table.Rows.Add(emptyRow);
+            }
 
             DAL.Close();
              

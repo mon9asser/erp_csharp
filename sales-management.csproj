@@ -73,6 +73,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Accounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts.Designer.cs">
+      <DependentUpon>Accounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AccTree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts.resx">
+      <DependentUpon>Accounts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AccTree.resx">
       <DependentUpon>AccTree.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,62 +266,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\8675160_ic_fluent_next_regular_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-last-1-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-first-1-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-sort-left-30.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-sort-right-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-rewind-30.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-fast-forward-30.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\play %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rewind-button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\play %282%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\play %281%291.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\last-16-left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\last-16-right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-add-new-30.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-save-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-save-all-30 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-search-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-delete-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-delete-161.png" />
+    <None Include="Resources\delete-16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

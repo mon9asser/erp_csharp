@@ -15,6 +15,7 @@ namespace sales_management.UI
 
         public static Items frm;
         public int DGRowIndex = -1;
+        public int doc_type = -1;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
@@ -75,8 +76,24 @@ namespace sales_management.UI
         {
             if (e.RowIndex == -1) return;
 
+            int rowIndex = e.RowIndex;
             int index = UI.Items.GetForm.DGRowIndex;
-            UI.Purchase.GetForm.Set_Datagrid_View(index, Convert.ToInt32(items_view_grids.Rows[e.RowIndex].Cells[0].Value));
+            if (index == -1) return;
+
+            // By document type 
+            switch (UI.Items.GetForm.doc_type)
+            {
+
+                // Sales Invoice
+                case 0:
+                    UI.salesInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
+
+                // Purchase Invoice 
+                case 1:
+                    UI.Purchase.GetForm.Set_Datagrid_View(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
+            }
 
             this.Close();
         }
@@ -87,13 +104,29 @@ namespace sales_management.UI
                 return;
             }
 
+            // Old Purchase Invoice 
             int rowIndex = items_view_grids.CurrentCell.OwningRow.Index;
-
             if (rowIndex == -1) return;
 
             int index = UI.Items.GetForm.DGRowIndex;
-            UI.Purchase.GetForm.Set_Datagrid_View(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+            if (index == -1) return;
 
+             
+            // By document type 
+            switch (UI.Items.GetForm.doc_type) {
+
+                // Sales Invoice
+                case 0:
+                    UI.salesInvoice.GetForm.Add_Item_To_Row( index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
+
+                // Purchase Invoice 
+                case 1:
+                    UI.Purchase.GetForm.Set_Datagrid_View(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
+            }
+
+             
             this.Close();
 
         }

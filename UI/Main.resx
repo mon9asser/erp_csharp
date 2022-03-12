@@ -122,37 +122,37 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="تسجيلالدخولToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="تسجيلالدخولToolStripMenuItem.Text" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
   <data name="إعداداتالنظامToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="إعداداتالنظامToolStripMenuItem.Text" xml:space="preserve">
     <value>إعدادات النظام</value>
   </data>
   <data name="شجرةالحساباToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="شجرةالحساباToolStripMenuItem.Text" xml:space="preserve">
     <value>شجرة الحسابات</value>
   </data>
   <data name="نسخةإحتياطيةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="نسخةإحتياطيةToolStripMenuItem.Text" xml:space="preserve">
     <value>نسخة إحتياطية</value>
   </data>
   <data name="تسجيلالخروجToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="تسجيلالخروجToolStripMenuItem.Text" xml:space="preserve">
     <value>تسجيل الخروج</value>
   </data>
   <data name="إغــــلاقToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="إغــــلاقToolStripMenuItem.Text" xml:space="preserve">
     <value>إغــــلاق</value>

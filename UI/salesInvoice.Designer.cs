@@ -55,7 +55,7 @@ namespace sales_management.UI
             this.label10 = new System.Windows.Forms.Label();
             this.discount_not_more_than = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.total_without_vat = new System.Windows.Forms.TextBox();
+            this.total_without_vat_field = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.price_includ_vat = new System.Windows.Forms.CheckBox();
             this.vat_amount = new System.Windows.Forms.TextBox();
@@ -72,18 +72,18 @@ namespace sales_management.UI
             this.print = new System.Windows.Forms.Button();
             this.print_and_save_button = new System.Windows.Forms.Button();
             this.edit_button = new System.Windows.Forms.Button();
-            this.delete_button = new System.Windows.Forms.Button();
-            this.total = new System.Windows.Forms.TextBox();
+            this.total_field_text = new System.Windows.Forms.TextBox();
             this.search_button = new System.Windows.Forms.Button();
             this.payment_condition = new System.Windows.Forms.ComboBox();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.first_record_button = new System.Windows.Forms.Button();
             this.last_record_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
             this.previous_button = new System.Windows.Forms.Button();
             this.save_button = new System.Windows.Forms.Button();
             this.add_new_button = new System.Windows.Forms.Button();
+            this.first_record_button = new System.Windows.Forms.Button();
+            this.delete_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,6 +141,7 @@ namespace sales_management.UI
             this.payment_methods.Name = "payment_methods";
             this.payment_methods.Size = new System.Drawing.Size(200, 21);
             this.payment_methods.TabIndex = 34;
+            this.payment_methods.SelectedIndexChanged += new System.EventHandler(this.payment_methods_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -181,17 +182,25 @@ namespace sales_management.UI
             // 
             this.legend_name.Location = new System.Drawing.Point(886, 58);
             this.legend_name.Name = "legend_name";
+            this.legend_name.ReadOnly = true;
             this.legend_name.Size = new System.Drawing.Size(117, 20);
             this.legend_name.TabIndex = 38;
+            this.legend_name.MouseClick += new System.Windows.Forms.MouseEventHandler(this.legend_name_MouseClick);
+            this.legend_name.TextChanged += new System.EventHandler(this.legend_name_TextChanged);
             // 
             // items_datagridview
             // 
+            this.items_datagridview.AllowUserToAddRows = false;
+            this.items_datagridview.AllowUserToDeleteRows = false;
+            this.items_datagridview.AllowUserToResizeColumns = false;
+            this.items_datagridview.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Location = new System.Drawing.Point(13, 134);
+            this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -207,9 +216,17 @@ namespace sales_management.UI
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.items_datagridview.Size = new System.Drawing.Size(993, 294);
             this.items_datagridview.TabIndex = 39;
+            this.items_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellContentClick);
+            this.items_datagridview.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.items_datagridview_CellMouseClick);
+            this.items_datagridview.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellMouseEnter);
+            this.items_datagridview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellValueChanged);
+            this.items_datagridview.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.items_datagridview_EditingControlShowing);
+            this.items_datagridview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.items_datagridview_RowsAdded);
+            this.items_datagridview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.items_datagridview_KeyDown);
             // 
             // customer_name
             // 
+            this.customer_name.Enabled = false;
             this.customer_name.Location = new System.Drawing.Point(786, 21);
             this.customer_name.Name = "customer_name";
             this.customer_name.Size = new System.Drawing.Size(217, 20);
@@ -259,7 +276,7 @@ namespace sales_management.UI
             // 
             // discount_value
             // 
-            this.discount_value.Location = new System.Drawing.Point(72, 497);
+            this.discount_value.Location = new System.Drawing.Point(71, 493);
             this.discount_value.Name = "discount_value";
             this.discount_value.Size = new System.Drawing.Size(124, 20);
             this.discount_value.TabIndex = 49;
@@ -267,7 +284,7 @@ namespace sales_management.UI
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 501);
+            this.label9.Location = new System.Drawing.Point(17, 497);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 48;
@@ -275,7 +292,7 @@ namespace sales_management.UI
             // 
             // dicount_percentage
             // 
-            this.dicount_percentage.Location = new System.Drawing.Point(268, 497);
+            this.dicount_percentage.Location = new System.Drawing.Point(267, 493);
             this.dicount_percentage.Name = "dicount_percentage";
             this.dicount_percentage.Size = new System.Drawing.Size(75, 20);
             this.dicount_percentage.TabIndex = 51;
@@ -283,7 +300,7 @@ namespace sales_management.UI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(223, 500);
+            this.label10.Location = new System.Drawing.Point(222, 496);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 50;
@@ -291,7 +308,7 @@ namespace sales_management.UI
             // 
             // discount_not_more_than
             // 
-            this.discount_not_more_than.Location = new System.Drawing.Point(115, 536);
+            this.discount_not_more_than.Location = new System.Drawing.Point(115, 532);
             this.discount_not_more_than.Name = "discount_not_more_than";
             this.discount_not_more_than.Size = new System.Drawing.Size(228, 20);
             this.discount_not_more_than.TabIndex = 53;
@@ -299,18 +316,18 @@ namespace sales_management.UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 539);
+            this.label11.Location = new System.Drawing.Point(17, 535);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 52;
             this.label11.Text = "الخصم لا يزيد عن :";
             // 
-            // total_without_vat
+            // total_without_vat_field
             // 
-            this.total_without_vat.Location = new System.Drawing.Point(532, 458);
-            this.total_without_vat.Name = "total_without_vat";
-            this.total_without_vat.Size = new System.Drawing.Size(98, 20);
-            this.total_without_vat.TabIndex = 55;
+            this.total_without_vat_field.Location = new System.Drawing.Point(532, 458);
+            this.total_without_vat_field.Name = "total_without_vat_field";
+            this.total_without_vat_field.Size = new System.Drawing.Size(98, 20);
+            this.total_without_vat_field.TabIndex = 55;
             // 
             // label12
             // 
@@ -326,7 +343,7 @@ namespace sales_management.UI
             this.price_includ_vat.AutoSize = true;
             this.price_includ_vat.Checked = true;
             this.price_includ_vat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.price_includ_vat.Location = new System.Drawing.Point(433, 498);
+            this.price_includ_vat.Location = new System.Drawing.Point(432, 494);
             this.price_includ_vat.Name = "price_includ_vat";
             this.price_includ_vat.Size = new System.Drawing.Size(129, 17);
             this.price_includ_vat.TabIndex = 56;
@@ -335,7 +352,7 @@ namespace sales_management.UI
             // 
             // vat_amount
             // 
-            this.vat_amount.Location = new System.Drawing.Point(511, 535);
+            this.vat_amount.Location = new System.Drawing.Point(511, 531);
             this.vat_amount.Name = "vat_amount";
             this.vat_amount.Size = new System.Drawing.Size(123, 20);
             this.vat_amount.TabIndex = 58;
@@ -343,7 +360,7 @@ namespace sales_management.UI
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(430, 536);
+            this.label13.Location = new System.Drawing.Point(430, 532);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 13);
             this.label13.TabIndex = 57;
@@ -390,8 +407,11 @@ namespace sales_management.UI
             // 
             this.legend_number.Location = new System.Drawing.Point(822, 58);
             this.legend_number.Name = "legend_number";
+            this.legend_number.ReadOnly = true;
             this.legend_number.Size = new System.Drawing.Size(58, 20);
             this.legend_number.TabIndex = 64;
+            this.legend_number.MouseClick += new System.Windows.Forms.MouseEventHandler(this.legend_name_MouseClick);
+            this.legend_number.TextChanged += new System.EventHandler(this.legend_number_TextChanged);
             // 
             // cost_center_number
             // 
@@ -457,24 +477,13 @@ namespace sales_management.UI
             this.edit_button.Text = "تعديل";
             this.edit_button.UseVisualStyleBackColor = true;
             // 
-            // delete_button
+            // total_field_text
             // 
-            this.delete_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delete_button.Location = new System.Drawing.Point(939, 584);
-            this.delete_button.Name = "delete_button";
-            this.delete_button.Size = new System.Drawing.Size(64, 39);
-            this.delete_button.TabIndex = 74;
-            this.delete_button.Text = "حذف";
-            this.delete_button.UseVisualStyleBackColor = true;
-            // 
-            // total
-            // 
-            this.total.Location = new System.Drawing.Point(827, 451);
-            this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(27, 20);
-            this.total.TabIndex = 75;
-            this.total.Visible = false;
+            this.total_field_text.Location = new System.Drawing.Point(827, 451);
+            this.total_field_text.Name = "total_field_text";
+            this.total_field_text.Size = new System.Drawing.Size(27, 20);
+            this.total_field_text.TabIndex = 75;
+            this.total_field_text.Visible = false;
             // 
             // search_button
             // 
@@ -494,14 +503,14 @@ namespace sales_management.UI
             this.payment_condition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.payment_condition.FormattingEnabled = true;
             this.payment_condition.Items.AddRange(new object[] {
-            "نقدي",
-            "أجل",
-            "شبكة ",
-            "تحويل بنكي"});
+            "الدفع بعد 15 يوم",
+            "الدفع بعد 30 يوم ",
+            "الدفع بعد شهر ونصف"});
             this.payment_condition.Location = new System.Drawing.Point(440, 93);
             this.payment_condition.Name = "payment_condition";
             this.payment_condition.Size = new System.Drawing.Size(219, 21);
             this.payment_condition.TabIndex = 82;
+            this.payment_condition.SelectedIndexChanged += new System.EventHandler(this.payment_condition_SelectedIndexChanged);
             // 
             // current_invoice_page
             // 
@@ -509,26 +518,14 @@ namespace sales_management.UI
             this.current_invoice_page.Font = new System.Drawing.Font("Tahoma", 16F);
             this.current_invoice_page.Location = new System.Drawing.Point(418, 591);
             this.current_invoice_page.Name = "current_invoice_page";
-            this.current_invoice_page.Size = new System.Drawing.Size(70, 27);
+            this.current_invoice_page.Size = new System.Drawing.Size(82, 27);
             this.current_invoice_page.TabIndex = 83;
-            this.current_invoice_page.Text = "10 / 1";
+            this.current_invoice_page.Text = "00 / 00";
             this.current_invoice_page.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // first_record_button
-            // 
-            this.first_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.first_record_button.Location = new System.Drawing.Point(271, 585);
-            this.first_record_button.Name = "first_record_button";
-            this.first_record_button.Size = new System.Drawing.Size(50, 38);
-            this.first_record_button.TabIndex = 80;
-            this.first_record_button.UseVisualStyleBackColor = false;
-            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
             // 
             // last_record_button
             // 
@@ -595,6 +592,30 @@ namespace sales_management.UI
             this.add_new_button.UseVisualStyleBackColor = true;
             this.add_new_button.Click += new System.EventHandler(this.add_new_button_Click);
             // 
+            // first_record_button
+            // 
+            this.first_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.first_record_button.Location = new System.Drawing.Point(271, 585);
+            this.first_record_button.Name = "first_record_button";
+            this.first_record_button.Size = new System.Drawing.Size(50, 38);
+            this.first_record_button.TabIndex = 80;
+            this.first_record_button.UseVisualStyleBackColor = false;
+            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
+            // 
+            // delete_button
+            // 
+            this.delete_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delete_button.Image = global::sales_management.Properties.Resources.delete_16;
+            this.delete_button.Location = new System.Drawing.Point(939, 584);
+            this.delete_button.Name = "delete_button";
+            this.delete_button.Size = new System.Drawing.Size(64, 39);
+            this.delete_button.TabIndex = 74;
+            this.delete_button.Text = "حذف";
+            this.delete_button.UseVisualStyleBackColor = true;
+            // 
             // salesInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,7 +629,7 @@ namespace sales_management.UI
             this.Controls.Add(this.last_record_button);
             this.Controls.Add(this.next_button);
             this.Controls.Add(this.previous_button);
-            this.Controls.Add(this.total);
+            this.Controls.Add(this.total_field_text);
             this.Controls.Add(this.delete_button);
             this.Controls.Add(this.edit_button);
             this.Controls.Add(this.print_and_save_button);
@@ -627,7 +648,7 @@ namespace sales_management.UI
             this.Controls.Add(this.vat_amount);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.price_includ_vat);
-            this.Controls.Add(this.total_without_vat);
+            this.Controls.Add(this.total_without_vat_field);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.discount_not_more_than);
             this.Controls.Add(this.label11);
@@ -681,11 +702,9 @@ namespace sales_management.UI
         private System.Windows.Forms.TextBox details;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox legend_name;
         private System.Windows.Forms.DataGridView items_datagridview;
         private System.Windows.Forms.TextBox customer_name;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox legend_id;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox net_total;
         private System.Windows.Forms.Label label8;
@@ -695,7 +714,7 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox discount_not_more_than;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox total_without_vat;
+        private System.Windows.Forms.TextBox total_without_vat_field;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox price_includ_vat;
         private System.Windows.Forms.TextBox vat_amount;
@@ -704,7 +723,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Label total_label_text;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox legend_number;
         private System.Windows.Forms.TextBox cost_center_number;
         private System.Windows.Forms.TextBox cost_center_name;
         private System.Windows.Forms.Label label17;
@@ -715,7 +733,7 @@ namespace sales_management.UI
         private System.Windows.Forms.Button print_and_save_button;
         private System.Windows.Forms.Button edit_button;
         private System.Windows.Forms.Button delete_button;
-        private System.Windows.Forms.TextBox total;
+        private System.Windows.Forms.TextBox total_field_text;
         private System.Windows.Forms.Button last_record_button;
         private System.Windows.Forms.Button next_button;
         private System.Windows.Forms.Button previous_button;
@@ -724,5 +742,8 @@ namespace sales_management.UI
         private System.Windows.Forms.ComboBox payment_condition;
         private System.Windows.Forms.Label current_invoice_page;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        public System.Windows.Forms.TextBox legend_name;
+        public System.Windows.Forms.TextBox legend_number;
+        public System.Windows.Forms.TextBox legend_id;
     }
 }
