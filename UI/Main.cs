@@ -173,8 +173,7 @@ namespace sales_management.UI
 
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.salesInvoice sales = new UI.salesInvoice();
-            sales.Show();
+            UI.salesInvoice.GetForm.Show();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace sales_management.UI
     {
         PL.Sales Sales = new PL.Sales();
         PL.Products products = new PL.Products();
+        PL.doc_items docs = new PL.doc_items();
 
         DataTable Sales_Table;
         DataTable Sales_Details;
@@ -24,6 +25,7 @@ namespace sales_management.UI
         DataTable Prods;
         DataTable unitName;
 
+        bool is_getting_data = true;
         public int documentType = 0; // Sales Invoice
         public int currentInvoiceRowIndex = -1;
 
@@ -78,6 +80,9 @@ namespace sales_management.UI
             }
 
             int id = this.Sales_Table.Rows.Count != 0 ? Convert.ToInt32(this.Sales_Table.Rows[this.Sales_Table.Rows.Count - 1]["id"]) : -1;
+            
+            /* doc_type, invoiceId,  */
+
             items_datagridview.DataSource = Sales.Get_Sales_Invoice_Items(0, id);
             
             //table.Columns["product_code"].Count;
@@ -93,14 +98,14 @@ namespace sales_management.UI
 
             // Load Current Invoice Index 
             this.Set_Invoice_Row_Page_Index();
-
+             
             items_datagridview.Columns["product_code"].HeaderText = "كود الصنف";
             items_datagridview.Columns["product_name"].HeaderText = "الصنف";
             items_datagridview.Columns["unit_name"].HeaderText = "اسم الوحدة";
             items_datagridview.Columns["quantity"].HeaderText = "الكميات";
             items_datagridview.Columns["total_price"].HeaderText = "إجمالي السعر";
             items_datagridview.Columns["unit_price"].HeaderText = "سعر الوحدة";
-
+             
             items_datagridview.Columns["product_name"].ReadOnly = true;
 
             items_datagridview.Columns[1].Width = 330;
@@ -108,7 +113,11 @@ namespace sales_management.UI
 
             // Add Button To Remove The Item From invoice 
             this.Load_deletion_icon_in_datagridview();
+            this.disable_elements();
+        }
 
+        public void load_data_grid_view_items() { 
+            
         }
 
         public DataTable Load_All_Products_Codes() {
@@ -164,14 +173,14 @@ namespace sales_management.UI
         public void Load_deletion_icon_in_datagridview() { 
 
             DataGridViewImageColumn deletionImage = new DataGridViewImageColumn();
-            deletionImage.Image = Properties.Resources.delete_16;
+            
             deletionImage.ImageLayout = DataGridViewImageCellLayout.NotSet;
             deletionImage.Name = "deletion_button";
             deletionImage.HeaderText = "حذف";
             this.items_datagridview.Columns.Add(deletionImage);
-
-            foreach (DataGridViewRow row in this.items_datagridview.Rows) {
-                row.Cells["deletion_button"].Value = Properties.Resources.delete_16;
+             
+            foreach (DataGridViewRow row in this.items_datagridview.Rows) { 
+                row.Cells["deletion_button"].Value = Properties.Resources.first_btn;//Properties.Resources.delete_16;
             }
 
         }
@@ -186,6 +195,8 @@ namespace sales_management.UI
              
             
             DataGridViewRow row = items_datagridview.Rows[index];
+
+            
 
             if (row.Cells["product_name"].Value.ToString() == "") {
                return;
@@ -255,18 +266,8 @@ namespace sales_management.UI
 
         private void add_new_button_Click(object sender, EventArgs e)
         {
+            
 
-            int id = -1;
-            if (invoice_id.Text != "") {
-                id = Convert.ToInt32(invoice_id.Text);
-            }
-
-            // Create New Invoice ID 
-            DataTable table = Sales.Create_Sales_Invoice_Id(id);
-
-            if ( table.Rows.Count > 0) {
-                this.Fill_Invoice_Fields(table.Rows[0] );
-            }
         }
 
         
@@ -397,7 +398,7 @@ namespace sales_management.UI
         }
 
 
-        private DataTable Get_All_Invoice_Items(int invoiceId)
+        private DataTable Get_All_Invoice_Items(int invoiceId  )
         {
 
             DataTable table = new DataTable();
@@ -417,24 +418,23 @@ namespace sales_management.UI
             table.Columns.Add("datagrid_id");
             table.Columns.Add("is_out");
             table.Columns.Add("product_code");
-            table.Columns.Add("total_price"); 
-
+            table.Columns.Add("total_price");
 
             table.Columns["product_code"].SetOrdinal(0);
             table.Columns["product_name"].SetOrdinal(1);
             table.Columns["unit_price"].SetOrdinal(2);
             table.Columns["unit_name"].SetOrdinal(3);
             table.Columns["quantity"].SetOrdinal(4);
-            table.Columns["total_price"].SetOrdinal(5); 
+            table.Columns["total_price"].SetOrdinal(5);
 
-
+            /*
             table.Columns["product_code"].ColumnName = "كود الصنف";
             table.Columns["product_name"].ColumnName = "الصنف";
             table.Columns["unit_name"].ColumnName = "اسم الوحدة";
             table.Columns["quantity"].ColumnName = "الكميات";
             table.Columns["total_price"].ColumnName = "إجمالي السعر";
-            table.Columns["unit_price"].ColumnName = "سعر الوحدة"; 
-
+            table.Columns["unit_price"].ColumnName = "سعر الوحدة";
+            */
             DataRow rox;
 
             foreach (DataRow row in this.Sales_Details.Rows)
@@ -446,7 +446,7 @@ namespace sales_management.UI
 
                     foreach (DataColumn col in this.Sales_Details.Columns)
                     {
-                        rox[col] = row["col"];
+                        rox[col.ToString()] = row[col.ToString()];
                     }
 
                     table.Rows.Add(rox);
@@ -484,6 +484,19 @@ namespace sales_management.UI
 
         }
 
+        public void refill_datagridview( int id, DataGridView griddatatable ) {
+
+            // Datasource of table 
+            DataTable tabl = this.Get_All_Invoice_Items(id);
+            griddatatable.DataSource = tabl;
+
+            items_datagridview.Columns[0].DisplayIndex = items_datagridview.Columns.Count - 1;
+            // Datagridview Re-Organiztion
+            items_datagridview.Columns[2].Width = 330;
+            items_datagridview.ColumnHeadersHeight = 40;
+
+        }
+        
         private void first_record_button_Click(object sender, EventArgs e)
         {
             this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
@@ -494,9 +507,10 @@ namespace sales_management.UI
             this.Fill_Invoice_Fields(rw);
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
-            
-            items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
-             
+
+            this.refill_datagridview(id, items_datagridview);
+
+           
         }
 
         private void last_record_button_Click(object sender, EventArgs e)
@@ -508,9 +522,9 @@ namespace sales_management.UI
             this.Fill_Invoice_Fields(rw);
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
-            
-           items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
-             
+
+            this.refill_datagridview(id, items_datagridview);
+
         }
 
         private void previous_button_Click(object sender, EventArgs e)
@@ -527,8 +541,8 @@ namespace sales_management.UI
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
-            items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
-        
+            this.refill_datagridview(id, items_datagridview);
+
         }
 
         private void next_button_Click(object sender, EventArgs e)
@@ -545,8 +559,8 @@ namespace sales_management.UI
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
-            items_datagridview.DataSource = this.Get_All_Invoice_Items(id);
-            
+            this.refill_datagridview(id, items_datagridview);
+
         }
 
         private void search_button_Click(object sender, EventArgs e)
@@ -701,6 +715,10 @@ namespace sales_management.UI
 
         private void legend_name_MouseClick(object sender, MouseEventArgs e)
         {
+            if (legend_name.Enabled == false) {
+                return;    
+            }
+
             UI.Accounts accounts = new UI.Accounts();
             accounts.InstanceType = 1;
             accounts.ShowDialog();
@@ -895,11 +913,7 @@ namespace sales_management.UI
                 }
 
             }
-
-            MessageBox.Show(iindex.ToString());
-
             
-
             DataGridViewRow drow = items_datagridview.Rows[iindex];
             drow.Cells["id"].Value = rowId.ToString();
             drow.Cells["doc_id"].Value = invoice_id.Text.ToString();
@@ -912,7 +926,7 @@ namespace sales_management.UI
             drow.Cells["factor"].Value = unit_factor;
             drow.Cells["is_out"].Value = 1;
             drow.Cells["product_code"].Value = item["code"].ToString(); ;
-
+            
             //drow.Cells["datagrid_id"].Value = "xxxxxxxxxxxxxxx";
             //drow.Cells["total_quantity"].Value = "xxxxxxxxxxxxxxx";
             //drow.Cells["total_price"].Value = "xxxxxxxxxxxxxxx";
@@ -978,26 +992,28 @@ namespace sales_management.UI
         }
         public void Fill_Total_Fields() {
 
-            decimal net = this.Calculate_Sub_Total();
-            decimal discount_val = discount_value.Text == "" ? 0 : Convert.ToDecimal(discount_value.Text);
-            decimal total_without_vat = net - discount_val;
-            if (price_includ_vat.Checked)
-            {
-                total_without_vat = total_without_vat - this.Extract_Vat(total_without_vat);
+            if (this.is_getting_data == false ) { 
+                decimal net = this.Calculate_Sub_Total();
+                decimal discount_val = discount_value.Text == "" ? 0 : Convert.ToDecimal(discount_value.Text);
+                decimal total_without_vat = net - discount_val;
+                if (price_includ_vat.Checked)
+                {
+                    total_without_vat = total_without_vat - this.Extract_Vat(total_without_vat);
+                }
+
+                // Net Total 
+                net_total.Text = net.ToString();
+
+                // Without Vat 
+                total_without_vat_field.Text = Math.Round(total_without_vat, 2).ToString();  
+
+                // Vat Value 
+                vat_amount.Text =  Math.Round(this.Get_Vat_Amount(), 2).ToString();
+
+                // Total Value 
+                total_field_text.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
+                total_label_text.Text = string.Format("{0:n}", Convert.ToDecimal(Math.Round(this.Calculate_Total_With_Vat(), 2) )).ToString();
             }
-
-            // Net Total 
-            net_total.Text = net.ToString();
-
-            // Without Vat 
-            total_without_vat_field.Text = Math.Round(total_without_vat, 2).ToString();  
-
-            // Vat Value 
-            vat_amount.Text =  Math.Round(this.Get_Vat_Amount(), 2).ToString();
-
-            // Total Value 
-            total_field_text.Text = Math.Round(this.Calculate_Total_With_Vat(), 2).ToString();
-            total_label_text.Text = string.Format("{0:n}", Convert.ToDecimal(Math.Round(this.Calculate_Total_With_Vat(), 2) )).ToString();   
         }
 
         private void items_datagridview_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1011,6 +1027,318 @@ namespace sales_management.UI
             if (e.ColumnIndex == 2)
             {
                 UI.Items.GetForm.ShowDialog();
+            }
+        }
+
+        private void discount_value_TextChanged(object sender, EventArgs e)
+        {
+            string value = discount_value.Text;
+            if (value == "") {
+                discount_value.Text = "";
+            }
+
+            if ( this.is_string(value)) {
+                discount_value.Text = "";
+            }
+             
+            this.Fill_Total_Fields();
+        }
+
+        public bool is_string( string value, bool allow_dots = true ) {
+
+            bool result = false;
+            
+            // Numeric
+            for (int i = 0; i < value.Length; i++) {
+                if (!char.IsNumber(value[i]) && value[i].ToString() != ".") {
+                    result = true;
+                    break;
+                }  
+            }
+
+            // Dot Value 
+            int dots = 0;
+            for (int i = 0; i < value.Length; i++)
+            {
+                if ( value[i].ToString() == ".")
+                {
+                    dots = dots + 1; 
+                }
+            }
+
+            if (dots > 1) {
+                result = true;
+            }
+
+
+            if (allow_dots == false && dots > 0) {
+                result = true;
+            }
+            
+            return result;
+        }
+
+        private decimal discount_percentage_value() {
+
+            decimal net_total = this.Calculate_Sub_Total();
+            decimal discount_val = dicount_percentage.Text == "" ? 0 : (net_total * Convert.ToDecimal(dicount_percentage.Text)) / 100;
+
+            if (discount_not_more_than.Text != "")
+            {
+
+                decimal not_more = Convert.ToDecimal(discount_not_more_than.Text);
+
+                if (discount_val >= not_more)
+                {
+                    discount_val = not_more;
+                }
+
+            }
+
+            return discount_val;
+        }
+
+        private void dicount_percentage_TextChanged(object sender, EventArgs e)
+        {
+            string value = dicount_percentage.Text;
+            if (value == "")
+            {
+                dicount_percentage.Text = "";
+            }
+
+            if (this.is_string(value, false ))
+            {
+                dicount_percentage.Text = "";
+            }
+
+
+
+            if (dicount_percentage.Text == "")
+            {
+                discount_value.Text = "";
+                return;
+            }
+
+            decimal discount_val = this.discount_percentage_value();
+
+            // new discount value
+            discount_value.Text = discount_val.ToString();
+        }
+
+        private void discount_not_more_than_TextChanged(object sender, EventArgs e)
+        {
+            string value = discount_not_more_than.Text;
+            if (value == "")
+            {
+                discount_not_more_than.Text = "";
+            }
+
+            if (this.is_string(value))
+            {
+                discount_not_more_than.Text = "";
+            }
+
+            decimal discount_val = this.discount_percentage_value();
+
+            // new discount value
+            discount_value.Text = discount_val.ToString();
+        }
+
+        private void price_includ_vat_CheckedChanged(object sender, EventArgs e)
+        {
+            this.Fill_Total_Fields();
+        }
+
+        private void save_button_Click(object sender, EventArgs e)
+        {
+
+
+            // Save Invoice Data
+            if (invoice_id.Text != "") {
+                
+                
+                if (customer_id.Text == "") {
+                    customer_id.Text = "-1";
+                }
+                 
+                Sales.Save_Updates_Invoice_Data(
+                    Convert.ToInt32(invoice_id.Text),
+                    Convert.ToInt32(payment_methods.SelectedIndex),
+                    Convert.ToInt32(payment_condition.SelectedIndex),
+                    Convert.ToInt32(customer_id.Text),
+                    Convert.ToInt32(legend_id.Text),
+                    Convert.ToInt32(legend_number.Text),
+                    -1,
+                    -1,
+                    legend_name.Text.ToString(),
+                    "",
+                    customer_name.Text.ToString(),
+                    details.Text.ToString(),
+                    net_total.Text.ToString(),
+                    discount_value.Text.ToString(),
+                    dicount_percentage.Text.ToString(),
+                    discount_not_more_than.Text.ToString(),
+                    total_without_vat_field.Text.ToString(),
+                    total_field_text.Text.ToString(),
+                    vat_amount.Text.ToString(),
+                    Convert.ToDateTime(datemade.Value),
+                    Convert.ToBoolean(price_includ_vat.Checked)
+                );
+
+                 
+                // Save All Invoice Items 
+                if (invoice_id.Text != "") { 
+                    foreach ( DataGridViewRow row in items_datagridview.Rows ) {
+
+                        // Product Name 
+                        string productName = "";
+                        if (row.Cells["product_name"].Value != System.DBNull.Value) {
+                            productName = row.Cells["product_name"].Value.ToString();
+                        }
+
+                        // Unit Name  
+                        if (productName != "") { 
+
+                            docs.Update_Document_Details(
+                                 Convert.ToInt32(invoice_id.Text),
+                                 Convert.ToInt32(this.documentType),
+                                 Convert.ToInt32(row.Cells["product_id"].Value),
+                                 Convert.ToInt32(row.Cells["unit_id"].Value),
+                                 true,
+                                 productName,
+                                 row.Cells["unit_name"].Value.ToString(),
+                                 row.Cells["unit_price"].Value.ToString(),
+                                 row.Cells["factor"].Value.ToString(),
+                                 row.Cells["quantity"].Value.ToString(),
+                                 row.Cells["total_quantity"].Value.ToString(),
+                                 row.Cells["datagrid_id"].Value.ToString(),
+                                 row.Cells["product_code"].Value.ToString(),
+                                 row.Cells["total_price"].Value.ToString()
+
+                            );
+
+                        }
+                    }
+                }
+
+                // Restore All Invoices In The Same Object 
+                this.Sales_Table = Sales.Get_All_Sales_Invoices();
+                this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
+                // Save Daily Entry 
+
+                // Disable Everything 
+                this.disable_elements(false);
+                this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
+                this.Set_Invoice_Row_Page_Index();
+            }
+
+
+
+
+            // To Allow Add New Invoice 
+            invoice_id.Text = "";
+
+            // Disable Fields And Elements To Read Only 
+
+        }
+
+        public void disable_elements(bool yes = false ) {
+            legend_name.Enabled = yes;
+            legend_number.Enabled = yes;
+            details.Enabled = yes;
+            datemade.Enabled = yes;
+            payment_methods.Enabled = yes;
+            items_datagridview.Enabled = yes;
+            net_total.Enabled = yes;
+            discount_value.Enabled = yes;
+            dicount_percentage.Enabled = yes;
+            discount_not_more_than.Enabled = yes;
+            total_without_vat_field.Enabled = yes;
+            price_includ_vat.Enabled = yes;
+            vat_amount.Enabled = yes;
+            total_field_text.Enabled = yes;
+            total_label_text.Enabled = yes;
+
+            // Buttons 
+            add_new_button.Enabled = !yes;
+            save_button.Enabled = yes;
+            first_record_button.Enabled = !yes;
+            next_button.Enabled = !yes;
+            previous_button.Enabled = !yes;
+            last_record_button.Enabled = !yes;
+            //print.Enabled = !yes;
+            print_and_save_button.Enabled = yes;
+            edit_button.Enabled = !yes;
+            delete_button.Enabled = !yes;
+        }
+
+        private void edit_button_Click(object sender, EventArgs e)
+        {
+            this.is_getting_data = false;
+        }
+
+        private void customer_name_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.is_getting_data = false;
+            
+            // An Invoice ID
+            int id = -1;
+            if (invoice_id.Text != "")
+            {
+                id = Convert.ToInt32(invoice_id.Text);
+            }
+
+            DataTable tbleItems = Sales.Get_Sales_Invoice_Items_details(0, id);
+            if (tbleItems.Rows.Count != 0)
+            {
+                id = -1;
+            }
+
+
+            // Enable Fields 
+            this.disable_elements(true);
+
+            // Clear Current Datagridview 
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+                foreach (DataGridViewColumn col in items_datagridview.Columns)
+                {
+
+                    if (col.Name.ToString() != "deletion_button")
+                    {
+
+                        if (col.Name.ToString() == "datagrid_id")
+                        {
+                            row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
+                        }
+                        else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                        {
+                            row.Cells[col.Name.ToString()].Value = 0;
+                        }
+                        else if (col.Name.ToString() == "is_out")
+                        {
+                            row.Cells[col.Name.ToString()].Value = true;
+                        }
+                        else
+                        {
+                            row.Cells[col.Name.ToString()].Value = "";
+                        }
+
+                    }
+                }
+            }
+
+            // Create New Invoice ID 
+            DataTable table = Sales.Create_Sales_Invoice_Id(id);
+
+            if (table.Rows.Count > 0)
+            {
+                this.Fill_Invoice_Fields(table.Rows[0]);
             }
         }
     }

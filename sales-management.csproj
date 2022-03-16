@@ -60,6 +60,7 @@
     <Compile Include="DB\Config.cs" />
     <Compile Include="DB\DataAccessLayer.cs" />
     <Compile Include="PL\AccountingTree.cs" />
+    <Compile Include="PL\doc_items.cs" />
     <Compile Include="PL\Installings.cs" />
     <Compile Include="PL\Invoice.cs" />
     <Compile Include="PL\Journals.cs" />
@@ -266,9 +267,38 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\add-new.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete-16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prev-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-update-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-update-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

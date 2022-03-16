@@ -61,7 +61,6 @@ namespace sales_management.UI
             this.vat_amount = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.customer_id = new System.Windows.Forms.TextBox();
-            this.total_label_text = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.legend_number = new System.Windows.Forms.TextBox();
@@ -69,29 +68,30 @@ namespace sales_management.UI
             this.cost_center_name = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cost_center_id = new System.Windows.Forms.TextBox();
-            this.print = new System.Windows.Forms.Button();
             this.print_and_save_button = new System.Windows.Forms.Button();
-            this.edit_button = new System.Windows.Forms.Button();
             this.total_field_text = new System.Windows.Forms.TextBox();
             this.search_button = new System.Windows.Forms.Button();
             this.payment_condition = new System.Windows.Forms.ComboBox();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.total_label_text = new System.Windows.Forms.Label();
+            this.add_new_button = new System.Windows.Forms.Button();
+            this.first_record_button = new System.Windows.Forms.Button();
             this.last_record_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
             this.previous_button = new System.Windows.Forms.Button();
-            this.save_button = new System.Windows.Forms.Button();
-            this.add_new_button = new System.Windows.Forms.Button();
-            this.first_record_button = new System.Windows.Forms.Button();
             this.delete_button = new System.Windows.Forms.Button();
+            this.edit_button = new System.Windows.Forms.Button();
+            this.print = new System.Windows.Forms.Button();
+            this.save_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
             // invoice_serial
             // 
-            this.invoice_serial.Location = new System.Drawing.Point(91, 22);
+            this.invoice_serial.Location = new System.Drawing.Point(111, 22);
             this.invoice_serial.Name = "invoice_serial";
-            this.invoice_serial.Size = new System.Drawing.Size(151, 20);
+            this.invoice_serial.Size = new System.Drawing.Size(336, 20);
             this.invoice_serial.TabIndex = 31;
             this.invoice_serial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.invoice_serial_KeyPress);
             // 
@@ -115,14 +115,14 @@ namespace sales_management.UI
             // 
             // datemade
             // 
-            this.datemade.Location = new System.Drawing.Point(91, 63);
+            this.datemade.Location = new System.Drawing.Point(111, 60);
             this.datemade.Name = "datemade";
-            this.datemade.Size = new System.Drawing.Size(200, 20);
+            this.datemade.Size = new System.Drawing.Size(385, 20);
             this.datemade.TabIndex = 28;
             // 
             // invoice_id
             // 
-            this.invoice_id.Location = new System.Drawing.Point(3, 22);
+            this.invoice_id.Location = new System.Drawing.Point(502, 22);
             this.invoice_id.Name = "invoice_id";
             this.invoice_id.Size = new System.Drawing.Size(19, 20);
             this.invoice_id.TabIndex = 32;
@@ -137,9 +137,9 @@ namespace sales_management.UI
             "أجل",
             "شبكة ",
             "تحويل بنكي"});
-            this.payment_methods.Location = new System.Drawing.Point(91, 96);
+            this.payment_methods.Location = new System.Drawing.Point(111, 96);
             this.payment_methods.Name = "payment_methods";
-            this.payment_methods.Size = new System.Drawing.Size(200, 21);
+            this.payment_methods.Size = new System.Drawing.Size(385, 21);
             this.payment_methods.TabIndex = 34;
             this.payment_methods.SelectedIndexChanged += new System.EventHandler(this.payment_methods_SelectedIndexChanged);
             // 
@@ -154,16 +154,16 @@ namespace sales_management.UI
             // 
             // details
             // 
-            this.details.Location = new System.Drawing.Point(418, 22);
+            this.details.Location = new System.Drawing.Point(658, 55);
             this.details.Multiline = true;
             this.details.Name = "details";
-            this.details.Size = new System.Drawing.Size(241, 56);
+            this.details.Size = new System.Drawing.Size(348, 56);
             this.details.TabIndex = 36;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(374, 24);
+            this.label3.Location = new System.Drawing.Point(614, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 35;
@@ -172,7 +172,7 @@ namespace sales_management.UI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(735, 60);
+            this.label5.Location = new System.Drawing.Point(614, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 37;
@@ -180,10 +180,10 @@ namespace sales_management.UI
             // 
             // legend_name
             // 
-            this.legend_name.Location = new System.Drawing.Point(886, 58);
+            this.legend_name.Location = new System.Drawing.Point(808, 23);
             this.legend_name.Name = "legend_name";
             this.legend_name.ReadOnly = true;
-            this.legend_name.Size = new System.Drawing.Size(117, 20);
+            this.legend_name.Size = new System.Drawing.Size(198, 20);
             this.legend_name.TabIndex = 38;
             this.legend_name.MouseClick += new System.Windows.Forms.MouseEventHandler(this.legend_name_MouseClick);
             this.legend_name.TextChanged += new System.EventHandler(this.legend_name_TextChanged);
@@ -199,7 +199,7 @@ namespace sales_management.UI
             this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.items_datagridview.Location = new System.Drawing.Point(13, 134);
+            this.items_datagridview.Location = new System.Drawing.Point(20, 153);
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -227,23 +227,26 @@ namespace sales_management.UI
             // customer_name
             // 
             this.customer_name.Enabled = false;
-            this.customer_name.Location = new System.Drawing.Point(786, 21);
+            this.customer_name.Location = new System.Drawing.Point(91, 182);
             this.customer_name.Name = "customer_name";
             this.customer_name.Size = new System.Drawing.Size(217, 20);
             this.customer_name.TabIndex = 41;
+            this.customer_name.Visible = false;
+            this.customer_name.Click += new System.EventHandler(this.customer_name_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(735, 24);
+            this.label6.Location = new System.Drawing.Point(40, 185);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 40;
             this.label6.Text = "العميل :";
+            this.label6.Visible = false;
             // 
             // legend_id
             // 
-            this.legend_id.Location = new System.Drawing.Point(716, 58);
+            this.legend_id.Location = new System.Drawing.Point(725, 23);
             this.legend_id.Name = "legend_id";
             this.legend_id.Size = new System.Drawing.Size(13, 20);
             this.legend_id.TabIndex = 42;
@@ -252,11 +255,12 @@ namespace sales_management.UI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(371, 96);
+            this.label7.Location = new System.Drawing.Point(20, 220);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 43;
             this.label7.Text = "شرط الدفع :";
+            this.label7.Visible = false;
             // 
             // net_total
             // 
@@ -280,6 +284,7 @@ namespace sales_management.UI
             this.discount_value.Name = "discount_value";
             this.discount_value.Size = new System.Drawing.Size(124, 20);
             this.discount_value.TabIndex = 49;
+            this.discount_value.TextChanged += new System.EventHandler(this.discount_value_TextChanged);
             // 
             // label9
             // 
@@ -296,6 +301,7 @@ namespace sales_management.UI
             this.dicount_percentage.Name = "dicount_percentage";
             this.dicount_percentage.Size = new System.Drawing.Size(75, 20);
             this.dicount_percentage.TabIndex = 51;
+            this.dicount_percentage.TextChanged += new System.EventHandler(this.dicount_percentage_TextChanged);
             // 
             // label10
             // 
@@ -312,6 +318,7 @@ namespace sales_management.UI
             this.discount_not_more_than.Name = "discount_not_more_than";
             this.discount_not_more_than.Size = new System.Drawing.Size(228, 20);
             this.discount_not_more_than.TabIndex = 53;
+            this.discount_not_more_than.TextChanged += new System.EventHandler(this.discount_not_more_than_TextChanged);
             // 
             // label11
             // 
@@ -349,6 +356,7 @@ namespace sales_management.UI
             this.price_includ_vat.TabIndex = 56;
             this.price_includ_vat.Text = "الأسعار شاملة الضريبة";
             this.price_includ_vat.UseVisualStyleBackColor = true;
+            this.price_includ_vat.CheckedChanged += new System.EventHandler(this.price_includ_vat_CheckedChanged);
             // 
             // vat_amount
             // 
@@ -368,27 +376,16 @@ namespace sales_management.UI
             // 
             // customer_id
             // 
-            this.customer_id.Location = new System.Drawing.Point(716, 21);
+            this.customer_id.Location = new System.Drawing.Point(21, 182);
             this.customer_id.Name = "customer_id";
             this.customer_id.Size = new System.Drawing.Size(13, 20);
             this.customer_id.TabIndex = 59;
             this.customer_id.Visible = false;
             // 
-            // total_label_text
-            // 
-            this.total_label_text.AutoSize = true;
-            this.total_label_text.Font = new System.Drawing.Font("Tahoma", 35F);
-            this.total_label_text.Location = new System.Drawing.Point(749, 474);
-            this.total_label_text.Name = "total_label_text";
-            this.total_label_text.Size = new System.Drawing.Size(143, 57);
-            this.total_label_text.TabIndex = 60;
-            this.total_label_text.Text = "00.00";
-            this.total_label_text.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(766, 539);
+            this.label15.Location = new System.Drawing.Point(699, 535);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(113, 13);
             this.label15.TabIndex = 61;
@@ -397,7 +394,7 @@ namespace sales_management.UI
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(766, 454);
+            this.label16.Location = new System.Drawing.Point(699, 450);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(55, 13);
             this.label16.TabIndex = 62;
@@ -405,7 +402,7 @@ namespace sales_management.UI
             // 
             // legend_number
             // 
-            this.legend_number.Location = new System.Drawing.Point(822, 58);
+            this.legend_number.Location = new System.Drawing.Point(744, 23);
             this.legend_number.Name = "legend_number";
             this.legend_number.ReadOnly = true;
             this.legend_number.Size = new System.Drawing.Size(58, 20);
@@ -415,45 +412,37 @@ namespace sales_management.UI
             // 
             // cost_center_number
             // 
-            this.cost_center_number.Location = new System.Drawing.Point(822, 93);
+            this.cost_center_number.Location = new System.Drawing.Point(127, 147);
             this.cost_center_number.Name = "cost_center_number";
             this.cost_center_number.Size = new System.Drawing.Size(58, 20);
             this.cost_center_number.TabIndex = 67;
+            this.cost_center_number.Visible = false;
             // 
             // cost_center_name
             // 
-            this.cost_center_name.Location = new System.Drawing.Point(886, 93);
+            this.cost_center_name.Location = new System.Drawing.Point(191, 147);
             this.cost_center_name.Name = "cost_center_name";
             this.cost_center_name.Size = new System.Drawing.Size(117, 20);
             this.cost_center_name.TabIndex = 66;
+            this.cost_center_name.Visible = false;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(735, 95);
+            this.label17.Location = new System.Drawing.Point(40, 149);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(70, 13);
             this.label17.TabIndex = 65;
             this.label17.Text = "مركز التكلفة :";
+            this.label17.Visible = false;
             // 
             // cost_center_id
             // 
-            this.cost_center_id.Location = new System.Drawing.Point(716, 92);
+            this.cost_center_id.Location = new System.Drawing.Point(21, 146);
             this.cost_center_id.Name = "cost_center_id";
             this.cost_center_id.Size = new System.Drawing.Size(13, 20);
             this.cost_center_id.TabIndex = 68;
             this.cost_center_id.Visible = false;
-            // 
-            // print
-            // 
-            this.print.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.print.Location = new System.Drawing.Point(651, 584);
-            this.print.Name = "print";
-            this.print.Size = new System.Drawing.Size(73, 39);
-            this.print.TabIndex = 71;
-            this.print.Text = "طباعة";
-            this.print.UseVisualStyleBackColor = true;
             // 
             // print_and_save_button
             // 
@@ -466,20 +455,9 @@ namespace sales_management.UI
             this.print_and_save_button.Text = "حفظ و طباعه";
             this.print_and_save_button.UseVisualStyleBackColor = true;
             // 
-            // edit_button
-            // 
-            this.edit_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.edit_button.Location = new System.Drawing.Point(861, 584);
-            this.edit_button.Name = "edit_button";
-            this.edit_button.Size = new System.Drawing.Size(72, 39);
-            this.edit_button.TabIndex = 73;
-            this.edit_button.Text = "تعديل";
-            this.edit_button.UseVisualStyleBackColor = true;
-            // 
             // total_field_text
             // 
-            this.total_field_text.Location = new System.Drawing.Point(827, 451);
+            this.total_field_text.Location = new System.Drawing.Point(760, 447);
             this.total_field_text.Name = "total_field_text";
             this.total_field_text.Size = new System.Drawing.Size(27, 20);
             this.total_field_text.TabIndex = 75;
@@ -490,7 +468,7 @@ namespace sales_management.UI
             this.search_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.search_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Location = new System.Drawing.Point(248, 17);
+            this.search_button.Location = new System.Drawing.Point(453, 17);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(43, 29);
             this.search_button.TabIndex = 81;
@@ -506,17 +484,18 @@ namespace sales_management.UI
             "الدفع بعد 15 يوم",
             "الدفع بعد 30 يوم ",
             "الدفع بعد شهر ونصف"});
-            this.payment_condition.Location = new System.Drawing.Point(440, 93);
+            this.payment_condition.Location = new System.Drawing.Point(89, 217);
             this.payment_condition.Name = "payment_condition";
             this.payment_condition.Size = new System.Drawing.Size(219, 21);
             this.payment_condition.TabIndex = 82;
+            this.payment_condition.Visible = false;
             this.payment_condition.SelectedIndexChanged += new System.EventHandler(this.payment_condition_SelectedIndexChanged);
             // 
             // current_invoice_page
             // 
             this.current_invoice_page.AutoSize = true;
             this.current_invoice_page.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.current_invoice_page.Location = new System.Drawing.Point(418, 591);
+            this.current_invoice_page.Location = new System.Drawing.Point(416, 590);
             this.current_invoice_page.Name = "current_invoice_page";
             this.current_invoice_page.Size = new System.Drawing.Size(82, 27);
             this.current_invoice_page.TabIndex = 83;
@@ -527,12 +506,52 @@ namespace sales_management.UI
             // 
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // total_label_text
+            // 
+            this.total_label_text.AutoSize = true;
+            this.total_label_text.Font = new System.Drawing.Font("Tahoma", 35F);
+            this.total_label_text.Location = new System.Drawing.Point(679, 475);
+            this.total_label_text.Name = "total_label_text";
+            this.total_label_text.Size = new System.Drawing.Size(143, 57);
+            this.total_label_text.TabIndex = 85;
+            this.total_label_text.Text = "00.00";
+            // 
+            // add_new_button
+            // 
+            this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new_button.Image = global::sales_management.Properties.Resources.add_new;
+            this.add_new_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.add_new_button.Location = new System.Drawing.Point(11, 585);
+            this.add_new_button.Name = "add_new_button";
+            this.add_new_button.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.add_new_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.add_new_button.Size = new System.Drawing.Size(152, 39);
+            this.add_new_button.TabIndex = 86;
+            this.add_new_button.Text = "إضافة فاتورة جديدة";
+            this.add_new_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add_new_button.UseVisualStyleBackColor = true;
+            this.add_new_button.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // first_record_button
+            // 
+            this.first_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.first_record_button.Image = global::sales_management.Properties.Resources.last_btn;
+            this.first_record_button.Location = new System.Drawing.Point(304, 585);
+            this.first_record_button.Name = "first_record_button";
+            this.first_record_button.Size = new System.Drawing.Size(50, 38);
+            this.first_record_button.TabIndex = 80;
+            this.first_record_button.UseVisualStyleBackColor = false;
+            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
+            // 
             // last_record_button
             // 
             this.last_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.last_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.last_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.last_record_button.Location = new System.Drawing.Point(587, 585);
+            this.last_record_button.Image = global::sales_management.Properties.Resources.first_btn;
+            this.last_record_button.Location = new System.Drawing.Point(566, 585);
             this.last_record_button.Name = "last_record_button";
             this.last_record_button.Size = new System.Drawing.Size(50, 38);
             this.last_record_button.TabIndex = 79;
@@ -544,7 +563,8 @@ namespace sales_management.UI
             this.next_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.next_button.Location = new System.Drawing.Point(327, 585);
+            this.next_button.Image = global::sales_management.Properties.Resources.next_btn;
+            this.next_button.Location = new System.Drawing.Point(360, 585);
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(50, 38);
             this.next_button.TabIndex = 78;
@@ -556,65 +576,71 @@ namespace sales_management.UI
             this.previous_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previous_button.Location = new System.Drawing.Point(531, 585);
+            this.previous_button.Image = global::sales_management.Properties.Resources.prev_btn;
+            this.previous_button.Location = new System.Drawing.Point(510, 585);
             this.previous_button.Name = "previous_button";
             this.previous_button.Size = new System.Drawing.Size(50, 38);
             this.previous_button.TabIndex = 77;
             this.previous_button.UseVisualStyleBackColor = false;
             this.previous_button.Click += new System.EventHandler(this.previous_button_Click);
             // 
-            // save_button
-            // 
-            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(170, 584);
-            this.save_button.Name = "save_button";
-            this.save_button.Padding = new System.Windows.Forms.Padding(20, 0, 5, 0);
-            this.save_button.Size = new System.Drawing.Size(92, 38);
-            this.save_button.TabIndex = 70;
-            this.save_button.Text = "حفظ";
-            this.save_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.save_button.UseVisualStyleBackColor = true;
-            // 
-            // add_new_button
-            // 
-            this.add_new_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.add_new_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_new_button.Location = new System.Drawing.Point(13, 584);
-            this.add_new_button.Name = "add_new_button";
-            this.add_new_button.Padding = new System.Windows.Forms.Padding(10, 0, 5, 0);
-            this.add_new_button.Size = new System.Drawing.Size(151, 39);
-            this.add_new_button.TabIndex = 69;
-            this.add_new_button.Text = "إضافة فاتورة جديدة";
-            this.add_new_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new_button.UseVisualStyleBackColor = true;
-            this.add_new_button.Click += new System.EventHandler(this.add_new_button_Click);
-            // 
-            // first_record_button
-            // 
-            this.first_record_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.first_record_button.Location = new System.Drawing.Point(271, 585);
-            this.first_record_button.Name = "first_record_button";
-            this.first_record_button.Size = new System.Drawing.Size(50, 38);
-            this.first_record_button.TabIndex = 80;
-            this.first_record_button.UseVisualStyleBackColor = false;
-            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
-            // 
             // delete_button
             // 
             this.delete_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delete_button.Image = global::sales_management.Properties.Resources.delete_16;
+            this.delete_button.Image = global::sales_management.Properties.Resources.icons8_delete_20;
+            this.delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.delete_button.Location = new System.Drawing.Point(939, 584);
             this.delete_button.Name = "delete_button";
+            this.delete_button.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.delete_button.Size = new System.Drawing.Size(64, 39);
             this.delete_button.TabIndex = 74;
             this.delete_button.Text = "حذف";
+            this.delete_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.delete_button.UseVisualStyleBackColor = true;
+            // 
+            // edit_button
+            // 
+            this.edit_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.edit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edit_button.Image = global::sales_management.Properties.Resources.icons8_update_20;
+            this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.edit_button.Location = new System.Drawing.Point(861, 584);
+            this.edit_button.Name = "edit_button";
+            this.edit_button.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.edit_button.Size = new System.Drawing.Size(72, 39);
+            this.edit_button.TabIndex = 73;
+            this.edit_button.Text = "تعديل";
+            this.edit_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.edit_button.UseVisualStyleBackColor = true;
+            this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
+            // 
+            // print
+            // 
+            this.print.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.print.Image = global::sales_management.Properties.Resources.print_btn;
+            this.print.Location = new System.Drawing.Point(651, 584);
+            this.print.Name = "print";
+            this.print.Size = new System.Drawing.Size(73, 39);
+            this.print.TabIndex = 71;
+            this.print.UseVisualStyleBackColor = true;
+            // 
+            // save_button
+            // 
+            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.save_button.Image = global::sales_management.Properties.Resources.save_data;
+            this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.save_button.Location = new System.Drawing.Point(169, 585);
+            this.save_button.Name = "save_button";
+            this.save_button.Padding = new System.Windows.Forms.Padding(20, 0, 5, 0);
+            this.save_button.Size = new System.Drawing.Size(92, 38);
+            this.save_button.TabIndex = 70;
+            this.save_button.Text = " حفظ";
+            this.save_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.save_button.UseVisualStyleBackColor = true;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
             // salesInvoice
             // 
@@ -622,6 +648,8 @@ namespace sales_management.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1018, 634);
+            this.Controls.Add(this.add_new_button);
+            this.Controls.Add(this.total_label_text);
             this.Controls.Add(this.current_invoice_page);
             this.Controls.Add(this.payment_condition);
             this.Controls.Add(this.search_button);
@@ -635,7 +663,6 @@ namespace sales_management.UI
             this.Controls.Add(this.print_and_save_button);
             this.Controls.Add(this.print);
             this.Controls.Add(this.save_button);
-            this.Controls.Add(this.add_new_button);
             this.Controls.Add(this.cost_center_id);
             this.Controls.Add(this.cost_center_number);
             this.Controls.Add(this.cost_center_name);
@@ -643,7 +670,6 @@ namespace sales_management.UI
             this.Controls.Add(this.legend_number);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.total_label_text);
             this.Controls.Add(this.customer_id);
             this.Controls.Add(this.vat_amount);
             this.Controls.Add(this.label13);
@@ -691,59 +717,58 @@ namespace sales_management.UI
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox invoice_serial;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker datemade;
         private System.Windows.Forms.TextBox invoice_id;
-        private System.Windows.Forms.ComboBox payment_methods;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox details;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView items_datagridview;
-        private System.Windows.Forms.TextBox customer_name;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox net_total;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox discount_value;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox dicount_percentage;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox discount_not_more_than;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox total_without_vat_field;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckBox price_includ_vat;
-        private System.Windows.Forms.TextBox vat_amount;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox customer_id;
-        private System.Windows.Forms.Label total_label_text;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox cost_center_number;
-        private System.Windows.Forms.TextBox cost_center_name;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox cost_center_id;
-        private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button print;
         private System.Windows.Forms.Button print_and_save_button;
         private System.Windows.Forms.Button edit_button;
         private System.Windows.Forms.Button delete_button;
-        private System.Windows.Forms.TextBox total_field_text;
         private System.Windows.Forms.Button last_record_button;
         private System.Windows.Forms.Button next_button;
         private System.Windows.Forms.Button previous_button;
         private System.Windows.Forms.Button first_record_button;
-        private System.Windows.Forms.Button search_button;
-        private System.Windows.Forms.ComboBox payment_condition;
         private System.Windows.Forms.Label current_invoice_page;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         public System.Windows.Forms.TextBox legend_name;
         public System.Windows.Forms.TextBox legend_number;
         public System.Windows.Forms.TextBox legend_id;
+        public System.Windows.Forms.TextBox invoice_serial;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.DateTimePicker datemade;
+        public System.Windows.Forms.ComboBox payment_methods;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox details;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.DataGridView items_datagridview;
+        public System.Windows.Forms.TextBox customer_name;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox net_total;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox discount_value;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox dicount_percentage;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.TextBox discount_not_more_than;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.TextBox total_without_vat_field;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.CheckBox price_includ_vat;
+        public System.Windows.Forms.TextBox vat_amount;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox customer_id;
+        public System.Windows.Forms.Label label16;
+        public System.Windows.Forms.TextBox cost_center_number;
+        public System.Windows.Forms.TextBox cost_center_name;
+        public System.Windows.Forms.Label label17;
+        public System.Windows.Forms.TextBox cost_center_id;
+        public System.Windows.Forms.TextBox total_field_text;
+        public System.Windows.Forms.Button search_button;
+        public System.Windows.Forms.ComboBox payment_condition;
+        private System.Windows.Forms.Label total_label_text;
+        private System.Windows.Forms.Button add_new_button;
     }
 }
