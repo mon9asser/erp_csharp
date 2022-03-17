@@ -116,3 +116,5 @@ D:\sales-app\obj\Debug\sales_management.UI.Items.resources
 D:\sales-app\obj\Debug\sales_management.UI.Price.resources
 D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.Accounts.resources
+D:\sales-app\obj\Debug\sales_management.UI.AddCustomer.resources
+D:\sales-app\obj\Debug\sales_management.UI.Client.resources

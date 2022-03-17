@@ -12,9 +12,12 @@ namespace sales_management.UI
 {
     public partial class Price : Form
     {
-        
-        public int DGRowIndex = -1;
+
+
         public int invoiceType = -1;
+
+        
+
         public static Price frm;
         PL.Products prod = new PL.Products();
 
@@ -39,6 +42,9 @@ namespace sales_management.UI
             }
         }
 
+        public int DGRowIndex;
+        public int doc_type;
+
         public Price()
         {
             InitializeComponent();
@@ -47,25 +53,23 @@ namespace sales_management.UI
             {
                 frm = this;
             }
-
-
-            this.DGRowIndex = UI.Purchase.GetForm.lastRow;
-            this.invoiceType = UI.Purchase.GetForm.InvoiceType;
-
-            if (this.DGRowIndex == -1 ) return;
+    
+            int id = -1;
             
-            var idString = UI.Purchase.GetForm.invoice_detail_datagridview.Rows[this.DGRowIndex].Cells["product_id"].Value;
-            if( System.DBNull.Value == idString )
-            {
-                return;
+            switch (UI.Price.GetForm.doc_type) {
+                
+                // Sales Invoice
+                case 0:
+                    this.DGRowIndex = UI.salesInvoice.GetForm.lastRow;
+                    id = Convert.ToInt32(UI.salesInvoice.GetForm.items_datagridview.Rows[this.DGRowIndex].Cells["product_id"].Value);
+                    break;
+                    
+                // Purchase Invoice
             }
-            
-            if (Convert.ToInt32(idString) == -1) return;
 
-            int id = Convert.ToInt32(UI.Purchase.GetForm.invoice_detail_datagridview.Rows[this.DGRowIndex].Cells["product_id"].Value);
-
-            
-            this.load_prices( id, invoiceType );
+             
+            if(id != -1) 
+                this.load_prices( id, UI.Price.GetForm.doc_type);
             
         }
 
@@ -86,6 +90,7 @@ namespace sales_management.UI
             table.Columns.Add("unit_shortcut");
             table.Columns.Add("price");
             table.Columns.Add("factor");
+            table.Columns.Add("code");
 
             DataRow row = table.NewRow();
             if (invoiceType == 1 || invoiceType == 2)
@@ -103,13 +108,15 @@ namespace sales_management.UI
 
                 row["price"] = product.Rows[0]["purchase_price"].ToString();
                 row["factor"] = 1;
-                 
+                row["code"] = product.Rows[0]["code"].ToString();
+
+
                 if ( Convert.ToDecimal(product.Rows[0]["purchase_price"]) != 0)
                     table.Rows.Add(row);
-
+                 
 
                 // Fill Groups 
-                 
+
                 for ( int i =1; i<= 6; i++ )
                 {
                     DataRow rowx = table.NewRow();
@@ -126,6 +133,7 @@ namespace sales_management.UI
 
                     rowx["price"] = product.Rows[0]["gr" + i + "_purchase_price"].ToString();
                     rowx["factor"] = product.Rows[0]["gr" + i + "_transform"].ToString();
+                    rowx["code"] = product.Rows[0]["gr" + i + "_barcode"].ToString();
 
                     if (  Convert.ToInt32(product.Rows[0]["gr" + i + "_purchase_price"]) != 0 && Convert.ToInt32(product.Rows[0]["gr" + i + "_transform"]) != 0)
                         table.Rows.Add(rowx);
@@ -150,6 +158,8 @@ namespace sales_management.UI
 
                 row["price"] = product.Rows[0]["default_sale_price"].ToString();
                 row["factor"] = 1;
+                row["code"] = product.Rows[0]["code"].ToString();
+
                 if (  Convert.ToDecimal(product.Rows[0]["default_sale_price"]) != 0)
                     table.Rows.Add(row);
 
@@ -172,6 +182,8 @@ namespace sales_management.UI
 
                     rowx["price"] = product.Rows[0]["gr" + i + "_sale_price"].ToString();
                     rowx["factor"] = product.Rows[0]["gr" + i + "_transform"].ToString();
+                    rowx["code"] = product.Rows[0]["gr" + i + "_barcode"].ToString();
+                  
                     if ( Convert.ToDecimal(product.Rows[0]["gr" + i + "_sale_price"]) != 0 && Convert.ToInt32(product.Rows[0]["gr" + i + "_transform"]) != 0 )
                         table.Rows.Add(rowx);
 
@@ -184,23 +196,44 @@ namespace sales_management.UI
             datagridview_prices.Columns["unit_id"].Visible = false;
             datagridview_prices.Columns["unit_shortcut"].Visible = false;
             datagridview_prices.Columns["factor"].Visible = false;
+            datagridview_prices.Columns["code"].Visible = false;
 
             datagridview_prices.Columns["price"].HeaderText = "السعر";
             datagridview_prices.Columns["units"].HeaderText = "الأوزان والكميات";
             datagridview_prices.Columns["units"].Width = 200;
+            
         }
 
         private void datagridview_prices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
 
+
+            int index = UI.Price.GetForm.DGRowIndex;
+            int unit_id = Convert.ToInt32(datagridview_prices.Rows[e.RowIndex].Cells["unit_id"].Value);
+            string factor = datagridview_prices.Rows[e.RowIndex].Cells["factor"].Value.ToString();
+            string price = datagridview_prices.Rows[e.RowIndex].Cells["price"].Value.ToString();
+            string shortcut = datagridview_prices.Rows[e.RowIndex].Cells["unit_shortcut"].Value.ToString();
+            string code = datagridview_prices.Rows[e.RowIndex].Cells["code"].Value.ToString();
+             
+            switch (UI.Price.GetForm.doc_type)
+            {
+
+                // Sales Invoice
+                case 0:
+                    UI.salesInvoice.GetForm.change_price_field(unit_id, factor, price, shortcut, code);
+                    break;
+
+                // Purchase Invoice
+            }
+            /*
             int index = UI.Price.GetForm.DGRowIndex;
             int unit_id = Convert.ToInt32(datagridview_prices.Rows[e.RowIndex].Cells["unit_id"].Value);
             string factor =  datagridview_prices.Rows[e.RowIndex].Cells["factor"].Value.ToString();
             string price = datagridview_prices.Rows[e.RowIndex].Cells["price"].Value.ToString();
             string shortcut = datagridview_prices.Rows[e.RowIndex].Cells["unit_shortcut"].Value.ToString();
             UI.Purchase.GetForm.Set_Datagrid_View_New_Price(index, unit_id, factor, price, shortcut );
-
+            */
             this.Close();
         }
 
@@ -219,7 +252,20 @@ namespace sales_management.UI
             string factor = datagridview_prices.Rows[rowIndex].Cells["factor"].Value.ToString();
             string price = datagridview_prices.Rows[rowIndex].Cells["price"].Value.ToString();
             string shortcut = datagridview_prices.Rows[rowIndex].Cells["unit_shortcut"].Value.ToString();
-            UI.Purchase.GetForm.Set_Datagrid_View_New_Price(index, unit_id, factor, price, shortcut);
+            string code = datagridview_prices.Rows[rowIndex].Cells["code"].Value.ToString();
+
+            switch (UI.Price.GetForm.doc_type)
+            {
+
+                // Sales Invoice
+                case 0:
+                    UI.salesInvoice.GetForm.change_price_field(unit_id, factor, price, shortcut, code);
+                    break;
+
+                    // Purchase Invoice
+            }
+
+            //UI.Purchase.GetForm.Set_Datagrid_View_New_Price(index, unit_id, factor, price, shortcut);
 
             this.Close();
         }

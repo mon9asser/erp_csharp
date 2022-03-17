@@ -11,6 +11,27 @@ namespace sales_management.PL
     class doc_items
     {
 
+        public void delete_document_detail_by_datagrid_id( string datagrid_id, int doc_type, int doc_id )
+        {
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[3];
+
+            param[0] = new SqlParameter("@doc_type", SqlDbType.Int);
+            param[0].Value = doc_type;
+
+            param[1] = new SqlParameter("@grid_id", SqlDbType.VarChar);
+            param[1].Value = datagrid_id;
+
+            param[2] = new SqlParameter("@doc_id", SqlDbType.Int);
+            param[2].Value = doc_id;
+
+            DAL.Open();
+            DAL.ExecuteCommand("Delete_Document_Item", param );
+            DAL.Close();
+
+        }
+        
         public void Update_Document_Details(
 
                 int doc_id,

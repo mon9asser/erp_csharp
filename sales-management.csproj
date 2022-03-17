@@ -86,6 +86,12 @@
     <Compile Include="UI\AccTree.Designer.cs">
       <DependentUpon>AccTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AddSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="UI\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\DefaultData.cs">
       <SubType>Form</SubType>
@@ -199,6 +211,9 @@
     <EmbeddedResource Include="UI\AccTree.resx">
       <DependentUpon>AccTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AddSupplier.resx">
       <DependentUpon>AddSupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DefaultData.resx">
       <DependentUpon>DefaultData.cs</DependentUpon>

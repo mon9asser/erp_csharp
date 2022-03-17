@@ -10,27 +10,26 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class Supplier : Form
+    public partial class Client : Form
     {
 
         DataTable resoueceTable;
-
-
-        public static Supplier frm;
+        public static Client frm;
+        public int doc_type = -1;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
 
-        public static Supplier GetForm
+        public static Client GetForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new Supplier();
+                    frm = new Client();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -39,9 +38,11 @@ namespace sales_management.UI
             }
         }
 
-        public Supplier()
+
+        public Client()
         {
             InitializeComponent();
+
             
             if (frm == null)
             {
@@ -50,15 +51,16 @@ namespace sales_management.UI
 
             this.Read_All_resources();
         }
-         
 
-        public void Read_All_resources( bool isDisable = false ) {
+        public void Read_All_resources(bool isDisable = false)
+        {
 
             PL.Resources Sup = new PL.Resources();
 
-            suppliers_datagridview.DataSource = Sup.Get_All_Resource_Data( 0 );
+            suppliers_datagridview.DataSource = Sup.Get_All_Resource_Data(1);
 
-            if (isDisable == false ) { 
+            if (isDisable == false)
+            {
 
                 suppliers_datagridview.EnableHeadersVisualStyles = true;
                 suppliers_datagridview.ColumnHeadersHeight = 35;
@@ -71,15 +73,15 @@ namespace sales_management.UI
                 suppliers_datagridview.Columns[8].Visible = false;
 
 
-                suppliers_datagridview.Columns[1].HeaderText = "كـود المورد";
-                suppliers_datagridview.Columns[3].HeaderText = "إسم المورد";
+                suppliers_datagridview.Columns[1].HeaderText = "كـود العميل";
+                suppliers_datagridview.Columns[3].HeaderText = "إسم العميل";
                 suppliers_datagridview.Columns[4].HeaderText = "الهاتف";
                 suppliers_datagridview.Columns[9].HeaderText = "الرقم الضريبي";
                 suppliers_datagridview.Columns[10].HeaderText = "إسم المنشأة";
 
                 suppliers_datagridview.Columns[3].Width = 150;
                 suppliers_datagridview.Columns[10].Width = 180;
-             
+
                 // Add Update Button 
                 DataGridViewButtonColumn edit_btn = new DataGridViewButtonColumn();
                 edit_btn.HeaderText = "تحديث";
@@ -96,32 +98,30 @@ namespace sales_management.UI
             }
         }
 
-       
-
         private void button1_Click(object sender, EventArgs e)
         {
-            
             PL.Resources Resource = new PL.Resources();
-            this.resoueceTable = Resource.Create_Resource_Id(0);
-            UI.AddSupplier.GetForm.Set_Data_Of_Suppliers(this.resoueceTable );
-            UI.AddSupplier.GetForm.ShowDialog();
-
+            this.resoueceTable = Resource.Create_Resource_Id(1);
+            UI.AddCustomer.GetForm.Set_Data_Of_Suppliers(this.resoueceTable);
+            UI.AddCustomer.GetForm.ShowDialog();
         }
 
         private void suppliers_datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&  e.RowIndex >= 0)
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                
+
                 // Edit and update
-                if (e.ColumnIndex == 0) {
-                    
-                    if ( e.RowIndex >= 0 ) {
+                if (e.ColumnIndex == 0)
+                {
+
+                    if (e.RowIndex >= 0)
+                    {
 
                         DataTable table = new DataTable();
                         DataRow row = null;
-                      
+
 
                         table.Columns.Add("resource_name");
                         table.Columns.Add("resource_phone");
@@ -145,21 +145,53 @@ namespace sales_management.UI
                         table.Rows.Add(row);
 
 
-                        UI.AddSupplier.GetForm.Set_Data_Of_Suppliers(table);
-                        UI.AddSupplier.GetForm.ShowDialog();
+                        UI.AddCustomer.GetForm.Set_Data_Of_Suppliers(table);
+                        UI.AddCustomer.GetForm.ShowDialog();
                     }
                 }
 
                 // Delete 
-                if (e.ColumnIndex == 1) {
+                if (e.ColumnIndex == 1)
+                {
 
                     PL.Resources Sup = new PL.Resources();
                     int id = Convert.ToInt32(suppliers_datagridview.Rows[e.RowIndex].Cells[2].Value);
-                    Sup.Delete_Resource_Data(id, 0);
+                    Sup.Delete_Resource_Data(id, 1);
                     suppliers_datagridview.Rows.RemoveAt(e.RowIndex);
                 }
 
             }
+        }
+
+        private void suppliers_datagridview_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (e.RowIndex == -1) {
+                return;
+            }
+
+              dasdasdsa
+            if (this.doc_type == -1) {
+                return;
+            }
+
+
+            string customerName = suppliers_datagridview.Rows[e.RowIndex].Cells["resource_name"].Value.ToString();
+            string customerId = suppliers_datagridview.Rows[e.RowIndex].Cells["id"].Value.ToString();
+            if (customerName == "") {
+                return; 
+            }
+
+            switch (this.doc_type) {
+                case 0:
+                    UI.salesInvoice.GetForm.customer_id.Text = customerId;
+                    UI.salesInvoice.GetForm.customer_name.Text = customerName;
+                    break;
+            }
+
+            this.doc_type = -1;
+            this.Close();
+
         }
     }
 }

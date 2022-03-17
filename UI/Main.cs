@@ -149,8 +149,7 @@ namespace sales_management.UI
         private void العملاءوالمناديبToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            UI.Customer.GetForm.Show();
-           
+            UI.Client.GetForm.Show();
 
         }
 

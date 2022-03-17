@@ -91,7 +91,7 @@ namespace sales_management.UI
             // 
             this.invoice_serial.Location = new System.Drawing.Point(111, 22);
             this.invoice_serial.Name = "invoice_serial";
-            this.invoice_serial.Size = new System.Drawing.Size(336, 20);
+            this.invoice_serial.Size = new System.Drawing.Size(250, 20);
             this.invoice_serial.TabIndex = 31;
             this.invoice_serial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.invoice_serial_KeyPress);
             // 
@@ -117,12 +117,12 @@ namespace sales_management.UI
             // 
             this.datemade.Location = new System.Drawing.Point(111, 60);
             this.datemade.Name = "datemade";
-            this.datemade.Size = new System.Drawing.Size(385, 20);
+            this.datemade.Size = new System.Drawing.Size(299, 20);
             this.datemade.TabIndex = 28;
             // 
             // invoice_id
             // 
-            this.invoice_id.Location = new System.Drawing.Point(502, 22);
+            this.invoice_id.Location = new System.Drawing.Point(418, 22);
             this.invoice_id.Name = "invoice_id";
             this.invoice_id.Size = new System.Drawing.Size(19, 20);
             this.invoice_id.TabIndex = 32;
@@ -139,7 +139,7 @@ namespace sales_management.UI
             "تحويل بنكي"});
             this.payment_methods.Location = new System.Drawing.Point(111, 96);
             this.payment_methods.Name = "payment_methods";
-            this.payment_methods.Size = new System.Drawing.Size(385, 21);
+            this.payment_methods.Size = new System.Drawing.Size(299, 21);
             this.payment_methods.TabIndex = 34;
             this.payment_methods.SelectedIndexChanged += new System.EventHandler(this.payment_methods_SelectedIndexChanged);
             // 
@@ -154,7 +154,7 @@ namespace sales_management.UI
             // 
             // details
             // 
-            this.details.Location = new System.Drawing.Point(658, 55);
+            this.details.Location = new System.Drawing.Point(658, 53);
             this.details.Multiline = true;
             this.details.Name = "details";
             this.details.Size = new System.Drawing.Size(348, 56);
@@ -163,7 +163,7 @@ namespace sales_management.UI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(614, 54);
+            this.label3.Location = new System.Drawing.Point(598, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 35;
@@ -172,7 +172,7 @@ namespace sales_management.UI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(614, 26);
+            this.label5.Location = new System.Drawing.Point(598, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 37;
@@ -180,10 +180,10 @@ namespace sales_management.UI
             // 
             // legend_name
             // 
-            this.legend_name.Location = new System.Drawing.Point(808, 23);
+            this.legend_name.Location = new System.Drawing.Point(766, 23);
             this.legend_name.Name = "legend_name";
             this.legend_name.ReadOnly = true;
-            this.legend_name.Size = new System.Drawing.Size(198, 20);
+            this.legend_name.Size = new System.Drawing.Size(240, 20);
             this.legend_name.TabIndex = 38;
             this.legend_name.MouseClick += new System.Windows.Forms.MouseEventHandler(this.legend_name_MouseClick);
             this.legend_name.TextChanged += new System.EventHandler(this.legend_name_TextChanged);
@@ -216,6 +216,7 @@ namespace sales_management.UI
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.items_datagridview.Size = new System.Drawing.Size(993, 294);
             this.items_datagridview.TabIndex = 39;
+            this.items_datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellClick);
             this.items_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellContentClick);
             this.items_datagridview.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.items_datagridview_CellMouseClick);
             this.items_datagridview.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellMouseEnter);
@@ -227,26 +228,26 @@ namespace sales_management.UI
             // customer_name
             // 
             this.customer_name.Enabled = false;
-            this.customer_name.Location = new System.Drawing.Point(91, 182);
+            this.customer_name.Location = new System.Drawing.Point(658, 117);
             this.customer_name.Name = "customer_name";
-            this.customer_name.Size = new System.Drawing.Size(217, 20);
+            this.customer_name.ReadOnly = true;
+            this.customer_name.Size = new System.Drawing.Size(348, 20);
             this.customer_name.TabIndex = 41;
-            this.customer_name.Visible = false;
             this.customer_name.Click += new System.EventHandler(this.customer_name_Click);
+            this.customer_name.MouseClick += new System.Windows.Forms.MouseEventHandler(this.customer_name_MouseClick);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(40, 185);
+            this.label6.Location = new System.Drawing.Point(598, 119);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 40;
             this.label6.Text = "العميل :";
-            this.label6.Visible = false;
             // 
             // legend_id
             // 
-            this.legend_id.Location = new System.Drawing.Point(725, 23);
+            this.legend_id.Location = new System.Drawing.Point(683, 23);
             this.legend_id.Name = "legend_id";
             this.legend_id.Size = new System.Drawing.Size(13, 20);
             this.legend_id.TabIndex = 42;
@@ -376,7 +377,7 @@ namespace sales_management.UI
             // 
             // customer_id
             // 
-            this.customer_id.Location = new System.Drawing.Point(21, 182);
+            this.customer_id.Location = new System.Drawing.Point(579, 118);
             this.customer_id.Name = "customer_id";
             this.customer_id.Size = new System.Drawing.Size(13, 20);
             this.customer_id.TabIndex = 59;
@@ -394,7 +395,7 @@ namespace sales_management.UI
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(699, 450);
+            this.label16.Location = new System.Drawing.Point(699, 455);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(55, 13);
             this.label16.TabIndex = 62;
@@ -402,7 +403,7 @@ namespace sales_management.UI
             // 
             // legend_number
             // 
-            this.legend_number.Location = new System.Drawing.Point(744, 23);
+            this.legend_number.Location = new System.Drawing.Point(702, 23);
             this.legend_number.Name = "legend_number";
             this.legend_number.ReadOnly = true;
             this.legend_number.Size = new System.Drawing.Size(58, 20);
@@ -457,7 +458,7 @@ namespace sales_management.UI
             // 
             // total_field_text
             // 
-            this.total_field_text.Location = new System.Drawing.Point(760, 447);
+            this.total_field_text.Location = new System.Drawing.Point(760, 452);
             this.total_field_text.Name = "total_field_text";
             this.total_field_text.Size = new System.Drawing.Size(27, 20);
             this.total_field_text.TabIndex = 75;
@@ -468,7 +469,7 @@ namespace sales_management.UI
             this.search_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.search_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Location = new System.Drawing.Point(453, 17);
+            this.search_button.Location = new System.Drawing.Point(369, 17);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(43, 29);
             this.search_button.TabIndex = 81;

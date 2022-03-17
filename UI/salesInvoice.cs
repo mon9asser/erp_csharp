@@ -25,9 +25,12 @@ namespace sales_management.UI
         DataTable Prods;
         DataTable unitName;
 
-        bool is_getting_data = true;
+        public bool is_getting_data = true;
+        public bool is_updating_data = false;
+        public bool is_change_price = false;
         public int documentType = 0; // Sales Invoice
         public int currentInvoiceRowIndex = -1;
+        public int lastRow = -1;
 
         public static salesInvoice frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
@@ -110,6 +113,10 @@ namespace sales_management.UI
 
             items_datagridview.Columns[1].Width = 330;
             items_datagridview.ColumnHeadersHeight = 40;
+
+            items_datagridview.Columns["unit_price"].ReadOnly = true;
+            items_datagridview.Columns["total_price"].ReadOnly = true;
+            items_datagridview.Columns["unit_name"].ReadOnly = true;
 
             // Add Button To Remove The Item From invoice 
             this.Load_deletion_icon_in_datagridview();
@@ -715,13 +722,13 @@ namespace sales_management.UI
 
         private void legend_name_MouseClick(object sender, MouseEventArgs e)
         {
-            if (legend_name.Enabled == false) {
-                return;    
+            if (legend_name.Enabled == true) {
+                UI.Accounts accounts = new UI.Accounts();
+                accounts.InstanceType = 1;
+                accounts.ShowDialog();
             }
 
-            UI.Accounts accounts = new UI.Accounts();
-            accounts.InstanceType = 1;
-            accounts.ShowDialog();
+            
         }
 
         private void legend_number_TextChanged(object sender, EventArgs e)
@@ -741,18 +748,22 @@ namespace sales_management.UI
                 return; 
             }
 
+            
 
             UI.Items.GetForm.DGRowIndex = e.RowIndex;
             // Select Item By Code 
-            if (e.ColumnIndex == 1) {
-                
+            if (e.ColumnIndex == 1 && false == this.is_change_price) {
+                 
+
                 string item_code_value = items_datagridview.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 bool is_found = false;
+
                 
                 foreach (DataRow row in this.Codes.Rows) {
+                     
                     if (row["code"].ToString() == item_code_value.ToString()) {
                         is_found = true;
-
+                        
                         // Setup Item In Current Row 
                         items_datagridview.Rows[e.RowIndex].Cells["doc_id"].Value = invoice_id.Text.ToString();
                         items_datagridview.Rows[e.RowIndex].Cells["doc_type"].Value = this.documentType;
@@ -852,17 +863,32 @@ namespace sales_management.UI
             if (items_datagridview.CurrentCell.OwningRow.Index == -1) return;
 
             UI.Items.GetForm.DGRowIndex = items_datagridview.CurrentCell.OwningRow.Index;
+            UI.salesInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
+
             UI.Items.GetForm.doc_type = 0;
 
             if ( items_datagridview.CurrentCell.OwningColumn.Index == 2)
             {
                 UI.Items.GetForm.ShowDialog();
-            } 
+            }
+
+            if ( items_datagridview.CurrentCell.OwningColumn.Index == 3)
+            {   
+                
+                if (items_datagridview.Rows[items_datagridview.CurrentCell.OwningRow.Index].Cells["product_name"].Value.ToString() == "")
+                {
+                    return;
+                }
+
+                this.is_change_price = true;
+                UI.Price.GetForm.ShowDialog();
+            }
         }
 
         private void items_datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
+
         }
 
         public void Add_Item_To_Row(int iindex, int id, int rowId = -1 )
@@ -1019,15 +1045,42 @@ namespace sales_management.UI
         private void items_datagridview_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             
-            if (e.RowIndex == -1) return;
 
             UI.Items.GetForm.DGRowIndex = e.RowIndex;
+            this.lastRow =  e.RowIndex;
             UI.Items.GetForm.doc_type = 0;
+           
 
-            if (e.ColumnIndex == 2)
-            {
+            if (e.RowIndex == -1) return;
+
+            if (e.ColumnIndex == 2){
                 UI.Items.GetForm.ShowDialog();
             }
+
+            if (e.ColumnIndex == 3) {
+                if (items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString() == "")
+                {
+                    return;
+                }
+
+                this.is_change_price = true;
+                UI.Price.GetForm.ShowDialog();
+            }
+        }
+
+        public void change_price_field(int unit_id, string factor, string price, string shortcut, string code ) {
+            
+            if (UI.salesInvoice.GetForm.lastRow == -1) {
+                return;
+            }
+            
+            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["unit_id"].Value = Convert.ToInt32(unit_id);
+            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["factor"].Value = factor.ToString();
+            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["unit_price"].Value = price.ToString();
+            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["unit_name"].Value = shortcut.ToString();
+            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_code"].Value = code.ToString();
+
+            this.is_change_price = false;
         }
 
         private void discount_value_TextChanged(object sender, EventArgs e)
@@ -1228,8 +1281,14 @@ namespace sales_management.UI
 
                 // Disable Everything 
                 this.disable_elements(false);
-                this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
-                this.Set_Invoice_Row_Page_Index();
+                if (this.is_updating_data == false)
+                {
+                    this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
+                    this.Set_Invoice_Row_Page_Index();
+                }
+                else {
+                    this.is_updating_data = false;
+                }
             }
 
 
@@ -1257,7 +1316,7 @@ namespace sales_management.UI
             price_includ_vat.Enabled = yes;
             vat_amount.Enabled = yes;
             total_field_text.Enabled = yes;
-            total_label_text.Enabled = yes;
+            //total_label_text.Enabled = yes;
 
             // Buttons 
             add_new_button.Enabled = !yes;
@@ -1275,6 +1334,8 @@ namespace sales_management.UI
         private void edit_button_Click(object sender, EventArgs e)
         {
             this.is_getting_data = false;
+            this.is_updating_data = true;
+            this.disable_elements(true);
         }
 
         private void customer_name_Click(object sender, EventArgs e)
@@ -1339,6 +1400,70 @@ namespace sales_management.UI
             if (table.Rows.Count > 0)
             {
                 this.Fill_Invoice_Fields(table.Rows[0]);
+            }
+        }
+
+        private void customer_name_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (customer_name.Enabled == true) {
+
+                UI.Client.GetForm.doc_type = this.documentType;
+                UI.Client.GetForm.ShowDialog();
+
+            }
+        }
+
+        private void items_datagridview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (e.RowIndex == -1 )
+            {
+                return;
+            }
+ 
+            string colName = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
+            if (colName != "deletion_button") {
+                return; 
+            }
+
+            // Delete Current Row From Database and main Table  
+            string gridId = items_datagridview.Rows[e.RowIndex].Cells["datagrid_id"].Value.ToString();
+            if (gridId == "") {
+                return;
+            }
+
+            if (invoice_id.Text == "") {
+                return;
+            }
+
+            // Delete Current Row From Table 
+            docs.delete_document_detail_by_datagrid_id(gridId.ToString(), Convert.ToInt32(this.documentType), Convert.ToInt32(invoice_id.Text));
+            this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
+
+            // Empty Current Row 
+            DataGridViewRow row = items_datagridview.Rows[e.RowIndex];
+            foreach (DataGridViewColumn col in items_datagridview.Columns) {
+                if (col.Name.ToString() != "deletion_button")
+                {
+
+                    if (col.Name.ToString() == "datagrid_id")
+                    {
+                        row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
+                    }
+                    else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                    {
+                        row.Cells[col.Name.ToString()].Value = 0;
+                    }
+                    else if (col.Name.ToString() == "is_out")
+                    {
+                        row.Cells[col.Name.ToString()].Value = true;
+                    }
+                    else
+                    {
+                        row.Cells[col.Name.ToString()].Value = "";
+                    }
+
+                }
             }
         }
     }
