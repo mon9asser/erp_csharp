@@ -62,7 +62,8 @@ namespace sales_management.UI
             this.suppliers_datagridview.Size = new System.Drawing.Size(853, 347);
             this.suppliers_datagridview.TabIndex = 2;
             this.suppliers_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellContentClick);
-            this.suppliers_datagridview.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellContentDoubleClick);
+            this.suppliers_datagridview.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellDoubleClick);
+            
             // 
             // Client
             // 

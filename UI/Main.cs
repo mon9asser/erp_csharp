@@ -54,7 +54,7 @@ namespace sales_management.UI
             return userInfo;
         }
 
-
+         
         public Main()
         {
 
@@ -64,7 +64,7 @@ namespace sales_management.UI
 
            // this.skinEngines.SkinFile = "Skins/SteelBlack.ssk";
 
-            if( frm == null )
+            if ( frm == null )
             {
                 frm = this;
             }
@@ -90,6 +90,7 @@ namespace sales_management.UI
             serverSettings.Show();
         }
 
+        
         private void إعداداتالنظامToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UI.SystemSettings settings = new UI.SystemSettings();

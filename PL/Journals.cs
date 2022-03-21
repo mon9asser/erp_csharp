@@ -10,6 +10,8 @@ namespace sales_management.PL
     class Journals
     {
 
+        
+
     }
 
 }

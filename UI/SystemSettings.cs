@@ -99,7 +99,7 @@ namespace sales_management.UI
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;*.png;.*.gif;)|*.jpg;*.png;*.jpeg;.*.gif";
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
                 logoImage_byte.Image = new Bitmap(opnfd.FileName);

@@ -118,3 +118,6 @@ D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.Accounts.resources
 D:\sales-app\obj\Debug\sales_management.UI.AddCustomer.resources
 D:\sales-app\obj\Debug\sales_management.UI.Client.resources
+D:\sales-app\bin\Debug\QRCoder.dll
+D:\sales-app\bin\Debug\IronBarCode.dll
+D:\sales-app\bin\Debug\IronBarCode.xml

@@ -163,26 +163,27 @@ namespace sales_management.UI
             }
         }
 
-        private void suppliers_datagridview_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void suppliers_datagridview_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            if (e.RowIndex == -1) {
+            if (e.RowIndex == -1)
+            {
                 return;
             }
 
-              dasdasdsa
-            if (this.doc_type == -1) {
+            if (this.doc_type == -1)
+            {
                 return;
             }
-
 
             string customerName = suppliers_datagridview.Rows[e.RowIndex].Cells["resource_name"].Value.ToString();
             string customerId = suppliers_datagridview.Rows[e.RowIndex].Cells["id"].Value.ToString();
-            if (customerName == "") {
-                return; 
+            if (customerName == "")
+            {
+                return;
             }
 
-            switch (this.doc_type) {
+            switch (this.doc_type)
+            {
                 case 0:
                     UI.salesInvoice.GetForm.customer_id.Text = customerId;
                     UI.salesInvoice.GetForm.customer_name.Text = customerName;
@@ -191,7 +192,6 @@ namespace sales_management.UI
 
             this.doc_type = -1;
             this.Close();
-
         }
     }
 }

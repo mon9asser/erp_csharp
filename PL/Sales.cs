@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Data;
+using System.Data; 
 
 namespace sales_management.PL
 {
@@ -76,6 +76,27 @@ namespace sales_management.PL
             return table;
         }
 
+        private byte[] GetByteArray(String strFileName)
+        {
+            System.IO.FileStream fs = new System.IO.FileStream(strFileName, System.IO.FileMode.Open);
+            // initialise the binary reader from file streamobject
+            System.IO.BinaryReader br = new System.IO.BinaryReader(fs);
+            // define the byte array of filelength
+
+            byte[] imgbyte = new byte[fs.Length + 1];
+            // read the bytes from the binary reader
+
+            imgbyte = br.ReadBytes(Convert.ToInt32((fs.Length)));
+            // add the image in bytearray
+
+            br.Close();
+            // close the binary reader
+
+            fs.Close();
+            // close the file stream
+            return imgbyte;
+        }
+
         public DataTable Get_Sales_Invoice_Items( int invoiceType , int invoiceId) {
             
             DataTable table = new DataTable();
@@ -100,7 +121,7 @@ namespace sales_management.PL
             table.Columns["unit_name"].SetOrdinal(3);
             table.Columns["quantity"].SetOrdinal(4);
             table.Columns["total_price"].SetOrdinal(5);
-                          
+             
             DataRow emptyRow;
             for (int i = 0; i < 15; i++)
             {
@@ -121,7 +142,7 @@ namespace sales_management.PL
                     if (col.ToString() == "datagrid_id")
                     {
                         emptyRow[col] = Guid.NewGuid().ToString();
-                    }
+                    } 
 
                  }
 

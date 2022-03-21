@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO; 
 
 namespace sales_management.UI
 {
@@ -14,8 +15,11 @@ namespace sales_management.UI
     public partial class salesInvoice : Form
     {
         PL.Sales Sales = new PL.Sales();
+        PL.Journals journals = new PL.Journals();
+
         PL.Products products = new PL.Products();
         PL.doc_items docs = new PL.doc_items();
+        PL.QR_Code qrcode = new PL.QR_Code();
 
         DataTable Sales_Table;
         DataTable Sales_Details;
@@ -56,15 +60,18 @@ namespace sales_management.UI
 
         public salesInvoice()
         {
-            InitializeComponent();
-
+            InitializeComponent(); 
             PL.AccountingTree Accs = new PL.AccountingTree();
             PL.Installings sysSettings = new PL.Installings();
-
+             
             if (frm == null)
             {
                 frm = this;
             }
+
+            string thisDatexxxx = datemade.Value.ToString("yyyy-MM-dd");
+            string thisTimexxxx = datemade.Value.ToString("HH:mm:ss");
+            Console.WriteLine(thisDatexxxx + " " + thisTimexxxx);
 
             // Head Sales Invoices 
             this.Sales_Table = Sales.Get_All_Sales_Invoices();
@@ -111,7 +118,7 @@ namespace sales_management.UI
              
             items_datagridview.Columns["product_name"].ReadOnly = true;
 
-            items_datagridview.Columns[1].Width = 330;
+            items_datagridview.Columns[2].Width = 330;
             items_datagridview.ColumnHeadersHeight = 40;
 
             items_datagridview.Columns["unit_price"].ReadOnly = true;
@@ -177,18 +184,19 @@ namespace sales_management.UI
 
         }
         
-        public void Load_deletion_icon_in_datagridview() { 
+        public void Load_deletion_icon_in_datagridview() {
+            items_datagridview.Columns["deletion_et_button"].DisplayIndex = items_datagridview.Columns.Count - 1;
+            //DataGridViewImageColumn deletionImage = new DataGridViewImageColumn();
 
-            DataGridViewImageColumn deletionImage = new DataGridViewImageColumn();
-            
-            deletionImage.ImageLayout = DataGridViewImageCellLayout.NotSet;
-            deletionImage.Name = "deletion_button";
-            deletionImage.HeaderText = "حذف";
-            this.items_datagridview.Columns.Add(deletionImage);
-             
-            foreach (DataGridViewRow row in this.items_datagridview.Rows) { 
-                row.Cells["deletion_button"].Value = Properties.Resources.first_btn;//Properties.Resources.delete_16;
-            }
+            //deletionImage.ImageLayout = DataGridViewImageCellLayout.NotSet;
+            //deletionImage.Name = "deletion_et_button";
+            //deletionImage.HeaderText = "حذف";
+            //this.items_datagridview.Columns.Add(deletionImage);
+            //UI.salesInvoice.GetForm.items_datagridview.Rows[e.RowIndex].Cells["deletion_et_button"].Value = Properties.Resources.delete_16;
+
+            // for (int i = 0; i < UI.salesInvoice.GetForm.items_datagridview.Rows.Count; i++) {
+            //    UI.salesInvoice.GetForm.items_datagridview.Rows[i].Cells["deletion_et_button"].Value = Properties.Resources.icons8_delete_20;
+            //}
 
         }
 
@@ -198,12 +206,8 @@ namespace sales_management.UI
             if ( index == -1 ) {
                 return;
             }
-
-             
             
             DataGridViewRow row = items_datagridview.Rows[index];
-
-            
 
             if (row.Cells["product_name"].Value.ToString() == "") {
                return;
@@ -232,7 +236,6 @@ namespace sales_management.UI
             // Calculate Total 
             row.Cells["total_price"].Value = ( quantity * unitPrice ).ToString();
             
-
         }
         
         public string[] Get_Account_Details(string account_number ) {
@@ -516,22 +519,22 @@ namespace sales_management.UI
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
             this.refill_datagridview(id, items_datagridview);
+            print.Enabled = true;
 
-           
         }
 
         private void last_record_button_Click(object sender, EventArgs e)
         {
             this.currentInvoiceRowIndex = 0;
             this.Set_Invoice_Row_Page_Index();
-
+            
             DataRow rw = this.Sales_Table.Rows[this.currentInvoiceRowIndex];
             this.Fill_Invoice_Fields(rw);
 
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
             this.refill_datagridview(id, items_datagridview);
-
+            print.Enabled = true;
         }
 
         private void previous_button_Click(object sender, EventArgs e)
@@ -549,7 +552,7 @@ namespace sales_management.UI
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
             this.refill_datagridview(id, items_datagridview);
-
+            print.Enabled = true;
         }
 
         private void next_button_Click(object sender, EventArgs e)
@@ -567,7 +570,7 @@ namespace sales_management.UI
             int id = Convert.ToInt32(this.Sales_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
             this.refill_datagridview(id, items_datagridview);
-
+            print.Enabled = true;
         }
 
         private void search_button_Click(object sender, EventArgs e)
@@ -612,9 +615,9 @@ namespace sales_management.UI
 
         private void items_datagridview_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (this.items_datagridview.Columns.Contains("deletion_button"))
+            if (this.items_datagridview.Columns.Contains("deletion_et_button"))
             {
-                //this.items_datagridview.Rows[e.RowIndex].Cells["deletion_button"].Value = Properties.Resources.trash__1_;
+                //this.items_datagridview.Rows[e.RowIndex].Cells["deletion_et_button"].Value = Properties.Resources.delete_16;
             }
 
         }
@@ -796,7 +799,7 @@ namespace sales_management.UI
                 if (is_found == false) {  
                     foreach (DataGridViewColumn col in items_datagridview.Columns) {
                         
-                        if ( col.Name.ToString() != "deletion_button") {
+                        if ( col.Name.ToString() != "deletion_et_button") {
                              
                             if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
                             {
@@ -1204,8 +1207,10 @@ namespace sales_management.UI
 
         private void save_button_Click(object sender, EventArgs e)
         {
-
-
+            if (total_field_text.Text == "00"  || total_field_text.Text == "") {
+                return;
+            }
+            
             // Save Invoice Data
             if (invoice_id.Text != "") {
                 
@@ -1275,9 +1280,27 @@ namespace sales_management.UI
                 }
 
                 // Restore All Invoices In The Same Object 
+                print.Enabled = true;
                 this.Sales_Table = Sales.Get_All_Sales_Invoices();
                 this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
+
                 // Save Daily Entry 
+                /**
+                 * document type
+                 * document id 
+                 * journal id
+                 * table of accounts ( account_number, amount, is_debit, description ) 
+                 * 
+                 */
+
+                DataTable jounral_table = new DataTable();
+
+                jounral_table.Columns.Add( "account_number" );
+                jounral_table.Columns.Add("amount");
+                jounral_table.Columns.Add("is_debit");
+                jounral_table.Columns.Add("description");
+
+                //journals.Create_Journal_Document_Details(doc_type, doc_id, journal_id, jounral_table);
 
                 // Disable Everything 
                 this.disable_elements(false);
@@ -1293,6 +1316,7 @@ namespace sales_management.UI
 
 
 
+            
 
             // To Allow Add New Invoice 
             invoice_id.Text = "";
@@ -1326,9 +1350,9 @@ namespace sales_management.UI
             previous_button.Enabled = !yes;
             last_record_button.Enabled = !yes;
             //print.Enabled = !yes;
-            print_and_save_button.Enabled = yes;
+             
             edit_button.Enabled = !yes;
-            delete_button.Enabled = !yes;
+             
         }
 
         private void edit_button_Click(object sender, EventArgs e)
@@ -1345,8 +1369,11 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.is_getting_data = false;
+
             
+
+            this.is_getting_data = false;
+            print.Enabled = false;
             // An Invoice ID
             int id = -1;
             if (invoice_id.Text != "")
@@ -1370,7 +1397,7 @@ namespace sales_management.UI
                 foreach (DataGridViewColumn col in items_datagridview.Columns)
                 {
 
-                    if (col.Name.ToString() != "deletion_button")
+                    if (col.Name.ToString() != "deletion_et_button")
                     {
 
                         if (col.Name.ToString() == "datagrid_id")
@@ -1394,8 +1421,9 @@ namespace sales_management.UI
                 }
             }
 
-            // Create New Invoice ID 
+            // Create New Invoice ID and journal index 
             DataTable table = Sales.Create_Sales_Invoice_Id(id);
+            
 
             if (table.Rows.Count > 0)
             {
@@ -1413,6 +1441,24 @@ namespace sales_management.UI
             }
         }
 
+        public void DrawStringFloatFormat()
+        {
+            Graphics g = this.CreateGraphics();
+            float padx = ((float)this.Size.Width) * (0.05F);
+            float pady = ((float)this.Size.Height) * (0.05F);
+
+            float width = ((float)this.Size.Width) - 2 * padx;
+            float height = ((float)this.Size.Height) - 2 * pady;
+
+            float emSize = height;
+
+            g.DrawString("Hello world", new Font(FontFamily.GenericSansSerif, emSize, FontStyle.Regular),
+                        new SolidBrush(Color.Black), padx, pady);
+
+
+        }
+
+
         private void items_datagridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -1422,7 +1468,8 @@ namespace sales_management.UI
             }
  
             string colName = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
-            if (colName != "deletion_button") {
+            
+            if (colName != "deletion_et_button") {
                 return; 
             }
 
@@ -1435,7 +1482,7 @@ namespace sales_management.UI
             if (invoice_id.Text == "") {
                 return;
             }
-
+             
             // Delete Current Row From Table 
             docs.delete_document_detail_by_datagrid_id(gridId.ToString(), Convert.ToInt32(this.documentType), Convert.ToInt32(invoice_id.Text));
             this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
@@ -1443,7 +1490,7 @@ namespace sales_management.UI
             // Empty Current Row 
             DataGridViewRow row = items_datagridview.Rows[e.RowIndex];
             foreach (DataGridViewColumn col in items_datagridview.Columns) {
-                if (col.Name.ToString() != "deletion_button")
+                if (col.Name.ToString() != "deletion_et_button")
                 {
 
                     if (col.Name.ToString() == "datagrid_id")
@@ -1465,6 +1512,208 @@ namespace sales_management.UI
 
                 }
             }
+        }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+
+            
+            if(items_datagridview.Rows.Count > 0 )
+                printDocument1.Print();
+        }
+
+        
+
+        // Right To Left 
+        // https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics.measurestring?redirectedfrom=MSDN&view=dotnet-plat-ext-6.0#System_Drawing_Graphics_MeasureString_System_String_System_Drawing_Font_
+        // https://stackoverflow.com/questions/19458299/right-aligning-printed-text
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            // Access DataBase
+            DataTable settings = this.Settings;
+
+            StringFormat format = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+            Font fnt_14 = new Font("Arial", 14, FontStyle.Bold, GraphicsUnit.Point);
+            Font fnt_12 = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Point);
+            Font fnt_10 = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
+            Font fnt_8 = new Font("Arial", 8, FontStyle.Regular, GraphicsUnit.Point);
+            Font fnt_10_b = new Font("Arial", 8, FontStyle.Bold, GraphicsUnit.Point);
+
+            RectangleF recAtZero = new RectangleF(0, 0, e.PageBounds.Width, e.PageBounds.Height);
+            StringFormat formatRight = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+            format.Alignment = StringAlignment.Center;
+            string thisDatexxxx = datemade.Value.ToString("yyyy-MM-dd");
+            string thisTimexxxx = datemade.Value.ToString("HH:mm:ss");
+             
+
+            if (time_data.Text != "")
+            { 
+                thisTimexxxx = time_data.Text;
+            }
+             
+            
+            int spaceVerticle = 25;
+            int verticle = 0;
+
+            
+            // Top Title
+            e.Graphics.DrawString("فاتورة ضريبية مبسطة", fnt_12,  new SolidBrush(Color.Black), recAtZero,  format);
+
+            // Line
+            verticle = verticle + spaceVerticle;
+            e.Graphics.DrawString("------------------------------------", fnt_14, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+
+            // Establishment Name 
+            if (settings.Rows.Count > 0)
+            {
+                verticle = verticle + spaceVerticle;
+                if(settings.Rows[0]["establishment_name"] != System.DBNull.Value )
+                e.Graphics.DrawString(settings.Rows[0]["establishment_name"].ToString(), fnt_14, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+            }
+
+             
+
+            // Address 
+            if (settings.Rows.Count > 0)
+            {
+                verticle = verticle + spaceVerticle;
+                if (settings.Rows[0]["address"] != System.DBNull.Value)
+                    e.Graphics.DrawString(settings.Rows[0]["address"].ToString(), fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+            }
+
+            // Vat Number 
+            if (settings.Rows.Count > 0)
+            {
+                verticle = verticle + spaceVerticle;
+                if (settings.Rows[0]["vat_number"] != System.DBNull.Value)
+                    e.Graphics.DrawString( "الرقم الضريبي :" + settings.Rows[0]["vat_number"].ToString() , fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+            }
+
+            
+            // Date And Number
+            verticle = verticle + spaceVerticle;
+            e.Graphics.DrawString( "#" + invoice_serial.Text.ToString(), fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+           
+
+            // Establishment Logo 
+            if (settings.Rows.Count > 0) {
+                DataRow drow = settings.Rows[0];
+
+                if (drow["logo"] != System.DBNull.Value)
+                {
+
+                    verticle = verticle + spaceVerticle;
+
+                    byte[] imageData = (byte[])drow["logo"];
+
+                    //Initialize image variable
+                    Image newImage;
+
+                    //Read image data into a memory stream
+                    using (MemoryStream ms = new MemoryStream(imageData, 0, imageData.Length))
+                    {
+                        ms.Write(imageData, 0, imageData.Length);
+
+                        //Set image variable value using memory stream.
+                        newImage = Image.FromStream(ms, true);
+                    }
+
+
+                    //set picture  
+                    int spectRatio = newImage.Width / newImage.Height;
+                    int imgWidth   = 190;
+                    int imgHeight = imgWidth / spectRatio;
+                    int xImage = (e.PageBounds.Width / 2) - (imgWidth / 2);
+                    e.Graphics.DrawImage(newImage, new Rectangle(xImage, verticle, imgWidth, imgHeight ));
+
+                    verticle = verticle + imgHeight;
+                }
+            }
+
+
+            // Date
+            verticle = verticle + spaceVerticle;
+            string headed_date = thisDatexxxx + " " + thisTimexxxx;
+            e.Graphics.DrawString(headed_date, fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+
+            // Line
+            verticle = verticle + spaceVerticle;
+            //e.Graphics.DrawString("------------------------------------", fnt_14, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+
+            // Rectangle For Header
+            Pen blackPen = new Pen(Color.Black, ( float ) 0.5); 
+            Rectangle rect = new Rectangle(0, verticle, e.PageBounds.Width, 30); 
+            e.Graphics.DrawRectangle(blackPen, rect);
+
+            int startedLine = verticle;
+
+            // Header Titles 
+            e.Graphics.DrawString("إسم المنتج", fnt_10_b, new SolidBrush(Color.Black), new RectangleF(-5, verticle + 8, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString("الكمية", fnt_10_b, new SolidBrush(Color.Black), new RectangleF(-110, verticle + 8, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString("السعر", fnt_10_b, new SolidBrush(Color.Black), new RectangleF(-190, verticle + 8, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString("الإجمالي", fnt_10_b, new SolidBrush(Color.Black), new RectangleF(-230, verticle + 8, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+
+            // Items Here 
+            int startsVerticle = verticle + 35 + 8;
+            
+
+
+            for (int i = 0; i < items_datagridview.Rows.Count; i++) {
+
+                if (items_datagridview.Rows[i].Cells["product_name"].Value.ToString() != "") {
+                  
+                    e.Graphics.DrawString(items_datagridview.Rows[i].Cells["product_name"].Value.ToString(), fnt_8, new SolidBrush(Color.Black), new RectangleF(-5, startsVerticle, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+                    e.Graphics.DrawString(items_datagridview.Rows[i].Cells["quantity"].Value.ToString(), fnt_8, new SolidBrush(Color.Black), new RectangleF(-110, startsVerticle, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+                    e.Graphics.DrawString(items_datagridview.Rows[i].Cells["unit_name"].Value.ToString(), fnt_8, new SolidBrush(Color.Black), new RectangleF(-135, startsVerticle, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+                    e.Graphics.DrawString(items_datagridview.Rows[i].Cells["unit_price"].Value.ToString(), fnt_8, new SolidBrush(Color.Black), new RectangleF(-190, startsVerticle, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+                    e.Graphics.DrawString(items_datagridview.Rows[i].Cells["total_price"].Value.ToString(), fnt_8, new SolidBrush(Color.Black), new RectangleF(-230, startsVerticle, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+
+                    e.Graphics.DrawLine(blackPen, 0, startsVerticle + 25, e.PageBounds.Width, startsVerticle + 25);
+
+                    startsVerticle = startsVerticle + 35; 
+
+                }
+                
+            }
+            
+            int ended_line = startsVerticle + 8;
+
+            e.Graphics.DrawLine(blackPen, -105, startedLine, -104, ended_line + 25);
+            e.Graphics.DrawString("الإجمالي شامل ضريبة القيمة المضافة ...", fnt_10, new SolidBrush(Color.Black), new RectangleF(-5, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+
+            ended_line = ended_line + 30;
+            e.Graphics.DrawString("الإجمالي :", fnt_8, new SolidBrush(Color.Black), new RectangleF(-199, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString("الضريبة :", fnt_8, new SolidBrush(Color.Black), new RectangleF(-107, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString("الخصم :", fnt_8, new SolidBrush(Color.Black), new RectangleF(-15, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+
+            ended_line = ended_line + 20;
+            e.Graphics.DrawString(total_label_text.Text.ToString(), fnt_12, new SolidBrush(Color.Black), new RectangleF(-199, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString(vat_amount.Text, fnt_10, new SolidBrush(Color.Black), new RectangleF(-107, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+
+            string discount_Ammount = "0";
+            if (discount_value.Text != "") {
+                discount_Ammount = discount_value.Text;
+            }
+            e.Graphics.DrawString(discount_Ammount.ToString(), fnt_10, new SolidBrush(Color.Black), new RectangleF(-15, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+
+            ended_line = ended_line + 30;
+            e.Graphics.DrawString("------------------------------------", fnt_14, new SolidBrush(Color.Black), new RectangleF(0, ended_line, e.PageBounds.Width, e.PageBounds.Height), format);
+
+            // Print QR Code 
+            if (settings.Rows.Count > 0)   {
+
+                 
+                ended_line = ended_line + 30;
+
+                string datemade_value = thisDatexxxx + "T" + thisTimexxxx;
+                Image img = qrcode.Generator("Anbar El Wadi", total_field_text.Text, vat_amount.Text, invoice_serial.Text, datemade_value.ToString(), settings.Rows[0]["vat_number"].ToString()).GetGraphic(5);
+                
+                int qrPost = (e.PageBounds.Width / 2) - (120 / 2);
+                e.Graphics.DrawImage(img, new Rectangle(qrPost, ended_line, 120, 120));
+
+            }
+           
+
         }
     }
 }
