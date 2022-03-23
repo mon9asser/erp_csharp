@@ -69,7 +69,7 @@ namespace sales_management.PL
             param[9].Value = vat_number;
 
             DAL.Open();
-            DAL.ExecuteCommand("Update_Resource_Data", param);
+            DAL.ExecuteCommand("Update_Resource_Data", param); 
             DAL.Close();
              
         }

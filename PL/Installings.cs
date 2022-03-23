@@ -70,12 +70,15 @@ namespace sales_management.PL
             string part_2_purchase_credit_acc_number,
             string part_2_purchase_bank_acc_number,
             string product_cost_acc_number,
-            string inventory_acc_number
+            string inventory_acc_number,
+            string vat_number_in,
+            string customer_acc_number,
+            string supplier_acc_number 
             ) {
             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[30];
+            SqlParameter[] param = new SqlParameter[33];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -168,6 +171,14 @@ namespace sales_management.PL
             param[29] = new SqlParameter("@inventory_acc_number", SqlDbType.VarChar);
             param[29].Value = inventory_acc_number;
 
+            param[30] = new SqlParameter("@vat_number_in", SqlDbType.VarChar);
+            param[30].Value = vat_number_in;
+
+            param[31] = new SqlParameter("@customer_acc_number", SqlDbType.VarChar);
+            param[31].Value = customer_acc_number;
+
+            param[32] = new SqlParameter("@supplier_acc_number", SqlDbType.VarChar);
+            param[32].Value = supplier_acc_number;
             Layer.Open();
             Layer.ExecuteCommand("Update_System_Settings", param);
             Layer.Close();

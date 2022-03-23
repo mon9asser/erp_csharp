@@ -162,6 +162,7 @@ namespace sales_management.UI
             this.details.Name = "details";
             this.details.Size = new System.Drawing.Size(348, 56);
             this.details.TabIndex = 36;
+            this.details.Text = "بيع بضاعه نقدا";
             // 
             // label3
             // 
@@ -496,7 +497,7 @@ namespace sales_management.UI
             // 
             this.current_invoice_page.AutoSize = true;
             this.current_invoice_page.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.current_invoice_page.Location = new System.Drawing.Point(510, 590);
+            this.current_invoice_page.Location = new System.Drawing.Point(491, 590);
             this.current_invoice_page.Name = "current_invoice_page";
             this.current_invoice_page.Size = new System.Drawing.Size(82, 27);
             this.current_invoice_page.TabIndex = 83;
@@ -539,7 +540,7 @@ namespace sales_management.UI
             this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.first_record_button.Image = global::sales_management.Properties.Resources.last_btn;
-            this.first_record_button.Location = new System.Drawing.Point(398, 585);
+            this.first_record_button.Location = new System.Drawing.Point(355, 585);
             this.first_record_button.Name = "first_record_button";
             this.first_record_button.Size = new System.Drawing.Size(50, 38);
             this.first_record_button.TabIndex = 80;
@@ -552,7 +553,7 @@ namespace sales_management.UI
             this.last_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.last_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.last_record_button.Image = global::sales_management.Properties.Resources.first_btn;
-            this.last_record_button.Location = new System.Drawing.Point(660, 585);
+            this.last_record_button.Location = new System.Drawing.Point(655, 585);
             this.last_record_button.Name = "last_record_button";
             this.last_record_button.Size = new System.Drawing.Size(50, 38);
             this.last_record_button.TabIndex = 79;
@@ -565,7 +566,7 @@ namespace sales_management.UI
             this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.next_button.Image = global::sales_management.Properties.Resources.next_btn;
-            this.next_button.Location = new System.Drawing.Point(454, 585);
+            this.next_button.Location = new System.Drawing.Point(411, 585);
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(50, 38);
             this.next_button.TabIndex = 78;
@@ -578,7 +579,7 @@ namespace sales_management.UI
             this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previous_button.Image = global::sales_management.Properties.Resources.prev_btn;
-            this.previous_button.Location = new System.Drawing.Point(604, 585);
+            this.previous_button.Location = new System.Drawing.Point(599, 585);
             this.previous_button.Name = "previous_button";
             this.previous_button.Size = new System.Drawing.Size(50, 38);
             this.previous_button.TabIndex = 77;

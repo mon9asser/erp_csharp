@@ -77,7 +77,11 @@ namespace sales_management.UI
             part_2_purchase_text_name_acc_credit.Text = this.Get_Account_Name(part_2_purchase_credit_acc_number.Text.ToString());
             part_2_purchase_text_name_acc_bank.Text = this.Get_Account_Name(part_2_purchase_bank_acc_number.Text.ToString());
             product_cost_acc_name.Text = this.Get_Account_Name(product_cost_acc_number.Text.ToString());
-            inventory_acc_name.Text = this.Get_Account_Name(inventory_acc_number.Text.ToString()); 
+            inventory_acc_name.Text = this.Get_Account_Name(inventory_acc_number.Text.ToString());
+            vat_number_in_name.Text = this.Get_Account_Name(vat_number_in.Text.ToString());
+
+            customer_acc_number_name.Text = this.Get_Account_Name(customer_acc_number.Text.ToString());
+            supplier_acc_number_name.Text = this.Get_Account_Name(supplier_acc_number.Text.ToString());
         }
 
         public SystemSettings()
@@ -156,10 +160,15 @@ namespace sales_management.UI
                 product_cost_acc_number.Text = drow["product_cost_acc_number"].ToString();
                 inventory_acc_number.Text = drow["inventory_acc_number"].ToString();
 
+                vat_number_in.Text = drow["vat_number_in"].ToString(); 
+                customer_acc_number.Text = drow["customer_acc_number"].ToString();
+                supplier_acc_number.Text = drow["supplier_acc_number"].ToString();
+
                 isIncludeAddress.Checked = Convert.ToBoolean(drow["show_address_in_invoice"]);
                 isIncludeUpdate.Checked = Convert.ToBoolean(drow["enable_edit_invoices"]);
                 isIncludeDelete.Checked = Convert.ToBoolean(drow["enable_delete_invoices"]);
                 checkbox_enable_vat.Checked = (bool) drow["enabled_vat"];
+
 
                 if ( (bool)drow["enabled_vat"] == true) {
                     panel1.Enabled = true;
@@ -218,7 +227,12 @@ namespace sales_management.UI
                     part_2_purchase_credit_acc_number.Text,
                     part_2_purchase_bank_acc_number.Text,
                     product_cost_acc_number.Text,
-                    inventory_acc_number.Text
+                    inventory_acc_number.Text,
+
+                    vat_number_in.Text,
+
+                    customer_acc_number.Text,
+                    supplier_acc_number.Text 
                 );
 
             if ( logoImage_byte.ImageLocation != "" && logoImage_byte.ImageLocation != null ) {
@@ -371,6 +385,30 @@ namespace sales_management.UI
         private void inventory_acc_number_Click(object sender, EventArgs e)
         {
             this.input = inventory_acc_number;
+            UI.Accounts accs = new UI.Accounts();
+            accs.InstanceType = 0;
+            accs.ShowDialog();
+        }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            this.input = vat_number_in;
+            UI.Accounts accs = new UI.Accounts();
+            accs.InstanceType = 0;
+            accs.ShowDialog();
+        }
+
+        private void customer_acc_number_Click(object sender, EventArgs e)
+        {
+            this.input = customer_acc_number;
+            UI.Accounts accs = new UI.Accounts();
+            accs.InstanceType = 0;
+            accs.ShowDialog();
+        }
+
+        private void supplier_acc_number_Click(object sender, EventArgs e)
+        {
+            this.input = supplier_acc_number;
             UI.Accounts accs = new UI.Accounts();
             accs.InstanceType = 0;
             accs.ShowDialog();

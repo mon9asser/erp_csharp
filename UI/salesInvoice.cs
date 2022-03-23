@@ -509,6 +509,10 @@ namespace sales_management.UI
         
         private void first_record_button_Click(object sender, EventArgs e)
         {
+            if (this.Sales_Table.Rows.Count == 0) {
+                return;
+            }
+
             this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
             this.Set_Invoice_Row_Page_Index();
 
@@ -525,6 +529,10 @@ namespace sales_management.UI
 
         private void last_record_button_Click(object sender, EventArgs e)
         {
+            if (this.Sales_Table.Rows.Count == 0)
+            {
+                return;
+            }
             this.currentInvoiceRowIndex = 0;
             this.Set_Invoice_Row_Page_Index();
             
@@ -539,6 +547,10 @@ namespace sales_management.UI
 
         private void previous_button_Click(object sender, EventArgs e)
         {
+            if (this.Sales_Table.Rows.Count == 0)
+            {
+                return;
+            }
             this.currentInvoiceRowIndex = (this.currentInvoiceRowIndex - 1);
             if (this.currentInvoiceRowIndex < 0) {
                 this.currentInvoiceRowIndex = 0;
@@ -557,6 +569,11 @@ namespace sales_management.UI
 
         private void next_button_Click(object sender, EventArgs e)
         {
+            if (this.Sales_Table.Rows.Count == 0)
+            {
+                return;
+            }
+
             this.currentInvoiceRowIndex = (this.currentInvoiceRowIndex + 1);
             if (this.currentInvoiceRowIndex >= this.Sales_Table.Rows.Count) {
                 this.currentInvoiceRowIndex = this.Sales_Table.Rows.Count - 1;
@@ -686,7 +703,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-
+                    details.Text = "بيع بضاعه نقدا";
                     this.Load_Target_Accounts(0);
                     break;
 
@@ -696,7 +713,7 @@ namespace sales_management.UI
                     customer_name.Enabled = true;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-
+                    details.Text = "بيع بضاعه بالأجل";
                     this.Load_Target_Accounts(1);
                     break;
 
@@ -706,7 +723,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-
+                    details.Text = "بيع بضاعه واستلام النقديه عن طريق البنك";
                     this.Load_Target_Accounts(2);
                     break;
 
@@ -716,7 +733,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-
+                    details.Text = "بيع بضاعه واستلام النقديه عن طريق البنك";
                     this.Load_Target_Accounts(2);
                     break;
 
@@ -1210,15 +1227,15 @@ namespace sales_management.UI
             if (total_field_text.Text == "00"  || total_field_text.Text == "") {
                 return;
             }
-            
+
             // Save Invoice Data
             if (invoice_id.Text != "") {
-                
-                
+
+
                 if (customer_id.Text == "") {
                     customer_id.Text = "-1";
                 }
-                 
+
                 Sales.Save_Updates_Invoice_Data(
                     Convert.ToInt32(invoice_id.Text),
                     Convert.ToInt32(payment_methods.SelectedIndex),
@@ -1243,10 +1260,10 @@ namespace sales_management.UI
                     Convert.ToBoolean(price_includ_vat.Checked)
                 );
 
-                 
+
                 // Save All Invoice Items 
-                if (invoice_id.Text != "") { 
-                    foreach ( DataGridViewRow row in items_datagridview.Rows ) {
+                if (invoice_id.Text != "") {
+                    foreach (DataGridViewRow row in items_datagridview.Rows) {
 
                         // Product Name 
                         string productName = "";
@@ -1255,7 +1272,7 @@ namespace sales_management.UI
                         }
 
                         // Unit Name  
-                        if (productName != "") { 
+                        if (productName != "") {
 
                             docs.Update_Document_Details(
                                  Convert.ToInt32(invoice_id.Text),
@@ -1291,16 +1308,119 @@ namespace sales_management.UI
                  * journal id
                  * table of accounts ( account_number, amount, is_debit, description ) 
                  * 
-                 */
+                 */ 
 
-                DataTable jounral_table = new DataTable();
-
-                jounral_table.Columns.Add( "account_number" );
+                DataTable jounral_table = new DataTable(); 
+                jounral_table.Columns.Add("account_number"); 
                 jounral_table.Columns.Add("amount");
                 jounral_table.Columns.Add("is_debit");
                 jounral_table.Columns.Add("description");
+                if (this.Settings.Rows.Count != 0) {
+                    
+                    DataRow sets = this.Settings.Rows[0];
 
-                //journals.Create_Journal_Document_Details(doc_type, doc_id, journal_id, jounral_table);
+                    // Cash Entry 
+                    if (payment_methods.SelectedIndex == 0) {
+
+
+                        // From :-
+                        DataRow row = jounral_table.NewRow();
+                        row["account_number"] = sets["sales_cash_acc_number"].ToString();
+                        row["amount"] = total_field_text.Text.ToString();
+                        row["is_debit"] = true;
+                        row["description"] = "بيع بضاعه نقدا";
+                        if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
+
+                            row["description"] += " - بخصم تجاري ";
+
+                            if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
+                                row["description"] += " %" + dicount_percentage.Text;
+                            }
+
+                        }
+                        jounral_table.Rows.Add(row);
+
+                        // To :-
+                        DataRow row1 = jounral_table.NewRow();
+                        row1["account_number"] = sets["part_2_sales_cash_acc_number"].ToString();
+                        row1["amount"] = total_without_vat_field.Text.ToString();
+                        row1["is_debit"] = false;
+                        row1["description"] = "بيع بضاعه نقدا";
+                        jounral_table.Rows.Add(row1); 
+
+
+                    } else if (payment_methods.SelectedIndex == 1 ) {
+                        // From :-
+                        DataRow row = jounral_table.NewRow();
+                        row["account_number"] = sets["sales_credit_acc_number"].ToString();
+                        row["amount"] = total_field_text.Text.ToString();
+                        row["is_debit"] = true;
+                        row["description"] = "بيع بضاعه بالأجل";
+                        if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                        {
+
+                            row["description"] += " - بخصم تجاري ";
+
+                            if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                            {
+                                row["description"] += " %" + dicount_percentage.Text;
+                            }
+
+                        }
+                        jounral_table.Rows.Add(row);
+
+
+                        // To :-
+                        DataRow row1 = jounral_table.NewRow();
+                        row1["account_number"] = sets["part_2_sales_credit_acc_number"].ToString();
+                        row1["amount"] = total_without_vat_field.Text.ToString();
+                        row1["is_debit"] = false;
+                        row1["description"] = "بيع بضاعه بالأجل";
+                        jounral_table.Rows.Add(row1);
+                         
+                    }
+                    else if (payment_methods.SelectedIndex == 2 || payment_methods.SelectedIndex == 3)
+                    {
+                        // From :-
+                        DataRow row = jounral_table.NewRow();
+                        row["account_number"] = sets["sales_bank_acc_number"].ToString();
+                        row["amount"] = total_field_text.Text.ToString();
+                        row["is_debit"] = true;
+                        row["description"] = "بيع بضاعه عن طريق البنك";
+                        if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                        {
+
+                            row["description"] += " - بخصم تجاري ";
+
+                            if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                            {
+                                row["description"] += " %" + dicount_percentage.Text;
+                            }
+
+                        }
+
+                        jounral_table.Rows.Add(row);
+
+                        DataRow row1 = jounral_table.NewRow();
+                        row1["account_number"] = sets["part_2_sales_bank_acc_number"].ToString();
+                        row1["amount"] = total_without_vat_field.Text.ToString();
+                        row1["is_debit"] = false;
+                        row1["description"] = "بيع بضاعه عن طريق البنك";
+                        jounral_table.Rows.Add(row1);
+                    }
+
+                    // To :- VAT ACCOUNT ( OUT )
+                    DataRow row2 = jounral_table.NewRow();
+                    row2["account_number"] = sets["vat_acc_number"].ToString();
+                    row2["amount"] = vat_amount.Text.ToString();
+                    row2["is_debit"] = false;
+                    row2["description"] = "ضريبة مخرجات مستحقة";
+                    jounral_table.Rows.Add(row2);
+
+                }
+
+                //journals.Get_DataTable_Accounts_Parts();
+                journals.Update_Journal_Document_Details(Convert.ToInt32(invoice_id.Text), this.documentType, details.Text, jounral_table);
 
                 // Disable Everything 
                 this.disable_elements(false);
@@ -1369,9 +1489,7 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            
-
+             
             this.is_getting_data = false;
             print.Enabled = false;
             // An Invoice ID
@@ -1380,7 +1498,7 @@ namespace sales_management.UI
             {
                 id = Convert.ToInt32(invoice_id.Text);
             }
-
+            
             DataTable tbleItems = Sales.Get_Sales_Invoice_Items_details(0, id);
             if (tbleItems.Rows.Count != 0)
             {
@@ -1429,6 +1547,8 @@ namespace sales_management.UI
             {
                 this.Fill_Invoice_Fields(table.Rows[0]);
             }
+
+            details.Text = "بيع بضاعه نقدا";
         }
 
         private void customer_name_MouseClick(object sender, MouseEventArgs e)

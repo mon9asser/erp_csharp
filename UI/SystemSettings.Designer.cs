@@ -52,6 +52,17 @@ namespace sales_management.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label28 = new System.Windows.Forms.Label();
+            this.vat_number_in_name = new System.Windows.Forms.TextBox();
+            this.vat_number_in = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.inventory_acc_name = new System.Windows.Forms.TextBox();
             this.inventory_acc_number = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -79,7 +90,6 @@ namespace sales_management.UI
             this.sales_text_name_acc_credit = new System.Windows.Forms.TextBox();
             this.sales_text_name_acc_cash = new System.Windows.Forms.TextBox();
             this.vat_acc_number = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.purchase_bank_acc_number = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.purchase_credit_acc_number = new System.Windows.Forms.TextBox();
@@ -97,13 +107,12 @@ namespace sales_management.UI
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.settingsIdText = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.supplier_acc_number_name = new System.Windows.Forms.TextBox();
+            this.supplier_acc_number = new System.Windows.Forms.TextBox();
+            this.customer_acc_number_name = new System.Windows.Forms.TextBox();
+            this.customer_acc_number = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -341,6 +350,16 @@ namespace sales_management.UI
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.supplier_acc_number_name);
+            this.tabPage3.Controls.Add(this.supplier_acc_number);
+            this.tabPage3.Controls.Add(this.customer_acc_number_name);
+            this.tabPage3.Controls.Add(this.customer_acc_number);
+            this.tabPage3.Controls.Add(this.label29);
+            this.tabPage3.Controls.Add(this.label30);
+            this.tabPage3.Controls.Add(this.label28);
+            this.tabPage3.Controls.Add(this.vat_number_in_name);
+            this.tabPage3.Controls.Add(this.vat_number_in);
+            this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label27);
@@ -375,7 +394,6 @@ namespace sales_management.UI
             this.tabPage3.Controls.Add(this.sales_text_name_acc_credit);
             this.tabPage3.Controls.Add(this.sales_text_name_acc_cash);
             this.tabPage3.Controls.Add(this.vat_acc_number);
-            this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.purchase_bank_acc_number);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.purchase_credit_acc_number);
@@ -398,20 +416,118 @@ namespace sales_management.UI
             this.tabPage3.Text = "حسابات دفتر الأستاذ";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(531, 338);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(80, 13);
+            this.label28.TabIndex = 103;
+            this.label28.Text = "ضريبة المدخلات";
+            // 
+            // vat_number_in_name
+            // 
+            this.vat_number_in_name.Location = new System.Drawing.Point(39, 335);
+            this.vat_number_in_name.Name = "vat_number_in_name";
+            this.vat_number_in_name.ReadOnly = true;
+            this.vat_number_in_name.Size = new System.Drawing.Size(396, 20);
+            this.vat_number_in_name.TabIndex = 102;
+            // 
+            // vat_number_in
+            // 
+            this.vat_number_in.Location = new System.Drawing.Point(443, 335);
+            this.vat_number_in.Name = "vat_number_in";
+            this.vat_number_in.ReadOnly = true;
+            this.vat_number_in.Size = new System.Drawing.Size(64, 20);
+            this.vat_number_in.TabIndex = 101;
+            this.vat_number_in.Click += new System.EventHandler(this.textBox2_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(536, 155);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(81, 13);
+            this.label17.TabIndex = 100;
+            this.label17.Text = "ضريبة المخرجات";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(249, 307);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(41, 13);
+            this.label25.TabIndex = 99;
+            this.label25.Text = "إلي ح /";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(250, 276);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(41, 13);
+            this.label26.TabIndex = 98;
+            this.label26.Text = "إلي ح /";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(250, 245);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 13);
+            this.label27.TabIndex = 97;
+            this.label27.Text = "إلي ح /";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(250, 124);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(41, 13);
+            this.label24.TabIndex = 96;
+            this.label24.Text = "إلي ح /";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(251, 93);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(41, 13);
+            this.label23.TabIndex = 95;
+            this.label23.Text = "إلي ح /";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(251, 62);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(41, 13);
+            this.label22.TabIndex = 94;
+            this.label22.Text = "إلي ح /";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(352, 213);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(162, 13);
+            this.label18.TabIndex = 93;
+            this.label18.Text = "( طرفي عملية الشراء الإفتراضيه )";
+            // 
             // inventory_acc_name
             // 
-            this.inventory_acc_name.Location = new System.Drawing.Point(39, 407);
+            this.inventory_acc_name.Location = new System.Drawing.Point(352, 422);
             this.inventory_acc_name.Name = "inventory_acc_name";
             this.inventory_acc_name.ReadOnly = true;
-            this.inventory_acc_name.Size = new System.Drawing.Size(383, 20);
+            this.inventory_acc_name.Size = new System.Drawing.Size(83, 20);
             this.inventory_acc_name.TabIndex = 92;
             // 
             // inventory_acc_number
             // 
-            this.inventory_acc_number.Location = new System.Drawing.Point(428, 407);
+            this.inventory_acc_number.Location = new System.Drawing.Point(443, 422);
             this.inventory_acc_number.Name = "inventory_acc_number";
             this.inventory_acc_number.ReadOnly = true;
-            this.inventory_acc_number.Size = new System.Drawing.Size(79, 20);
+            this.inventory_acc_number.Size = new System.Drawing.Size(64, 20);
             this.inventory_acc_number.TabIndex = 90;
             this.inventory_acc_number.Click += new System.EventHandler(this.inventory_acc_number_Click);
             // 
@@ -419,7 +535,7 @@ namespace sales_management.UI
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label21.Location = new System.Drawing.Point(541, 410);
+            this.label21.Location = new System.Drawing.Point(541, 425);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(89, 13);
             this.label21.TabIndex = 91;
@@ -427,18 +543,18 @@ namespace sales_management.UI
             // 
             // product_cost_acc_name
             // 
-            this.product_cost_acc_name.Location = new System.Drawing.Point(39, 369);
+            this.product_cost_acc_name.Location = new System.Drawing.Point(352, 384);
             this.product_cost_acc_name.Name = "product_cost_acc_name";
             this.product_cost_acc_name.ReadOnly = true;
-            this.product_cost_acc_name.Size = new System.Drawing.Size(383, 20);
+            this.product_cost_acc_name.Size = new System.Drawing.Size(83, 20);
             this.product_cost_acc_name.TabIndex = 89;
             // 
             // product_cost_acc_number
             // 
-            this.product_cost_acc_number.Location = new System.Drawing.Point(428, 369);
+            this.product_cost_acc_number.Location = new System.Drawing.Point(443, 384);
             this.product_cost_acc_number.Name = "product_cost_acc_number";
             this.product_cost_acc_number.ReadOnly = true;
-            this.product_cost_acc_number.Size = new System.Drawing.Size(79, 20);
+            this.product_cost_acc_number.Size = new System.Drawing.Size(64, 20);
             this.product_cost_acc_number.TabIndex = 87;
             this.product_cost_acc_number.Click += new System.EventHandler(this.product_cost_acc_number_Click);
             // 
@@ -446,7 +562,7 @@ namespace sales_management.UI
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label20.Location = new System.Drawing.Point(513, 372);
+            this.label20.Location = new System.Drawing.Point(513, 387);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(119, 13);
             this.label20.TabIndex = 88;
@@ -463,7 +579,7 @@ namespace sales_management.UI
             // 
             // part_2_purchase_text_name_acc_bank
             // 
-            this.part_2_purchase_text_name_acc_bank.Location = new System.Drawing.Point(39, 267);
+            this.part_2_purchase_text_name_acc_bank.Location = new System.Drawing.Point(39, 305);
             this.part_2_purchase_text_name_acc_bank.Name = "part_2_purchase_text_name_acc_bank";
             this.part_2_purchase_text_name_acc_bank.ReadOnly = true;
             this.part_2_purchase_text_name_acc_bank.Size = new System.Drawing.Size(122, 20);
@@ -471,7 +587,7 @@ namespace sales_management.UI
             // 
             // part_2_purchase_text_name_acc_credit
             // 
-            this.part_2_purchase_text_name_acc_credit.Location = new System.Drawing.Point(39, 236);
+            this.part_2_purchase_text_name_acc_credit.Location = new System.Drawing.Point(39, 274);
             this.part_2_purchase_text_name_acc_credit.Name = "part_2_purchase_text_name_acc_credit";
             this.part_2_purchase_text_name_acc_credit.ReadOnly = true;
             this.part_2_purchase_text_name_acc_credit.Size = new System.Drawing.Size(122, 20);
@@ -480,7 +596,7 @@ namespace sales_management.UI
             // 
             // part_2_purchase_text_name_acc_cash
             // 
-            this.part_2_purchase_text_name_acc_cash.Location = new System.Drawing.Point(39, 205);
+            this.part_2_purchase_text_name_acc_cash.Location = new System.Drawing.Point(39, 243);
             this.part_2_purchase_text_name_acc_cash.Name = "part_2_purchase_text_name_acc_cash";
             this.part_2_purchase_text_name_acc_cash.ReadOnly = true;
             this.part_2_purchase_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
@@ -512,7 +628,7 @@ namespace sales_management.UI
             // 
             // part_2_purchase_bank_acc_number
             // 
-            this.part_2_purchase_bank_acc_number.Location = new System.Drawing.Point(167, 267);
+            this.part_2_purchase_bank_acc_number.Location = new System.Drawing.Point(167, 305);
             this.part_2_purchase_bank_acc_number.Name = "part_2_purchase_bank_acc_number";
             this.part_2_purchase_bank_acc_number.ReadOnly = true;
             this.part_2_purchase_bank_acc_number.Size = new System.Drawing.Size(55, 20);
@@ -521,7 +637,7 @@ namespace sales_management.UI
             // 
             // part_2_purchase_credit_acc_number
             // 
-            this.part_2_purchase_credit_acc_number.Location = new System.Drawing.Point(167, 236);
+            this.part_2_purchase_credit_acc_number.Location = new System.Drawing.Point(167, 274);
             this.part_2_purchase_credit_acc_number.Name = "part_2_purchase_credit_acc_number";
             this.part_2_purchase_credit_acc_number.ReadOnly = true;
             this.part_2_purchase_credit_acc_number.Size = new System.Drawing.Size(55, 20);
@@ -530,7 +646,7 @@ namespace sales_management.UI
             // 
             // part_2_purchase_cash_acc_number
             // 
-            this.part_2_purchase_cash_acc_number.Location = new System.Drawing.Point(167, 205);
+            this.part_2_purchase_cash_acc_number.Location = new System.Drawing.Point(167, 243);
             this.part_2_purchase_cash_acc_number.Name = "part_2_purchase_cash_acc_number";
             this.part_2_purchase_cash_acc_number.ReadOnly = true;
             this.part_2_purchase_cash_acc_number.Size = new System.Drawing.Size(55, 20);
@@ -566,15 +682,15 @@ namespace sales_management.UI
             // 
             // text_name_acc_vat
             // 
-            this.text_name_acc_vat.Location = new System.Drawing.Point(39, 331);
+            this.text_name_acc_vat.Location = new System.Drawing.Point(44, 152);
             this.text_name_acc_vat.Name = "text_name_acc_vat";
             this.text_name_acc_vat.ReadOnly = true;
-            this.text_name_acc_vat.Size = new System.Drawing.Size(383, 20);
+            this.text_name_acc_vat.Size = new System.Drawing.Size(396, 20);
             this.text_name_acc_vat.TabIndex = 72;
             // 
             // purchase_text_name_acc_bank
             // 
-            this.purchase_text_name_acc_bank.Location = new System.Drawing.Point(314, 267);
+            this.purchase_text_name_acc_bank.Location = new System.Drawing.Point(314, 305);
             this.purchase_text_name_acc_bank.Name = "purchase_text_name_acc_bank";
             this.purchase_text_name_acc_bank.ReadOnly = true;
             this.purchase_text_name_acc_bank.Size = new System.Drawing.Size(122, 20);
@@ -582,7 +698,7 @@ namespace sales_management.UI
             // 
             // purchase_text_name_acc_credit
             // 
-            this.purchase_text_name_acc_credit.Location = new System.Drawing.Point(314, 236);
+            this.purchase_text_name_acc_credit.Location = new System.Drawing.Point(314, 274);
             this.purchase_text_name_acc_credit.Name = "purchase_text_name_acc_credit";
             this.purchase_text_name_acc_credit.ReadOnly = true;
             this.purchase_text_name_acc_credit.Size = new System.Drawing.Size(122, 20);
@@ -590,7 +706,7 @@ namespace sales_management.UI
             // 
             // purchase_text_name_acc_cash
             // 
-            this.purchase_text_name_acc_cash.Location = new System.Drawing.Point(314, 205);
+            this.purchase_text_name_acc_cash.Location = new System.Drawing.Point(314, 243);
             this.purchase_text_name_acc_cash.Name = "purchase_text_name_acc_cash";
             this.purchase_text_name_acc_cash.ReadOnly = true;
             this.purchase_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
@@ -622,27 +738,17 @@ namespace sales_management.UI
             // 
             // vat_acc_number
             // 
-            this.vat_acc_number.Location = new System.Drawing.Point(428, 331);
+            this.vat_acc_number.Location = new System.Drawing.Point(448, 152);
             this.vat_acc_number.Name = "vat_acc_number";
             this.vat_acc_number.ReadOnly = true;
-            this.vat_acc_number.Size = new System.Drawing.Size(79, 20);
+            this.vat_acc_number.Size = new System.Drawing.Size(64, 20);
             this.vat_acc_number.TabIndex = 64;
             this.vat_acc_number.Click += new System.EventHandler(this.vat_acc_number_Click);
             this.vat_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(543, 334);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 13);
-            this.label17.TabIndex = 65;
-            this.label17.Text = "حساب الضرائب";
-            // 
             // purchase_bank_acc_number
             // 
-            this.purchase_bank_acc_number.Location = new System.Drawing.Point(444, 267);
+            this.purchase_bank_acc_number.Location = new System.Drawing.Point(444, 305);
             this.purchase_bank_acc_number.Name = "purchase_bank_acc_number";
             this.purchase_bank_acc_number.ReadOnly = true;
             this.purchase_bank_acc_number.Size = new System.Drawing.Size(63, 20);
@@ -653,7 +759,7 @@ namespace sales_management.UI
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(535, 270);
+            this.label13.Location = new System.Drawing.Point(535, 308);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 13);
             this.label13.TabIndex = 62;
@@ -661,7 +767,7 @@ namespace sales_management.UI
             // 
             // purchase_credit_acc_number
             // 
-            this.purchase_credit_acc_number.Location = new System.Drawing.Point(444, 236);
+            this.purchase_credit_acc_number.Location = new System.Drawing.Point(444, 274);
             this.purchase_credit_acc_number.Name = "purchase_credit_acc_number";
             this.purchase_credit_acc_number.ReadOnly = true;
             this.purchase_credit_acc_number.Size = new System.Drawing.Size(63, 20);
@@ -672,7 +778,7 @@ namespace sales_management.UI
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(541, 239);
+            this.label14.Location = new System.Drawing.Point(541, 277);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 13);
             this.label14.TabIndex = 59;
@@ -680,7 +786,7 @@ namespace sales_management.UI
             // 
             // purchase_cash_acc_number
             // 
-            this.purchase_cash_acc_number.Location = new System.Drawing.Point(444, 205);
+            this.purchase_cash_acc_number.Location = new System.Drawing.Point(444, 243);
             this.purchase_cash_acc_number.Name = "purchase_cash_acc_number";
             this.purchase_cash_acc_number.ReadOnly = true;
             this.purchase_cash_acc_number.Size = new System.Drawing.Size(63, 20);
@@ -691,7 +797,7 @@ namespace sales_management.UI
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(534, 208);
+            this.label15.Location = new System.Drawing.Point(534, 246);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 13);
             this.label15.TabIndex = 56;
@@ -701,7 +807,7 @@ namespace sales_management.UI
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(529, 175);
+            this.label16.Location = new System.Drawing.Point(529, 213);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(97, 13);
             this.label16.TabIndex = 54;
@@ -817,68 +923,59 @@ namespace sales_management.UI
             this.settingsIdText.TabIndex = 16;
             this.settingsIdText.Visible = false;
             // 
-            // label18
+            // label29
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(352, 175);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(162, 13);
-            this.label18.TabIndex = 93;
-            this.label18.Text = "( طرفي عملية الشراء الإفتراضيه )";
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label29.Location = new System.Drawing.Point(214, 423);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(90, 13);
+            this.label29.TabIndex = 105;
+            this.label29.Text = "حساب الموردين";
             // 
-            // label22
+            // label30
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(251, 62);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(41, 13);
-            this.label22.TabIndex = 94;
-            this.label22.Text = "إلي ح /";
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label30.Location = new System.Drawing.Point(225, 391);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(79, 13);
+            this.label30.TabIndex = 104;
+            this.label30.Text = "حساب العملاء";
             // 
-            // label23
+            // supplier_acc_number_name
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(251, 93);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(41, 13);
-            this.label23.TabIndex = 95;
-            this.label23.Text = "إلي ح /";
+            this.supplier_acc_number_name.Location = new System.Drawing.Point(45, 420);
+            this.supplier_acc_number_name.Name = "supplier_acc_number_name";
+            this.supplier_acc_number_name.ReadOnly = true;
+            this.supplier_acc_number_name.Size = new System.Drawing.Size(81, 20);
+            this.supplier_acc_number_name.TabIndex = 109;
             // 
-            // label24
+            // supplier_acc_number
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(250, 124);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(41, 13);
-            this.label24.TabIndex = 96;
-            this.label24.Text = "إلي ح /";
+            this.supplier_acc_number.Location = new System.Drawing.Point(137, 419);
+            this.supplier_acc_number.Name = "supplier_acc_number";
+            this.supplier_acc_number.ReadOnly = true;
+            this.supplier_acc_number.Size = new System.Drawing.Size(64, 20);
+            this.supplier_acc_number.TabIndex = 108;
+            this.supplier_acc_number.Click += new System.EventHandler(this.supplier_acc_number_Click);
             // 
-            // label25
+            // customer_acc_number_name
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(249, 269);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(41, 13);
-            this.label25.TabIndex = 99;
-            this.label25.Text = "إلي ح /";
+            this.customer_acc_number_name.Location = new System.Drawing.Point(45, 382);
+            this.customer_acc_number_name.Name = "customer_acc_number_name";
+            this.customer_acc_number_name.ReadOnly = true;
+            this.customer_acc_number_name.Size = new System.Drawing.Size(81, 20);
+            this.customer_acc_number_name.TabIndex = 107;
             // 
-            // label26
+            // customer_acc_number
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(250, 238);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(41, 13);
-            this.label26.TabIndex = 98;
-            this.label26.Text = "إلي ح /";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(250, 207);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(41, 13);
-            this.label27.TabIndex = 97;
-            this.label27.Text = "إلي ح /";
+            this.customer_acc_number.Location = new System.Drawing.Point(137, 383);
+            this.customer_acc_number.Name = "customer_acc_number";
+            this.customer_acc_number.ReadOnly = true;
+            this.customer_acc_number.Size = new System.Drawing.Size(64, 20);
+            this.customer_acc_number.TabIndex = 106;
+            this.customer_acc_number.Click += new System.EventHandler(this.customer_acc_number_Click);
             // 
             // SystemSettings
             // 
@@ -951,7 +1048,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         public System.Windows.Forms.TextBox sales_bank_acc_number;
         public System.Windows.Forms.TextBox sales_credit_acc_number;
         public System.Windows.Forms.TextBox sales_cash_acc_number;
@@ -992,5 +1088,15 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label28;
+        public System.Windows.Forms.TextBox vat_number_in_name;
+        public System.Windows.Forms.TextBox vat_number_in;
+        private System.Windows.Forms.Label label17;
+        public System.Windows.Forms.TextBox supplier_acc_number_name;
+        public System.Windows.Forms.TextBox supplier_acc_number;
+        public System.Windows.Forms.TextBox customer_acc_number_name;
+        public System.Windows.Forms.TextBox customer_acc_number;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
     }
 }
