@@ -52,6 +52,12 @@ namespace sales_management.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.supplier_acc_number_name = new System.Windows.Forms.TextBox();
+            this.supplier_acc_number = new System.Windows.Forms.TextBox();
+            this.customer_acc_number_name = new System.Windows.Forms.TextBox();
+            this.customer_acc_number = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.vat_number_in_name = new System.Windows.Forms.TextBox();
             this.vat_number_in = new System.Windows.Forms.TextBox();
@@ -107,12 +113,6 @@ namespace sales_management.UI
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.settingsIdText = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.supplier_acc_number_name = new System.Windows.Forms.TextBox();
-            this.supplier_acc_number = new System.Windows.Forms.TextBox();
-            this.customer_acc_number_name = new System.Windows.Forms.TextBox();
-            this.customer_acc_number = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -416,6 +416,62 @@ namespace sales_management.UI
             this.tabPage3.Text = "حسابات دفتر الأستاذ";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // supplier_acc_number_name
+            // 
+            this.supplier_acc_number_name.Location = new System.Drawing.Point(45, 420);
+            this.supplier_acc_number_name.Name = "supplier_acc_number_name";
+            this.supplier_acc_number_name.ReadOnly = true;
+            this.supplier_acc_number_name.Size = new System.Drawing.Size(81, 20);
+            this.supplier_acc_number_name.TabIndex = 109;
+            // 
+            // supplier_acc_number
+            // 
+            this.supplier_acc_number.Location = new System.Drawing.Point(137, 419);
+            this.supplier_acc_number.Name = "supplier_acc_number";
+            this.supplier_acc_number.ReadOnly = true;
+            this.supplier_acc_number.Size = new System.Drawing.Size(64, 20);
+            this.supplier_acc_number.TabIndex = 108;
+            this.supplier_acc_number.Click += new System.EventHandler(this.supplier_acc_number_Click);
+            this.supplier_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            // 
+            // customer_acc_number_name
+            // 
+            this.customer_acc_number_name.Location = new System.Drawing.Point(45, 382);
+            this.customer_acc_number_name.Name = "customer_acc_number_name";
+            this.customer_acc_number_name.ReadOnly = true;
+            this.customer_acc_number_name.Size = new System.Drawing.Size(81, 20);
+            this.customer_acc_number_name.TabIndex = 107;
+            // 
+            // customer_acc_number
+            // 
+            this.customer_acc_number.Location = new System.Drawing.Point(137, 383);
+            this.customer_acc_number.Name = "customer_acc_number";
+            this.customer_acc_number.ReadOnly = true;
+            this.customer_acc_number.Size = new System.Drawing.Size(64, 20);
+            this.customer_acc_number.TabIndex = 106;
+            this.customer_acc_number.Click += new System.EventHandler(this.customer_acc_number_Click);
+            this.customer_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label29.Location = new System.Drawing.Point(214, 423);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(90, 13);
+            this.label29.TabIndex = 105;
+            this.label29.Text = "حساب الموردين";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label30.Location = new System.Drawing.Point(225, 391);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(79, 13);
+            this.label30.TabIndex = 104;
+            this.label30.Text = "حساب العملاء";
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -441,6 +497,7 @@ namespace sales_management.UI
             this.vat_number_in.Size = new System.Drawing.Size(64, 20);
             this.vat_number_in.TabIndex = 101;
             this.vat_number_in.Click += new System.EventHandler(this.textBox2_Click);
+            this.vat_number_in.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label17
             // 
@@ -530,6 +587,7 @@ namespace sales_management.UI
             this.inventory_acc_number.Size = new System.Drawing.Size(64, 20);
             this.inventory_acc_number.TabIndex = 90;
             this.inventory_acc_number.Click += new System.EventHandler(this.inventory_acc_number_Click);
+            this.inventory_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label21
             // 
@@ -557,6 +615,7 @@ namespace sales_management.UI
             this.product_cost_acc_number.Size = new System.Drawing.Size(64, 20);
             this.product_cost_acc_number.TabIndex = 87;
             this.product_cost_acc_number.Click += new System.EventHandler(this.product_cost_acc_number_Click);
+            this.product_cost_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label20
             // 
@@ -634,6 +693,7 @@ namespace sales_management.UI
             this.part_2_purchase_bank_acc_number.Size = new System.Drawing.Size(55, 20);
             this.part_2_purchase_bank_acc_number.TabIndex = 79;
             this.part_2_purchase_bank_acc_number.Click += new System.EventHandler(this.part_2_purchase_bank_acc_number_Click);
+            this.part_2_purchase_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // part_2_purchase_credit_acc_number
             // 
@@ -643,6 +703,7 @@ namespace sales_management.UI
             this.part_2_purchase_credit_acc_number.Size = new System.Drawing.Size(55, 20);
             this.part_2_purchase_credit_acc_number.TabIndex = 78;
             this.part_2_purchase_credit_acc_number.Click += new System.EventHandler(this.part_2_purchase_credit_acc_number_Click);
+            this.part_2_purchase_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // part_2_purchase_cash_acc_number
             // 
@@ -652,6 +713,7 @@ namespace sales_management.UI
             this.part_2_purchase_cash_acc_number.Size = new System.Drawing.Size(55, 20);
             this.part_2_purchase_cash_acc_number.TabIndex = 77;
             this.part_2_purchase_cash_acc_number.Click += new System.EventHandler(this.part_2_purchase_cash_acc_number_Click);
+            this.part_2_purchase_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // part_2_sales_bank_acc_number
             // 
@@ -661,6 +723,7 @@ namespace sales_management.UI
             this.part_2_sales_bank_acc_number.Size = new System.Drawing.Size(55, 20);
             this.part_2_sales_bank_acc_number.TabIndex = 76;
             this.part_2_sales_bank_acc_number.Click += new System.EventHandler(this.part_2_sales_bank_acc_number_Click);
+            this.part_2_sales_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // part_2_sales_credit_acc_number
             // 
@@ -670,6 +733,7 @@ namespace sales_management.UI
             this.part_2_sales_credit_acc_number.Size = new System.Drawing.Size(55, 20);
             this.part_2_sales_credit_acc_number.TabIndex = 75;
             this.part_2_sales_credit_acc_number.Click += new System.EventHandler(this.part_2_sales_credit_acc_number_Click);
+            this.part_2_sales_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // part_2_sales_cash_acc_number
             // 
@@ -679,6 +743,7 @@ namespace sales_management.UI
             this.part_2_sales_cash_acc_number.Size = new System.Drawing.Size(55, 20);
             this.part_2_sales_cash_acc_number.TabIndex = 74;
             this.part_2_sales_cash_acc_number.Click += new System.EventHandler(this.part_2_sales_cash_acc_number_Click);
+            this.part_2_sales_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // text_name_acc_vat
             // 
@@ -744,7 +809,7 @@ namespace sales_management.UI
             this.vat_acc_number.Size = new System.Drawing.Size(64, 20);
             this.vat_acc_number.TabIndex = 64;
             this.vat_acc_number.Click += new System.EventHandler(this.vat_acc_number_Click);
-            this.vat_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.vat_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // purchase_bank_acc_number
             // 
@@ -754,7 +819,7 @@ namespace sales_management.UI
             this.purchase_bank_acc_number.Size = new System.Drawing.Size(63, 20);
             this.purchase_bank_acc_number.TabIndex = 61;
             this.purchase_bank_acc_number.Click += new System.EventHandler(this.purchase_bank_acc_number_Click);
-            this.purchase_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.purchase_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label13
             // 
@@ -773,7 +838,7 @@ namespace sales_management.UI
             this.purchase_credit_acc_number.Size = new System.Drawing.Size(63, 20);
             this.purchase_credit_acc_number.TabIndex = 58;
             this.purchase_credit_acc_number.Click += new System.EventHandler(this.purchase_credit_acc_number_Click);
-            this.purchase_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.purchase_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label14
             // 
@@ -792,7 +857,7 @@ namespace sales_management.UI
             this.purchase_cash_acc_number.Size = new System.Drawing.Size(63, 20);
             this.purchase_cash_acc_number.TabIndex = 55;
             this.purchase_cash_acc_number.Click += new System.EventHandler(this.purchase_cash_acc_number_Click);
-            this.purchase_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.purchase_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label15
             // 
@@ -822,7 +887,7 @@ namespace sales_management.UI
             this.sales_bank_acc_number.Size = new System.Drawing.Size(63, 20);
             this.sales_bank_acc_number.TabIndex = 51;
             this.sales_bank_acc_number.Click += new System.EventHandler(this.sales_bank_acc_number_Click);
-            this.sales_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.sales_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label10
             // 
@@ -841,7 +906,7 @@ namespace sales_management.UI
             this.sales_credit_acc_number.Size = new System.Drawing.Size(63, 20);
             this.sales_credit_acc_number.TabIndex = 48;
             this.sales_credit_acc_number.Click += new System.EventHandler(this.sales_credit_acc_number_Click);
-            this.sales_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.sales_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label11
             // 
@@ -860,7 +925,7 @@ namespace sales_management.UI
             this.sales_cash_acc_number.Size = new System.Drawing.Size(63, 20);
             this.sales_cash_acc_number.TabIndex = 45;
             this.sales_cash_acc_number.Click += new System.EventHandler(this.sales_cash_acc_number_Click);
-            this.sales_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged);
+            this.sales_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label12
             // 
@@ -922,60 +987,6 @@ namespace sales_management.UI
             this.settingsIdText.Size = new System.Drawing.Size(82, 20);
             this.settingsIdText.TabIndex = 16;
             this.settingsIdText.Visible = false;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label29.Location = new System.Drawing.Point(214, 423);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(90, 13);
-            this.label29.TabIndex = 105;
-            this.label29.Text = "حساب الموردين";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label30.Location = new System.Drawing.Point(225, 391);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(79, 13);
-            this.label30.TabIndex = 104;
-            this.label30.Text = "حساب العملاء";
-            // 
-            // supplier_acc_number_name
-            // 
-            this.supplier_acc_number_name.Location = new System.Drawing.Point(45, 420);
-            this.supplier_acc_number_name.Name = "supplier_acc_number_name";
-            this.supplier_acc_number_name.ReadOnly = true;
-            this.supplier_acc_number_name.Size = new System.Drawing.Size(81, 20);
-            this.supplier_acc_number_name.TabIndex = 109;
-            // 
-            // supplier_acc_number
-            // 
-            this.supplier_acc_number.Location = new System.Drawing.Point(137, 419);
-            this.supplier_acc_number.Name = "supplier_acc_number";
-            this.supplier_acc_number.ReadOnly = true;
-            this.supplier_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.supplier_acc_number.TabIndex = 108;
-            this.supplier_acc_number.Click += new System.EventHandler(this.supplier_acc_number_Click);
-            // 
-            // customer_acc_number_name
-            // 
-            this.customer_acc_number_name.Location = new System.Drawing.Point(45, 382);
-            this.customer_acc_number_name.Name = "customer_acc_number_name";
-            this.customer_acc_number_name.ReadOnly = true;
-            this.customer_acc_number_name.Size = new System.Drawing.Size(81, 20);
-            this.customer_acc_number_name.TabIndex = 107;
-            // 
-            // customer_acc_number
-            // 
-            this.customer_acc_number.Location = new System.Drawing.Point(137, 383);
-            this.customer_acc_number.Name = "customer_acc_number";
-            this.customer_acc_number.ReadOnly = true;
-            this.customer_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.customer_acc_number.TabIndex = 106;
-            this.customer_acc_number.Click += new System.EventHandler(this.customer_acc_number_Click);
             // 
             // SystemSettings
             // 

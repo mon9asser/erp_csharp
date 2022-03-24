@@ -93,8 +93,7 @@ namespace sales_management.UI
         
         private void إعداداتالنظامToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.SystemSettings settings = new UI.SystemSettings();
-            settings.Show(); 
+            UI.SystemSettings.GetForm.Show(); 
         }
 
         private void تهيةالبياناتالأفتراضيةToolStripMenuItem_Click(object sender, EventArgs e)

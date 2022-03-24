@@ -285,7 +285,10 @@ namespace sales_management.UI
         public void Fill_Invoice_Fields( DataRow row ) {
             
             int invoiceType = this.documentType;
-
+            if (this.Settings.Rows.Count == 0) {
+                MessageBox.Show( "من فضلك تأكد من إعدادات النظام وشجرة الحسابات" );
+                return;
+            }
             invoice_id.Text     = row["id"].ToString();
             invoice_serial.Text = row["serial"].ToString();
             datemade.Text = row["date"].ToString();
@@ -660,10 +663,16 @@ namespace sales_management.UI
 
         public void Load_Target_Accounts( int paymentType ) {
 
+            if (this.Settings.Rows.Count == 0)
+            {
+                MessageBox.Show("من فضلك تأكد من إعدادات النظام وشجرة الحسابات");
+                return;
+            }
+
             string[] account;
             if (paymentType == 0)
             {
-                // Cash 
+                // Cash
                 account = Get_Account_Details(this.Settings.Rows[0]["sales_cash_acc_number"].ToString());
 
                 legend_id.Text = account[0].ToString();
@@ -1228,6 +1237,7 @@ namespace sales_management.UI
                 return;
             }
 
+            
             // Save Invoice Data
             if (invoice_id.Text != "") {
 
@@ -1331,7 +1341,7 @@ namespace sales_management.UI
                         row["description"] = "بيع بضاعه نقدا";
                         if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
 
-                            row["description"] += " - بخصم تجاري ";
+                            row["description"] += " - بخصم تجاري علي الفاتورة ";
 
                             if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
                                 row["description"] += " %" + dicount_percentage.Text;
@@ -1350,16 +1360,21 @@ namespace sales_management.UI
 
 
                     } else if (payment_methods.SelectedIndex == 1 ) {
+
+                        if (customer_id.Text == "") {
+                            MessageBox.Show( "هذه الفاتورة علي الحساب من فضلك قم بإختيار إسم العميل" );
+                            return;
+                        }
                         // From :-
                         DataRow row = jounral_table.NewRow();
-                        row["account_number"] = sets["sales_credit_acc_number"].ToString();
+                        row["account_number"] = customer_id.Text.ToString();
                         row["amount"] = total_field_text.Text.ToString();
                         row["is_debit"] = true;
                         row["description"] = "بيع بضاعه بالأجل";
                         if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
                         {
 
-                            row["description"] += " - بخصم تجاري ";
+                            row["description"] += " - بخصم تجاري علي الفاتورة ";
 
                             if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
                             {
@@ -1390,7 +1405,7 @@ namespace sales_management.UI
                         if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
                         {
 
-                            row["description"] += " - بخصم تجاري ";
+                            row["description"] += " - بخصم تجاري علي الفاتورة ";
 
                             if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
                             {
@@ -1417,10 +1432,19 @@ namespace sales_management.UI
                     row2["description"] = "ضريبة مخرجات مستحقة";
                     jounral_table.Rows.Add(row2);
 
+
+                    // Cost Of Sold Goods
+
+
                 }
 
                 //journals.Get_DataTable_Accounts_Parts();
-                journals.Update_Journal_Document_Details(Convert.ToInt32(invoice_id.Text), this.documentType, details.Text, jounral_table);
+                bool allowDate = false;
+                if (time_data.Text != "") {
+                    allowDate = true; 
+                }
+
+                journals.Update_Journal_Document_Details(Convert.ToInt32(invoice_id.Text), this.documentType, details.Text, datemade.Value, jounral_table, allowDate);
 
                 // Disable Everything 
                 this.disable_elements(false);
@@ -1439,7 +1463,7 @@ namespace sales_management.UI
             
 
             // To Allow Add New Invoice 
-            invoice_id.Text = "";
+            //invoice_id.Text = "";
 
             // Disable Fields And Elements To Read Only 
 
@@ -1489,7 +1513,9 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-             
+            
+            invoice_id.Text = "";
+
             this.is_getting_data = false;
             print.Enabled = false;
             // An Invoice ID

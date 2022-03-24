@@ -122,12 +122,12 @@ namespace sales_management.UI
             {
                 return; 
             }
-
+             
             if (this.InstanceType == 0)
             {
                 // System Settings 
                 UI.SystemSettings.GetForm.input.Text = accounting_tree.SelectedNode.Tag.ToString();
-                UI.SystemSettings.GetForm.Fill_Fields_W_Texts();
+                UI.SystemSettings.GetForm.Fill_Target_Account_Number(UI.SystemSettings.GetForm.input.Text);
             }
             else if (this.InstanceType == 1) {
 
@@ -139,7 +139,7 @@ namespace sales_management.UI
             }
 
 
-            this.Close();
+            UI.Accounts.GetForm.Close();
         }
     }
 }

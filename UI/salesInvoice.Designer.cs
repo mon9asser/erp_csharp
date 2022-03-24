@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.invoice_serial = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,10 +92,11 @@ namespace sales_management.UI
             // 
             // invoice_serial
             // 
-            this.invoice_serial.Location = new System.Drawing.Point(111, 22);
+            this.invoice_serial.Location = new System.Drawing.Point(340, 23);
             this.invoice_serial.Name = "invoice_serial";
-            this.invoice_serial.Size = new System.Drawing.Size(276, 20);
+            this.invoice_serial.Size = new System.Drawing.Size(37, 20);
             this.invoice_serial.TabIndex = 31;
+            this.invoice_serial.Visible = false;
             this.invoice_serial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.invoice_serial_KeyPress);
             // 
             // label2
@@ -125,11 +126,10 @@ namespace sales_management.UI
             // 
             // invoice_id
             // 
-            this.invoice_id.Location = new System.Drawing.Point(442, 22);
+            this.invoice_id.Location = new System.Drawing.Point(111, 23);
             this.invoice_id.Name = "invoice_id";
-            this.invoice_id.Size = new System.Drawing.Size(19, 20);
+            this.invoice_id.Size = new System.Drawing.Size(212, 20);
             this.invoice_id.TabIndex = 32;
-            this.invoice_id.Visible = false;
             // 
             // payment_methods
             // 
@@ -198,9 +198,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -209,14 +209,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -470,7 +470,7 @@ namespace sales_management.UI
             this.search_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.search_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Location = new System.Drawing.Point(393, 18);
+            this.search_button.Location = new System.Drawing.Point(395, 18);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(68, 29);
             this.search_button.TabIndex = 81;

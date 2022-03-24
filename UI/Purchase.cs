@@ -70,8 +70,8 @@ namespace sales_management.UI
 
             // Get Last Invoice When Load 
             this.Load_Invoice_Data_Table(-1);
-            DataTable table = Get_Invoice_Items_Details(Convert.ToInt32(invoice_number.Text));
-            this.Setup_Datagridview_Invoice_Items(table);
+            //DataTable table = Get_Invoice_Items_Details(Convert.ToInt32(invoice_number.Text));
+            //this.Setup_Datagridview_Invoice_Items(table);
             this.invoiceContinue = true;
         }
 
