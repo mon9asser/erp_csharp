@@ -160,8 +160,9 @@ namespace sales_management.UI
 
         private void فاتورةالمشترياتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            UI.Purchase.GetForm.Show();
+            UI.purchaseInvoice purchase = new UI.purchaseInvoice();
+            purchase.Show();
+            //UI.purchaseInvoice.GetForm.Show();
         }
 
         private void شجرةالحساباToolStripMenuItem_Click(object sender, EventArgs e)

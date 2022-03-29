@@ -170,6 +170,12 @@
     <Compile Include="UI\Purchase.Designer.cs">
       <DependentUpon>Purchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\purchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\purchaseInvoice.Designer.cs">
+      <DependentUpon>purchaseInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\salesInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
