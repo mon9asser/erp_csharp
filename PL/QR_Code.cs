@@ -11,111 +11,681 @@ namespace sales_management.PL
 {
     class QR_Code
     {
-        public QRCode Generator(string name, string total_price, string vat_value, string invoice_number, string datemade, string vat_number)
+        public QRCode GeneratedQrCode(string name, string total_price, string vat_value, string datemade, string vat_number)
         {
+            string[,] filds = new string[5, 2] {
+                { "1", name},
+                { "2", vat_number},
+                { "3", datemade},
+                { "4", total_price},
+                { "5", vat_value},
+            };
 
-            string name_hex = this.convertToHexData(1, name);
-            string vat_number_hex = this.convertToHexData(2, vat_number);
-            string date_made_texts_hex = this.convertToHexData(3, datemade.ToString());
-            string total_w_vat_hex = this.convertToHexData(4, total_price);
-            string vat_value_hex = this.convertToHexData(5, vat_value);
-
-            string concateAll = name_hex.ToLower() +
-                                vat_number_hex.ToLower() +
-                                date_made_texts_hex.ToLower() +
-                                total_w_vat_hex.ToLower() +
-                                vat_value_hex.ToLower();
-
-            var encoder64 = this.HexToBase64(concateAll); 
+            Console.WriteLine(name);
+            Console.WriteLine(vat_number);
+            Console.WriteLine(datemade);
+            Console.WriteLine(total_price);
+            Console.WriteLine(vat_value);
 
             QRCodeGenerator qr = new QRCodeGenerator();
-            QRCodeData data = qr.CreateQrCode(encoder64.ToString(), QRCodeGenerator.ECCLevel.H, true, true, QRCodeGenerator.EciMode.Utf8);
+            QRCodeData data = qr.CreateQrCode(this.generated_base64(filds).ToString(), QRCodeGenerator.ECCLevel.H, true, true, QRCodeGenerator.EciMode.Utf8);
             QRCode code = new QRCode(data);
 
-            return code; 
+            return code;
 
         }
 
-
-
-
-        public GeneratedBarcode Generator1(string name, string total_price, string vat_value, string invoice_number, string datemade, string vat_number)
+        public string generated_base64(string[,] datafield)
         {
 
-            string name_hex = this.convertToHexData(1, name);
-            string vat_number_hex = this.convertToHexData(2, vat_number);
-            string date_made_texts_hex = this.convertToHexData(3, datemade.ToString());
-            string total_w_vat_hex = this.convertToHexData(4, total_price);
-            string vat_value_hex = this.convertToHexData(5, vat_value);
+            string concate = "";
 
-            string concateAll = name_hex.ToLower() +
-                                vat_number_hex.ToLower() +
-                                date_made_texts_hex.ToLower() +
-                                total_w_vat_hex.ToLower() +
-                                vat_value_hex.ToLower();
+            int counts = (datafield.Length / 2);
 
-            var encoder64 = this.HexToBase64(concateAll);
-
-            GeneratedBarcode MyQRWithLogo = IronBarCode.QRCodeWriter.CreateQrCode(encoder64);
-
-             
-
-            return MyQRWithLogo;
-
-        }
-
-
-        public string HexToBase64(string strInput)
-        {
-            var bytes = new byte[strInput.Length / 2];
-            for (var i = 0; i < bytes.Length; i++)
+            for (int i = 0; i < counts; i++)
             {
-                bytes[i] = Convert.ToByte(strInput.Substring(i * 2, 2), 16);
+
+                int tag = Convert.ToInt32(datafield[i, 0]);
+                string value = datafield[i, 1].ToString();
+
+                var utf8 = Encoding.UTF8;
+                byte[] utfBytes = utf8.GetBytes(value);
+                int length = utfBytes.Length;
+                concate += hex_numbers(tag);
+                concate += hex_numbers(length);
+                concate += value;
+
             }
-            return Convert.ToBase64String(bytes);
+
+            return EncodeTo64(concate);
 
         }
-         
 
-        string convertToHexData(int tag, string value)
+        public string hex_numbers(int index)
         {
-            // cal tag 
-            string number = "0" + tag.ToString();
 
-            // cal string leng 
-            string valLenght = value.Length.ToString("x2");
 
-            // cal value   
-            
-            byte[] ba = Encoding.ASCII.GetBytes(value);
-            //Encoding.UTF32.GetBytes(value);// Encoding.ASCII.GetBytes(value); // Encoding.Convert(Encoding.ASCII, Encoding.ASCII, Encoding.ASCII.GetBytes(value)); // Encoding.Default.GetBytes(value);
-             
-            var hexString = BitConverter.ToString(ba); 
-            hexString = hexString.Replace("-", "");
+            string[] decoded_cars = new string[600];
+            decoded_cars[0] = "AA==";
+            decoded_cars[1] = "AQ==";
+            decoded_cars[2] = "Ag==";
+            decoded_cars[3] = "Aw==";
+            decoded_cars[4] = "BA==";
+            decoded_cars[5] = "BQ==";
+            decoded_cars[6] = "Bg==";
+            decoded_cars[7] = "Bw==";
+            decoded_cars[8] = "CA==";
+            decoded_cars[9] = "CQ==";
+            decoded_cars[10] = "Cg==";
+            decoded_cars[11] = "Cw==";
+            decoded_cars[12] = "DA==";
+            decoded_cars[13] = "DQ==";
+            decoded_cars[14] = "Dg==";
+            decoded_cars[15] = "Dw==";
+            decoded_cars[16] = "EA==";
+            decoded_cars[17] = "EQ==";
+            decoded_cars[18] = "Eg==";
+            decoded_cars[19] = "Ew==";
+            decoded_cars[20] = "FA==";
+            decoded_cars[21] = "FQ==";
+            decoded_cars[22] = "Fg==";
+            decoded_cars[23] = "Fw==";
+            decoded_cars[24] = "GA==";
+            decoded_cars[25] = "GQ==";
+            decoded_cars[26] = "Gg==";
+            decoded_cars[27] = "Gw==";
+            decoded_cars[28] = "HA==";
+            decoded_cars[29] = "HQ==";
+            decoded_cars[30] = "Hg==";
+            decoded_cars[31] = "Hw==";
+            decoded_cars[32] = "IA==";
+            decoded_cars[33] = "IQ==";
+            decoded_cars[34] = "Ig==";
+            decoded_cars[35] = "Iw==";
+            decoded_cars[36] = "JA==";
+            decoded_cars[37] = "JQ==";
+            decoded_cars[38] = "Jg==";
+            decoded_cars[39] = "Jw==";
+            decoded_cars[40] = "KA==";
+            decoded_cars[41] = "KQ==";
+            decoded_cars[42] = "Kg==";
+            decoded_cars[43] = "Kw==";
+            decoded_cars[44] = "LA==";
+            decoded_cars[45] = "LQ==";
+            decoded_cars[46] = "Lg==";
+            decoded_cars[47] = "Lw==";
+            decoded_cars[48] = "MA==";
+            decoded_cars[49] = "MQ==";
+            decoded_cars[50] = "Mg==";
+            decoded_cars[51] = "Mw==";
+            decoded_cars[52] = "NA==";
+            decoded_cars[53] = "NQ==";
+            decoded_cars[54] = "Ng==";
+            decoded_cars[55] = "Nw==";
+            decoded_cars[56] = "OA==";
+            decoded_cars[57] = "OQ==";
+            decoded_cars[58] = "Og==";
+            decoded_cars[59] = "Ow==";
+            decoded_cars[60] = "PA==";
+            decoded_cars[61] = "PQ==";
+            decoded_cars[62] = "Pg==";
+            decoded_cars[63] = "Pw==";
+            decoded_cars[64] = "QA==";
+            decoded_cars[65] = "QQ==";
+            decoded_cars[66] = "Qg==";
+            decoded_cars[67] = "Qw==";
+            decoded_cars[68] = "RA==";
+            decoded_cars[69] = "RQ==";
+            decoded_cars[70] = "Rg==";
+            decoded_cars[71] = "Rw==";
+            decoded_cars[72] = "SA==";
+            decoded_cars[73] = "SQ==";
+            decoded_cars[74] = "Sg==";
+            decoded_cars[75] = "Sw==";
+            decoded_cars[76] = "TA==";
+            decoded_cars[77] = "TQ==";
+            decoded_cars[78] = "Tg==";
+            decoded_cars[79] = "Tw==";
+            decoded_cars[80] = "UA==";
+            decoded_cars[81] = "UQ==";
+            decoded_cars[82] = "Ug==";
+            decoded_cars[83] = "Uw==";
+            decoded_cars[84] = "VA==";
+            decoded_cars[85] = "VQ==";
+            decoded_cars[86] = "Vg==";
+            decoded_cars[87] = "Vw==";
+            decoded_cars[88] = "WA==";
+            decoded_cars[89] = "WQ==";
+            decoded_cars[90] = "Wg==";
+            decoded_cars[91] = "Ww==";
+            decoded_cars[92] = "XA==";
+            decoded_cars[93] = "XQ==";
+            decoded_cars[94] = "Xg==";
+            decoded_cars[95] = "Xw==";
+            decoded_cars[96] = "YA==";
+            decoded_cars[97] = "YQ==";
+            decoded_cars[98] = "Yg==";
+            decoded_cars[99] = "Yw==";
+            decoded_cars[100] = "ZA==";
+            decoded_cars[101] = "ZQ==";
+            decoded_cars[102] = "Zg==";
+            decoded_cars[103] = "Zw==";
+            decoded_cars[104] = "aA==";
+            decoded_cars[105] = "aQ==";
+            decoded_cars[106] = "ag==";
+            decoded_cars[107] = "aw==";
+            decoded_cars[108] = "bA==";
+            decoded_cars[109] = "bQ==";
+            decoded_cars[110] = "bg==";
+            decoded_cars[111] = "bw==";
+            decoded_cars[112] = "cA==";
+            decoded_cars[113] = "cQ==";
+            decoded_cars[114] = "cg==";
+            decoded_cars[115] = "cw==";
+            decoded_cars[116] = "dA==";
+            decoded_cars[117] = "dQ==";
+            decoded_cars[118] = "dg==";
+            decoded_cars[119] = "dw==";
+            decoded_cars[120] = "eA==";
+            decoded_cars[121] = "eQ==";
+            decoded_cars[122] = "eg==";
+            decoded_cars[123] = "ew==";
+            decoded_cars[124] = "fA==";
+            decoded_cars[125] = "fQ==";
+            decoded_cars[126] = "fg==";
+            decoded_cars[127] = "fw==";
+            decoded_cars[128] = "gA==";
+            decoded_cars[129] = "gQ==";
+            decoded_cars[130] = "gg==";
+            decoded_cars[131] = "gw==";
+            decoded_cars[132] = "hA==";
+            decoded_cars[133] = "hQ==";
+            decoded_cars[134] = "hg==";
+            decoded_cars[135] = "hw==";
+            decoded_cars[136] = "iA==";
+            decoded_cars[137] = "iQ==";
+            decoded_cars[138] = "ig==";
+            decoded_cars[139] = "iw==";
+            decoded_cars[140] = "jA==";
+            decoded_cars[141] = "jQ==";
+            decoded_cars[142] = "jg==";
+            decoded_cars[143] = "jw==";
+            decoded_cars[144] = "kA==";
+            decoded_cars[145] = "kQ==";
+            decoded_cars[146] = "kg==";
+            decoded_cars[147] = "kw==";
+            decoded_cars[148] = "lA==";
+            decoded_cars[149] = "lQ==";
+            decoded_cars[150] = "lg==";
+            decoded_cars[151] = "lw==";
+            decoded_cars[152] = "mA==";
+            decoded_cars[153] = "mQ==";
+            decoded_cars[154] = "mg==";
+            decoded_cars[155] = "mw==";
+            decoded_cars[156] = "nA==";
+            decoded_cars[157] = "nQ==";
+            decoded_cars[158] = "ng==";
+            decoded_cars[159] = "nw==";
+            decoded_cars[160] = "oA==";
+            decoded_cars[161] = "oQ==";
+            decoded_cars[162] = "og==";
+            decoded_cars[163] = "ow==";
+            decoded_cars[164] = "pA==";
+            decoded_cars[165] = "pQ==";
+            decoded_cars[166] = "pg==";
+            decoded_cars[167] = "pw==";
+            decoded_cars[168] = "qA==";
+            decoded_cars[169] = "qQ==";
+            decoded_cars[170] = "qg==";
+            decoded_cars[171] = "qw==";
+            decoded_cars[172] = "rA==";
+            decoded_cars[173] = "rQ==";
+            decoded_cars[174] = "rg==";
+            decoded_cars[175] = "rw==";
+            decoded_cars[176] = "sA==";
+            decoded_cars[177] = "sQ==";
+            decoded_cars[178] = "sg==";
+            decoded_cars[179] = "sw==";
+            decoded_cars[180] = "tA==";
+            decoded_cars[181] = "tQ==";
+            decoded_cars[182] = "tg==";
+            decoded_cars[183] = "tw==";
+            decoded_cars[184] = "uA==";
+            decoded_cars[185] = "uQ==";
+            decoded_cars[186] = "ug==";
+            decoded_cars[187] = "uw==";
+            decoded_cars[188] = "vA==";
+            decoded_cars[189] = "vQ==";
+            decoded_cars[190] = "vg==";
+            decoded_cars[191] = "vw==";
+            decoded_cars[192] = "wA==";
+            decoded_cars[193] = "wQ==";
+            decoded_cars[194] = "wg==";
+            decoded_cars[195] = "ww==";
+            decoded_cars[196] = "xA==";
+            decoded_cars[197] = "xQ==";
+            decoded_cars[198] = "xg==";
+            decoded_cars[199] = "xw==";
+            decoded_cars[200] = "yA==";
+            decoded_cars[201] = "yQ==";
+            decoded_cars[202] = "yg==";
+            decoded_cars[203] = "yw==";
+            decoded_cars[204] = "zA==";
+            decoded_cars[205] = "zQ==";
+            decoded_cars[206] = "zg==";
+            decoded_cars[207] = "zw==";
+            decoded_cars[208] = "0A==";
+            decoded_cars[209] = "0Q==";
+            decoded_cars[210] = "0g==";
+            decoded_cars[211] = "0w==";
+            decoded_cars[212] = "1A==";
+            decoded_cars[213] = "1Q==";
+            decoded_cars[214] = "1g==";
+            decoded_cars[215] = "1w==";
+            decoded_cars[216] = "2A==";
+            decoded_cars[217] = "2Q==";
+            decoded_cars[218] = "2g==";
+            decoded_cars[219] = "2w==";
+            decoded_cars[220] = "3A==";
+            decoded_cars[221] = "3Q==";
+            decoded_cars[222] = "3g==";
+            decoded_cars[223] = "3w==";
+            decoded_cars[224] = "4A==";
+            decoded_cars[225] = "4Q==";
+            decoded_cars[226] = "4g==";
+            decoded_cars[227] = "4w==";
+            decoded_cars[228] = "5A==";
+            decoded_cars[229] = "5Q==";
+            decoded_cars[230] = "5g==";
+            decoded_cars[231] = "5w==";
+            decoded_cars[232] = "6A==";
+            decoded_cars[233] = "6Q==";
+            decoded_cars[234] = "6g==";
+            decoded_cars[235] = "6w==";
+            decoded_cars[236] = "7A==";
+            decoded_cars[237] = "7Q==";
+            decoded_cars[238] = "7g==";
+            decoded_cars[239] = "7w==";
+            decoded_cars[240] = "8A==";
+            decoded_cars[241] = "8Q==";
+            decoded_cars[242] = "8g==";
+            decoded_cars[243] = "8w==";
+            decoded_cars[244] = "9A==";
+            decoded_cars[245] = "9Q==";
+            decoded_cars[246] = "9g==";
+            decoded_cars[247] = "9w==";
+            decoded_cars[248] = "+A==";
+            decoded_cars[249] = "+Q==";
+            decoded_cars[250] = "+g==";
+            decoded_cars[251] = "+w==";
+            decoded_cars[252] = "/A==";
+            decoded_cars[253] = "/Q==";
+            decoded_cars[254] = "/g==";
+            decoded_cars[255] = "/w==";
+            decoded_cars[256] = "EAA=";
+            decoded_cars[257] = "EBA=";
+            decoded_cars[258] = "ECA=";
+            decoded_cars[259] = "EDA=";
+            decoded_cars[260] = "EEA=";
+            decoded_cars[261] = "EFA=";
+            decoded_cars[262] = "EGA=";
+            decoded_cars[263] = "EHA=";
+            decoded_cars[264] = "EIA=";
+            decoded_cars[265] = "EJA=";
+            decoded_cars[266] = "EKA=";
+            decoded_cars[267] = "ELA=";
+            decoded_cars[268] = "EMA=";
+            decoded_cars[269] = "ENA=";
+            decoded_cars[270] = "EOA=";
+            decoded_cars[271] = "EPA=";
+            decoded_cars[272] = "EQA=";
+            decoded_cars[273] = "ERA=";
+            decoded_cars[274] = "ESA=";
+            decoded_cars[275] = "ETA=";
+            decoded_cars[276] = "EUA=";
+            decoded_cars[277] = "EVA=";
+            decoded_cars[278] = "EWA=";
+            decoded_cars[279] = "EXA=";
+            decoded_cars[280] = "EYA=";
+            decoded_cars[281] = "EZA=";
+            decoded_cars[282] = "EaA=";
+            decoded_cars[283] = "EbA=";
+            decoded_cars[284] = "EcA=";
+            decoded_cars[285] = "EdA=";
+            decoded_cars[286] = "EeA=";
+            decoded_cars[287] = "EfA=";
+            decoded_cars[288] = "EgA=";
+            decoded_cars[289] = "EhA=";
+            decoded_cars[290] = "EiA=";
+            decoded_cars[291] = "EjA=";
+            decoded_cars[292] = "EkA=";
+            decoded_cars[293] = "ElA=";
+            decoded_cars[294] = "EmA=";
+            decoded_cars[295] = "EnA=";
+            decoded_cars[296] = "EoA=";
+            decoded_cars[297] = "EpA=";
+            decoded_cars[298] = "EqA=";
+            decoded_cars[299] = "ErA=";
+            decoded_cars[300] = "EsA=";
+            decoded_cars[301] = "EtA=";
+            decoded_cars[302] = "EuA=";
+            decoded_cars[303] = "EvA=";
+            decoded_cars[304] = "EwA=";
+            decoded_cars[305] = "ExA=";
+            decoded_cars[306] = "EyA=";
+            decoded_cars[307] = "EzA=";
+            decoded_cars[308] = "E0A=";
+            decoded_cars[309] = "E1A=";
+            decoded_cars[310] = "E2A=";
+            decoded_cars[311] = "E3A=";
+            decoded_cars[312] = "E4A=";
+            decoded_cars[313] = "E5A=";
+            decoded_cars[314] = "E6A=";
+            decoded_cars[315] = "E7A=";
+            decoded_cars[316] = "E8A=";
+            decoded_cars[317] = "E9A=";
+            decoded_cars[318] = "E+A=";
+            decoded_cars[319] = "E/A=";
+            decoded_cars[320] = "FAA=";
+            decoded_cars[321] = "FBA=";
+            decoded_cars[322] = "FCA=";
+            decoded_cars[323] = "FDA=";
+            decoded_cars[324] = "FEA=";
+            decoded_cars[325] = "FFA=";
+            decoded_cars[326] = "FGA=";
+            decoded_cars[327] = "FHA=";
+            decoded_cars[328] = "FIA=";
+            decoded_cars[329] = "FJA=";
+            decoded_cars[330] = "FKA=";
+            decoded_cars[331] = "FLA=";
+            decoded_cars[332] = "FMA=";
+            decoded_cars[333] = "FNA=";
+            decoded_cars[334] = "FOA=";
+            decoded_cars[335] = "FPA=";
+            decoded_cars[336] = "FQA=";
+            decoded_cars[337] = "FRA=";
+            decoded_cars[338] = "FSA=";
+            decoded_cars[339] = "FTA=";
+            decoded_cars[340] = "FUA=";
+            decoded_cars[341] = "FVA=";
+            decoded_cars[342] = "FWA=";
+            decoded_cars[343] = "FXA=";
+            decoded_cars[344] = "FYA=";
+            decoded_cars[345] = "FZA=";
+            decoded_cars[346] = "FaA=";
+            decoded_cars[347] = "FbA=";
+            decoded_cars[348] = "FcA=";
+            decoded_cars[349] = "FdA=";
+            decoded_cars[350] = "FeA=";
+            decoded_cars[351] = "FfA=";
+            decoded_cars[352] = "FgA=";
+            decoded_cars[353] = "FhA=";
+            decoded_cars[354] = "FiA=";
+            decoded_cars[355] = "FjA=";
+            decoded_cars[356] = "FkA=";
+            decoded_cars[357] = "FlA=";
+            decoded_cars[358] = "FmA=";
+            decoded_cars[359] = "FnA=";
+            decoded_cars[360] = "FoA=";
+            decoded_cars[361] = "FpA=";
+            decoded_cars[362] = "FqA=";
+            decoded_cars[363] = "FrA=";
+            decoded_cars[364] = "FsA=";
+            decoded_cars[365] = "FtA=";
+            decoded_cars[366] = "FuA=";
+            decoded_cars[367] = "FvA=";
+            decoded_cars[368] = "FwA=";
+            decoded_cars[369] = "FxA=";
+            decoded_cars[370] = "FyA=";
+            decoded_cars[371] = "FzA=";
+            decoded_cars[372] = "F0A=";
+            decoded_cars[373] = "F1A=";
+            decoded_cars[374] = "F2A=";
+            decoded_cars[375] = "F3A=";
+            decoded_cars[376] = "F4A=";
+            decoded_cars[377] = "F5A=";
+            decoded_cars[378] = "F6A=";
+            decoded_cars[379] = "F7A=";
+            decoded_cars[380] = "F8A=";
+            decoded_cars[381] = "F9A=";
+            decoded_cars[382] = "F+A=";
+            decoded_cars[383] = "F/A=";
+            decoded_cars[384] = "GAA=";
+            decoded_cars[385] = "GBA=";
+            decoded_cars[386] = "GCA=";
+            decoded_cars[387] = "GDA=";
+            decoded_cars[388] = "GEA=";
+            decoded_cars[389] = "GFA=";
+            decoded_cars[390] = "GGA=";
+            decoded_cars[391] = "GHA=";
+            decoded_cars[392] = "GIA=";
+            decoded_cars[393] = "GJA=";
+            decoded_cars[394] = "GKA=";
+            decoded_cars[395] = "GLA=";
+            decoded_cars[396] = "GMA=";
+            decoded_cars[397] = "GNA=";
+            decoded_cars[398] = "GOA=";
+            decoded_cars[399] = "GPA=";
+            decoded_cars[400] = "GQA=";
+            decoded_cars[401] = "GRA=";
+            decoded_cars[402] = "GSA=";
+            decoded_cars[403] = "GTA=";
+            decoded_cars[404] = "GUA=";
+            decoded_cars[405] = "GVA=";
+            decoded_cars[406] = "GWA=";
+            decoded_cars[407] = "GXA=";
+            decoded_cars[408] = "GYA=";
+            decoded_cars[409] = "GZA=";
+            decoded_cars[410] = "GaA=";
+            decoded_cars[411] = "GbA=";
+            decoded_cars[412] = "GcA=";
+            decoded_cars[413] = "GdA=";
+            decoded_cars[414] = "GeA=";
+            decoded_cars[415] = "GfA=";
+            decoded_cars[416] = "GgA=";
+            decoded_cars[417] = "GhA=";
+            decoded_cars[418] = "GiA=";
+            decoded_cars[419] = "GjA=";
+            decoded_cars[420] = "GkA=";
+            decoded_cars[421] = "GlA=";
+            decoded_cars[422] = "GmA=";
+            decoded_cars[423] = "GnA=";
+            decoded_cars[424] = "GoA=";
+            decoded_cars[425] = "GpA=";
+            decoded_cars[426] = "GqA=";
+            decoded_cars[427] = "GrA=";
+            decoded_cars[428] = "GsA=";
+            decoded_cars[429] = "GtA=";
+            decoded_cars[430] = "GuA=";
+            decoded_cars[431] = "GvA=";
+            decoded_cars[432] = "GwA=";
+            decoded_cars[433] = "GxA=";
+            decoded_cars[434] = "GyA=";
+            decoded_cars[435] = "GzA=";
+            decoded_cars[436] = "G0A=";
+            decoded_cars[437] = "G1A=";
+            decoded_cars[438] = "G2A=";
+            decoded_cars[439] = "G3A=";
+            decoded_cars[440] = "G4A=";
+            decoded_cars[441] = "G5A=";
+            decoded_cars[442] = "G6A=";
+            decoded_cars[443] = "G7A=";
+            decoded_cars[444] = "G8A=";
+            decoded_cars[445] = "G9A=";
+            decoded_cars[446] = "G+A=";
+            decoded_cars[447] = "G/A=";
+            decoded_cars[448] = "HAA=";
+            decoded_cars[449] = "HBA=";
+            decoded_cars[450] = "HCA=";
+            decoded_cars[451] = "HDA=";
+            decoded_cars[452] = "HEA=";
+            decoded_cars[453] = "HFA=";
+            decoded_cars[454] = "HGA=";
+            decoded_cars[455] = "HHA=";
+            decoded_cars[456] = "HIA=";
+            decoded_cars[457] = "HJA=";
+            decoded_cars[458] = "HKA=";
+            decoded_cars[459] = "HLA=";
+            decoded_cars[460] = "HMA=";
+            decoded_cars[461] = "HNA=";
+            decoded_cars[462] = "HOA=";
+            decoded_cars[463] = "HPA=";
+            decoded_cars[464] = "HQA=";
+            decoded_cars[465] = "HRA=";
+            decoded_cars[466] = "HSA=";
+            decoded_cars[467] = "HTA=";
+            decoded_cars[468] = "HUA=";
+            decoded_cars[469] = "HVA=";
+            decoded_cars[470] = "HWA=";
+            decoded_cars[471] = "HXA=";
+            decoded_cars[472] = "HYA=";
+            decoded_cars[473] = "HZA=";
+            decoded_cars[474] = "HaA=";
+            decoded_cars[475] = "HbA=";
+            decoded_cars[476] = "HcA=";
+            decoded_cars[477] = "HdA=";
+            decoded_cars[478] = "HeA=";
+            decoded_cars[479] = "HfA=";
+            decoded_cars[480] = "HgA=";
+            decoded_cars[481] = "HhA=";
+            decoded_cars[482] = "HiA=";
+            decoded_cars[483] = "HjA=";
+            decoded_cars[484] = "HkA=";
+            decoded_cars[485] = "HlA=";
+            decoded_cars[486] = "HmA=";
+            decoded_cars[487] = "HnA=";
+            decoded_cars[488] = "HoA=";
+            decoded_cars[489] = "HpA=";
+            decoded_cars[490] = "HqA=";
+            decoded_cars[491] = "HrA=";
+            decoded_cars[492] = "HsA=";
+            decoded_cars[493] = "HtA=";
+            decoded_cars[494] = "HuA=";
+            decoded_cars[495] = "HvA=";
+            decoded_cars[496] = "HwA=";
+            decoded_cars[497] = "HxA=";
+            decoded_cars[498] = "HyA=";
+            decoded_cars[499] = "HzA=";
+            decoded_cars[500] = "H0A=";
+            decoded_cars[501] = "H1A=";
+            decoded_cars[502] = "H2A=";
+            decoded_cars[503] = "H3A=";
+            decoded_cars[504] = "H4A=";
+            decoded_cars[505] = "H5A=";
+            decoded_cars[506] = "H6A=";
+            decoded_cars[507] = "H7A=";
+            decoded_cars[508] = "H8A=";
+            decoded_cars[509] = "H9A=";
+            decoded_cars[510] = "H+A=";
+            decoded_cars[511] = "H/A=";
+            decoded_cars[512] = "IAA=";
+            decoded_cars[513] = "IBA=";
+            decoded_cars[514] = "ICA=";
+            decoded_cars[515] = "IDA=";
+            decoded_cars[516] = "IEA=";
+            decoded_cars[517] = "IFA=";
+            decoded_cars[518] = "IGA=";
+            decoded_cars[519] = "IHA=";
+            decoded_cars[520] = "IIA=";
+            decoded_cars[521] = "IJA=";
+            decoded_cars[522] = "IKA=";
+            decoded_cars[523] = "ILA=";
+            decoded_cars[524] = "IMA=";
+            decoded_cars[525] = "INA=";
+            decoded_cars[526] = "IOA=";
+            decoded_cars[527] = "IPA=";
+            decoded_cars[528] = "IQA=";
+            decoded_cars[529] = "IRA=";
+            decoded_cars[530] = "ISA=";
+            decoded_cars[531] = "ITA=";
+            decoded_cars[532] = "IUA=";
+            decoded_cars[533] = "IVA=";
+            decoded_cars[534] = "IWA=";
+            decoded_cars[535] = "IXA=";
+            decoded_cars[536] = "IYA=";
+            decoded_cars[537] = "IZA=";
+            decoded_cars[538] = "IaA=";
+            decoded_cars[539] = "IbA=";
+            decoded_cars[540] = "IcA=";
+            decoded_cars[541] = "IdA=";
+            decoded_cars[542] = "IeA=";
+            decoded_cars[543] = "IfA=";
+            decoded_cars[544] = "IgA=";
+            decoded_cars[545] = "IhA=";
+            decoded_cars[546] = "IiA=";
+            decoded_cars[547] = "IjA=";
+            decoded_cars[548] = "IkA=";
+            decoded_cars[549] = "IlA=";
+            decoded_cars[550] = "ImA=";
+            decoded_cars[551] = "InA=";
+            decoded_cars[552] = "IoA=";
+            decoded_cars[553] = "IpA=";
+            decoded_cars[554] = "IqA=";
+            decoded_cars[555] = "IrA=";
+            decoded_cars[556] = "IsA=";
+            decoded_cars[557] = "ItA=";
+            decoded_cars[558] = "IuA=";
+            decoded_cars[559] = "IvA=";
+            decoded_cars[560] = "IwA=";
+            decoded_cars[561] = "IxA=";
+            decoded_cars[562] = "IyA=";
+            decoded_cars[563] = "IzA=";
+            decoded_cars[564] = "I0A=";
+            decoded_cars[565] = "I1A=";
+            decoded_cars[566] = "I2A=";
+            decoded_cars[567] = "I3A=";
+            decoded_cars[568] = "I4A=";
+            decoded_cars[569] = "I5A=";
+            decoded_cars[570] = "I6A=";
+            decoded_cars[571] = "I7A=";
+            decoded_cars[572] = "I8A=";
+            decoded_cars[573] = "I9A=";
+            decoded_cars[574] = "I+A=";
+            decoded_cars[575] = "I/A=";
+            decoded_cars[576] = "JAA=";
+            decoded_cars[577] = "JBA=";
+            decoded_cars[578] = "JCA=";
+            decoded_cars[579] = "JDA=";
+            decoded_cars[580] = "JEA=";
+            decoded_cars[581] = "JFA=";
+            decoded_cars[582] = "JGA=";
+            decoded_cars[583] = "JHA=";
+            decoded_cars[584] = "JIA=";
+            decoded_cars[585] = "JJA=";
+            decoded_cars[586] = "JKA=";
+            decoded_cars[587] = "JLA=";
+            decoded_cars[588] = "JMA=";
+            decoded_cars[589] = "JNA=";
+            decoded_cars[590] = "JOA=";
+            decoded_cars[591] = "JPA=";
+            decoded_cars[592] = "JQA=";
+            decoded_cars[593] = "JRA=";
+            decoded_cars[594] = "JSA=";
+            decoded_cars[595] = "JTA=";
+            decoded_cars[596] = "JUA=";
+            decoded_cars[597] = "JVA=";
+            decoded_cars[598] = "JWA=";
+            decoded_cars[599] = "JXA=";
 
-            // return final value 
-            string hexered = number + valLenght + hexString;
+            byte[] data = Convert.FromBase64String(decoded_cars[index]);
+            string decodedString = Encoding.UTF8.GetString(data);
 
-            return hexered;
+            return decodedString;
         }
 
-        public string convertToHexData1(int tag, string value)
-        {
-            // cal tag 
-            string number = "0" + tag.ToString();
+        public string EncodeTo64(string toEncode)  {
 
-            // cal string leng 
-            string valLenght = value.Length.ToString("x2");
+            byte[] toEncodeAsBytes
 
-            // cal value  
-            byte[] ba = Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(value)); // Encoding.Default.GetBytes(value);
-            var hexString = BitConverter.ToString(ba);
-            hexString = hexString.Replace("-", "");
+                  = System.Text.UTF8Encoding.UTF8.GetBytes(toEncode);
 
-            // return final value 
-            string hexered = number + valLenght + hexString;
+            string returnValue
 
-            return hexered;
+                  = System.Convert.ToBase64String(toEncodeAsBytes);
+
+            return returnValue;
+
         }
+        
     }
 }

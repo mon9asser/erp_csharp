@@ -1306,146 +1306,146 @@ namespace sales_management.UI
                     }
                 }
 
-                // Restore All Invoices In The Same Object 
-                print.Enabled = true;
-                this.Sales_Table = Sales.Get_All_Sales_Invoices();
-                this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
-
-                // Save Daily Entry 
-                /**
-                 * document type
-                 * document id 
-                 * journal id
-                 * table of accounts ( account_number, amount, is_debit, description ) 
-                 * 
-                 */ 
-
-                DataTable jounral_table = new DataTable(); 
-                jounral_table.Columns.Add("account_number"); 
-                jounral_table.Columns.Add("amount");
-                jounral_table.Columns.Add("is_debit");
-                jounral_table.Columns.Add("description");
-                if (this.Settings.Rows.Count != 0) {
+                    // Restore All Invoices In The Same Object 
+                    print.Enabled = true;
+                    this.Sales_Table = Sales.Get_All_Sales_Invoices();
+                    this.Sales_Details = Sales.Get_All_Sales_Invoice_Details();
+                    bool cancleIt = true;
+                    // Save Daily Entry 
+                    /**
+                     * document type
+                     * document id 
+                     * journal id
+                     * table of accounts ( account_number, amount, is_debit, description ) 
+                     * 
+                     */
+                    if (cancleIt) { 
+                    DataTable jounral_table = new DataTable(); 
+                    jounral_table.Columns.Add("account_number"); 
+                    jounral_table.Columns.Add("amount");
+                    jounral_table.Columns.Add("is_debit");
+                    jounral_table.Columns.Add("description");
+                    if (this.Settings.Rows.Count != 0) {
                     
-                    DataRow sets = this.Settings.Rows[0];
+                        DataRow sets = this.Settings.Rows[0];
 
-                    // Cash Entry 
-                    if (payment_methods.SelectedIndex == 0) {
+                        // Cash Entry 
+                        if (payment_methods.SelectedIndex == 0) {
 
 
-                        // From :-
-                        DataRow row = jounral_table.NewRow();
-                        row["account_number"] = sets["sales_cash_acc_number"].ToString();
-                        row["amount"] = total_field_text.Text.ToString();
-                        row["is_debit"] = true;
-                        row["description"] = "بيع بضاعه نقدا";
-                        if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
-
-                            row["description"] += " - بخصم تجاري علي الفاتورة ";
-
+                            // From :-
+                            DataRow row = jounral_table.NewRow();
+                            row["account_number"] = sets["sales_cash_acc_number"].ToString();
+                            row["amount"] = total_field_text.Text.ToString();
+                            row["is_debit"] = true;
+                            row["description"] = "بيع بضاعه نقدا";
                             if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
-                                row["description"] += " %" + dicount_percentage.Text;
+
+                                row["description"] += " - بخصم تجاري علي الفاتورة ";
+
+                                if (dicount_percentage.Text != "" && dicount_percentage.Text != "0") {
+                                    row["description"] += " %" + dicount_percentage.Text;
+                                }
+
                             }
+                            jounral_table.Rows.Add(row);
 
-                        }
-                        jounral_table.Rows.Add(row);
-
-                        // To :-
-                        DataRow row1 = jounral_table.NewRow();
-                        row1["account_number"] = sets["part_2_sales_cash_acc_number"].ToString();
-                        row1["amount"] = total_without_vat_field.Text.ToString();
-                        row1["is_debit"] = false;
-                        row1["description"] = "بيع بضاعه نقدا";
-                        jounral_table.Rows.Add(row1); 
+                            // To :-
+                            DataRow row1 = jounral_table.NewRow();
+                            row1["account_number"] = sets["part_2_sales_cash_acc_number"].ToString();
+                            row1["amount"] = total_without_vat_field.Text.ToString();
+                            row1["is_debit"] = false;
+                            row1["description"] = "بيع بضاعه نقدا";
+                            jounral_table.Rows.Add(row1); 
 
 
-                    } else if (payment_methods.SelectedIndex == 1 ) {
+                        } else if (payment_methods.SelectedIndex == 1 ) {
 
-                        if (customer_id.Text == "") {
-                            MessageBox.Show( "هذه الفاتورة علي الحساب من فضلك قم بإختيار إسم العميل" );
-                            return;
-                        }
-                        // From :-
-                        DataRow row = jounral_table.NewRow();
-                        row["account_number"] = customer_id.Text.ToString();
-                        row["amount"] = total_field_text.Text.ToString();
-                        row["is_debit"] = true;
-                        row["description"] = "بيع بضاعه بالأجل";
-                        if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
-                        {
-
-                            row["description"] += " - بخصم تجاري علي الفاتورة ";
-
+                            if (customer_id.Text == "") {
+                                MessageBox.Show( "هذه الفاتورة علي الحساب من فضلك قم بإختيار إسم العميل" );
+                                return;
+                            }
+                            // From :-
+                            DataRow row = jounral_table.NewRow();
+                            row["account_number"] = customer_id.Text.ToString();
+                            row["amount"] = total_field_text.Text.ToString();
+                            row["is_debit"] = true;
+                            row["description"] = "بيع بضاعه بالأجل";
                             if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
                             {
-                                row["description"] += " %" + dicount_percentage.Text;
+
+                                row["description"] += " - بخصم تجاري علي الفاتورة ";
+
+                                if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                                {
+                                    row["description"] += " %" + dicount_percentage.Text;
+                                }
+
                             }
-
-                        }
-                        jounral_table.Rows.Add(row);
+                            jounral_table.Rows.Add(row);
 
 
-                        // To :-
-                        DataRow row1 = jounral_table.NewRow();
-                        row1["account_number"] = sets["part_2_sales_credit_acc_number"].ToString();
-                        row1["amount"] = total_without_vat_field.Text.ToString();
-                        row1["is_debit"] = false;
-                        row1["description"] = "بيع بضاعه بالأجل";
-                        jounral_table.Rows.Add(row1);
+                            // To :-
+                            DataRow row1 = jounral_table.NewRow();
+                            row1["account_number"] = sets["part_2_sales_credit_acc_number"].ToString();
+                            row1["amount"] = total_without_vat_field.Text.ToString();
+                            row1["is_debit"] = false;
+                            row1["description"] = "بيع بضاعه بالأجل";
+                            jounral_table.Rows.Add(row1);
                          
-                    }
-                    else if (payment_methods.SelectedIndex == 2 || payment_methods.SelectedIndex == 3)
-                    {
-                        // From :-
-                        DataRow row = jounral_table.NewRow();
-                        row["account_number"] = sets["sales_bank_acc_number"].ToString();
-                        row["amount"] = total_field_text.Text.ToString();
-                        row["is_debit"] = true;
-                        row["description"] = "بيع بضاعه عن طريق البنك";
-                        if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                        }
+                        else if (payment_methods.SelectedIndex == 2 || payment_methods.SelectedIndex == 3)
                         {
-
-                            row["description"] += " - بخصم تجاري علي الفاتورة ";
-
+                            // From :-
+                            DataRow row = jounral_table.NewRow();
+                            row["account_number"] = sets["sales_bank_acc_number"].ToString();
+                            row["amount"] = total_field_text.Text.ToString();
+                            row["is_debit"] = true;
+                            row["description"] = "بيع بضاعه عن طريق البنك";
                             if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
                             {
-                                row["description"] += " %" + dicount_percentage.Text;
+
+                                row["description"] += " - بخصم تجاري علي الفاتورة ";
+
+                                if (dicount_percentage.Text != "" && dicount_percentage.Text != "0")
+                                {
+                                    row["description"] += " %" + dicount_percentage.Text;
+                                }
+
                             }
 
+                            jounral_table.Rows.Add(row);
+
+                            DataRow row1 = jounral_table.NewRow();
+                            row1["account_number"] = sets["part_2_sales_bank_acc_number"].ToString();
+                            row1["amount"] = total_without_vat_field.Text.ToString();
+                            row1["is_debit"] = false;
+                            row1["description"] = "بيع بضاعه عن طريق البنك";
+                            jounral_table.Rows.Add(row1);
                         }
 
-                        jounral_table.Rows.Add(row);
+                        // To :- VAT ACCOUNT ( OUT )
+                        DataRow row2 = jounral_table.NewRow();
+                        row2["account_number"] = sets["vat_acc_number"].ToString();
+                        row2["amount"] = vat_amount.Text.ToString();
+                        row2["is_debit"] = false;
+                        row2["description"] = "ضريبة مخرجات مستحقة";
+                        jounral_table.Rows.Add(row2);
 
-                        DataRow row1 = jounral_table.NewRow();
-                        row1["account_number"] = sets["part_2_sales_bank_acc_number"].ToString();
-                        row1["amount"] = total_without_vat_field.Text.ToString();
-                        row1["is_debit"] = false;
-                        row1["description"] = "بيع بضاعه عن طريق البنك";
-                        jounral_table.Rows.Add(row1);
+
+                        // Cost Of Sold Goods
+
+
                     }
 
-                    // To :- VAT ACCOUNT ( OUT )
-                    DataRow row2 = jounral_table.NewRow();
-                    row2["account_number"] = sets["vat_acc_number"].ToString();
-                    row2["amount"] = vat_amount.Text.ToString();
-                    row2["is_debit"] = false;
-                    row2["description"] = "ضريبة مخرجات مستحقة";
-                    jounral_table.Rows.Add(row2);
+                    //journals.Get_DataTable_Accounts_Parts();
+                    bool allowDate = false;
+                    if (time_data.Text != "") {
+                        allowDate = true; 
+                    }
 
-
-                    // Cost Of Sold Goods
-
-
+                    journals.Update_Journal_Document_Details(Convert.ToInt32(invoice_id.Text), this.documentType, details.Text, datemade.Value, jounral_table, allowDate);
                 }
-
-                //journals.Get_DataTable_Accounts_Parts();
-                bool allowDate = false;
-                if (time_data.Text != "") {
-                    allowDate = true; 
-                }
-
-                journals.Update_Journal_Document_Details(Convert.ToInt32(invoice_id.Text), this.documentType, details.Text, datemade.Value, jounral_table, allowDate);
-
                 // Disable Everything 
                 this.disable_elements(false);
                 if (this.is_updating_data == false)
@@ -1679,29 +1679,26 @@ namespace sales_management.UI
             DataTable settings = this.Settings;
 
             StringFormat format = new StringFormat(StringFormatFlags.DirectionRightToLeft);
-            Font fnt_14 = new Font("Arial", 14, FontStyle.Bold, GraphicsUnit.Point);
-            Font fnt_12 = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Point);
-            Font fnt_10 = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
-            Font fnt_8 = new Font("Arial", 8, FontStyle.Regular, GraphicsUnit.Point);
-            Font fnt_10_b = new Font("Arial", 8, FontStyle.Bold, GraphicsUnit.Point);
+            Font fnt_14 = new Font("Arial", 16, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font fnt_12 = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            Font fnt_10 = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            Font fnt_8 = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            Font fnt_10_b = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Pixel);
 
             RectangleF recAtZero = new RectangleF(0, 0, e.PageBounds.Width, e.PageBounds.Height);
             StringFormat formatRight = new StringFormat(StringFormatFlags.DirectionRightToLeft);
             format.Alignment = StringAlignment.Center;
             string thisDatexxxx = datemade.Value.ToString("yyyy-MM-dd");
             string thisTimexxxx = datemade.Value.ToString("HH:mm:ss");
-             
-
+              
             if (time_data.Text != "")
             { 
                 thisTimexxxx = time_data.Text;
             }
-             
-            
+              
             int spaceVerticle = 25;
             int verticle = 0;
-
-            
+             
             // Top Title
             e.Graphics.DrawString("فاتورة ضريبية مبسطة", fnt_12,  new SolidBrush(Color.Black), recAtZero,  format);
 
@@ -1716,9 +1713,7 @@ namespace sales_management.UI
                 if(settings.Rows[0]["establishment_name"] != System.DBNull.Value )
                 e.Graphics.DrawString(settings.Rows[0]["establishment_name"].ToString(), fnt_14, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
             }
-
              
-
             // Address 
             if (settings.Rows.Count > 0)
             {
@@ -1738,7 +1733,7 @@ namespace sales_management.UI
             
             // Date And Number
             verticle = verticle + spaceVerticle;
-            e.Graphics.DrawString( "#" + invoice_serial.Text.ToString(), fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
+            e.Graphics.DrawString("رقم الفاتورة :" + "#00" + invoice_serial.Text.ToString() , fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
            
 
             // Establishment Logo 
@@ -1769,8 +1764,8 @@ namespace sales_management.UI
                     int spectRatio = newImage.Width / newImage.Height;
                     int imgWidth   = 190;
                     int imgHeight = imgWidth / spectRatio;
-                    int xImage = (e.PageBounds.Width / 2) - (imgWidth / 2);
-                    e.Graphics.DrawImage(newImage, new Rectangle(xImage, verticle, imgWidth, imgHeight ));
+                    int xImage = (e.PageBounds.Width / 2) - (190 / 2);
+                    e.Graphics.DrawImage(newImage, new Rectangle(xImage, verticle, 190, 109 ));
 
                     verticle = verticle + imgHeight;
                 }
@@ -1782,6 +1777,7 @@ namespace sales_management.UI
             string headed_date = thisDatexxxx + " " + thisTimexxxx;
             e.Graphics.DrawString(headed_date, fnt_10, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
 
+ 
             // Line
             verticle = verticle + spaceVerticle;
             //e.Graphics.DrawString("------------------------------------", fnt_14, new SolidBrush(Color.Black), new RectangleF(0, verticle, e.PageBounds.Width, e.PageBounds.Height), format);
@@ -1825,7 +1821,7 @@ namespace sales_management.UI
             int ended_line = startsVerticle + 8;
 
             e.Graphics.DrawLine(blackPen, -105, startedLine, -104, ended_line + 25);
-            e.Graphics.DrawString("الإجمالي شامل ضريبة القيمة المضافة ...", fnt_10, new SolidBrush(Color.Black), new RectangleF(-5, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
+            e.Graphics.DrawString("الإجمالي شامل ضريبة القيمة المضافة 15% ...", fnt_10, new SolidBrush(Color.Black), new RectangleF(-5, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
 
             ended_line = ended_line + 30;
             e.Graphics.DrawString("الإجمالي :", fnt_8, new SolidBrush(Color.Black), new RectangleF(-199, ended_line, e.PageBounds.Width, e.PageBounds.Height), formatRight);
@@ -1852,7 +1848,7 @@ namespace sales_management.UI
                 ended_line = ended_line + 30;
 
                 string datemade_value = thisDatexxxx + "T" + thisTimexxxx;
-                Image img = qrcode.Generator("Anbar El Wadi", total_field_text.Text, vat_amount.Text, invoice_serial.Text, datemade_value.ToString(), settings.Rows[0]["vat_number"].ToString()).GetGraphic(5);
+                Image img = qrcode.GeneratedQrCode(settings.Rows[0]["establishment_name"].ToString(), total_field_text.Text, vat_amount.Text, datemade_value.ToString(), settings.Rows[0]["vat_number"].ToString()).GetGraphic(5);
                 
                 int qrPost = (e.PageBounds.Width / 2) - (120 / 2);
                 e.Graphics.DrawImage(img, new Rectangle(qrPost, ended_line, 120, 120));
