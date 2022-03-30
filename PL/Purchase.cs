@@ -51,7 +51,7 @@ namespace sales_management.PL
             param[0].Value = 0;
 
             DAL.Open();
-            table = DAL.SelectData("Get_All_Purchase_Invoice_Details", param );
+            table = DAL.SelectData("Get_Document_Invoice_Details", param );
             DAL.Close();
 
             return table;
@@ -71,7 +71,7 @@ namespace sales_management.PL
             param[1].Value = invoiceId;
 
             DAL.Open();
-            table = DAL.SelectData("Get_Purchase_Invoice_Items", param);
+            table = DAL.SelectData("Get_document_Invoice_Items", param);
             DAL.Close();
             return table;
         }
@@ -112,7 +112,7 @@ namespace sales_management.PL
             param[1].Value = invoiceId;
 
             DAL.Open();
-            table = DAL.SelectData( "Get_Sales_Invoice_Items", param );
+            table = DAL.SelectData("Get_document_Invoice_Items", param );
 
             // Change Indexes Here 
             table.Columns["product_code"].SetOrdinal(0);
@@ -251,7 +251,7 @@ namespace sales_management.PL
             param[21].Value = UI.Main.getMainForm.getUserInfo()[0];
 
             DAL.Open();
-            DAL.ExecuteCommand("Save_Updates_Invoice_Data", param);
+            DAL.ExecuteCommand("Save_Updates_Invoice_Data_Purchase", param);
             DAL.Open();
 
         }

@@ -91,7 +91,7 @@ namespace sales_management.UI
 
                 // Purchase Invoice 
                 case 1:
-                    UI.Purchase.GetForm.Set_Datagrid_View(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    UI.purchaseInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
             }
 
@@ -111,7 +111,8 @@ namespace sales_management.UI
             int index = UI.Items.GetForm.DGRowIndex;
             if (index == -1) return;
 
-             
+            MessageBox.Show(UI.Items.GetForm.doc_type.ToString());
+
             // By document type 
             switch (UI.Items.GetForm.doc_type) {
 
@@ -122,7 +123,7 @@ namespace sales_management.UI
 
                 // Purchase Invoice 
                 case 1:
-                    UI.Purchase.GetForm.Set_Datagrid_View(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    UI.purchaseInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
             }
 

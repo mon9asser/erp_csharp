@@ -78,6 +78,7 @@
     <Compile Include="PL\Products.cs" />
     <Compile Include="PL\QR_Code.cs" />
     <Compile Include="PL\Resources.cs" />
+    <Compile Include="PL\Purchase.cs" />
     <Compile Include="PL\Sales.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

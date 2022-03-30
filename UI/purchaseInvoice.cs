@@ -18,7 +18,7 @@ namespace sales_management.UI
 
         PL.Products products = new PL.Products();
         PL.doc_items docs = new PL.doc_items();
-        PL.QR_Code qrcode = new PL.QR_Code();
+        
 
         DataTable Sales_Table;
         DataTable Sales_Details;
@@ -31,9 +31,31 @@ namespace sales_management.UI
         public bool is_getting_data = true;
         public bool is_updating_data = false;
         public bool is_change_price = false;
-        public int documentType = 0; // Sales Invoice
+        public int documentType = 1; // Sales Invoice
         public int currentInvoiceRowIndex = -1;
-        public int lastRow = -1; 
+        public int lastRow = -1;
+        public static purchaseInvoice frm;
+
+        static void frm_formClosed(object sernder, FormClosedEventArgs e)
+        {
+            frm = null;
+        }
+
+        public static purchaseInvoice GetForm
+        {
+            get
+            {
+
+                if (frm == null)
+                {
+                    frm = new purchaseInvoice();
+                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
+                }
+
+                return frm;
+
+            }
+        }
 
         public purchaseInvoice()
         {
@@ -1635,8 +1657,8 @@ namespace sales_management.UI
             if (customer_name.Enabled == true)
             {
 
-                UI.Client.GetForm.doc_type = this.documentType;
-                UI.Client.GetForm.ShowDialog();
+                UI.Supplier.GetForm.doc_type = this.documentType;
+                UI.Supplier.GetForm.ShowDialog();
 
             }
         }

@@ -13,9 +13,8 @@ namespace sales_management.UI
     public partial class Supplier : Form
     {
 
-        DataTable resoueceTable;
-
-
+        DataTable resoueceTable;  
+        public int doc_type = -1;
         public static Supplier frm;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
@@ -38,6 +37,8 @@ namespace sales_management.UI
 
             }
         }
+
+         
 
         public Supplier()
         {
@@ -160,6 +161,38 @@ namespace sales_management.UI
                 }
 
             }
+        }
+
+        private void suppliers_datagridview_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+
+            if (this.doc_type == -1)
+            {
+                return;
+            }
+
+            string customerName = suppliers_datagridview.Rows[e.RowIndex].Cells["resource_name"].Value.ToString();
+            string customerId = suppliers_datagridview.Rows[e.RowIndex].Cells["id"].Value.ToString();
+            if (customerName == "")
+            {
+                return;
+            }
+             
+            switch (this.doc_type)
+            {
+                case 1:
+                    UI.purchaseInvoice.GetForm.customer_id.Text = customerId;
+                    UI.purchaseInvoice.GetForm.customer_name.Text = customerName;
+                    break;
+            }
+
+             
+            this.doc_type = -1;
+            this.Close();
         }
     }
 }

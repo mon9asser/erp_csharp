@@ -100,7 +100,7 @@ namespace sales_management.UI
             this.invoice_serial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.invoice_serial_KeyPress);
             // 
             // label2
-            // 
+            // l
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(20, 68);
             this.label2.Name = "label2";
@@ -727,8 +727,7 @@ namespace sales_management.UI
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "فاتورة مبيعات";
-            //this.Load += new System.EventHandler(this.purchaseInvoice_Load);
+            this.Text = "فاتورة مشتريات"; 
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
