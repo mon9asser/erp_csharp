@@ -910,7 +910,7 @@ namespace sales_management.UI
                 }
 
                 this.is_change_price = true;
-                UI.Price.GetForm.ShowDialog();
+                //UI.Price.Get_Form.ShowDialog();
             }
         }
 
@@ -1093,7 +1093,7 @@ namespace sales_management.UI
                 }
 
                 this.is_change_price = true;
-                UI.Price.GetForm.ShowDialog();
+                //UI.Price.Get_Form.ShowDialog();
             }
         }
 

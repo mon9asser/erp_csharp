@@ -92,7 +92,6 @@ D:\sales-app\bin\Debug\Newtonsoft.Json.dll
 D:\sales-app\bin\Debug\Newtonsoft.Json.xml
 D:\sales-app\obj\Debug\ar\sales-management.resources.dll
 D:\sales-app\obj\Debug\sales-management.exe
-D:\sales-app\obj\Debug\sales_management.UI.Purchase.resources
 E:\C#\sales-app\bin\Debug\IrisSkin4.dll
 E:\C#\sales-app\bin\Debug\mscorlib.dll
 E:\C#\sales-app\bin\Debug\ar\mscorlib.resources.dll

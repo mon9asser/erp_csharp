@@ -47,7 +47,7 @@ namespace sales_management.UI
                 frm = this;
             }
 
-            this.DGRowIndex = UI.Purchase.GetForm.lastRow;
+            //this.DGRowIndex = UI.Purchase.GetForm.lastRow;
 
             this.Load_Grid_View();
 
@@ -77,9 +77,11 @@ namespace sales_management.UI
             if (e.RowIndex == -1) return;
 
             int rowIndex = e.RowIndex;
-            int index = UI.Items.GetForm.DGRowIndex;
+            int index = UI.Items.GetForm.DGRowIndex; 
+            
             if (index == -1) return;
 
+             
             // By document type 
             switch (UI.Items.GetForm.doc_type)
             {
@@ -90,7 +92,7 @@ namespace sales_management.UI
                     break;
 
                 // Purchase Invoice 
-                case 1:
+                case 1: 
                     UI.purchaseInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
             }
@@ -110,8 +112,7 @@ namespace sales_management.UI
 
             int index = UI.Items.GetForm.DGRowIndex;
             if (index == -1) return;
-
-            MessageBox.Show(UI.Items.GetForm.doc_type.ToString());
+             
 
             // By document type 
             switch (UI.Items.GetForm.doc_type) {

@@ -31,7 +31,7 @@ namespace sales_management.UI
         public bool is_getting_data = true;
         public bool is_updating_data = false;
         public bool is_change_price = false;
-        public int documentType = 1; // Sales Invoice
+        public int documentType = 1; // Purchase Invoice
         public int currentInvoiceRowIndex = -1;
         public int lastRow = -1;
         public static purchaseInvoice frm;
@@ -87,9 +87,8 @@ namespace sales_management.UI
 
             int id = this.Sales_Table.Rows.Count != 0 ? Convert.ToInt32(this.Sales_Table.Rows[this.Sales_Table.Rows.Count - 1]["id"]) : -1;
 
-            /* doc_type, invoiceId,  */
-
-            items_datagridview.DataSource = Purchase.Get_Purchase_Invoice_Items(0, id);
+            /* doc_type, invoiceId,  */ 
+            items_datagridview.DataSource = Purchase.Get_Purchase_Invoice_Items(this.documentType, id);
 
             //table.Columns["product_code"].Count;
             items_datagridview.Columns["id"].Visible = false;
@@ -124,6 +123,9 @@ namespace sales_management.UI
             // Add Button To Remove The Item From invoice 
             this.Load_deletion_icon_in_datagridview();
             this.disable_elements();
+
+           
+
         }
 
         public void load_data_grid_view_items()
@@ -934,7 +936,7 @@ namespace sales_management.UI
             UI.Items.GetForm.DGRowIndex = items_datagridview.CurrentCell.OwningRow.Index;
             UI.salesInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
 
-            UI.Items.GetForm.doc_type = 0;
+            UI.Items.GetForm.doc_type = this.documentType;
 
             if (items_datagridview.CurrentCell.OwningColumn.Index == 2)
             {
@@ -950,7 +952,7 @@ namespace sales_management.UI
                 }
 
                 this.is_change_price = true;
-                UI.Price.GetForm.ShowDialog();
+                //UI.Price.Get_Form.ShowDialog();
             }
         }
 
@@ -1012,7 +1014,7 @@ namespace sales_management.UI
             DataGridViewRow drow = items_datagridview.Rows[iindex];
             drow.Cells["id"].Value = rowId.ToString();
             drow.Cells["doc_id"].Value = invoice_id.Text.ToString();
-            drow.Cells["doc_type"].Value = 0;
+            drow.Cells["doc_type"].Value = this.documentType;
             drow.Cells["product_id"].Value = pid.ToString();
             drow.Cells["product_name"].Value = name.ToString();
             drow.Cells["unit_id"].Value = unit_id.ToString();
@@ -1120,10 +1122,18 @@ namespace sales_management.UI
         {
 
 
-            UI.Items.GetForm.DGRowIndex = e.RowIndex;
             this.lastRow = e.RowIndex;
-            UI.Items.GetForm.doc_type = 0;
+            UI.Items.GetForm.DGRowIndex = this.lastRow;
+            UI.Items.GetForm.doc_type = this.documentType;
 
+            //UI.Price.Get_Form.DGRowIndex = this.lastRow;
+            //UI.Price.Get_Form.doc_type = this.documentType;
+
+            // Prices 
+            UI.Price.GetForm.Set_Document_Type = this.documentType;
+            UI.Price.GetForm.Show();
+            //price.doc_typex = 150;
+            //price.Datagridview_Index = this.lastRow;
 
             if (e.RowIndex == -1) return;
 
@@ -1140,7 +1150,8 @@ namespace sales_management.UI
                 }
 
                 this.is_change_price = true;
-                UI.Price.GetForm.ShowDialog();
+
+               // price.ShowDialog();
             }
         }
 
@@ -1600,7 +1611,7 @@ namespace sales_management.UI
                 id = Convert.ToInt32(invoice_id.Text);
             }
 
-            DataTable tbleItems = Purchase.Get_Purchase_Invoice_Items_details(0, id);
+            DataTable tbleItems = Purchase.Get_Purchase_Invoice_Items_details(this.documentType, id);
             if (tbleItems.Rows.Count != 0)
             {
                 id = -1;
