@@ -77,6 +77,28 @@ namespace sales_management.DB
 
         }
 
+        public DataSet SelectDataSet(string stored_proc, SqlParameter[] param)
+        {
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.CommandText = stored_proc;
+            sqlcmd.Connection = sqlConnectionState;
+
+            if (param != null)
+            {
+                for (int i = 0; i < param.Length; i++)
+                {
+                    sqlcmd.Parameters.Add(param[i]);
+                }
+            }
+
+            SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
+
         // Method to store and delete, update db 
         public void ExecuteCommand(string stored_proc, SqlParameter[] param ) {
 

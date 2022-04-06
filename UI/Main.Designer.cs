@@ -482,6 +482,7 @@ namespace sales_management.UI
             // 
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem.Name = "إعداداتالإجراءاتالمخزنهToolStripMenuItem";
             resources.ApplyResources(this.إعداداتالإجراءاتالمخزنهToolStripMenuItem, "إعداداتالإجراءاتالمخزنهToolStripMenuItem");
+            this.إعداداتالإجراءاتالمخزنهToolStripMenuItem.Click += new System.EventHandler(this.إعداداتالإجراءاتالمخزنهToolStripMenuItem_Click);
             // 
             // تهيةالبياناتالأفتراضيةToolStripMenuItem
             // 

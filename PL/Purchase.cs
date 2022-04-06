@@ -10,6 +10,24 @@ namespace sales_management.PL
 {
     class Purchase
     {
+        public DataSet Get_Purchase_Invoice_Data_Set( ) {
+            
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@doc_type", SqlDbType.Int);
+            param[0].Value = 1;
+
+            DataSet ds;
+
+            DAL.Open();
+            ds = DAL.SelectDataSet("Get_Purchase_Invoice_Data_Set", param );
+            DAL.Close();
+
+            return ds;
+
+        }
+        
         public DataTable Create_Purchase_Invoice_Id( int id ) {
             
             DataTable table = new DataTable();
@@ -153,6 +171,135 @@ namespace sales_management.PL
              
             return table;
 
+        }
+
+        public void Save_Updates_Purchase_Invoice_Data_Set(
+
+            // Data Of Invoice Header
+            int id,
+            int payment_method,
+            int payment_condition_id,
+            int customer_id,
+            int account_id,
+            int account_number,
+            int cost_center_id,
+            int cost_center_number,
+            string account_name,
+            string cost_center_name,
+            string customer_name,
+            string details,
+            string net_total,
+            string discount_name,
+            string discount_percentage,
+            string discount_not_more,
+            string total_without_vat,
+            string total_with_vat,
+            string vat_amount,
+            DateTime date,
+            bool price_include_vat,
+
+            // Data Of Invoice Items
+            DataTable itemsTable,
+
+            // Data Of Entry 
+            DataTable headerEntry,
+            DataTable detailsEntry, 
+
+            // Import and Export
+            DataTable importExport 
+
+            )
+        {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+            SqlParameter[] param = new SqlParameter[26];
+
+            // Data Of Invoice Header
+            param[0] = new SqlParameter("@id", SqlDbType.Int);
+            param[0].Value = id;
+
+            param[1] = new SqlParameter("@payment_method", SqlDbType.Int);
+            param[1].Value = payment_method;
+
+            param[2] = new SqlParameter("@date", SqlDbType.DateTime);
+            param[2].Value = date;
+
+            param[3] = new SqlParameter("@details", SqlDbType.VarChar);
+            param[3].Value = details;
+
+            param[4] = new SqlParameter("@payment_condition_id", SqlDbType.Int);
+            param[4].Value = payment_condition_id;
+
+            param[5] = new SqlParameter("@customer_id", SqlDbType.Int);
+            param[5].Value = customer_id;
+
+            param[6] = new SqlParameter("@customer_name", SqlDbType.VarChar);
+            param[6].Value = customer_name;
+
+            param[7] = new SqlParameter("@account_id", SqlDbType.Int);
+            param[7].Value = account_id;
+
+            param[8] = new SqlParameter("@account_number", SqlDbType.VarChar);
+            param[8].Value = account_number;
+
+            param[9] = new SqlParameter("@account_name", SqlDbType.VarChar);
+            param[9].Value = account_name;
+
+            param[10] = new SqlParameter("@cost_center_id", SqlDbType.Int);
+            param[10].Value = cost_center_id;
+
+            param[11] = new SqlParameter("@cost_center_number", SqlDbType.Int);
+            param[11].Value = cost_center_number;
+
+            param[12] = new SqlParameter("@cost_center_name", SqlDbType.VarChar);
+            param[12].Value = cost_center_name;
+
+            param[13] = new SqlParameter("@price_include_vat", SqlDbType.Bit);
+            param[13].Value = price_include_vat;
+
+            param[14] = new SqlParameter("@net_total", SqlDbType.VarChar);
+            param[14].Value = net_total;
+
+            param[15] = new SqlParameter("@discount_name", SqlDbType.VarChar);
+            param[15].Value = discount_name;
+
+            param[16] = new SqlParameter("@discount_percentage", SqlDbType.VarChar);
+            param[16].Value = discount_percentage;
+
+            param[17] = new SqlParameter("@discount_not_more", SqlDbType.VarChar);
+            param[17].Value = discount_not_more;
+
+            param[18] = new SqlParameter("@total_without_vat", SqlDbType.VarChar);
+            param[18].Value = total_without_vat;
+
+            param[19] = new SqlParameter("@total_with_vat", SqlDbType.VarChar);
+            param[19].Value = total_with_vat;
+
+            param[20] = new SqlParameter("@vat_amount", SqlDbType.VarChar);
+            param[20].Value = vat_amount;
+
+            param[21] = new SqlParameter("@updated_by", SqlDbType.Int);
+            param[21].Value = UI.Main.getMainForm.getUserInfo()[0];
+
+            // Data Of Invoice Items 
+            param[22] = new SqlParameter("@items_table", SqlDbType.Structured);
+            param[22].Value = itemsTable;
+
+            // Header Of Entry
+            param[23] = new SqlParameter("@header_entry", SqlDbType.Structured);
+            param[23].Value = headerEntry;
+
+            // Details Of Entry
+            param[24] = new SqlParameter("@details_entry", SqlDbType.Structured);
+            param[24].Value = detailsEntry;
+
+            // Data Of Export And Import Table
+            param[25] = new SqlParameter("@import_export", SqlDbType.Structured);
+            param[25].Value = importExport;
+
+            DAL.Open();
+            DAL.ExecuteCommand("Update_Purchase_Invoice_Data_Set", param);
+            DAL.Open();
         }
 
         public void Save_Updates_Invoice_Data(

@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms; 
-
+using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 namespace sales_management.UI
 {
     public partial class Main : Form
@@ -60,7 +61,9 @@ namespace sales_management.UI
 
             InitializeComponent();
 
-            
+
+            DB.DataAccessLayer db = new DB.DataAccessLayer();
+             
 
            // this.skinEngines.SkinFile = "Skins/SteelBlack.ssk";
 
@@ -173,6 +176,12 @@ namespace sales_management.UI
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UI.salesInvoice.GetForm.Show();
+        }
+
+        private void إعداداتالإجراءاتالمخزنهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }

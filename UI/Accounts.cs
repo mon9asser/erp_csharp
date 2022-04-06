@@ -138,8 +138,8 @@ namespace sales_management.UI
 
             }
 
-
-            UI.Accounts.GetForm.Close();
+            MessageBox.Show(this.InstanceType.ToString());
+            this.Close();
         }
     }
 }

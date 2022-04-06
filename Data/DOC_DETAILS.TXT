@@ -1,0 +1,54 @@
+CREATE TYPE doc_details AS TABLE(
+	[doc_id] INT,
+	[doc_type] INT,
+	[product_id] INT,
+	[unit_id] INT,
+	[is_out] BIT,
+
+	[product_name] VARCHAR(50),
+	[unit_name] VARCHAR(50),
+	[unit_price] VARCHAR(50),
+	[factor] VARCHAR(50),
+	[quantity] VARCHAR(50),
+	[total_quantity] VARCHAR(50),
+	[datagrid_id] VARCHAR(50),
+	[product_code] VARCHAR(50),
+	[total_price] VARCHAR(50)
+);
+
+
+CREATE TYPE journal_header AS TABLE(
+	
+	[updated_by] INT,
+	[doc_id] INT,
+	[doc_type] INT,
+
+	[description] text,
+	[is_forwarded] bit,
+	[entry_number] varchar(50),
+	[updated_date] datetime
+
+);
+
+
+
+CREATE TYPE journal_details AS TABLE(
+	
+	[invoice_id] int,
+	[invoice_type] int,
+	[product_id] int,
+	[unit_id] int,
+	[document_type] int,
+	[is_out] int,
+
+	[unit_price] varchar(50),
+	[quantity] varchar(50),
+	[total_price] varchar(50),
+	[total_quantity] varchar(50),
+	[product_name] varchar(50),
+	[factor] varchar(50), 
+	[datagride_id] varchar(50)
+
+);
+
+
