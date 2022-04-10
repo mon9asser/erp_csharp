@@ -28,18 +28,14 @@ namespace sales_management.PL
 
         }
         
-        public DataTable Create_Purchase_Invoice_Id( int id ) {
+        public DataTable Create_Purchase_Invoice_Id() {
             
             DataTable table = new DataTable();
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-            
-            SqlParameter[] param = new SqlParameter[1];
-
-            param[0] = new SqlParameter("@id", SqlDbType.Int);
-            param[0].Value = id;
-
+             
+             
             DAL.Open();
-            table = DAL.SelectData("Create_Purchase_Invoice_Id", param);
+            table = DAL.SelectData("Create_Purchase_Invoice_Id", null);
             DAL.Close();
             
             return table;
@@ -181,7 +177,7 @@ namespace sales_management.PL
             int payment_condition_id,
             int customer_id,
             int account_id,
-            int account_number,
+            string account_number,
             int cost_center_id,
             int cost_center_number,
             string account_name,
@@ -197,16 +193,13 @@ namespace sales_management.PL
             string vat_amount,
             DateTime date,
             bool price_include_vat,
-
+            bool enabled_zakat_vat,
             // Data Of Invoice Items
             DataTable itemsTable,
 
             // Data Of Entry 
             DataTable headerEntry,
-            DataTable detailsEntry, 
-
-            // Import and Export
-            DataTable importExport 
+            DataTable detailsEntry
 
             )
         {
@@ -281,21 +274,23 @@ namespace sales_management.PL
             param[21] = new SqlParameter("@updated_by", SqlDbType.Int);
             param[21].Value = UI.Main.getMainForm.getUserInfo()[0];
 
+            // Enable Vat 
+            param[22] = new SqlParameter("@enabled_zakat_vat", SqlDbType.Bit);
+            param[22].Value = enabled_zakat_vat;
+
+             
             // Data Of Invoice Items 
-            param[22] = new SqlParameter("@items_table", SqlDbType.Structured);
-            param[22].Value = itemsTable;
+            param[23] = new SqlParameter("@items_table", SqlDbType.Structured);
+            param[23].Value = itemsTable;
 
             // Header Of Entry
-            param[23] = new SqlParameter("@header_entry", SqlDbType.Structured);
-            param[23].Value = headerEntry;
+            param[24] = new SqlParameter("@header_entry", SqlDbType.Structured);
+            param[24].Value = headerEntry;
 
             // Details Of Entry
-            param[24] = new SqlParameter("@details_entry", SqlDbType.Structured);
-            param[24].Value = detailsEntry;
-
-            // Data Of Export And Import Table
-            param[25] = new SqlParameter("@import_export", SqlDbType.Structured);
-            param[25].Value = importExport;
+            param[25] = new SqlParameter("@details_entry", SqlDbType.Structured);
+            param[25].Value = detailsEntry;
+             
 
             DAL.Open();
             DAL.ExecuteCommand("Update_Purchase_Invoice_Data_Set", param);
@@ -323,13 +318,14 @@ namespace sales_management.PL
             string total_with_vat,
             string vat_amount,
             DateTime date,
-            bool price_include_vat
+            bool price_include_vat,
+            bool enabled_zakat_vat
         ) {
 
             // Update Invoice Data 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[22];
+            SqlParameter[] param = new SqlParameter[23];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -396,6 +392,9 @@ namespace sales_management.PL
 
             param[21] = new SqlParameter("@updated_by", SqlDbType.Int);
             param[21].Value = UI.Main.getMainForm.getUserInfo()[0];
+
+            param[22] = new SqlParameter("@enabled_zakat_vat", SqlDbType.Bit);
+            param[22].Value = enabled_zakat_vat;
 
             DAL.Open();
             DAL.ExecuteCommand("Save_Updates_Invoice_Data_Purchase", param);

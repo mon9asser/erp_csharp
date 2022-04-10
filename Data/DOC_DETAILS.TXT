@@ -1,3 +1,33 @@
+id 
+product_id
+datagrid_id
+qty
+unit_cost
+total_cost
+doc_type
+doc_id
+is_out 
+date
+ 
+
+ 
+
+
+CREATE TYPE Inventory_Exp_Imp AS TABLE (
+	[datagrid_id] VARCHAR(50),
+	[qty] VARCHAR(50),
+	[unit_cost] VARCHAR(50),
+	[total_cost] VARCHAR(50),
+	[product_id] INT,
+	[doc_type] INT,
+	[doc_id] INT,
+
+	[is_out] BIT,
+	
+	[date] DATETIME
+);
+
+
 CREATE TYPE doc_details AS TABLE(
 	[doc_id] INT,
 	[doc_type] INT,
@@ -18,7 +48,7 @@ CREATE TYPE doc_details AS TABLE(
 
 
 CREATE TYPE journal_header AS TABLE(
-	
+	[id] INT
 	[updated_by] INT,
 	[doc_id] INT,
 	[doc_type] INT,

@@ -1,3 +1,68 @@
+invoice_id.Text = "";
+
+            this.is_getting_data = false;
+             
+            // An Invoice ID
+            int id = -1;
+            if (invoice_id.Text != "")
+            {
+                id = Convert.ToInt32(invoice_id.Text);
+            }
+
+            DataTable tbleItems = Purchase.Get_Purchase_Invoice_Items_details(this.documentType, id);
+            if (tbleItems.Rows.Count != 0)
+            {
+                id = -1;
+            }
+
+
+            // Enable Fields 
+            this.disable_elements(true);
+
+            // Clear Current Datagridview 
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+                foreach (DataGridViewColumn col in items_datagridview.Columns)
+                {
+
+                    if (col.Name.ToString() != "deletion_et_button")
+                    {
+
+                        if (col.Name.ToString() == "datagrid_id")
+                        {
+                            row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
+                        }
+                        else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                        {
+                            row.Cells[col.Name.ToString()].Value = 0;
+                        }
+                        else if (col.Name.ToString() == "is_out")
+                        {
+                            row.Cells[col.Name.ToString()].Value = true;
+                        }
+                        else
+                        {
+                            row.Cells[col.Name.ToString()].Value = "";
+                        }
+
+                    }
+                }
+            }
+
+            // Create New Invoice ID and journal index 
+            DataTable table = Purchase.Create_Purchase_Invoice_Id(id);
+
+
+            if (table.Rows.Count > 0)
+            {
+                this.Fill_Invoice_Fields(table.Rows[0]);
+            }
+
+            details.Text = "بيع بضاعه نقدا";
+			
+			
+			
+==========================================================================================
 if (total_field_text.Text == "00" || total_field_text.Text == "")
             {
                 return;

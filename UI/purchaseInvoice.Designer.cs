@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -86,6 +86,8 @@ namespace sales_management.UI
             this.legend_id = new System.Windows.Forms.TextBox();
             this.customer_name = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.enable_zakat_taxes = new System.Windows.Forms.CheckBox();
+            this.entry_id = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -384,9 +386,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -395,14 +397,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -628,15 +630,36 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(592, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 102;
-            this.label6.Text = "العميل :";
+            this.label6.Text = "المورد :";
+            // 
+            // enable_zakat_taxes
+            // 
+            this.enable_zakat_taxes.AutoSize = true;
+            this.enable_zakat_taxes.Checked = true;
+            this.enable_zakat_taxes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.enable_zakat_taxes.Location = new System.Drawing.Point(913, 455);
+            this.enable_zakat_taxes.Name = "enable_zakat_taxes";
+            this.enable_zakat_taxes.Size = new System.Drawing.Size(94, 17);
+            this.enable_zakat_taxes.TabIndex = 143;
+            this.enable_zakat_taxes.Text = "خاضعة للضريبه";
+            this.enable_zakat_taxes.UseVisualStyleBackColor = true;
+            // 
+            // entry_id
+            // 
+            this.entry_id.Location = new System.Drawing.Point(469, 17);
+            this.entry_id.Name = "entry_id";
+            this.entry_id.Size = new System.Drawing.Size(100, 20);
+            this.entry_id.TabIndex = 144;
             // 
             // purchaseInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 634);
+            this.Controls.Add(this.entry_id);
+            this.Controls.Add(this.enable_zakat_taxes);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.current_invoice_page);
@@ -762,5 +785,7 @@ namespace sales_management.UI
         public System.Windows.Forms.TextBox legend_id;
         public System.Windows.Forms.TextBox customer_name;
         public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.CheckBox enable_zakat_taxes;
+        private System.Windows.Forms.TextBox entry_id;
     }
 }
