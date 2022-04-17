@@ -32,11 +32,8 @@ namespace sales_management.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.time_data = new System.Windows.Forms.TextBox();
             this.add_new_button = new System.Windows.Forms.Button();
             this.total_label_text = new System.Windows.Forms.Label();
             this.payment_condition = new System.Windows.Forms.ComboBox();
@@ -95,24 +92,6 @@ namespace sales_management.UI
             // 
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(466, 58);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
-            this.label18.TabIndex = 142;
-            this.label18.Text = "HH:MM:SS";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(311, 58);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(33, 13);
-            this.label14.TabIndex = 141;
-            this.label14.Text = "الوقت";
-            // 
             // current_invoice_page
             // 
             this.current_invoice_page.AutoSize = true;
@@ -123,13 +102,6 @@ namespace sales_management.UI
             this.current_invoice_page.TabIndex = 137;
             this.current_invoice_page.Text = "00 / 00";
             this.current_invoice_page.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // time_data
-            // 
-            this.time_data.Location = new System.Drawing.Point(354, 54);
-            this.time_data.Name = "time_data";
-            this.time_data.Size = new System.Drawing.Size(103, 20);
-            this.time_data.TabIndex = 140;
             // 
             // add_new_button
             // 
@@ -195,6 +167,7 @@ namespace sales_management.UI
             this.first_record_button.Size = new System.Drawing.Size(50, 38);
             this.first_record_button.TabIndex = 134;
             this.first_record_button.UseVisualStyleBackColor = false;
+            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
             // 
             // last_record_button
             // 
@@ -370,6 +343,7 @@ namespace sales_management.UI
             this.price_includ_vat.TabIndex = 116;
             this.price_includ_vat.Text = "الأسعار شاملة الضريبة";
             this.price_includ_vat.UseVisualStyleBackColor = true;
+            this.price_includ_vat.CheckedChanged += new System.EventHandler(this.price_includ_vat_CheckedChanged_1);
             // 
             // label12
             // 
@@ -501,7 +475,7 @@ namespace sales_management.UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 62);
+            this.label2.Location = new System.Drawing.Point(14, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 92;
@@ -645,6 +619,7 @@ namespace sales_management.UI
             this.enable_zakat_taxes.TabIndex = 143;
             this.enable_zakat_taxes.Text = "خاضعة للضريبه";
             this.enable_zakat_taxes.UseVisualStyleBackColor = true;
+            this.enable_zakat_taxes.CheckedChanged += new System.EventHandler(this.enable_zakat_taxes_CheckedChanged);
             // 
             // entry_id
             // 
@@ -660,10 +635,7 @@ namespace sales_management.UI
             this.ClientSize = new System.Drawing.Size(1019, 634);
             this.Controls.Add(this.entry_id);
             this.Controls.Add(this.enable_zakat_taxes);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.current_invoice_page);
-            this.Controls.Add(this.time_data);
             this.Controls.Add(this.add_new_button);
             this.Controls.Add(this.total_label_text);
             this.Controls.Add(this.payment_condition);
@@ -731,11 +703,8 @@ namespace sales_management.UI
         #endregion
 
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.Label label18;
-        public System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label current_invoice_page;
         public System.Drawing.Printing.PrintDocument printDocument1;
-        public System.Windows.Forms.TextBox time_data;
         private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.Label total_label_text;
         public System.Windows.Forms.ComboBox payment_condition;

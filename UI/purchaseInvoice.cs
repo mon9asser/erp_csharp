@@ -24,6 +24,7 @@ namespace sales_management.UI
         DataTable Settings; 
         DataTable Prods;
         DataTable Codes;
+        DataTable Resources;
         DataTable unitName;
 
         // -----------------------------------
@@ -173,10 +174,10 @@ namespace sales_management.UI
             // Calculate Total 
             row.Cells["total_price"].Value = (quantity * unitPrice).ToString();
 
-            // Calculate Unit Cost 
-            row.Cells["unit_cost"].Value = 
-            row.Cells["total_cost"].Value =
-           
+            // Calculate Unit Cost (purchase is the default price)
+            row.Cells["unit_cost"].Value = (unitPrice).ToString();
+            row.Cells["total_cost"].Value = (quantity * unitPrice).ToString();
+
         }
 
         public string[] Get_Account_Details(string account_number)
@@ -368,6 +369,10 @@ namespace sales_management.UI
             table.Columns.Add("product_code");
             table.Columns.Add("total_price");
 
+            table.Columns.Add("unit_cost");
+            table.Columns.Add("total_cost");
+            //table.Columns.Add("datemade");
+
             table.Columns["product_code"].SetOrdinal(0);
             table.Columns["product_name"].SetOrdinal(1);
             table.Columns["unit_price"].SetOrdinal(2);
@@ -411,6 +416,7 @@ namespace sales_management.UI
                 emptyRow = table.NewRow();
                 foreach (DataColumn col in this.Purchase_Details.Columns)
                 {
+                    
                     if (col.GetType().ToString() == "Int32")
                     {
                         emptyRow[col] = 0;
@@ -425,6 +431,14 @@ namespace sales_management.UI
                     {
                         emptyRow[col] = Guid.NewGuid().ToString();
                     }
+
+                    /*
+                     * if (col.ToString() == "datemade")
+                    {
+                        emptyRow[col] = DateTime.Now;
+                    }*/
+
+
                 }
 
                 table.Rows.Add(emptyRow);
@@ -515,17 +529,17 @@ namespace sales_management.UI
 
         private void search_button_Click(object sender, EventArgs e)
         {
-            if (invoice_serial.Text == "")
+            if (invoice_id.Text == "")
             {
                 return;
             }
 
-            int id = Convert.ToInt32(invoice_serial.Text);
+            int id = Convert.ToInt32(invoice_id.Text);
             int index = 0;
             foreach (DataRow row in this.Purchase_Table.Rows)
             {
 
-                if (Convert.ToInt32(row["serial"]).Equals(id))
+                if (Convert.ToInt32(row["id"]).Equals(id))
                 {
 
                     this.currentInvoiceRowIndex = index;
@@ -609,7 +623,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه نقدا";
+                    details.Text = "شراء بضاعه نقدا";
                     this.Load_Target_Accounts(0);
                     break;
 
@@ -619,7 +633,7 @@ namespace sales_management.UI
                     customer_name.Enabled = true;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه بالأجل";
+                    details.Text = "شراء بضاعه بالأجل";
                     this.Load_Target_Accounts(1);
                     break;
 
@@ -629,7 +643,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه واستلام النقديه عن طريق البنك";
+                    details.Text = "شراء بضاعه عن طريق البنك";
                     this.Load_Target_Accounts(2);
                     break;
 
@@ -639,10 +653,23 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه واستلام النقديه عن طريق البنك";
+                    details.Text = "شراء بضاعه عن طريق البنك";
                     this.Load_Target_Accounts(2);
                     break;
 
+            }
+
+            // Case Discount 
+            if (discount_value.Text != "")
+            {
+                if (dicount_percentage.Text != "")
+                {
+                    details.Text += " - بخصم تجاري " + "%" + dicount_percentage.Text;
+                }
+                else
+                {
+                    details.Text += " - بخصم تجاري " + discount_value.Text;
+                }
             }
         }
 
@@ -979,7 +1006,7 @@ namespace sales_management.UI
             {
                 UI.Items.GetForm.ShowDialog();
             }
-
+            /*
             if (e.ColumnIndex == 3)
             {
                 if (items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString() == "")
@@ -993,6 +1020,7 @@ namespace sales_management.UI
                 //price.Set_Document_Type = this.documentType;
                 UI.Price.GetForm.ShowDialog();
             }
+            */
         }
 
         public void change_price_field(int unit_id, string factor, string price, string shortcut, string code)
@@ -1014,7 +1042,9 @@ namespace sales_management.UI
 
         private void discount_value_TextChanged(object sender, EventArgs e)
         {
-            string value = discount_value.Text;
+             
+            string value = discount_value.Text; 
+             
             if (value == "")
             {
                 discount_value.Text = "";
@@ -1023,6 +1053,44 @@ namespace sales_management.UI
             if (this.is_string(value))
             {
                 discount_value.Text = "";
+            }
+
+
+            switch (this.payment_methods.SelectedIndex)
+            {
+
+                // Cash 
+                case 0: 
+                    details.Text = "شراء بضاعه نقدا"; 
+                    break;
+
+                // Deferred payment
+                case 1: 
+                    details.Text = "شراء بضاعه بالأجل"; 
+                    break;
+
+                // By Network
+                case 2: 
+                    details.Text = "شراء بضاعه عن طريق البنك"; 
+                    break;
+
+                // Transfeer 
+                case 3: 
+                    details.Text = "شراء بضاعه عن طريق البنك"; 
+                    break;
+            }
+
+            // Case Discount 
+            if (discount_value.Text != "")
+            {
+                if (dicount_percentage.Text != "")
+                {
+                    details.Text += " - بخصم تجاري " + "%" + dicount_percentage.Text;
+                }
+                else
+                {
+                    details.Text +=   " - بخصم تجاري " + discount_value.Text + " ريال سعودي";
+                }
             }
 
             this.Fill_Total_Fields();
@@ -1132,9 +1200,22 @@ namespace sales_management.UI
             discount_value.Text = discount_val.ToString();
         }
 
-        private void price_includ_vat_CheckedChanged(object sender, EventArgs e)
-        {
-            this.Fill_Total_Fields();
+        public string get_resource_code( string resource_id ) {
+
+            string res_code = "-1";
+
+            DataTable resources = this.Resources;
+
+            foreach (DataRow row in resources.Rows) {
+                
+                if ( row["id"].ToString().Equals(resource_id) ) { 
+                    res_code = row["resource_code"].ToString();
+                }
+
+            }
+
+            return res_code;
+
         }
 
         private void save_button_Click(object sender, EventArgs e)
@@ -1155,6 +1236,11 @@ namespace sales_management.UI
                 customer_id.Text = "-1";
             }
 
+            if ( payment_methods.SelectedIndex == 1 && customer_id.Text == "-1") {
+                MessageBox.Show("من فضلك قم بإختيار حساب المورد الأجل");
+                return;
+            }
+            
             if (this.Settings.Rows.Count == 0 ) {
                 MessageBox.Show( "من فضلك تأكد من إعدادات النظام وخصوصا شجرة الحسابات" );
                 return;
@@ -1184,6 +1270,10 @@ namespace sales_management.UI
             items.Columns.Add("product_code");
             items.Columns.Add("total_price");
 
+            items.Columns.Add("unit_cost");
+            items.Columns.Add("total_cost");
+            //items.Columns.Add("datemade");
+            
             foreach (DataGridViewRow row in items_datagridview.Rows) {
 
                 DataRow rtbl = items.NewRow();
@@ -1203,6 +1293,10 @@ namespace sales_management.UI
                     rtbl["datagrid_id"] = row.Cells["datagrid_id"].Value.ToString();
                     rtbl["product_code"] = row.Cells["product_code"].Value.ToString();
                     rtbl["total_price"] = row.Cells["total_price"].Value.ToString();
+                    
+                    rtbl["unit_cost"] = row.Cells["unit_cost"].Value.ToString();
+                    rtbl["total_cost"] = row.Cells["total_cost"].Value.ToString();
+                    //rtbl["datemade"] = System.DBNull.Value == row.Cells["datemade"].Value ? DateTime.Now: Convert.ToDateTime(row.Cells["datemade"].Value);
 
                     items.Rows.Add(rtbl);
                 }
@@ -1210,10 +1304,10 @@ namespace sales_management.UI
 
 
             /*
-                * ===============================================
-                * Build Header Entry
-                * ===============================================
-                */
+            * ===============================================
+            * Build Header Entry
+            * ===============================================
+            */
             DataTable entry_header = new DataTable();
             entry_header.Columns.Add("id"); 
             entry_header.Columns.Add("updated_by");
@@ -1248,7 +1342,6 @@ namespace sales_management.UI
             entry_details.Columns.Add("cost_center_number");
             entry_details.Columns.Add("date");
             entry_details.Columns.Add("account_number");
-
 
             // Part 1 +++++++++++++++++++++++++++++++
             if (payment_methods.SelectedIndex == 0) {
@@ -1394,8 +1487,9 @@ namespace sales_management.UI
 
                 if (customer_id.Text != "")
                 {
-                    entry_details_cash["account_number"] = customer_id.Text;
+                    entry_details_cash["account_number"] = this.get_resource_code(customer_id.Text);
                 }
+                 
 
                 // Case Discount 
                 if (discount_value.Text != "")
@@ -1473,8 +1567,10 @@ namespace sales_management.UI
 
 
             // Get Last Records
-            Purchase.Get_Purchase_Invoice_Data_Set();
+            this.load_invoice_data_tables();
 
+            // Diable Invoices
+            this.disable_elements(false);
         }
 
         public void disable_elements(bool yes = false)
@@ -1494,6 +1590,7 @@ namespace sales_management.UI
             vat_amount.Enabled = yes;
             total_field_text.Enabled = yes;
             //total_label_text.Enabled = yes;
+            enable_zakat_taxes.Enabled = yes;
 
             // Buttons 
             add_new_button.Enabled = !yes;
@@ -1519,6 +1616,9 @@ namespace sales_management.UI
             invoice_id.Text = "";
             this.is_getting_data = false; 
             this.disable_elements(true);
+
+
+            
 
             // Clear Current Datagridview 
             foreach (DataGridViewRow row in items_datagridview.Rows)
@@ -1549,21 +1649,15 @@ namespace sales_management.UI
                     }
                 }
             }
-
+            
             DataTable table = Purchase.Create_Purchase_Invoice_Id();
-            /*
-            foreach (DataColumn col in table.Columns) {
-                foreach (DataRow row in table.Rows) {
-                    Console.WriteLine(col + " : " + row[col]);
-                }
-
-                Console.WriteLine("======================================");
-            }
-            */
+             
             if (table.Rows.Count > 0)
             {
                 this.Fill_Invoice_Fields(table.Rows[0]);
             }
+
+            
         }
 
         private void customer_name_MouseClick(object sender, MouseEventArgs e)
@@ -1595,23 +1689,7 @@ namespace sales_management.UI
             if (colName != "deletion_et_button")
             {
                 return;
-            }
-
-            // Delete Current Row From Database and main Table  
-            string gridId = items_datagridview.Rows[e.RowIndex].Cells["datagrid_id"].Value.ToString();
-            if (gridId == "")
-            {
-                return;
-            }
-
-            if (invoice_id.Text == "")
-            {
-                return;
-            }
-
-            // Delete Current Row From Table 
-            docs.delete_document_detail_by_datagrid_id(gridId.ToString(), Convert.ToInt32(this.documentType), Convert.ToInt32(invoice_id.Text));
-            this.Purchase_Details = Purchase.Get_All_Purchase_Invoice_Details();
+            } 
 
             // Empty Current Row 
             DataGridViewRow row = items_datagridview.Rows[e.RowIndex];
@@ -1641,11 +1719,11 @@ namespace sales_management.UI
             }
         }
 
-        private void purchaseInvoice_Load(object sender, EventArgs e)
-        {
+        public void load_invoice_data_tables() {
+
             // Load DataSet Of Purchase Invoices
             this.dataSetDb = Purchase.Get_Purchase_Invoice_Data_Set();
-            
+
             // Extract Tables From DataSet 
             this.Purchase_Table = this.dataSetDb.Tables[0];
             this.Purchase_Details = this.dataSetDb.Tables[1];
@@ -1654,6 +1732,14 @@ namespace sales_management.UI
             this.Prods = this.dataSetDb.Tables[4];
             this.Codes = this.Load_All_Products_Codes(this.dataSetDb.Tables[4]);
             this.unitName = this.dataSetDb.Tables[5];
+            this.Resources = this.dataSetDb.Tables[6];
+
+        }
+
+        private void purchaseInvoice_Load(object sender, EventArgs e)
+        {
+            // Load DataSet Of Purchase Invoices
+            this.load_invoice_data_tables();
 
             if (0 != this.Purchase_Table.Rows.Count)
             {
@@ -1677,6 +1763,9 @@ namespace sales_management.UI
             items_datagridview.Columns["total_quantity"].Visible = false;
             items_datagridview.Columns["datagrid_id"].Visible = false;
             items_datagridview.Columns["is_out"].Visible = false;
+            items_datagridview.Columns["unit_cost"].Visible = false;
+            items_datagridview.Columns["total_cost"].Visible = false;
+            //items_datagridview.Columns["datemade"].Visible = false;
 
             this.Set_Invoice_Row_Page_Index();
 
@@ -1700,6 +1789,46 @@ namespace sales_management.UI
             this.Load_deletion_icon_in_datagridview();
             this.disable_elements();
 
+        }
+
+        private void price_includ_vat_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (enable_zakat_taxes.Checked == false) {
+                return;
+            }
+
+            this.Fill_Total_Fields();
+
+        }
+
+        private void enable_zakat_taxes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (enable_zakat_taxes.Checked == false)
+            {
+                total_without_vat_field.Text = total_field_text.Text;
+                vat_amount.Text = "0";
+            }
+            else {
+                this.Fill_Total_Fields();
+            }
+        }
+
+        private void first_record_button_Click(object sender, EventArgs e)
+        {
+            if (this.Purchase_Table.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.currentInvoiceRowIndex = this.Purchase_Table.Rows.Count - 1;
+            this.Set_Invoice_Row_Page_Index();
+
+            DataRow rw = this.Purchase_Table.Rows[this.currentInvoiceRowIndex];
+            this.Fill_Invoice_Fields(rw);
+
+            int id = Convert.ToInt32(this.Purchase_Table.Rows[this.currentInvoiceRowIndex]["id"]);
+
+            this.refill_datagridview(id, items_datagridview);
         }
     }
 }
