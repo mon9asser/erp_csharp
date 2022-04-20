@@ -112,7 +112,6 @@ D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-app\obj\Debug\sales_management.UI.Items.resources
-D:\sales-app\obj\Debug\sales_management.UI.Price.resources
 D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.Accounts.resources
 D:\sales-app\obj\Debug\sales_management.UI.AddCustomer.resources
@@ -121,3 +120,4 @@ D:\sales-app\bin\Debug\QRCoder.dll
 D:\sales-app\bin\Debug\IronBarCode.dll
 D:\sales-app\bin\Debug\IronBarCode.xml
 D:\sales-app\obj\Debug\sales_management.UI.purchaseInvoice.resources
+D:\sales-app\obj\Debug\sales_management.UI.ItemUnit.resources

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -102,9 +102,6 @@ namespace sales_management.UI
 
         private void Items_KeyDown(object sender, KeyEventArgs e)
         {
-
-            return;
-
             if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space) {
                 return;
             }
@@ -115,7 +112,8 @@ namespace sales_management.UI
 
             int index = UI.Items.GetForm.DGRowIndex;
             if (index == -1) return;
-              
+             
+
             // By document type 
             switch (UI.Items.GetForm.doc_type) {
 
@@ -133,49 +131,6 @@ namespace sales_management.UI
              
             this.Close();
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-            this.Load_Grid_View();
-
-            // Data Values 
-            string searchValue = textBox1.Text;
-            if ( searchValue == "" ) {
-                return;
-            }
-
-            DataTable tbl = (DataTable) items_view_grids.DataSource;
-
-            DataTable newTable = new DataTable();
-            foreach (DataColumn col in tbl.Columns) {
-                newTable.Columns.Add(col.ToString());
-            }
-
-
-            DataRow[] filteredRows = tbl.Select("name LIKE '%" + searchValue + "%'");
-
-            if (filteredRows.Length != 0) {
-                
-                DataRow new_row;
-                
-                for ( int i=0; i < filteredRows.Length; i++ ) {
-
-                    new_row = newTable.NewRow(); 
-
-                    foreach (DataGridViewColumn col in items_view_grids.Columns) {
-                        new_row[col.Name.ToString()] = filteredRows[i][col.Name.ToString()];
-                    }
-
-                    newTable.Rows.Add(new_row);
-
-                }
-
-            }
-            
-            items_view_grids.DataSource = newTable;
-            
         }
     }
 }

@@ -32,11 +32,14 @@ namespace sales_management.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.items_view_grids = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.items_view_grids)).BeginInit();
             this.SuspendLayout();
             // 
             // items_view_grids
             // 
+            this.items_view_grids.AccessibleDescription = "te";
             this.items_view_grids.AllowUserToAddRows = false;
             this.items_view_grids.AllowUserToDeleteRows = false;
             this.items_view_grids.AllowUserToResizeColumns = false;
@@ -53,7 +56,7 @@ namespace sales_management.UI
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.items_view_grids.DefaultCellStyle = dataGridViewCellStyle4;
-            this.items_view_grids.Location = new System.Drawing.Point(12, 12);
+            this.items_view_grids.Location = new System.Drawing.Point(12, 44);
             this.items_view_grids.Name = "items_view_grids";
             this.items_view_grids.ReadOnly = true;
             this.items_view_grids.RowHeadersVisible = false;
@@ -63,15 +66,34 @@ namespace sales_management.UI
             this.items_view_grids.ShowCellToolTips = false;
             this.items_view_grids.ShowEditingIcon = false;
             this.items_view_grids.ShowRowErrors = false;
-            this.items_view_grids.Size = new System.Drawing.Size(230, 287);
+            this.items_view_grids.Size = new System.Drawing.Size(243, 310);
             this.items_view_grids.TabIndex = 0;
             this.items_view_grids.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_view_grids_CellDoubleClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(60, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(195, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "بحث :";
             // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 311);
+            this.ClientSize = new System.Drawing.Size(267, 366);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.items_view_grids);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
@@ -88,11 +110,14 @@ namespace sales_management.UI
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Items_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.items_view_grids)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         public System.Windows.Forms.DataGridView items_view_grids;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

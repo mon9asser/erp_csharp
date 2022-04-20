@@ -151,6 +151,7 @@ namespace sales_management.UI
             decimal quantity = Convert.ToDecimal(0);
             decimal factor = Convert.ToDecimal(0);
             decimal unitPrice = Convert.ToDecimal(0);
+            decimal unitCost = Convert.ToDecimal(0);
 
             // Calculate Factors AND Quantity 
             if (System.DBNull.Value.ToString() != row.Cells["quantity"].Value.ToString())
@@ -168,6 +169,11 @@ namespace sales_management.UI
                 unitPrice = Convert.ToDecimal(row.Cells["unit_price"].Value);
             }
 
+            if (System.DBNull.Value.ToString() != row.Cells["unit_cost"].Value.ToString())
+            {
+                unitCost = Convert.ToDecimal(row.Cells["unit_cost"].Value);
+            }
+
             // Total Quantity 
             row.Cells["total_quantity"].Value = (quantity * factor).ToString();
 
@@ -175,9 +181,9 @@ namespace sales_management.UI
             row.Cells["total_price"].Value = (quantity * unitPrice).ToString();
 
             // Calculate Unit Cost (purchase is the default price)
-            row.Cells["unit_cost"].Value = (unitPrice).ToString();
-            row.Cells["total_cost"].Value = (quantity * unitPrice).ToString();
-
+            row.Cells["unit_cost"].Value = (unitCost).ToString();
+            row.Cells["total_cost"].Value = (quantity * unitCost).ToString();
+             
         }
 
         public string[] Get_Account_Details(string account_number)
@@ -711,8 +717,7 @@ namespace sales_management.UI
 
                     if (row["code"].ToString() == item_code_value.ToString())
                     {
-                        is_found = true;
-
+                        is_found = true; 
                         // Setup Item In Current Row 
                         items_datagridview.Rows[e.RowIndex].Cells["doc_id"].Value = invoice_id.Text.ToString();
                         items_datagridview.Rows[e.RowIndex].Cells["doc_type"].Value = this.documentType;
@@ -992,6 +997,8 @@ namespace sales_management.UI
         private void items_datagridview_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
+            if (e.RowIndex == -1 || e.ColumnIndex == -1 ) return;
+
             if (items_datagridview.ReadOnly == true) {
                 return;
             }
@@ -1000,12 +1007,41 @@ namespace sales_management.UI
             UI.Items.GetForm.DGRowIndex = this.lastRow;
             UI.Items.GetForm.doc_type = this.documentType;
 
-            if (e.RowIndex == -1) return;
+            
+             
 
+            
+             
             if (e.ColumnIndex == 2)
             {
                 UI.Items.GetForm.ShowDialog();
+            } 
+
+            if (e.ColumnIndex == 4)
+            {
+
+                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.purchaseInvoice.GetForm.lastRow].Cells["product_name"].Value)) {
+                    return;
+                }
+
+                this.is_change_price = true;
+
+                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.purchaseInvoice.GetForm.lastRow].Cells["product_id"].Value);
+                   
+                UI.ItemUnit item_units = new UI.ItemUnit(
+                    this.documentType,
+                    product_id,
+                    this.Prods,
+                    this.unitName, 
+                    e.RowIndex
+                );
+                
+                item_units.ShowDialog();
+
             }
+
+
+
             /*
             if (e.ColumnIndex == 3)
             {
@@ -1021,6 +1057,21 @@ namespace sales_management.UI
                 UI.Price.GetForm.ShowDialog();
             }
             */
+        }
+
+        public void Add_New_Item_Unit( int dataGridIndex, DataTable item_updates ) {
+             
+            if (item_updates.Rows.Count < 1) {
+                return;
+            }
+
+            foreach (DataRow row in item_updates.Rows) {
+                foreach (DataColumn col in item_updates.Columns) {
+                    items_datagridview.Rows[dataGridIndex].Cells[col.ToString()].Value = row[col.ToString()];
+                }
+            }
+
+            this.is_change_price = false;
         }
 
         public void change_price_field(int unit_id, string factor, string price, string shortcut, string code)
@@ -1598,10 +1649,14 @@ namespace sales_management.UI
             first_record_button.Enabled = !yes;
             next_button.Enabled = !yes;
             previous_button.Enabled = !yes;
-            last_record_button.Enabled = !yes;
-              
+            last_record_button.Enabled = !yes; 
             edit_button.Enabled = !yes;
 
+
+            items_datagridview.Columns["product_name"].ReadOnly = true;
+            //items_datagridview.Columns["unit_price"].ReadOnly = true;
+            items_datagridview.Columns["total_price"].ReadOnly = true;
+            items_datagridview.Columns["unit_name"].ReadOnly = true;
         }
 
         private void edit_button_Click(object sender, EventArgs e)
@@ -1708,7 +1763,7 @@ namespace sales_management.UI
                     }
                     else if (col.Name.ToString() == "is_out")
                     {
-                        row.Cells[col.Name.ToString()].Value = true;
+                        row.Cells[col.Name.ToString()].Value = false;
                     }
                     else
                     {
@@ -1775,12 +1830,12 @@ namespace sales_management.UI
             items_datagridview.Columns["quantity"].HeaderText = "الكميات";
             items_datagridview.Columns["total_price"].HeaderText = "إجمالي السعر";
             items_datagridview.Columns["unit_price"].HeaderText = "سعر الوحدة";
-
-            items_datagridview.Columns["product_name"].ReadOnly = true;
+             
 
             items_datagridview.Columns[2].Width = 330;
             items_datagridview.ColumnHeadersHeight = 40;
 
+            items_datagridview.Columns["product_name"].ReadOnly = true;
             items_datagridview.Columns["unit_price"].ReadOnly = true;
             items_datagridview.Columns["total_price"].ReadOnly = true;
             items_datagridview.Columns["unit_name"].ReadOnly = true;

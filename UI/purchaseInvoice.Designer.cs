@@ -148,7 +148,7 @@ namespace sales_management.UI
             this.search_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.search_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Location = new System.Drawing.Point(389, 12);
+            this.search_button.Location = new System.Drawing.Point(377, 12);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(68, 29);
             this.search_button.TabIndex = 135;
@@ -613,7 +613,7 @@ namespace sales_management.UI
             this.enable_zakat_taxes.AutoSize = true;
             this.enable_zakat_taxes.Checked = true;
             this.enable_zakat_taxes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enable_zakat_taxes.Location = new System.Drawing.Point(913, 455);
+            this.enable_zakat_taxes.Location = new System.Drawing.Point(377, 54);
             this.enable_zakat_taxes.Name = "enable_zakat_taxes";
             this.enable_zakat_taxes.Size = new System.Drawing.Size(94, 17);
             this.enable_zakat_taxes.TabIndex = 143;
