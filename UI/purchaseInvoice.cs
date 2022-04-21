@@ -73,6 +73,7 @@ namespace sales_management.UI
             table.Columns.Add("code");
             table.Columns.Add("name");
             table.Columns.Add("unit_price");
+            table.Columns.Add("unit_cost");
             table.Columns.Add("unit_id");
             table.Columns.Add("factor");
 
@@ -90,7 +91,8 @@ namespace sales_management.UI
                 rowDefault["id"] = row["id"].ToString();
                 rowDefault["code"] = row["code"].ToString();
                 rowDefault["name"] = row["name"].ToString();
-                rowDefault["unit_price"] = row["default_sale_price"].ToString();
+                rowDefault["unit_price"] = row["purchase_price"].ToString();
+                rowDefault["unit_cost"] = row["purchase_price"].ToString();
                 rowDefault["unit_id"] = row["unit_id"].ToString();
                 rowDefault["factor"] = "1";
                 table.Rows.Add(rowDefault);
@@ -100,12 +102,13 @@ namespace sales_management.UI
                 for (int i = 1; i <= 6; i++)
                 {
                     rowSecond = table.NewRow();
-                    rowSecond["id"] = row["gr1_unit_id"].ToString();
-                    rowSecond["code"] = row["gr1_barcode"].ToString();
+                    rowSecond["id"] = row["gr" + i + "_unit_id"].ToString();
+                    rowSecond["code"] = row["gr" + i + "_barcode"].ToString();
                     rowSecond["name"] = row["name"].ToString();
-                    rowSecond["unit_price"] = row["gr1_sale_price"].ToString();
-                    rowSecond["unit_id"] = row["gr1_unit_id"].ToString();
-                    rowSecond["factor"] = row["gr1_transform"].ToString();
+                    rowSecond["unit_price"] = row["gr" + i + "_sale_price"].ToString();
+                    rowSecond["unit_id"] = row["gr" + i + "_unit_id"].ToString();
+                    rowSecond["factor"] = row["gr" + i + "_transform"].ToString();
+                    rowSecond["unit_cost"] = row["gr" + i + "_purchase_price"].ToString();
                     table.Rows.Add(rowSecond);
                 }
 
@@ -727,6 +730,7 @@ namespace sales_management.UI
                         items_datagridview.Rows[e.RowIndex].Cells["is_out"].Value = true;
                         items_datagridview.Rows[e.RowIndex].Cells["quantity"].Value = "1";
                         items_datagridview.Rows[e.RowIndex].Cells["unit_price"].Value = row["unit_price"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_cost"].Value = row["unit_cost"].ToString();
                         items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value = row["name"].ToString();
 
                         string unit_shortcut = "جرام";
@@ -876,8 +880,11 @@ namespace sales_management.UI
             }
 
             decimal unit_price = 0;
-            unit_price = default_sale_price;
+            unit_price = purchase_price;
+            decimal unit_cost = 0;
+            unit_cost = purchase_price;
             string unit_shortcut = "جرام";
+
             foreach (DataRow col in unitName.Rows)
             {
 
@@ -898,6 +905,7 @@ namespace sales_management.UI
             drow.Cells["unit_id"].Value = unit_id.ToString();
             drow.Cells["unit_name"].Value = unit_shortcut.ToString();
             drow.Cells["unit_price"].Value = unit_price.ToString();
+            drow.Cells["unit_cost"].Value = unit_cost.ToString();
             drow.Cells["factor"].Value = unit_factor;
             drow.Cells["is_out"].Value = 1;
             drow.Cells["product_code"].Value = item["code"].ToString(); ;

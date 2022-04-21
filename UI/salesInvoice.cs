@@ -957,6 +957,8 @@ namespace sales_management.UI
 
             decimal unit_price = 0;
             unit_price = default_sale_price;
+            decimal unit_cost = 0;
+            unit_cost = purchase_price;
             string unit_shortcut = "جرام";
             foreach (DataRow col in unitName.Rows)
             {
@@ -978,6 +980,7 @@ namespace sales_management.UI
             drow.Cells["unit_id"].Value = unit_id.ToString(); 
             drow.Cells["unit_name"].Value = unit_shortcut.ToString();
             drow.Cells["unit_price"].Value = unit_price.ToString();
+            drow.Cells["unit_cost"].Value = unit_cost.ToString();
             drow.Cells["factor"].Value = unit_factor;
             drow.Cells["is_out"].Value = 1;
             drow.Cells["product_code"].Value = item["code"].ToString(); ;

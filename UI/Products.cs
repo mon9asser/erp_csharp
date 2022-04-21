@@ -20,8 +20,11 @@ namespace sales_management.UI
 
         
         PL.Products prd = new PL.Products();
+        PL.AccountingTree tree = new PL.AccountingTree();
+        PL.Installings settings = new PL.Installings();
         DataTable table;
-
+        DataTable Accounts;
+        DataTable Settings;
         public static Products frm;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
@@ -47,7 +50,9 @@ namespace sales_management.UI
 
         public Products()
         {
-            table = this.prd.Get_All_Products(); 
+            table = this.prd.Get_All_Products();
+            Accounts = this.tree.Get_Accounting_Tree();
+            Settings = this.settings.Get_All_System_Settings();
 
             InitializeComponent();
             
@@ -56,9 +61,13 @@ namespace sales_management.UI
                 frm = this;
             }
 
+
+            
+            if (this.Settings.Rows.Count == 0 || this.Accounts.Rows.Count == 0) {
+                MessageBox.Show("من فضلك تأكد من إعدادت النظام و شجرة الحسابات", "خطأ", MessageBoxButtons.OK);
+            }
+
             this.load_combobox_search_type();
-
-
             this.load_last_record();
         }
 
@@ -377,7 +386,7 @@ namespace sales_management.UI
                 }
             } else
             {
-                MessageBox.Show(message.ToString());
+                 
                 if(msg == null) 
                     UI.Products.getForm.Close();
             }
@@ -390,6 +399,16 @@ namespace sales_management.UI
             this.enalbe_proccess_inputs(true);
         }
 
+        private string generate_account_number() {
+             
+            string account_number = "";
+            
+            foreach ( DataRow account in this.Accounts.Rows ) { 
+            
+            }
+
+            return account_number;
+        }
         private void save_button_Click(object sender, EventArgs e)
         {
 

@@ -41,6 +41,7 @@ namespace sales_management.UI
         public Items()
         {
             InitializeComponent();
+
             
             if (frm == null)
             {
