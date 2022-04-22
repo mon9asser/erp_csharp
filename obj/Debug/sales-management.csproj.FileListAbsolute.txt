@@ -108,7 +108,6 @@ E:\C#\sales-app\obj\Debug\sales_management.UI.DesignChange.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Tree.resources
 D:\sales-app\obj\Debug\sales_management.UI.Supplier.resources
 D:\sales-app\obj\Debug\sales_management.UI.AddSupplier.resources
-D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-app\obj\Debug\sales_management.UI.Items.resources
@@ -121,3 +120,5 @@ D:\sales-app\bin\Debug\IronBarCode.dll
 D:\sales-app\bin\Debug\IronBarCode.xml
 D:\sales-app\obj\Debug\sales_management.UI.purchaseInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.ItemUnit.resources
+D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
+D:\sales-app\obj\Debug\sales_management.UI.SelectTreeCols.resources

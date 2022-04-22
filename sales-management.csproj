@@ -38,10 +38,9 @@
     <Reference Include="IronBarCode, Version=2022.3.0.0, Culture=neutral, PublicKeyToken=b971bb3971bdf306, processorArchitecture=MSIL">
       <HintPath>packages\BarCode.2022.3.0\lib\net40\IronBarCode.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>C:\Users\dell\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -177,6 +176,12 @@
     <Compile Include="UI\salesInvoice.Designer.cs">
       <DependentUpon>salesInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SelectTreeCols.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SelectTreeCols.Designer.cs">
+      <DependentUpon>SelectTreeCols.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\salesInvoice.resx">
       <DependentUpon>salesInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectTreeCols.resx">
+      <DependentUpon>SelectTreeCols.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>

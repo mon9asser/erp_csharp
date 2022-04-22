@@ -16,7 +16,7 @@ namespace sales_management.UI
     {
         PL.AccountingTree tree = new PL.AccountingTree();
         DataTable table;
-
+        public int edited_row_index = -1;
         public int last_account_id = 0;
 
         public AccTree()
@@ -41,12 +41,7 @@ namespace sales_management.UI
             }
              
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                progress_panel.Visible = true;
-                this.StartBackgroundWork();
-                this.LoadAccountingTree( openFileDialog1.FileName.ToString() );  
-            }
+             
         }
 
 
@@ -66,7 +61,24 @@ namespace sales_management.UI
 
             accounting_tree.Nodes.Clear();
 
-            table = tree.Get_Accounting_Tree();
+            table = tree.Get_Accounting_Tree(); 
+            datagrid_accounts_tree.DataSource = table;
+
+            datagrid_accounts_tree.Columns["id"].Visible = false;
+            datagrid_accounts_tree.Columns["account_name_en"].Visible = false;
+            datagrid_accounts_tree.Columns["debit_credit"].Visible = false;
+            datagrid_accounts_tree.Columns["balance"].Visible = false;
+            datagrid_accounts_tree.Columns["is_main_account"].Visible = false; 
+             
+
+            datagrid_accounts_tree.Columns["account_number"].HeaderText = "رقم الحساب";
+            datagrid_accounts_tree.Columns["account_name"].HeaderText = "إسم الحســـاب";
+            datagrid_accounts_tree.Columns["main_account"].HeaderText = "تابع لحساب رقم";
+
+
+            datagrid_accounts_tree.Columns["account_number"].Width = 140;
+            datagrid_accounts_tree.Columns["account_name"].Width = 290;
+            datagrid_accounts_tree.Columns["main_account"].Width = 140;
 
             foreach (DataRow row in table.Rows) {
 
@@ -85,7 +97,14 @@ namespace sales_management.UI
 
         }
 
+
+         
+
         public void Fill_Tree_View( int acc_number, string acc_title, string parent_account) {
+
+            if (parent_account == "" || acc_title =="") {
+                return;
+            }
 
             if (Convert.ToInt32(parent_account) == 0)
             {
@@ -141,8 +160,7 @@ namespace sales_management.UI
             // Fill The Tree 
             this.Fill_Accounting_Tree();
 
-            progress_panel.Visible = false;
-                  
+                   
 
         }
 
@@ -268,22 +286,181 @@ namespace sales_management.UI
             this.disable(false, false);
         }
 
-
-        private void StartBackgroundWork()
+        private void datagrid_accounts_tree_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+             
+            bool isCol = datagrid_accounts_tree.CurrentCell.ColumnIndex == 1 || datagrid_accounts_tree.CurrentCell.ColumnIndex == 4;
+
+            if (isCol) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+
+         
+
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void live_tree_accounts() {
+
+            DataTable table = (DataTable)datagrid_accounts_tree.DataSource;
+            /*
+             * table.Columns.Remove("id");
+           table.Columns.Remove("account_name_en");
+           table.Columns.Remove("debit_credit");
+           table.Columns.Remove("balance");
+           table.Columns.Remove("is_main_account");*/
+
+             
+            //  Clear The Tree
+            accounting_tree.Nodes.Clear();
+
+            foreach (DataRow row in table.Rows)
+            {
+
+                if (row["account_number"].ToString() == "" || row["account_name"].ToString() == "" || row["main_account"].ToString() == "") {
+                    return;
+                }
+
+                int acc_number = Convert.ToInt32(row["account_number"]);
+                string acc_title = row["account_name"].ToString();
+                string parent_account = row["main_account"].ToString() == "" ? 0.ToString() : row["main_account"].ToString();
+
+
+
+                if (Convert.ToInt32(parent_account) == 0)
+                {
+                    TreeNode nodes = new TreeNode();
+                    nodes.Text = acc_title.ToString();
+                    nodes.Tag = acc_number.ToString();
+                    accounting_tree.Nodes.Add(nodes);
+                }
+
+                foreach (var node in Collect(accounting_tree.Nodes))
+                {
+
+                    if (Convert.ToInt32(parent_account) != 0 && Convert.ToInt32(node.Tag).Equals(Convert.ToInt32(parent_account)))
+                    {
+                        TreeNode childer = new TreeNode();
+                        childer.Text = acc_title.ToString();
+                        childer.Tag = acc_number.ToString();
+                        node.Nodes.Add(childer);
+                    }
+
+                }
+            }
+
+            accounting_tree.ExpandAll();
+            
+
+        }
+        private void datagrid_accounts_tree_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
+
+            bool validIndexes = e.ColumnIndex == -1 || e.RowIndex == -1;
+            
+            if (validIndexes) {
+                return;
+            }
+
+
+            this.live_tree_accounts();
            
-                progressBar.Style = ProgressBarStyle.Continuous;
-                progressBar.Maximum = 100;
-                progressBar.Value = 0;
-                timer.Enabled = true; 
-        }
-         
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            if (progressBar.Value < 100)
-             progressBar.Value += 5; 
         }
 
-         
+        private void datagrid_accounts_tree_KeyUp(object sender, KeyEventArgs e)
+        {
+            int rowIndex = datagrid_accounts_tree.CurrentCell.OwningRow.Index;
+            int colIndex = datagrid_accounts_tree.CurrentCell.OwningColumn.Index;
+
+            bool validIndexes = rowIndex == -1 || colIndex == -1;
+
+            if (validIndexes)
+            {
+                return;
+            }
+
+            this.live_tree_accounts();
+        }
+
+        private void datagrid_accounts_tree_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            this.edited_row_index = e.RowIndex;
+
+            if (this.edited_row_index == -1 || e.ColumnIndex == -1 ) {
+                return;
+            } 
+
+            DataGridViewRow row = datagrid_accounts_tree.Rows[this.edited_row_index];
+
+            if (row.Cells["account_number"].Value.ToString() != "" && row.Cells["account_name"].Value.ToString() != "" && row.Cells["main_account"].Value.ToString() != "") {
+                this.datagrid_accounts_tree.Sort(this.datagrid_accounts_tree.Columns["account_number"], ListSortDirection.Ascending);
+            }
+
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+            string dirPath = Directory.GetCurrentDirectory().ToString() + "\\Trees";
+
+            if (Directory.Exists(dirPath))
+            {
+                openFileDialog1.InitialDirectory = dirPath;
+            }
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+
+
+                Excel.Application oExcel = new Excel.Application();
+                Excel.Workbook WB = oExcel.Workbooks.Open(openFileDialog1.FileName);
+                string ExcelWorkbookname = WB.Name;
+                int worksheetcount = WB.Worksheets.Count;
+                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(openFileDialog1.FileName);
+                Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
+                Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
+                int rowCount = excelRange.Rows.Count;  //get row count of excel data
+                int colCount = excelRange.Columns.Count;
+
+                Console.WriteLine(excelRange.Cells[2,2].Value2);
+
+
+            }
+             
+            /*
+            Excel.Application oExcel = new Excel.Application();
+            Excel.Workbook WB = oExcel.Workbooks.Open(filepath);
+            string ExcelWorkbookname = WB.Name;
+            int worksheetcount = WB.Worksheets.Count;
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(filepath);
+            Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
+            Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
+            int rowCount = excelRange.Rows.Count;  //get row count of excel data
+            int colCount = excelRange.Columns.Count; // get column count of excel data
+            */
+        }
     }
 }
+
+
+// this.datagrid_accounts_tree.Sort(this.datagrid_accounts_tree.Columns["account_number"], ListSortDirection.Ascending);
