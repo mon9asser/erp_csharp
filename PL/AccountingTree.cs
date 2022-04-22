@@ -10,6 +10,21 @@ namespace sales_management.PL
 {
     class AccountingTree
     {
+        public void Update_Tree_Of_Accounts(DataTable table) {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+             
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@accounting_tree", SqlDbType.Structured);
+            param[0].Value = table;
+
+            DAL.Open();
+
+            DAL.ExecuteCommand("Update_Tree_Of_Accounts_TableSet", param);
+
+            DAL.Close();
+        }
 
         public void Create_Tree_Account(int id, string accountNumber, string accountName, string accountNameEn, string mainAccount, string debitCredit, string balance, bool is_main_account)
         {
