@@ -28,100 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccTree));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label4 = new System.Windows.Forms.Label();
-            this.main_account_number = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.account_name_en = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.account_name = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.account_number = new System.Windows.Forms.TextBox();
+            this.accounting_tree = new System.Windows.Forms.TreeView();
+            this.datagrid_accounts_tree = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.account_type = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.account_number = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.account_name = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.accounting_tree = new System.Windows.Forms.TreeView();
-            this.datagrid_accounts_tree = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.main_account_number = new System.Windows.Forms.TextBox();
+            this.account_name_en = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label4
+            // accounting_tree
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(261, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "رقم الحساب التابع له :";
+            resources.ApplyResources(this.accounting_tree, "accounting_tree");
+            this.accounting_tree.Name = "accounting_tree";
+            this.accounting_tree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.accounting_tree_AfterSelect);
             // 
-            // main_account_number
+            // datagrid_accounts_tree
             // 
-            this.main_account_number.Location = new System.Drawing.Point(26, 38);
-            this.main_account_number.Name = "main_account_number";
-            this.main_account_number.ReadOnly = true;
-            this.main_account_number.Size = new System.Drawing.Size(218, 20);
-            this.main_account_number.TabIndex = 18;
+            this.datagrid_accounts_tree.AllowUserToResizeColumns = false;
+            this.datagrid_accounts_tree.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.datagrid_accounts_tree.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagrid_accounts_tree.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.datagrid_accounts_tree.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.datagrid_accounts_tree.GridColor = System.Drawing.Color.DodgerBlue;
+            resources.ApplyResources(this.datagrid_accounts_tree, "datagrid_accounts_tree");
+            this.datagrid_accounts_tree.MultiSelect = false;
+            this.datagrid_accounts_tree.Name = "datagrid_accounts_tree";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid_accounts_tree.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.datagrid_accounts_tree.RowHeadersVisible = false;
+            this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
+            this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.datagrid_accounts_tree.RowTemplate.Height = 26;
+            this.datagrid_accounts_tree.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagrid_accounts_tree.ShowEditingIcon = false;
+            this.datagrid_accounts_tree.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellClick);
+            this.datagrid_accounts_tree.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellEndEdit);
+            this.datagrid_accounts_tree.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellValueChanged);
+            this.datagrid_accounts_tree.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.datagrid_accounts_tree_EditingControlShowing);
+            this.datagrid_accounts_tree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.datagrid_accounts_tree_KeyUp);
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(285, 167);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "الإسم الإنجليزي :";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
-            // account_name_en
+            // button8
             // 
-            this.account_name_en.Location = new System.Drawing.Point(26, 164);
-            this.account_name_en.Name = "account_name_en";
-            this.account_name_en.Size = new System.Drawing.Size(218, 20);
-            this.account_name_en.TabIndex = 16;
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(298, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "إسم الحساب :";
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // account_name
+            // button9
             // 
-            this.account_name.Location = new System.Drawing.Point(26, 120);
-            this.account_name.Name = "account_name";
-            this.account_name.Size = new System.Drawing.Size(218, 20);
-            this.account_name.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(303, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "رقم الحساب :";
-            // 
-            // account_number
-            // 
-            this.account_number.Location = new System.Drawing.Point(26, 76);
-            this.account_number.Name = "account_number";
-            this.account_number.Size = new System.Drawing.Size(218, 20);
-            this.account_number.TabIndex = 12;
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.button9, "button9");
+            this.button9.Name = "button9";
+            this.button9.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -139,257 +136,137 @@
             this.panel1.Controls.Add(this.main_account_number);
             this.panel1.Controls.Add(this.account_name_en);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(-5, 425);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(11, 10);
-            this.panel1.TabIndex = 22;
-            this.panel1.Visible = false;
             // 
             // account_type
             // 
             this.account_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.account_type.FormattingEnabled = true;
             this.account_type.Items.AddRange(new object[] {
-            "مدين",
-            "دائن"});
-            this.account_type.Location = new System.Drawing.Point(26, 212);
+            resources.GetString("account_type.Items"),
+            resources.GetString("account_type.Items1")});
+            resources.ApplyResources(this.account_type, "account_type");
             this.account_type.Name = "account_type";
-            this.account_type.Size = new System.Drawing.Size(218, 21);
-            this.account_type.TabIndex = 21;
             // 
             // button5
             // 
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Location = new System.Drawing.Point(285, 199);
+            resources.ApplyResources(this.button5, "button5");
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 34);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "حذف حساب";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Location = new System.Drawing.Point(465, 199);
+            resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(74, 34);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "تعديل";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(302, 212);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "نوع الحساب :";
+            // 
+            // account_number
+            // 
+            resources.ApplyResources(this.account_number, "account_number");
+            this.account_number.Name = "account_number";
             // 
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(545, 199);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 34);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "حساب جديد";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // account_name
+            // 
+            resources.ApplyResources(this.account_name, "account_name");
+            this.account_name.Name = "account_name";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // button3
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Location = new System.Drawing.Point(385, 199);
+            resources.ApplyResources(this.button3, "button3");
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 34);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "حفظ";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // accounting_tree
+            // label2
             // 
-            this.accounting_tree.Location = new System.Drawing.Point(603, 39);
-            this.accounting_tree.Name = "accounting_tree";
-            this.accounting_tree.RightToLeftLayout = true;
-            this.accounting_tree.Size = new System.Drawing.Size(301, 490);
-            this.accounting_tree.TabIndex = 0;
-            this.accounting_tree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.accounting_tree_AfterSelect);
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
-            // datagrid_accounts_tree
+            // main_account_number
             // 
-            this.datagrid_accounts_tree.AllowUserToResizeColumns = false;
-            this.datagrid_accounts_tree.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
-            this.datagrid_accounts_tree.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagrid_accounts_tree.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.datagrid_accounts_tree.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.datagrid_accounts_tree.GridColor = System.Drawing.Color.DodgerBlue;
-            this.datagrid_accounts_tree.Location = new System.Drawing.Point(13, 12);
-            this.datagrid_accounts_tree.MultiSelect = false;
-            this.datagrid_accounts_tree.Name = "datagrid_accounts_tree";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_accounts_tree.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.datagrid_accounts_tree.RowHeadersVisible = false;
-            this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
-            this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.datagrid_accounts_tree.RowTemplate.Height = 26;
-            this.datagrid_accounts_tree.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.datagrid_accounts_tree.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagrid_accounts_tree.ShowEditingIcon = false;
-            this.datagrid_accounts_tree.Size = new System.Drawing.Size(575, 517);
-            this.datagrid_accounts_tree.TabIndex = 30;
-            this.datagrid_accounts_tree.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellEndEdit);
-            this.datagrid_accounts_tree.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellValueChanged);
-            this.datagrid_accounts_tree.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.datagrid_accounts_tree_EditingControlShowing);
-            this.datagrid_accounts_tree.KeyUp += new System.Windows.Forms.KeyEventHandler(this.datagrid_accounts_tree_KeyUp);
+            resources.ApplyResources(this.main_account_number, "main_account_number");
+            this.main_account_number.Name = "main_account_number";
+            this.main_account_number.ReadOnly = true;
             // 
-            // label5
+            // account_name_en
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(607, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "معاينة الدليل :";
+            resources.ApplyResources(this.account_name_en, "account_name_en");
+            this.account_name_en.Name = "account_name_en";
             // 
-            // button8
+            // label3
             // 
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(327, 544);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(149, 34);
-            this.button8.TabIndex = 37;
-            this.button8.Text = "حفظ التعديلات";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 544);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(149, 34);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "إستيراد شجرة حسابات";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button6
-            // 
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(167, 544);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(149, 34);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "حذف الشجرة الحالية";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(482, 544);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(149, 34);
-            this.button7.TabIndex = 36;
-            this.button7.Text = "حذف الحساب المحدد";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(637, 544);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(149, 34);
-            this.button9.TabIndex = 38;
-            this.button9.Text = "طباعة شجرة الحسابات";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(792, 544);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(115, 34);
-            this.button10.TabIndex = 39;
-            this.button10.Text = "عرض البيانات";
-            this.button10.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // AccTree
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 590);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.datagrid_accounts_tree);
             this.Controls.Add(this.accounting_tree);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AccTree";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RightToLeftLayout = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "شجرة الحســــــابات";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox main_account_number;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox account_name_en;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox account_name;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox account_number;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TreeView accounting_tree;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox account_type;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
         public System.Windows.Forms.DataGridView datagrid_accounts_tree;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox account_type;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox account_number;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox account_name;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox main_account_number;
+        private System.Windows.Forms.TextBox account_name_en;
+        private System.Windows.Forms.Label label3;
     }
 }

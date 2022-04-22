@@ -361,6 +361,8 @@ namespace sales_management.UI
             }
 
 
+            account_number.Text = datagrid_accounts_tree.Rows[e.RowIndex].Cells["account_number"].Value.ToString();
+
             this.live_tree_accounts();
            
         }
@@ -370,6 +372,7 @@ namespace sales_management.UI
             int rowIndex = datagrid_accounts_tree.CurrentCell.OwningRow.Index;
             int colIndex = datagrid_accounts_tree.CurrentCell.OwningColumn.Index;
 
+            
             bool validIndexes = rowIndex == -1 || colIndex == -1;
 
             if (validIndexes)
@@ -377,6 +380,7 @@ namespace sales_management.UI
                 return;
             }
 
+            account_number.Text = datagrid_accounts_tree.Rows[rowIndex].Cells["account_number"].Value.ToString();
             this.live_tree_accounts();
         }
 
@@ -405,98 +409,34 @@ namespace sales_management.UI
 
             
         }
+         
 
-        public string[] explode(string separator, string source)
+        private void button7_Click(object sender, EventArgs e)
         {
-            return source.Split(new string[] { separator }, StringSplitOptions.None);
+            MessageBox.Show(account_number.Text.ToString());
+            if (account_number.Text.ToString() == "") {
+                return;
+            }
+
+            foreach (DataGridViewRow row in datagrid_accounts_tree.Rows) {
+
+                if (row.Cells["account_number"].Value.ToString() == "" || row.Cells["account_number"].Value.ToString() == null || row.Cells["account_number"].Value.ToString() == System.DBNull.Value.ToString()) {
+                    break;
+                }
+
+               if (row.Cells["account_number"].Value.ToString().Equals(account_number.Text.ToString())) {
+                  datagrid_accounts_tree.Rows.Remove(row);
+               } 
+            }
+
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void datagrid_accounts_tree_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            UI.SelectTreeCols tree = new UI.SelectTreeCols();
-            tree.ShowDialog();
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
-            string dirPath = Directory.GetCurrentDirectory().ToString() + "\\Trees";
-
-            if (Directory.Exists(dirPath))
-            {
-                openFileDialog1.InitialDirectory = dirPath;
+            if (e.RowIndex == -1) {
+                return;
             }
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK) {
-
-
-                Excel.Application oExcel = new Excel.Application();
-                Excel.Workbook WB = oExcel.Workbooks.Open(openFileDialog1.FileName);
-                string ExcelWorkbookname = WB.Name;
-                int worksheetcount = WB.Worksheets.Count;
-                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(openFileDialog1.FileName);
-                Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
-                Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
-                int rowCount = excelRange.Rows.Count;  //get row count of excel data
-                int colCount = excelRange.Columns.Count;
-
-
-                string columns = "";
-                string treeData = "";
-
-                // Extract Columns From Excel  
-                for ( int i =1; i <= rowCount; i++ ) {
-                    for ( int x=1; x <= colCount; x++ ) { 
-                        if (!string.IsNullOrEmpty(excelRange.Cells[i, x].Text.ToString())) {
-                            
-                            string value = excelRange.Cells[i, x].Value2.ToString();
-                            if (i == 1) {
-                                columns += value;
-
-                                if (x != colCount) {
-                                    columns += "|";
-                                }
-                            }
-
-                            if (i != 1) {
-
-                                treeData += value;
-                                if (x == colCount)
-                                {
-                                    treeData += "&&";
-                                }
-                                else {
-                                    treeData += "|";
-                                }
-                            }
-                        }
-                    }
-                }
-
-                string[] cols = this.explode("|", columns);
-                string[] rows = this.explode("&&", treeData);
-
-                if (cols.Length < 3) {
-                    MessageBox.Show("عدد الأعمده المطلوب غير متوافق مع شجرة الحسابات");
-                    return;
-                }
-
-                UI.SelectTreeCols tree = new UI.SelectTreeCols(rows, cols);
-                tree.ShowDialog();
-            }
-             
-            /*
-            Excel.Application oExcel = new Excel.Application();
-            Excel.Workbook WB = oExcel.Workbooks.Open(filepath);
-            string ExcelWorkbookname = WB.Name;
-            int worksheetcount = WB.Worksheets.Count;
-            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(filepath);
-            Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
-            Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
-            int rowCount = excelRange.Rows.Count;  //get row count of excel data
-            int colCount = excelRange.Columns.Count; // get column count of excel data
-            */
+            account_number.Text = datagrid_accounts_tree.Rows[e.RowIndex].Cells["account_number"].Value.ToString();
         }
     }
 }
