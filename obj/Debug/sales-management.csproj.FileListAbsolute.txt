@@ -120,5 +120,5 @@ D:\sales-app\bin\Debug\IronBarCode.dll
 D:\sales-app\bin\Debug\IronBarCode.xml
 D:\sales-app\obj\Debug\sales_management.UI.purchaseInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.ItemUnit.resources
-D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
 D:\sales-app\obj\Debug\sales_management.UI.SelectTreeCols.resources
+D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.main_account_number = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(261, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.Size = new System.Drawing.Size(108, 13);
             this.label4.TabIndex = 19;
             this.label4.Text = "رقم الحساب التابع له :";
             // 
@@ -80,7 +80,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(285, 167);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 17;
             this.label3.Text = "الإسم الإنجليزي :";
             // 
@@ -96,7 +96,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(298, 123);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "إسم الحساب :";
             // 
@@ -112,7 +112,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(303, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "رقم الحساب :";
             // 
@@ -184,7 +184,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(302, 212);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 20;
             this.label6.Text = "نوع الحساب :";
             // 
@@ -212,10 +212,10 @@
             // 
             // accounting_tree
             // 
-            this.accounting_tree.Location = new System.Drawing.Point(12, 39);
+            this.accounting_tree.Location = new System.Drawing.Point(603, 39);
             this.accounting_tree.Name = "accounting_tree";
             this.accounting_tree.RightToLeftLayout = true;
-            this.accounting_tree.Size = new System.Drawing.Size(301, 336);
+            this.accounting_tree.Size = new System.Drawing.Size(301, 490);
             this.accounting_tree.TabIndex = 0;
             this.accounting_tree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.accounting_tree_AfterSelect);
             // 
@@ -223,21 +223,21 @@
             // 
             this.datagrid_accounts_tree.AllowUserToResizeColumns = false;
             this.datagrid_accounts_tree.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
-            this.datagrid_accounts_tree.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.datagrid_accounts_tree.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagrid_accounts_tree.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.datagrid_accounts_tree.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.datagrid_accounts_tree.GridColor = System.Drawing.Color.DodgerBlue;
-            this.datagrid_accounts_tree.Location = new System.Drawing.Point(329, 12);
+            this.datagrid_accounts_tree.Location = new System.Drawing.Point(13, 12);
             this.datagrid_accounts_tree.MultiSelect = false;
             this.datagrid_accounts_tree.Name = "datagrid_accounts_tree";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_accounts_tree.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid_accounts_tree.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.datagrid_accounts_tree.RowHeadersVisible = false;
             this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -245,7 +245,7 @@
             this.datagrid_accounts_tree.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.datagrid_accounts_tree.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagrid_accounts_tree.ShowEditingIcon = false;
-            this.datagrid_accounts_tree.Size = new System.Drawing.Size(575, 363);
+            this.datagrid_accounts_tree.Size = new System.Drawing.Size(575, 517);
             this.datagrid_accounts_tree.TabIndex = 30;
             this.datagrid_accounts_tree.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellEndEdit);
             this.datagrid_accounts_tree.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellValueChanged);
@@ -255,18 +255,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 12);
+            this.label5.Location = new System.Drawing.Point(607, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.Size = new System.Drawing.Size(72, 13);
             this.label5.TabIndex = 33;
-            this.label5.Text = "دليل الحسابات :";
+            this.label5.Text = "معاينة الدليل :";
             // 
             // button8
             // 
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(324, 391);
+            this.button8.Location = new System.Drawing.Point(327, 544);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(149, 34);
             this.button8.TabIndex = 37;
@@ -278,7 +278,7 @@
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(9, 391);
+            this.button2.Location = new System.Drawing.Point(12, 544);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 34);
             this.button2.TabIndex = 34;
@@ -291,7 +291,7 @@
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(164, 391);
+            this.button6.Location = new System.Drawing.Point(167, 544);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(149, 34);
             this.button6.TabIndex = 35;
@@ -303,7 +303,7 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(479, 391);
+            this.button7.Location = new System.Drawing.Point(482, 544);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(149, 34);
             this.button7.TabIndex = 36;
@@ -315,7 +315,7 @@
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(634, 391);
+            this.button9.Location = new System.Drawing.Point(637, 544);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(149, 34);
             this.button9.TabIndex = 38;
@@ -327,7 +327,7 @@
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(789, 391);
+            this.button10.Location = new System.Drawing.Point(792, 544);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(115, 34);
             this.button10.TabIndex = 39;
@@ -338,7 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 442);
+            this.ClientSize = new System.Drawing.Size(916, 590);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);

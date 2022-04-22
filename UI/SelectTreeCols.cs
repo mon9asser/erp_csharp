@@ -12,9 +12,26 @@ namespace sales_management.UI
 {
     public partial class SelectTreeCols : Form
     {
+
+        private string[] All_Rows;
+        private string[] All_Cols;
+
         public SelectTreeCols()
         {
             InitializeComponent();
         }
+
+        public SelectTreeCols( string[] rows, string[] cols)
+        {
+            
+            this.All_Rows = rows; // need extractions 
+            this.All_Cols = cols;
+
+            InitializeComponent();
+            
+
+        }
+
+
     }
 }

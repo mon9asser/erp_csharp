@@ -25,7 +25,7 @@ namespace sales_management.UI
 
             table = tree.Get_Accounting_Tree();
             this.Fill_Accounting_Tree();
-            this.disable(true);
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -76,9 +76,9 @@ namespace sales_management.UI
             datagrid_accounts_tree.Columns["main_account"].HeaderText = "تابع لحساب رقم";
 
 
-            datagrid_accounts_tree.Columns["account_number"].Width = 140;
-            datagrid_accounts_tree.Columns["account_name"].Width = 290;
-            datagrid_accounts_tree.Columns["main_account"].Width = 140;
+            datagrid_accounts_tree.Columns["account_number"].Width = 130;
+            datagrid_accounts_tree.Columns["account_name"].Width = 295;
+            datagrid_accounts_tree.Columns["main_account"].Width = 130;
 
             foreach (DataRow row in table.Rows) {
 
@@ -176,23 +176,7 @@ namespace sales_management.UI
             }
         }
 
-        public void disable( bool isDisalbe, bool emptyValue = true ) {
-            account_name.Enabled = !isDisalbe;
-            account_number.Enabled =  !isDisalbe;
-            account_name_en.Enabled = !isDisalbe;
-            main_account_number.Enabled = !isDisalbe;
-            account_type.Enabled = !isDisalbe;
-
-            if (isDisalbe == false && emptyValue )
-            {
-                account_type.SelectedIndex = 0;
-                account_name.Text = "";
-                account_number.Text = "";
-                account_name_en.Text = "";
-                main_account_number.Text = "";
-                main_account_number.ReadOnly = false;
-            }
-        }
+        
         private void accounting_tree_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
@@ -234,7 +218,7 @@ namespace sales_management.UI
 
             tree.Create_Tree_Account(-1, account_number.Text.ToString(), account_name.Text.ToString(), account_name_en.Text.ToString(), main_account_number.Text.ToString(), account_type.SelectedIndex.ToString(), "0", false);
             this.add_new_account_to_tree(account_number.Text.ToString(), account_name.Text.ToString(), main_account_number.Text.ToString());
-            this.disable(true);
+             
 
         }
 
@@ -268,8 +252,7 @@ namespace sales_management.UI
                     {
 
                         tree.Delete_Account_By_Number(account_number.Text.ToString());
-                        this.Fill_Accounting_Tree();
-                        this.disable(true);
+                        this.Fill_Accounting_Tree(); 
                     }
 
                 }
@@ -278,12 +261,12 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.disable(false);
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.disable(false, false);
+             
         }
 
         private void datagrid_accounts_tree_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -400,23 +383,39 @@ namespace sales_management.UI
         private void datagrid_accounts_tree_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
-            this.edited_row_index = e.RowIndex;
+            try
+            {
+                this.edited_row_index = e.RowIndex;
 
-            if (this.edited_row_index == -1 || e.ColumnIndex == -1 ) {
-                return;
-            } 
+                if (this.edited_row_index == -1 || e.ColumnIndex == -1)
+                {
+                    return;
+                }
 
-            DataGridViewRow row = datagrid_accounts_tree.Rows[this.edited_row_index];
+                DataGridViewRow row = datagrid_accounts_tree.Rows[this.edited_row_index];
 
-            if (row.Cells["account_number"].Value.ToString() != "" && row.Cells["account_name"].Value.ToString() != "" && row.Cells["main_account"].Value.ToString() != "") {
-                this.datagrid_accounts_tree.Sort(this.datagrid_accounts_tree.Columns["account_number"], ListSortDirection.Ascending);
+                if (row.Cells["account_number"].Value.ToString() != "" && row.Cells["account_name"].Value.ToString() != "" && row.Cells["main_account"].Value.ToString() != "")
+                {
+                    this.datagrid_accounts_tree.Sort(this.datagrid_accounts_tree.Columns["account_number"], ListSortDirection.Ascending);
+                }
+            }
+            catch (Exception) { 
+            
             }
 
             
         }
 
+        public string[] explode(string separator, string source)
+        {
+            return source.Split(new string[] { separator }, StringSplitOptions.None);
+        }
+
         private void button2_Click_1(object sender, EventArgs e)
         {
+
+            UI.SelectTreeCols tree = new UI.SelectTreeCols();
+            tree.ShowDialog();
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
@@ -441,9 +440,49 @@ namespace sales_management.UI
                 int rowCount = excelRange.Rows.Count;  //get row count of excel data
                 int colCount = excelRange.Columns.Count;
 
-                Console.WriteLine(excelRange.Cells[2,2].Value2);
 
+                string columns = "";
+                string treeData = "";
 
+                // Extract Columns From Excel  
+                for ( int i =1; i <= rowCount; i++ ) {
+                    for ( int x=1; x <= colCount; x++ ) { 
+                        if (!string.IsNullOrEmpty(excelRange.Cells[i, x].Text.ToString())) {
+                            
+                            string value = excelRange.Cells[i, x].Value2.ToString();
+                            if (i == 1) {
+                                columns += value;
+
+                                if (x != colCount) {
+                                    columns += "|";
+                                }
+                            }
+
+                            if (i != 1) {
+
+                                treeData += value;
+                                if (x == colCount)
+                                {
+                                    treeData += "&&";
+                                }
+                                else {
+                                    treeData += "|";
+                                }
+                            }
+                        }
+                    }
+                }
+
+                string[] cols = this.explode("|", columns);
+                string[] rows = this.explode("&&", treeData);
+
+                if (cols.Length < 3) {
+                    MessageBox.Show("عدد الأعمده المطلوب غير متوافق مع شجرة الحسابات");
+                    return;
+                }
+
+                UI.SelectTreeCols tree = new UI.SelectTreeCols(rows, cols);
+                tree.ShowDialog();
             }
              
             /*
