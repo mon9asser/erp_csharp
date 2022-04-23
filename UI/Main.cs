@@ -169,8 +169,7 @@ namespace sales_management.UI
 
         private void شجرةالحساباToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.AccTree tree = new UI.AccTree();
-            tree.Show();
+            UI.AccTree.GetForm.Show();
         }
 
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)

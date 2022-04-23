@@ -111,6 +111,7 @@
             this.button1.TabIndex = 39;
             this.button1.Text = "إلغـــاء";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -140,6 +141,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ربط ملف الإكسيل بشجرة الحسابات";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree_columns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

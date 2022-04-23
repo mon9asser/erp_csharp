@@ -20,10 +20,9 @@ namespace sales_management.PL
             param[0].Value = table;
 
             DAL.Open();
-
             DAL.ExecuteCommand("Update_Tree_Of_Accounts_TableSet", param);
-
             DAL.Close();
+
         }
 
         public void Create_Tree_Account(int id, string accountNumber, string accountName, string accountNameEn, string mainAccount, string debitCredit, string balance, bool is_main_account)
