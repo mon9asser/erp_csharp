@@ -88,7 +88,7 @@ namespace sales_management.UI
                 excelSheetCol.Items.Add(res.Value);
                 excelSheetCol.ValueMember = res.Key.ToString();
                 excelSheetCol.DisplayMember = res.Value.ToString();
-                
+                excelSheetCol.Tag = res.Key.ToString();
             }
               
             // Fill THE DATA GRIDVIEW 
@@ -123,8 +123,8 @@ namespace sales_management.UI
             }
 
             DataGridViewRow account_number_row  = datagrid_accounts_tree_columns.Rows[0];
-             
-            (account_number_row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Items.
+
+            MessageBox.Show((account_number_row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Tag.ToString()); 
 
 
         }
