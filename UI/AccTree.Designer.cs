@@ -38,6 +38,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.account_number = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,17 +61,18 @@
             this.datagrid_accounts_tree.MultiSelect = false;
             this.datagrid_accounts_tree.Name = "datagrid_accounts_tree";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleGoldenrod;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.datagrid_accounts_tree.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.datagrid_accounts_tree.RowHeadersVisible = false;
+            this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
             this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.datagrid_accounts_tree.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.datagrid_accounts_tree.RowTemplate.Height = 26;
-            this.datagrid_accounts_tree.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagrid_accounts_tree.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.datagrid_accounts_tree.ShowEditingIcon = false;
             this.datagrid_accounts_tree.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellClick);
             this.datagrid_accounts_tree.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_accounts_tree_CellEndEdit);
@@ -111,10 +113,19 @@
             resources.ApplyResources(this.account_number, "account_number");
             this.account_number.Name = "account_number";
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // AccTree
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -125,7 +136,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AccTree";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -140,5 +150,6 @@
         private System.Windows.Forms.Button button9;
         public System.Windows.Forms.DataGridView datagrid_accounts_tree;
         private System.Windows.Forms.TextBox account_number;
+        private System.Windows.Forms.Button button1;
     }
 }

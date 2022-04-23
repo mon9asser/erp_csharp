@@ -482,20 +482,61 @@ namespace sales_management.UI
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+             
             try
             {
-                DataTable table = (DataTable)datagrid_accounts_tree.DataSource;
-                table.Columns.Remove("id");
-                table.Columns.Remove("account_name_en");
-                table.Columns.Remove("debit_credit");
-                table.Columns.Remove("balance");
-                table.Columns.Remove("is_main_account");
+                DataTable table_2 = new DataTable();
+                table_2.Columns.Add("account_number");
+                table_2.Columns.Add("account_name");
+                table_2.Columns.Add("main_account");
 
-                tree.Update_Tree_Of_Accounts(table);
+                DataRow newRow;
+                foreach (DataGridViewRow row in datagrid_accounts_tree.Rows)
+                {
+                    if (row.Cells["account_number"].Value != null && row.Cells["account_number"].Value != DBNull.Value && !String.IsNullOrWhiteSpace(row.Cells["account_number"].ToString()))
+                    {
+                        newRow = table_2.NewRow();
+                        newRow["account_number"] = row.Cells["account_number"].Value.ToString();
+                        newRow["account_name"] = row.Cells["account_name"].Value.ToString();
+                        newRow["main_account"] = row.Cells["main_account"].Value.ToString();
+                        table_2.Rows.Add(newRow);
+                    }
+                }
+
+                tree.Update_Tree_Of_Accounts(table_2);
             }
             catch (Exception) { }
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+            string dirPath = Directory.GetCurrentDirectory().ToString() + "\\Trees";
+
+            if (Directory.Exists(dirPath))
+            {
+                openFileDialog1.InitialDirectory = dirPath;
+            }
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Excel.Application oExcel = new Excel.Application();
+                Excel.Workbook WB = oExcel.Workbooks.Open(openFileDialog1.FileName);
+                string ExcelWorkbookname = WB.Name;
+                int worksheetcount = WB.Worksheets.Count;
+                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(openFileDialog1.FileName);
+                Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
+                Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
+
+                UI.SelectTreeCols LoadExcelTree = new UI.SelectTreeCols(excelRange);
+                LoadExcelTree.ShowDialog();
+            }
+             
+
+            
         }
     }
 }
