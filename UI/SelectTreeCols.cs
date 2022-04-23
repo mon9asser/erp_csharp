@@ -123,9 +123,9 @@ namespace sales_management.UI
             }
 
             DataGridViewRow account_number_row  = datagrid_accounts_tree_columns.Rows[0];
-            
-            MessageBox.Show(account_number_row.Cells["excelSheetCol"].);
-            
+             
+            (account_number_row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Items.
+
 
         }
     }
