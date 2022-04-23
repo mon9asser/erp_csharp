@@ -98,6 +98,7 @@
             this.button8.TabIndex = 38;
             this.button8.Text = "بدء الإستيراد";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button1
             // 
@@ -116,7 +117,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(351, 13);
+            this.label1.Size = new System.Drawing.Size(367, 13);
             this.label1.TabIndex = 40;
             this.label1.Text = "من فضلك اختر العمود المناسب لشجرة الحسابات وما يقابلها في الإكسيل شيت";
             // 

@@ -121,7 +121,6 @@ D:\sales-app\bin\Debug\IronBarCode.xml
 D:\sales-app\obj\Debug\sales_management.UI.purchaseInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.ItemUnit.resources
 D:\sales-app\obj\Debug\sales_management.UI.SelectTreeCols.resources
-D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
 D:\sales-desktop\bin\Debug\sales-management.exe.config
 D:\sales-desktop\bin\Debug\sales-management.exe
 D:\sales-desktop\bin\Debug\sales-management.pdb
@@ -162,3 +161,4 @@ D:\sales-desktop\obj\Debug\ar\sales-management.resources.dll
 D:\sales-desktop\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-desktop\obj\Debug\sales-management.exe
 D:\sales-desktop\obj\Debug\sales-management.pdb
+D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache

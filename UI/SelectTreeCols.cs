@@ -13,8 +13,8 @@ namespace sales_management.UI
 {  
     public partial class SelectTreeCols : Form
     {
-         
- 
+
+        private DataTable ExcelSheetDataTable;
         public SelectTreeCols()
         {
             InitializeComponent();
@@ -31,29 +31,66 @@ namespace sales_management.UI
             Dictionary<int, string> projectsDictionary = new Dictionary<int, string>();
             excelSheetCol.Items.Clear();
 
+            DataTable ExcelSheetTable = new DataTable(); 
+
+            // Build DataTable Columns
             for (int i = 1; i <= rowCount; i++)
             {
+
+                int newX = 0;
                 for (int x = 1; x <= colCount; x++) {
                     if (!string.IsNullOrEmpty(rang.Cells[i, x].Text.ToString()))
                     {
                         string value = rang.Cells[i, x].Value2.ToString();
-
+                         
                         // Prepare Columns
                         if (i == 1) {
-                            projectsDictionary.Add(x, value);
+                            projectsDictionary.Add(newX, value);
+                            ExcelSheetTable.Columns.Add(value);
+
+                            if (x == colCount) {
+                                break;
+                            }
                         }
 
+                        newX++;
                     }
                 }
             }
+
+            // Build DataTable Rows
+            DataRow ExcelSheetTableRow;
+            for (int i = 2; i <= rowCount; i++)
+            {
+                int newX = 0;
+                ExcelSheetTableRow = ExcelSheetTable.NewRow();
+                for (int x = 1; x <= colCount; x++)
+                {
+                    if (!string.IsNullOrEmpty(rang.Cells[i, x].Text.ToString()))
+                    {
+                        string value = rang.Cells[i, x].Value2.ToString();
+
+                        // Prepare Rows
+                        ExcelSheetTableRow[newX] = value;
+
+                        if (x == colCount) {
+                          ExcelSheetTable.Rows.Add(ExcelSheetTableRow);
+                        }
+
+                        newX++;
+                    }
+                }
+            }
+
 
             foreach (KeyValuePair<int, string> res in projectsDictionary)
             {
                 excelSheetCol.Items.Add(res.Value);
                 excelSheetCol.ValueMember = res.Key.ToString();
                 excelSheetCol.DisplayMember = res.Value.ToString();
+                
             }
-
+              
             // Fill THE DATA GRIDVIEW 
             DataTable SourcesTable = new DataTable();
             SourcesTable.Columns.Add("AccountingTreeData");
@@ -69,9 +106,27 @@ namespace sales_management.UI
                 int rowId = datagrid_accounts_tree_columns.Rows.Add();
                 DataGridViewRow row = datagrid_accounts_tree_columns.Rows[rowId];
                 row.Cells["AccountingTreeData"].Value = AccountsData[i];
+                row.Cells["excelSheetCol"].Value = (row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Items[0];
             }
+
+            this.ExcelSheetDataTable = ExcelSheetTable;
+
 
          }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            // Build Account Number Column 
+            if(datagrid_accounts_tree_columns.Rows.Count == 0 && datagrid_accounts_tree_columns.Rows.Count < 3 ) {
+                return;
+            }
+
+            DataGridViewRow account_number_row  = datagrid_accounts_tree_columns.Rows[0];
+            
+            MessageBox.Show(account_number_row.Cells["excelSheetCol"].);
+            
+
+        }
     }
 }
