@@ -86,8 +86,8 @@ namespace sales_management.UI
             foreach (KeyValuePair<int, string> res in projectsDictionary)
             {
                 excelSheetCol.Items.Add(res.Value);
-                excelSheetCol.ValueMember = res.Key.ToString();
-                excelSheetCol.DisplayMember = res.Value.ToString();
+                excelSheetCol.ValueMember = res.Value.ToString(); 
+                excelSheetCol.DisplayMember = res.Key.ToString();
                 excelSheetCol.Tag = res.Key.ToString();
             }
               
@@ -123,10 +123,60 @@ namespace sales_management.UI
             }
 
             DataGridViewRow account_number_row  = datagrid_accounts_tree_columns.Rows[0];
+            DataGridViewComboBoxCell account_number_row_dc = (DataGridViewComboBoxCell)account_number_row.Cells["excelSheetCol"];
+            int account_number_col_index = account_number_row_dc.Items.IndexOf(account_number_row_dc.Value);
 
-            MessageBox.Show((account_number_row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Tag.ToString()); 
+            DataGridViewRow account_name_row = datagrid_accounts_tree_columns.Rows[1];
+            DataGridViewComboBoxCell account_name_row_dc = (DataGridViewComboBoxCell)account_name_row.Cells["excelSheetCol"];
+            int account_name_col_index = account_name_row_dc.Items.IndexOf(account_name_row_dc.Value);
 
+            DataGridViewRow main_account_row = datagrid_accounts_tree_columns.Rows[2];
+            DataGridViewComboBoxCell main_account_row_dc = (DataGridViewComboBoxCell)main_account_row.Cells["excelSheetCol"];
+            int main_account_col_index = main_account_row_dc.Items.IndexOf(main_account_row_dc.Value);
 
+            // Clear Current DataGridview Items 
+            if (UI.AccTree.GetForm.datagrid_accounts_tree.Rows.Count > 1 ) { 
+                foreach ( DataGridViewRow row in UI.AccTree.GetForm.datagrid_accounts_tree.Rows) {
+                    UI.AccTree.GetForm.datagrid_accounts_tree.Rows.Remove(row);
+                }
+            }
+
+            // Create New DataTable 
+            DataTable DataTableSource = new DataTable();
+            DataTableSource.Columns.Add("id");
+            DataTableSource.Columns.Add("account_number");
+            DataTableSource.Columns.Add("account_name");
+            DataTableSource.Columns.Add("account_name_en");
+            DataTableSource.Columns.Add("main_account");
+            DataTableSource.Columns.Add("debit_credit");
+            DataTableSource.Columns.Add("balance");
+            DataTableSource.Columns.Add("is_main_account");
+            DataRow dgrow;
+            foreach (DataRow row in this.ExcelSheetDataTable.Rows) {
+
+                // Add to Tree View 
+                UI.AccTree.GetForm.Fill_Tree_View(
+                    row[account_number_col_index].ToString(),
+                    row[account_name_col_index].ToString(),
+                    row[main_account_col_index].ToString()
+                );
+
+                // Add to DataTable
+                dgrow = DataTableSource.NewRow();
+                dgrow["account_number"] = row[account_number_col_index].ToString();
+                dgrow["main_account"] = row[main_account_col_index].ToString();
+                dgrow["account_name"] = row[account_name_col_index].ToString();
+                DataTableSource.Rows.Add(dgrow);
+            }
+
+            
+
+            // Fill DataGridView
+            UI.AccTree.GetForm.datagrid_accounts_tree.DataSource = DataTableSource;
+             
+
+            // Close
+            this.Close();
         }
     }
 }

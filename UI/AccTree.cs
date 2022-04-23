@@ -19,9 +19,37 @@ namespace sales_management.UI
         public int edited_row_index = -1;
         public int last_account_id = 0;
 
+        public static AccTree frm;
+
+        static void frm_formClosed(object sernder, FormClosedEventArgs e)
+        {
+            frm = null;
+        }
+
+        public static AccTree GetForm
+        {
+            get
+            {
+
+                if (frm == null)
+                {
+                    frm = new AccTree();
+                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
+                }
+
+                return frm;
+
+            }
+        }
+
         public AccTree()
         {
             InitializeComponent();
+
+            if (frm == null)
+            {
+                frm = this;
+            }
 
             try
             {
@@ -88,7 +116,7 @@ namespace sales_management.UI
                 foreach (DataRow row in table.Rows)
                 {
 
-                    int acc_number = Convert.ToInt32(row["account_number"]);
+                    string acc_number = row["account_number"].ToString();
                     string acc_title = row["account_name"].ToString();
                     string parent_account = row["main_account"].ToString();
 
@@ -108,7 +136,7 @@ namespace sales_management.UI
 
          
 
-        public void Fill_Tree_View( int acc_number, string acc_title, string parent_account) {
+        public void Fill_Tree_View(string acc_number, string acc_title, string parent_account) {
 
             try
             {
