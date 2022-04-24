@@ -86,17 +86,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Accounts.cs">
+    <Compile Include="UI\___Accounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Accounts.Designer.cs">
-      <DependentUpon>Accounts.cs</DependentUpon>
+    <Compile Include="UI\___Accounts.Designer.cs">
+      <DependentUpon>___Accounts.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\AccTree.cs">
+    <Compile Include="UI\FRM_AccountsGuid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AccTree.Designer.cs">
-      <DependentUpon>AccTree.cs</DependentUpon>
+    <Compile Include="UI\FRM_AccountsGuid.Designer.cs">
+      <DependentUpon>FRM_AccountsGuid.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\AddCustomer.cs">
       <SubType>Form</SubType>
@@ -164,6 +164,12 @@
     <Compile Include="UI\Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FRM_ProductUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FRM_ProductUnits.Designer.cs">
+      <DependentUpon>FRM_ProductUnits.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\purchaseInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,22 +218,22 @@
     <Compile Include="UI\SystemSettings.Designer.cs">
       <DependentUpon>SystemSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Units.cs">
+    <Compile Include="UI\___Units.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Units.Designer.cs">
-      <DependentUpon>Units.cs</DependentUpon>
+    <Compile Include="UI\___Units.Designer.cs">
+      <DependentUpon>___Units.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Accounts.resx">
-      <DependentUpon>Accounts.cs</DependentUpon>
+    <EmbeddedResource Include="UI\___Accounts.resx">
+      <DependentUpon>___Accounts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AccTree.resx">
-      <DependentUpon>AccTree.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FRM_AccountsGuid.resx">
+      <DependentUpon>FRM_AccountsGuid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AddCustomer.resx">
       <DependentUpon>AddCustomer.cs</DependentUpon>
@@ -268,6 +274,9 @@
     <EmbeddedResource Include="UI\Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FRM_ProductUnits.resx">
+      <DependentUpon>FRM_ProductUnits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\purchaseInvoice.resx">
       <DependentUpon>purchaseInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,8 +298,8 @@
     <EmbeddedResource Include="UI\SystemSettings.resx">
       <DependentUpon>SystemSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Units.resx">
-      <DependentUpon>Units.cs</DependentUpon>
+    <EmbeddedResource Include="UI\___Units.resx">
+      <DependentUpon>___Units.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

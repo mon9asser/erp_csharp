@@ -686,7 +686,7 @@ namespace sales_management.UI
         {
             if (legend_name.Enabled == true)
             {
-                UI.Accounts accounts = new UI.Accounts();
+                UI.___Accounts accounts = new UI.___Accounts();
                 accounts.InstanceType = 1;
                 accounts.ShowDialog();
             }

@@ -10,26 +10,26 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class Units : Form
+    public partial class ___Units : Form
     {
         
         PL.Products prods = new PL.Products();
         
-        public static Units frm;
+        public static ___Units frm;
         
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
 
-        public static Units getMainForm
+        public static ___Units getMainForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new Units();
+                    frm = new ___Units();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -39,7 +39,7 @@ namespace sales_management.UI
         }
     
 
-        public Units()
+        public ___Units()
         {
             InitializeComponent();
             

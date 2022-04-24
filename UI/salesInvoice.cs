@@ -752,7 +752,7 @@ namespace sales_management.UI
         private void legend_name_MouseClick(object sender, MouseEventArgs e)
         {
             if (legend_name.Enabled == true) {
-                UI.Accounts accounts = new UI.Accounts();
+                UI.___Accounts accounts = new UI.___Accounts();
                 accounts.InstanceType = 1;
                 accounts.ShowDialog();
             }

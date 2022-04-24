@@ -10,28 +10,28 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class Accounts : Form
+    public partial class ___Accounts : Form
     {
         PL.AccountingTree tree = new PL.AccountingTree();
         DataTable table;
         public int InstanceType = 0;
         
 
-        public static Accounts frm;
+        public static ___Accounts frm;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
 
-        public static Accounts GetForm
+        public static ___Accounts GetForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new Accounts();
+                    frm = new ___Accounts();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -41,7 +41,7 @@ namespace sales_management.UI
         }
          
 
-        public Accounts()
+        public ___Accounts()
         {
             InitializeComponent();
 

@@ -267,51 +267,51 @@ namespace sales_management.UI
         private void sales_cash_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = sales_cash_acc_number;
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void sales_credit_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = sales_credit_acc_number;
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void sales_bank_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = sales_bank_acc_number;
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void purchase_cash_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = purchase_cash_acc_number;
 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void purchase_credit_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = purchase_credit_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void purchase_bank_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = purchase_bank_acc_number;
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void vat_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = vat_acc_number;
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void vat_acc_number_TextChanged(object sender, EventArgs e)
@@ -327,78 +327,78 @@ namespace sales_management.UI
         private void part_2_sales_cash_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = part_2_sales_cash_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void part_2_sales_credit_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = part_2_sales_credit_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void part_2_sales_bank_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = part_2_sales_bank_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void part_2_purchase_cash_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = part_2_purchase_cash_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void part_2_purchase_credit_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = part_2_purchase_credit_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void part_2_purchase_bank_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = part_2_purchase_bank_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void product_cost_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = product_cost_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void inventory_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = inventory_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void textBox2_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = vat_number_in; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void customer_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = customer_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void supplier_acc_number_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = supplier_acc_number; 
-            UI.Accounts.GetForm.InstanceType = 0;
-            UI.Accounts.GetForm.ShowDialog();
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void vat_acc_number_TextChanged_1(object sender, EventArgs e)

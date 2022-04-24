@@ -82,7 +82,6 @@ D:\sales-app\obj\Debug\sales_management.UI.Customer.resources
 D:\sales-app\obj\Debug\sales_management.UI.ServerSettings.resources
 D:\sales-app\obj\Debug\sales_management.UI.Resource.resources
 D:\sales-app\obj\Debug\sales_management.UI.SystemSettings.resources
-D:\sales-app\obj\Debug\sales_management.UI.Units.resources
 D:\sales-app\obj\Debug\sales_management.UI.Main.ar.resources
 D:\sales-app\obj\Debug\sales-management.csproj.GenerateResource.Cache
 D:\sales-app\bin\Debug\sales-management.exe
@@ -102,7 +101,6 @@ E:\C#\sales-app\bin\Debug\normnfkc.nlp
 E:\C#\sales-app\bin\Debug\normnfkd.nlp
 E:\C#\sales-app\obj\Debug\sales-management.csprojResolveAssemblyReference.cache
 E:\C#\sales-app\obj\Debug\sales_management.UI.Purchase.resources
-D:\sales-app\obj\Debug\sales_management.UI.AccTree.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.AccTree.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.DesignChange.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Tree.resources
@@ -112,7 +110,6 @@ D:\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-app\obj\Debug\sales_management.UI.Items.resources
 D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources
-D:\sales-app\obj\Debug\sales_management.UI.Accounts.resources
 D:\sales-app\obj\Debug\sales_management.UI.AddCustomer.resources
 D:\sales-app\obj\Debug\sales_management.UI.Client.resources
 D:\sales-app\bin\Debug\QRCoder.dll
@@ -161,4 +158,8 @@ D:\sales-desktop\obj\Debug\ar\sales-management.resources.dll
 D:\sales-desktop\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-desktop\obj\Debug\sales-management.exe
 D:\sales-desktop\obj\Debug\sales-management.pdb
-D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
+D:\sales-app\obj\Debug\sales_management.UI.___Accounts.resources
+D:\sales-app\obj\Debug\sales_management.UI.___Units.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_AccountsGuid.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_ProductUnits.resources

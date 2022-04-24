@@ -76,6 +76,22 @@ namespace sales_management.PL
 
 
         /* ---------------------- PRODUCT UNITS --------------------  */
+        public void Update_Product_Units_DataSet(DataTable table) {
+
+            DB.DataAccessLayer Layer = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@product_units", SqlDbType.Structured);
+            param[0].Value = table;
+
+            Layer.Open();
+
+            Layer.SelectData("Update_Product_Units_DataSet", param);
+
+            Layer.Close();
+        }
+
         public DataTable Get_All_Product_Units()
         {
 

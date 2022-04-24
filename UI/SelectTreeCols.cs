@@ -146,16 +146,16 @@ namespace sales_management.UI
                 int main_account_col_index = main_account_row_dc.Items.IndexOf(main_account_row_dc.Value);
 
                 // Clear Current DataGridview Items 
-                if (UI.AccTree.GetForm.datagrid_accounts_tree.Rows.Count > 1)
+                if (UI.FRM_AccountsGuid.GetForm.datagrid_accounts_tree.Rows.Count > 1)
                 {
-                    foreach (DataGridViewRow row in UI.AccTree.GetForm.datagrid_accounts_tree.Rows)
+                    foreach (DataGridViewRow row in UI.FRM_AccountsGuid.GetForm.datagrid_accounts_tree.Rows)
                     {
-                        UI.AccTree.GetForm.datagrid_accounts_tree.Rows.Remove(row);
+                        UI.FRM_AccountsGuid.GetForm.datagrid_accounts_tree.Rows.Remove(row);
                     }
                 }
 
-                if (UI.AccTree.GetForm.accounting_tree.Nodes.Count != 0) { 
-                    UI.AccTree.GetForm.accounting_tree.Nodes.Clear();
+                if (UI.FRM_AccountsGuid.GetForm.accounting_tree.Nodes.Count != 0) { 
+                    UI.FRM_AccountsGuid.GetForm.accounting_tree.Nodes.Clear();
                 }
 
                 // Create New DataTable 
@@ -173,7 +173,7 @@ namespace sales_management.UI
                 {
 
                     // Add to Tree View 
-                    UI.AccTree.GetForm.Fill_Tree_View(
+                    UI.FRM_AccountsGuid.GetForm.Fill_Tree_View(
                         row[account_number_col_index].ToString(),
                         row[account_name_col_index].ToString(),
                         row[main_account_col_index].ToString()
@@ -188,7 +188,7 @@ namespace sales_management.UI
                 }
                  
                 // Fill DataGridView
-                UI.AccTree.GetForm.datagrid_accounts_tree.DataSource = DataTableSource;
+                UI.FRM_AccountsGuid.GetForm.datagrid_accounts_tree.DataSource = DataTableSource;
 
                 
             }
@@ -197,7 +197,7 @@ namespace sales_management.UI
             }
 
             // Close
-            UI.AccTree.GetForm.panelWait.Visible = false;
+            UI.FRM_AccountsGuid.GetForm.panelWait.Visible = false;
             this.Close();
         }
 
@@ -205,7 +205,7 @@ namespace sales_management.UI
         {
             // Close
             this.Close();
-            UI.AccTree.GetForm.panelWait.Visible = false;
+            UI.FRM_AccountsGuid.GetForm.panelWait.Visible = false;
         }
     }
 }

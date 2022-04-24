@@ -129,7 +129,7 @@ namespace sales_management.UI
 
         private void إدارةالوحداتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Units units = new UI.Units();
+            UI.FRM_ProductUnits units = new UI.FRM_ProductUnits();
             units.Show();
         }
 
@@ -169,7 +169,7 @@ namespace sales_management.UI
 
         private void شجرةالحساباToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.AccTree.GetForm.Show();
+            UI.FRM_AccountsGuid.GetForm.Show();
         }
 
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)

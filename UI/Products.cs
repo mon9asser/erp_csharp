@@ -80,13 +80,13 @@ namespace sales_management.UI
         private void textBox7_Click(object sender, EventArgs e)
         {
             UI.Products.getForm.isOpenUints = true;
-            UI.Units.getMainForm.addnew_button.Enabled = false;
-            UI.Units.getMainForm.delete_button.Enabled = false;
-            UI.Units.getMainForm.save_button.Enabled = false;
-            UI.Units.getMainForm.dataGridView1.AllowUserToAddRows = false;
+            UI.___Units.getMainForm.addnew_button.Enabled = false;
+            UI.___Units.getMainForm.delete_button.Enabled = false;
+            UI.___Units.getMainForm.save_button.Enabled = false;
+            UI.___Units.getMainForm.dataGridView1.AllowUserToAddRows = false;
 
-            if (UI.Units.getMainForm.IsDisposed != true) {
-                UI.Units.getMainForm.Show();
+            if (UI.___Units.getMainForm.IsDisposed != true) {
+                UI.___Units.getMainForm.Show();
             }
             
         }
@@ -181,7 +181,7 @@ namespace sales_management.UI
 
                     MessageBox.Show("من فضلك قم بتعريف الوحدات التخزينية أولا ومن بعدها يمكنك إضافة منتج جديد");
                     UI.Products.getForm.Close();
-                    UI.Units.getMainForm.Show();
+                    UI.___Units.getMainForm.Show();
                 }
                 else { 
 

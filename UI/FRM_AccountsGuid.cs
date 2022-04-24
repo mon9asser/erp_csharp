@@ -12,28 +12,28 @@ using System.IO;
 
 namespace sales_management.UI
 {
-    public partial class AccTree : Form
+    public partial class FRM_AccountsGuid : Form
     {
         PL.AccountingTree tree = new PL.AccountingTree();
         DataTable table;
         public int edited_row_index = -1;
         public int last_account_id = 0;
 
-        public static AccTree frm;
+        public static FRM_AccountsGuid frm;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
 
-        public static AccTree GetForm
+        public static FRM_AccountsGuid GetForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new AccTree();
+                    frm = new FRM_AccountsGuid();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -42,7 +42,7 @@ namespace sales_management.UI
             }
         }
 
-        public AccTree()
+        public FRM_AccountsGuid()
         {
             InitializeComponent();
 
