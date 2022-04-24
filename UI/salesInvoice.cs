@@ -1584,8 +1584,8 @@ namespace sales_management.UI
         {
             if (customer_name.Enabled == true) {
 
-                UI.Client.GetForm.doc_type = this.documentType;
-                UI.Client.GetForm.ShowDialog();
+                UI.FRM_Customers.GetForm.doc_type = this.documentType;
+                UI.FRM_Customers.GetForm.ShowDialog();
 
             }
         }

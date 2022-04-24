@@ -1,6 +1,6 @@
 ﻿namespace sales_management.UI
 {
-    partial class AddSupplier
+    partial class FRM_UpdateSupplier
     {
         /// <summary>
         /// Required designer variable.
@@ -58,18 +58,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 16);
+            this.label1.Location = new System.Drawing.Point(14, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "كود العميل";
+            this.label1.Text = "كود المورد";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(210, 68);
+            this.label2.Location = new System.Drawing.Point(14, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "إسم المورد";
             // 
@@ -83,9 +83,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(202, 123);
+            this.label3.Location = new System.Drawing.Point(14, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "إسم المنشأة";
             // 
@@ -99,9 +99,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(198, 178);
+            this.label4.Location = new System.Drawing.Point(15, 178);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "الرقم الضريبي";
             // 
@@ -115,7 +115,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(214, 235);
+            this.label5.Location = new System.Drawing.Point(15, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 9;
@@ -131,9 +131,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(233, 350);
+            this.label6.Location = new System.Drawing.Point(17, 350);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "العنوان";
             // 
@@ -170,9 +170,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(230, 290);
+            this.label7.Location = new System.Drawing.Point(15, 290);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 13;
             this.label7.Text = "الإيميل";
             // 
@@ -192,7 +192,7 @@
             this.account_number.Size = new System.Drawing.Size(208, 20);
             this.account_number.TabIndex = 16;
             // 
-            // AddSupplier
+            // FRM_UpdateSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -218,11 +218,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddSupplier";
+            this.Name = "FRM_UpdateSupplier";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "إضافة مورد جديد";
+            this.Text = "تحديث بيانات المورد";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

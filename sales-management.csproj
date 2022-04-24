@@ -92,23 +92,23 @@
     <Compile Include="UI\___Accounts.Designer.cs">
       <DependentUpon>___Accounts.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_AccountsGuid.cs">
+    <Compile Include="UI\FRM_AccountsGuide.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_AccountsGuid.Designer.cs">
-      <DependentUpon>FRM_AccountsGuid.cs</DependentUpon>
+    <Compile Include="UI\FRM_AccountsGuide.Designer.cs">
+      <DependentUpon>FRM_AccountsGuide.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\AddCustomer.cs">
+    <Compile Include="UI\FRM_UpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AddCustomer.Designer.cs">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
+    <Compile Include="UI\FRM_UpdateCustomer.Designer.cs">
+      <DependentUpon>FRM_UpdateCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\AddSupplier.cs">
+    <Compile Include="UI\FRM_UpdateSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AddSupplier.Designer.cs">
-      <DependentUpon>AddSupplier.cs</DependentUpon>
+    <Compile Include="UI\FRM_UpdateSupplier.Designer.cs">
+      <DependentUpon>FRM_UpdateSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Backups.cs">
       <SubType>Form</SubType>
@@ -122,11 +122,11 @@
     <Compile Include="UI\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Client.cs">
+    <Compile Include="UI\FRM_Customers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Client.Designer.cs">
-      <DependentUpon>Client.cs</DependentUpon>
+    <Compile Include="UI\FRM_Customers.Designer.cs">
+      <DependentUpon>FRM_Customers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\DefaultData.cs">
       <SubType>Form</SubType>
@@ -158,11 +158,11 @@
     <Compile Include="UI\Products.Designer.cs">
       <DependentUpon>Products.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Customer.cs">
+    <Compile Include="UI\___Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <Compile Include="UI\___Customer.Designer.cs">
+      <DependentUpon>___Customer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FRM_ProductUnits.cs">
       <SubType>Form</SubType>
@@ -200,17 +200,17 @@
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Supplier.cs">
+    <Compile Include="UI\FRM_Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Supplier.Designer.cs">
-      <DependentUpon>Supplier.cs</DependentUpon>
+    <Compile Include="UI\FRM_Suppliers.Designer.cs">
+      <DependentUpon>FRM_Suppliers.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Suppliers.cs">
+    <Compile Include="UI\___Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Suppliers.Designer.cs">
-      <DependentUpon>Suppliers.cs</DependentUpon>
+    <Compile Include="UI\___Suppliers.Designer.cs">
+      <DependentUpon>___Suppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SystemSettings.cs">
       <SubType>Form</SubType>
@@ -232,14 +232,14 @@
     <EmbeddedResource Include="UI\___Accounts.resx">
       <DependentUpon>___Accounts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_AccountsGuid.resx">
-      <DependentUpon>FRM_AccountsGuid.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FRM_AccountsGuide.resx">
+      <DependentUpon>FRM_AccountsGuide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AddCustomer.resx">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FRM_UpdateCustomer.resx">
+      <DependentUpon>FRM_UpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AddSupplier.resx">
-      <DependentUpon>AddSupplier.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FRM_UpdateSupplier.resx">
+      <DependentUpon>FRM_UpdateSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Backups.resx">
       <DependentUpon>Backups.cs</DependentUpon>
@@ -247,8 +247,8 @@
     <EmbeddedResource Include="UI\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Client.resx">
-      <DependentUpon>Client.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FRM_Customers.resx">
+      <DependentUpon>FRM_Customers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DefaultData.resx">
       <DependentUpon>DefaultData.cs</DependentUpon>
@@ -271,8 +271,8 @@
     <EmbeddedResource Include="UI\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Customer.resx">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\___Customer.resx">
+      <DependentUpon>___Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_ProductUnits.resx">
       <DependentUpon>FRM_ProductUnits.cs</DependentUpon>
@@ -289,11 +289,11 @@
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Supplier.resx">
-      <DependentUpon>Supplier.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FRM_Suppliers.resx">
+      <DependentUpon>FRM_Suppliers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Suppliers.resx">
-      <DependentUpon>Suppliers.cs</DependentUpon>
+    <EmbeddedResource Include="UI\___Suppliers.resx">
+      <DependentUpon>___Suppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SystemSettings.resx">
       <DependentUpon>SystemSettings.cs</DependentUpon>

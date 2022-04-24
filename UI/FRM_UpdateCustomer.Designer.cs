@@ -1,7 +1,7 @@
 ﻿
 namespace sales_management.UI
 {
-    partial class AddCustomer
+    partial class FRM_UpdateCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@ namespace sales_management.UI
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(120, 454);
+            this.button2.Location = new System.Drawing.Point(182, 454);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 28);
             this.button2.TabIndex = 32;
@@ -69,7 +69,7 @@ namespace sales_management.UI
             // save_button
             // 
             this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.save_button.Location = new System.Drawing.Point(18, 454);
+            this.save_button.Location = new System.Drawing.Point(80, 454);
             this.save_button.Name = "save_button";
             this.save_button.Size = new System.Drawing.Size(96, 28);
             this.save_button.TabIndex = 31;
@@ -80,9 +80,9 @@ namespace sales_management.UI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(236, 290);
+            this.label7.Location = new System.Drawing.Point(239, 290);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 30;
             this.label7.Text = "الإيميل";
             // 
@@ -99,7 +99,7 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(239, 350);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 28;
             this.label6.Text = "العنوان";
             // 
@@ -132,7 +132,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(204, 178);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 24;
             this.label4.Text = "الرقم الضريبي";
             // 
@@ -146,9 +146,9 @@ namespace sales_management.UI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 123);
+            this.label3.Location = new System.Drawing.Point(211, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 22;
             this.label3.Text = "إسم المنشأة";
             // 
@@ -162,11 +162,11 @@ namespace sales_management.UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 68);
+            this.label2.Location = new System.Drawing.Point(218, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 20;
-            this.label2.Text = "إسم المورد";
+            this.label2.Text = "إسم العميل";
             // 
             // resource_name
             // 
@@ -178,11 +178,11 @@ namespace sales_management.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(223, 16);
+            this.label1.Location = new System.Drawing.Point(220, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "كود المورد";
+            this.label1.Text = "كود العميل";
             // 
             // id_text
             // 
@@ -218,9 +218,10 @@ namespace sales_management.UI
             this.MinimizeBox = false;
             this.Name = "AddCustomer";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "تحديث عميل";
+            this.Text = "تحديث بيانات العميل";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

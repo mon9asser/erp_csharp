@@ -140,7 +140,7 @@ namespace sales_management.UI
 
         private void الموردينوالتجارToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Supplier Suppliers = new UI.Supplier();
+            UI.FRM_Suppliers Suppliers = new UI.FRM_Suppliers();
             Suppliers.Show();
         }
 
@@ -152,7 +152,7 @@ namespace sales_management.UI
         private void العملاءوالمناديبToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            UI.Client.GetForm.Show();
+            UI.FRM_Customers.GetForm.Show();
 
         }
 

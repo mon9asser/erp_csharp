@@ -1728,8 +1728,8 @@ namespace sales_management.UI
             if (customer_name.Enabled == true)
             {
 
-                UI.Supplier.GetForm.doc_type = this.documentType;
-                UI.Supplier.GetForm.ShowDialog();
+                UI.FRM_Suppliers.GetForm.doc_type = this.documentType;
+                UI.FRM_Suppliers.GetForm.ShowDialog();
 
             }
         }

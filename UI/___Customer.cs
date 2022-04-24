@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class Customer : Form
+    public partial class ___Customer : Form
     {
 
         public int resource_type = 1;
@@ -18,19 +18,19 @@ namespace sales_management.UI
         PL.Resources Sup = new PL.Resources();
 
 
-        public static Customer frm;
+        public static ___Customer frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
-        public static Customer GetForm
+        public static ___Customer GetForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new Customer();
+                    frm = new ___Customer();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -44,7 +44,7 @@ namespace sales_management.UI
             this.Show();
         }
 
-        public Customer()
+        public ___Customer()
         {
 
             if (frm == null)

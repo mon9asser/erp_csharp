@@ -1,7 +1,7 @@
 ﻿
 namespace sales_management.UI
 {
-    partial class Customer
+    partial class ___Customer
     {
         /// <summary>
         /// Required designer variable.

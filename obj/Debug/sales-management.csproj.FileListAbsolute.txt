@@ -78,7 +78,6 @@ D:\sales-app\obj\Debug\sales_management.UI.DefaultData.resources
 D:\sales-app\obj\Debug\sales_management.UI.Main.resources
 D:\sales-app\obj\Debug\sales_management.UI.Permissions.resources
 D:\sales-app\obj\Debug\sales_management.UI.Products.resources
-D:\sales-app\obj\Debug\sales_management.UI.Customer.resources
 D:\sales-app\obj\Debug\sales_management.UI.ServerSettings.resources
 D:\sales-app\obj\Debug\sales_management.UI.Resource.resources
 D:\sales-app\obj\Debug\sales_management.UI.SystemSettings.resources
@@ -104,14 +103,10 @@ E:\C#\sales-app\obj\Debug\sales_management.UI.Purchase.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.AccTree.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.DesignChange.resources
 E:\C#\sales-app\obj\Debug\sales_management.UI.Tree.resources
-D:\sales-app\obj\Debug\sales_management.UI.Supplier.resources
-D:\sales-app\obj\Debug\sales_management.UI.AddSupplier.resources
 D:\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-app\obj\Debug\sales_management.UI.Items.resources
 D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources
-D:\sales-app\obj\Debug\sales_management.UI.AddCustomer.resources
-D:\sales-app\obj\Debug\sales_management.UI.Client.resources
 D:\sales-app\bin\Debug\QRCoder.dll
 D:\sales-app\bin\Debug\IronBarCode.dll
 D:\sales-app\bin\Debug\IronBarCode.xml
@@ -163,3 +158,8 @@ D:\sales-app\obj\Debug\sales_management.UI.___Accounts.resources
 D:\sales-app\obj\Debug\sales_management.UI.___Units.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_AccountsGuid.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_ProductUnits.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateCustomer.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateSupplier.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_Customers.resources
+D:\sales-app\obj\Debug\sales_management.UI.___Customer.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_Suppliers.resources
