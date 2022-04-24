@@ -13,6 +13,7 @@ namespace sales_management.UI
     public partial class FRM_UpdateStore : Form
     {
 
+        PL.Stores storing = new PL.Stores();
         private int store_id = -1;
         private string code = null;
         private FRM_Stores store_obj;
@@ -68,8 +69,25 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.store_obj.textbox.Text = "Hello this is new change";
             this.Close();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            
+            this.storing.Update_Data_Of_Stores(
+                Convert.ToInt32(id_field.Text), 
+                store_name_field.Text.ToString(),
+                branch_name_field.Text.ToString(),
+                tel_field.Text.ToString(),
+                address_field.Text.ToString(),
+                email_field.Text.ToString(),
+                cost_center_id_field.Text.ToString()
+            );
+
+            this.store_obj.load_datagridview_stores();
+            this.Close();
+
         }
     }
 }

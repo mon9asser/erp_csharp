@@ -24,6 +24,8 @@ namespace sales_management.UI
 
         public void load_datagridview_stores() {
 
+
+            datagrid_accounts_tree.DataSource = Store.Get_All_Stores();
         }
 
         private void button8_Click(object sender, EventArgs e)

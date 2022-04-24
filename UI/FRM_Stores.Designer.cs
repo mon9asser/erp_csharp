@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.datagrid_accounts_tree = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
-            this.textbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,19 +82,11 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // textbox
-            // 
-            this.textbox.Location = new System.Drawing.Point(370, 321);
-            this.textbox.Name = "textbox";
-            this.textbox.Size = new System.Drawing.Size(262, 20);
-            this.textbox.TabIndex = 40;
-            // 
             // FRM_Stores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 368);
-            this.Controls.Add(this.textbox);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.datagrid_accounts_tree);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -110,7 +101,6 @@
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_accounts_tree)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -118,6 +108,5 @@
 
         public System.Windows.Forms.DataGridView datagrid_accounts_tree;
         private System.Windows.Forms.Button button8;
-        public System.Windows.Forms.TextBox textbox;
     }
 }
