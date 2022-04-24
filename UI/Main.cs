@@ -182,5 +182,11 @@ namespace sales_management.UI
 
             
         }
+
+        private void المخازنToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FRM_Stores Store = new UI.FRM_Stores();
+            Store.Show();
+        }
     }
 }

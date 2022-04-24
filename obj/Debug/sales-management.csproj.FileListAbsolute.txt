@@ -163,3 +163,5 @@ D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateSupplier.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_Customers.resources
 D:\sales-app\obj\Debug\sales_management.UI.___Customer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_Suppliers.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_Stores.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateStore.resources

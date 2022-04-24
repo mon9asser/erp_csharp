@@ -349,6 +349,12 @@
   <data name="إدارةالخصوماتوالعروضToolStripMenuItem.Text" xml:space="preserve">
     <value>إدارة الخصومات والعروض</value>
   </data>
+  <data name="المخازنToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="المخازنToolStripMenuItem.Text" xml:space="preserve">
+    <value>المخازن</value>
+  </data>
   <data name="المخزونToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -925,6 +931,12 @@
     <value>تهيةالبياناتالأفتراضيةToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;تهيةالبياناتالأفتراضيةToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;المخازنToolStripMenuItem.Name" xml:space="preserve">
+    <value>المخازنToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;المخازنToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -12,9 +12,32 @@ namespace sales_management.UI
 {
     public partial class FRM_Stores : Form
     {
+
+        PL.Stores Store = new PL.Stores();
+        public FRM_Stores that;
+
         public FRM_Stores()
         {
             InitializeComponent();
+            that = this;
+        }
+
+        public void load_datagridview_stores() {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DataTable table = Store.Get_Sotore_Id();
+
+
+            UI.FRM_UpdateStore newStore = new UI.FRM_UpdateStore(
+                table,
+                that
+            );
+
+            newStore.ShowDialog();
+            this.load_datagridview_stores();
         }
     }
 }

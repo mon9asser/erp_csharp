@@ -17,6 +17,10 @@ CREATE TABLE [dbo].[stores](
 	[address] [text] NULL,
 	[fax] [varchar](50) NULL,
 	[cost_center_id] [int] NULL,
+	
+	[updated_by] [int] NULL,
+	[created_by] [int] NULL,
+	[datemade] [datetime] NULL,
  CONSTRAINT [PK_stores] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -25,3 +29,23 @@ CREATE TABLE [dbo].[stores](
 GO
 
 
+-----------------------------------------------------------------------------------------------------
+ALTER PROC Create_Store_Id
+
+AS
+
+DECLARE @StoreId AS VARCHAR(50);
+SET @StoreId = (SELECT id FROM [dbo].stores); 
+
+	IF NOT EXISTS( SELECT * FROM [dbo].stores WHERE store_name = '' ) 
+		BEGIN
+			
+			INSERT INTO [dbo].stores ( store_name ) VALUES( '' );
+
+			UPDATE [dbo].stores SET 
+				code = CONCAT( @StoreId , '00', @@Identity )
+			WHERE id = @@Identity;
+			 
+		END
+
+	SELECT TOP 1 * FROM  [dbo].stores  WHERE store_name = ''  ORDER BY  [dbo].stores.id DESC ; 

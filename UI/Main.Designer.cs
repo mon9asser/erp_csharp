@@ -92,6 +92,7 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.المخازنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -301,7 +302,8 @@ namespace sales_management.UI
             this.إدارةالوحداتToolStripMenuItem,
             this.إدارةالمنتجاتوالفئاتToolStripMenuItem,
             this.إدارةالفئاتToolStripMenuItem,
-            this.إدارةالخصوماتوالعروضToolStripMenuItem});
+            this.إدارةالخصوماتوالعروضToolStripMenuItem,
+            this.المخازنToolStripMenuItem});
             resources.ApplyResources(this.المخزونToolStripMenuItem, "المخزونToolStripMenuItem");
             this.المخزونToolStripMenuItem.Name = "المخزونToolStripMenuItem";
             // 
@@ -490,6 +492,12 @@ namespace sales_management.UI
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
+            // المخازنToolStripMenuItem
+            // 
+            this.المخازنToolStripMenuItem.Name = "المخازنToolStripMenuItem";
+            resources.ApplyResources(this.المخازنToolStripMenuItem, "المخازنToolStripMenuItem");
+            this.المخازنToolStripMenuItem.Click += new System.EventHandler(this.المخازنToolStripMenuItem_Click);
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -571,6 +579,6 @@ namespace sales_management.UI
         public System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem إدارةالفئاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem شجرةالحساباToolStripMenuItem;
-       
+        private System.Windows.Forms.ToolStripMenuItem المخازنToolStripMenuItem;
     }
 }
