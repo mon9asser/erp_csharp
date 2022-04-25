@@ -87,6 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\FRM_CostCenterGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FRM_CostCenterGuide.Designer.cs">
+      <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FRM_Stores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FRM_CostCenterGuide.resx">
+      <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_Stores.resx">
       <DependentUpon>FRM_Stores.cs</DependentUpon>

@@ -11,7 +11,22 @@ namespace sales_management.PL
     class Stores
     {
 
-        public DataTable Get_Sotore_Id()
+        public void Delete_Store_By_Id(int id) {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@id", SqlDbType.Int);
+            param[0].Value = id;
+
+            DAL.Open();
+            DAL.SelectData("Delete_Store_By_Id", param);
+            DAL.Close();
+
+        }
+
+        public DataTable Create_Store_Id()
         {
 
             DataTable table;
@@ -19,7 +34,7 @@ namespace sales_management.PL
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
 
             SqlParameter[] param = new SqlParameter[2];
-
+            
             param[0] = new SqlParameter("@created_by", SqlDbType.Int);
             param[0].Value = UI.Main.getMainForm.getUserInfo()[0];
 
@@ -41,7 +56,7 @@ namespace sales_management.PL
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
               
             DAL.Open();
-            table = DAL.SelectData("Create_Store_Id", null);
+            table = DAL.SelectData("Get_All_Stores", null);
             DAL.Close();
 
             return table;

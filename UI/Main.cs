@@ -188,5 +188,11 @@ namespace sales_management.UI
             UI.FRM_Stores Store = new UI.FRM_Stores();
             Store.Show();
         }
+
+        private void دليلمراكزالتكلفةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FRM_CostCenterGuide center_cost = new UI.FRM_CostCenterGuide();
+            center_cost.Show();
+        }
     }
 }

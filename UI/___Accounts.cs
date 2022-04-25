@@ -45,13 +45,15 @@ namespace sales_management.UI
         {
             InitializeComponent();
 
-            if (frm == null)
-            {
-                frm = this;
-            }
+            try {
+                if (frm == null)
+                {
+                    frm = this;
+                }
 
-            this.table = tree.Get_Accounting_Tree();
-            this.Fill_Accounting_Tree();
+                this.table = tree.Get_Accounting_Tree();
+                this.Fill_Accounting_Tree();
+            } catch (Exception) { }
         }
 
         IEnumerable<TreeNode> Collect(TreeNodeCollection nodes)

@@ -68,6 +68,7 @@ namespace sales_management.UI
             this.إدارةالمنتجاتوالفئاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالفئاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالخصوماتوالعروضToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.المخازنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.القيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.قيدتسويةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إذنصرفبضاعةToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,7 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.المخازنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.دليلمراكزالتكلفةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +115,7 @@ namespace sales_management.UI
             // 
             this.ملفToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.تسجيلالدخولToolStripMenuItem,
+            this.دليلمراكزالتكلفةToolStripMenuItem,
             this.إعداداتالنظامToolStripMenuItem,
             this.شجرةالحساباToolStripMenuItem,
             this.نسخةإحتياطيةToolStripMenuItem,
@@ -345,6 +347,12 @@ namespace sales_management.UI
             this.إدارةالخصوماتوالعروضToolStripMenuItem.Name = "إدارةالخصوماتوالعروضToolStripMenuItem";
             resources.ApplyResources(this.إدارةالخصوماتوالعروضToolStripMenuItem, "إدارةالخصوماتوالعروضToolStripMenuItem");
             // 
+            // المخازنToolStripMenuItem
+            // 
+            this.المخازنToolStripMenuItem.Name = "المخازنToolStripMenuItem";
+            resources.ApplyResources(this.المخازنToolStripMenuItem, "المخازنToolStripMenuItem");
+            this.المخازنToolStripMenuItem.Click += new System.EventHandler(this.المخازنToolStripMenuItem_Click);
+            // 
             // القيوداليوميةToolStripMenuItem
             // 
             this.القيوداليوميةToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -492,11 +500,11 @@ namespace sales_management.UI
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
-            // المخازنToolStripMenuItem
+            // دليلمراكزالتكلفةToolStripMenuItem
             // 
-            this.المخازنToolStripMenuItem.Name = "المخازنToolStripMenuItem";
-            resources.ApplyResources(this.المخازنToolStripMenuItem, "المخازنToolStripMenuItem");
-            this.المخازنToolStripMenuItem.Click += new System.EventHandler(this.المخازنToolStripMenuItem_Click);
+            this.دليلمراكزالتكلفةToolStripMenuItem.Name = "دليلمراكزالتكلفةToolStripMenuItem";
+            resources.ApplyResources(this.دليلمراكزالتكلفةToolStripMenuItem, "دليلمراكزالتكلفةToolStripMenuItem");
+            this.دليلمراكزالتكلفةToolStripMenuItem.Click += new System.EventHandler(this.دليلمراكزالتكلفةToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -580,5 +588,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem إدارةالفئاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem شجرةالحساباToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem المخازنToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem دليلمراكزالتكلفةToolStripMenuItem;
     }
 }
