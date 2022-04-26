@@ -8,53 +8,39 @@ using System.Data;
 
 namespace sales_management.PL
 {
-    class Sales
+    class ____Sales
     {
-        public DataSet Get_Sale_Invoice_Data_Set( ) {
+        public DataTable Create_Sales_Invoice_Id( int id ) {
             
+            DataTable table = new DataTable();
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-
+            
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@doc_type", SqlDbType.Int);
-            param[0].Value = 0;
 
-            DataSet ds;
+            param[0] = new SqlParameter("@id", SqlDbType.Int);
+            param[0].Value = id;
 
             DAL.Open();
-            ds = DAL.SelectDataSet("Get_Sale_Invoice_Data_Set", param );
-            DAL.Close();
-
-            return ds;
-
-        }
-        
-        public DataTable Create_Sale_Invoice_Id() {
-            
-            DataTable table = new DataTable();
-            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-             
-             
-            DAL.Open();
-            table = DAL.SelectData("Create_Sale_Invoice_Id", null);
+            table = DAL.SelectData("Create_Sales_Invoice_Id", param);
             DAL.Close();
             
             return table;
 
         }
 
-        public DataTable Get_All_Sale_Invoices() {
+        public DataTable Get_All_Sales_Invoices() {
 
             DataTable table = new DataTable();
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
 
             DAL.Open();
-            table = DAL.SelectData("Get_All_Sale_Invoices", null );
+            table = DAL.SelectData("Get_All_Sales_Invoices", null );
             DAL.Close();
 
             return table;
         }
 
-        public DataTable Get_All_Sale_Invoice_Details() {
+        public DataTable Get_All_Sales_Invoice_Details() {
 
             DataTable table = new DataTable();
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
@@ -71,7 +57,7 @@ namespace sales_management.PL
             return table;
         }
 
-        public DataTable Get_Sale_Invoice_Items_details(int invoiceType, int invoiceId) {
+        public DataTable Get_Sales_Invoice_Items_details(int invoiceType, int invoiceId) {
             DataTable table = new DataTable();
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
@@ -111,7 +97,7 @@ namespace sales_management.PL
             return imgbyte;
         }
 
-        public DataTable Get_Sale_Invoice_Items( int invoiceType , int invoiceId) {
+        public DataTable Get_Sales_Invoice_Items( int invoiceType , int invoiceId) {
             
             DataTable table = new DataTable();
 
@@ -169,134 +155,6 @@ namespace sales_management.PL
 
         }
 
-        public void Save_Updates_Sale_Invoice_Data_Set(
-
-            // Data Of Invoice Header
-            int id,
-            int payment_method,
-            int payment_condition_id,
-            int customer_id,
-            int account_id,
-            string account_number,
-            int cost_center_id,
-            int cost_center_number,
-            string account_name,
-            string cost_center_name,
-            string customer_name,
-            string details,
-            string net_total,
-            string discount_name,
-            string discount_percentage,
-            string discount_not_more,
-            string total_without_vat,
-            string total_with_vat,
-            string vat_amount,
-            DateTime date,
-            bool price_include_vat,
-            bool enabled_zakat_vat,
-            // Data Of Invoice Items
-            DataTable itemsTable,
-
-            // Data Of Entry 
-            DataTable headerEntry,
-            DataTable detailsEntry
-
-            )
-        {
-
-            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-            SqlParameter[] param = new SqlParameter[26];
-
-            // Data Of Invoice Header
-            param[0] = new SqlParameter("@id", SqlDbType.Int);
-            param[0].Value = id;
-
-            param[1] = new SqlParameter("@payment_method", SqlDbType.Int);
-            param[1].Value = payment_method;
-
-            param[2] = new SqlParameter("@date", SqlDbType.DateTime);
-            param[2].Value = date;
-
-            param[3] = new SqlParameter("@details", SqlDbType.VarChar);
-            param[3].Value = details;
-
-            param[4] = new SqlParameter("@payment_condition_id", SqlDbType.Int);
-            param[4].Value = payment_condition_id;
-
-            param[5] = new SqlParameter("@customer_id", SqlDbType.Int);
-            param[5].Value = customer_id;
-
-            param[6] = new SqlParameter("@customer_name", SqlDbType.VarChar);
-            param[6].Value = customer_name;
-
-            param[7] = new SqlParameter("@account_id", SqlDbType.Int);
-            param[7].Value = account_id;
-
-            param[8] = new SqlParameter("@account_number", SqlDbType.VarChar);
-            param[8].Value = account_number;
-
-            param[9] = new SqlParameter("@account_name", SqlDbType.VarChar);
-            param[9].Value = account_name;
-
-            param[10] = new SqlParameter("@cost_center_id", SqlDbType.Int);
-            param[10].Value = cost_center_id;
-
-            param[11] = new SqlParameter("@cost_center_number", SqlDbType.Int);
-            param[11].Value = cost_center_number;
-
-            param[12] = new SqlParameter("@cost_center_name", SqlDbType.VarChar);
-            param[12].Value = cost_center_name;
-
-            param[13] = new SqlParameter("@price_include_vat", SqlDbType.Bit);
-            param[13].Value = price_include_vat;
-
-            param[14] = new SqlParameter("@net_total", SqlDbType.VarChar);
-            param[14].Value = net_total;
-
-            param[15] = new SqlParameter("@discount_name", SqlDbType.VarChar);
-            param[15].Value = discount_name;
-
-            param[16] = new SqlParameter("@discount_percentage", SqlDbType.VarChar);
-            param[16].Value = discount_percentage;
-
-            param[17] = new SqlParameter("@discount_not_more", SqlDbType.VarChar);
-            param[17].Value = discount_not_more;
-
-            param[18] = new SqlParameter("@total_without_vat", SqlDbType.VarChar);
-            param[18].Value = total_without_vat;
-
-            param[19] = new SqlParameter("@total_with_vat", SqlDbType.VarChar);
-            param[19].Value = total_with_vat;
-
-            param[20] = new SqlParameter("@vat_amount", SqlDbType.VarChar);
-            param[20].Value = vat_amount;
-
-            param[21] = new SqlParameter("@updated_by", SqlDbType.Int);
-            param[21].Value = UI.Main.getMainForm.getUserInfo()[0];
-
-            // Enable Vat 
-            param[22] = new SqlParameter("@enabled_zakat_vat", SqlDbType.Bit);
-            param[22].Value = enabled_zakat_vat;
-
-             
-            // Data Of Invoice Items 
-            param[23] = new SqlParameter("@items_table", SqlDbType.Structured);
-            param[23].Value = itemsTable;
-
-            // Header Of Entry
-            param[24] = new SqlParameter("@header_entry", SqlDbType.Structured);
-            param[24].Value = headerEntry;
-
-            // Details Of Entry
-            param[25] = new SqlParameter("@details_entry", SqlDbType.Structured);
-            param[25].Value = detailsEntry;
-             
-
-            DAL.Open();
-            DAL.ExecuteCommand("Update_Sale_Invoice_Data_Set", param);
-            DAL.Open();
-        }
-
         public void Save_Updates_Invoice_Data(
             int id,
             int payment_method,
@@ -318,14 +176,13 @@ namespace sales_management.PL
             string total_with_vat,
             string vat_amount,
             DateTime date,
-            bool price_include_vat,
-            bool enabled_zakat_vat
+            bool price_include_vat
         ) {
 
             // Update Invoice Data 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[23];
+            SqlParameter[] param = new SqlParameter[22];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -393,11 +250,8 @@ namespace sales_management.PL
             param[21] = new SqlParameter("@updated_by", SqlDbType.Int);
             param[21].Value = UI.Main.getMainForm.getUserInfo()[0];
 
-            param[22] = new SqlParameter("@enabled_zakat_vat", SqlDbType.Bit);
-            param[22].Value = enabled_zakat_vat;
-
             DAL.Open();
-            DAL.ExecuteCommand("Save_Updates_Invoice_Data_Sale", param);
+            DAL.ExecuteCommand("Save_Updates_Invoice_Data_Sales", param);
             DAL.Open();
 
         }

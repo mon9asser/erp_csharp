@@ -75,10 +75,11 @@
     <Compile Include="PL\Invoice.cs" />
     <Compile Include="PL\Journals.cs" />
     <Compile Include="PL\Products.cs" />
+    <Compile Include="PL\Sales.cs" />
     <Compile Include="PL\QR_Code.cs" />
     <Compile Include="PL\Resources.cs" />
     <Compile Include="PL\Purchase.cs" />
-    <Compile Include="PL\Sales.cs" />
+    <Compile Include="PL\____Sales.cs" />
     <Compile Include="PL\Stores.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +105,12 @@
     </Compile>
     <Compile Include="UI\FRM_UpdateStore.Designer.cs">
       <DependentUpon>FRM_UpdateStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\salesInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\salesInvoice.Designer.cs">
+      <DependentUpon>salesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\___Accounts.cs">
       <SubType>Form</SubType>
@@ -195,11 +202,11 @@
     <Compile Include="UI\purchaseInvoice.Designer.cs">
       <DependentUpon>purchaseInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\salesInvoice.cs">
+    <Compile Include="UI\AA___salesInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\salesInvoice.Designer.cs">
-      <DependentUpon>salesInvoice.cs</DependentUpon>
+    <Compile Include="UI\AA___salesInvoice.Designer.cs">
+      <DependentUpon>AA___salesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SelectTreeCols.cs">
       <SubType>Form</SubType>
@@ -257,6 +264,9 @@
     <EmbeddedResource Include="UI\FRM_UpdateStore.resx">
       <DependentUpon>FRM_UpdateStore.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\salesInvoice.resx">
+      <DependentUpon>salesInvoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\___Accounts.resx">
       <DependentUpon>___Accounts.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,8 +318,8 @@
     <EmbeddedResource Include="UI\purchaseInvoice.resx">
       <DependentUpon>purchaseInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\salesInvoice.resx">
-      <DependentUpon>salesInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="UI\AA___salesInvoice.resx">
+      <DependentUpon>AA___salesInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SelectTreeCols.resx">
       <DependentUpon>SelectTreeCols.cs</DependentUpon>

@@ -14,7 +14,7 @@ namespace sales_management.UI
 
     public partial class AA___salesInvoice : Form
     {
-        PL.Sales Sales = new PL.Sales();
+        PL.____Sales Sales = new PL.____Sales();
         PL.Journals journals = new PL.Journals();
 
         PL.Products products = new PL.Products();

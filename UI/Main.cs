@@ -174,7 +174,7 @@ namespace sales_management.UI
 
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.AA___salesInvoice.GetForm.Show();
+            UI.salesInvoice.GetForm.Show();
         }
 
         private void إعداداتالإجراءاتالمخزنهToolStripMenuItem_Click(object sender, EventArgs e)

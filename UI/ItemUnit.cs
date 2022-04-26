@@ -249,6 +249,8 @@ namespace sales_management.UI
             row["unit_price"] = datagridprices_items.Rows[e.RowIndex].Cells["unit_price"].Value.ToString();
             currentItem.Rows.Add(row);
 
+             
+
             switch (this.doc_type)
             {
 
@@ -257,11 +259,7 @@ namespace sales_management.UI
                     break;
 
                 case 0:
-                    /**
-                     * 
-                     * Here We Need To Get First Unit Cost ( First In First Out )
-                     */
-                    // UI.salesInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    UI.salesInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
             }

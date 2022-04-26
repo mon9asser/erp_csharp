@@ -164,4 +164,6 @@ D:\sales-app\obj\Debug\sales_management.UI.___Customer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_Suppliers.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_Stores.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateStore.resources
-D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
+D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales_management.UI.FRM_CostCenterGuide.resources
+D:\sales-app\obj\Debug\sales_management.UI.AA___salesInvoice.resources
