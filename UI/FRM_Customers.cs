@@ -198,8 +198,8 @@ namespace sales_management.UI
                 switch (this.doc_type)
                 {
                     case 0:
-                        UI.salesInvoice.GetForm.customer_id.Text = customerId;
-                        UI.salesInvoice.GetForm.customer_name.Text = customerName;
+                        UI.AA___salesInvoice.GetForm.customer_id.Text = customerId;
+                        UI.AA___salesInvoice.GetForm.customer_name.Text = customerName;
                         break;
                 }
 

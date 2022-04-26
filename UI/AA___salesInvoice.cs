@@ -12,7 +12,7 @@ using System.IO;
 namespace sales_management.UI
 {
 
-    public partial class salesInvoice : Form
+    public partial class AA___salesInvoice : Form
     {
         PL.Sales Sales = new PL.Sales();
         PL.Journals journals = new PL.Journals();
@@ -36,20 +36,20 @@ namespace sales_management.UI
         public int currentInvoiceRowIndex = -1;
         public int lastRow = -1;
 
-        public static salesInvoice frm;
+        public static AA___salesInvoice frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
             frm = null;
         }
 
-        public static salesInvoice GetForm
+        public static AA___salesInvoice GetForm
         {
             get
             {
 
                 if (frm == null)
                 {
-                    frm = new salesInvoice();
+                    frm = new AA___salesInvoice();
                     frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
                 }
 
@@ -58,7 +58,7 @@ namespace sales_management.UI
             }
         }
 
-        public salesInvoice()
+        public AA___salesInvoice()
         {
             InitializeComponent(); 
             PL.AccountingTree Accs = new PL.AccountingTree();
@@ -892,7 +892,7 @@ namespace sales_management.UI
             if (items_datagridview.CurrentCell.OwningRow.Index == -1) return;
 
             UI.Items.GetForm.DGRowIndex = items_datagridview.CurrentCell.OwningRow.Index;
-            UI.salesInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
+            UI.AA___salesInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
 
             UI.Items.GetForm.doc_type = 0;
 
@@ -1102,15 +1102,15 @@ namespace sales_management.UI
 
         public void change_price_field(int unit_id, string factor, string price, string shortcut, string code ) {
             
-            if (UI.salesInvoice.GetForm.lastRow == -1) {
+            if (UI.AA___salesInvoice.GetForm.lastRow == -1) {
                 return;
             }
             
-            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["unit_id"].Value = Convert.ToInt32(unit_id);
-            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["factor"].Value = factor.ToString();
-            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["unit_price"].Value = price.ToString();
-            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["unit_name"].Value = shortcut.ToString();
-            items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_code"].Value = code.ToString();
+            items_datagridview.Rows[UI.AA___salesInvoice.GetForm.lastRow].Cells["unit_id"].Value = Convert.ToInt32(unit_id);
+            items_datagridview.Rows[UI.AA___salesInvoice.GetForm.lastRow].Cells["factor"].Value = factor.ToString();
+            items_datagridview.Rows[UI.AA___salesInvoice.GetForm.lastRow].Cells["unit_price"].Value = price.ToString();
+            items_datagridview.Rows[UI.AA___salesInvoice.GetForm.lastRow].Cells["unit_name"].Value = shortcut.ToString();
+            items_datagridview.Rows[UI.AA___salesInvoice.GetForm.lastRow].Cells["product_code"].Value = code.ToString();
 
             this.is_change_price = false;
         }

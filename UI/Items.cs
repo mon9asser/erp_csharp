@@ -89,7 +89,7 @@ namespace sales_management.UI
 
                 // Sales Invoice
                 case 0:
-                    UI.salesInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    UI.AA___salesInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
 
                 // Purchase Invoice 
@@ -122,7 +122,7 @@ namespace sales_management.UI
 
                 // Sales Invoice
                 case 0:
-                    UI.salesInvoice.GetForm.Add_Item_To_Row( index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    UI.AA___salesInvoice.GetForm.Add_Item_To_Row( index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
 
                 // Purchase Invoice 

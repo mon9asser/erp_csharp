@@ -134,9 +134,9 @@ namespace sales_management.UI
             else if (this.InstanceType == 1) {
 
                 // Sales Invoice 
-                UI.salesInvoice.GetForm.legend_name.Text = accounting_tree.SelectedNode.Text.ToString();
-                UI.salesInvoice.GetForm.legend_number.Text = accounting_tree.SelectedNode.Tag.ToString();
-                UI.salesInvoice.GetForm.legend_id.Text = "-1";
+                UI.AA___salesInvoice.GetForm.legend_name.Text = accounting_tree.SelectedNode.Text.ToString();
+                UI.AA___salesInvoice.GetForm.legend_number.Text = accounting_tree.SelectedNode.Tag.ToString();
+                UI.AA___salesInvoice.GetForm.legend_id.Text = "-1";
 
             }
 

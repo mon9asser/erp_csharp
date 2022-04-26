@@ -1,7 +1,7 @@
 ﻿
 namespace sales_management.UI
 {
-    partial class salesInvoice
+    partial class AA___salesInvoice
     {
         /// <summary>
         /// Required designer variable.
