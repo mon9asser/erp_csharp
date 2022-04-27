@@ -322,10 +322,10 @@
     <value>0</value>
   </data>
   <data name="panelWait.Location" type="System.Drawing.Point, System.Drawing">
-    <value>877, 498</value>
+    <value>12, 11</value>
   </data>
   <data name="panelWait.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 88</value>
+    <value>892, 574</value>
   </data>
   <data name="panelWait.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
