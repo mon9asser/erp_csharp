@@ -74,10 +74,10 @@ namespace sales_management.UI
                         if (!string.IsNullOrEmpty(rang.Cells[i, x].Text.ToString()))
                         {
                             string value = rang.Cells[i, x].Value2.ToString();
-
+                            
                             // Prepare Rows
                             ExcelSheetTableRow[newX] = value;
-
+                             
                             if (x == colCount)
                             {
                                 ExcelSheetTable.Rows.Add(ExcelSheetTableRow);
@@ -116,7 +116,7 @@ namespace sales_management.UI
                     row.Cells["excelSheetCol"].Value = (row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Items[0];
                 }
 
-                this.ExcelSheetDataTable = ExcelSheetTable;
+                 this.ExcelSheetDataTable = ExcelSheetTable;
 
             } catch (Exception) { }
 
@@ -169,6 +169,7 @@ namespace sales_management.UI
                 DataTableSource.Columns.Add("balance");
                 DataTableSource.Columns.Add("is_main_account");
                 DataRow dgrow;
+                 
                 foreach (DataRow row in this.ExcelSheetDataTable.Rows)
                 {
 

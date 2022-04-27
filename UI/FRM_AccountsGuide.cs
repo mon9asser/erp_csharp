@@ -374,28 +374,31 @@ namespace sales_management.UI
              
             try
             {
-                DataTable table_2 = new DataTable();
-                table_2.Columns.Add("account_number");
-                table_2.Columns.Add("account_name");
-                table_2.Columns.Add("main_account");
-
-                DataRow newRow;
-                foreach (DataGridViewRow row in datagrid_accounts_tree.Rows)
-                {
-                    if (row.Cells["account_number"].Value != null && row.Cells["account_number"].Value != DBNull.Value && !String.IsNullOrWhiteSpace(row.Cells["account_number"].ToString()))
-                    {
-                        newRow = table_2.NewRow();
-                        newRow["account_number"] = row.Cells["account_number"].Value.ToString();
-                        newRow["account_name"] = row.Cells["account_name"].Value.ToString();
-                        newRow["main_account"] = row.Cells["main_account"].Value.ToString();
-                        table_2.Rows.Add(newRow);
-                    }
-                }
-
-                tree.Update_Tree_Of_Accounts(table_2);
+                
             }
-            catch (Exception) { }
+            catch (Exception) {
 
+            }
+
+            DataTable table_2 = new DataTable();
+            table_2.Columns.Add("account_number", typeof(string));
+            table_2.Columns.Add("account_name", typeof(string));
+            table_2.Columns.Add("main_account", typeof(string));
+
+            DataRow newRow;
+            foreach (DataGridViewRow row in datagrid_accounts_tree.Rows)
+            {
+                if (row.Cells["account_number"].Value != null && row.Cells["account_number"].Value != DBNull.Value && !String.IsNullOrWhiteSpace(row.Cells["account_number"].ToString()))
+                {
+                    newRow = table_2.NewRow();
+                    newRow["account_number"] = row.Cells["account_number"].Value.ToString();
+                    newRow["account_name"] = row.Cells["account_name"].Value.ToString();
+                    newRow["main_account"] = row.Cells["main_account"].Value.ToString();
+                    table_2.Rows.Add(newRow);
+                }
+            }
+
+            tree.Update_Tree_Of_Accounts(table_2);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
