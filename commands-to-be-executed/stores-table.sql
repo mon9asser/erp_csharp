@@ -1,61 +1,28 @@
-USE [zakat_invoices]
+/****** Object:  UserDefinedTableType [dbo].[Accounting_Tree]    Script Date: 4/27/2022 5:01:10 PM ******/
+CREATE TYPE [dbo].[Accounting_Tree] AS TABLE(
+	[account_number] [varchar](50) NULL,
+	[account_name] text NULL,
+	[main_account] [varchar](50) NULL
+)
 GO
-/****** Object:  StoredProcedure [dbo].[Create_Store_Id]    Script Date: 4/24/2022 11:47:05 PM ******/
-SET ANSI_NULLS ON
+
+--===========================================================
+CREATE TABLE [dbo].[accounts](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[account_number] [varchar](50) NULL,
+	[account_name] [text] NULL,
+	[account_name_en] [varchar](50) NULL,
+	[main_account] [varchar](50) NULL,
+	[debit_credit] [varchar](50) NULL,
+	[balance] [varchar](50) NULL,
+	[is_main_account] [bit] NULL,
+	[parent_account] [varchar](50) NULL,
+ CONSTRAINT [PK_accounts] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-SET QUOTED_IDENTIFIER ON
+
+ALTER TABLE [dbo].[accounts] ADD  CONSTRAINT [DF_accounts_is_main_account]  DEFAULT ((0)) FOR [is_main_account]
 GO
-ALTER PROC [dbo].[Create_Store_Id]
-
-@created_by int,
-@datemade datetime
-
-AS
-
-declare @StoreId AS VARCHAR(50);
-SET @StoreId = (SELECT id FROM [dbo].stores); 
-
-	IF NOT EXISTS( SELECT * FROM [dbo].stores WHERE store_name = '' ) 
-		BEGIN
-			
-			INSERT INTO [dbo].stores ( store_name, created_by, datemade ) VALUES( '', @created_by, @datemade );
-
-			UPDATE [dbo].stores SET 
-				code = CONCAT( @StoreId , '00', @@Identity )
-			WHERE id = @@Identity;
-			 
-		END
-
-	SELECT TOP 1 * FROM  [dbo].stores  WHERE store_name = ''  ORDER BY  [dbo].stores.id DESC ; 
-	
-	
-	
----------------------------------------
-CREATE PROC Get_All_Stores
-AS
-SELECT * FROM [dbo].stores;
-
---------------------------------------
-ALTER PROC Update_Data_Of_Stores 
-
-@id INT,  
-@store_name varchar(50),
-@store_branch varchar(50),
-@telephone varchar(50),
-@address TEXT,
-@fax varchar(50),
-@cost_center_id varchar(50),
-@updated_by INT
-
-AS
-UPDATE [dbo].stores SET
-	 
-	store_name = @store_name,
-	store_branch = @store_branch,
-	telephone=@telephone,
-	[address]=@address,
-	fax=@fax,
-	cost_center_id=@cost_center_id,
-	updated_by = @updated_by
-
-WHERE id=@id;

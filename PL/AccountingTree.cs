@@ -20,8 +20,7 @@ namespace sales_management.PL
             param[0].Value = table;
 
             DAL.Open();
-            DataTable dbl = DAL.SelectData("Update_Tree_Of_Accounts_TableSet", param);
-            Console.WriteLine("Number Of Rows Is : " + dbl.Rows.Count.ToString());
+            DAL.ExecuteCommand("Update_Tree_Of_Accounts_TableSet", param); 
             DAL.Close();
 
         }
