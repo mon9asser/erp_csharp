@@ -140,7 +140,7 @@ namespace sales_management.UI
 
             }
 
-            MessageBox.Show(this.InstanceType.ToString());
+            //MessageBox.Show(this.InstanceType.ToString());
             this.Close();
         }
     }

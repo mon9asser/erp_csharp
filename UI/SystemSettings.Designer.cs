@@ -52,61 +52,58 @@ namespace sales_management.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.supplier_acc_number_name = new System.Windows.Forms.TextBox();
-            this.supplier_acc_number = new System.Windows.Forms.TextBox();
-            this.customer_acc_number_name = new System.Windows.Forms.TextBox();
-            this.customer_acc_number = new System.Windows.Forms.TextBox();
+            this.suppliers_account_field_name = new System.Windows.Forms.TextBox();
+            this.suppliers_account_field = new System.Windows.Forms.TextBox();
+            this.customers_account_field_name = new System.Windows.Forms.TextBox();
+            this.customers_account_field = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.vat_number_in_name = new System.Windows.Forms.TextBox();
-            this.vat_number_in = new System.Windows.Forms.TextBox();
+            this.purchases_vat_account_field_name = new System.Windows.Forms.TextBox();
+            this.purchases_vat_account_field = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.inventory_acc_name = new System.Windows.Forms.TextBox();
-            this.inventory_acc_number = new System.Windows.Forms.TextBox();
+            this.inventory_account_field_name = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.product_cost_acc_name = new System.Windows.Forms.TextBox();
-            this.product_cost_acc_number = new System.Windows.Forms.TextBox();
+            this.cost_of_goods_account_field_name = new System.Windows.Forms.TextBox();
+            this.cost_of_goods_account_field = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.part_2_purchase_text_name_acc_bank = new System.Windows.Forms.TextBox();
-            this.part_2_purchase_text_name_acc_credit = new System.Windows.Forms.TextBox();
-            this.part_2_purchase_text_name_acc_cash = new System.Windows.Forms.TextBox();
-            this.part_2_sales_text_name_acc_cash = new System.Windows.Forms.TextBox();
-            this.part_2_purchase_bank_acc_number = new System.Windows.Forms.TextBox();
-            this.part_2_purchase_credit_acc_number = new System.Windows.Forms.TextBox();
-            this.part_2_purchase_cash_acc_number = new System.Windows.Forms.TextBox();
-            this.part_2_sales_cash_acc_number = new System.Windows.Forms.TextBox();
-            this.text_name_acc_vat = new System.Windows.Forms.TextBox();
-            this.purchase_text_name_acc_bank = new System.Windows.Forms.TextBox();
-            this.purchase_text_name_acc_credit = new System.Windows.Forms.TextBox();
-            this.purchase_text_name_acc_cash = new System.Windows.Forms.TextBox();
-            this.sales_text_name_acc_bank = new System.Windows.Forms.TextBox();
-            this.sales_text_name_acc_credit = new System.Windows.Forms.TextBox();
-            this.sales_text_name_acc_cash = new System.Windows.Forms.TextBox();
-            this.vat_acc_number = new System.Windows.Forms.TextBox();
-            this.purchase_bank_acc_number = new System.Windows.Forms.TextBox();
+            this.purchase_bank_account_field_name = new System.Windows.Forms.TextBox();
+            this.purchase_credit_account_field_name = new System.Windows.Forms.TextBox();
+            this.purchase_cash_account_field_name = new System.Windows.Forms.TextBox();
+            this.sales_vat_account_field_name = new System.Windows.Forms.TextBox();
+            this.purchase_bank_account_field = new System.Windows.Forms.TextBox();
+            this.purchase_credit_account_field = new System.Windows.Forms.TextBox();
+            this.purchase_cash_account_field = new System.Windows.Forms.TextBox();
+            this.sales_vat_account_field = new System.Windows.Forms.TextBox();
+            this.sales_account_field_name = new System.Windows.Forms.TextBox();
+            this.purchases_account_field_name = new System.Windows.Forms.TextBox();
+            this.sale_bank_account_field_name = new System.Windows.Forms.TextBox();
+            this.sale_credit_account_field_name = new System.Windows.Forms.TextBox();
+            this.sale_cash_account_field_name = new System.Windows.Forms.TextBox();
+            this.sales_account_field = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.purchase_credit_acc_number = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.purchase_cash_acc_number = new System.Windows.Forms.TextBox();
+            this.purchases_account_field = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.sales_bank_acc_number = new System.Windows.Forms.TextBox();
+            this.sale_bank_account_field = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.sales_credit_acc_number = new System.Windows.Forms.TextBox();
+            this.sale_credit_account_field = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.sales_cash_acc_number = new System.Windows.Forms.TextBox();
+            this.sale_cash_account_field = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.settingsIdText = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.inventory_account_field = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -344,56 +341,53 @@ namespace sales_management.UI
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.supplier_acc_number_name);
-            this.tabPage3.Controls.Add(this.supplier_acc_number);
-            this.tabPage3.Controls.Add(this.customer_acc_number_name);
-            this.tabPage3.Controls.Add(this.customer_acc_number);
+            this.tabPage3.Controls.Add(this.inventory_account_field);
+            this.tabPage3.Controls.Add(this.label23);
+            this.tabPage3.Controls.Add(this.suppliers_account_field_name);
+            this.tabPage3.Controls.Add(this.suppliers_account_field);
+            this.tabPage3.Controls.Add(this.customers_account_field_name);
+            this.tabPage3.Controls.Add(this.customers_account_field);
             this.tabPage3.Controls.Add(this.label29);
             this.tabPage3.Controls.Add(this.label30);
             this.tabPage3.Controls.Add(this.label28);
-            this.tabPage3.Controls.Add(this.vat_number_in_name);
-            this.tabPage3.Controls.Add(this.vat_number_in);
+            this.tabPage3.Controls.Add(this.purchases_vat_account_field_name);
+            this.tabPage3.Controls.Add(this.purchases_vat_account_field);
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label27);
             this.tabPage3.Controls.Add(this.label22);
             this.tabPage3.Controls.Add(this.label18);
-            this.tabPage3.Controls.Add(this.inventory_acc_name);
-            this.tabPage3.Controls.Add(this.inventory_acc_number);
+            this.tabPage3.Controls.Add(this.inventory_account_field_name);
             this.tabPage3.Controls.Add(this.label21);
-            this.tabPage3.Controls.Add(this.product_cost_acc_name);
-            this.tabPage3.Controls.Add(this.product_cost_acc_number);
+            this.tabPage3.Controls.Add(this.cost_of_goods_account_field_name);
+            this.tabPage3.Controls.Add(this.cost_of_goods_account_field);
             this.tabPage3.Controls.Add(this.label20);
             this.tabPage3.Controls.Add(this.label19);
-            this.tabPage3.Controls.Add(this.part_2_purchase_text_name_acc_bank);
-            this.tabPage3.Controls.Add(this.part_2_purchase_text_name_acc_credit);
-            this.tabPage3.Controls.Add(this.part_2_purchase_text_name_acc_cash);
-            this.tabPage3.Controls.Add(this.part_2_sales_text_name_acc_cash);
-            this.tabPage3.Controls.Add(this.part_2_purchase_bank_acc_number);
-            this.tabPage3.Controls.Add(this.part_2_purchase_credit_acc_number);
-            this.tabPage3.Controls.Add(this.part_2_purchase_cash_acc_number);
-            this.tabPage3.Controls.Add(this.part_2_sales_cash_acc_number);
-            this.tabPage3.Controls.Add(this.text_name_acc_vat);
-            this.tabPage3.Controls.Add(this.purchase_text_name_acc_bank);
-            this.tabPage3.Controls.Add(this.purchase_text_name_acc_credit);
-            this.tabPage3.Controls.Add(this.purchase_text_name_acc_cash);
-            this.tabPage3.Controls.Add(this.sales_text_name_acc_bank);
-            this.tabPage3.Controls.Add(this.sales_text_name_acc_credit);
-            this.tabPage3.Controls.Add(this.sales_text_name_acc_cash);
-            this.tabPage3.Controls.Add(this.vat_acc_number);
-            this.tabPage3.Controls.Add(this.purchase_bank_acc_number);
+            this.tabPage3.Controls.Add(this.purchase_bank_account_field_name);
+            this.tabPage3.Controls.Add(this.purchase_credit_account_field_name);
+            this.tabPage3.Controls.Add(this.purchase_cash_account_field_name);
+            this.tabPage3.Controls.Add(this.sales_vat_account_field_name);
+            this.tabPage3.Controls.Add(this.purchase_bank_account_field);
+            this.tabPage3.Controls.Add(this.purchase_credit_account_field);
+            this.tabPage3.Controls.Add(this.purchase_cash_account_field);
+            this.tabPage3.Controls.Add(this.sales_vat_account_field);
+            this.tabPage3.Controls.Add(this.sales_account_field_name);
+            this.tabPage3.Controls.Add(this.purchases_account_field_name);
+            this.tabPage3.Controls.Add(this.sale_bank_account_field_name);
+            this.tabPage3.Controls.Add(this.sale_credit_account_field_name);
+            this.tabPage3.Controls.Add(this.sale_cash_account_field_name);
+            this.tabPage3.Controls.Add(this.sales_account_field);
             this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.purchase_credit_acc_number);
             this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.purchase_cash_acc_number);
+            this.tabPage3.Controls.Add(this.purchases_account_field);
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.sales_bank_acc_number);
+            this.tabPage3.Controls.Add(this.sale_bank_account_field);
             this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.sales_credit_acc_number);
+            this.tabPage3.Controls.Add(this.sale_credit_account_field);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.sales_cash_acc_number);
+            this.tabPage3.Controls.Add(this.sale_cash_account_field);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -404,41 +398,41 @@ namespace sales_management.UI
             this.tabPage3.Text = "حسابات دفتر الأستاذ";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // supplier_acc_number_name
+            // suppliers_account_field_name
             // 
-            this.supplier_acc_number_name.Location = new System.Drawing.Point(45, 420);
-            this.supplier_acc_number_name.Name = "supplier_acc_number_name";
-            this.supplier_acc_number_name.ReadOnly = true;
-            this.supplier_acc_number_name.Size = new System.Drawing.Size(81, 20);
-            this.supplier_acc_number_name.TabIndex = 109;
+            this.suppliers_account_field_name.Location = new System.Drawing.Point(45, 420);
+            this.suppliers_account_field_name.Name = "suppliers_account_field_name";
+            this.suppliers_account_field_name.ReadOnly = true;
+            this.suppliers_account_field_name.Size = new System.Drawing.Size(81, 20);
+            this.suppliers_account_field_name.TabIndex = 109;
             // 
-            // supplier_acc_number
+            // suppliers_account_field
             // 
-            this.supplier_acc_number.Location = new System.Drawing.Point(137, 419);
-            this.supplier_acc_number.Name = "supplier_acc_number";
-            this.supplier_acc_number.ReadOnly = true;
-            this.supplier_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.supplier_acc_number.TabIndex = 108;
-            this.supplier_acc_number.Click += new System.EventHandler(this.supplier_acc_number_Click);
-            this.supplier_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.suppliers_account_field.Location = new System.Drawing.Point(137, 419);
+            this.suppliers_account_field.Name = "suppliers_account_field";
+            this.suppliers_account_field.ReadOnly = true;
+            this.suppliers_account_field.Size = new System.Drawing.Size(64, 20);
+            this.suppliers_account_field.TabIndex = 108;
+            this.suppliers_account_field.Click += new System.EventHandler(this.supplier_acc_number_Click);
+            this.suppliers_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // customer_acc_number_name
+            // customers_account_field_name
             // 
-            this.customer_acc_number_name.Location = new System.Drawing.Point(45, 382);
-            this.customer_acc_number_name.Name = "customer_acc_number_name";
-            this.customer_acc_number_name.ReadOnly = true;
-            this.customer_acc_number_name.Size = new System.Drawing.Size(81, 20);
-            this.customer_acc_number_name.TabIndex = 107;
+            this.customers_account_field_name.Location = new System.Drawing.Point(45, 382);
+            this.customers_account_field_name.Name = "customers_account_field_name";
+            this.customers_account_field_name.ReadOnly = true;
+            this.customers_account_field_name.Size = new System.Drawing.Size(81, 20);
+            this.customers_account_field_name.TabIndex = 107;
             // 
-            // customer_acc_number
+            // customers_account_field
             // 
-            this.customer_acc_number.Location = new System.Drawing.Point(137, 383);
-            this.customer_acc_number.Name = "customer_acc_number";
-            this.customer_acc_number.ReadOnly = true;
-            this.customer_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.customer_acc_number.TabIndex = 106;
-            this.customer_acc_number.Click += new System.EventHandler(this.customer_acc_number_Click);
-            this.customer_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.customers_account_field.Location = new System.Drawing.Point(137, 383);
+            this.customers_account_field.Name = "customers_account_field";
+            this.customers_account_field.ReadOnly = true;
+            this.customers_account_field.Size = new System.Drawing.Size(64, 20);
+            this.customers_account_field.TabIndex = 106;
+            this.customers_account_field.Click += new System.EventHandler(this.customer_acc_number_Click);
+            this.customers_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label29
             // 
@@ -463,29 +457,29 @@ namespace sales_management.UI
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(531, 338);
+            this.label28.Location = new System.Drawing.Point(541, 338);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(80, 13);
             this.label28.TabIndex = 103;
             this.label28.Text = "ضريبة المدخلات";
             // 
-            // vat_number_in_name
+            // purchases_vat_account_field_name
             // 
-            this.vat_number_in_name.Location = new System.Drawing.Point(39, 335);
-            this.vat_number_in_name.Name = "vat_number_in_name";
-            this.vat_number_in_name.ReadOnly = true;
-            this.vat_number_in_name.Size = new System.Drawing.Size(396, 20);
-            this.vat_number_in_name.TabIndex = 102;
+            this.purchases_vat_account_field_name.Location = new System.Drawing.Point(39, 335);
+            this.purchases_vat_account_field_name.Name = "purchases_vat_account_field_name";
+            this.purchases_vat_account_field_name.ReadOnly = true;
+            this.purchases_vat_account_field_name.Size = new System.Drawing.Size(401, 20);
+            this.purchases_vat_account_field_name.TabIndex = 102;
             // 
-            // vat_number_in
+            // purchases_vat_account_field
             // 
-            this.vat_number_in.Location = new System.Drawing.Point(443, 335);
-            this.vat_number_in.Name = "vat_number_in";
-            this.vat_number_in.ReadOnly = true;
-            this.vat_number_in.Size = new System.Drawing.Size(64, 20);
-            this.vat_number_in.TabIndex = 101;
-            this.vat_number_in.Click += new System.EventHandler(this.textBox2_Click);
-            this.vat_number_in.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.purchases_vat_account_field.Location = new System.Drawing.Point(448, 335);
+            this.purchases_vat_account_field.Name = "purchases_vat_account_field";
+            this.purchases_vat_account_field.ReadOnly = true;
+            this.purchases_vat_account_field.Size = new System.Drawing.Size(69, 20);
+            this.purchases_vat_account_field.TabIndex = 101;
+            this.purchases_vat_account_field.Click += new System.EventHandler(this.textBox2_Click);
+            this.purchases_vat_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label17
             // 
@@ -499,7 +493,7 @@ namespace sales_management.UI
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(249, 307);
+            this.label25.Location = new System.Drawing.Point(317, 306);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 13);
             this.label25.TabIndex = 99;
@@ -508,7 +502,7 @@ namespace sales_management.UI
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(250, 276);
+            this.label26.Location = new System.Drawing.Point(318, 275);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 13);
             this.label26.TabIndex = 98;
@@ -517,7 +511,7 @@ namespace sales_management.UI
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(250, 245);
+            this.label27.Location = new System.Drawing.Point(318, 244);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(41, 13);
             this.label27.TabIndex = 97;
@@ -541,23 +535,13 @@ namespace sales_management.UI
             this.label18.TabIndex = 93;
             this.label18.Text = "( طرفي عملية الشراء الإفتراضيه )";
             // 
-            // inventory_acc_name
+            // inventory_account_field_name
             // 
-            this.inventory_acc_name.Location = new System.Drawing.Point(352, 422);
-            this.inventory_acc_name.Name = "inventory_acc_name";
-            this.inventory_acc_name.ReadOnly = true;
-            this.inventory_acc_name.Size = new System.Drawing.Size(83, 20);
-            this.inventory_acc_name.TabIndex = 92;
-            // 
-            // inventory_acc_number
-            // 
-            this.inventory_acc_number.Location = new System.Drawing.Point(443, 422);
-            this.inventory_acc_number.Name = "inventory_acc_number";
-            this.inventory_acc_number.ReadOnly = true;
-            this.inventory_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.inventory_acc_number.TabIndex = 90;
-            this.inventory_acc_number.Click += new System.EventHandler(this.inventory_acc_number_Click);
-            this.inventory_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.inventory_account_field_name.Location = new System.Drawing.Point(352, 422);
+            this.inventory_account_field_name.Name = "inventory_account_field_name";
+            this.inventory_account_field_name.ReadOnly = true;
+            this.inventory_account_field_name.Size = new System.Drawing.Size(83, 20);
+            this.inventory_account_field_name.TabIndex = 92;
             // 
             // label21
             // 
@@ -569,23 +553,23 @@ namespace sales_management.UI
             this.label21.TabIndex = 91;
             this.label21.Text = "حساب المخزون";
             // 
-            // product_cost_acc_name
+            // cost_of_goods_account_field_name
             // 
-            this.product_cost_acc_name.Location = new System.Drawing.Point(352, 384);
-            this.product_cost_acc_name.Name = "product_cost_acc_name";
-            this.product_cost_acc_name.ReadOnly = true;
-            this.product_cost_acc_name.Size = new System.Drawing.Size(83, 20);
-            this.product_cost_acc_name.TabIndex = 89;
+            this.cost_of_goods_account_field_name.Location = new System.Drawing.Point(352, 384);
+            this.cost_of_goods_account_field_name.Name = "cost_of_goods_account_field_name";
+            this.cost_of_goods_account_field_name.ReadOnly = true;
+            this.cost_of_goods_account_field_name.Size = new System.Drawing.Size(83, 20);
+            this.cost_of_goods_account_field_name.TabIndex = 89;
             // 
-            // product_cost_acc_number
+            // cost_of_goods_account_field
             // 
-            this.product_cost_acc_number.Location = new System.Drawing.Point(443, 384);
-            this.product_cost_acc_number.Name = "product_cost_acc_number";
-            this.product_cost_acc_number.ReadOnly = true;
-            this.product_cost_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.product_cost_acc_number.TabIndex = 87;
-            this.product_cost_acc_number.Click += new System.EventHandler(this.product_cost_acc_number_Click);
-            this.product_cost_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.cost_of_goods_account_field.Location = new System.Drawing.Point(443, 384);
+            this.cost_of_goods_account_field.Name = "cost_of_goods_account_field";
+            this.cost_of_goods_account_field.ReadOnly = true;
+            this.cost_of_goods_account_field.Size = new System.Drawing.Size(64, 20);
+            this.cost_of_goods_account_field.TabIndex = 87;
+            this.cost_of_goods_account_field.Click += new System.EventHandler(this.product_cost_acc_number_Click);
+            this.cost_of_goods_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label20
             // 
@@ -606,197 +590,161 @@ namespace sales_management.UI
             this.label19.TabIndex = 86;
             this.label19.Text = "( طرفي عملية البيع الإفتراضية )";
             // 
-            // part_2_purchase_text_name_acc_bank
+            // purchase_bank_account_field_name
             // 
-            this.part_2_purchase_text_name_acc_bank.Location = new System.Drawing.Point(39, 305);
-            this.part_2_purchase_text_name_acc_bank.Name = "part_2_purchase_text_name_acc_bank";
-            this.part_2_purchase_text_name_acc_bank.ReadOnly = true;
-            this.part_2_purchase_text_name_acc_bank.Size = new System.Drawing.Size(122, 20);
-            this.part_2_purchase_text_name_acc_bank.TabIndex = 85;
+            this.purchase_bank_account_field_name.Location = new System.Drawing.Point(39, 305);
+            this.purchase_bank_account_field_name.Name = "purchase_bank_account_field_name";
+            this.purchase_bank_account_field_name.ReadOnly = true;
+            this.purchase_bank_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.purchase_bank_account_field_name.TabIndex = 85;
             // 
-            // part_2_purchase_text_name_acc_credit
+            // purchase_credit_account_field_name
             // 
-            this.part_2_purchase_text_name_acc_credit.Location = new System.Drawing.Point(39, 274);
-            this.part_2_purchase_text_name_acc_credit.Name = "part_2_purchase_text_name_acc_credit";
-            this.part_2_purchase_text_name_acc_credit.ReadOnly = true;
-            this.part_2_purchase_text_name_acc_credit.Size = new System.Drawing.Size(122, 20);
-            this.part_2_purchase_text_name_acc_credit.TabIndex = 84;
-            this.part_2_purchase_text_name_acc_credit.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.purchase_credit_account_field_name.Location = new System.Drawing.Point(39, 274);
+            this.purchase_credit_account_field_name.Name = "purchase_credit_account_field_name";
+            this.purchase_credit_account_field_name.ReadOnly = true;
+            this.purchase_credit_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.purchase_credit_account_field_name.TabIndex = 84;
+            this.purchase_credit_account_field_name.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // part_2_purchase_text_name_acc_cash
+            // purchase_cash_account_field_name
             // 
-            this.part_2_purchase_text_name_acc_cash.Location = new System.Drawing.Point(39, 243);
-            this.part_2_purchase_text_name_acc_cash.Name = "part_2_purchase_text_name_acc_cash";
-            this.part_2_purchase_text_name_acc_cash.ReadOnly = true;
-            this.part_2_purchase_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
-            this.part_2_purchase_text_name_acc_cash.TabIndex = 83;
+            this.purchase_cash_account_field_name.Location = new System.Drawing.Point(39, 243);
+            this.purchase_cash_account_field_name.Name = "purchase_cash_account_field_name";
+            this.purchase_cash_account_field_name.ReadOnly = true;
+            this.purchase_cash_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.purchase_cash_account_field_name.TabIndex = 83;
             // 
-            // part_2_sales_text_name_acc_cash
+            // sales_vat_account_field_name
             // 
-            this.part_2_sales_text_name_acc_cash.Location = new System.Drawing.Point(45, 95);
-            this.part_2_sales_text_name_acc_cash.Name = "part_2_sales_text_name_acc_cash";
-            this.part_2_sales_text_name_acc_cash.ReadOnly = true;
-            this.part_2_sales_text_name_acc_cash.Size = new System.Drawing.Size(170, 20);
-            this.part_2_sales_text_name_acc_cash.TabIndex = 80;
+            this.sales_vat_account_field_name.Location = new System.Drawing.Point(45, 95);
+            this.sales_vat_account_field_name.Name = "sales_vat_account_field_name";
+            this.sales_vat_account_field_name.ReadOnly = true;
+            this.sales_vat_account_field_name.Size = new System.Drawing.Size(170, 20);
+            this.sales_vat_account_field_name.TabIndex = 80;
             // 
-            // part_2_purchase_bank_acc_number
+            // purchase_bank_account_field
             // 
-            this.part_2_purchase_bank_acc_number.Location = new System.Drawing.Point(167, 305);
-            this.part_2_purchase_bank_acc_number.Name = "part_2_purchase_bank_acc_number";
-            this.part_2_purchase_bank_acc_number.ReadOnly = true;
-            this.part_2_purchase_bank_acc_number.Size = new System.Drawing.Size(55, 20);
-            this.part_2_purchase_bank_acc_number.TabIndex = 79;
-            this.part_2_purchase_bank_acc_number.Click += new System.EventHandler(this.part_2_purchase_bank_acc_number_Click);
-            this.part_2_purchase_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.purchase_bank_account_field.Location = new System.Drawing.Point(167, 305);
+            this.purchase_bank_account_field.Name = "purchase_bank_account_field";
+            this.purchase_bank_account_field.ReadOnly = true;
+            this.purchase_bank_account_field.Size = new System.Drawing.Size(55, 20);
+            this.purchase_bank_account_field.TabIndex = 79;
+            this.purchase_bank_account_field.Click += new System.EventHandler(this.part_2_purchase_bank_acc_number_Click);
+            this.purchase_bank_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // part_2_purchase_credit_acc_number
+            // purchase_credit_account_field
             // 
-            this.part_2_purchase_credit_acc_number.Location = new System.Drawing.Point(167, 274);
-            this.part_2_purchase_credit_acc_number.Name = "part_2_purchase_credit_acc_number";
-            this.part_2_purchase_credit_acc_number.ReadOnly = true;
-            this.part_2_purchase_credit_acc_number.Size = new System.Drawing.Size(55, 20);
-            this.part_2_purchase_credit_acc_number.TabIndex = 78;
-            this.part_2_purchase_credit_acc_number.Click += new System.EventHandler(this.part_2_purchase_credit_acc_number_Click);
-            this.part_2_purchase_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.purchase_credit_account_field.Location = new System.Drawing.Point(167, 274);
+            this.purchase_credit_account_field.Name = "purchase_credit_account_field";
+            this.purchase_credit_account_field.ReadOnly = true;
+            this.purchase_credit_account_field.Size = new System.Drawing.Size(55, 20);
+            this.purchase_credit_account_field.TabIndex = 78;
+            this.purchase_credit_account_field.Click += new System.EventHandler(this.part_2_purchase_credit_acc_number_Click);
+            this.purchase_credit_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // part_2_purchase_cash_acc_number
+            // purchase_cash_account_field
             // 
-            this.part_2_purchase_cash_acc_number.Location = new System.Drawing.Point(167, 243);
-            this.part_2_purchase_cash_acc_number.Name = "part_2_purchase_cash_acc_number";
-            this.part_2_purchase_cash_acc_number.ReadOnly = true;
-            this.part_2_purchase_cash_acc_number.Size = new System.Drawing.Size(55, 20);
-            this.part_2_purchase_cash_acc_number.TabIndex = 77;
-            this.part_2_purchase_cash_acc_number.Click += new System.EventHandler(this.part_2_purchase_cash_acc_number_Click);
-            this.part_2_purchase_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.purchase_cash_account_field.Location = new System.Drawing.Point(167, 243);
+            this.purchase_cash_account_field.Name = "purchase_cash_account_field";
+            this.purchase_cash_account_field.ReadOnly = true;
+            this.purchase_cash_account_field.Size = new System.Drawing.Size(55, 20);
+            this.purchase_cash_account_field.TabIndex = 77;
+            this.purchase_cash_account_field.Click += new System.EventHandler(this.part_2_purchase_cash_acc_number_Click);
+            this.purchase_cash_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // part_2_sales_cash_acc_number
+            // sales_vat_account_field
             // 
-            this.part_2_sales_cash_acc_number.Location = new System.Drawing.Point(221, 95);
-            this.part_2_sales_cash_acc_number.Name = "part_2_sales_cash_acc_number";
-            this.part_2_sales_cash_acc_number.ReadOnly = true;
-            this.part_2_sales_cash_acc_number.Size = new System.Drawing.Size(55, 20);
-            this.part_2_sales_cash_acc_number.TabIndex = 74;
-            this.part_2_sales_cash_acc_number.Click += new System.EventHandler(this.part_2_sales_cash_acc_number_Click);
-            this.part_2_sales_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.sales_vat_account_field.Location = new System.Drawing.Point(221, 95);
+            this.sales_vat_account_field.Name = "sales_vat_account_field";
+            this.sales_vat_account_field.ReadOnly = true;
+            this.sales_vat_account_field.Size = new System.Drawing.Size(55, 20);
+            this.sales_vat_account_field.TabIndex = 74;
+            this.sales_vat_account_field.Click += new System.EventHandler(this.part_2_sales_cash_acc_number_Click);
+            this.sales_vat_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // text_name_acc_vat
+            // sales_account_field_name
             // 
-            this.text_name_acc_vat.Location = new System.Drawing.Point(44, 152);
-            this.text_name_acc_vat.Name = "text_name_acc_vat";
-            this.text_name_acc_vat.ReadOnly = true;
-            this.text_name_acc_vat.Size = new System.Drawing.Size(396, 20);
-            this.text_name_acc_vat.TabIndex = 72;
+            this.sales_account_field_name.Location = new System.Drawing.Point(44, 152);
+            this.sales_account_field_name.Name = "sales_account_field_name";
+            this.sales_account_field_name.ReadOnly = true;
+            this.sales_account_field_name.Size = new System.Drawing.Size(396, 20);
+            this.sales_account_field_name.TabIndex = 72;
             // 
-            // purchase_text_name_acc_bank
+            // purchases_account_field_name
             // 
-            this.purchase_text_name_acc_bank.Location = new System.Drawing.Point(314, 305);
-            this.purchase_text_name_acc_bank.Name = "purchase_text_name_acc_bank";
-            this.purchase_text_name_acc_bank.ReadOnly = true;
-            this.purchase_text_name_acc_bank.Size = new System.Drawing.Size(122, 20);
-            this.purchase_text_name_acc_bank.TabIndex = 71;
+            this.purchases_account_field_name.Location = new System.Drawing.Point(430, 277);
+            this.purchases_account_field_name.Name = "purchases_account_field_name";
+            this.purchases_account_field_name.ReadOnly = true;
+            this.purchases_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.purchases_account_field_name.TabIndex = 69;
             // 
-            // purchase_text_name_acc_credit
+            // sale_bank_account_field_name
             // 
-            this.purchase_text_name_acc_credit.Location = new System.Drawing.Point(314, 274);
-            this.purchase_text_name_acc_credit.Name = "purchase_text_name_acc_credit";
-            this.purchase_text_name_acc_credit.ReadOnly = true;
-            this.purchase_text_name_acc_credit.Size = new System.Drawing.Size(122, 20);
-            this.purchase_text_name_acc_credit.TabIndex = 70;
+            this.sale_bank_account_field_name.Location = new System.Drawing.Point(318, 121);
+            this.sale_bank_account_field_name.Name = "sale_bank_account_field_name";
+            this.sale_bank_account_field_name.ReadOnly = true;
+            this.sale_bank_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.sale_bank_account_field_name.TabIndex = 68;
             // 
-            // purchase_text_name_acc_cash
+            // sale_credit_account_field_name
             // 
-            this.purchase_text_name_acc_cash.Location = new System.Drawing.Point(314, 243);
-            this.purchase_text_name_acc_cash.Name = "purchase_text_name_acc_cash";
-            this.purchase_text_name_acc_cash.ReadOnly = true;
-            this.purchase_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
-            this.purchase_text_name_acc_cash.TabIndex = 69;
+            this.sale_credit_account_field_name.Location = new System.Drawing.Point(318, 90);
+            this.sale_credit_account_field_name.Name = "sale_credit_account_field_name";
+            this.sale_credit_account_field_name.ReadOnly = true;
+            this.sale_credit_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.sale_credit_account_field_name.TabIndex = 67;
             // 
-            // sales_text_name_acc_bank
+            // sale_cash_account_field_name
             // 
-            this.sales_text_name_acc_bank.Location = new System.Drawing.Point(318, 121);
-            this.sales_text_name_acc_bank.Name = "sales_text_name_acc_bank";
-            this.sales_text_name_acc_bank.ReadOnly = true;
-            this.sales_text_name_acc_bank.Size = new System.Drawing.Size(122, 20);
-            this.sales_text_name_acc_bank.TabIndex = 68;
+            this.sale_cash_account_field_name.Location = new System.Drawing.Point(318, 59);
+            this.sale_cash_account_field_name.Name = "sale_cash_account_field_name";
+            this.sale_cash_account_field_name.ReadOnly = true;
+            this.sale_cash_account_field_name.Size = new System.Drawing.Size(122, 20);
+            this.sale_cash_account_field_name.TabIndex = 66;
             // 
-            // sales_text_name_acc_credit
+            // sales_account_field
             // 
-            this.sales_text_name_acc_credit.Location = new System.Drawing.Point(318, 90);
-            this.sales_text_name_acc_credit.Name = "sales_text_name_acc_credit";
-            this.sales_text_name_acc_credit.ReadOnly = true;
-            this.sales_text_name_acc_credit.Size = new System.Drawing.Size(122, 20);
-            this.sales_text_name_acc_credit.TabIndex = 67;
-            // 
-            // sales_text_name_acc_cash
-            // 
-            this.sales_text_name_acc_cash.Location = new System.Drawing.Point(318, 59);
-            this.sales_text_name_acc_cash.Name = "sales_text_name_acc_cash";
-            this.sales_text_name_acc_cash.ReadOnly = true;
-            this.sales_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
-            this.sales_text_name_acc_cash.TabIndex = 66;
-            // 
-            // vat_acc_number
-            // 
-            this.vat_acc_number.Location = new System.Drawing.Point(448, 152);
-            this.vat_acc_number.Name = "vat_acc_number";
-            this.vat_acc_number.ReadOnly = true;
-            this.vat_acc_number.Size = new System.Drawing.Size(64, 20);
-            this.vat_acc_number.TabIndex = 64;
-            this.vat_acc_number.Click += new System.EventHandler(this.vat_acc_number_Click);
-            this.vat_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
-            // 
-            // purchase_bank_acc_number
-            // 
-            this.purchase_bank_acc_number.Location = new System.Drawing.Point(444, 305);
-            this.purchase_bank_acc_number.Name = "purchase_bank_acc_number";
-            this.purchase_bank_acc_number.ReadOnly = true;
-            this.purchase_bank_acc_number.Size = new System.Drawing.Size(63, 20);
-            this.purchase_bank_acc_number.TabIndex = 61;
-            this.purchase_bank_acc_number.Click += new System.EventHandler(this.purchase_bank_acc_number_Click);
-            this.purchase_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.sales_account_field.Location = new System.Drawing.Point(448, 152);
+            this.sales_account_field.Name = "sales_account_field";
+            this.sales_account_field.ReadOnly = true;
+            this.sales_account_field.Size = new System.Drawing.Size(64, 20);
+            this.sales_account_field.TabIndex = 64;
+            this.sales_account_field.Click += new System.EventHandler(this.vat_acc_number_Click);
+            this.sales_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(535, 308);
+            this.label13.Location = new System.Drawing.Point(234, 306);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 13);
             this.label13.TabIndex = 62;
             this.label13.Text = "الحساب البنكي";
             // 
-            // purchase_credit_acc_number
-            // 
-            this.purchase_credit_acc_number.Location = new System.Drawing.Point(444, 274);
-            this.purchase_credit_acc_number.Name = "purchase_credit_acc_number";
-            this.purchase_credit_acc_number.ReadOnly = true;
-            this.purchase_credit_acc_number.Size = new System.Drawing.Size(63, 20);
-            this.purchase_credit_acc_number.TabIndex = 58;
-            this.purchase_credit_acc_number.Click += new System.EventHandler(this.purchase_credit_acc_number_Click);
-            this.purchase_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(541, 277);
+            this.label14.Location = new System.Drawing.Point(240, 275);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 13);
             this.label14.TabIndex = 59;
             this.label14.Text = "الحساب الأجل";
             // 
-            // purchase_cash_acc_number
+            // purchases_account_field
             // 
-            this.purchase_cash_acc_number.Location = new System.Drawing.Point(444, 243);
-            this.purchase_cash_acc_number.Name = "purchase_cash_acc_number";
-            this.purchase_cash_acc_number.ReadOnly = true;
-            this.purchase_cash_acc_number.Size = new System.Drawing.Size(63, 20);
-            this.purchase_cash_acc_number.TabIndex = 55;
-            this.purchase_cash_acc_number.Click += new System.EventHandler(this.purchase_cash_acc_number_Click);
-            this.purchase_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.purchases_account_field.Location = new System.Drawing.Point(560, 277);
+            this.purchases_account_field.Name = "purchases_account_field";
+            this.purchases_account_field.ReadOnly = true;
+            this.purchases_account_field.Size = new System.Drawing.Size(63, 20);
+            this.purchases_account_field.TabIndex = 55;
+            this.purchases_account_field.Click += new System.EventHandler(this.purchase_cash_acc_number_Click);
+            this.purchases_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(534, 246);
+            this.label15.Location = new System.Drawing.Point(233, 244);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 13);
             this.label15.TabIndex = 56;
@@ -813,15 +761,15 @@ namespace sales_management.UI
             this.label16.Text = "فاتورة المشتريات";
             this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // sales_bank_acc_number
+            // sale_bank_account_field
             // 
-            this.sales_bank_acc_number.Location = new System.Drawing.Point(448, 121);
-            this.sales_bank_acc_number.Name = "sales_bank_acc_number";
-            this.sales_bank_acc_number.ReadOnly = true;
-            this.sales_bank_acc_number.Size = new System.Drawing.Size(63, 20);
-            this.sales_bank_acc_number.TabIndex = 51;
-            this.sales_bank_acc_number.Click += new System.EventHandler(this.sales_bank_acc_number_Click);
-            this.sales_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.sale_bank_account_field.Location = new System.Drawing.Point(448, 121);
+            this.sale_bank_account_field.Name = "sale_bank_account_field";
+            this.sale_bank_account_field.ReadOnly = true;
+            this.sale_bank_account_field.Size = new System.Drawing.Size(63, 20);
+            this.sale_bank_account_field.TabIndex = 51;
+            this.sale_bank_account_field.Click += new System.EventHandler(this.sales_bank_acc_number_Click);
+            this.sale_bank_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label10
             // 
@@ -832,15 +780,15 @@ namespace sales_management.UI
             this.label10.TabIndex = 52;
             this.label10.Text = "الحساب البنكي";
             // 
-            // sales_credit_acc_number
+            // sale_credit_account_field
             // 
-            this.sales_credit_acc_number.Location = new System.Drawing.Point(448, 90);
-            this.sales_credit_acc_number.Name = "sales_credit_acc_number";
-            this.sales_credit_acc_number.ReadOnly = true;
-            this.sales_credit_acc_number.Size = new System.Drawing.Size(63, 20);
-            this.sales_credit_acc_number.TabIndex = 48;
-            this.sales_credit_acc_number.Click += new System.EventHandler(this.sales_credit_acc_number_Click);
-            this.sales_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.sale_credit_account_field.Location = new System.Drawing.Point(448, 90);
+            this.sale_credit_account_field.Name = "sale_credit_account_field";
+            this.sale_credit_account_field.ReadOnly = true;
+            this.sale_credit_account_field.Size = new System.Drawing.Size(63, 20);
+            this.sale_credit_account_field.TabIndex = 48;
+            this.sale_credit_account_field.Click += new System.EventHandler(this.sales_credit_acc_number_Click);
+            this.sale_credit_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label11
             // 
@@ -851,15 +799,15 @@ namespace sales_management.UI
             this.label11.TabIndex = 49;
             this.label11.Text = "الحساب الأجل";
             // 
-            // sales_cash_acc_number
+            // sale_cash_account_field
             // 
-            this.sales_cash_acc_number.Location = new System.Drawing.Point(448, 59);
-            this.sales_cash_acc_number.Name = "sales_cash_acc_number";
-            this.sales_cash_acc_number.ReadOnly = true;
-            this.sales_cash_acc_number.Size = new System.Drawing.Size(63, 20);
-            this.sales_cash_acc_number.TabIndex = 45;
-            this.sales_cash_acc_number.Click += new System.EventHandler(this.sales_cash_acc_number_Click);
-            this.sales_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.sale_cash_account_field.Location = new System.Drawing.Point(448, 59);
+            this.sale_cash_account_field.Name = "sale_cash_account_field";
+            this.sale_cash_account_field.ReadOnly = true;
+            this.sale_cash_account_field.Size = new System.Drawing.Size(63, 20);
+            this.sale_cash_account_field.TabIndex = 45;
+            this.sale_cash_account_field.Click += new System.EventHandler(this.sales_cash_acc_number_Click);
+            this.sale_cash_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label12
             // 
@@ -921,6 +869,25 @@ namespace sales_management.UI
             this.settingsIdText.Size = new System.Drawing.Size(82, 20);
             this.settingsIdText.TabIndex = 16;
             this.settingsIdText.Visible = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(508, 255);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(118, 13);
+            this.label23.TabIndex = 110;
+            this.label23.Text = "تحديد حساب المشتريات";
+            // 
+            // inventory_account_field
+            // 
+            this.inventory_account_field.Location = new System.Drawing.Point(443, 422);
+            this.inventory_account_field.Name = "inventory_account_field";
+            this.inventory_account_field.ReadOnly = true;
+            this.inventory_account_field.Size = new System.Drawing.Size(64, 20);
+            this.inventory_account_field.TabIndex = 111;
+            this.inventory_account_field.Click += new System.EventHandler(this.inventory_account_field_Click);
+            this.inventory_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // SystemSettings
             // 
@@ -993,34 +960,29 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        public System.Windows.Forms.TextBox sales_bank_acc_number;
-        public System.Windows.Forms.TextBox sales_credit_acc_number;
-        public System.Windows.Forms.TextBox sales_cash_acc_number;
-        public System.Windows.Forms.TextBox purchase_bank_acc_number;
-        public System.Windows.Forms.TextBox purchase_credit_acc_number;
-        public System.Windows.Forms.TextBox purchase_cash_acc_number;
-        public System.Windows.Forms.TextBox vat_acc_number;
-        public System.Windows.Forms.TextBox text_name_acc_vat;
-        public System.Windows.Forms.TextBox purchase_text_name_acc_bank;
-        public System.Windows.Forms.TextBox purchase_text_name_acc_credit;
-        public System.Windows.Forms.TextBox purchase_text_name_acc_cash;
-        public System.Windows.Forms.TextBox sales_text_name_acc_bank;
-        public System.Windows.Forms.TextBox sales_text_name_acc_credit;
-        public System.Windows.Forms.TextBox sales_text_name_acc_cash;
+        public System.Windows.Forms.TextBox sale_bank_account_field;
+        public System.Windows.Forms.TextBox sale_credit_account_field;
+        public System.Windows.Forms.TextBox sale_cash_account_field;
+        public System.Windows.Forms.TextBox purchases_account_field;
+        public System.Windows.Forms.TextBox sales_account_field;
+        public System.Windows.Forms.TextBox sales_account_field_name;
+        public System.Windows.Forms.TextBox purchases_account_field_name;
+        public System.Windows.Forms.TextBox sale_bank_account_field_name;
+        public System.Windows.Forms.TextBox sale_credit_account_field_name;
+        public System.Windows.Forms.TextBox sale_cash_account_field_name;
         private System.Windows.Forms.Label label19;
-        public System.Windows.Forms.TextBox part_2_purchase_text_name_acc_bank;
-        public System.Windows.Forms.TextBox part_2_purchase_text_name_acc_credit;
-        public System.Windows.Forms.TextBox part_2_purchase_text_name_acc_cash;
-        public System.Windows.Forms.TextBox part_2_sales_text_name_acc_cash;
-        public System.Windows.Forms.TextBox part_2_purchase_bank_acc_number;
-        public System.Windows.Forms.TextBox part_2_purchase_credit_acc_number;
-        public System.Windows.Forms.TextBox part_2_purchase_cash_acc_number;
-        public System.Windows.Forms.TextBox part_2_sales_cash_acc_number;
-        public System.Windows.Forms.TextBox product_cost_acc_name;
-        public System.Windows.Forms.TextBox product_cost_acc_number;
+        public System.Windows.Forms.TextBox purchase_bank_account_field_name;
+        public System.Windows.Forms.TextBox purchase_credit_account_field_name;
+        public System.Windows.Forms.TextBox purchase_cash_account_field_name;
+        public System.Windows.Forms.TextBox sales_vat_account_field_name;
+        public System.Windows.Forms.TextBox purchase_bank_account_field;
+        public System.Windows.Forms.TextBox purchase_credit_account_field;
+        public System.Windows.Forms.TextBox purchase_cash_account_field;
+        public System.Windows.Forms.TextBox sales_vat_account_field;
+        public System.Windows.Forms.TextBox cost_of_goods_account_field_name;
+        public System.Windows.Forms.TextBox cost_of_goods_account_field;
         private System.Windows.Forms.Label label20;
-        public System.Windows.Forms.TextBox inventory_acc_name;
-        public System.Windows.Forms.TextBox inventory_acc_number;
+        public System.Windows.Forms.TextBox inventory_account_field_name;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
@@ -1028,14 +990,16 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label28;
-        public System.Windows.Forms.TextBox vat_number_in_name;
-        public System.Windows.Forms.TextBox vat_number_in;
+        public System.Windows.Forms.TextBox purchases_vat_account_field_name;
+        public System.Windows.Forms.TextBox purchases_vat_account_field;
         private System.Windows.Forms.Label label17;
-        public System.Windows.Forms.TextBox supplier_acc_number_name;
-        public System.Windows.Forms.TextBox supplier_acc_number;
-        public System.Windows.Forms.TextBox customer_acc_number_name;
-        public System.Windows.Forms.TextBox customer_acc_number;
+        public System.Windows.Forms.TextBox suppliers_account_field_name;
+        public System.Windows.Forms.TextBox suppliers_account_field;
+        public System.Windows.Forms.TextBox customers_account_field_name;
+        public System.Windows.Forms.TextBox customers_account_field;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label23;
+        public System.Windows.Forms.TextBox inventory_account_field;
     }
 }
