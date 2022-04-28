@@ -76,8 +76,8 @@ namespace sales_management.UI
             UI.SystemSettings.GetForm.text_name_acc_vat.Text = this.Get_Account_Name(vat_acc_number.Text.ToString());
 
             UI.SystemSettings.GetForm.part_2_sales_text_name_acc_cash.Text = this.Get_Account_Name(part_2_sales_cash_acc_number.Text.ToString());
-            UI.SystemSettings.GetForm.part_2_sales_text_name_acc_credit.Text = this.Get_Account_Name(part_2_sales_credit_acc_number.Text.ToString());
-            UI.SystemSettings.GetForm.part_2_sales_text_name_acc_bank.Text = this.Get_Account_Name(part_2_sales_bank_acc_number.Text.ToString());
+            //UI.SystemSettings.GetForm.part_2_sales_text_name_acc_credit.Text = this.Get_Account_Name(part_2_sales_credit_acc_number.Text.ToString());
+            //UI.SystemSettings.GetForm.part_2_sales_text_name_acc_bank.Text = this.Get_Account_Name(part_2_sales_bank_acc_number.Text.ToString());
             UI.SystemSettings.GetForm.part_2_purchase_text_name_acc_cash.Text = this.Get_Account_Name(part_2_purchase_cash_acc_number.Text.ToString());
             UI.SystemSettings.GetForm.part_2_purchase_text_name_acc_credit.Text = this.Get_Account_Name(part_2_purchase_credit_acc_number.Text.ToString());
             UI.SystemSettings.GetForm.part_2_purchase_text_name_acc_bank.Text = this.Get_Account_Name(part_2_purchase_bank_acc_number.Text.ToString());
@@ -157,8 +157,8 @@ namespace sales_management.UI
 
 
                 part_2_sales_cash_acc_number.Text = drow["part_2_sales_cash_acc_number"].ToString();
-                part_2_sales_credit_acc_number.Text = drow["part_2_sales_credit_acc_number"].ToString();
-                part_2_sales_bank_acc_number.Text = drow["part_2_sales_bank_acc_number"].ToString();
+                //part_2_sales_credit_acc_number.Text = drow["part_2_sales_credit_acc_number"].ToString();
+                //part_2_sales_bank_acc_number.Text = drow["part_2_sales_bank_acc_number"].ToString();
                 part_2_purchase_cash_acc_number.Text = drow["part_2_purchase_cash_acc_number"].ToString();
                 part_2_purchase_credit_acc_number.Text = drow["part_2_purchase_credit_acc_number"].ToString();
                 part_2_purchase_bank_acc_number.Text = drow["part_2_purchase_bank_acc_number"].ToString();
@@ -226,8 +226,8 @@ namespace sales_management.UI
                     settingsID, name, address, vat_number, vat_percentage, vat_value, 0, delete_enable, edit_enable, address_enable, userId, userId, DateTime.Now, DateTime.Now, isEnabledVat, sales_cash_acc_number.Text, sales_credit_acc_number.Text, sales_bank_acc_number.Text, vat_acc_number.Text, purchase_cash_acc_number.Text, purchase_credit_acc_number.Text, purchase_bank_acc_number.Text
                     ,
                     part_2_sales_cash_acc_number.Text,
-                    part_2_sales_credit_acc_number.Text,
-                    part_2_sales_bank_acc_number.Text,
+                    "-1",
+                    "-1",
                     part_2_purchase_cash_acc_number.Text,
                     part_2_purchase_credit_acc_number.Text,
                     part_2_purchase_bank_acc_number.Text,
@@ -333,14 +333,14 @@ namespace sales_management.UI
 
         private void part_2_sales_credit_acc_number_Click(object sender, EventArgs e)
         {
-            UI.SystemSettings.GetForm.input = part_2_sales_credit_acc_number; 
+           // UI.SystemSettings.GetForm.input = part_2_sales_credit_acc_number; 
             UI.___Accounts.GetForm.InstanceType = 0;
             UI.___Accounts.GetForm.ShowDialog();
         }
 
         private void part_2_sales_bank_acc_number_Click(object sender, EventArgs e)
         {
-            UI.SystemSettings.GetForm.input = part_2_sales_bank_acc_number; 
+          //  UI.SystemSettings.GetForm.input = part_2_sales_bank_acc_number; 
             UI.___Accounts.GetForm.InstanceType = 0;
             UI.___Accounts.GetForm.ShowDialog();
         }

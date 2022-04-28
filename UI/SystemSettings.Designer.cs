@@ -65,8 +65,6 @@ namespace sales_management.UI
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.inventory_acc_name = new System.Windows.Forms.TextBox();
@@ -79,14 +77,10 @@ namespace sales_management.UI
             this.part_2_purchase_text_name_acc_bank = new System.Windows.Forms.TextBox();
             this.part_2_purchase_text_name_acc_credit = new System.Windows.Forms.TextBox();
             this.part_2_purchase_text_name_acc_cash = new System.Windows.Forms.TextBox();
-            this.part_2_sales_text_name_acc_bank = new System.Windows.Forms.TextBox();
-            this.part_2_sales_text_name_acc_credit = new System.Windows.Forms.TextBox();
             this.part_2_sales_text_name_acc_cash = new System.Windows.Forms.TextBox();
             this.part_2_purchase_bank_acc_number = new System.Windows.Forms.TextBox();
             this.part_2_purchase_credit_acc_number = new System.Windows.Forms.TextBox();
             this.part_2_purchase_cash_acc_number = new System.Windows.Forms.TextBox();
-            this.part_2_sales_bank_acc_number = new System.Windows.Forms.TextBox();
-            this.part_2_sales_credit_acc_number = new System.Windows.Forms.TextBox();
             this.part_2_sales_cash_acc_number = new System.Windows.Forms.TextBox();
             this.text_name_acc_vat = new System.Windows.Forms.TextBox();
             this.purchase_text_name_acc_bank = new System.Windows.Forms.TextBox();
@@ -363,8 +357,6 @@ namespace sales_management.UI
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label27);
-            this.tabPage3.Controls.Add(this.label24);
-            this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.label22);
             this.tabPage3.Controls.Add(this.label18);
             this.tabPage3.Controls.Add(this.inventory_acc_name);
@@ -377,14 +369,10 @@ namespace sales_management.UI
             this.tabPage3.Controls.Add(this.part_2_purchase_text_name_acc_bank);
             this.tabPage3.Controls.Add(this.part_2_purchase_text_name_acc_credit);
             this.tabPage3.Controls.Add(this.part_2_purchase_text_name_acc_cash);
-            this.tabPage3.Controls.Add(this.part_2_sales_text_name_acc_bank);
-            this.tabPage3.Controls.Add(this.part_2_sales_text_name_acc_credit);
             this.tabPage3.Controls.Add(this.part_2_sales_text_name_acc_cash);
             this.tabPage3.Controls.Add(this.part_2_purchase_bank_acc_number);
             this.tabPage3.Controls.Add(this.part_2_purchase_credit_acc_number);
             this.tabPage3.Controls.Add(this.part_2_purchase_cash_acc_number);
-            this.tabPage3.Controls.Add(this.part_2_sales_bank_acc_number);
-            this.tabPage3.Controls.Add(this.part_2_sales_credit_acc_number);
             this.tabPage3.Controls.Add(this.part_2_sales_cash_acc_number);
             this.tabPage3.Controls.Add(this.text_name_acc_vat);
             this.tabPage3.Controls.Add(this.purchase_text_name_acc_bank);
@@ -535,32 +523,14 @@ namespace sales_management.UI
             this.label27.TabIndex = 97;
             this.label27.Text = "إلي ح /";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(250, 124);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(41, 13);
-            this.label24.TabIndex = 96;
-            this.label24.Text = "إلي ح /";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(251, 93);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(41, 13);
-            this.label23.TabIndex = 95;
-            this.label23.Text = "إلي ح /";
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(251, 62);
+            this.label22.Location = new System.Drawing.Point(166, 71);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(41, 13);
+            this.label22.Size = new System.Drawing.Size(108, 13);
             this.label22.TabIndex = 94;
-            this.label22.Text = "إلي ح /";
+            this.label22.Text = "تحديد حساب المبيعات";
             // 
             // label18
             // 
@@ -661,28 +631,12 @@ namespace sales_management.UI
             this.part_2_purchase_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
             this.part_2_purchase_text_name_acc_cash.TabIndex = 83;
             // 
-            // part_2_sales_text_name_acc_bank
-            // 
-            this.part_2_sales_text_name_acc_bank.Location = new System.Drawing.Point(43, 121);
-            this.part_2_sales_text_name_acc_bank.Name = "part_2_sales_text_name_acc_bank";
-            this.part_2_sales_text_name_acc_bank.ReadOnly = true;
-            this.part_2_sales_text_name_acc_bank.Size = new System.Drawing.Size(122, 20);
-            this.part_2_sales_text_name_acc_bank.TabIndex = 82;
-            // 
-            // part_2_sales_text_name_acc_credit
-            // 
-            this.part_2_sales_text_name_acc_credit.Location = new System.Drawing.Point(43, 90);
-            this.part_2_sales_text_name_acc_credit.Name = "part_2_sales_text_name_acc_credit";
-            this.part_2_sales_text_name_acc_credit.ReadOnly = true;
-            this.part_2_sales_text_name_acc_credit.Size = new System.Drawing.Size(122, 20);
-            this.part_2_sales_text_name_acc_credit.TabIndex = 81;
-            // 
             // part_2_sales_text_name_acc_cash
             // 
-            this.part_2_sales_text_name_acc_cash.Location = new System.Drawing.Point(43, 59);
+            this.part_2_sales_text_name_acc_cash.Location = new System.Drawing.Point(45, 95);
             this.part_2_sales_text_name_acc_cash.Name = "part_2_sales_text_name_acc_cash";
             this.part_2_sales_text_name_acc_cash.ReadOnly = true;
-            this.part_2_sales_text_name_acc_cash.Size = new System.Drawing.Size(122, 20);
+            this.part_2_sales_text_name_acc_cash.Size = new System.Drawing.Size(170, 20);
             this.part_2_sales_text_name_acc_cash.TabIndex = 80;
             // 
             // part_2_purchase_bank_acc_number
@@ -715,29 +669,9 @@ namespace sales_management.UI
             this.part_2_purchase_cash_acc_number.Click += new System.EventHandler(this.part_2_purchase_cash_acc_number_Click);
             this.part_2_purchase_cash_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // part_2_sales_bank_acc_number
-            // 
-            this.part_2_sales_bank_acc_number.Location = new System.Drawing.Point(171, 121);
-            this.part_2_sales_bank_acc_number.Name = "part_2_sales_bank_acc_number";
-            this.part_2_sales_bank_acc_number.ReadOnly = true;
-            this.part_2_sales_bank_acc_number.Size = new System.Drawing.Size(55, 20);
-            this.part_2_sales_bank_acc_number.TabIndex = 76;
-            this.part_2_sales_bank_acc_number.Click += new System.EventHandler(this.part_2_sales_bank_acc_number_Click);
-            this.part_2_sales_bank_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
-            // 
-            // part_2_sales_credit_acc_number
-            // 
-            this.part_2_sales_credit_acc_number.Location = new System.Drawing.Point(171, 90);
-            this.part_2_sales_credit_acc_number.Name = "part_2_sales_credit_acc_number";
-            this.part_2_sales_credit_acc_number.ReadOnly = true;
-            this.part_2_sales_credit_acc_number.Size = new System.Drawing.Size(55, 20);
-            this.part_2_sales_credit_acc_number.TabIndex = 75;
-            this.part_2_sales_credit_acc_number.Click += new System.EventHandler(this.part_2_sales_credit_acc_number_Click);
-            this.part_2_sales_credit_acc_number.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
-            // 
             // part_2_sales_cash_acc_number
             // 
-            this.part_2_sales_cash_acc_number.Location = new System.Drawing.Point(171, 59);
+            this.part_2_sales_cash_acc_number.Location = new System.Drawing.Point(221, 95);
             this.part_2_sales_cash_acc_number.Name = "part_2_sales_cash_acc_number";
             this.part_2_sales_cash_acc_number.ReadOnly = true;
             this.part_2_sales_cash_acc_number.Size = new System.Drawing.Size(55, 20);
@@ -1077,14 +1011,10 @@ namespace sales_management.UI
         public System.Windows.Forms.TextBox part_2_purchase_text_name_acc_bank;
         public System.Windows.Forms.TextBox part_2_purchase_text_name_acc_credit;
         public System.Windows.Forms.TextBox part_2_purchase_text_name_acc_cash;
-        public System.Windows.Forms.TextBox part_2_sales_text_name_acc_bank;
-        public System.Windows.Forms.TextBox part_2_sales_text_name_acc_credit;
         public System.Windows.Forms.TextBox part_2_sales_text_name_acc_cash;
         public System.Windows.Forms.TextBox part_2_purchase_bank_acc_number;
         public System.Windows.Forms.TextBox part_2_purchase_credit_acc_number;
         public System.Windows.Forms.TextBox part_2_purchase_cash_acc_number;
-        public System.Windows.Forms.TextBox part_2_sales_bank_acc_number;
-        public System.Windows.Forms.TextBox part_2_sales_credit_acc_number;
         public System.Windows.Forms.TextBox part_2_sales_cash_acc_number;
         public System.Windows.Forms.TextBox product_cost_acc_name;
         public System.Windows.Forms.TextBox product_cost_acc_number;
@@ -1095,8 +1025,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label28;
