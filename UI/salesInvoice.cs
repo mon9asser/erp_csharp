@@ -1808,5 +1808,11 @@ namespace sales_management.UI
 
             this.refill_datagridview(id, items_datagridview);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UI.ReportSalesInvoiceViewer rpt = new UI.ReportSalesInvoiceViewer();
+            rpt.Show();
+        }
     }
 }

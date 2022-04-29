@@ -85,6 +85,7 @@ namespace sales_management.UI
             this.label6 = new System.Windows.Forms.Label();
             this.enable_zakat_taxes = new System.Windows.Forms.CheckBox();
             this.entry_id = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -628,11 +629,22 @@ namespace sales_management.UI
             this.entry_id.Size = new System.Drawing.Size(100, 20);
             this.entry_id.TabIndex = 144;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(807, 590);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 145;
+            this.button1.Text = "الطبـــاعه";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // salesInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 634);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.entry_id);
             this.Controls.Add(this.enable_zakat_taxes);
             this.Controls.Add(this.current_invoice_page);
@@ -756,5 +768,6 @@ namespace sales_management.UI
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.CheckBox enable_zakat_taxes;
         private System.Windows.Forms.TextBox entry_id;
+        private System.Windows.Forms.Button button1;
     }
 }
