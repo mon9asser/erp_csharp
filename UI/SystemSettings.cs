@@ -73,9 +73,9 @@ namespace sales_management.UI
             UI.SystemSettings.GetForm.purchases_account_field_name.Text = this.Get_Account_Name(purchases_account_field.Text.ToString());
             //UI.SystemSettings.GetForm.purchase_text_name_acc_credit.Text = this.Get_Account_Name(purchase_credit_acc_number.Text.ToString());
             //UI.SystemSettings.GetForm.purchase_text_name_acc_bank.Text = this.Get_Account_Name(purchase_bank_acc_number.Text.ToString());
-            UI.SystemSettings.GetForm.sales_account_field_name.Text = this.Get_Account_Name(sales_account_field.Text.ToString());
+            UI.SystemSettings.GetForm.sales_account_field_name.Text = this.Get_Account_Name(sales_vat_account_field.Text.ToString());
 
-            UI.SystemSettings.GetForm.sales_vat_account_field_name.Text = this.Get_Account_Name(sales_vat_account_field.Text.ToString());
+            UI.SystemSettings.GetForm.sales_vat_account_field_name.Text = this.Get_Account_Name(sales_account_field.Text.ToString());
             //UI.SystemSettings.GetForm.part_2_sales_text_name_acc_credit.Text = this.Get_Account_Name(part_2_sales_credit_acc_number.Text.ToString());
             //UI.SystemSettings.GetForm.part_2_sales_text_name_acc_bank.Text = this.Get_Account_Name(part_2_sales_bank_acc_number.Text.ToString());
             UI.SystemSettings.GetForm.purchase_cash_account_field_name.Text = this.Get_Account_Name(purchase_cash_account_field.Text.ToString());
@@ -318,7 +318,7 @@ namespace sales_management.UI
 
         private void vat_acc_number_Click(object sender, EventArgs e)
         {
-            UI.SystemSettings.GetForm.input = sales_account_field;
+            UI.SystemSettings.GetForm.input = sales_vat_account_field;
             UI.___Accounts.GetForm.InstanceType = 0;
             UI.___Accounts.GetForm.ShowDialog();
         }
@@ -335,7 +335,7 @@ namespace sales_management.UI
 
         private void part_2_sales_cash_acc_number_Click(object sender, EventArgs e)
         {
-            UI.SystemSettings.GetForm.input = sales_vat_account_field; 
+            UI.SystemSettings.GetForm.input = sales_account_field; 
             UI.___Accounts.GetForm.InstanceType = 0;
             UI.___Accounts.GetForm.ShowDialog();
         }

@@ -32,7 +32,7 @@ namespace sales_management.UI
         public bool is_getting_data = true;
         public bool is_updating_data = false;
         public bool is_change_price = false;
-        public int documentType = 0; 
+        public int documentType = 0;
         public int currentInvoiceRowIndex = -1;
         public int lastRow = -1;
         public static salesInvoice frm;
@@ -90,7 +90,7 @@ namespace sales_management.UI
                 rowDefault = table.NewRow();
                 rowDefault["id"] = row["id"].ToString();
                 rowDefault["code"] = row["code"].ToString();
-                rowDefault["name"] = row["name"].ToString(); 
+                rowDefault["name"] = row["name"].ToString();
                 rowDefault["unit_price"] = row["default_sale_price"].ToString();
                 rowDefault["unit_cost"] = row["purchase_price"].ToString();
                 rowDefault["unit_id"] = row["unit_id"].ToString();
@@ -257,7 +257,7 @@ namespace sales_management.UI
 
             if (legend_number.Text == "")
             {
-                string[] account = Get_Account_Details(this.Settings.Rows[0]["sales_cash_acc_number"].ToString());
+                string[] account = Get_Account_Details(this.Settings.Rows[0]["sale_cash_account"].ToString());
                 if (account.Length != 0)
                 {
                     legend_id.Text = account[0].ToString();
@@ -592,7 +592,7 @@ namespace sales_management.UI
             if (paymentType == 0)
             {
                 // Cash
-                account = Get_Account_Details(this.Settings.Rows[0]["sales_cash_acc_number"].ToString());
+                account = Get_Account_Details(this.Settings.Rows[0]["sale_cash_account"].ToString());
 
                 legend_id.Text = account[0].ToString();
                 legend_number.Text = account[1].ToString();
@@ -601,7 +601,7 @@ namespace sales_management.UI
             else if (paymentType == 1)
             {
                 // Deferred payment
-                account = Get_Account_Details(this.Settings.Rows[0]["sales_credit_acc_number"].ToString());
+                account = Get_Account_Details(this.Settings.Rows[0]["sale_credit_account"].ToString());
 
                 legend_id.Text = account[0].ToString();
                 legend_number.Text = account[1].ToString();
@@ -610,7 +610,7 @@ namespace sales_management.UI
             else if (paymentType == 2)
             {
                 // Banks
-                account = Get_Account_Details(this.Settings.Rows[0]["sales_bank_acc_number"].ToString());
+                account = Get_Account_Details(this.Settings.Rows[0]["sale_bank_account"].ToString());
 
                 legend_id.Text = account[0].ToString();
                 legend_number.Text = account[1].ToString();
@@ -860,14 +860,14 @@ namespace sales_management.UI
                 }
             }
 
-            DataRow item = Prods.Rows[index]; 
+            DataRow item = Prods.Rows[index];
             string name = item["name"].ToString();
             int pid = Convert.ToInt32(item["id"]);
             int default_group = Convert.ToInt32(item["default_group"]);
             Decimal purchase_price = Convert.ToDecimal(item["purchase_price"]);
             Decimal default_sale_price = Convert.ToDecimal(item["default_sale_price"]);
             int unit_id = Convert.ToInt32(item["unit_id"]);
-            decimal unit_factor = 1; 
+            decimal unit_factor = 1;
 
             if (default_group != 0)
             {
@@ -906,7 +906,7 @@ namespace sales_management.UI
             items_datagridview.Rows[iindex].Cells["unit_cost"].Value = unit_cost.ToString();
             items_datagridview.Rows[iindex].Cells["factor"].Value = unit_factor;
             items_datagridview.Rows[iindex].Cells["is_out"].Value = 1;
-            items_datagridview.Rows[iindex].Cells["product_code"].Value = item["code"].ToString();  
+            items_datagridview.Rows[iindex].Cells["product_code"].Value = item["code"].ToString();
 
             //drow.Cells["datagrid_id"].Value = "xxxxxxxxxxxxxxx";
             //drow.Cells["total_quantity"].Value = "xxxxxxxxxxxxxxx";
@@ -1085,7 +1085,7 @@ namespace sales_management.UI
 
             this.is_change_price = false;
         }
-         
+
 
         private void discount_value_TextChanged(object sender, EventArgs e)
         {
@@ -1344,7 +1344,7 @@ namespace sales_management.UI
                     rtbl["total_quantity"] = row.Cells["total_quantity"].Value.ToString();
                     rtbl["datagrid_id"] = row.Cells["datagrid_id"].Value.ToString();
                     rtbl["product_code"] = row.Cells["product_code"].Value.ToString();
-                    rtbl["total_price"] = row.Cells["total_price"].Value.ToString(); 
+                    rtbl["total_price"] = row.Cells["total_price"].Value.ToString();
                     rtbl["unit_cost"] = row.Cells["unit_cost"].Value.ToString();
                     rtbl["total_cost"] = row.Cells["total_cost"].Value.ToString();
                     //rtbl["datemade"] = System.DBNull.Value == row.Cells["datemade"].Value ? DateTime.Now: Convert.ToDateTime(row.Cells["datemade"].Value);
@@ -1394,166 +1394,83 @@ namespace sales_management.UI
             entry_details.Columns.Add("date");
             entry_details.Columns.Add("account_number");
 
-            if (payment_methods.SelectedIndex == 0)
+            int salesPaymentType = Convert.ToInt32(payment_methods.SelectedIndex);
+            DataRow salesRow_from = entry_details.NewRow();
+
+            salesRow_from["journal_id"] = entry_id.Text;
+            salesRow_from["debit"] = total_field_text.Text;
+            salesRow_from["cost_center_number"] = "-1";
+            salesRow_from["date"] = datemade.Value;
+
+            // From : 
+            if (salesPaymentType == 0)
             {
-
-                DataRow entry_details_cash = entry_details.NewRow();
-                entry_details_cash["journal_id"] = entry_id.Text;
-                entry_details_cash["debit"] = total_field_text.Text;
-                //entry_details_cash["credit"] = "";
-                entry_details_cash["description"] = "عملية بيع نقدا";
-                entry_details_cash["cost_center_number"] = "-1";
-                entry_details_cash["date"] = datemade.Value;
-                entry_details_cash["account_number"] = setting["sales_cash_acc_number"].ToString();
-
-                // Case Discount 
-                if (discount_value.Text != "")
+                salesRow_from["description"] = "عملية بيع نقدا";
+                salesRow_from["account_number"] = setting["sale_cash_account"].ToString();
+            }
+            else if (salesPaymentType == 1)
+            {
+                salesRow_from["description"] = "عملية بيع أجل";
+                salesRow_from["account_number"] = setting["sale_credit_account"].ToString();
+            }
+            else if (salesPaymentType == 2 || salesPaymentType == 3)
+            {
+                salesRow_from["description"] = "عملية بيع عن طريق البنك";
+                salesRow_from["account_number"] = setting["sale_bank_account"].ToString();
+            }
+            
+            // Case Discount 
+            if (discount_value.Text != "")
+            {
+                if (dicount_percentage.Text != "")
                 {
-                    if (dicount_percentage.Text != "")
-                    {
-                        entry_details_cash["description"] += " - بخصم تجاري " + "%" + dicount_percentage.Text;
-                    }
-                    else
-                    {
-                        entry_details_cash["description"] += " - بخصم تجاري " + discount_value.Text;
-                    }
+                    salesRow_from["description"] += " - بخصم تجاري " + "%" + dicount_percentage.Text;
                 }
-
-                entry_details.Rows.Add(entry_details_cash);
+                else
+                {
+                    salesRow_from["description"] += " - بخصم تجاري " + discount_value.Text;
+                }
             }
 
-            if (payment_methods.SelectedIndex == 2 || payment_methods.SelectedIndex == 3)
-            {
-                DataRow entry_details_bank = entry_details.NewRow();
-                entry_details_bank["journal_id"] = entry_id.Text;
-                entry_details_bank["debit"] = total_field_text.Text;
-                //entry_details_bank["credit"] = "";
-                entry_details_bank["description"] = "عملية بيع عن طريق البنك";
-                entry_details_bank["cost_center_number"] = "-1";
-                entry_details_bank["date"] = datemade.Value;
-                entry_details_bank["account_number"] = setting["sales_credit_acc_number"].ToString();
+            entry_details.Rows.Add(salesRow_from);
 
-                // Case Discount 
-                if (discount_value.Text != "")
-                {
-                    if (dicount_percentage.Text != "")
-                    {
-                        entry_details_bank["description"] += " - بخصم تجاري " + "%" + dicount_percentage.Text;
-                    }
-                    else
-                    {
-                        entry_details_bank["description"] += " - بخصم تجاري " + discount_value.Text;
-                    }
-                }
-
-                entry_details.Rows.Add(entry_details_bank);
+            // To :
+            if (enable_zakat_taxes.Checked) { 
+                DataRow salesRow_vat_to = entry_details.NewRow();
+                salesRow_vat_to["journal_id"] = entry_id.Text;
+                salesRow_vat_to["credit"] = vat_amount.Text;
+                salesRow_vat_to["description"] = "ض.ق.م مخرجات";
+                salesRow_vat_to["cost_center_number"] = "-1";
+                salesRow_vat_to["date"] = datemade.Value;
+                salesRow_vat_to["account_number"] = setting["sales_vat_account"].ToString(); 
+                entry_details.Rows.Add(salesRow_vat_to);
             }
 
-            if (enable_zakat_taxes.Checked)
+            DataRow salesRow_sales_to = entry_details.NewRow();
+            salesRow_sales_to["journal_id"] = entry_id.Text;
+            salesRow_sales_to["credit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text;
+            salesRow_sales_to["description"] = "مبيعات ";
+            if (salesPaymentType == 0)
             {
-
-
-                DataRow entry_details_vat = entry_details.NewRow();
-                entry_details_vat["journal_id"] = entry_id.Text;
-                entry_details_vat["credit"] = vat_amount.Text; 
-                entry_details_vat["description"] = "ض.ق.م مخرجات";
-                entry_details_vat["cost_center_number"] = "-1";
-                entry_details_vat["date"] = datemade.Value;
-                entry_details_vat["account_number"] = setting["vat_acc_number"].ToString();
-                entry_details.Rows.Add(entry_details_vat);
-
+                salesRow_sales_to["description"] += "نقدا"; 
             }
-
-
-            // Part 2 +++++++++++++++++++++++++++++++
-	        if (payment_methods.SelectedIndex == 0)
-	        {
-
-		        DataRow entry_details_cash_2 = entry_details.NewRow();
-		        entry_details_cash_2["journal_id"] = entry_id.Text;
-		        //entry_details_cash["debit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text;
-		        entry_details_cash_2["credit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text;
-                entry_details_cash_2["description"] = "عملية بيع نقدا";
-		        entry_details_cash_2["cost_center_number"] = "-1";
-		        entry_details_cash_2["date"] = datemade.Value;
-		        entry_details_cash_2["account_number"] = setting["part_2_sales_cash_acc_number"].ToString();
-		        if (legend_number.Text != "")
-		        {
-			        entry_details_cash_2["account_number"] = legend_number.Text;
-		        }
-
-		        // Case Discount 
-		        if (discount_value.Text != "")
-		        {
-			        if (dicount_percentage.Text != "")
-			        {
-				        entry_details_cash_2["description"] += " - بخصم تجاري " + "%" + dicount_percentage.Text;
-			        }
-			        else
-			        {
-				        entry_details_cash_2["description"] += " - بخصم تجاري " + discount_value.Text;
-			        }
-		        }
-
-
-		        entry_details.Rows.Add(entry_details_cash_2);
-	        }
-
-            if (payment_methods.SelectedIndex == 1)
+            else if (salesPaymentType == 1)
             {
-                DataRow entry_details_cash = entry_details.NewRow();
-                entry_details_cash["journal_id"] = entry_id.Text;
-                //entry_details_cash["debit"] = total_field_text.Text;
-                entry_details_cash["credit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text; ;
-                entry_details_cash["description"] = "عملية بيع بالأجل";
-                entry_details_cash["cost_center_number"] = "-1";
-                entry_details_cash["date"] = datemade.Value;
-                entry_details_cash["account_number"] = setting["part_2_sales_credit_acc_number"].ToString();
-
-                if (customer_id.Text != "")
-                {
-                    entry_details_cash["account_number"] = this.get_resource_code(customer_id.Text);
-                }
-
-
-                // Case Discount 
-                if (discount_value.Text != "")
-                {
-                    if (dicount_percentage.Text != "")
-                    {
-                        entry_details_cash["description"] += " - بخصم تجاري " + "%" + dicount_percentage.Text;
-                    }
-                    else
-                    {
-                        entry_details_cash["description"] += " - بخصم تجاري " + discount_value.Text;
-                    }
-                }
-                entry_details.Rows.Add(entry_details_cash);
+                salesRow_sales_to["description"] += "أجلة"; 
             }
-            if (payment_methods.SelectedIndex == 2 || payment_methods.SelectedIndex == 3)
+            else if (salesPaymentType == 2 || salesPaymentType == 3)
             {
-                DataRow entry_details_bnk = entry_details.NewRow();
-                entry_details_bnk["journal_id"] = entry_id.Text;
-                //entry_details_bnk["debit"] = total_field_text.Text;
-                entry_details_bnk["credit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text; ;
-                entry_details_bnk["description"] = "عملية بيع عن طريق البنك";
-                entry_details_bnk["cost_center_number"] = "-1";
-                entry_details_bnk["date"] = datemade.Value;
-                entry_details_bnk["account_number"] = setting["part_2_sales_bank_acc_number"].ToString();
+                salesRow_sales_to["description"] += "عن طريق البنك"; 
+            }
+            salesRow_sales_to["cost_center_number"] = "-1";
+            salesRow_sales_to["date"] = datemade.Value;
+            salesRow_sales_to["account_number"] = setting["sales_account"].ToString();
+            entry_details.Rows.Add(salesRow_sales_to);
 
-                // Case Discount 
-                if (discount_value.Text != "")
-                {
-                    if (dicount_percentage.Text != "")
-                    {
-                        entry_details_bnk["description"] += " - بخصم تجاري " + "%" + dicount_percentage.Text;
-                    }
-                    else
-                    {
-                        entry_details_bnk["description"] += " - بخصم تجاري " + discount_value.Text;
-                    }
-                }
-                entry_details.Rows.Add(entry_details_bnk);
+            // Cost Of Sold Goods 
+            foreach (DataGridViewRow row in items_datagridview.Rows) {
+                Console.WriteLine("Unit Cost :" + row.Cells["unit_cost"].Value);
+                Console.WriteLine("Total Cost :" + row.Cells["total_cost"].Value); 
             }
 
             /*
