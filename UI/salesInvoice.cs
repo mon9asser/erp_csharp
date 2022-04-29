@@ -1288,7 +1288,7 @@ namespace sales_management.UI
 
             if (payment_methods.SelectedIndex == 1 && customer_id.Text == "-1")
             {
-                MessageBox.Show("من فضلك قم بإختيار حساب المورد الأجل");
+                MessageBox.Show("من فضلك قم بإختيار حساب العميل الأجل");
                 return;
             }
 
@@ -1412,6 +1412,12 @@ namespace sales_management.UI
             {
                 salesRow_from["description"] = "عملية بيع أجل";
                 salesRow_from["account_number"] = setting["sale_credit_account"].ToString();
+
+
+                if (legend_number.Text != "")
+                {
+                    salesRow_from["account_number"] = legend_number.Text.ToString();
+                }
             }
             else if (salesPaymentType == 2 || salesPaymentType == 3)
             {
@@ -1468,11 +1474,36 @@ namespace sales_management.UI
             entry_details.Rows.Add(salesRow_sales_to);
 
             // Cost Of Sold Goods 
-            foreach (DataGridViewRow row in items_datagridview.Rows) {
-                Console.WriteLine("Unit Cost :" + row.Cells["unit_cost"].Value);
-                Console.WriteLine("Total Cost :" + row.Cells["total_cost"].Value); 
+            decimal cost_total = 0;
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+                if (row.Cells["unit_cost"].Value != System.DBNull.Value)
+                {
+                    cost_total += Convert.ToDecimal(row.Cells["total_cost"].Value);
+                }
             }
 
+            //- From: 
+            DataRow salesRow_cost_goods = entry_details.NewRow();
+            salesRow_cost_goods["journal_id"] = entry_id.Text;
+            salesRow_cost_goods["debit"] = cost_total.ToString();
+            salesRow_cost_goods["description"] = "إثبات تكلفة فاتورة المبيعات";
+            salesRow_cost_goods["cost_center_number"] = "-1";
+            salesRow_cost_goods["date"] = datemade.Value;
+            salesRow_cost_goods["account_number"] = setting["cost_of_goods_account"].ToString();
+            entry_details.Rows.Add(salesRow_cost_goods);
+
+            //- T0: 
+            DataRow salesRow_cost_goods_to = entry_details.NewRow();
+            salesRow_cost_goods_to["journal_id"] = entry_id.Text;
+            salesRow_cost_goods_to["credit"] = cost_total.ToString();
+            salesRow_cost_goods_to["description"] = "إثبات  مسحوبات  لفاتورة المبيعات";
+            salesRow_cost_goods_to["cost_center_number"] = "-1";
+            salesRow_cost_goods_to["date"] = datemade.Value;
+            salesRow_cost_goods_to["account_number"] = setting["inventory_account"].ToString();
+            entry_details.Rows.Add(salesRow_cost_goods_to);
+
+             
             /*
              * ===============================================
              * Updating Data 
