@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace sales_management.UI
 {
@@ -16,7 +18,7 @@ namespace sales_management.UI
         // New Updates 
         PL.Sales Sale = new PL.Sales();
         PL.Journals journals = new PL.Journals();
-
+        ReportDocument CrystalReport;
         DataSet dataSetDb;
         DataTable Sale_Table;
         DataTable Sale_Details;
@@ -1276,8 +1278,7 @@ namespace sales_management.UI
 
         }
 
-        private void save_button_Click(object sender, EventArgs e)
-        {
+        private void Store_Invoice_Data() {
 
             if (total_field_text.Text == "00" || total_field_text.Text == "")
             {
@@ -1432,7 +1433,7 @@ namespace sales_management.UI
                 salesRow_from["description"] = "عملية بيع عن طريق البنك";
                 salesRow_from["account_number"] = setting["sale_bank_account"].ToString();
             }
-            
+
             // Case Discount 
             if (discount_value.Text != "")
             {
@@ -1449,14 +1450,15 @@ namespace sales_management.UI
             entry_details.Rows.Add(salesRow_from);
 
             // To :
-            if (enable_zakat_taxes.Checked) { 
+            if (enable_zakat_taxes.Checked)
+            {
                 DataRow salesRow_vat_to = entry_details.NewRow();
                 salesRow_vat_to["journal_id"] = entry_id.Text;
                 salesRow_vat_to["credit"] = vat_amount.Text;
                 salesRow_vat_to["description"] = "ض.ق.م مخرجات";
                 salesRow_vat_to["cost_center_number"] = "-1";
                 salesRow_vat_to["date"] = datemade.Value;
-                salesRow_vat_to["account_number"] = setting["sales_vat_account"].ToString(); 
+                salesRow_vat_to["account_number"] = setting["sales_vat_account"].ToString();
                 entry_details.Rows.Add(salesRow_vat_to);
             }
 
@@ -1466,15 +1468,15 @@ namespace sales_management.UI
             salesRow_sales_to["description"] = "مبيعات ";
             if (salesPaymentType == 0)
             {
-                salesRow_sales_to["description"] += "نقدا"; 
+                salesRow_sales_to["description"] += "نقدا";
             }
             else if (salesPaymentType == 1)
             {
-                salesRow_sales_to["description"] += "أجلة"; 
+                salesRow_sales_to["description"] += "أجلة";
             }
             else if (salesPaymentType == 2 || salesPaymentType == 3)
             {
-                salesRow_sales_to["description"] += "عن طريق البنك"; 
+                salesRow_sales_to["description"] += "عن طريق البنك";
             }
             salesRow_sales_to["cost_center_number"] = "-1";
             salesRow_sales_to["date"] = datemade.Value;
@@ -1523,7 +1525,7 @@ namespace sales_management.UI
                 vat_amount.Text,
                 datemade.Value.ToString(),
                 this.Settings.Rows[0]["vat_number"].ToString()
-            ).GetGraphic(5); 
+            ).GetGraphic(5);
 
             /*
              * ===============================================
@@ -1564,6 +1566,42 @@ namespace sales_management.UI
 
             // Diable Invoices
             this.disable_elements(false);
+        }
+
+        private void Print_This_Invoice() {
+
+            //=> Build Connection String for Crystal Report 
+            ReportDocument cryRpt = new ReportDocument(); 
+            TableLogOnInfos crtableLogoninfos = new TableLogOnInfos();
+            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
+            ConnectionInfo crConnectionInfo = new ConnectionInfo();
+
+            Tables CrTables;
+
+            string path = "D:\\sales-app\\Reports\\SalesInvoice.rpt";
+            cryRpt.Load(path);
+
+            crConnectionInfo.ServerName = ".\\SQLEXPRESS";
+            crConnectionInfo.DatabaseName = "zakat_invoices";
+            crConnectionInfo.IntegratedSecurity = true;
+             
+
+            CrTables = cryRpt.Database.Tables;
+            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+            {
+                crtableLogoninfo = CrTable.LogOnInfo;
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                CrTable.ApplyLogOnInfo(crtableLogoninfo);
+            }
+
+            cryRpt.PrintToPrinter(1, true, 1, 1);
+
+
+        }
+
+        private void save_button_Click(object sender, EventArgs e)
+        {
+            this.Store_Invoice_Data();
         }
 
         public void disable_elements(bool yes = false)
@@ -1613,10 +1651,7 @@ namespace sales_management.UI
             invoice_id.Text = "";
             this.is_getting_data = false;
             this.disable_elements(true);
-
-
-
-
+             
             // Clear Current Datagridview 
             foreach (DataGridViewRow row in items_datagridview.Rows)
             {
@@ -1837,8 +1872,8 @@ namespace sales_management.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-          
-
+            this.Store_Invoice_Data();
+            this.Print_This_Invoice();
         }
     }
 }
