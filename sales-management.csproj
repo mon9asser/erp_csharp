@@ -75,12 +75,6 @@
   <ItemGroup>
     <Compile Include="DB\Config.cs" />
     <Compile Include="DB\DataAccessLayer.cs" />
-    <Compile Include="Invoice_Sales_Report.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Invoice_Sales_Report.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PL\AccountingTree.cs" />
     <Compile Include="PL\doc_items.cs" />
     <Compile Include="PL\Installings.cs" />
@@ -100,6 +94,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SalesInvoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\FRM_CostCenterGuide.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +117,6 @@
     </Compile>
     <Compile Include="UI\FRM_UpdateStore.Designer.cs">
       <DependentUpon>FRM_UpdateStore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ReportSalesInvoiceViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ReportSalesInvoiceViewer.Designer.cs">
-      <DependentUpon>ReportSalesInvoiceViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\salesInvoice.cs">
       <SubType>Form</SubType>
@@ -268,14 +262,14 @@
     <Compile Include="UI\___Units.Designer.cs">
       <DependentUpon>___Units.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Invoice_Sales_Report.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Invoice_Sales_Report.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesInvoice.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_CostCenterGuide.resx">
       <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
@@ -285,9 +279,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_UpdateStore.resx">
       <DependentUpon>FRM_UpdateStore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ReportSalesInvoiceViewer.resx">
-      <DependentUpon>ReportSalesInvoiceViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\salesInvoice.resx">
       <DependentUpon>salesInvoice.cs</DependentUpon>

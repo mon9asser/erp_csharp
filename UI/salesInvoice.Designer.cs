@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -86,6 +86,7 @@ namespace sales_management.UI
             this.enable_zakat_taxes = new System.Windows.Forms.CheckBox();
             this.entry_id = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +110,7 @@ namespace sales_management.UI
             this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.add_new_button.Image = global::sales_management.Properties.Resources.add_new;
             this.add_new_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new_button.Location = new System.Drawing.Point(5, 579);
+            this.add_new_button.Location = new System.Drawing.Point(13, 579);
             this.add_new_button.Name = "add_new_button";
             this.add_new_button.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.add_new_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -239,7 +240,7 @@ namespace sales_management.UI
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.save_button.Image = global::sales_management.Properties.Resources.save_data;
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(163, 579);
+            this.save_button.Location = new System.Drawing.Point(171, 579);
             this.save_button.Name = "save_button";
             this.save_button.Padding = new System.Windows.Forms.Padding(20, 0, 5, 0);
             this.save_button.Size = new System.Drawing.Size(92, 38);
@@ -361,9 +362,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -372,14 +373,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -631,7 +632,7 @@ namespace sales_management.UI
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(807, 590);
+            this.button1.Location = new System.Drawing.Point(925, 484);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 145;
@@ -639,11 +640,28 @@ namespace sales_management.UI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = global::sales_management.Properties.Resources.print_btn;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(797, 582);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(125, 39);
+            this.button2.TabIndex = 146;
+            this.button2.Text = "حفظ و طباعة";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // salesInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 634);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.entry_id);
             this.Controls.Add(this.enable_zakat_taxes);
@@ -769,5 +787,6 @@ namespace sales_management.UI
         public System.Windows.Forms.CheckBox enable_zakat_taxes;
         private System.Windows.Forms.TextBox entry_id;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

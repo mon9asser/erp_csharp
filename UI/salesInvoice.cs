@@ -1228,6 +1228,14 @@ namespace sales_management.UI
             discount_value.Text = discount_val.ToString();
         }
 
+        public byte[] ImageToByteArray(Image x)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
+            return xByte;
+
+        }
+
         private void discount_not_more_than_TextChanged(object sender, EventArgs e)
         {
             string value = discount_not_more_than.Text;
@@ -1503,7 +1511,20 @@ namespace sales_management.UI
             salesRow_cost_goods_to["account_number"] = setting["inventory_account"].ToString();
             entry_details.Rows.Add(salesRow_cost_goods_to);
 
-             
+            /*
+             * ===============================================
+             * Generating QR Code Image 
+             * ===============================================
+             */
+            PL.QR_Code qrcode = new PL.QR_Code();
+            Image qrcimg = qrcode.GeneratedQrCode(
+                this.Settings.Rows[0]["establishment_name"].ToString(),
+                total_field_text.Text,
+                vat_amount.Text,
+                datemade.Value.ToString(),
+                this.Settings.Rows[0]["vat_number"].ToString()
+            ).GetGraphic(5); 
+
             /*
              * ===============================================
              * Updating Data 
@@ -1533,7 +1554,8 @@ namespace sales_management.UI
                 Convert.ToBoolean(enable_zakat_taxes.Checked),
                 items,
                 entry_header,
-                entry_details
+                entry_details,
+                this.ImageToByteArray(qrcimg)
             );
 
 
@@ -1751,8 +1773,7 @@ namespace sales_management.UI
             items_datagridview.Columns["quantity"].HeaderText = "الكميات";
             items_datagridview.Columns["total_price"].HeaderText = "إجمالي السعر";
             items_datagridview.Columns["unit_price"].HeaderText = "سعر الوحدة";
-
-
+             
             items_datagridview.Columns[2].Width = 330;
             items_datagridview.ColumnHeadersHeight = 40;
 
@@ -1811,8 +1832,13 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UI.ReportSalesInvoiceViewer rpt = new UI.ReportSalesInvoiceViewer();
-            rpt.Show();
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
+
         }
     }
 }

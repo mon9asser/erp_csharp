@@ -199,13 +199,15 @@ namespace sales_management.PL
 
             // Data Of Entry 
             DataTable headerEntry,
-            DataTable detailsEntry
+            DataTable detailsEntry,
 
+            // generating qrcode image
+            byte[] qrcode
             )
         {
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-            SqlParameter[] param = new SqlParameter[26];
+            SqlParameter[] param = new SqlParameter[27];
 
             // Data Of Invoice Header
             param[0] = new SqlParameter("@id", SqlDbType.Int);
@@ -277,7 +279,6 @@ namespace sales_management.PL
             // Enable Vat 
             param[22] = new SqlParameter("@enabled_zakat_vat", SqlDbType.Bit);
             param[22].Value = enabled_zakat_vat;
-
              
             // Data Of Invoice Items 
             param[23] = new SqlParameter("@items_table", SqlDbType.Structured);
@@ -290,7 +291,9 @@ namespace sales_management.PL
             // Details Of Entry
             param[25] = new SqlParameter("@details_entry", SqlDbType.Structured);
             param[25].Value = detailsEntry;
-             
+
+            param[26] = new SqlParameter("@qrcode", SqlDbType.Image);
+            param[26].Value = qrcode; 
 
             DAL.Open();
             DAL.ExecuteCommand("Update_Sale_Invoice_Data_Set", param);
