@@ -18,7 +18,7 @@ namespace sales_management.UI
         // New Updates 
         PL.Sales Sale = new PL.Sales();
         PL.Journals journals = new PL.Journals();
-        ReportDocument CrystalReport;
+ 
         DataSet dataSetDb;
         DataTable Sale_Table;
         DataTable Sale_Details;
@@ -1487,8 +1487,9 @@ namespace sales_management.UI
             decimal cost_total = 0;
             foreach (DataGridViewRow row in items_datagridview.Rows)
             {
-                if (row.Cells["unit_cost"].Value != System.DBNull.Value)
+                if (row.Cells["unit_cost"].Value != System.DBNull.Value && row.Cells["unit_cost"].Value.ToString() != "")
                 {
+                    Console.WriteLine(row.Cells["total_cost"].Value);
                     cost_total += Convert.ToDecimal(row.Cells["total_cost"].Value);
                 }
             }
@@ -1571,20 +1572,25 @@ namespace sales_management.UI
         private void Print_This_Invoice() {
 
             //=> Build Connection String for Crystal Report 
-            ReportDocument cryRpt = new ReportDocument(); 
+            ReportDocument cryRpt = new ReportDocument();
             TableLogOnInfos crtableLogoninfos = new TableLogOnInfos();
             TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
             ConnectionInfo crConnectionInfo = new ConnectionInfo();
 
             Tables CrTables;
 
-            string path = "D:\\sales-app\\Reports\\SalesInvoice.rpt";
-            cryRpt.Load(path);
+            // Console.WriteLine(System.IO.Path.GetDirectoryName(Application.ExecutablePath));
 
+            //string directory = System.IO.Path.GetDirectoryName(Application.StartupPath) + "\\Reports\\SalesInvoice.rpt";
+            Console.WriteLine(Application.StartupPath);
+            string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
+            cryRpt.Load(path);
+            //cryRpt.SetParameterValue("InvoiceID", 5);
+             
             crConnectionInfo.ServerName = ".\\SQLEXPRESS";
             crConnectionInfo.DatabaseName = "zakat_invoices";
             crConnectionInfo.IntegratedSecurity = true;
-             
+
 
             CrTables = cryRpt.Database.Tables;
             foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
@@ -1594,6 +1600,8 @@ namespace sales_management.UI
                 CrTable.ApplyLogOnInfo(crtableLogoninfo);
             }
 
+            cryRpt.Refresh();
+            cryRpt.SetParameterValue("@id", Convert.ToInt32(invoice_id.Text));
             cryRpt.PrintToPrinter(1, true, 1, 1);
 
 

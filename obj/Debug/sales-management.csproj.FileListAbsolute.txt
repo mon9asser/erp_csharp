@@ -185,4 +185,10 @@ D:\sales-app\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
 D:\sales-app\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\sales-app\bin\Debug\stdole.dll
 D:\sales-app\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
+D:\sales-app\bin\Debug\sales-management.exe.manifest
+D:\sales-app\bin\Debug\sales-management.application
+D:\sales-app\obj\Debug\sales-management.exe.manifest
+D:\sales-app\obj\Debug\sales-management.application
+D:\sales-app\bin\Debug\Reports\SalesInvoice.rpt
+D:\sales-app\bin\Debug\Reports\SalesInvoice.cs
