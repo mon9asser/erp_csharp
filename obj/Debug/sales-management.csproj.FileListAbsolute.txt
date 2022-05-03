@@ -192,3 +192,7 @@ D:\sales-app\obj\Debug\sales-management.exe.manifest
 D:\sales-app\obj\Debug\sales-management.application
 D:\sales-app\bin\Debug\Reports\SalesInvoice.rpt
 D:\sales-app\bin\Debug\Reports\SalesInvoice.cs
+D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range.resources
+D:\sales-app\obj\Debug\sales_management.UI.Entries.resources
+D:\sales-app\bin\Debug\Reports\Daily_Entries.rpt
+D:\sales-app\bin\Debug\Reports\Daily_Entries.cs

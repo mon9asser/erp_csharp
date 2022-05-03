@@ -101,9 +101,39 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DailyEntries.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyEntries.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Daily_Entries.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Daily_Entries.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DB\Config.cs" />
+    <Compile Include="DB\CReport.cs" />
     <Compile Include="DB\DataAccessLayer.cs" />
+    <Compile Include="DSet\DailyEntries.cs">
+      <DependentUpon>DailyEntries.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSet\DailyEntries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyEntries.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSet\SalesInvoice.cs">
+      <DependentUpon>SalesInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSet\SalesInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PL\AccountingTree.cs" />
+    <Compile Include="PL\DailyEntries.cs" />
     <Compile Include="PL\doc_items.cs" />
     <Compile Include="PL\Installings.cs" />
     <Compile Include="PL\Invoice.cs" />
@@ -122,6 +152,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Daily_Entries.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Daily_Entries.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Reports\SalesInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,11 +166,23 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="UI\Entries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Entries.Designer.cs">
+      <DependentUpon>Entries.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FRM_CostCenterGuide.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FRM_CostCenterGuide.Designer.cs">
       <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FRM_Date_Range.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FRM_Date_Range.Designer.cs">
+      <DependentUpon>FRM_Date_Range.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FRM_Stores.cs">
       <SubType>Form</SubType>
@@ -291,18 +340,37 @@
     <Compile Include="UI\___Units.Designer.cs">
       <DependentUpon>___Units.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DailyEntries.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyEntries.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Daily_Entries.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Daily_Entries.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Daily_Entries.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Daily_Entries.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SalesInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesInvoice.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Entries.resx">
+      <DependentUpon>Entries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_CostCenterGuide.resx">
       <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FRM_Date_Range.resx">
+      <DependentUpon>FRM_Date_Range.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_Stores.resx">
       <DependentUpon>FRM_Stores.cs</DependentUpon>
@@ -385,6 +453,28 @@
     <EmbeddedResource Include="UI\___Units.resx">
       <DependentUpon>___Units.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DSet\DailyEntries.xsc">
+      <DependentUpon>DailyEntries.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\DailyEntries.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DailyEntries.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\DailyEntries.xss">
+      <DependentUpon>DailyEntries.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\SalesInvoice.xsc">
+      <DependentUpon>SalesInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\SalesInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesInvoice.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\SalesInvoice.xss">
+      <DependentUpon>SalesInvoice.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

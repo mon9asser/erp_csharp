@@ -18,7 +18,8 @@ namespace sales_management.UI
         // New Updates 
         PL.Sales Sale = new PL.Sales();
         PL.Journals journals = new PL.Journals();
- 
+        DSet.SalesInvoice CRT_DataSet = new DSet.SalesInvoice();
+
         DataSet dataSetDb;
         DataTable Sale_Table;
         DataTable Sale_Details;
@@ -974,6 +975,7 @@ namespace sales_management.UI
 
             return total;
         }
+
         public void Fill_Total_Fields()
         {
 
@@ -1278,6 +1280,24 @@ namespace sales_management.UI
 
         }
 
+        private Image QRCode_Generator() {
+            /*
+             * ===============================================
+             * Generating QR Code Image 
+             * ===============================================
+             */
+            PL.QR_Code qrcode = new PL.QR_Code();
+            Image qrcimg = qrcode.GeneratedQrCode(
+                this.Settings.Rows[0]["establishment_name"].ToString(),
+                total_field_text.Text,
+                vat_amount.Text,
+                datemade.Value.ToString(),
+                this.Settings.Rows[0]["vat_number"].ToString()
+            ).GetGraphic(5);
+
+            return qrcimg;
+
+        }
         private void Store_Invoice_Data() {
 
             if (total_field_text.Text == "00" || total_field_text.Text == "")
@@ -1514,19 +1534,7 @@ namespace sales_management.UI
             salesRow_cost_goods_to["account_number"] = setting["inventory_account"].ToString();
             entry_details.Rows.Add(salesRow_cost_goods_to);
 
-            /*
-             * ===============================================
-             * Generating QR Code Image 
-             * ===============================================
-             */
-            PL.QR_Code qrcode = new PL.QR_Code();
-            Image qrcimg = qrcode.GeneratedQrCode(
-                this.Settings.Rows[0]["establishment_name"].ToString(),
-                total_field_text.Text,
-                vat_amount.Text,
-                datemade.Value.ToString(),
-                this.Settings.Rows[0]["vat_number"].ToString()
-            ).GetGraphic(5);
+            
 
             /*
              * ===============================================
@@ -1558,7 +1566,7 @@ namespace sales_management.UI
                 items,
                 entry_header,
                 entry_details,
-                this.ImageToByteArray(qrcimg)
+                this.ImageToByteArray(this.QRCode_Generator())
             );
 
 
@@ -1570,38 +1578,11 @@ namespace sales_management.UI
         }
 
         private void Print_This_Invoice() {
-
-            //=> Build Connection String for Crystal Report 
-            ReportDocument cryRpt = new ReportDocument();
-            TableLogOnInfos crtableLogoninfos = new TableLogOnInfos();
-            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
-            ConnectionInfo crConnectionInfo = new ConnectionInfo();
-
-            Tables CrTables;
-
-            // Console.WriteLine(System.IO.Path.GetDirectoryName(Application.ExecutablePath));
-
-            //string directory = System.IO.Path.GetDirectoryName(Application.StartupPath) + "\\Reports\\SalesInvoice.rpt";
-            Console.WriteLine(Application.StartupPath);
-            string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
-            cryRpt.Load(path);
-            //cryRpt.SetParameterValue("InvoiceID", 5);
              
-            crConnectionInfo.ServerName = ".\\SQLEXPRESS";
-            crConnectionInfo.DatabaseName = "zakat_invoices";
-            crConnectionInfo.IntegratedSecurity = true;
-
-
-            CrTables = cryRpt.Database.Tables;
-            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
-            {
-                crtableLogoninfo = CrTable.LogOnInfo;
-                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
-                CrTable.ApplyLogOnInfo(crtableLogoninfo);
-            }
-
-            cryRpt.Refresh();
-            cryRpt.SetParameterValue("@id", Convert.ToInt32(invoice_id.Text));
+            ReportDocument cryRpt = new ReportDocument();  
+            string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
+            cryRpt.Load(path); 
+            cryRpt.SetDataSource(this.CRT_DataSet);
             cryRpt.PrintToPrinter(1, true, 1, 1);
 
 
@@ -1825,6 +1806,9 @@ namespace sales_management.UI
             items_datagridview.Columns["total_price"].ReadOnly = true;
             items_datagridview.Columns["unit_name"].ReadOnly = true;
 
+            // Load DataSet Of Crystal Report 
+
+
             // Add Button To Remove The Item From invoice 
             this.Load_deletion_icon_in_datagridview();
             this.disable_elements();
@@ -1873,14 +1857,65 @@ namespace sales_management.UI
             this.refill_datagridview(id, items_datagridview);
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             
         }
 
+        private void Build_Data_Set_Of_Crystal_Report() {
+             
+            // Sales Data             
+            DataRow SalesRow = this.CRT_DataSet.Tables["Sales_Invoice"].NewRow();
+            SalesRow["id"] = invoice_id.Text.ToString();
+            SalesRow["date"] = datemade.Value.ToString();
+            SalesRow["customer_name"] = customer_name.Text.ToString();
+            SalesRow["price_include_vat"] = price_includ_vat.Text.ToString();
+            SalesRow["net_total"] = net_total.Text.ToString();
+            SalesRow["discount_name"] = discount_value.Text.ToString();
+            SalesRow["total_without_vat"] = total_without_vat_field.Text.ToString();
+            SalesRow["total_with_vat"] = total_label_text.Text.ToString();
+            SalesRow["vat_amount"] = vat_amount.Text.ToString();
+            SalesRow["serial"] = invoice_serial.Text.ToString();
+            SalesRow["enabled_zakat_vat"] = enable_zakat_taxes.Checked;
+            SalesRow["qrcode"] = this.ImageToByteArray(this.QRCode_Generator());
+            this.CRT_DataSet.Tables["Sales_Invoice"].Rows.Add(SalesRow);
+
+            // Sales Items 
+            DataRow InvoiceItems;
+            foreach ( DataGridViewRow row in items_datagridview.Rows ) {
+                if (row.Cells["product_name"].Value.ToString() != "" && row.Cells["product_name"].Value != System.DBNull.Value) { 
+                    InvoiceItems = this.CRT_DataSet.Tables["Sales_Invoice_Items"].NewRow();
+                    InvoiceItems["doc_id"] = row.Cells["doc_id"].Value.ToString();
+                    InvoiceItems["doc_type"] = row.Cells["doc_type"].Value.ToString();
+                    InvoiceItems["product_name"] = row.Cells["product_name"].Value.ToString();
+                    InvoiceItems["unit_name"] = row.Cells["unit_name"].Value.ToString();
+                    InvoiceItems["unit_price"] = row.Cells["unit_price"].Value.ToString();
+                    InvoiceItems["quantity"] = row.Cells["quantity"].Value.ToString();
+                    InvoiceItems["total_quantity"] = row.Cells["total_quantity"].Value.ToString();
+                    InvoiceItems["total_price"] = row.Cells["total_price"].Value.ToString();
+                    this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Add(InvoiceItems);
+                }
+            }
+
+            // System Settings 
+            if (this.Settings.Rows.Count != 0) {
+
+                DataRow SettingsRow = this.Settings.Rows[0]; 
+                DataRow settingsr = this.CRT_DataSet.Tables["System_Settings"].NewRow();
+                settingsr["establishment_name"] = SettingsRow["establishment_name"];
+                settingsr["address"] = SettingsRow["address"];
+                settingsr["vat_number"] = SettingsRow["vat_number"];
+                settingsr["logo"] = SettingsRow["logo"];
+                this.CRT_DataSet.Tables["System_Settings"].Rows.Add(settingsr);
+
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Store_Invoice_Data();
+            this.Build_Data_Set_Of_Crystal_Report();
             this.Print_This_Invoice();
         }
     }

@@ -194,5 +194,11 @@ namespace sales_management.UI
             UI.FRM_CostCenterGuide center_cost = new UI.FRM_CostCenterGuide();
             center_cost.Show();
         }
+
+        private void قيوداليوميةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Entries Rpt = new UI.Entries();
+            Rpt.Show();
+        }
     }
 }

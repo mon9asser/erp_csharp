@@ -33,6 +33,7 @@ namespace sales_management.UI
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تسجيلالدخولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.دليلمراكزالتكلفةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالنظامToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.شجرةالحساباToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.نسخةإحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +94,7 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.دليلمراكزالتكلفةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.قيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,6 +129,12 @@ namespace sales_management.UI
             // 
             this.تسجيلالدخولToolStripMenuItem.Name = "تسجيلالدخولToolStripMenuItem";
             resources.ApplyResources(this.تسجيلالدخولToolStripMenuItem, "تسجيلالدخولToolStripMenuItem");
+            // 
+            // دليلمراكزالتكلفةToolStripMenuItem
+            // 
+            this.دليلمراكزالتكلفةToolStripMenuItem.Name = "دليلمراكزالتكلفةToolStripMenuItem";
+            resources.ApplyResources(this.دليلمراكزالتكلفةToolStripMenuItem, "دليلمراكزالتكلفةToolStripMenuItem");
+            this.دليلمراكزالتكلفةToolStripMenuItem.Click += new System.EventHandler(this.دليلمراكزالتكلفةToolStripMenuItem_Click);
             // 
             // إعداداتالنظامToolStripMenuItem
             // 
@@ -392,6 +399,7 @@ namespace sales_management.UI
             // التقاريرToolStripMenuItem
             // 
             this.التقاريرToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.قيوداليوميةToolStripMenuItem,
             this.تقريرالمبيعاتToolStripMenuItem1,
             this.تقريرالمشترياتToolStripMenuItem1,
             this.تقريرالمصروفاتعنالفترةToolStripMenuItem,
@@ -500,11 +508,11 @@ namespace sales_management.UI
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
-            // دليلمراكزالتكلفةToolStripMenuItem
+            // قيوداليوميةToolStripMenuItem
             // 
-            this.دليلمراكزالتكلفةToolStripMenuItem.Name = "دليلمراكزالتكلفةToolStripMenuItem";
-            resources.ApplyResources(this.دليلمراكزالتكلفةToolStripMenuItem, "دليلمراكزالتكلفةToolStripMenuItem");
-            this.دليلمراكزالتكلفةToolStripMenuItem.Click += new System.EventHandler(this.دليلمراكزالتكلفةToolStripMenuItem_Click);
+            this.قيوداليوميةToolStripMenuItem.Name = "قيوداليوميةToolStripMenuItem";
+            resources.ApplyResources(this.قيوداليوميةToolStripMenuItem, "قيوداليوميةToolStripMenuItem");
+            this.قيوداليوميةToolStripMenuItem.Click += new System.EventHandler(this.قيوداليوميةToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -589,5 +597,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem شجرةالحساباToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem المخازنToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem دليلمراكزالتكلفةToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem قيوداليوميةToolStripMenuItem;
     }
 }
