@@ -77,6 +77,7 @@ namespace sales_management.UI
             this.سندصرفنقودToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.دفترالأستاذToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.التقاريرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.قيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالمبيعاتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالمشترياتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالمصروفاتعنالفترةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,7 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.قيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -414,6 +415,12 @@ namespace sales_management.UI
             resources.ApplyResources(this.التقاريرToolStripMenuItem, "التقاريرToolStripMenuItem");
             this.التقاريرToolStripMenuItem.Name = "التقاريرToolStripMenuItem";
             // 
+            // قيوداليوميةToolStripMenuItem
+            // 
+            this.قيوداليوميةToolStripMenuItem.Name = "قيوداليوميةToolStripMenuItem";
+            resources.ApplyResources(this.قيوداليوميةToolStripMenuItem, "قيوداليوميةToolStripMenuItem");
+            this.قيوداليوميةToolStripMenuItem.Click += new System.EventHandler(this.قيوداليوميةToolStripMenuItem_Click);
+            // 
             // تقريرالمبيعاتToolStripMenuItem1
             // 
             this.تقريرالمبيعاتToolStripMenuItem1.Name = "تقريرالمبيعاتToolStripMenuItem1";
@@ -508,16 +515,16 @@ namespace sales_management.UI
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
-            // قيوداليوميةToolStripMenuItem
+            // label1
             // 
-            this.قيوداليوميةToolStripMenuItem.Name = "قيوداليوميةToolStripMenuItem";
-            resources.ApplyResources(this.قيوداليوميةToolStripMenuItem, "قيوداليوميةToolStripMenuItem");
-            this.قيوداليوميةToolStripMenuItem.Click += new System.EventHandler(this.قيوداليوميةToolStripMenuItem_Click);
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IsMdiContainer = true;
@@ -598,5 +605,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem المخازنToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem دليلمراكزالتكلفةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قيوداليوميةToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

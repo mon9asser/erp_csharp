@@ -1864,7 +1864,11 @@ namespace sales_management.UI
         }
 
         private void Build_Data_Set_Of_Crystal_Report() {
-             
+
+            this.CRT_DataSet.Tables["System_Settings"].Rows.Clear();
+            this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Clear();
+            this.CRT_DataSet.Tables["Sales_Invoice"].Rows.Clear();
+
             // Sales Data             
             DataRow SalesRow = this.CRT_DataSet.Tables["Sales_Invoice"].NewRow();
             SalesRow["id"] = invoice_id.Text.ToString();
@@ -1893,7 +1897,7 @@ namespace sales_management.UI
                     InvoiceItems["unit_price"] = row.Cells["unit_price"].Value.ToString();
                     InvoiceItems["quantity"] = row.Cells["quantity"].Value.ToString();
                     InvoiceItems["total_quantity"] = row.Cells["total_quantity"].Value.ToString();
-                    InvoiceItems["total_price"] = row.Cells["total_price"].Value.ToString();
+                    InvoiceItems["total_price"] = string.Format("{0:n}", Convert.ToDecimal(Math.Round(Convert.ToDecimal(row.Cells["total_price"].Value), 2))).ToString(); 
                     this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Add(InvoiceItems);
                 }
             }

@@ -121,6 +121,16 @@ namespace sales_management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] K_Art_bold_Regular {
+            get {
+                object obj = ResourceManager.GetObject("K_Art_bold_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap last_btn {

@@ -185,7 +185,6 @@ D:\sales-app\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
 D:\sales-app\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\sales-app\bin\Debug\stdole.dll
 D:\sales-app\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
 D:\sales-app\bin\Debug\sales-management.exe.manifest
 D:\sales-app\bin\Debug\sales-management.application
 D:\sales-app\obj\Debug\sales-management.exe.manifest
@@ -196,3 +195,4 @@ D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range.resources
 D:\sales-app\obj\Debug\sales_management.UI.Entries.resources
 D:\sales-app\bin\Debug\Reports\Daily_Entries.rpt
 D:\sales-app\bin\Debug\Reports\Daily_Entries.cs
+D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
