@@ -12,14 +12,14 @@ namespace sales_management.UI
 {
     public partial class FRM_Date_Range : Form
     {
-        Entries Entries_Form;
+        EntriesReportViewer Entries_Form;
 
         public FRM_Date_Range()
         {
             InitializeComponent();
         }
 
-        public FRM_Date_Range(Entries Entries ) {
+        public FRM_Date_Range(EntriesReportViewer Entries ) {
             this.Entries_Form = Entries;
             InitializeComponent();
         }

@@ -211,7 +211,7 @@ namespace sales_management.UI
 
         private void قيوداليوميةToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Entries Rpt = new UI.Entries();
+            UI.EntriesReportViewer Rpt = new UI.EntriesReportViewer();
             Rpt.Show();
         }
 
