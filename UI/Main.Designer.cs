@@ -72,10 +72,8 @@ namespace sales_management.UI
             this.المخازنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.القيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.قيدتسويةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.إذنصرفبضاعةToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.سندقبضToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.سندصرفنقودToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.دفترالأستاذToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.التقاريرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.قيوداليوميةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالمبيعاتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +93,7 @@ namespace sales_management.UI
             this.إعدادقاعدةالبياناتوالجداولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.كشفالواردوالمنصرفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -313,7 +311,8 @@ namespace sales_management.UI
             this.إدارةالمنتجاتوالفئاتToolStripMenuItem,
             this.إدارةالفئاتToolStripMenuItem,
             this.إدارةالخصوماتوالعروضToolStripMenuItem,
-            this.المخازنToolStripMenuItem});
+            this.المخازنToolStripMenuItem,
+            this.كشفالواردوالمنصرفToolStripMenuItem});
             resources.ApplyResources(this.المخزونToolStripMenuItem, "المخزونToolStripMenuItem");
             this.المخزونToolStripMenuItem.Name = "المخزونToolStripMenuItem";
             // 
@@ -365,10 +364,8 @@ namespace sales_management.UI
             // 
             this.القيوداليوميةToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.قيدتسويةToolStripMenuItem,
-            this.إذنصرفبضاعةToolStripMenuItem1,
             this.سندقبضToolStripMenuItem1,
-            this.سندصرفنقودToolStripMenuItem,
-            this.دفترالأستاذToolStripMenuItem});
+            this.سندصرفنقودToolStripMenuItem});
             resources.ApplyResources(this.القيوداليوميةToolStripMenuItem, "القيوداليوميةToolStripMenuItem");
             this.القيوداليوميةToolStripMenuItem.Name = "القيوداليوميةToolStripMenuItem";
             // 
@@ -376,11 +373,7 @@ namespace sales_management.UI
             // 
             this.قيدتسويةToolStripMenuItem.Name = "قيدتسويةToolStripMenuItem";
             resources.ApplyResources(this.قيدتسويةToolStripMenuItem, "قيدتسويةToolStripMenuItem");
-            // 
-            // إذنصرفبضاعةToolStripMenuItem1
-            // 
-            this.إذنصرفبضاعةToolStripMenuItem1.Name = "إذنصرفبضاعةToolStripMenuItem1";
-            resources.ApplyResources(this.إذنصرفبضاعةToolStripMenuItem1, "إذنصرفبضاعةToolStripMenuItem1");
+            this.قيدتسويةToolStripMenuItem.Click += new System.EventHandler(this.قيدتسويةToolStripMenuItem_Click);
             // 
             // سندقبضToolStripMenuItem1
             // 
@@ -391,11 +384,6 @@ namespace sales_management.UI
             // 
             this.سندصرفنقودToolStripMenuItem.Name = "سندصرفنقودToolStripMenuItem";
             resources.ApplyResources(this.سندصرفنقودToolStripMenuItem, "سندصرفنقودToolStripMenuItem");
-            // 
-            // دفترالأستاذToolStripMenuItem
-            // 
-            this.دفترالأستاذToolStripMenuItem.Name = "دفترالأستاذToolStripMenuItem";
-            resources.ApplyResources(this.دفترالأستاذToolStripMenuItem, "دفترالأستاذToolStripMenuItem");
             // 
             // التقاريرToolStripMenuItem
             // 
@@ -515,16 +503,15 @@ namespace sales_management.UI
             resources.ApplyResources(this.تهيةالبياناتالأفتراضيةToolStripMenuItem, "تهيةالبياناتالأفتراضيةToolStripMenuItem");
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem.Click += new System.EventHandler(this.تهيةالبياناتالأفتراضيةToolStripMenuItem_Click);
             // 
-            // label1
+            // كشفالواردوالمنصرفToolStripMenuItem
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            this.كشفالواردوالمنصرفToolStripMenuItem.Name = "كشفالواردوالمنصرفToolStripMenuItem";
+            resources.ApplyResources(this.كشفالواردوالمنصرفToolStripMenuItem, "كشفالواردوالمنصرفToolStripMenuItem");
             // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IsMdiContainer = true;
@@ -576,7 +563,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem تقريرالرواتبعنالفترةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem القيوداليوميةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قيدتسويةToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem إذنصرفبضاعةToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem سندقبضToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem سندصرفنقودToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem التقاريرToolStripMenuItem;
@@ -597,7 +583,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem تهيةالبياناتالأفتراضيةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem إدارةصلاحياتالموظفينToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تسجيلدخولمديرالنظامToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem دفترالأستاذToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قائمةالمركزالماليToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem إدارةالفئاتToolStripMenuItem;
@@ -605,6 +590,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem المخازنToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem دليلمراكزالتكلفةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قيوداليوميةToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem كشفالواردوالمنصرفToolStripMenuItem;
     }
 }

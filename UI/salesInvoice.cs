@@ -1281,17 +1281,23 @@ namespace sales_management.UI
         }
 
         private Image QRCode_Generator() {
+
             /*
              * ===============================================
              * Generating QR Code Image 
              * ===============================================
              */
+
+            // Generate Formated Date 
+            string datevalue = datemade.Value.ToString("yyyy-MM-dd");
+            string timevalue = datemade.Value.ToString("HH:mm:ss");
+            string datetime_value = datevalue + "T" + timevalue;
             PL.QR_Code qrcode = new PL.QR_Code();
             Image qrcimg = qrcode.GeneratedQrCode(
                 this.Settings.Rows[0]["establishment_name"].ToString(),
                 total_field_text.Text,
                 vat_amount.Text,
-                datemade.Value.ToString(),
+                datetime_value.ToString(),
                 this.Settings.Rows[0]["vat_number"].ToString()
             ).GetGraphic(5);
 
@@ -1334,7 +1340,7 @@ namespace sales_management.UI
              * ===============================================
              */
             DataTable items = new DataTable();
-
+            this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Clear();
             // add columns 
             items.Columns.Add("doc_id");
             items.Columns.Add("doc_type");
@@ -1358,6 +1364,7 @@ namespace sales_management.UI
             {
 
                 DataRow rtbl = items.NewRow();
+                DataRow InvoiceItemRow = this.CRT_DataSet.Tables["Sales_Invoice_Items"].NewRow();
                 if (row.Cells["product_name"].Value.ToString() != "")
                 {
                     rtbl["doc_id"] = invoice_id.Text;
@@ -1378,7 +1385,19 @@ namespace sales_management.UI
                     rtbl["total_cost"] = row.Cells["total_cost"].Value.ToString();
                     //rtbl["datemade"] = System.DBNull.Value == row.Cells["datemade"].Value ? DateTime.Now: Convert.ToDateTime(row.Cells["datemade"].Value);
 
+                    // BUILD DOCUMENT FOR PRINT  
+                    InvoiceItemRow["doc_id"] = invoice_id.Text;
+                    InvoiceItemRow["doc_type"] = this.documentType;
+                    InvoiceItemRow["product_name"] = row.Cells["product_name"].Value.ToString();
+                    InvoiceItemRow["unit_name"] = row.Cells["unit_name"].Value.ToString();
+                    InvoiceItemRow["unit_price"] = row.Cells["unit_price"].Value.ToString();
+                    InvoiceItemRow["quantity"] = row.Cells["quantity"].Value.ToString();
+                    InvoiceItemRow["total_quantity"] = row.Cells["total_quantity"].Value.ToString();
+                    InvoiceItemRow["total_price"] = string.Format("{0:n}", Convert.ToDecimal(Math.Round(Convert.ToDecimal(row.Cells["total_price"].Value), 2))).ToString();
+                    
+                    this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Add(InvoiceItemRow);
                     items.Rows.Add(rtbl);
+
                 }
             }
 
@@ -1865,18 +1884,20 @@ namespace sales_management.UI
 
         private void Build_Data_Set_Of_Crystal_Report() {
 
-            this.CRT_DataSet.Tables["System_Settings"].Rows.Clear();
-            this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Clear();
+            this.CRT_DataSet.Tables["System_Settings"].Rows.Clear(); 
             this.CRT_DataSet.Tables["Sales_Invoice"].Rows.Clear();
-
+             
             // Sales Data             
             DataRow SalesRow = this.CRT_DataSet.Tables["Sales_Invoice"].NewRow();
             SalesRow["id"] = invoice_id.Text.ToString();
-            SalesRow["date"] = datemade.Value.ToString();
+            SalesRow["date"] = datemade.Value;
             SalesRow["customer_name"] = customer_name.Text.ToString();
             SalesRow["price_include_vat"] = price_includ_vat.Text.ToString();
             SalesRow["net_total"] = net_total.Text.ToString();
             SalesRow["discount_name"] = discount_value.Text.ToString();
+            if (discount_value.Text.ToString() == "") {
+                SalesRow["discount_name"] = "0.00";
+            }
             SalesRow["total_without_vat"] = total_without_vat_field.Text.ToString();
             SalesRow["total_with_vat"] = total_label_text.Text.ToString();
             SalesRow["vat_amount"] = vat_amount.Text.ToString();
@@ -1886,21 +1907,7 @@ namespace sales_management.UI
             this.CRT_DataSet.Tables["Sales_Invoice"].Rows.Add(SalesRow);
 
             // Sales Items 
-            DataRow InvoiceItems;
-            foreach ( DataGridViewRow row in items_datagridview.Rows ) {
-                if (row.Cells["product_name"].Value.ToString() != "" && row.Cells["product_name"].Value != System.DBNull.Value) { 
-                    InvoiceItems = this.CRT_DataSet.Tables["Sales_Invoice_Items"].NewRow();
-                    InvoiceItems["doc_id"] = row.Cells["doc_id"].Value.ToString();
-                    InvoiceItems["doc_type"] = row.Cells["doc_type"].Value.ToString();
-                    InvoiceItems["product_name"] = row.Cells["product_name"].Value.ToString();
-                    InvoiceItems["unit_name"] = row.Cells["unit_name"].Value.ToString();
-                    InvoiceItems["unit_price"] = row.Cells["unit_price"].Value.ToString();
-                    InvoiceItems["quantity"] = row.Cells["quantity"].Value.ToString();
-                    InvoiceItems["total_quantity"] = row.Cells["total_quantity"].Value.ToString();
-                    InvoiceItems["total_price"] = string.Format("{0:n}", Convert.ToDecimal(Math.Round(Convert.ToDecimal(row.Cells["total_price"].Value), 2))).ToString(); 
-                    this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Add(InvoiceItems);
-                }
-            }
+            
 
             // System Settings 
             if (this.Settings.Rows.Count != 0) {

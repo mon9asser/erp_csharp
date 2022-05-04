@@ -196,3 +196,4 @@ D:\sales-app\obj\Debug\sales_management.UI.Entries.resources
 D:\sales-app\bin\Debug\Reports\Daily_Entries.rpt
 D:\sales-app\bin\Debug\Reports\Daily_Entries.cs
 D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales_management.UI.Add_New_Entry.resources

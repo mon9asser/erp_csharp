@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing.Text;
+//using System.Drawing.Text;
 namespace sales_management.UI
 {
     public partial class Main : Form
@@ -74,13 +74,15 @@ namespace sales_management.UI
             //this.ChangeLayoutTheme( "SteelBlack.ssk" );
             //this.ChangeLayoutTheme("office2007.ssk");
 
-            PrivateFontCollection pfc = new PrivateFontCollection();
+            /*
+             * PrivateFontCollection pfc = new PrivateFontCollection();
             int fontLength = Properties.Resources.K_Art_bold_Regular.Length;
             byte[] fontdata = Properties.Resources.K_Art_bold_Regular;
             System.IntPtr data = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontLength);
             System.Runtime.InteropServices.Marshal.Copy(fontdata, 0, data, fontLength);
             pfc.AddMemoryFont(data, fontLength);
             label1.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            */
 
             /*
             foreach ( Control c in this.Controls ) { 
@@ -211,6 +213,12 @@ namespace sales_management.UI
         {
             UI.Entries Rpt = new UI.Entries();
             Rpt.Show();
+        }
+
+        private void قيدتسويةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Add_New_Entry entry = new UI.Add_New_Entry();
+            entry.Show();
         }
     }
 }
