@@ -11,6 +11,18 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+        public DataTable Create_Entry_Id() {
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            DAL.Open();
+            table = DAL.SelectData("Create_Entry_Id", null);
+            DAL.Close();
+
+            return table;
+        }
+
         public DataTable Get_All_Entries() {
              
             DataTable table = new DataTable();
@@ -22,6 +34,21 @@ namespace sales_management.PL
 
             return table;
 
+        }
+
+        public DataTable Get_All_Row_Entries_By_Id( int id ) {
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter( "@id", SqlDbType.Int );
+            param[0].Value = id;
+
+            DAL.Open();
+            table = DAL.SelectData("Get_All_Row_Entries_By_Id", param);
+            DAL.Close();
+
+            return table;
         }
 
         public DataTable Get_All_Row_Entries()

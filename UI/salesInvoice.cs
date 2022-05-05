@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -1602,7 +1603,12 @@ namespace sales_management.UI
             string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
             cryRpt.Load(path); 
             cryRpt.SetDataSource(this.CRT_DataSet);
-            cryRpt.PrintToPrinter(1, false, 0, 0); 
+            cryRpt.PrintToPrinter(1, false, 0, 0);
+            /*
+            if (File.Exists(@"D:\\file.pdf"))
+                File.Delete(@"D:\\file.pdf");
+            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"D:\\file.pdf");
+            */
         }
 
         private void save_button_Click(object sender, EventArgs e)
