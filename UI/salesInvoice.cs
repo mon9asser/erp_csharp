@@ -1602,9 +1602,7 @@ namespace sales_management.UI
             string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
             cryRpt.Load(path); 
             cryRpt.SetDataSource(this.CRT_DataSet);
-            cryRpt.PrintToPrinter(1, true, 1, 1);
-
-
+            cryRpt.PrintToPrinter(1, false, 0, 0); 
         }
 
         private void save_button_Click(object sender, EventArgs e)
