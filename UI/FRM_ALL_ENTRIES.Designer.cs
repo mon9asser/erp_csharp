@@ -34,7 +34,6 @@ namespace sales_management.UI
             this.datagrid_entry_accounts = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_entry_accounts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +67,7 @@ namespace sales_management.UI
             this.datagrid_entry_accounts.ShowEditingIcon = false;
             this.datagrid_entry_accounts.Size = new System.Drawing.Size(815, 325);
             this.datagrid_entry_accounts.TabIndex = 32;
+            this.datagrid_entry_accounts.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.datagrid_entry_accounts_CellMouseDoubleClick);
             // 
             // button1
             // 
@@ -87,22 +87,13 @@ namespace sales_management.UI
             this.button2.TabIndex = 34;
             this.button2.Text = "عرض التقرير";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(127, 352);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 33);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "حذف";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FRM_ALL_ENTRIES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 397);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.datagrid_entry_accounts);
@@ -125,6 +116,5 @@ namespace sales_management.UI
         public System.Windows.Forms.DataGridView datagrid_entry_accounts;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
     }
 }

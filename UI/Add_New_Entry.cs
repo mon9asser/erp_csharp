@@ -14,39 +14,53 @@ namespace sales_management.UI
     public partial class Add_New_Entry : Form
     {
         PL.DailyEntries Entry = new PL.DailyEntries();
-        public int last_row = -1;
-        public DataTable __Entries;
+        public int last_row = -1; 
         public DataTable __Entries_Accounts;
         public DataTable __Created_Entry;
         public int doc_type = 4; 
         public int entry_id = -1;
         public string entry_number = "-1";
+        public bool isExtendedWidow = false;
+        public FRM_ALL_ENTRIES records;
 
-        public Add_New_Entry()
+        public Add_New_Entry(int id, FRM_ALL_ENTRIES frm)
         {
 
-            // Create New Entry Here 
-            __Created_Entry = Entry.Create_Entry_Id();
-            if (__Created_Entry.Rows.Count != 0 ) {
+            InitializeComponent();
+            this.records = frm;
+            if (id == -1)
+            {
+                // Create New 
+                this.__Created_Entry = Entry.Create_Entry_Id();
+                if (this.__Created_Entry.Rows.Count != 0)
+                {
+                    this.entry_number = this.__Created_Entry.Rows[0]["entry_number"].ToString();
+                    this.entry_id = Convert.ToInt32(this.__Created_Entry.Rows[0]["id"]);
+                }
+                this.__Entries_Accounts = Entry.Get_All_Row_Entries_By_Id(this.entry_id);
+            }
+            else {
+                 
+                // Update Window 
+                this.entry_id = id; 
+                this.__Created_Entry = Entry.Get_This_Entry_By_Id(this.entry_id);
+                this.__Entries_Accounts = Entry.Get_All_Row_Entries_By_Id(this.entry_id);
+
                 this.entry_number = this.__Created_Entry.Rows[0]["entry_number"].ToString();
                 this.entry_id = Convert.ToInt32(this.__Created_Entry.Rows[0]["id"]);
+
             }
 
-            // Init Components 
-            InitializeComponent(); 
+            
+
+            this.Fill_Form_Components();
+            this.isExtendedWidow = true;
 
         }
-        
+
+
         private void Add_New_Entry_Load(object sender, EventArgs e)
-        {
-            
-            this.__Entries = Entry.Get_All_Entries();
-            this.__Entries_Accounts = Entry.Get_All_Row_Entries_By_Id(this.entry_id);
-             
-
-            // Fill Components 
-            this.Fill_Form_Components();
-
+        { 
         }
 
         public void Set_Needed_accounts_in_entries( string account_name, string account_number ) {
@@ -135,22 +149,18 @@ namespace sales_management.UI
             datagrid_entry_accounts.Columns["description"].HeaderText = "شرح";
             datagrid_entry_accounts.Columns["account_number"].HeaderText = "رقم الحساب";
             datagrid_entry_accounts.Columns["account_name"].HeaderText = "اسم الحساب";
-            DataGridViewImageColumn dgvImageColumn = new DataGridViewImageColumn();
-            dgvImageColumn.HeaderText = "حذف";
-            dgvImageColumn.Name = "deletion";
-
+            DataGridViewButtonColumn deletionButtonDG = new DataGridViewButtonColumn();
+            deletionButtonDG.HeaderText = "حذف";
+            deletionButtonDG.Name = "deletion";
+            deletionButtonDG.Text = "dasd";
             //dgvImageColumn.ImageLayout = DataGridViewImageCellLayout.Stretch; 
-            datagrid_entry_accounts.Columns.Add(dgvImageColumn);  
-
-            foreach ( DataGridViewRow rows in datagrid_entry_accounts.Rows ) { 
-                rows.Cells["deletion"].Value = Properties.Resources.icons8_delete_20; 
-            }
+            datagrid_entry_accounts.Columns.Insert(datagrid_entry_accounts.Columns.Count - 1, deletionButtonDG);
 
             this.Calculate_Totals();
-            if (this.__Entries.Rows.Count != 0)
+            if (this.__Created_Entry.Rows.Count != 0)
             {
-                entry_date_field.Value = Convert.ToDateTime(__Entries.Rows[0]["updated_date"]);
-                entry_details_field.Text = __Entries.Rows[0]["description"].ToString();
+                entry_date_field.Value = Convert.ToDateTime(__Created_Entry.Rows[0]["updated_date"]);
+                entry_details_field.Text = __Created_Entry.Rows[0]["description"].ToString();
             }
             else {
                 entry_date_field.Value = DateTime.Now;
@@ -165,7 +175,12 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
+             
+            if (debit_label_text.Text.ToString() != credit_label_text.Text.ToString()) {
 
+                MessageBox.Show("يجب ان يكون قيمة الدائن تساوي قيمة المدين", "حدث خطأ",  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
            /*-----------------------------------------
             *  // Create DataTable For Jounral Items 
             ------------------------------------------ */
@@ -215,8 +230,11 @@ namespace sales_management.UI
             ------------------------------------------ */
             
             Entry.Update_Entries_Data(table, entry_date_field.Value , entry_details_field.Text.ToString(), Convert.ToInt32(entry_id_field.Text) );
-            
-               
+
+            if (this.isExtendedWidow) {
+                this.records.Load_All_Records();
+                this.Close();
+            }
 
         }
 
@@ -233,13 +251,13 @@ namespace sales_management.UI
                 return;
             }
 
-            if (indexCol == 1 || indexCol == 0) {
+            if (indexCol == 1 || indexCol == 2) {
                 UI.___Accounts accs = new UI.___Accounts(5, this);
                 accs.ShowDialog();
             }
 
             //Deletion 
-            if (indexCol == 17) {
+            if (indexCol == 0) {
                 datagrid_entry_accounts.Rows[indexRow].Cells["account_number"].Value = "";
                 datagrid_entry_accounts.Rows[indexRow].Cells["account_name"].Value = "";
                 datagrid_entry_accounts.Rows[indexRow].Cells["description"].Value = "";
@@ -261,9 +279,11 @@ namespace sales_management.UI
 
         private void datagrid_entry_accounts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            
+
             e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
 
-            bool isCol = datagrid_entry_accounts.CurrentCell.ColumnIndex == 4 || datagrid_entry_accounts.CurrentCell.ColumnIndex == 3;
+            bool isCol = datagrid_entry_accounts.CurrentCell.ColumnIndex == 5 || datagrid_entry_accounts.CurrentCell.ColumnIndex == 4;
 
             if (isCol) //Desired Column
             {
@@ -284,5 +304,20 @@ namespace sales_management.UI
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (entry_id_field.Text == "-1" || entry_id_field.Text == "") {
+                return;
+            }
+
+            Entry.Delete_Records_With_Entries(Convert.ToInt32(entry_id_field.Text) );
+
+            if (this.isExtendedWidow)
+            {
+                this.records.Load_All_Records();
+                this.Close();
+            }
+
+        }
     }
 }

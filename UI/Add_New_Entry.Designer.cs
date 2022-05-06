@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.entry_number_field = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@ namespace sales_management.UI
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.entry_id_field = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_entry_accounts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(17, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "رقم القيد";
             // 
@@ -70,7 +71,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(501, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "البيان";
             // 
@@ -86,7 +87,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(221, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "التاريخ";
             // 
@@ -101,8 +102,8 @@ namespace sales_management.UI
             // 
             this.datagrid_entry_accounts.AllowUserToResizeColumns = false;
             this.datagrid_entry_accounts.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
-            this.datagrid_entry_accounts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
+            this.datagrid_entry_accounts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.datagrid_entry_accounts.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.datagrid_entry_accounts.ColumnHeadersHeight = 26;
             this.datagrid_entry_accounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -110,13 +111,13 @@ namespace sales_management.UI
             this.datagrid_entry_accounts.Location = new System.Drawing.Point(13, 54);
             this.datagrid_entry_accounts.MultiSelect = false;
             this.datagrid_entry_accounts.Name = "datagrid_entry_accounts";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_entry_accounts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid_entry_accounts.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.datagrid_entry_accounts.RowHeadersVisible = false;
             this.datagrid_entry_accounts.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.datagrid_entry_accounts.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -183,7 +184,7 @@ namespace sales_management.UI
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(139, 423);
+            this.button2.Location = new System.Drawing.Point(265, 425);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 31);
             this.button2.TabIndex = 37;
@@ -199,11 +200,22 @@ namespace sales_management.UI
             this.entry_id_field.TabIndex = 38;
             this.entry_id_field.Visible = false;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(139, 424);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(120, 31);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "حذف";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Add_New_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 504);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.entry_id_field);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -251,5 +263,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox entry_id_field;
+        private System.Windows.Forms.Button button3;
     }
 }

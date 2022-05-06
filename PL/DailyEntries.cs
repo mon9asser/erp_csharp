@@ -35,6 +35,19 @@ namespace sales_management.PL
 
         }
 
+        public void Delete_Records_With_Entries( int id  ) {
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@id", SqlDbType.Int);
+            param[0].Value = id;
+             
+            DAL.Open();
+            DAL.ExecuteCommand("Delete_Entries_And_Record", param);
+            DAL.Close();
+
+        }
         public DataTable Create_Entry_Id() {
 
             DataTable table = new DataTable();
@@ -59,6 +72,26 @@ namespace sales_management.PL
             return table;
 
         }
+
+        public DataTable Get_This_Entry_By_Id( int entry_id )
+        {
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter( "@id", SqlDbType.Int );
+            param[0].Value = entry_id; 
+
+            DAL.Open();
+            table = DAL.SelectData("Get_This_Entry_By_Id", param);
+            DAL.Close();
+
+            return table;
+
+        }
+
 
         public DataTable Get_All_Row_Entries_By_Id( int id ) {
 
