@@ -14,6 +14,7 @@ namespace sales_management.UI
     public partial class Add_New_Entry : Form
     {
         PL.DailyEntries Entry = new PL.DailyEntries();
+        public int last_row = -1;
         public DataTable __Entries;
         public DataTable __Entries_Accounts;
         public DataTable __Created_Entry;
@@ -41,27 +42,40 @@ namespace sales_management.UI
             
             this.__Entries = Entry.Get_All_Entries();
             this.__Entries_Accounts = Entry.Get_All_Row_Entries_By_Id(this.entry_id);
+             
 
             // Fill Components 
             this.Fill_Form_Components();
 
         }
 
+        public void Set_Needed_accounts_in_entries( string account_name, string account_number ) {
+            
+            if (this.last_row == -1) {
+                return;
+            }
+
+            datagrid_entry_accounts.Rows[this.last_row].Cells["account_name"].Value = account_name;
+            datagrid_entry_accounts.Rows[this.last_row].Cells["account_number"].Value = account_number;
+
+        }
+
         public void Calculate_Totals() {
 
             decimal debits = 0;
-            decimal credits = 0; 
+            decimal credits = 0;
 
-            foreach (DataGridViewRow row in datagrid_entry_accounts.Rows)
+            DataTable tblxeds = (DataTable) datagrid_entry_accounts.DataSource;
+            foreach (DataRow row in tblxeds.Rows)
             {
-                if (System.DBNull.Value != row.Cells["account_name"].Value )
+                if (row["account_name"].ToString() != "")
                 {
 
-                    if (  row.Cells["debit"].Value != System.DBNull.Value)
-                    debits += Convert.ToDecimal(row.Cells["debit"].Value);
+                    if (  row["debit"].ToString() != "" )
+                    debits += Convert.ToDecimal(row["debit"]);
 
-                    if (row.Cells["credit"].Value != System.DBNull.Value )
-                    credits += Convert.ToDecimal(row.Cells["credit"].Value);
+                    if (row["credit"].ToString() != "")
+                    credits += Convert.ToDecimal(row["credit"].ToString());
 
                 }
             }
@@ -103,7 +117,11 @@ namespace sales_management.UI
             datagrid_entry_accounts.DataSource = __Entries_Accounts;
 
             datagrid_entry_accounts.Columns.OfType<DataGridViewColumn>().ToList().ForEach(col => col.Visible = false); 
+            datagrid_entry_accounts.Columns.OfType<DataGridViewColumn>().ToList().ForEach(col => col.ReadOnly = true);
 
+            datagrid_entry_accounts.Columns["debit"].ReadOnly = false;
+            datagrid_entry_accounts.Columns["credit"].ReadOnly = false;
+            datagrid_entry_accounts.Columns["description"].ReadOnly = false; 
             datagrid_entry_accounts.Columns["debit"].Visible = true; 
             datagrid_entry_accounts.Columns["credit"].Visible = true; 
             datagrid_entry_accounts.Columns["description"].Visible = true; 
@@ -159,22 +177,44 @@ namespace sales_management.UI
             table.Columns.Add("cost_center_number");
             table.Columns.Add("account_number"); 
 
-            DataRow row; 
-            foreach (DataGridViewRow xy in datagrid_entry_accounts.Rows) {
-                row = table.NewRow();
-                row["journal_id"] = Convert.ToInt32(xy.Cells["journal_id"].Value);
-                row["debit"] = xy.Cells["journal_id"].Value.ToString();
-                row["credit"] = xy.Cells["journal_id"].Value.ToString();
-                row["description"] = xy.Cells["journal_id"].Value.ToString();
-                row["cost_center_number"] = "-1";
-                row["account_number"] = xy.Cells["journal_id"].Value.ToString();
-                datagrid_entry_accounts.Rows.Add(row);
-            }
+            DataRow row;
 
+            DataTable tableView = (DataTable)datagrid_entry_accounts.DataSource;
+            foreach ( DataRow xy in tableView.Rows ) {
+
+                if (xy["account_number"].ToString() != "") { 
+                    row = table.NewRow(); 
+                    row["journal_id"] = Convert.ToInt32(entry_id_field.Text); 
+                    if (xy["debit"] != null)
+                    {
+                        row["debit"] = xy["debit"].ToString();
+                    }
+                    else
+                    {
+                        row["debit"] = "";
+                    }
+
+                    if (xy["credit"] != null)
+                    {
+                        row["credit"] = xy["credit"].ToString();
+                    }
+                    else
+                    {
+                        row["credit"] = "";
+                    }
+
+                    row["description"] = xy["description"].ToString();
+                    row["cost_center_number"] = "-1";
+                    row["account_number"] = xy["account_number"].ToString();
+
+                    table.Rows.Add(row);
+                }
+            }
             /*-----------------------------------------
             Create Journal  
             ------------------------------------------ */
-            Entry.Update_Entries_Data(table, entry_date_field.Value , entry_details_field.Text.ToString());
+            
+            Entry.Update_Entries_Data(table, entry_date_field.Value , entry_details_field.Text.ToString(), Convert.ToInt32(entry_id_field.Text) );
             
                
 
@@ -184,5 +224,65 @@ namespace sales_management.UI
         {
             this.Calculate_Totals();
         }
+
+        public void execute_col_events(int indexCol, int indexRow ) {
+
+            this.last_row = indexRow;
+
+            if (indexCol == -1 || indexRow == -1) {
+                return;
+            }
+
+            if (indexCol == 1 || indexCol == 0) {
+                UI.___Accounts accs = new UI.___Accounts(5, this);
+                accs.ShowDialog();
+            }
+
+            //Deletion 
+            if (indexCol == 17) {
+                datagrid_entry_accounts.Rows[indexRow].Cells["account_number"].Value = "";
+                datagrid_entry_accounts.Rows[indexRow].Cells["account_name"].Value = "";
+                datagrid_entry_accounts.Rows[indexRow].Cells["description"].Value = "";
+                datagrid_entry_accounts.Rows[indexRow].Cells["debit"].Value = "";
+                datagrid_entry_accounts.Rows[indexRow].Cells["credit"].Value = ""; 
+            }
+        }
+
+        private void datagrid_entry_accounts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.execute_col_events(e.ColumnIndex, e.RowIndex);
+        }
+
+        private void datagrid_entry_accounts_KeyDown(object sender, KeyEventArgs e)
+        { 
+            this.execute_col_events(datagrid_entry_accounts.CurrentCell.OwningColumn.Index, datagrid_entry_accounts.CurrentCell.OwningRow.Index);
+        }
+
+
+        private void datagrid_entry_accounts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+
+            bool isCol = datagrid_entry_accounts.CurrentCell.ColumnIndex == 4 || datagrid_entry_accounts.CurrentCell.ColumnIndex == 3;
+
+            if (isCol) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

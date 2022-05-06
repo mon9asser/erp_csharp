@@ -50,12 +50,14 @@ namespace sales_management.UI
 
             var date_from = Convert.ToDateTime(from).ToString("yyyy-MM-dd");
             var date_to = Convert.ToDateTime(to).ToString("yyyy-MM-dd");
+            DateTime timeDateField = DateTime.Now;
 
             foreach (DataRow row in this.All_Entries.Rows)
             {
                 var date_db_string = Convert.ToDateTime(row["updated_date"]).ToString("yyyy-MM-dd");
                 if (Convert.ToDateTime(date_db_string) >= Convert.ToDateTime(date_from) && Convert.ToDateTime(date_db_string) <= Convert.ToDateTime(date_to))
                 {
+                    timeDateField = Convert.ToDateTime(row["updated_date"]);
                     DataRow rowJournals = this.CRT_DataSet.Tables["Journals"].NewRow();
                     rowJournals["id"] = row["id"].ToString();
                     rowJournals["description"] = row["description"].ToString();
@@ -84,7 +86,14 @@ namespace sales_management.UI
                     rowEntries["credit"] = string.Format("{0:n}", Convert.ToDecimal(rowEntries["credit"])).ToString();
                 }
 
-                rowEntries["date"] = Convert.ToDateTime(row["date"]).ToString("yyyy-MM-dd");
+                if (row["date"] != System.DBNull.Value)
+                {
+                    rowEntries["date"] = Convert.ToDateTime(row["date"]).ToString("yyyy-MM-dd");
+                }
+                else {
+                    rowEntries["date"] = timeDateField.ToString("yyyy-MM-dd"); ;
+                }
+
                 rowEntries["description"] = row["description"].ToString();
                 rowEntries["account_number"] = row["account_number"].ToString();
                 rowEntries["account_name"] = "";

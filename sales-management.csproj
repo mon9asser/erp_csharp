@@ -178,6 +178,12 @@
     <Compile Include="UI\EntriesReportViewer.Designer.cs">
       <DependentUpon>EntriesReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FRM_ALL_ENTRIES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FRM_ALL_ENTRIES.Designer.cs">
+      <DependentUpon>FRM_ALL_ENTRIES.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FRM_CostCenterGuide.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EntriesReportViewer.resx">
       <DependentUpon>EntriesReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FRM_ALL_ENTRIES.resx">
+      <DependentUpon>FRM_ALL_ENTRIES.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_CostCenterGuide.resx">
       <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>

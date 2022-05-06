@@ -11,7 +11,27 @@ namespace sales_management.PL
     class DailyEntries
     {
 
-        public void Update_Entries_Data( DataTable table, DateTime date_field, string details ) {
+        public void Update_Entries_Data( DataTable table, DateTime date_field, string details, int id ) {
+             
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[4];
+
+            param[0] = new SqlParameter("@entries", SqlDbType.Structured);
+            param[0].Value = table;
+
+            param[1] = new SqlParameter("@date_time", SqlDbType.DateTime);
+            param[1].Value = date_field;
+
+            param[2] = new SqlParameter("@detail", SqlDbType.VarChar);
+            param[2].Value = details;
+
+            param[3] = new SqlParameter("@id", SqlDbType.Int);
+            param[3].Value = id;
+
+            DAL.Open();
+            DAL.ExecuteCommand("Update_Entries_DataSet", param);
+            DAL.Close(); 
 
         }
 
@@ -41,9 +61,10 @@ namespace sales_management.PL
         }
 
         public DataTable Get_All_Row_Entries_By_Id( int id ) {
+
             DataTable table = new DataTable();
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-
+            
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter( "@id", SqlDbType.Int );
             param[0].Value = id;

@@ -217,8 +217,8 @@ namespace sales_management.UI
 
         private void قيدتسويةToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Add_New_Entry entry = new UI.Add_New_Entry();
-            entry.Show();
+            UI.FRM_ALL_ENTRIES _entryfrm = new FRM_ALL_ENTRIES();
+            _entryfrm.Show();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace sales_management.UI
         PL.AccountingTree tree = new PL.AccountingTree();
         DataTable table;
         public int InstanceType = 0;
-        
+        public UI.Add_New_Entry Entry;
 
         public static ___Accounts frm;
 
@@ -54,6 +54,18 @@ namespace sales_management.UI
                 this.table = tree.Get_Accounting_Tree();
                 this.Fill_Accounting_Tree();
             } catch (Exception) { }
+        }
+
+
+        public ___Accounts(int instanceId, UI.Add_New_Entry Entry) {
+            
+            InitializeComponent();
+
+            this.InstanceType = instanceId;
+            this.Entry = Entry;
+
+            this.table = tree.Get_Accounting_Tree();
+            this.Fill_Accounting_Tree();
         }
 
         IEnumerable<TreeNode> Collect(TreeNodeCollection nodes)
@@ -124,20 +136,24 @@ namespace sales_management.UI
             {
                 return; 
             }
-             
+
             if (this.InstanceType == 0)
             {
                 // System Settings 
                 UI.SystemSettings.GetForm.input.Text = accounting_tree.SelectedNode.Tag.ToString();
                 UI.SystemSettings.GetForm.Fill_Target_Account_Number(UI.SystemSettings.GetForm.input.Text);
             }
-            else if (this.InstanceType == 1) {
+            else if (this.InstanceType == 1)
+            {
 
                 // Sales Invoice 
                 UI.AA___salesInvoice.GetForm.legend_name.Text = accounting_tree.SelectedNode.Text.ToString();
                 UI.AA___salesInvoice.GetForm.legend_number.Text = accounting_tree.SelectedNode.Tag.ToString();
                 UI.AA___salesInvoice.GetForm.legend_id.Text = "-1";
 
+            }
+            else if (this.InstanceType == 5) {
+                this.Entry.Set_Needed_accounts_in_entries(accounting_tree.SelectedNode.Text.ToString(), accounting_tree.SelectedNode.Tag.ToString());
             }
 
             //MessageBox.Show(this.InstanceType.ToString());
