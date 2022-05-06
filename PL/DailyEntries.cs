@@ -11,6 +11,10 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+        public void Update_Entries_Data( DataTable table, DateTime date_field, string details ) {
+
+        }
+
         public DataTable Create_Entry_Id() {
 
             DataTable table = new DataTable();

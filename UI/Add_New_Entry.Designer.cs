@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.entry_number_field = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,8 +40,8 @@ namespace sales_management.UI
             this.datagrid_entry_accounts = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.debit_label_text = new System.Windows.Forms.Label();
+            this.credit_label_text = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.entry_id_field = new System.Windows.Forms.TextBox();
@@ -61,7 +61,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(17, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "رقم القيد";
             // 
@@ -70,7 +70,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(501, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "البيان";
             // 
@@ -86,7 +86,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(221, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "التاريخ";
             // 
@@ -101,36 +101,38 @@ namespace sales_management.UI
             // 
             this.datagrid_entry_accounts.AllowUserToResizeColumns = false;
             this.datagrid_entry_accounts.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
-            this.datagrid_entry_accounts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
+            this.datagrid_entry_accounts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.datagrid_entry_accounts.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.datagrid_entry_accounts.ColumnHeadersHeight = 26;
             this.datagrid_entry_accounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.datagrid_entry_accounts.GridColor = System.Drawing.Color.DodgerBlue;
             this.datagrid_entry_accounts.Location = new System.Drawing.Point(13, 54);
             this.datagrid_entry_accounts.MultiSelect = false;
             this.datagrid_entry_accounts.Name = "datagrid_entry_accounts";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_entry_accounts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid_entry_accounts.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.datagrid_entry_accounts.RowHeadersVisible = false;
             this.datagrid_entry_accounts.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.datagrid_entry_accounts.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.datagrid_entry_accounts.RowTemplate.Height = 26;
+            this.datagrid_entry_accounts.RowTemplate.Height = 30;
             this.datagrid_entry_accounts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.datagrid_entry_accounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.datagrid_entry_accounts.ShowEditingIcon = false;
             this.datagrid_entry_accounts.Size = new System.Drawing.Size(833, 343);
             this.datagrid_entry_accounts.TabIndex = 31;
+            this.datagrid_entry_accounts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_entry_accounts_CellValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(598, 424);
+            this.label4.Location = new System.Drawing.Point(622, 424);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 32;
@@ -140,31 +142,31 @@ namespace sales_management.UI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(732, 423);
+            this.label5.Location = new System.Drawing.Point(756, 423);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 33;
             this.label5.Text = "إجمالى الدائن";
             // 
-            // label6
+            // debit_label_text
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label6.Location = new System.Drawing.Point(617, 451);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 23);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "0.00";
+            this.debit_label_text.AutoSize = true;
+            this.debit_label_text.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.debit_label_text.Location = new System.Drawing.Point(617, 451);
+            this.debit_label_text.Name = "debit_label_text";
+            this.debit_label_text.Size = new System.Drawing.Size(46, 23);
+            this.debit_label_text.TabIndex = 34;
+            this.debit_label_text.Text = "0.00";
             // 
-            // label7
+            // credit_label_text
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label7.Location = new System.Drawing.Point(749, 451);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 23);
-            this.label7.TabIndex = 35;
-            this.label7.Text = "0.00";
+            this.credit_label_text.AutoSize = true;
+            this.credit_label_text.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.credit_label_text.Location = new System.Drawing.Point(749, 451);
+            this.credit_label_text.Name = "credit_label_text";
+            this.credit_label_text.Size = new System.Drawing.Size(46, 23);
+            this.credit_label_text.TabIndex = 35;
+            this.credit_label_text.Text = "0.00";
             // 
             // button1
             // 
@@ -202,8 +204,8 @@ namespace sales_management.UI
             this.Controls.Add(this.entry_id_field);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.credit_label_text);
+            this.Controls.Add(this.debit_label_text);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.datagrid_entry_accounts);
@@ -241,8 +243,8 @@ namespace sales_management.UI
         public System.Windows.Forms.DataGridView datagrid_entry_accounts;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label debit_label_text;
+        private System.Windows.Forms.Label credit_label_text;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox entry_id_field;
