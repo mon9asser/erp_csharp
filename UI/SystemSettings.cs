@@ -88,8 +88,8 @@ namespace sales_management.UI
             UI.SystemSettings.GetForm.customers_account_field_name.Text = this.Get_Account_Name(customers_account_field.Text.ToString());
             UI.SystemSettings.GetForm.suppliers_account_field_name.Text = this.Get_Account_Name(suppliers_account_field.Text.ToString());
 
-            UI.SystemSettings.GetForm.return_sales_vat_account_field_name.Text = this.Get_Account_Name(return_sales_account_field.Text.ToString());
-            UI.SystemSettings.GetForm.return_purchase_account_field.Text = this.Get_Account_Name(return_purchase_account_field.Text.ToString());
+            UI.SystemSettings.GetForm.return_sales_account_name.Text = this.Get_Account_Name(return_sales_account_field.Text.ToString());
+            UI.SystemSettings.GetForm.return_purchase_account_name.Text = this.Get_Account_Name(return_purchase_account_field.Text.ToString());
 
 
         }
@@ -166,7 +166,8 @@ namespace sales_management.UI
                 inventory_account_field.Text = drow["inventory_account"].ToString();
                 customers_account_field.Text = drow["customers_account"].ToString();
                 suppliers_account_field.Text = drow["suppliers_account"].ToString();
-
+                return_sales_account_field.Text = drow["return_sales_account"].ToString();
+                return_purchase_account_field.Text = drow["return_purchase_account"].ToString();
                 isIncludeAddress.Checked = Convert.ToBoolean(drow["show_address_in_invoice"]);
                 isIncludeUpdate.Checked = Convert.ToBoolean(drow["enable_edit_invoices"]);
                 isIncludeDelete.Checked = Convert.ToBoolean(drow["enable_delete_invoices"]);

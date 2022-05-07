@@ -77,7 +77,7 @@ namespace sales_management.PL
 
         /* ---------------------- PRODUCT UNITS --------------------  */
         public void Update_Product_Units_DataSet(DataTable table) {
-
+             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
             SqlParameter[] param = new SqlParameter[1];
@@ -92,7 +92,7 @@ namespace sales_management.PL
             Layer.Close();
         }
 
-        public DataTable Get_All_Product_Units()
+        public DataTable Get_All_Product_Units( )
         {
 
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
@@ -102,11 +102,13 @@ namespace sales_management.PL
             DataTable tbl = new DataTable();
 
             tbl = Layer.SelectData("Get_Product_Units", null);
+             
 
             Layer.Close();
 
             return tbl;
         }
+         
 
         public DataTable Delete_Product_Units( int id )
         {

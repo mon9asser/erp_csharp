@@ -633,7 +633,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه نقدا";
+                    details.Text = "مردود بضاعه وتم رد المبلغ نقدا";
                     this.Load_Target_Accounts(0);
                     break;
 
@@ -643,7 +643,7 @@ namespace sales_management.UI
                     customer_name.Enabled = true;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه بالأجل";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ بالأجل";
                     this.Load_Target_Accounts(1);
                     break;
 
@@ -653,7 +653,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه عن طريق البنك";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ عن طريق البنك";
                     this.Load_Target_Accounts(2);
                     break;
 
@@ -663,7 +663,7 @@ namespace sales_management.UI
                     customer_name.Enabled = false;
                     legend_name.Enabled = true;
                     legend_number.Enabled = true;
-                    details.Text = "بيع بضاعه عن طريق البنك";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ بضاعه عن طريق البنك";
                     this.Load_Target_Accounts(2);
                     break;
 
@@ -728,7 +728,7 @@ namespace sales_management.UI
                         items_datagridview.Rows[e.RowIndex].Cells["product_id"].Value = row["id"].ToString();
                         items_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value = row["unit_id"].ToString();
                         items_datagridview.Rows[e.RowIndex].Cells["factor"].Value = row["factor"].ToString();
-                        items_datagridview.Rows[e.RowIndex].Cells["is_out"].Value = true;
+                        items_datagridview.Rows[e.RowIndex].Cells["is_out"].Value = false;
                         items_datagridview.Rows[e.RowIndex].Cells["quantity"].Value = "1";
                         items_datagridview.Rows[e.RowIndex].Cells["unit_price"].Value = row["unit_price"].ToString();
                         items_datagridview.Rows[e.RowIndex].Cells["unit_cost"].Value = row["unit_cost"].ToString();
@@ -766,7 +766,7 @@ namespace sales_management.UI
                             }
                             else if (col.Name.ToString() == "is_out")
                             {
-                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = true;
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = false;
                             }
                             else
                             {
@@ -906,7 +906,7 @@ namespace sales_management.UI
             items_datagridview.Rows[iindex].Cells["unit_price"].Value = unit_price.ToString();
             items_datagridview.Rows[iindex].Cells["unit_cost"].Value = unit_cost.ToString();
             items_datagridview.Rows[iindex].Cells["factor"].Value = unit_factor;
-            items_datagridview.Rows[iindex].Cells["is_out"].Value = 1;
+            items_datagridview.Rows[iindex].Cells["is_out"].Value = 0;
             items_datagridview.Rows[iindex].Cells["product_code"].Value = item["code"].ToString();
 
             //drow.Cells["datagrid_id"].Value = "xxxxxxxxxxxxxxx";
@@ -1110,22 +1110,22 @@ namespace sales_management.UI
 
                 // Cash 
                 case 0:
-                    details.Text = "بيع بضاعه نقدا";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ نقدا";
                     break;
 
                 // Deferred payment
                 case 1:
-                    details.Text = "بيع بضاعه بالأجل";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ بالأجل";
                     break;
 
                 // By Network
                 case 2:
-                    details.Text = "بيع بضاعه عن طريق البنك";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ عن طريق البنك";
                     break;
 
                 // Transfeer 
                 case 3:
-                    details.Text = "بيع بضاعه عن طريق البنك";
+                    details.Text = "مردود بضاعه وسيتم رد المبلغ عن طريق البنك";
                     break;
             }
 
@@ -1480,20 +1480,19 @@ namespace sales_management.UI
 
 
             // TO : 
-            DataRow salesRow_from = entry_details.NewRow();
-
+            DataRow salesRow_from = entry_details.NewRow(); 
             salesRow_from["journal_id"] = entry_id.Text;
             salesRow_from["credit"] = total_field_text.Text;
             salesRow_from["cost_center_number"] = "-1";
             salesRow_from["date"] = datemade.Value;
             if (salesPaymentType == 0)
             {
-                salesRow_from["description"] = "عملية بيع نقدا";
+                salesRow_from["description"] = "مردود بضاعه وسيتم رد المبلغ نقدا";
                 salesRow_from["account_number"] = setting["sale_cash_account"].ToString();
             }
             else if (salesPaymentType == 1)
             {
-                salesRow_from["description"] = "عملية بيع أجل";
+                salesRow_from["description"] = "مردود بضاعه وسيتم رد المبلغ أجل";
                 salesRow_from["account_number"] = setting["sale_credit_account"].ToString();
 
 
@@ -1504,7 +1503,7 @@ namespace sales_management.UI
             }
             else if (salesPaymentType == 2 || salesPaymentType == 3)
             {
-                salesRow_from["description"] = "عملية بيع عن طريق البنك";
+                salesRow_from["description"] = "مردود بضاعه وسيتم رد المبلغ عن طريق البنك";
                 salesRow_from["account_number"] = setting["sale_bank_account"].ToString();
             }
 

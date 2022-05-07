@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.datagrid_product_units = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -40,21 +40,21 @@
             // 
             this.datagrid_product_units.AllowUserToResizeColumns = false;
             this.datagrid_product_units.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LightCyan;
-            this.datagrid_product_units.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.datagrid_product_units.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagrid_product_units.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.datagrid_product_units.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.datagrid_product_units.GridColor = System.Drawing.Color.DodgerBlue;
             this.datagrid_product_units.Location = new System.Drawing.Point(12, 10);
             this.datagrid_product_units.MultiSelect = false;
             this.datagrid_product_units.Name = "datagrid_product_units";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_product_units.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid_product_units.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.datagrid_product_units.RowHeadersVisible = false;
             this.datagrid_product_units.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.datagrid_product_units.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -64,6 +64,7 @@
             this.datagrid_product_units.ShowEditingIcon = false;
             this.datagrid_product_units.Size = new System.Drawing.Size(357, 390);
             this.datagrid_product_units.TabIndex = 31;
+            this.datagrid_product_units.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.datagrid_product_units_RowsAdded);
             // 
             // button8
             // 
