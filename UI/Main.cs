@@ -220,5 +220,10 @@ namespace sales_management.UI
             UI.FRM_ALL_ENTRIES _entryfrm = new FRM_ALL_ENTRIES();
             _entryfrm.Show();
         }
+
+        private void مرتجعToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.salesReturnInvoice.GetForm.Show();
+        }
     }
 }

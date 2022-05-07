@@ -218,6 +218,7 @@ namespace sales_management.UI
             // 
             this.مرتجعToolStripMenuItem.Name = "مرتجعToolStripMenuItem";
             resources.ApplyResources(this.مرتجعToolStripMenuItem, "مرتجعToolStripMenuItem");
+            this.مرتجعToolStripMenuItem.Click += new System.EventHandler(this.مرتجعToolStripMenuItem_Click);
             // 
             // العملاءوالمناديبToolStripMenuItem
             // 

@@ -42,14 +42,14 @@ namespace sales_management.UI
 
         public void load_combo_box() {
             
-            if (this.doc_type == 0) {
+            if (this.doc_type == 0 || this.doc_type == 2) {
                 combobox_price_type.SelectedIndex = 1;
             }
 
-            if (this.doc_type == 1)
+            if (this.doc_type == 1 || this.doc_type == 3 )
             {
                 combobox_price_type.SelectedIndex = 0;
-            }
+            } 
 
         }
 
@@ -262,6 +262,10 @@ namespace sales_management.UI
                     UI.salesInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
+                case 2:
+                    UI.salesReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    break;
+                     
             }
 
             this.Close();

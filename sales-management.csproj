@@ -139,6 +139,7 @@
     <Compile Include="PL\Invoice.cs" />
     <Compile Include="PL\Journals.cs" />
     <Compile Include="PL\Products.cs" />
+    <Compile Include="PL\Return_Sales.cs" />
     <Compile Include="PL\Sales.cs" />
     <Compile Include="PL\QR_Code.cs" />
     <Compile Include="PL\Resources.cs" />
@@ -213,6 +214,12 @@
     </Compile>
     <Compile Include="UI\salesInvoice.Designer.cs">
       <DependentUpon>salesInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\salesReturnInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\salesReturnInvoice.Designer.cs">
+      <DependentUpon>salesReturnInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\___Accounts.cs">
       <SubType>Form</SubType>
@@ -398,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\salesInvoice.resx">
       <DependentUpon>salesInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\salesReturnInvoice.resx">
+      <DependentUpon>salesReturnInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\___Accounts.resx">
       <DependentUpon>___Accounts.cs</DependentUpon>

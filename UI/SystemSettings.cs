@@ -87,6 +87,11 @@ namespace sales_management.UI
 
             UI.SystemSettings.GetForm.customers_account_field_name.Text = this.Get_Account_Name(customers_account_field.Text.ToString());
             UI.SystemSettings.GetForm.suppliers_account_field_name.Text = this.Get_Account_Name(suppliers_account_field.Text.ToString());
+
+            UI.SystemSettings.GetForm.return_sales_vat_account_field_name.Text = this.Get_Account_Name(return_sales_account_field.Text.ToString());
+            UI.SystemSettings.GetForm.return_purchase_account_field.Text = this.Get_Account_Name(return_purchase_account_field.Text.ToString());
+
+
         }
 
         public SystemSettings()
@@ -246,7 +251,10 @@ namespace sales_management.UI
                 cost_of_goods_account_field.Text,
                 inventory_account_field.Text,
                 customers_account_field.Text,
-                suppliers_account_field.Text
+                suppliers_account_field.Text, 
+
+                return_sales_account_field.Text,
+                return_purchase_account_field.Text
             );
 
             if ( logoImage_byte.ImageLocation != "" && logoImage_byte.ImageLocation != null ) {
@@ -418,6 +426,28 @@ namespace sales_management.UI
         private void inventory_account_field_Click(object sender, EventArgs e)
         {
             UI.SystemSettings.GetForm.input = inventory_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+
+        private void return_sales_account_field_TextChanged(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = return_sales_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+         
+
+        private void return_purchase_account_field_clicker(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = return_purchase_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+
+        private void return_sales_account_field_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = return_sales_account_field;
             UI.___Accounts.GetForm.InstanceType = 0;
             UI.___Accounts.GetForm.ShowDialog();
         }

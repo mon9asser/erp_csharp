@@ -77,12 +77,15 @@ namespace sales_management.PL
             string cost_of_goods_account,
             string inventory_account,
             string customers_account,
-            string suppliers_account
+            string suppliers_account,
+
+            string return_sales_account,
+            string return_purchase_account
             ) {
             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[29];
+            SqlParameter[] param = new SqlParameter[31];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -171,6 +174,12 @@ namespace sales_management.PL
 
             param[28] = new SqlParameter("@suppliers_account", SqlDbType.VarChar);
             param[28].Value = suppliers_account;
+
+            param[29] = new SqlParameter("@return_sales_account", SqlDbType.VarChar);
+            param[29].Value = return_sales_account;
+
+            param[30] = new SqlParameter("@return_purchase_account", SqlDbType.VarChar);
+            param[30].Value = return_purchase_account;
 
             Layer.Open();
             Layer.ExecuteCommand("Update_System_Settings", param);

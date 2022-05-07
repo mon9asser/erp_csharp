@@ -377,19 +377,19 @@
     <value>المخزون</value>
   </data>
   <data name="قيدتسويةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="قيدتسويةToolStripMenuItem.Text" xml:space="preserve">
     <value>سجل قيود اليومية</value>
   </data>
   <data name="سندقبضToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="سندقبضToolStripMenuItem1.Text" xml:space="preserve">
     <value>سند قبض</value>
   </data>
   <data name="سندصرفنقودToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="سندصرفنقودToolStripMenuItem.Text" xml:space="preserve">
     <value>سند صرف نقود</value>
