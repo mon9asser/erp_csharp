@@ -12,7 +12,7 @@
   <xs:element name="Inventory" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Inventory" msprop:Generator_UserDSName="Inventory">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Inventory" msprop:Generator_TableClassName="InventoryDataTable" msprop:Generator_TableVarName="tableInventory" msprop:Generator_TablePropName="_Inventory" msprop:Generator_RowDeletingName="InventoryRowDeleting" msprop:Generator_RowChangingName="InventoryRowChanging" msprop:Generator_RowEvHandlerName="InventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryRowDeleted" msprop:Generator_UserTableName="Inventory" msprop:Generator_RowChangedName="InventoryRowChanged" msprop:Generator_RowEvArgName="InventoryRowChangeEvent" msprop:Generator_RowClassName="InventoryRow">
+        <xs:element name="Inventory" msprop:Generator_TableClassName="InventoryDataTable" msprop:Generator_TableVarName="tableInventory" msprop:Generator_RowChangedName="InventoryRowChanged" msprop:Generator_TablePropName="_Inventory" msprop:Generator_RowDeletingName="InventoryRowDeleting" msprop:Generator_RowChangingName="InventoryRowChanging" msprop:Generator_RowEvHandlerName="InventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryRowDeleted" msprop:Generator_RowClassName="InventoryRow" msprop:Generator_UserTableName="Inventory" msprop:Generator_RowEvArgName="InventoryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="product_id" msprop:Generator_ColumnVarNameInTable="columnproduct_id" msprop:Generator_ColumnPropNameInRow="product_id" msprop:Generator_ColumnPropNameInTable="product_idColumn" msprop:Generator_UserColumnName="product_id" type="xs:string" minOccurs="0" />
@@ -21,6 +21,13 @@
               <xs:element name="total_quantity_max" msprop:Generator_ColumnVarNameInTable="columntotal_quantity_max" msprop:Generator_ColumnPropNameInRow="total_quantity_max" msprop:Generator_ColumnPropNameInTable="total_quantity_maxColumn" msprop:Generator_UserColumnName="total_quantity_max" type="xs:string" minOccurs="0" />
               <xs:element name="min_unit_name" msprop:Generator_ColumnVarNameInTable="columnmin_unit_name" msprop:Generator_ColumnPropNameInRow="min_unit_name" msprop:Generator_ColumnPropNameInTable="min_unit_nameColumn" msprop:Generator_UserColumnName="min_unit_name" type="xs:string" minOccurs="0" />
               <xs:element name="max_unit_name" msprop:Generator_ColumnVarNameInTable="columnmax_unit_name" msprop:Generator_ColumnPropNameInRow="max_unit_name" msprop:Generator_ColumnPropNameInTable="max_unit_nameColumn" msprop:Generator_UserColumnName="max_unit_name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Totals" msprop:Generator_TableClassName="TotalsDataTable" msprop:Generator_TableVarName="tableTotals" msprop:Generator_TablePropName="Totals" msprop:Generator_RowDeletingName="TotalsRowDeleting" msprop:Generator_RowChangingName="TotalsRowChanging" msprop:Generator_RowEvHandlerName="TotalsRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalsRowDeleted" msprop:Generator_UserTableName="Totals" msprop:Generator_RowChangedName="TotalsRowChanged" msprop:Generator_RowEvArgName="TotalsRowChangeEvent" msprop:Generator_RowClassName="TotalsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="total_field" msprop:Generator_ColumnVarNameInTable="columntotal_field" msprop:Generator_ColumnPropNameInRow="total_field" msprop:Generator_ColumnPropNameInTable="total_fieldColumn" msprop:Generator_UserColumnName="total_field" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

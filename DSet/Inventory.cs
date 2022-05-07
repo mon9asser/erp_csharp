@@ -2,6 +2,10 @@
 {
     partial class Inventory
     {
+        partial class TotalsDataTable
+        {
+        }
+
         partial class InventoryDataTable
         {
         }
