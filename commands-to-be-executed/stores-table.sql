@@ -1,45 +1,41 @@
-datagride_id
-IN >>>>>>>>> product_untis
-
---------------------------------------------------------------------------------
- CREATE TYPE [dbo].[Product_Units_DataSet] AS TABLE(
-	[title] [varchar](50) NULL,
-	[shortcut] [varchar](50) NULL,
-	[datagride_id]  [varchar](50) NULL
-)
-GO
-
---------------------------------------------------------------------------------
-
-ALTER PROC [dbo].[Update_Product_Units_DataSet]
-	@product_units AS Product_Units_DataSet READONLY
+CREATE PROC Inventory_Get_Quantities_Out_In_Products
 AS
-	
-	IF EXISTS( SELECT 1 FROM @product_units )
-	BEGIN
-		IF EXISTS(SELECT COUNT(*) FROM product_untis )
-		BEGIN
-			
-			-- UPDATE THE CURRENT DATATABLE 
-			UPDATE [dbo].product_untis SET
-					title = item_units_value.title, 
-					shortcut = item_units_value.shortcut
-			FROM [dbo].product_untis
-				INNER JOIN @product_units AS item_units_value
-				ON [dbo].product_untis.datagride_id = item_units_value.datagride_id
+select DISTINCT product_id, product_name, is_out, SUM(CAST(total_quantity AS DECIMAL(10, 2))) OVER(PARTITION BY product_id, product_name) total_quantity from document_details where is_out = 0;
+select DISTINCT product_id, product_name, is_out, SUM(CAST(total_quantity AS DECIMAL(10, 2))) OVER(PARTITION BY product_id, product_name) total_quantity from document_details where is_out = 1;
 
-			-- INSERT UNFOUND DATATABLE ROWS
-			INSERT INTO [dbo].product_untis( title, shortcut, datagride_id ) 
-				SELECT title, shortcut, datagride_id FROM @product_units
-				WHERE datagride_id NOT IN( SELECT datagride_id FROM [dbo].product_untis );
+----------------------------------------
+ 
+ALTER PROC [dbo].[Create_Return_Sales_Invoice_Id]
 
-			-- DELETE UNNEEDED DATATABLE VALUES 
-			DELETE FROM [dbo].product_untis WHERE datagride_id NOT IN( SELECT datagride_id FROM @product_units );
+AS
 
-		END
-			ELSE
-		BEGIN
-			-- INSERT UNFOUND DATATABLE ROWS
-			INSERT INTO [dbo].product_untis( title, shortcut, datagride_id ) SELECT title, shortcut, datagride_id FROM @product_units;
-		END
-	END 
+DECLARE @MyCounter AS INT;
+	SET @MyCounter = CASE WHEN EXISTS(SELECT * FROM  [dbo].invoice_return_sales) THEN ( SELECT TOP 1 serial FROM  [dbo].invoice_return_sales ORDER BY id DESC ) + 1 ELSE 1 END; 
+
+DECLARE @DayNumber AS VARCHAR(50)
+	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+
+	-- Open New Invoice
+	INSERT INTO  [dbo].invoice_return_sales(payment_method, total_with_vat, serial, price_include_vat, details) VALUES(0, '00', @MyCounter, 1, 'مردود فاتورة مبيعات' );
+
+	-- Open New Entry 
+	INSERT INTO [dbo].journals( 
+			[updated_date],
+			[description], 
+			entry_number, 
+			doc_id, 
+			doc_type
+		) VALUES( 
+		(SELECT GETDATE()), 
+		'مردود مببعات', 
+		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
+		, @@IDENTITY, 
+		'2' );
+
+	-- Update Entry Number 
+	--UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
+
+	-- Return New Data 
+	SELECT TOP 1 * FROM  [dbo].invoice_return_sales  
+			INNER JOIN 	[dbo].journals ON [dbo].invoice_return_sales.id = [dbo].journals.doc_id
+			ORDER BY  [dbo].invoice_return_sales.id DESC;

@@ -1598,7 +1598,7 @@ namespace sales_management.UI
         {
 
             ReportDocument cryRpt = new ReportDocument();
-            string path = Application.StartupPath + "\\Reports\\returnSalesInvoice.rpt";
+            string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
             cryRpt.Load(path);
             cryRpt.SetDataSource(this.CRT_DataSet);
             cryRpt.PrintToPrinter(1, false, 0, 0);

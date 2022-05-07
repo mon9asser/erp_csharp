@@ -11,6 +11,22 @@ namespace sales_management.PL
     class Products
     {
 
+        /* --------------------------------------  Inventory --------------------  */
+        public DataSet Get_Inventory_Details() {
+
+            DataSet settes = new DataSet();
+
+            DB.DataAccessLayer Layer = new DB.DataAccessLayer();
+
+            Layer.Open(); 
+
+            settes = Layer.SelectDataSet("Inventory_Get_Quantities_Out_In_Products", null);
+
+            Layer.Close();
+
+            return settes;
+        }
+
         /* --------------------------------------  CATEGORIES --------------------  */
         public void Update_Categories( int id, string cat_name, int userId ) {
 

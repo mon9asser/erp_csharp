@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Inventory" targetNamespace="http://tempuri.org/Inventory.xsd" xmlns:mstns="http://tempuri.org/Inventory.xsd" xmlns="http://tempuri.org/Inventory.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Inventory" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Inventory" msprop:Generator_UserDSName="Inventory">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Inventory" msprop:Generator_TableClassName="InventoryDataTable" msprop:Generator_TableVarName="tableInventory" msprop:Generator_TablePropName="_Inventory" msprop:Generator_RowDeletingName="InventoryRowDeleting" msprop:Generator_RowChangingName="InventoryRowChanging" msprop:Generator_RowEvHandlerName="InventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryRowDeleted" msprop:Generator_UserTableName="Inventory" msprop:Generator_RowChangedName="InventoryRowChanged" msprop:Generator_RowEvArgName="InventoryRowChangeEvent" msprop:Generator_RowClassName="InventoryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="product_id" msprop:Generator_ColumnVarNameInTable="columnproduct_id" msprop:Generator_ColumnPropNameInRow="product_id" msprop:Generator_ColumnPropNameInTable="product_idColumn" msprop:Generator_UserColumnName="product_id" type="xs:string" minOccurs="0" />
+              <xs:element name="product_name" msprop:Generator_ColumnVarNameInTable="columnproduct_name" msprop:Generator_ColumnPropNameInRow="product_name" msprop:Generator_ColumnPropNameInTable="product_nameColumn" msprop:Generator_UserColumnName="product_name" type="xs:string" minOccurs="0" />
+              <xs:element name="total_quantity_min" msdata:Caption="total_quantity" msprop:Generator_ColumnVarNameInTable="columntotal_quantity_min" msprop:Generator_ColumnPropNameInRow="total_quantity_min" msprop:Generator_ColumnPropNameInTable="total_quantity_minColumn" msprop:Generator_UserColumnName="total_quantity_min" type="xs:string" minOccurs="0" />
+              <xs:element name="total_quantity_max" msprop:Generator_ColumnVarNameInTable="columntotal_quantity_max" msprop:Generator_ColumnPropNameInRow="total_quantity_max" msprop:Generator_ColumnPropNameInTable="total_quantity_maxColumn" msprop:Generator_UserColumnName="total_quantity_max" type="xs:string" minOccurs="0" />
+              <xs:element name="min_unit_name" msprop:Generator_ColumnVarNameInTable="columnmin_unit_name" msprop:Generator_ColumnPropNameInRow="min_unit_name" msprop:Generator_ColumnPropNameInTable="min_unit_nameColumn" msprop:Generator_UserColumnName="min_unit_name" type="xs:string" minOccurs="0" />
+              <xs:element name="max_unit_name" msprop:Generator_ColumnVarNameInTable="columnmax_unit_name" msprop:Generator_ColumnPropNameInRow="max_unit_name" msprop:Generator_ColumnPropNameInTable="max_unit_nameColumn" msprop:Generator_UserColumnName="max_unit_name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

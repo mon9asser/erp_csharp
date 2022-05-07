@@ -909,7 +909,7 @@ namespace sales_management.UI
             items_datagridview.Rows[iindex].Cells["unit_price"].Value = unit_price.ToString();
             items_datagridview.Rows[iindex].Cells["unit_cost"].Value = unit_cost.ToString();
             items_datagridview.Rows[iindex].Cells["factor"].Value = unit_factor;
-            items_datagridview.Rows[iindex].Cells["is_out"].Value = 1;
+            items_datagridview.Rows[iindex].Cells["is_out"].Value = true;
             items_datagridview.Rows[iindex].Cells["product_code"].Value = item["code"].ToString();
 
             //drow.Cells["datagrid_id"].Value = "xxxxxxxxxxxxxxx";
@@ -1372,7 +1372,7 @@ namespace sales_management.UI
                     rtbl["doc_type"] = this.documentType;
                     rtbl["product_id"] = Convert.ToInt32(row.Cells["product_id"].Value);
                     rtbl["unit_id"] = Convert.ToInt32(row.Cells["unit_id"].Value);
-                    rtbl["is_out"] = false;
+                    rtbl["is_out"] = true;
                     rtbl["product_name"] = row.Cells["product_name"].Value.ToString();
                     rtbl["unit_name"] = row.Cells["unit_name"].Value.ToString();
                     rtbl["unit_price"] = row.Cells["unit_price"].Value.ToString();
@@ -1752,7 +1752,7 @@ namespace sales_management.UI
                     }
                     else if (col.Name.ToString() == "is_out")
                     {
-                        row.Cells[col.Name.ToString()].Value = false;
+                        row.Cells[col.Name.ToString()].Value = true;
                     }
                     else
                     {

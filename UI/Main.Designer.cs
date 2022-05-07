@@ -321,6 +321,7 @@ namespace sales_management.UI
             // 
             this.تقريرالكمياتالحاليةToolStripMenuItem.Name = "تقريرالكمياتالحاليةToolStripMenuItem";
             resources.ApplyResources(this.تقريرالكمياتالحاليةToolStripMenuItem, "تقريرالكمياتالحاليةToolStripMenuItem");
+            this.تقريرالكمياتالحاليةToolStripMenuItem.Click += new System.EventHandler(this.تقريرالكمياتالحاليةToolStripMenuItem_Click);
             // 
             // كشفحركةالمخزونToolStripMenuItem
             // 

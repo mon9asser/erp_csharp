@@ -225,5 +225,11 @@ namespace sales_management.UI
         {
             UI.salesReturnInvoice.GetForm.Show();
         }
+
+        private void تقريرالكمياتالحاليةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Current_Quantities Inventory = new UI.Current_Quantities();
+            Inventory.Show();
+        }
     }
 }

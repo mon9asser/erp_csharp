@@ -124,6 +124,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DailyEntries.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\Inventory.cs">
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSet\Inventory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSet\SalesInvoice.cs">
       <DependentUpon>SalesInvoice.xsd</DependentUpon>
     </Compile>
@@ -172,6 +180,12 @@
     </Compile>
     <Compile Include="UI\Add_New_Entry.Designer.cs">
       <DependentUpon>Add_New_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Current_Quantities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Current_Quantities.Designer.cs">
+      <DependentUpon>Current_Quantities.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\EntriesReportViewer.cs">
       <SubType>Form</SubType>
@@ -385,6 +399,9 @@
     <EmbeddedResource Include="UI\Add_New_Entry.resx">
       <DependentUpon>Add_New_Entry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Current_Quantities.resx">
+      <DependentUpon>Current_Quantities.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EntriesReportViewer.resx">
       <DependentUpon>EntriesReportViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -491,6 +508,17 @@
     </None>
     <None Include="DSet\DailyEntries.xss">
       <DependentUpon>DailyEntries.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Inventory.xsc">
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Inventory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Inventory.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\Inventory.xss">
+      <DependentUpon>Inventory.xsd</DependentUpon>
     </None>
     <None Include="DSet\SalesInvoice.xsc">
       <DependentUpon>SalesInvoice.xsd</DependentUpon>
