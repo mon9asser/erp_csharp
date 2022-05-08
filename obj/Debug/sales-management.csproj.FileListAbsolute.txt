@@ -203,3 +203,5 @@ D:\sales-app\bin\Debug\Reports\Inventory_Report.rpt
 D:\sales-app\bin\Debug\Reports\Inventory_Report.cs
 D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
 D:\sales-app\obj\Debug\sales_management.UI.purchaseReturnInvoice.resources
+D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range_Form.resources
+D:\sales-app\obj\Debug\sales_management.UI.Report_Viewer.resources

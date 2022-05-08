@@ -8,6 +8,52 @@
 --  تقرير القيمة المضافه
 ----------------------------
 
+ 
+
+
+
+
+CREATE PROC Search_On_Process_Reports
+
+@date_from varchar(50),
+@date_to varchar(50),
+@filter_with int -- SHOULD CONTAIN A VALUE WITH 0 OR 1 OR 2
+
+AS
+
+IF @filter_with = 2 
+	BEGIN
+		
+		SELECT * FROM invoice_sales where [date] >= @date_from and [date] <= @date_to;
+		SELECT * FROM invoice_purchases where [date] >= @date_from and [date] <= @date_to;
+		SELECT * FROM invoice_return_sales where [date] >= @date_from and [date] <= @date_to;
+		SELECT * FROM invoice_return_purchases where [date] >= @date_from and [date] <= @date_to;
+
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_sales  where [date] >= @date_from and [date] <= @date_to;
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_purchases  where [date] >= @date_from and [date] <= @date_to;
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_return_sales  where [date] >= @date_from and [date] <= @date_to;
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_return_purchases  where [date] >= @date_from and [date] <= @date_to;
+
+	END
+		ELSE
+	BEGIN
+		SELECT * FROM invoice_sales where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		SELECT * FROM invoice_purchases where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		SELECT * FROM invoice_return_sales where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		SELECT * FROM invoice_return_purchases where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_sales  where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_purchases  where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_return_sales  where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+		SELECT SUM(CAST(total_with_vat AS DECIMAL(10, 2))) AS total, SUM(CAST(vat_amount AS DECIMAL(10, 2))) as vat_amount, sum(cast( discount_name as decimal(10, 2))) AS dicount_amount FROM invoice_return_purchases  where [date] >= @date_from and [date] <= @date_to AND enabled_zakat_vat = @filter_with;
+	END
+
+
+
+
+	
+
+--------------------------------------------------------------
 create PROC [dbo].[Get_Return_Purchase_Invoice_Data_Set]
 
 @doc_type INT

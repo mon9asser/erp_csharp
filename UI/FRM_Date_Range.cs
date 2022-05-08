@@ -13,6 +13,7 @@ namespace sales_management.UI
     public partial class FRM_Date_Range : Form
     {
         EntriesReportViewer Entries_Form;
+        public int SearchType = -1;
 
         public FRM_Date_Range()
         {
@@ -21,17 +22,32 @@ namespace sales_management.UI
 
         public FRM_Date_Range(EntriesReportViewer Entries ) {
             this.Entries_Form = Entries;
+            this.SearchType = 0;
+            InitializeComponent();
+        }
+
+        public FRM_Date_Range(int searchType )
+        { 
+            this.SearchType = searchType;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Entries_Form.rearrange_report_date(
-                  Convert.ToDateTime(date_from.Value),
-                  Convert.ToDateTime(date_to.Value)
-              );
+            DateTime from_date = Convert.ToDateTime(date_from.Value);
+            DateTime to_date = Convert.ToDateTime(date_to.Value);
+
+            // Journal Entries Data 
+            if (this.SearchType == 0) {
+            
+                this.Entries_Form.rearrange_report_date(
+                    from_date, to_date
+                ); 
+
+            }  
 
             this.Close();
+
         }
     }
 }

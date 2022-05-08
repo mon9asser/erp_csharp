@@ -1,6 +1,7 @@
-﻿namespace sales_management.UI
+﻿
+namespace sales_management.UI
 {
-    partial class FRM_Date_Range
+    partial class FRM_Date_Range_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +34,8 @@
             this.date_from = new System.Windows.Forms.DateTimePicker();
             this.date_to = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.display_invoices_item_with = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 98);
+            this.label2.Location = new System.Drawing.Point(12, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
@@ -62,7 +65,7 @@
             // 
             // date_to
             // 
-            this.date_to.Location = new System.Drawing.Point(13, 129);
+            this.date_to.Location = new System.Drawing.Point(13, 124);
             this.date_to.Name = "date_to";
             this.date_to.Size = new System.Drawing.Size(257, 20);
             this.date_to.TabIndex = 3;
@@ -70,19 +73,43 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(15, 204);
+            this.button1.Location = new System.Drawing.Point(14, 333);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(256, 28);
             this.button1.TabIndex = 4;
-            this.button1.Text = "إعادة التقرير";
+            this.button1.Text = "عرض التقرير";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // FRM_Date_Range
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 179);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(195, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "عرض الفواتير الإلكترونية بناءا علي الأتي :";
+            // 
+            // display_invoices_item_with
+            // 
+            this.display_invoices_item_with.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.display_invoices_item_with.FormattingEnabled = true;
+            this.display_invoices_item_with.Items.AddRange(new object[] {
+            "عرض الفواتير الغير خاضعه للضريبة",
+            "عرض الفواتير الخاضعه الضريبية فقط",
+            "عرض الجميع"});
+            this.display_invoices_item_with.Location = new System.Drawing.Point(15, 210);
+            this.display_invoices_item_with.Name = "display_invoices_item_with";
+            this.display_invoices_item_with.Size = new System.Drawing.Size(254, 21);
+            this.display_invoices_item_with.TabIndex = 8;
+            // 
+            // FRM_Date_Range_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(283, 245);
+            this.ClientSize = new System.Drawing.Size(283, 373);
+            this.Controls.Add(this.display_invoices_item_with);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.date_to);
             this.Controls.Add(this.date_from);
@@ -90,7 +117,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "FRM_Date_Range";
+            this.Name = "FRM_Date_Range_Form";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
@@ -110,5 +137,7 @@
         private System.Windows.Forms.DateTimePicker date_from;
         private System.Windows.Forms.DateTimePicker date_to;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox display_invoices_item_with;
     }
 }

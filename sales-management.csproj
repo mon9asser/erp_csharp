@@ -132,6 +132,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Inventory.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\ReportSources.cs">
+      <DependentUpon>ReportSources.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSet\ReportSources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportSources.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSet\SalesInvoice.cs">
       <DependentUpon>SalesInvoice.xsd</DependentUpon>
     </Compile>
@@ -219,6 +227,12 @@
     <Compile Include="UI\FRM_Date_Range.Designer.cs">
       <DependentUpon>FRM_Date_Range.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FRM_Date_Range_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FRM_Date_Range_Form.Designer.cs">
+      <DependentUpon>FRM_Date_Range_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FRM_Stores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +262,12 @@
     </Compile>
     <Compile Include="UI\salesReturnInvoice.Designer.cs">
       <DependentUpon>salesReturnInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Report_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Report_Viewer.Designer.cs">
+      <DependentUpon>Report_Viewer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\___Accounts.cs">
       <SubType>Form</SubType>
@@ -433,6 +453,9 @@
     <EmbeddedResource Include="UI\FRM_Date_Range.resx">
       <DependentUpon>FRM_Date_Range.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FRM_Date_Range_Form.resx">
+      <DependentUpon>FRM_Date_Range_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_Stores.resx">
       <DependentUpon>FRM_Stores.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\salesReturnInvoice.resx">
       <DependentUpon>salesReturnInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Report_Viewer.resx">
+      <DependentUpon>Report_Viewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\___Accounts.resx">
       <DependentUpon>___Accounts.cs</DependentUpon>
@@ -541,6 +567,17 @@
     </None>
     <None Include="DSet\Inventory.xss">
       <DependentUpon>Inventory.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\ReportSources.xsc">
+      <DependentUpon>ReportSources.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\ReportSources.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportSources.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\ReportSources.xss">
+      <DependentUpon>ReportSources.xsd</DependentUpon>
     </None>
     <None Include="DSet\SalesInvoice.xsc">
       <DependentUpon>SalesInvoice.xsd</DependentUpon>

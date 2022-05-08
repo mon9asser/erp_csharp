@@ -1468,6 +1468,10 @@ namespace sales_management.UI
              * Updating Data 
              * ===============================================
              */
+            if (discount_value.Text.ToString() == "")
+            {
+                discount_value.Text = "0";
+            }
             Purchase.Save_Updates_Purchase_Invoice_Data_Set(
                 Convert.ToInt32(invoice_id.Text),
                 Convert.ToInt32(payment_methods.SelectedIndex),

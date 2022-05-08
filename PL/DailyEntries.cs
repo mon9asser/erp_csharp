@@ -11,6 +11,32 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+        public DataSet Search_On_Process_Reports( DateTime date_from, DateTime date_to, int enable_zakat ) {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[3];
+            DataSet setters;
+            param[0] = new SqlParameter("@date_from", SqlDbType.VarChar);
+            param[0].Value = date_from.ToString("yyyy-MM-dd") + " 00:00:00";
+
+            param[1] = new SqlParameter("@date_to", SqlDbType.VarChar);
+            param[1].Value = date_to.ToString("yyyy-MM-dd") + " 23:59:59";
+
+            Console.WriteLine(date_from.ToString("yyyy-MM-dd") + " 00:00:00");
+            Console.WriteLine(date_to.ToString("yyyy-MM-dd") + " 23:59:59");
+
+            param[2] = new SqlParameter("@filter_with", SqlDbType.Int);
+            param[2].Value = enable_zakat;
+            
+            DAL.Open();
+            setters = DAL.SelectDataSet("Search_On_Process_Reports", param);
+            DAL.Close();
+
+            return setters;
+
+        }
+
         public void Update_Entries_Data( DataTable table, DateTime date_field, string details, int id ) {
              
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();

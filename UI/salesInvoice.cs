@@ -1554,13 +1554,16 @@ namespace sales_management.UI
             salesRow_cost_goods_to["account_number"] = setting["inventory_account"].ToString();
             entry_details.Rows.Add(salesRow_cost_goods_to);
 
-            
+
 
             /*
              * ===============================================
              * Updating Data 
              * ===============================================
              */
+            if (discount_value.Text.ToString() == "") {
+                discount_value.Text = "0";
+            }
             Sale.Save_Updates_Sale_Invoice_Data_Set(
                 Convert.ToInt32(invoice_id.Text),
                 Convert.ToInt32(payment_methods.SelectedIndex),

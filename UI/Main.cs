@@ -236,5 +236,12 @@ namespace sales_management.UI
         {
             UI.purchaseReturnInvoice.GetForm.Show();
         }
+
+        private void تقريرالمبيعاتToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // Document Type here is sales report 
+            UI.FRM_Date_Range_Form frm = new UI.FRM_Date_Range_Form(0);
+            frm.Show();
+        }
     }
 }

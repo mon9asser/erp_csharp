@@ -421,6 +421,7 @@ namespace sales_management.UI
             // 
             this.تقريرالمبيعاتToolStripMenuItem1.Name = "تقريرالمبيعاتToolStripMenuItem1";
             resources.ApplyResources(this.تقريرالمبيعاتToolStripMenuItem1, "تقريرالمبيعاتToolStripMenuItem1");
+            this.تقريرالمبيعاتToolStripMenuItem1.Click += new System.EventHandler(this.تقريرالمبيعاتToolStripMenuItem1_Click);
             // 
             // تقريرالمشترياتToolStripMenuItem1
             // 
