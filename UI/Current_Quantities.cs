@@ -93,7 +93,8 @@ namespace sales_management.UI
 
             if ( this.Products.Rows.Count != 0 ) {
 
-                foreach (DataRow prods in this.Products.Rows ) {
+                foreach (DataRow prods in this.Products.Rows)
+                {
 
                     int product_id = Convert.ToInt32(prods["id"]);
                     DataTable in_coming = this.Extract_OutGoing_InComing_Row(product_id, false);
@@ -101,9 +102,9 @@ namespace sales_management.UI
 
                     decimal incoming_quantity = 0;
                     decimal outgoing_quantity = 0;
-                    
 
-                    if (in_coming.Rows.Count != 0 )
+
+                    if (in_coming.Rows.Count != 0)
                     {
                         incoming_quantity = Convert.ToDecimal(in_coming.Rows[0]["total_quantity"]);
                     }
@@ -114,7 +115,7 @@ namespace sales_management.UI
                     }
 
                     // Givens 
-                    int basic_unit_id = prods["unit_id"].ToString() == "" ? -1:  Convert.ToInt32(prods["unit_id"]);
+                    int basic_unit_id = prods["unit_id"].ToString() == "" ? -1 : Convert.ToInt32(prods["unit_id"]);
                     int last_unit_id = -1;
                     int last_transform = -1;
 
@@ -126,30 +127,36 @@ namespace sales_management.UI
 
                     decimal total_qty_max = 0;
                     string unit_max_name = "";
-                    
+
                     // ----------------------------------------------------------------
 
-                    for ( int i=6; i >= 1; i-- ) {
+                    for (int i = 6; i >= 1; i--)
+                    {
 
                         last_unit_id = Convert.ToInt32(prods["gr" + i + "_unit_id"]);
-                        last_transform  = Convert.ToInt32(prods["gr" + i + "_transform"]);
+                        last_transform = Convert.ToInt32(prods["gr" + i + "_transform"]);
 
-                        if (Convert.ToInt32(prods["gr" + i + "_transform"]) != 1) {
+                        if (Convert.ToInt32(prods["gr" + i + "_transform"]) != 1)
+                        {
                             break;
                         }
 
                     }
 
                     // Calcualte the last transform 
-                    if (total_qty != 0) {
+                    if (total_qty != 0)
+                    {
                         total_qty_max = Convert.ToDecimal(total_qty) / Convert.ToDecimal(last_transform);
                     }
 
-                   
+
 
                     // Exctact Unit Shortcut 
                     unit_name = this.Extract_Unit_Name(basic_unit_id);
                     unit_max_name = this.Extract_Unit_Name(last_unit_id);
+                    if (last_transform == 1)
+                        unit_max_name = unit_name;
+
                     all_totals += total_qty; 
 
                     // Start To Fill Data 

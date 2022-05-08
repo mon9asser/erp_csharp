@@ -265,7 +265,10 @@ namespace sales_management.UI
                 case 2:
                     UI.salesReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
-                     
+
+                case 3:
+                    UI.purchaseReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    break;
             }
 
             this.Close();

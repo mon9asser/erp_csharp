@@ -199,6 +199,7 @@ D:\sales-app\obj\Debug\sales_management.UI.EntriesReportViewer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_ALL_ENTRIES.resources
 D:\sales-app\obj\Debug\sales_management.UI.salesReturnInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.Current_Quantities.resources
-D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
 D:\sales-app\bin\Debug\Reports\Inventory_Report.rpt
 D:\sales-app\bin\Debug\Reports\Inventory_Report.cs
+D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales_management.UI.purchaseReturnInvoice.resources

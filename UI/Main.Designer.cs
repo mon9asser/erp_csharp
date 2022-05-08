@@ -270,6 +270,7 @@ namespace sales_management.UI
             // 
             this.مسترداتToolStripMenuItem.Name = "مسترداتToolStripMenuItem";
             resources.ApplyResources(this.مسترداتToolStripMenuItem, "مسترداتToolStripMenuItem");
+            this.مسترداتToolStripMenuItem.Click += new System.EventHandler(this.مسترداتToolStripMenuItem_Click);
             // 
             // الموردينوالتجارToolStripMenuItem
             // 

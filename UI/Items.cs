@@ -101,6 +101,10 @@ namespace sales_management.UI
                 case 2:
                     UI.salesReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
+
+                case 3:
+                    UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
             }
 
             this.Close();
@@ -138,6 +142,10 @@ namespace sales_management.UI
                 // Sales Return Invoice
                 case 2:
                     UI.salesReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
+
+                case 3:
+                    UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
             }
 

@@ -231,5 +231,10 @@ namespace sales_management.UI
             UI.Current_Quantities Inventory = new UI.Current_Quantities();
             Inventory.Show();
         }
+
+        private void مسترداتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.purchaseReturnInvoice.GetForm.Show();
+        }
     }
 }
