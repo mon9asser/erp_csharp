@@ -20,7 +20,7 @@ namespace sales_management.UI
         {
             this.document_type = document_type;
             InitializeComponent();
-            display_invoices_item_with.SelectedIndex = 0;
+            display_invoices_item_with.SelectedIndex = 2;
         }
          
 

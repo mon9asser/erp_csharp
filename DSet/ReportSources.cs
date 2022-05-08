@@ -6,7 +6,7 @@
     {
         partial class TotalsDataTable
         {
-           
+
         }
 
         partial class Sources_ReportDataTable

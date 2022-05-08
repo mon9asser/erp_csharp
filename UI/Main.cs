@@ -243,5 +243,29 @@ namespace sales_management.UI
             UI.FRM_Date_Range_Form frm = new UI.FRM_Date_Range_Form(0);
             frm.Show();
         }
+
+        private void تقريرالمشترياتToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UI.FRM_Date_Range_Form frm = new UI.FRM_Date_Range_Form(1);
+            frm.Show();
+        }
+
+        private void تقريرمردودالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FRM_Date_Range_Form frm = new UI.FRM_Date_Range_Form(2);
+            frm.Show();
+        }
+
+        private void تقريرمردودالمشترياتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FRM_Date_Range_Form frm = new UI.FRM_Date_Range_Form(3);
+            frm.Show();
+        }
+
+        private void تقريرالمخزونالحاليToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Current_Quantities Inventory = new UI.Current_Quantities();
+            Inventory.Show();
+        }
     }
 }
