@@ -11,6 +11,21 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+
+        public DataTable Create_Exp_Doucment_Id() {
+
+            DataTable table;
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            DAL.Open();
+            table = DAL.SelectData("Create_Exp_Doucment_Id", null);
+            DAL.Close();
+
+            return table;
+
+        }
+
         public DataSet Get_Withdraw_Document()
         {
             DataSet table;

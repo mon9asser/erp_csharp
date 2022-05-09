@@ -45,13 +45,14 @@ namespace sales_management.UI
             this.next_button = new System.Windows.Forms.Button();
             this.previous_button = new System.Windows.Forms.Button();
             this.save_button = new System.Windows.Forms.Button();
-            this.total_label_text = new System.Windows.Forms.Label();
-            this.total_price = new System.Windows.Forms.TextBox();
+            this.total_price_field = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.total_quantity = new System.Windows.Forms.Label();
             this.Exep_id = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.add_new_btn = new System.Windows.Forms.Button();
+            this.deletion_button = new System.Windows.Forms.Button();
+            this.total_quantity_field = new System.Windows.Forms.TextBox();
+            this.journal_id = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "تاريخ الصرف :";
             // 
@@ -76,7 +77,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(427, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "سبب الصرف :";
             // 
@@ -93,7 +94,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "حساب الأستاذ :";
             // 
@@ -218,30 +219,20 @@ namespace sales_management.UI
             this.save_button.UseVisualStyleBackColor = true;
             this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
-            // total_label_text
+            // total_price_field
             // 
-            this.total_label_text.AutoSize = true;
-            this.total_label_text.Font = new System.Drawing.Font("Tahoma", 35F);
-            this.total_label_text.Location = new System.Drawing.Point(687, 424);
-            this.total_label_text.Name = "total_label_text";
-            this.total_label_text.Size = new System.Drawing.Size(143, 57);
-            this.total_label_text.TabIndex = 147;
-            this.total_label_text.Text = "00.00";
-            // 
-            // total_price
-            // 
-            this.total_price.Location = new System.Drawing.Point(793, 407);
-            this.total_price.Name = "total_price";
-            this.total_price.Size = new System.Drawing.Size(32, 20);
-            this.total_price.TabIndex = 149;
-            this.total_price.Visible = false;
+            this.total_price_field.Location = new System.Drawing.Point(791, 106);
+            this.total_price_field.Name = "total_price_field";
+            this.total_price_field.Size = new System.Drawing.Size(32, 20);
+            this.total_price_field.TabIndex = 149;
+            this.total_price_field.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(567, 421);
+            this.label4.Location = new System.Drawing.Point(740, 420);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 150;
             this.label4.Text = "إجمالي الكميات :";
             // 
@@ -249,7 +240,7 @@ namespace sales_management.UI
             // 
             this.total_quantity.AutoSize = true;
             this.total_quantity.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.total_quantity.Location = new System.Drawing.Point(567, 437);
+            this.total_quantity.Location = new System.Drawing.Point(740, 436);
             this.total_quantity.Name = "total_quantity";
             this.total_quantity.Size = new System.Drawing.Size(83, 33);
             this.total_quantity.TabIndex = 151;
@@ -263,42 +254,66 @@ namespace sales_management.UI
             this.Exep_id.TabIndex = 152;
             this.Exep_id.Visible = false;
             // 
-            // label5
+            // add_new_btn
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(704, 415);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 13);
-            this.label5.TabIndex = 153;
-            this.label5.Text = "إجمالي التكلفة :";
+            this.add_new_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.add_new_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new_btn.Image = global::sales_management.Properties.Resources.add_new;
+            this.add_new_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add_new_btn.Location = new System.Drawing.Point(16, 431);
+            this.add_new_btn.Name = "add_new_btn";
+            this.add_new_btn.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.add_new_btn.Size = new System.Drawing.Size(47, 38);
+            this.add_new_btn.TabIndex = 154;
+            this.add_new_btn.Text = " ";
+            this.add_new_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.add_new_btn.UseVisualStyleBackColor = true;
+            this.add_new_btn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // deletion_button
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::sales_management.Properties.Resources.add_new;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(16, 431);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.button1.Size = new System.Drawing.Size(47, 38);
-            this.button1.TabIndex = 154;
-            this.button1.Text = " ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.deletion_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deletion_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletion_button.Image = global::sales_management.Properties.Resources.icons8_delete_20;
+            this.deletion_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deletion_button.Location = new System.Drawing.Point(551, 431);
+            this.deletion_button.Name = "deletion_button";
+            this.deletion_button.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.deletion_button.Size = new System.Drawing.Size(47, 38);
+            this.deletion_button.TabIndex = 155;
+            this.deletion_button.Text = " ";
+            this.deletion_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.deletion_button.UseVisualStyleBackColor = true;
+            // 
+            // total_quantity_field
+            // 
+            this.total_quantity_field.Location = new System.Drawing.Point(683, 417);
+            this.total_quantity_field.Name = "total_quantity_field";
+            this.total_quantity_field.Size = new System.Drawing.Size(32, 20);
+            this.total_quantity_field.TabIndex = 156;
+            this.total_quantity_field.Visible = false;
+            // 
+            // journal_id
+            // 
+            this.journal_id.Location = new System.Drawing.Point(457, 56);
+            this.journal_id.Name = "journal_id";
+            this.journal_id.Size = new System.Drawing.Size(19, 20);
+            this.journal_id.TabIndex = 157;
+            this.journal_id.Visible = false;
             // 
             // Export_Document
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 494);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.journal_id);
+            this.Controls.Add(this.total_quantity_field);
+            this.Controls.Add(this.deletion_button);
+            this.Controls.Add(this.add_new_btn);
             this.Controls.Add(this.Exep_id);
             this.Controls.Add(this.total_quantity);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.total_price);
-            this.Controls.Add(this.total_label_text);
+            this.Controls.Add(this.total_price_field);
             this.Controls.Add(this.current_invoice_page);
             this.Controls.Add(this.first_record_button);
             this.Controls.Add(this.last_record_button);
@@ -344,12 +359,13 @@ namespace sales_management.UI
         private System.Windows.Forms.Button next_button;
         private System.Windows.Forms.Button previous_button;
         private System.Windows.Forms.Button save_button;
-        private System.Windows.Forms.Label total_label_text;
-        private System.Windows.Forms.TextBox total_price;
+        private System.Windows.Forms.TextBox total_price_field;
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label total_quantity;
         private System.Windows.Forms.TextBox Exep_id;
-        public System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button add_new_btn;
+        private System.Windows.Forms.Button deletion_button;
+        private System.Windows.Forms.TextBox total_quantity_field;
+        private System.Windows.Forms.TextBox journal_id;
     }
 }

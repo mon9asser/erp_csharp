@@ -14,19 +14,19 @@ namespace sales_management.UI
     {
         PL.DailyEntries Exep = new PL.DailyEntries();
         DataSet dataSetDb;
-
+        public bool is_out = true;   
         DataTable Document_Table;
         DataTable Document_Details;
         DataTable Accounts;
         DataTable Settings;
         DataTable Prods;
         DataTable Codes;
-        DataTable unitName; 
+        DataTable unitName;
 
         public Export_Document()
         {
 
-             
+
             InitializeComponent();
 
             this.load_invoice_data_tables();
@@ -235,26 +235,82 @@ namespace sales_management.UI
             DataTable items = this.Get_All_Invoice_Items(id);
             items_datagridview.DataSource = items;
             items_datagridview.Columns.OfType<DataGridViewColumn>().ToList().ForEach(col => col.Visible = false);
+            //items_datagridview.Columns["unit_price"].Visible = true;
+            //items_datagridview.Columns["total_price"].Visible = true;
             items_datagridview.Columns["product_code"].Visible = true;
             items_datagridview.Columns["product_name"].Visible = true;
-            //items_datagridview.Columns["unit_price"].Visible = true;
             items_datagridview.Columns["quantity"].Visible = true;
             items_datagridview.Columns["unit_name"].Visible = true;
-            //items_datagridview.Columns["total_price"].Visible = true;
+
+            items_datagridview.Columns["product_code"].HeaderText = "كود الصنف";
+            items_datagridview.Columns["product_name"].HeaderText = "إسم الصنف";
+            items_datagridview.Columns["quantity"].HeaderText = "الكميات";
+            items_datagridview.Columns["unit_name"].HeaderText = "الوحدة";
+
             DataGridViewButtonColumn deletion_button = new DataGridViewButtonColumn();
-            deletion_button.FlatStyle = FlatStyle.Flat; 
+            deletion_button.FlatStyle = FlatStyle.Flat;
             deletion_button.HeaderText = "حذف";
             deletion_button.Name = "deletion_button";
             deletion_button.Text = "حذف";
-            deletion_button.UseColumnTextForButtonValue = true; 
+            deletion_button.UseColumnTextForButtonValue = true;
             items_datagridview.Columns.Add(deletion_button);
             items_datagridview.Columns["product_name"].Width = 400;
-        
+
         }
 
         private void save_button_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void Load_All_Fields_With_Ids(DataRow row ){
+
+            Exep_id.Text = row["id"].ToString();
+            date_made.Value = ( System.DBNull.Value == row["date_made"]) ? DateTime.Now: Convert.ToDateTime(row["date_made"]);
+            details.Text = row["details"].ToString();
+            account_number.Text = row["account_number"].ToString();
+            account_name.Text = row["account_name"].ToString();
+            total_quantity_field.Text = row["total_quantity"].ToString();
+            total_price_field.Text = row["total_price"].ToString();
+            journal_id.Text = row["id1"].ToString(); 
+
+        }
+
+        public void Enable_Disable_Fields( bool is_enabled ) {
+            Exep_id.Enabled = is_enabled;
+            date_made.Enabled = is_enabled;
+            details.Enabled = is_enabled;
+            account_number.Enabled = is_enabled;
+            account_name.Enabled = is_enabled;
+            total_quantity_field.Enabled = is_enabled;
+            total_price_field.Enabled = is_enabled;
+            journal_id.Enabled = !is_enabled;
+            items_datagridview.ReadOnly = !is_enabled;
+
+            current_invoice_page.Enabled = !is_enabled;
+            add_new_btn.Enabled = !is_enabled;
+            save_button.Enabled = is_enabled;
+            first_record_button.Enabled = !is_enabled;
+            next_button.Enabled = !is_enabled;
+            previous_button.Enabled = !is_enabled;
+            last_record_button.Enabled = !is_enabled;
+            deletion_button.Enabled = is_enabled;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+             
+            DataTable table = Exep.Create_Exp_Doucment_Id();
+            if (table.Rows.Count == 0) {
+                return;
+            }
+
+            foreach (DataColumn cols in table.Columns) {
+                Console.WriteLine(cols);
+            }
+
+            this.Load_All_Fields_With_Ids(table.Rows[0]);
+            this.Enable_Disable_Fields(true);
         }
     }
 }
