@@ -11,6 +11,62 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+        public DataSet Get_Withdraw_Document()
+        {
+            DataSet table;
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer(); 
+            DAL.Open();
+            table = DAL.SelectDataSet("Get_Withdraw_Document", null );
+            DAL.Close();
+            return table;
+        }
+
+        public void Update_Withdraw_Document( int id, DateTime date_made, string details, string account_number, string account_name, string total_quantity, string total_price, string journal_id, DataTable items_table, DataTable header_entry, DataTable details_entry )
+        {
+             
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[11];
+
+            param[0] = new SqlParameter("@id", SqlDbType.Int);
+            param[0].Value = id;
+
+            param[1] = new SqlParameter("@date_made", SqlDbType.DateTime);
+            param[1].Value = date_made;
+
+            param[2] = new SqlParameter("@details", SqlDbType.VarChar);
+            param[2].Value = details;
+
+            param[3] = new SqlParameter("@account_number", SqlDbType.VarChar);
+            param[3].Value = account_number;
+
+            param[4] = new SqlParameter("@account_name", SqlDbType.VarChar);
+            param[4].Value = account_number;
+
+            param[5] = new SqlParameter("@total_quantity", SqlDbType.VarChar);
+            param[5].Value = total_quantity;
+
+            param[6] = new SqlParameter("@total_price", SqlDbType.VarChar);
+            param[6].Value = total_price;
+
+            param[7] = new SqlParameter("@journal_id", SqlDbType.VarChar);
+            param[7].Value = journal_id;
+
+            param[8] = new SqlParameter("@items_table", SqlDbType.Structured);
+            param[8].Value = items_table;
+
+            param[9] = new SqlParameter("@header_entry", SqlDbType.Structured);
+            param[9].Value = header_entry;
+
+            param[10] = new SqlParameter("@details_entry", SqlDbType.Structured);
+            param[10].Value = details_entry;
+
+            DAL.Open();
+            DAL.ExecuteCommand("Update_Withdraw_Document", param );
+            DAL.Close();
+             
+        }
+
         public DataSet Search_On_Process_Reports( DateTime date_from, DateTime date_to, int enable_zakat ) {
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();

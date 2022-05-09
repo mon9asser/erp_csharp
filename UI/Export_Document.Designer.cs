@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.date_made = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,7 +38,7 @@ namespace sales_management.UI
             this.label3 = new System.Windows.Forms.Label();
             this.account_name = new System.Windows.Forms.TextBox();
             this.account_number = new System.Windows.Forms.TextBox();
-            this.datagrid_product_details = new System.Windows.Forms.DataGridView();
+            this.items_datagridview = new System.Windows.Forms.DataGridView();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.first_record_button = new System.Windows.Forms.Button();
             this.last_record_button = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@ namespace sales_management.UI
             this.Exep_id = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.datagrid_product_details)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
             // date_made
@@ -67,7 +67,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "تاريخ الصرف :";
             // 
@@ -76,7 +76,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(427, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "سبب الصرف :";
             // 
@@ -93,7 +93,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "حساب الأستاذ :";
             // 
@@ -112,36 +112,36 @@ namespace sales_management.UI
             this.account_number.TabIndex = 6;
             this.account_number.Visible = false;
             // 
-            // datagrid_product_details
+            // items_datagridview
             // 
-            this.datagrid_product_details.AllowUserToAddRows = false;
-            this.datagrid_product_details.AllowUserToDeleteRows = false;
-            this.datagrid_product_details.AllowUserToResizeColumns = false;
-            this.datagrid_product_details.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LightCyan;
-            this.datagrid_product_details.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.datagrid_product_details.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.datagrid_product_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.datagrid_product_details.GridColor = System.Drawing.Color.DodgerBlue;
-            this.datagrid_product_details.Location = new System.Drawing.Point(16, 97);
-            this.datagrid_product_details.MultiSelect = false;
-            this.datagrid_product_details.Name = "datagrid_product_details";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_product_details.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.datagrid_product_details.RowHeadersVisible = false;
-            this.datagrid_product_details.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.datagrid_product_details.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.datagrid_product_details.RowTemplate.Height = 26;
-            this.datagrid_product_details.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.datagrid_product_details.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagrid_product_details.ShowEditingIcon = false;
-            this.datagrid_product_details.Size = new System.Drawing.Size(818, 307);
-            this.datagrid_product_details.TabIndex = 32;
+            this.items_datagridview.AllowUserToAddRows = false;
+            this.items_datagridview.AllowUserToDeleteRows = false;
+            this.items_datagridview.AllowUserToResizeColumns = false;
+            this.items_datagridview.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.items_datagridview.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.items_datagridview.GridColor = System.Drawing.Color.DodgerBlue;
+            this.items_datagridview.Location = new System.Drawing.Point(16, 97);
+            this.items_datagridview.MultiSelect = false;
+            this.items_datagridview.Name = "items_datagridview";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.items_datagridview.RowHeadersVisible = false;
+            this.items_datagridview.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.items_datagridview.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.items_datagridview.RowTemplate.Height = 26;
+            this.items_datagridview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.items_datagridview.ShowEditingIcon = false;
+            this.items_datagridview.Size = new System.Drawing.Size(818, 307);
+            this.items_datagridview.TabIndex = 32;
             // 
             // current_invoice_page
             // 
@@ -216,6 +216,7 @@ namespace sales_management.UI
             this.save_button.Text = " حفظ";
             this.save_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.save_button.UseVisualStyleBackColor = true;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
             // 
             // total_label_text
             // 
@@ -240,7 +241,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(567, 421);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 150;
             this.label4.Text = "إجمالي الكميات :";
             // 
@@ -267,7 +268,7 @@ namespace sales_management.UI
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(704, 415);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 153;
             this.label5.Text = "إجمالي التكلفة :";
             // 
@@ -304,7 +305,7 @@ namespace sales_management.UI
             this.Controls.Add(this.next_button);
             this.Controls.Add(this.previous_button);
             this.Controls.Add(this.save_button);
-            this.Controls.Add(this.datagrid_product_details);
+            this.Controls.Add(this.items_datagridview);
             this.Controls.Add(this.account_number);
             this.Controls.Add(this.account_name);
             this.Controls.Add(this.label3);
@@ -321,7 +322,7 @@ namespace sales_management.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "إذن الصرف";
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.datagrid_product_details)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,7 +337,7 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox account_name;
         private System.Windows.Forms.TextBox account_number;
-        public System.Windows.Forms.DataGridView datagrid_product_details;
+        public System.Windows.Forms.DataGridView items_datagridview;
         private System.Windows.Forms.Label current_invoice_page;
         private System.Windows.Forms.Button first_record_button;
         private System.Windows.Forms.Button last_record_button;

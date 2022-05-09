@@ -206,5 +206,5 @@ D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range_Form.resources
 D:\sales-app\obj\Debug\sales_management.UI.Report_Viewer.resources
 D:\sales-app\bin\Debug\Reports\ReportSources.rpt
 D:\sales-app\bin\Debug\Reports\ReportSources.cs
-D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
 D:\sales-app\obj\Debug\sales_management.UI.Export_Document.resources
+D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
