@@ -1,3 +1,15 @@
+
+/*
+id 
+date_made
+details
+account_number
+account_name
+total_quantity
+total_price 
+*/
+
+
 -----------------------------------
 ------ تقرير المسحوبات عن الفترة
 -- كميات البيع

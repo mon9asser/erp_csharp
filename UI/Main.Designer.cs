@@ -82,11 +82,11 @@ namespace sales_management.UI
             this.تقريرمردودالمبيعاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرمردودالمشترياتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالمخزونالحاليToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تقريرالمسحوباتعنالفترةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالقيمةالمضافهعنالفترةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالمصروفاتعنالفترةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالرواتبعنالفترةToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريرالأرباحوالخسائرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تقريرالمسحوباتعنالفترةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.كشفحركةالمخزونعنالفترةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ميزانالمراجعهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.قائمةالدخلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -337,6 +337,7 @@ namespace sales_management.UI
             // 
             this.إذنصرفبضاعةToolStripMenuItem.Name = "إذنصرفبضاعةToolStripMenuItem";
             resources.ApplyResources(this.إذنصرفبضاعةToolStripMenuItem, "إذنصرفبضاعةToolStripMenuItem");
+            this.إذنصرفبضاعةToolStripMenuItem.Click += new System.EventHandler(this.إذنصرفبضاعةToolStripMenuItem_Click);
             // 
             // إدارةالوحداتToolStripMenuItem
             // 
@@ -454,6 +455,11 @@ namespace sales_management.UI
             resources.ApplyResources(this.تقريرالمخزونالحاليToolStripMenuItem, "تقريرالمخزونالحاليToolStripMenuItem");
             this.تقريرالمخزونالحاليToolStripMenuItem.Click += new System.EventHandler(this.تقريرالمخزونالحاليToolStripMenuItem_Click);
             // 
+            // تقريرالمسحوباتعنالفترةToolStripMenuItem
+            // 
+            this.تقريرالمسحوباتعنالفترةToolStripMenuItem.Name = "تقريرالمسحوباتعنالفترةToolStripMenuItem";
+            resources.ApplyResources(this.تقريرالمسحوباتعنالفترةToolStripMenuItem, "تقريرالمسحوباتعنالفترةToolStripMenuItem");
+            // 
             // تقريرالقيمةالمضافهعنالفترةToolStripMenuItem
             // 
             this.تقريرالقيمةالمضافهعنالفترةToolStripMenuItem.Name = "تقريرالقيمةالمضافهعنالفترةToolStripMenuItem";
@@ -473,11 +479,6 @@ namespace sales_management.UI
             // 
             this.تقريرالأرباحوالخسائرToolStripMenuItem.Name = "تقريرالأرباحوالخسائرToolStripMenuItem";
             resources.ApplyResources(this.تقريرالأرباحوالخسائرToolStripMenuItem, "تقريرالأرباحوالخسائرToolStripMenuItem");
-            // 
-            // تقريرالمسحوباتعنالفترةToolStripMenuItem
-            // 
-            this.تقريرالمسحوباتعنالفترةToolStripMenuItem.Name = "تقريرالمسحوباتعنالفترةToolStripMenuItem";
-            resources.ApplyResources(this.تقريرالمسحوباتعنالفترةToolStripMenuItem, "تقريرالمسحوباتعنالفترةToolStripMenuItem");
             // 
             // كشفحركةالمخزونعنالفترةToolStripMenuItem
             // 

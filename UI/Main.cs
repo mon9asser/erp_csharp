@@ -267,5 +267,11 @@ namespace sales_management.UI
             UI.Current_Quantities Inventory = new UI.Current_Quantities();
             Inventory.Show();
         }
+
+        private void إذنصرفبضاعةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Export_Document EXP = new UI.Export_Document();
+            EXP.Show();
+        }
     }
 }
