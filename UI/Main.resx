@@ -211,6 +211,12 @@
   <data name="تقريرالمخزونالحاليToolStripMenuItem.Text" xml:space="preserve">
     <value>تقرير المخزون الحالي</value>
   </data>
+  <data name="تقريرالمسحوباتعنالفترةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="تقريرالمسحوباتعنالفترةToolStripMenuItem.Text" xml:space="preserve">
+    <value>تقرير المسحوبات</value>
+  </data>
   <data name="تقريرالقيمةالمضافهعنالفترةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
@@ -234,12 +240,6 @@
   </data>
   <data name="تقريرالأرباحوالخسائرToolStripMenuItem.Text" xml:space="preserve">
     <value>تقرير الأرباح والخسائر</value>
-  </data>
-  <data name="تقريرالمسحوباتعنالفترةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
-  </data>
-  <data name="تقريرالمسحوباتعنالفترةToolStripMenuItem.Text" xml:space="preserve">
-    <value>تقرير المسحوبات اليومي</value>
   </data>
   <data name="كشفحركةالمخزونعنالفترةToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
@@ -570,6 +570,12 @@
   <data name="تهيةالبياناتالأفتراضيةToolStripMenuItem.Text" xml:space="preserve">
     <value>تهيئة البيانات الإفتراضية</value>
   </data>
+  <data name="تقريربأخطاءالنظامToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 22</value>
+  </data>
+  <data name="تقريربأخطاءالنظامToolStripMenuItem.Text" xml:space="preserve">
+    <value>تقرير بأخطاء النظام</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -879,6 +885,30 @@
   <data name="&gt;&gt;تقريرالمشترياتToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;تقريرمردودالمبيعاتToolStripMenuItem.Name" xml:space="preserve">
+    <value>تقريرمردودالمبيعاتToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;تقريرمردودالمبيعاتToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;تقريرمردودالمشترياتToolStripMenuItem.Name" xml:space="preserve">
+    <value>تقريرمردودالمشترياتToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;تقريرمردودالمشترياتToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;تقريرالمخزونالحاليToolStripMenuItem.Name" xml:space="preserve">
+    <value>تقريرالمخزونالحاليToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;تقريرالمخزونالحاليToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;تقريرالقيمةالمضافهعنالفترةToolStripMenuItem.Name" xml:space="preserve">
+    <value>تقريرالقيمةالمضافهعنالفترةToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;تقريرالقيمةالمضافهعنالفترةToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;تقريرالمصروفاتعنالفترةToolStripMenuItem.Name" xml:space="preserve">
     <value>تقريرالمصروفاتعنالفترةToolStripMenuItem</value>
   </data>
@@ -889,12 +919,6 @@
     <value>تقريرالرواتبعنالفترةToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;تقريرالرواتبعنالفترةToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;تقريرالقيمةالمضافهعنالفترةToolStripMenuItem.Name" xml:space="preserve">
-    <value>تقريرالقيمةالمضافهعنالفترةToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;تقريرالقيمةالمضافهعنالفترةToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;تقريرالأرباحوالخسائرToolStripMenuItem.Name" xml:space="preserve">
@@ -909,16 +933,22 @@
   <data name="&gt;&gt;تقريرالمسحوباتعنالفترةToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;تقريرالمخزونالحاليToolStripMenuItem.Name" xml:space="preserve">
-    <value>تقريرالمخزونالحاليToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;تقريرالمخزونالحاليToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;كشفحركةالمخزونعنالفترةToolStripMenuItem.Name" xml:space="preserve">
     <value>كشفحركةالمخزونعنالفترةToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;كشفحركةالمخزونعنالفترةToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ميزانالمراجعهToolStripMenuItem.Name" xml:space="preserve">
+    <value>ميزانالمراجعهToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ميزانالمراجعهToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;قائمةالدخلToolStripMenuItem.Name" xml:space="preserve">
+    <value>قائمةالدخلToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;قائمةالدخلToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;قائمةالمركزالماليToolStripMenuItem.Name" xml:space="preserve">
@@ -963,28 +993,10 @@
   <data name="&gt;&gt;تهيةالبياناتالأفتراضيةToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;تقريرمردودالمشترياتToolStripMenuItem.Name" xml:space="preserve">
-    <value>تقريرمردودالمشترياتToolStripMenuItem</value>
+  <data name="&gt;&gt;تقريربأخطاءالنظامToolStripMenuItem.Name" xml:space="preserve">
+    <value>تقريربأخطاءالنظامToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;تقريرمردودالمشترياتToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;تقريرمردودالمبيعاتToolStripMenuItem.Name" xml:space="preserve">
-    <value>تقريرمردودالمبيعاتToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;تقريرمردودالمبيعاتToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;قائمةالدخلToolStripMenuItem.Name" xml:space="preserve">
-    <value>قائمةالدخلToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;قائمةالدخلToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ميزانالمراجعهToolStripMenuItem.Name" xml:space="preserve">
-    <value>ميزانالمراجعهToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ميزانالمراجعهToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;تقريربأخطاءالنظامToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
