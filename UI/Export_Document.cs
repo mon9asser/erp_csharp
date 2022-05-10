@@ -14,7 +14,9 @@ namespace sales_management.UI
     {
         PL.DailyEntries Exep = new PL.DailyEntries();
         DataSet dataSetDb;
-        public bool is_out = true;   
+        public bool is_out = true;
+        public int documentType = 6;
+        public int lastRow = -1;
         DataTable Document_Table;
         DataTable Document_Details;
         DataTable Accounts;
@@ -22,11 +24,33 @@ namespace sales_management.UI
         DataTable Prods;
         DataTable Codes;
         DataTable unitName;
+        public bool is_getting_data = true; 
+        public bool is_change_price = false;
+        public static Export_Document frm;
 
+        static void frm_formClosed(object sernder, FormClosedEventArgs e)
+        {
+            frm = null;
+        }
+
+        public static Export_Document GetForm
+        {
+            get
+            {
+
+                if (frm == null)
+                {
+                    frm = new Export_Document();
+                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
+                }
+
+                return frm;
+
+            }
+        }
         public Export_Document()
         {
-
-
+             
             InitializeComponent();
 
             this.load_invoice_data_tables();
@@ -44,7 +68,7 @@ namespace sales_management.UI
 
             // Fill All Information 
             this.Load_DataGridView_And_Items(id);
-             
+            
         }
 
         public void Load_All_Documents() {
@@ -53,6 +77,74 @@ namespace sales_management.UI
 
         public void Load_All_Items() {
 
+        }
+
+        public void Add_Item_To_Row(int iindex, int id, int rowId = -1)
+        {
+
+            if (Prods.Rows.Count == 0) return;
+
+            // Setup Column For Table 
+            int index = -1;
+            for (int i = 0; i < Prods.Rows.Count; i++)
+            {
+                if (Prods.Rows[i]["id"].ToString() == id.ToString())
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            DataRow item = Prods.Rows[index];
+
+            string name = item["name"].ToString();
+            int pid = Convert.ToInt32(item["id"]);
+            int default_group = Convert.ToInt32(item["default_group"]);
+            Decimal purchase_price = Convert.ToDecimal(item["purchase_price"]);
+            Decimal default_sale_price = Convert.ToDecimal(item["default_sale_price"]);
+            int unit_id = Convert.ToInt32(item["unit_id"]);
+            decimal unit_factor = 1;
+
+
+            if (default_group != 0)
+            {
+                purchase_price = Convert.ToDecimal(item["gr" + default_group + "_purchase_price"]);
+                default_sale_price = Convert.ToDecimal(item["gr" + default_group + "_sale_price"]);
+                unit_id = Convert.ToInt32(item["gr" + default_group + "_unit_id"]);
+                unit_factor = Convert.ToDecimal(item["gr" + default_group + "_transform"]);
+            }
+
+            decimal unit_price = 0;
+            unit_price = purchase_price;
+            decimal unit_cost = 0;
+            unit_cost = purchase_price;
+            string unit_shortcut = "جرام";
+
+            foreach (DataRow col in unitName.Rows)
+            {
+
+                if (Convert.ToInt32(col["id"]) == unit_id)
+                {
+                    unit_shortcut = col["shortcut"].ToString();
+                    break;
+                }
+
+            }
+
+            DataGridViewRow drow = items_datagridview.Rows[iindex];
+            drow.Cells["id"].Value = rowId.ToString();
+            drow.Cells["doc_id"].Value = Exep_id.Text.ToString();
+            drow.Cells["doc_type"].Value = this.documentType;
+            drow.Cells["product_id"].Value = pid.ToString();
+            drow.Cells["product_name"].Value = name.ToString();
+            drow.Cells["unit_id"].Value = unit_id.ToString();
+            drow.Cells["unit_name"].Value = unit_shortcut.ToString();
+            drow.Cells["unit_price"].Value = unit_price.ToString();
+            drow.Cells["unit_cost"].Value = unit_cost.ToString();
+            drow.Cells["factor"].Value = unit_factor;
+            drow.Cells["is_out"].Value = 1;
+            drow.Cells["product_code"].Value = item["code"].ToString(); ;
+              
         }
 
         public DataTable Load_All_Products_Codes(DataTable products)
@@ -257,10 +349,42 @@ namespace sales_management.UI
             items_datagridview.Columns["product_name"].Width = 400;
 
         }
+         
+        public void apply_calculation() {
 
+            decimal total_quantity = 0;
+            decimal total_price = 0;
+
+            foreach (DataGridViewRow rows in items_datagridview.Rows) {
+                
+                if (rows.Cells["total_price"].Value != System.DBNull.Value && rows.Cells["total_price"].Value.ToString() != "") {
+                    total_price += Convert.ToDecimal(rows.Cells["total_price"].Value); 
+                }
+
+                if (rows.Cells["total_quantity"].Value != System.DBNull.Value && rows.Cells["total_quantity"].Value.ToString() != "")
+                {
+                    total_quantity += Convert.ToDecimal(rows.Cells["total_quantity"].Value);
+                }
+
+            }
+
+            total_price_field.Text = total_price.ToString();
+            total_quantity_field.Text = total_quantity.ToString();
+
+        }
+        
         private void save_button_Click(object sender, EventArgs e)
         {
+
+            Console.WriteLine(total_price_field.Text);
+            Console.WriteLine(total_quantity_field.Text);
+
+            // Calculate DataGridview Elements 
+            this.apply_calculation();
+
+            // Disable Elements 
             this.Enable_Disable_Fields(false);
+
         }
 
         public void Load_All_Fields_With_Ids(DataRow row ){
@@ -300,17 +424,427 @@ namespace sales_management.UI
         private void button1_Click(object sender, EventArgs e)
         {
              
+            this.is_getting_data = false;
+
             DataTable table = Exep.Create_Exp_Doucment_Id();
-            if (table.Rows.Count == 0) {
+            if (table.Rows.Count == 0)
+            {
                 return;
             }
 
-            foreach (DataColumn cols in table.Columns) {
-                Console.WriteLine(cols);
-            }
+            // Clear Current Datagridview 
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+                foreach (DataGridViewColumn col in items_datagridview.Columns)
+                {
 
+                    if (col.Name.ToString() != "deletion_et_button")
+                    {
+
+                        if (col.Name.ToString() == "datagrid_id")
+                        {
+                            row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
+                        }
+                        else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                        {
+                            row.Cells[col.Name.ToString()].Value = 0;
+                        }
+                        else if (col.Name.ToString() == "is_out")
+                        {
+                            row.Cells[col.Name.ToString()].Value = this.is_out;
+                        }
+                        else
+                        {
+                            row.Cells[col.Name.ToString()].Value = "";
+                        }
+
+                    }
+                }
+            }
+               
             this.Load_All_Fields_With_Ids(table.Rows[0]);
             this.Enable_Disable_Fields(true);
+        }
+         
+
+        public void Add_New_Item_Unit(int dataGridIndex, DataTable item_updates)
+        {
+
+            if (item_updates.Rows.Count < 1)
+            {
+                return;
+            }
+
+            foreach (DataRow row in item_updates.Rows)
+            {
+                foreach (DataColumn col in item_updates.Columns)
+                {
+                    items_datagridview.Rows[dataGridIndex].Cells[col.ToString()].Value = row[col.ToString()];
+                }
+            }
+
+            this.is_change_price = false;
+        }
+
+        private void items_datagridview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
+
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+
+            UI.Items.GetForm.DGRowIndex = e.RowIndex;
+
+            // Select Item By Code 
+            if (e.ColumnIndex == 1 && false == this.is_change_price)
+            {
+
+                string item_code_value = items_datagridview.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                bool is_found = false;
+
+                foreach (DataRow row in this.Codes.Rows)
+                {
+
+                    if (row["code"].ToString() == item_code_value.ToString())
+                    {
+                        is_found = true;
+                        // Setup Item In Current Row 
+                        items_datagridview.Rows[e.RowIndex].Cells["doc_id"].Value = Exep_id.Text.ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["doc_type"].Value = this.documentType;
+                        items_datagridview.Rows[e.RowIndex].Cells["product_id"].Value = row["id"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value = row["unit_id"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["factor"].Value = row["factor"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["is_out"].Value = this.is_out; 
+                        items_datagridview.Rows[e.RowIndex].Cells["quantity"].Value = "1";
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_price"].Value = row["unit_price"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_cost"].Value = row["unit_cost"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value = row["name"].ToString();
+
+                        string unit_shortcut = "جرام";
+                        foreach (DataRow col in unitName.Rows)
+                        {
+
+                            if (Convert.ToInt32(col["id"]).Equals(Convert.ToInt32(row["unit_id"])))
+                            {
+                                unit_shortcut = col["shortcut"].ToString();
+                                break;
+                            }
+
+                        }
+
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_name"].Value = unit_shortcut.ToString();
+
+                        break;
+                    }
+                }
+
+                if (is_found == false)
+                {
+                    foreach (DataGridViewColumn col in items_datagridview.Columns)
+                    {
+
+                        if (col.Name.ToString() != "deletion_et_button")
+                        {
+
+                            if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                            {
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = -1;
+                            }
+                            else if (col.Name.ToString() == "is_out")
+                            {
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = this.is_out; 
+                            }
+                            else
+                            {
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = "";
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+
+            // Calcualte Row Of DataGridview 
+            this.Calculate_Datagridview_Row(e.RowIndex);
+
+            // Caluclate Total Fields 
+            this.Fill_Total_Fields();
+        }
+
+        public decimal Calculate_Sub_Total()
+        {
+
+            decimal value = 0;
+
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+                if (row.Cells["total_price"].Value != System.DBNull.Value && row.Cells["total_price"].Value.ToString() != "")
+                {
+                    decimal col = Convert.ToDecimal(row.Cells["total_price"].Value);
+
+                    value = value + col;
+                }
+            }
+
+            return value;
+
+        }
+
+
+        public decimal Calculate_Quantities()
+        {
+
+            decimal value = 0;
+
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+                if (row.Cells["total_quantity"].Value != System.DBNull.Value && row.Cells["total_quantity"].Value.ToString() != "")
+                {
+                    decimal col = Convert.ToDecimal(row.Cells["total_quantity"].Value);
+
+                    value = value + col;
+                }
+            }
+
+            return value;
+
+        }
+
+        public void Fill_Total_Fields()
+        {
+
+            if (this.is_getting_data == false)
+            {
+                decimal price = this.Calculate_Sub_Total();
+                decimal quantities = this.Calculate_Quantities();
+
+                total_price_field.Text = price.ToString();
+                total_quantity_field.Text = quantities.ToString();
+                total_quantity.Text = quantities.ToString();
+
+            }
+        }
+
+        public void Calculate_Datagridview_Row(int index)
+        {
+
+            // Getting Current Row Index   
+            if (index == -1)
+            {
+                return;
+            }
+
+            DataGridViewRow row = items_datagridview.Rows[index];
+
+            if (row.Cells["product_name"].Value.ToString() == "")
+            {
+                return;
+            }
+
+            decimal quantity = Convert.ToDecimal(0);
+            decimal factor = Convert.ToDecimal(0);
+            decimal unitPrice = Convert.ToDecimal(0);
+            decimal unitCost = Convert.ToDecimal(0);
+
+            // Calculate Factors AND Quantity 
+            if (System.DBNull.Value.ToString() != row.Cells["quantity"].Value.ToString())
+            {
+                quantity = Convert.ToDecimal(row.Cells["quantity"].Value);
+            }
+
+            if (System.DBNull.Value.ToString() != row.Cells["factor"].Value.ToString())
+            {
+                factor = Convert.ToDecimal(row.Cells["factor"].Value);
+            }
+
+            if (System.DBNull.Value.ToString() != row.Cells["unit_price"].Value.ToString())
+            {
+                unitPrice = Convert.ToDecimal(row.Cells["unit_price"].Value);
+            }
+
+            if (System.DBNull.Value.ToString() != row.Cells["unit_cost"].Value.ToString())
+            {
+                unitCost = Convert.ToDecimal(row.Cells["unit_cost"].Value);
+            }
+
+            // Total Quantity 
+            row.Cells["total_quantity"].Value = (quantity * factor).ToString();
+
+            // Calculate Total 
+            row.Cells["total_price"].Value = (quantity * unitPrice).ToString();
+
+            // Calculate Unit Cost (purchase is the default price)
+            row.Cells["unit_cost"].Value = (unitCost).ToString();
+            row.Cells["total_cost"].Value = (quantity * unitCost).ToString();
+
+        }
+
+        private void items_datagridview_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space)
+            {
+                return;
+            }
+
+
+            if (items_datagridview.CurrentCell.OwningRow.Index == -1) return;
+
+            UI.Items.GetForm.DGRowIndex = items_datagridview.CurrentCell.OwningRow.Index;
+            UI.purchaseInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
+
+            UI.Items.GetForm.doc_type = this.documentType;
+
+            if (items_datagridview.CurrentCell.OwningColumn.Index == 2)
+            {
+                UI.Items.GetForm.ShowDialog();
+            }
+
+            if (items_datagridview.CurrentCell.OwningColumn.Index == 3)
+            {
+
+                if (items_datagridview.Rows[items_datagridview.CurrentCell.OwningRow.Index].Cells["product_name"].Value.ToString() == "")
+                {
+                    return;
+                }
+
+                this.is_change_price = true;
+                //UI.Price.Get_Form.ShowDialog();
+            }
+        }
+
+        private void items_datagridview_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1 || e.ColumnIndex == -1) return;
+
+            if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
+
+            UI.purchaseInvoice.GetForm.lastRow = e.RowIndex;
+            UI.Items.GetForm.DGRowIndex = this.lastRow;
+            UI.Items.GetForm.doc_type = this.documentType;
+             
+            if (e.ColumnIndex == 2)
+            {
+                UI.Items.GetForm.ShowDialog();
+            }
+
+            if (e.ColumnIndex == 4)
+            {
+
+                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.purchaseInvoice.GetForm.lastRow].Cells["product_name"].Value))
+                {
+                    return;
+                }
+
+                this.is_change_price = true;
+
+                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.purchaseInvoice.GetForm.lastRow].Cells["product_id"].Value);
+
+                UI.ItemUnit item_units = new UI.ItemUnit(
+                    this.documentType,
+                    product_id,
+                    this.Prods,
+                    this.unitName,
+                    e.RowIndex
+                );
+
+                item_units.ShowDialog();
+
+            }
+
+        }
+
+        private void items_datagridview_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+
+            bool isCol = items_datagridview.CurrentCell.ColumnIndex == 1 || items_datagridview.CurrentCell.ColumnIndex == 5;
+
+            if (isCol) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+
+        void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void items_datagridview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
+
+            if (e.RowIndex == -1 || e.ColumnIndex == -1)
+            {
+                return;
+            }
+
+            string colName = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
+
+            if (colName != "deletion_et_button")
+            {
+                return;
+            }
+
+            // Empty Current Row 
+            DataGridViewRow row = items_datagridview.Rows[e.RowIndex];
+            foreach (DataGridViewColumn col in items_datagridview.Columns)
+            {
+                if (col.Name.ToString() != "deletion_et_button")
+                {
+
+                    if (col.Name.ToString() == "datagrid_id")
+                    {
+                        row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
+                    }
+                    else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                    {
+                        row.Cells[col.Name.ToString()].Value = 0;
+                    }
+                    else if (col.Name.ToString() == "is_out")
+                    {
+                        row.Cells[col.Name.ToString()].Value = this.is_out;
+                    }
+                    else
+                    {
+                        row.Cells[col.Name.ToString()].Value = "";
+                    }
+
+                }
+            }
+        }
+
+        private void items_datagridview_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                this.items_datagridview.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                this.items_datagridview.Cursor = Cursors.Default;
+            }
         }
     }
 }
