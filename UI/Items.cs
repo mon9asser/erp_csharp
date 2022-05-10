@@ -75,14 +75,17 @@ namespace sales_management.UI
 
         private void items_view_grids_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            
+
             if (e.RowIndex == -1) return;
 
             int rowIndex = e.RowIndex;
-            int index = UI.Items.GetForm.DGRowIndex; 
-            
-            if (index == -1) return;
-
+            int index = UI.Items.GetForm.DGRowIndex;
              
+            if (index == -1) return;
+            
+
             // By document type 
             switch (UI.Items.GetForm.doc_type)
             {
@@ -151,6 +154,10 @@ namespace sales_management.UI
 
                 case 3:
                     UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                    break;
+
+                case 6:
+                    UI.Export_Document.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
             }
 

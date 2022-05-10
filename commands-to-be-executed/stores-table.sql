@@ -27,185 +27,200 @@ type ==> 0 => decrement 1 =>
 -- صرف بضاعه بإذن
 -----------------------------------
 
- 
-CREATE PROC [dbo].[Create_Exp_Doucment_Id]
+ if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
 
-AS
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
 
- 
-DECLARE @DayNumber AS VARCHAR(50)
-	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+            UI.Items.GetForm.DGRowIndex = e.RowIndex;
+            
+            // Select Item By Code 
+            if (e.ColumnIndex == 1 && false == this.is_change_price)
+            {
 
-	-- Open New Invoice
-	INSERT INTO  [dbo].withdraw_document(details) VALUES( 'إذن صرف بضاعه' );
+                string item_code_value = items_datagridview.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                bool is_found = false;
 
-	-- Open New Entry 
-	INSERT INTO [dbo].journals( 
-			[updated_date],
-			[description], 
-			entry_number, 
-			doc_id, 
-			doc_type
-		) VALUES( 
-		(SELECT GETDATE()), 
-		'إذن صرف بضاعه', 
-		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
-		, @@IDENTITY, 
-		'6' );
+                foreach (DataRow row in this.Codes.Rows)
+                {
 
-	-- Update Entry Number 
-	--UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
+                    if (row["code"].ToString() == item_code_value.ToString())
+                    {
+                        is_found = true;
+                        // Setup Item In Current Row 
+                        items_datagridview.Rows[e.RowIndex].Cells["doc_id"].Value = Exep_id.Text.ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["doc_type"].Value = this.documentType;
+                        items_datagridview.Rows[e.RowIndex].Cells["product_id"].Value = row["id"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_id"].Value = row["unit_id"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["factor"].Value = row["factor"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["is_out"].Value = this.is_out; 
+                        items_datagridview.Rows[e.RowIndex].Cells["quantity"].Value = "1";
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_price"].Value = row["unit_price"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_cost"].Value = row["unit_cost"].ToString();
+                        items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value = row["name"].ToString();
 
-	-- Return New Data 
-	SELECT TOP 1 * FROM  [dbo].withdraw_document  
-			INNER JOIN 	[dbo].journals ON [dbo].withdraw_document.id = [dbo].journals.doc_id
-			ORDER BY  [dbo].withdraw_document.id DESC;
+                        string unit_shortcut = "جرام";
+                        foreach (DataRow col in unitName.Rows)
+                        {
+
+                            if (Convert.ToInt32(col["id"]).Equals(Convert.ToInt32(row["unit_id"])))
+                            {
+                                unit_shortcut = col["shortcut"].ToString();
+                                break;
+                            }
+
+                        }
+
+                        items_datagridview.Rows[e.RowIndex].Cells["unit_name"].Value = unit_shortcut.ToString();
+
+                        break;
+                    }
+                }
+
+                if (is_found == false)
+                {
+                    foreach (DataGridViewColumn col in items_datagridview.Columns)
+                    {
+
+                        if (col.Name.ToString() != "deletion_et_button")
+                        {
+
+                            if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                            {
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = -1;
+                            }
+                            else if (col.Name.ToString() == "is_out")
+                            {
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = this.is_out; 
+                            }
+                            else
+                            {
+                                items_datagridview.Rows[e.RowIndex].Cells[col.Name.ToString()].Value = "";
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+
+            // Calcualte Row Of DataGridview 
+            this.Calculate_Datagridview_Row(e.RowIndex);
+
+            // Caluclate Total Fields 
+            this.Fill_Total_Fields();
 			
+----------------------------------------------------------------------
+if (e.ColumnIndex == 0)
+            {
+                this.items_datagridview.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                this.items_datagridview.Cursor = Cursors.Default;
+            }
+
+-----------------------------------------------------------------
+ e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+
+            bool isCol = items_datagridview.CurrentCell.ColumnIndex == 1 || items_datagridview.CurrentCell.ColumnIndex == 5;
+
+            if (isCol) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+------------------------------------------------------------
+if (e.RowIndex == -1 || e.ColumnIndex == -1) return;
+
+            if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
+
+            UI.purchaseInvoice.GetForm.lastRow = e.RowIndex;
+            UI.Items.GetForm.DGRowIndex = this.lastRow;
+            UI.Items.GetForm.doc_type = this.documentType;
+             
+            if (e.ColumnIndex == 2)
+            {
+                UI.Items.GetForm.ShowDialog();
+            }
+
+            if (e.ColumnIndex == 4)
+            {
+
+                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.purchaseInvoice.GetForm.lastRow].Cells["product_name"].Value))
+                {
+                    return;
+                }
+
+                this.is_change_price = true;
+
+                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.purchaseInvoice.GetForm.lastRow].Cells["product_id"].Value);
+
+                UI.ItemUnit item_units = new UI.ItemUnit(
+                    this.documentType,
+                    product_id,
+                    this.Prods,
+                    this.unitName,
+                    e.RowIndex
+                );
+
+                item_units.ShowDialog();
+
+            }
 			
-			
-			
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
---==========================================================================================================================
+--------------------------------------------
+if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
 
-CREATE PROC Update_Withdraw_Document
+            if (e.RowIndex == -1 || e.ColumnIndex == -1)
+            {
+                return;
+            }
 
-	@id int,
-	@date_made datetime,
-	@details text,
-	@account_number varchar(50),
-	@account_name varchar(50),
-	@total_quantity varchar(50),
-	@total_price varchar(50),
-	@journal_id int,
-	@items_table AS [dbo].doc_details READONLY,
-	@header_entry AS [dbo].journal_header READONLY,
-	@details_entry AS [dbo].journal_details READONLY
-AS
+            string colName = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
 
-DECLARE @DayNumber AS VARCHAR(50)
-	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+            if (colName != "deletion_et_button")
+            {
+                return;
+            }
 
--- DOCUMENT ITEMS AND HEADER
-IF @id = -1
-	BEGIN
-		-- CREATE NEW DOCUMENT 
-		INSERT INTO [withdraw_document](
-			date_made,
-			details,
-			account_number,
-			account_name,
-			total_quantity,
-			total_price
-		) VALUES(
-			@date_made,
-			@details,
-			@account_number,
-			@account_name,
-			@total_quantity,
-			@total_price
-		);
+            // Empty Current Row 
+            DataGridViewRow row = items_datagridview.Rows[e.RowIndex];
+            foreach (DataGridViewColumn col in items_datagridview.Columns)
+            {
+                if (col.Name.ToString() != "deletion_et_button")
+                {
 
-		SET @id = @@IDENTITY;
+                    if (col.Name.ToString() == "datagrid_id")
+                    {
+                        row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
+                    }
+                    else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
+                    {
+                        row.Cells[col.Name.ToString()].Value = 0;
+                    }
+                    else if (col.Name.ToString() == "is_out")
+                    {
+                        row.Cells[col.Name.ToString()].Value = this.is_out;
+                    }
+                    else
+                    {
+                        row.Cells[col.Name.ToString()].Value = "";
+                    }
 
-		-- STORE ITEMS WITH THE NEW ID 
-		INSERT INTO [dbo].document_details( product_code, product_name, unit_price, unit_name, quantity, total_price, doc_id, doc_type, product_id, unit_id, factor, total_quantity, datagrid_id, is_out, unit_cost, total_cost )
-			SELECT product_code, product_name, unit_price, unit_name, quantity, total_price, doc_id, doc_type, product_id, unit_id, factor, total_quantity, datagrid_id, is_out,unit_cost, total_cost FROM @items_table
-			WHERE datagrid_id NOT IN ( SELECT datagrid_id FROM [dbo].document_details ) AND doc_type = 6 AND  doc_id = @@IDENTITY;
-		
-		
-		INSERT INTO [dbo].journals( 
-			[updated_date],
-			[description], 
-			entry_number, 
-			doc_id, 
-			doc_type
-		) VALUES( 
-		(SELECT GETDATE()), 
-		'إذن صرف بضاعه', 
-		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
-		, @id, 
-		'6' );
-
-		UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
-
-		IF EXISTS( SELECT 1 FROM @details_entry ) BEGIN
-			INSERT INTO [dbo].journal_details(journal_id, debit, credit, [description], cost_center_number, [date], account_number) SELECT @@IDENTITY, debit, credit, [description], cost_center_number, [date], account_number FROM @details_entry
-		END
-
-	END
-		ELSE
-	BEGIN 
-		IF EXISTS( SELECT 1 FROM @items_table )
-		BEGIN
-
-			UPDATE  [withdraw_document] SET
-				date_made=@date_made,
-				details=@details,
-				account_number=@account_number,
-				account_name=@account_name,
-				total_quantity=@total_quantity,
-				total_price=@total_price
-			WHERE id=@id;
-
-			UPDATE [dbo].document_details SET
-						product_code = items_table_value.product_code, 
-						product_name = items_table_value.product_name, 
-						unit_price = items_table_value.unit_price, 
-						unit_name = items_table_value.unit_name, 
-						quantity = items_table_value.quantity, 
-						total_price = items_table_value.total_price, 
-						doc_id = items_table_value.doc_id, 
-						doc_type = items_table_value.doc_type, 
-						product_id = items_table_value.product_id, 
-						unit_id = items_table_value.unit_id, 
-						factor = items_table_value.factor, 
-						total_quantity = items_table_value.total_quantity,  
-						is_out = items_table_value.is_out, 
-						unit_cost = items_table_value.unit_cost, 
-						total_cost  = items_table_value.total_cost
-					FROM [dbo].document_details
-						INNER JOIN @items_table AS items_table_value 
-						ON [dbo].document_details.datagrid_id = items_table_value.datagrid_id
-						WHERE [dbo].document_details.doc_type = 6 AND  [dbo].document_details.doc_id = @id
-
-			INSERT INTO [dbo].document_details( product_code, product_name, unit_price, unit_name, quantity, total_price, doc_id, doc_type, product_id, unit_id, factor, total_quantity, datagrid_id, is_out, unit_cost, total_cost ) 
-						SELECT product_code, product_name, unit_price, unit_name, quantity, total_price, doc_id, doc_type, product_id, unit_id, factor, total_quantity, datagrid_id, is_out,unit_cost, total_cost FROM @items_table 
-						WHERE datagrid_id NOT IN ( SELECT datagrid_id FROM [dbo].document_details );
-			
-			DELETE FROM [dbo].document_details WHERE doc_type = 6 AND  doc_id = @id AND datagrid_id NOT IN ( SELECT datagrid_id FROM @items_table );
-
-			IF EXISTS( SELECT 1 FROM @details_entry )
-			BEGIN
-				IF EXISTS( SELECT COUNT(*) FROM [dbo].journal_details WHERE journal_id = ( SELECT id FROM @header_entry ) )
-				BEGIN
-					DELETE FROM [dbo].journal_details WHERE journal_id = ( SELECT id FROM @header_entry )
-				END
-
-				INSERT INTO [dbo].journal_details(journal_id, debit, credit, [description], cost_center_number, [date], account_number) SELECT journal_id, debit, credit, [description], cost_center_number, [date], account_number FROM @details_entry
-			END
-
-		END
-	END
-
- 
------------------------------------------------------
-
-CREATE PROC Get_Withdraw_Document
- 
-AS
-  
-SELECT * FROM [dbo].[withdraw_document] INNER JOIN [dbo].journals ON [dbo].[withdraw_document].id = [dbo].journals.doc_id;
-SELECT * FROM [dbo].document_details WHERE doc_type = 6;
-SELECT * FROM [dbo].accounts;
-SELECT * FROM [dbo].settings;
-SELECT * FROM [dbo].products;
-SELECT * FROM [dbo].product_untis; 
--------------------------------------------------------
+                }
+            }
