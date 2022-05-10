@@ -44,7 +44,7 @@ namespace sales_management.UI
 
             // Fill All Information 
             this.Load_DataGridView_And_Items(id);
-
+             
         }
 
         public void Load_All_Documents() {
@@ -260,7 +260,7 @@ namespace sales_management.UI
 
         private void save_button_Click(object sender, EventArgs e)
         {
-
+            this.Enable_Disable_Fields(false);
         }
 
         public void Load_All_Fields_With_Ids(DataRow row ){
