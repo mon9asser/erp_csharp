@@ -68,7 +68,7 @@ namespace sales_management.UI
 
             // Fill All Information 
             this.Load_DataGridView_And_Items(id);
-            
+            this.Is_Disabled_Elements(true);
         }
 
         public void Load_All_Documents() {
@@ -132,19 +132,19 @@ namespace sales_management.UI
 
             }
 
-            DataGridViewRow drow = items_datagridview.Rows[iindex];
-            drow.Cells["id"].Value = rowId.ToString();
-            drow.Cells["doc_id"].Value = Exep_id.Text.ToString();
-            drow.Cells["doc_type"].Value = this.documentType;
-            drow.Cells["product_id"].Value = pid.ToString();
-            drow.Cells["product_name"].Value = name.ToString();
-            drow.Cells["unit_id"].Value = unit_id.ToString();
-            drow.Cells["unit_name"].Value = unit_shortcut.ToString();
-            drow.Cells["unit_price"].Value = unit_price.ToString();
-            drow.Cells["unit_cost"].Value = unit_cost.ToString();
-            drow.Cells["factor"].Value = unit_factor;
-            drow.Cells["is_out"].Value = 1;
-            drow.Cells["product_code"].Value = item["code"].ToString(); ;
+
+            items_datagridview.Rows[iindex].Cells["id"].Value = rowId.ToString();
+            items_datagridview.Rows[iindex].Cells["doc_id"].Value = Exep_id.Text.ToString();
+            items_datagridview.Rows[iindex].Cells["doc_type"].Value = this.documentType;
+            items_datagridview.Rows[iindex].Cells["product_id"].Value = pid.ToString();
+            items_datagridview.Rows[iindex].Cells["product_name"].Value = name.ToString();
+            items_datagridview.Rows[iindex].Cells["unit_id"].Value = unit_id.ToString();
+            items_datagridview.Rows[iindex].Cells["unit_name"].Value = unit_shortcut.ToString();
+            items_datagridview.Rows[iindex].Cells["unit_price"].Value = unit_price.ToString();
+            items_datagridview.Rows[iindex].Cells["unit_cost"].Value = unit_cost.ToString();
+            items_datagridview.Rows[iindex].Cells["factor"].Value = unit_factor;
+            items_datagridview.Rows[iindex].Cells["is_out"].Value = this.is_out;
+            items_datagridview.Rows[iindex].Cells["product_code"].Value = item["code"].ToString(); ;
               
         }
 
@@ -380,12 +380,9 @@ namespace sales_management.UI
 
             Console.WriteLine(total_price_field.Text);
             Console.WriteLine(total_quantity_field.Text);
-
-            // Calculate DataGridview Elements 
-            this.apply_calculation();
-
+             
             // Disable Elements 
-            this.Enable_Disable_Fields(false);
+            this.Is_Disabled_Elements(false);
 
         }
 
@@ -402,25 +399,27 @@ namespace sales_management.UI
 
         }
 
-        public void Enable_Disable_Fields( bool is_enabled ) {
-            Exep_id.Enabled = is_enabled;
-            date_made.Enabled = is_enabled;
-            details.Enabled = is_enabled;
-            account_number.Enabled = is_enabled;
-            account_name.Enabled = is_enabled;
-            total_quantity_field.Enabled = is_enabled;
-            total_price_field.Enabled = is_enabled;
-            journal_id.Enabled = !is_enabled;
-            items_datagridview.ReadOnly = !is_enabled;
+        public void Is_Disabled_Elements( bool is_disabled ) {
 
-            current_invoice_page.Enabled = !is_enabled;
-            add_new_btn.Enabled = !is_enabled;
-            save_button.Enabled = is_enabled;
-            first_record_button.Enabled = !is_enabled;
-            next_button.Enabled = !is_enabled;
-            previous_button.Enabled = !is_enabled;
-            last_record_button.Enabled = !is_enabled;
-            deletion_button.Enabled = is_enabled;
+            Exep_id.Enabled = !is_disabled;
+            date_made.Enabled = !is_disabled;
+            details.Enabled = !is_disabled;
+            account_number.Enabled = !is_disabled;
+            account_name.Enabled = !is_disabled;
+            total_quantity_field.Enabled = !is_disabled;
+            total_price_field.Enabled = !is_disabled;
+            journal_id.Enabled = !is_disabled;
+            items_datagridview.ReadOnly = is_disabled;
+             
+            save_button.Enabled = !is_disabled; 
+            current_invoice_page.Enabled = is_disabled;
+            add_new_btn.Enabled = is_disabled; 
+            first_record_button.Enabled = is_disabled;
+            next_button.Enabled =  is_disabled;
+            previous_button.Enabled =  is_disabled;
+            last_record_button.Enabled = is_disabled;
+            deletion_button.Enabled =  is_disabled;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -465,7 +464,7 @@ namespace sales_management.UI
             }
                
             this.Load_All_Fields_With_Ids(table.Rows[0]);
-            this.Enable_Disable_Fields(true);
+            this.Is_Disabled_Elements(false);
         }
          
 
@@ -647,15 +646,51 @@ namespace sales_management.UI
 
         private void items_datagridview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
+
+
+            if (e.RowIndex == -1)
+            {
+                return;
+            } 
+
+            // Calculate Items 
+            this.Calculate_Datagridview_Row(e.RowIndex);
+
+            // Caluclate Total Fields 
+            this.Fill_Total_Fields();
+
         }
         private void items_datagridview_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-           //xxxxxxxxxxxxxxxxxxxxxxx
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress); 
+            bool isCol = items_datagridview.CurrentCell.ColumnIndex == 4;
+
+            if (isCol) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
         }
         private void items_datagridview_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //xxxxxxxxxxxxxxxxxx
+            if (e.RowIndex == -1 || e.ColumnIndex == -1) return;
+            if (items_datagridview.ReadOnly == true)
+            {
+                return;
+            }
+
+            if (e.ColumnIndex == 1 || e.ColumnIndex == 2) {
+                UI.Items item = new UI.Items(e.RowIndex, this.documentType);
+                item.ShowDialog();
+            }
+
         }
         private void items_datagridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -669,7 +704,7 @@ namespace sales_management.UI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            this.Enable_Disable_Fields(true);
+            this.Is_Disabled_Elements(true);
         }
     }
 }

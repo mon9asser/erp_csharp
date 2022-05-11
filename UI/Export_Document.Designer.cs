@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.date_made = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@ namespace sales_management.UI
             this.deletion_button = new System.Windows.Forms.Button();
             this.total_quantity_field = new System.Windows.Forms.TextBox();
             this.journal_id = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Edit_Exep_Doc_Field = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "تاريخ الصرف :";
             // 
@@ -78,7 +78,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(427, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "سبب الصرف :";
             // 
@@ -95,7 +95,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "حساب الأستاذ :";
             // 
@@ -120,21 +120,21 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightCyan;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.items_datagridview.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.items_datagridview.GridColor = System.Drawing.Color.DodgerBlue;
             this.items_datagridview.Location = new System.Drawing.Point(16, 97);
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.items_datagridview.RowHeadersVisible = false;
             this.items_datagridview.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.items_datagridview.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -239,7 +239,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(740, 420);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 150;
             this.label4.Text = "إجمالي الكميات :";
             // 
@@ -308,28 +308,28 @@ namespace sales_management.UI
             this.journal_id.TabIndex = 157;
             this.journal_id.Visible = false;
             // 
-            // button1
+            // Edit_Exep_Doc_Field
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::sales_management.Properties.Resources.icons8_update_20;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(612, 431);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.button1.Size = new System.Drawing.Size(47, 38);
-            this.button1.TabIndex = 158;
-            this.button1.Text = " ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.Edit_Exep_Doc_Field.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Edit_Exep_Doc_Field.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Edit_Exep_Doc_Field.Image = global::sales_management.Properties.Resources.icons8_update_20;
+            this.Edit_Exep_Doc_Field.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Edit_Exep_Doc_Field.Location = new System.Drawing.Point(612, 431);
+            this.Edit_Exep_Doc_Field.Name = "Edit_Exep_Doc_Field";
+            this.Edit_Exep_Doc_Field.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.Edit_Exep_Doc_Field.Size = new System.Drawing.Size(47, 38);
+            this.Edit_Exep_Doc_Field.TabIndex = 158;
+            this.Edit_Exep_Doc_Field.Text = " ";
+            this.Edit_Exep_Doc_Field.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Edit_Exep_Doc_Field.UseVisualStyleBackColor = true;
+            this.Edit_Exep_Doc_Field.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Export_Document
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 494);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Edit_Exep_Doc_Field);
             this.Controls.Add(this.journal_id);
             this.Controls.Add(this.total_quantity_field);
             this.Controls.Add(this.deletion_button);
@@ -391,6 +391,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button deletion_button;
         private System.Windows.Forms.TextBox total_quantity_field;
         private System.Windows.Forms.TextBox journal_id;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Edit_Exep_Doc_Field;
     }
 }

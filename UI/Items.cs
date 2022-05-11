@@ -54,6 +54,15 @@ namespace sales_management.UI
 
         }
 
+        public Items(int rowIndex, int docType )
+        {
+            InitializeComponent(); 
+            this.DGRowIndex = rowIndex;
+            this.doc_type   = docType;  
+            this.Load_Grid_View();
+
+        }
+
         public void Load_Grid_View( bool isVis = true ) {
 
             PL.Products prod = new PL.Products();
@@ -76,13 +85,20 @@ namespace sales_management.UI
         private void items_view_grids_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            
+           
 
             if (e.RowIndex == -1) return;
 
             int rowIndex = e.RowIndex;
             int index = UI.Items.GetForm.DGRowIndex;
-             
+            if (index == -1) {
+                index = this.DGRowIndex;
+            }
+
+            if (UI.Items.GetForm.doc_type == -1) {
+                UI.Items.GetForm.doc_type = this.doc_type;
+            }
+
             if (index == -1) return;
             
 
@@ -109,7 +125,7 @@ namespace sales_management.UI
                     UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
 
-                case 6:
+                case 6: 
                     UI.Export_Document.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
 
