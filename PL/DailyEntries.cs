@@ -56,7 +56,7 @@ namespace sales_management.PL
             param[3].Value = account_number;
 
             param[4] = new SqlParameter("@account_name", SqlDbType.VarChar);
-            param[4].Value = account_number;
+            param[4].Value = account_name;
 
             param[5] = new SqlParameter("@total_quantity", SqlDbType.VarChar);
             param[5].Value = total_quantity;

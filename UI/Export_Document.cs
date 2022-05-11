@@ -24,6 +24,7 @@ namespace sales_management.UI
         DataTable Prods;
         DataTable Codes;
         DataTable unitName;
+        public int current_paging_index = 0;
         public bool is_getting_data = true; 
         public bool is_change_price = false;
         public static Export_Document frm;
@@ -55,13 +56,14 @@ namespace sales_management.UI
 
             this.load_invoice_data_tables();
 
-           
 
             int id = -1;
-            if (Exep_id.Text == "") {
-                id = -1;
-            }
 
+            if (Document_Table.Rows.Count != 0) {
+                id = Convert.ToInt32(Document_Table.Rows[Document_Table.Rows.Count - 1]["id"]);
+                this.Load_All_Fields_With_Ids(Document_Table.Rows[Document_Table.Rows.Count - 1]);
+            }
+             
             // Fill All Information 
             this.Load_DataGridView_And_Items(id);
             this.Is_Disabled_Elements(true);
@@ -193,6 +195,16 @@ namespace sales_management.UI
 
         }
 
+        public void Load_Pagination_Data() {
+
+            int count = this.Document_Table.Rows.Count;
+            int current_index = this.current_paging_index;
+            string current_page = current_index <= 9 ? "0" + current_index.ToString(): current_index.ToString();
+            string total_pages = count <= 9 ? "0" + count.ToString() : count.ToString();
+            current_invoice_page.Text =  current_page +  " / " + total_pages;
+
+        }
+
         public void load_invoice_data_tables()
         {
 
@@ -207,6 +219,10 @@ namespace sales_management.UI
             this.Prods = this.dataSetDb.Tables[4];
             this.Codes = this.Load_All_Products_Codes(this.dataSetDb.Tables[4]);
             this.unitName = this.dataSetDb.Tables[5];
+
+            // Pagination Here 
+            this.current_paging_index = this.Document_Table.Rows.Count;
+            this.Load_Pagination_Data();
 
         }
 
@@ -346,11 +362,156 @@ namespace sales_management.UI
         private void save_button_Click(object sender, EventArgs e)
         {
 
-            Console.WriteLine(total_price_field.Text);
-            Console.WriteLine(total_quantity_field.Text);
-             
+            DataRow setting = this.Settings.Rows[0];
+
+            //----------------------------------------------
+            //-----  Details 
+            //----------------------------------------------
+            int id = (Exep_id.Text == "" ) ? -1: Convert.ToInt32(Exep_id.Text);
+            DateTime datetime_field = date_made.Value;
+            string description = details.Text.ToString();
+            string acc_number = account_number.Text.ToString();
+            string acc_name = account_name.Text.ToString();
+            string total_qty = total_quantity_field.Text.ToString();
+            string total_prce = total_price_field.Text.ToString();
+
+            if (acc_number == "") {
+                MessageBox.Show("من فضل اختر حساب الأستاذ", "مطلوب",MessageBoxButtons.OK);
+                return;
+            }
+
+            //----------------------------------------------
+            //-----  Items
+            //---------------------------------------------- 
+            DataTable items = new DataTable();
+
+            // add columns 
+            items.Columns.Add("doc_id");
+            items.Columns.Add("doc_type");
+            items.Columns.Add("product_id");
+            items.Columns.Add("unit_id");
+            items.Columns.Add("is_out");
+            items.Columns.Add("product_name");
+            items.Columns.Add("unit_name");
+            items.Columns.Add("unit_price");
+            items.Columns.Add("factor");
+            items.Columns.Add("quantity");
+            items.Columns.Add("total_quantity");
+            items.Columns.Add("datagrid_id");
+            items.Columns.Add("product_code");
+            items.Columns.Add("total_price");
+
+            items.Columns.Add("unit_cost");
+            items.Columns.Add("total_cost");
+            //items.Columns.Add("datemade");
+
+            foreach (DataGridViewRow row in items_datagridview.Rows)
+            {
+
+                DataRow rtbl = items.NewRow();
+                if (row.Cells["product_name"].Value.ToString() != "")
+                {
+                    rtbl["doc_id"] = Exep_id.Text == "" ? -1: Convert.ToInt32(Exep_id.Text);
+                    rtbl["doc_type"] = this.documentType;
+                    rtbl["product_id"] = Convert.ToInt32(row.Cells["product_id"].Value);
+                    rtbl["unit_id"] = Convert.ToInt32(row.Cells["unit_id"].Value);
+                    rtbl["is_out"] = this.is_out;
+                    rtbl["product_name"] = row.Cells["product_name"].Value.ToString();
+                    rtbl["unit_name"] = row.Cells["unit_name"].Value.ToString();
+                    rtbl["unit_price"] = row.Cells["unit_price"].Value.ToString();
+                    rtbl["factor"] = row.Cells["factor"].Value.ToString();
+                    rtbl["quantity"] = row.Cells["quantity"].Value.ToString();
+                    rtbl["total_quantity"] = row.Cells["total_quantity"].Value.ToString();
+                    rtbl["datagrid_id"] = row.Cells["datagrid_id"].Value.ToString();
+                    rtbl["product_code"] = row.Cells["product_code"].Value.ToString();
+                    rtbl["total_price"] = row.Cells["total_price"].Value.ToString(); 
+                    rtbl["unit_cost"] = row.Cells["unit_cost"].Value.ToString();
+                    rtbl["total_cost"] = row.Cells["total_cost"].Value.ToString();
+                    //rtbl["datemade"] = System.DBNull.Value == row.Cells["datemade"].Value ? DateTime.Now: Convert.ToDateTime(row.Cells["datemade"].Value);
+
+                    items.Rows.Add(rtbl);
+                }
+            }
+
+
+            //----------------------------------------------
+            //-----  Journal
+            //---------------------------------------------- 
+            int jid = journal_id.Text == "" ? -1: Convert.ToInt32(journal_id.Text);
+            DataTable entry_header = new DataTable();
+            entry_header.Columns.Add("id");
+            entry_header.Columns.Add("updated_by");
+            entry_header.Columns.Add("doc_id");
+            entry_header.Columns.Add("doc_type");
+            entry_header.Columns.Add("description");
+            entry_header.Columns.Add("is_forwarded");
+            entry_header.Columns.Add("entry_number");
+            entry_header.Columns.Add("updated_date");
+
+            DataRow entry_header_row = entry_header.NewRow();
+            entry_header_row["id"] = jid;
+            entry_header_row["updated_by"] = "-1";
+            entry_header_row["doc_id"] = Exep_id.Text == "" ? -1 : Convert.ToInt32(Exep_id.Text);
+            entry_header_row["doc_type"] = this.documentType;
+            entry_header_row["description"] = details.Text.ToString();
+            entry_header_row["is_forwarded"] = true;
+            entry_header_row["entry_number"] = Convert.ToDateTime(date_made.Value).Day + "/" + Exep_id.Text;
+            entry_header_row["updated_date"] = Convert.ToDateTime(date_made.Value);
+            entry_header.Rows.Add(entry_header_row);
+
+            //----------------------------------------------
+            //-----  Journal Details
+            //---------------------------------------------- 
+            DataTable entry_details = new DataTable();
+            entry_details.Columns.Add("journal_id");
+            entry_details.Columns.Add("debit");
+            entry_details.Columns.Add("credit");
+            entry_details.Columns.Add("description");
+            entry_details.Columns.Add("cost_center_number");
+            entry_details.Columns.Add("date");
+            entry_details.Columns.Add("account_number");
+
+            // From 
+            DataRow entry_details_from = entry_details.NewRow();
+            entry_details_from["journal_id"] = jid;
+            entry_details_from["debit"] = total_prce;
+            entry_details_from["description"] = description;
+            entry_details_from["account_number"] = acc_number;
+            entry_details_from["cost_center_number"] = "-1";
+            entry_details_from["date"] = date_made.Value;
+            entry_details.Rows.Add(entry_details_from);
+
+            // To
+            DataRow entry_details_to = entry_details.NewRow();
+            entry_details_to["journal_id"] = jid;
+            entry_details_to["credit"] = total_prce;
+            entry_details_to["account_number"] = setting["inventory_account"].ToString();
+            entry_details_to["description"] = description;
+            entry_details_to["cost_center_number"] = "-1";
+            entry_details_to["date"] = date_made.Value;
+            entry_details.Rows.Add(entry_details_to);
+
+            //--------------------------------------------------------------------
+            //--------------- Storing Fields And Data Structured 
+            //--------------------------------------------------------------------
+            Exep.Update_Withdraw_Document(
+                id, 
+                datetime_field, 
+                description, 
+                acc_number,
+                acc_name, 
+                total_qty, 
+                total_prce, 
+                jid.ToString(), 
+                items, 
+                entry_header, 
+                entry_details
+            );
+
             // Disable Elements 
-            this.Is_Disabled_Elements(false);
+            this.Is_Disabled_Elements(true);
+            this.load_invoice_data_tables();
+            this.Load_Pagination_Data();
 
         }
 
@@ -363,8 +524,8 @@ namespace sales_management.UI
             account_name.Text = row["account_name"].ToString();
             total_quantity_field.Text = row["total_quantity"].ToString();
             total_price_field.Text = row["total_price"].ToString();
-            journal_id.Text = row["id1"].ToString(); 
-
+            journal_id.Text = row["id1"].ToString();
+            total_quantity.Text = row["total_quantity"].ToString();
         }
 
         public void Is_Disabled_Elements( bool is_disabled ) {
@@ -652,12 +813,15 @@ namespace sales_management.UI
                 return;
             }
 
-            if (e.ColumnIndex == 1 || e.ColumnIndex == 2) {
+            string name = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
+
+
+            if (name == "product_name" || name == "product_code") {
                 UI.Items item = new UI.Items(e.RowIndex, this.documentType, this);
                 item.ShowDialog();
             }
-
-            if (e.ColumnIndex == 5)
+             
+            if (name == "unit_name")
             {
 
                 if (System.DBNull.Value.Equals(items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value))
@@ -695,7 +859,7 @@ namespace sales_management.UI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            this.Is_Disabled_Elements(true);
+            this.Is_Disabled_Elements(false);
         }
 
         private void items_datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -731,6 +895,71 @@ namespace sales_management.UI
 
                 }
             }
+        }
+
+        private void account_name_Click(object sender, EventArgs e)
+        {
+            UI.___Accounts accs = new ___Accounts(this.documentType, this);
+            accs.ShowDialog();
+        }
+
+        private void first_record_button_Click(object sender, EventArgs e)
+        {
+
+            if (this.Document_Table.Rows.Count == 0) {
+                return;
+            } 
+
+            this.current_paging_index = 1;
+            this.Load_All_Fields_With_Ids(this.Document_Table.Rows[this.current_paging_index - 1]);
+            this.Load_DataGridView_And_Items(Convert.ToInt32(this.Document_Table.Rows[this.current_paging_index - 1]["id"]));
+            this.Load_Pagination_Data();
+        }
+
+        private void last_record_button_Click(object sender, EventArgs e)
+        {
+            if (this.Document_Table.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.current_paging_index = this.Document_Table.Rows.Count;
+            this.Load_All_Fields_With_Ids(this.Document_Table.Rows[this.current_paging_index - 1]);
+            this.Load_DataGridView_And_Items(Convert.ToInt32(this.Document_Table.Rows[this.current_paging_index - 1 ]["id"]));
+            this.Load_Pagination_Data();
+        }
+
+        private void next_button_Click(object sender, EventArgs e)
+        {
+            if (this.Document_Table.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.current_paging_index = this.current_paging_index + 1;
+            if (this.current_paging_index > this.Document_Table.Rows.Count) {
+                this.current_paging_index = Document_Table.Rows.Count;
+            }
+            this.Load_All_Fields_With_Ids(this.Document_Table.Rows[this.current_paging_index - 1]);
+            this.Load_DataGridView_And_Items(Convert.ToInt32(this.Document_Table.Rows[this.current_paging_index - 1]["id"]));
+            this.Load_Pagination_Data();
+        }
+
+        private void previous_button_Click(object sender, EventArgs e)
+        {
+            if (this.Document_Table.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.current_paging_index = this.current_paging_index - 1;
+            if (this.current_paging_index < 1 )
+            {
+                this.current_paging_index = 1;
+            }
+            this.Load_All_Fields_With_Ids(this.Document_Table.Rows[this.current_paging_index - 1]);
+            this.Load_DataGridView_And_Items(Convert.ToInt32(this.Document_Table.Rows[this.current_paging_index - 1]["id"]));
+            this.Load_Pagination_Data();
         }
     }
 }

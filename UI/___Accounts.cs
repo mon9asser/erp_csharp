@@ -16,7 +16,7 @@ namespace sales_management.UI
         DataTable table;
         public int InstanceType = 0;
         public UI.Add_New_Entry Entry;
-
+        public Export_Document Expo_Doc;
         public static ___Accounts frm;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
@@ -56,6 +56,18 @@ namespace sales_management.UI
             } catch (Exception) { }
         }
 
+        public ___Accounts(int instanceId, Export_Document expo_doc)
+        {
+
+            InitializeComponent();
+
+            this.InstanceType = instanceId;
+            this.Expo_Doc = expo_doc;
+
+            this.table = tree.Get_Accounting_Tree();
+            this.Fill_Accounting_Tree();
+
+        }
 
         public ___Accounts(int instanceId, UI.Add_New_Entry Entry) {
             
@@ -154,6 +166,11 @@ namespace sales_management.UI
             }
             else if (this.InstanceType == 5) {
                 this.Entry.Set_Needed_accounts_in_entries(accounting_tree.SelectedNode.Text.ToString(), accounting_tree.SelectedNode.Tag.ToString());
+          
+                //Export_Document Document
+            } else if (this.InstanceType == 6 ) {
+                this.Expo_Doc.account_name.Text = accounting_tree.SelectedNode.Text.ToString();
+                this.Expo_Doc.account_number.Text = accounting_tree.SelectedNode.Tag.ToString();
             }
 
             //MessageBox.Show(this.InstanceType.ToString());
