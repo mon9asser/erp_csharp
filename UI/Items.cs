@@ -14,6 +14,7 @@ namespace sales_management.UI
     {
 
         public static Items frm;
+        public Export_Document expo_doc;
         public int DGRowIndex = -1;
         public int doc_type = -1;
 
@@ -54,11 +55,12 @@ namespace sales_management.UI
 
         }
 
-        public Items(int rowIndex, int docType )
+        public Items(int rowIndex, int docType, Export_Document expo_doc )
         {
             InitializeComponent(); 
             this.DGRowIndex = rowIndex;
-            this.doc_type   = docType;  
+            this.doc_type   = docType;
+            this.expo_doc = expo_doc;
             this.Load_Grid_View();
 
         }
@@ -84,9 +86,7 @@ namespace sales_management.UI
 
         private void items_view_grids_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-           
-
+             
             if (e.RowIndex == -1) return;
 
             int rowIndex = e.RowIndex;
@@ -125,8 +125,8 @@ namespace sales_management.UI
                     UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
 
-                case 6: 
-                    UI.Export_Document.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                case 6:
+                    this.expo_doc.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
                     break;
 
             }
@@ -137,7 +137,7 @@ namespace sales_management.UI
         private void Items_KeyDown(object sender, KeyEventArgs e)
         {
 
-            return;
+           
 
             if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space) {
                 return;

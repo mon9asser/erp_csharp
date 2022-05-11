@@ -69,7 +69,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "تاريخ الصرف :";
             // 
@@ -78,7 +78,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(427, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "سبب الصرف :";
             // 
@@ -95,7 +95,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "حساب الأستاذ :";
             // 
@@ -145,6 +145,7 @@ namespace sales_management.UI
             this.items_datagridview.Size = new System.Drawing.Size(818, 307);
             this.items_datagridview.TabIndex = 32;
             this.items_datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellClick);
+            this.items_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellContentClick);
             this.items_datagridview.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.items_datagridview_CellMouseClick);
             this.items_datagridview.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellMouseEnter);
             this.items_datagridview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_datagridview_CellValueChanged);
@@ -239,7 +240,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(740, 420);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 150;
             this.label4.Text = "إجمالي الكميات :";
             // 

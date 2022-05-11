@@ -18,7 +18,24 @@ namespace sales_management.UI
         private int product_id; 
         DataTable products;
         DataTable units;
-         
+        Export_Document Expo_doc;
+
+        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, Export_Document expdocs ) {
+
+            InitializeComponent();
+
+            this.doc_type = type;
+            this.product_id = product_id;
+            this.products = products;
+            this.units = units;
+            this.datagrid_row_index = index;
+            this.Expo_doc = expdocs;
+
+            this.load_combo_box();
+            this.load_item_name();
+            this.load_dataGrid_prices();
+        }
+
         public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index)
         {
 
@@ -46,7 +63,7 @@ namespace sales_management.UI
                 combobox_price_type.SelectedIndex = 1;
             }
 
-            if (this.doc_type == 1 || this.doc_type == 3 )
+            if (this.doc_type == 1 || this.doc_type == 3 || this.doc_type == 6 )
             {
                 combobox_price_type.SelectedIndex = 0;
             } 
@@ -268,6 +285,10 @@ namespace sales_management.UI
 
                 case 3:
                     UI.purchaseReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    break;
+
+                case 6:
+                    this.Expo_doc.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
             }
 
