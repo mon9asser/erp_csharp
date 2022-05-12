@@ -437,7 +437,7 @@ namespace sales_management.UI
                         emptyRow[col] = "";
                     }
 
-                    if (col.ToString() == "datagride_id")
+                    if (col.ToString() == "datagrid_id")
                     {
                         emptyRow[col] = Guid.NewGuid().ToString();
                     }

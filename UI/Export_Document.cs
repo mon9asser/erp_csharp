@@ -52,16 +52,19 @@ namespace sales_management.UI
         public Export_Document()
         {
              
-            InitializeComponent();
-
+            InitializeComponent(); 
             this.load_invoice_data_tables();
 
 
             int id = -1;
 
-            if (Document_Table.Rows.Count != 0) {
-                id = Convert.ToInt32(Document_Table.Rows[Document_Table.Rows.Count - 1]["id"]);
-                this.Load_All_Fields_With_Ids(Document_Table.Rows[Document_Table.Rows.Count - 1]);
+            // Pagination Here 
+            this.current_paging_index = this.Document_Table.Rows.Count;
+            this.Load_Pagination_Data();
+
+            if (Document_Table.Rows.Count != 0) {  
+                id = Convert.ToInt32(Document_Table.Rows[this.current_paging_index - 1]["id"]);
+                this.Load_All_Fields_With_Ids(Document_Table.Rows[this.current_paging_index - 1]);
             }
              
             // Fill All Information 
@@ -219,10 +222,7 @@ namespace sales_management.UI
             this.Prods = this.dataSetDb.Tables[4];
             this.Codes = this.Load_All_Products_Codes(this.dataSetDb.Tables[4]);
             this.unitName = this.dataSetDb.Tables[5];
-
-            // Pagination Here 
-            this.current_paging_index = this.Document_Table.Rows.Count;
-            this.Load_Pagination_Data();
+             
 
         }
 
@@ -248,7 +248,6 @@ namespace sales_management.UI
             table.Columns.Add("is_out");
             table.Columns.Add("product_code");
             table.Columns.Add("total_price");
-
             table.Columns.Add("unit_cost");
             table.Columns.Add("total_cost");
             //table.Columns.Add("datemade");
@@ -296,7 +295,6 @@ namespace sales_management.UI
                 emptyRow = table.NewRow();
                 foreach (DataColumn col in this.Document_Details.Columns)
                 {
-
                     if (col.GetType().ToString() == "Int32")
                     {
                         emptyRow[col] = 0;
@@ -307,9 +305,9 @@ namespace sales_management.UI
                         emptyRow[col] = "";
                     }
 
-                    if (col.ToString() == "datagride_id")
+                    if (col.ToString() == "datagrid_id")
                     {
-                        emptyRow[col] = Guid.NewGuid().ToString();
+                        emptyRow["datagrid_id"] = Guid.NewGuid().ToString();
                     }
 
                     /*
@@ -349,7 +347,7 @@ namespace sales_management.UI
             DataGridViewButtonColumn deletion_button = new DataGridViewButtonColumn();
             deletion_button.FlatStyle = FlatStyle.Flat;
             deletion_button.HeaderText = "حذف";
-            deletion_button.Name = "deletion_button";
+            deletion_button.Name = "deletion_et_button";
             deletion_button.Text = "حذف";
             deletion_button.UseColumnTextForButtonValue = true;
             items_datagridview.Columns.Add(deletion_button);
@@ -361,6 +359,11 @@ namespace sales_management.UI
         
         private void save_button_Click(object sender, EventArgs e)
         {
+
+            if (total_quantity_field.Text == "" || items_datagridview.Rows.Count == 0 ) {
+                MessageBox.Show( "من فضلك تأكد من ملء كارت الصرف" );
+                return;
+            }
 
             DataRow setting = this.Settings.Rows[0];
 
@@ -516,7 +519,6 @@ namespace sales_management.UI
         }
 
         public void Load_All_Fields_With_Ids(DataRow row ){
-
             Exep_id.Text = row["id"].ToString();
             date_made.Value = ( System.DBNull.Value == row["date_made"]) ? DateTime.Now: Convert.ToDateTime(row["date_made"]);
             details.Text = row["details"].ToString();
@@ -553,9 +555,7 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-             
-            this.is_getting_data = false;
-
+              
             DataTable table = Exep.Create_Exp_Doucment_Id();
             if (table.Rows.Count == 0)
             {
@@ -660,16 +660,14 @@ namespace sales_management.UI
         public void Fill_Total_Fields()
         {
 
-            if (this.is_getting_data == false)
-            {
-                decimal price = this.Calculate_Sub_Total();
-                decimal quantities = this.Calculate_Quantities();
+            decimal price = this.Calculate_Sub_Total();
+            decimal quantities = this.Calculate_Quantities();
 
-                total_price_field.Text = price.ToString();
-                total_quantity_field.Text = quantities.ToString();
-                total_quantity.Text = quantities.ToString();
+            total_price_field.Text = price.ToString();
+            total_quantity_field.Text = quantities.ToString();
+            total_quantity.Text = quantities.ToString();
 
-            }
+            
         }
 
         public void Calculate_Datagridview_Row(int index)
@@ -864,20 +862,26 @@ namespace sales_management.UI
 
         private void items_datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex != 0 )
+
+            if (items_datagridview.ReadOnly == true)
             {
                 return;
             }
 
+            if (items_datagridview.Columns[e.ColumnIndex].Name != "deletion_et_button")
+            { 
+                return;
+            }
+             
             // Empty Current Row 
             DataGridViewRow row = items_datagridview.Rows[e.RowIndex];
             foreach (DataGridViewColumn col in items_datagridview.Columns)
             {
                 if (col.Name.ToString() != "deletion_et_button")
                 {
-
+                      
                     if (col.Name.ToString() == "datagrid_id")
-                    {
+                    { 
                         row.Cells[col.Name.ToString()].Value = Guid.NewGuid().ToString();
                     }
                     else if (col.Name.ToString() == "id" || col.Name.ToString() == "doc_id" || col.Name.ToString() == "doc_type" || col.Name.ToString() == "product_id" || col.Name.ToString() == "unit_id")
@@ -945,20 +949,38 @@ namespace sales_management.UI
             this.Load_Pagination_Data();
         }
 
-        private void previous_button_Click(object sender, EventArgs e)
-        {
+        public void prev_cart() {
+
             if (this.Document_Table.Rows.Count == 0)
             {
                 return;
             }
 
             this.current_paging_index = this.current_paging_index - 1;
-            if (this.current_paging_index < 1 )
+            if (this.current_paging_index < 1)
             {
                 this.current_paging_index = 1;
             }
             this.Load_All_Fields_With_Ids(this.Document_Table.Rows[this.current_paging_index - 1]);
             this.Load_DataGridView_And_Items(Convert.ToInt32(this.Document_Table.Rows[this.current_paging_index - 1]["id"]));
+            this.Load_Pagination_Data();
+
+        }
+        private void previous_button_Click(object sender, EventArgs e)
+        {
+            this.prev_cart();
+        }
+
+        private void deletion_button_Click(object sender, EventArgs e)
+        {
+            if (Exep_id.Text == "" || journal_id.Text == "" ) {
+                return;
+            }
+
+            Exep.Delete_Export_Cart(Convert.ToInt32(Exep_id.Text), Convert.ToInt32(journal_id.Text));
+            this.prev_cart();
+            this.Is_Disabled_Elements(true);
+            this.load_invoice_data_tables();
             this.Load_Pagination_Data();
         }
     }

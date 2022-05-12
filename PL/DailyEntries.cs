@@ -26,6 +26,22 @@ namespace sales_management.PL
 
         }
 
+        public void Delete_Export_Cart(int cid, int jid) {
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[2];
+
+            param[0] = new SqlParameter("@cid", SqlDbType.Int);
+            param[0].Value = cid;
+
+            param[1] = new SqlParameter("@jid", SqlDbType.Int);
+            param[1].Value = jid;
+
+            DAL.Open();
+            DAL.ExecuteCommand("Delete_Export_Cart", param);
+            DAL.Close();
+        }
+
         public DataSet Get_Withdraw_Document()
         {
             DataSet table;
