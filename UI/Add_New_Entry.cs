@@ -202,20 +202,20 @@ namespace sales_management.UI
                     row["journal_id"] = Convert.ToInt32(entry_id_field.Text); 
                     if (xy["debit"] != null)
                     {
-                        row["debit"] = xy["debit"].ToString();
+                        row["debit"] = Convert.ToDecimal(xy["debit"]);
                     }
                     else
                     {
-                        row["debit"] = "";
+                        row["debit"] = 0;
                     }
 
                     if (xy["credit"] != null)
                     {
-                        row["credit"] = xy["credit"].ToString();
+                        row["credit"] = Convert.ToDecimal(xy["credit"]);
                     }
                     else
                     {
-                        row["credit"] = "";
+                        row["credit"] =0;
                     }
 
                     row["description"] = xy["description"].ToString();
@@ -261,8 +261,8 @@ namespace sales_management.UI
                 datagrid_entry_accounts.Rows[indexRow].Cells["account_number"].Value = "";
                 datagrid_entry_accounts.Rows[indexRow].Cells["account_name"].Value = "";
                 datagrid_entry_accounts.Rows[indexRow].Cells["description"].Value = "";
-                datagrid_entry_accounts.Rows[indexRow].Cells["debit"].Value = "";
-                datagrid_entry_accounts.Rows[indexRow].Cells["credit"].Value = ""; 
+                datagrid_entry_accounts.Rows[indexRow].Cells["debit"].Value = 0;
+                datagrid_entry_accounts.Rows[indexRow].Cells["credit"].Value = 0; 
             }
         }
 

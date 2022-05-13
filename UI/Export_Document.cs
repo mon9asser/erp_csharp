@@ -477,7 +477,7 @@ namespace sales_management.UI
             // From 
             DataRow entry_details_from = entry_details.NewRow();
             entry_details_from["journal_id"] = jid;
-            entry_details_from["debit"] = total_prce;
+            entry_details_from["debit"] = Convert.ToDecimal(total_prce);
             entry_details_from["description"] = description;
             entry_details_from["account_number"] = acc_number;
             entry_details_from["cost_center_number"] = "-1";
@@ -487,7 +487,7 @@ namespace sales_management.UI
             // To
             DataRow entry_details_to = entry_details.NewRow();
             entry_details_to["journal_id"] = jid;
-            entry_details_to["credit"] = total_prce;
+            entry_details_to["credit"] = Convert.ToDecimal(total_prce);
             entry_details_to["account_number"] = setting["inventory_account"].ToString();
             entry_details_to["description"] = description;
             entry_details_to["cost_center_number"] = "-1";

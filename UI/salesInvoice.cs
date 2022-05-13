@@ -1447,7 +1447,7 @@ namespace sales_management.UI
             DataRow salesRow_from = entry_details.NewRow();
 
             salesRow_from["journal_id"] = entry_id.Text;
-            salesRow_from["debit"] = total_field_text.Text;
+            salesRow_from["debit"] = Convert.ToDecimal(total_field_text.Text);
             salesRow_from["cost_center_number"] = "-1";
             salesRow_from["date"] = datemade.Value;
 
@@ -1494,7 +1494,7 @@ namespace sales_management.UI
             {
                 DataRow salesRow_vat_to = entry_details.NewRow();
                 salesRow_vat_to["journal_id"] = entry_id.Text;
-                salesRow_vat_to["credit"] = vat_amount.Text;
+                salesRow_vat_to["credit"] = Convert.ToDecimal(vat_amount.Text);
                 salesRow_vat_to["description"] = "ض.ق.م مخرجات";
                 salesRow_vat_to["cost_center_number"] = "-1";
                 salesRow_vat_to["date"] = datemade.Value;
@@ -1504,7 +1504,7 @@ namespace sales_management.UI
 
             DataRow salesRow_sales_to = entry_details.NewRow();
             salesRow_sales_to["journal_id"] = entry_id.Text;
-            salesRow_sales_to["credit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text;
+            salesRow_sales_to["credit"] = enable_zakat_taxes.Checked ? Convert.ToDecimal(total_without_vat_field.Text) : Convert.ToDecimal(total_field_text.Text);
             salesRow_sales_to["description"] = "مبيعات ";
             if (salesPaymentType == 0)
             {
@@ -1537,7 +1537,7 @@ namespace sales_management.UI
             //- From: 
             DataRow salesRow_cost_goods = entry_details.NewRow();
             salesRow_cost_goods["journal_id"] = entry_id.Text;
-            salesRow_cost_goods["debit"] = cost_total.ToString();
+            salesRow_cost_goods["debit"] = Convert.ToDecimal(cost_total);
             salesRow_cost_goods["description"] = "إثبات تكلفة فاتورة المبيعات";
             salesRow_cost_goods["cost_center_number"] = "-1";
             salesRow_cost_goods["date"] = datemade.Value;
@@ -1547,7 +1547,7 @@ namespace sales_management.UI
             //- T0: 
             DataRow salesRow_cost_goods_to = entry_details.NewRow();
             salesRow_cost_goods_to["journal_id"] = entry_id.Text;
-            salesRow_cost_goods_to["credit"] = cost_total.ToString();
+            salesRow_cost_goods_to["credit"] = Convert.ToDecimal(cost_total);
             salesRow_cost_goods_to["description"] = "إثبات  مسحوبات  لفاتورة المبيعات";
             salesRow_cost_goods_to["cost_center_number"] = "-1";
             salesRow_cost_goods_to["date"] = datemade.Value;

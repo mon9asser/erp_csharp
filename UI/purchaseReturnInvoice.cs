@@ -1416,7 +1416,7 @@ namespace sales_management.UI
 
             DataRow entry_details_to = entry_details.NewRow();
             entry_details_to["journal_id"] = entry_id.Text;
-            entry_details_to["debit"] = total_field_text.Text;
+            entry_details_to["debit"] = Convert.ToDecimal(total_field_text.Text);
             entry_details_to["account_number"] = setting["return_purchase_account"].ToString();
             // entry_details_from["credit"]
             if (salesPaymentType == 0)
@@ -1446,7 +1446,7 @@ namespace sales_management.UI
             {
                 DataRow salesRow_vat_to = entry_details.NewRow();
                 salesRow_vat_to["journal_id"] = entry_id.Text;
-                salesRow_vat_to["credit"] = vat_amount.Text;
+                salesRow_vat_to["credit"] = Convert.ToDecimal(vat_amount.Text);
                 salesRow_vat_to["description"] = "ض.ق.م مردود مشتريات";
                 salesRow_vat_to["cost_center_number"] = "-1";
                 salesRow_vat_to["date"] = datemade.Value;
@@ -1456,7 +1456,7 @@ namespace sales_management.UI
 
             DataRow entry_details_from = entry_details.NewRow();
             entry_details_from["journal_id"] = entry_id.Text;
-            entry_details_from["credit"] = enable_zakat_taxes.Checked ? total_without_vat_field.Text : total_field_text.Text;
+            entry_details_from["credit"] = enable_zakat_taxes.Checked ? Convert.ToDecimal(total_without_vat_field.Text) : Convert.ToDecimal(total_field_text.Text);
             entry_details_from["description"] = "إثبات صرف فاتورة مردود مشتريات";
             // entry_details_from["credit"]
             if (salesPaymentType == 0)

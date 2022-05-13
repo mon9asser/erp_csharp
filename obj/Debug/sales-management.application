@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="sales-management.exe.manifest" size="20742">
+    <dependentAssembly dependencyType="install" codebase="sales-management.exe.manifest" size="20744">
       <assemblyIdentity name="sales-management.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>B45+Nse3bvoSnj/yG0zDnoezebxNC8XJfyQ1/3turnE=</dsig:DigestValue>
+        <dsig:DigestValue>en59p04ZiXjlkGwNADVq4Ai/xH1iV+AffcFQxS5Ul00=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
