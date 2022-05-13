@@ -10,16 +10,7 @@ total_price
 type ==> 0 => decrement 1 => 
 */
 
-CREATE TYPE [dbo].[journal_details] AS TABLE(
-	[journal_id] [int] NULL,
-	[debit] decimal(18,2) NULL,
-	[credit] decimal(18,2) NULL,
-	[description] [text] NULL,
-	[cost_center_number] [varchar](50) NULL,
-	[date] [datetime] NULL,
-	[account_number] [varchar](50) NULL
-)
-GO
+ 
 -----------------------------------
 ------ تقرير المسحوبات عن الفترة
 -- كميات البيع
@@ -34,32 +25,51 @@ GO
 --من ح / صاحب المؤسسة 
 -- إلي ح / المخزون
 -- صرف بضاعه بإذن
+WITH CTE AS
+
+(
+	SELECT 
+	 
+		   t2.[date], 
+		   t2.[credit], 
+		   t2.[debit], 
+		   SUM(COALESCE(t1.credit, 0) - COALESCE(t1.debit, 0)) AS Balance
+	FROM journal_details t1 
+	INNER JOIN journal_details t2
+		ON t1.[date] <= t2.[date] 
+	GROUP BY t2.[date], t2.[credit], t2.[debit]
+)
+
+SELECT * FROM CTE WHERE ([date] >= '2014/01/11 00:00:00' AND [date] <= '2025/02/28 20:00:00' ) 
+
 -----------------------------------
-CREATE TYPE [dbo].[journal_details] AS TABLE(
-	[journal_id] [int] NULL,
-	[debit] decimal(18,2) NULL,
-	[credit] decimal(18,2) NULL,
-	[description] [text] NULL,
-	[cost_center_number] [varchar](50) NULL,
-	[date] [datetime] NULL,
-	[account_number] [varchar](50) NULL
+CREATE TABLE journal_details
+(
+	[id] INT IDENTITY(1,1) NOT NULL,
+	[journal_id] INT,
+	[description] TEXT,
+	[cost_center_number] VARCHAR(50),
+	[date] DATETIME,
+	[account_number] VARCHAR(50),
+	[credit] DECIMAL(18, 2),
+	[debit] DECIMAL(18, 2)
+);
+
+
+WITH CTE AS
+(
+SELECT t2.[date], 
+       t2.[credit], 
+       t2.[debit], 
+       SUM(COALESCE(t1.credit, 0) - COALESCE(t1.debit, 0)) AS Balance
+FROM Test t1 
+INNER JOIN Test t2
+    ON t1.[date] <= t2.[date] 
+GROUP BY t2.[date], t2.[credit], t2.[debit]
 )
-GO
-
-USE [zakat_invoices]
-GO
-
-/****** Object:  UserDefinedTableType [dbo].[entry_accounts_table]    Script Date: 5/13/2022 1:24:04 AM ******/
-CREATE TYPE [dbo].[entry_accounts_table] AS TABLE(
-	[journal_id] [int] NULL,
-	[debit] [varchar](50) NULL,
-	[credit] decimal(18,2) NULL,
-	[description] decimal(18,2) NULL,
-	[cost_center_number] [varchar](50) NULL,
-	[account_number] [varchar](50) NULL
-)
-GO
-
+SELECT * 
+FROM CTE
+WHERE ([date] >= '2014/01/11' AND [date] <= '2014/02/28' ) 
 
 
 -- >>>>>>> Add two field for credit and debit with decimal(18,2) as a data type;
@@ -91,7 +101,6 @@ SELECT *, SUM(COALESCE(CAST(credit AS DECIMAL(10, 2)),0) - COALESCE(CAST(debit A
 FROM journal_details  
 INNER JOIN journals ON journal_details.journal_id = journals.id
 where journal_details.account_number = 2106;
-
 
 -------------------------------------------------------
 WITH CTE AS

@@ -439,7 +439,7 @@ namespace sales_management.UI
 
                     if (col.ToString() == "datagrid_id")
                     {
-                        emptyRow[col] = Guid.NewGuid().ToString();
+                        emptyRow["datagrid_id"] = Guid.NewGuid().ToString();
                     }
 
                     /*

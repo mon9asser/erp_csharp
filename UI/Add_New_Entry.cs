@@ -200,7 +200,7 @@ namespace sales_management.UI
                 if (xy["account_number"].ToString() != "") { 
                     row = table.NewRow(); 
                     row["journal_id"] = Convert.ToInt32(entry_id_field.Text); 
-                    if (xy["debit"] != null)
+                    if (xy["debit"] != null && xy["debit"] != System.DBNull.Value)
                     {
                         row["debit"] = Convert.ToDecimal(xy["debit"]);
                     }
@@ -209,7 +209,7 @@ namespace sales_management.UI
                         row["debit"] = 0;
                     }
 
-                    if (xy["credit"] != null)
+                    if (xy["credit"] != null && xy["credit"] != System.DBNull.Value )
                     {
                         row["credit"] = Convert.ToDecimal(xy["credit"]);
                     }
