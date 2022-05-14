@@ -12,6 +12,33 @@ namespace sales_management.PL
     {
 
 
+        public DataSet Get_Report_Statment( string account_1, DateTime date_from, DateTime date_to, string account_2 = "-1" ) {
+
+            DataSet DataSet;
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+            SqlParameter[] param = new SqlParameter[4];
+
+            param[0] = new SqlParameter("@account_1", SqlDbType.VarChar);
+            param[0].Value = account_1;
+
+            param[1] = new SqlParameter("@date_from", SqlDbType.VarChar);
+            param[1].Value = date_from.ToString("yyyy-MM-dd") + " 00:00:00";
+
+            param[2] = new SqlParameter("@date_to", SqlDbType.VarChar);
+            param[2].Value = date_to.ToString("yyyy-MM-dd") + " 23:59:59";
+
+            param[3] = new SqlParameter("@account_2", SqlDbType.VarChar);
+            param[3].Value = account_2;
+
+            DAL.Open();
+            DataSet = DAL.SelectDataSet("Report_Statement_Document", param);
+            DAL.Close();
+
+            return DataSet;
+
+        }
+
         public DataTable Create_Exp_Doucment_Id() {
 
             DataTable table;

@@ -12,14 +12,14 @@ namespace sales_management.UI
 {
     public partial class FRM_Date_Range : Form
     {
-        EntriesReportViewer Entries_Form;
+        EntriesReportViewer Entries_Form; 
         public int SearchType = -1;
 
         public FRM_Date_Range()
         {
             InitializeComponent();
         }
-
+          
         public FRM_Date_Range(EntriesReportViewer Entries ) {
             this.Entries_Form = Entries;
             this.SearchType = 0;
@@ -39,11 +39,15 @@ namespace sales_management.UI
 
             // Journal Entries Data 
             if (this.SearchType == 0) {
-            
+
                 this.Entries_Form.rearrange_report_date(
                     from_date, to_date
-                ); 
+                );
 
+            } else if (this.SearchType == 1) {
+
+                UI.Vat_Statment_Viewer nview = new UI.Vat_Statment_Viewer(from_date, to_date);
+                nview.Show();
             }  
 
             this.Close();

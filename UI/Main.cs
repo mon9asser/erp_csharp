@@ -273,5 +273,11 @@ namespace sales_management.UI
             UI.Export_Document EXP = new UI.Export_Document();
             EXP.Show();
         }
+
+        private void تقريرالقيمةالمضافهعنالفترةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FRM_Date_Range rmrange = new UI.FRM_Date_Range(1);
+            rmrange.ShowDialog();
+        }
     }
 }

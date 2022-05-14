@@ -148,6 +148,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesInvoice.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\Statments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statments.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PL\AccountingTree.cs" />
     <Compile Include="PL\DailyEntries.cs" />
     <Compile Include="PL\doc_items.cs" />
@@ -281,6 +286,12 @@
     </Compile>
     <Compile Include="UI\Report_Viewer.Designer.cs">
       <DependentUpon>Report_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Vat_Statment_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Vat_Statment_Viewer.Designer.cs">
+      <DependentUpon>Vat_Statment_Viewer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\___Accounts.cs">
       <SubType>Form</SubType>
@@ -610,6 +621,17 @@
     </None>
     <None Include="DSet\SalesInvoice.xss">
       <DependentUpon>SalesInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Statments.xsc">
+      <DependentUpon>Statments.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Statments.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Statments.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\Statments.xss">
+      <DependentUpon>Statments.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
