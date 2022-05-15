@@ -524,7 +524,7 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StatementRow AddStatementRow(string id, string date, string account_number, string details, string debit, string credit, string balance) {
+            public StatementRow AddStatementRow(int id, System.DateTime date, string account_number, string details, decimal debit, decimal credit, decimal balance) {
                 StatementRow rowStatementRow = ((StatementRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -568,19 +568,19 @@ namespace sales_management.DSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
-                this.columndate = new global::System.Data.DataColumn("date", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndate);
                 this.columnaccount_number = new global::System.Data.DataColumn("account_number", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaccount_number);
                 this.columndetails = new global::System.Data.DataColumn("details", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndetails);
-                this.columndebit = new global::System.Data.DataColumn("debit", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columndebit = new global::System.Data.DataColumn("debit", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndebit);
-                this.columncredit = new global::System.Data.DataColumn("credit", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columncredit = new global::System.Data.DataColumn("credit", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncredit);
-                this.columnbalance = new global::System.Data.DataColumn("balance", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnbalance = new global::System.Data.DataColumn("balance", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbalance);
             }
             
@@ -990,9 +990,13 @@ namespace sales_management.DSet {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Account_DetailsDataTable : global::System.Data.TypedTableBase<Account_DetailsRow> {
             
-            private global::System.Data.DataColumn columnaccount_number;
+            private global::System.Data.DataColumn columnaccount_number_1;
             
-            private global::System.Data.DataColumn columnaccount_name;
+            private global::System.Data.DataColumn columnaccount_name_1;
+            
+            private global::System.Data.DataColumn columnaccount_number_2;
+            
+            private global::System.Data.DataColumn columnaccount_name_2;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1029,17 +1033,33 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn account_numberColumn {
+            public global::System.Data.DataColumn account_number_1Column {
                 get {
-                    return this.columnaccount_number;
+                    return this.columnaccount_number_1;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn account_nameColumn {
+            public global::System.Data.DataColumn account_name_1Column {
                 get {
-                    return this.columnaccount_name;
+                    return this.columnaccount_name_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn account_number_2Column {
+                get {
+                    return this.columnaccount_number_2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn account_name_2Column {
+                get {
+                    return this.columnaccount_name_2;
                 }
             }
             
@@ -1080,11 +1100,13 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Account_DetailsRow AddAccount_DetailsRow(string account_number, string account_name) {
+            public Account_DetailsRow AddAccount_DetailsRow(string account_number_1, string account_name_1, string account_number_2, string account_name_2) {
                 Account_DetailsRow rowAccount_DetailsRow = ((Account_DetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        account_number,
-                        account_name};
+                        account_number_1,
+                        account_name_1,
+                        account_number_2,
+                        account_name_2};
                 rowAccount_DetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAccount_DetailsRow);
                 return rowAccount_DetailsRow;
@@ -1107,17 +1129,23 @@ namespace sales_management.DSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnaccount_number = base.Columns["account_number"];
-                this.columnaccount_name = base.Columns["account_name"];
+                this.columnaccount_number_1 = base.Columns["account_number_1"];
+                this.columnaccount_name_1 = base.Columns["account_name_1"];
+                this.columnaccount_number_2 = base.Columns["account_number_2"];
+                this.columnaccount_name_2 = base.Columns["account_name_2"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnaccount_number = new global::System.Data.DataColumn("account_number", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaccount_number);
-                this.columnaccount_name = new global::System.Data.DataColumn("account_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaccount_name);
+                this.columnaccount_number_1 = new global::System.Data.DataColumn("account_number_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaccount_number_1);
+                this.columnaccount_name_1 = new global::System.Data.DataColumn("account_name_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaccount_name_1);
+                this.columnaccount_number_2 = new global::System.Data.DataColumn("account_number_2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaccount_number_2);
+                this.columnaccount_name_2 = new global::System.Data.DataColumn("account_name_2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaccount_name_2);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1535,10 +1563,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string id {
+            public int id {
                 get {
                     try {
-                        return ((string)(this[this.tableStatement.idColumn]));
+                        return ((int)(this[this.tableStatement.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'id\' in table \'Statement\' is DBNull.", e);
@@ -1551,10 +1579,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string date {
+            public System.DateTime date {
                 get {
                     try {
-                        return ((string)(this[this.tableStatement.dateColumn]));
+                        return ((global::System.DateTime)(this[this.tableStatement.dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'date\' in table \'Statement\' is DBNull.", e);
@@ -1599,10 +1627,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string debit {
+            public decimal debit {
                 get {
                     try {
-                        return ((string)(this[this.tableStatement.debitColumn]));
+                        return ((decimal)(this[this.tableStatement.debitColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'debit\' in table \'Statement\' is DBNull.", e);
@@ -1615,10 +1643,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string credit {
+            public decimal credit {
                 get {
                     try {
-                        return ((string)(this[this.tableStatement.creditColumn]));
+                        return ((decimal)(this[this.tableStatement.creditColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'credit\' in table \'Statement\' is DBNull.", e);
@@ -1631,10 +1659,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string balance {
+            public decimal balance {
                 get {
                     try {
-                        return ((string)(this[this.tableStatement.balanceColumn]));
+                        return ((decimal)(this[this.tableStatement.balanceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'balance\' in table \'Statement\' is DBNull.", e);
@@ -1845,58 +1873,114 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string account_number {
+            public string account_number_1 {
                 get {
                     try {
-                        return ((string)(this[this.tableAccount_Details.account_numberColumn]));
+                        return ((string)(this[this.tableAccount_Details.account_number_1Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'account_number\' in table \'Account_Details\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'account_number_1\' in table \'Account_Details\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAccount_Details.account_numberColumn] = value;
+                    this[this.tableAccount_Details.account_number_1Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string account_name {
+            public string account_name_1 {
                 get {
                     try {
-                        return ((string)(this[this.tableAccount_Details.account_nameColumn]));
+                        return ((string)(this[this.tableAccount_Details.account_name_1Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'account_name\' in table \'Account_Details\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'account_name_1\' in table \'Account_Details\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAccount_Details.account_nameColumn] = value;
+                    this[this.tableAccount_Details.account_name_1Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isaccount_numberNull() {
-                return this.IsNull(this.tableAccount_Details.account_numberColumn);
+            public string account_number_2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAccount_Details.account_number_2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'account_number_2\' in table \'Account_Details\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAccount_Details.account_number_2Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setaccount_numberNull() {
-                this[this.tableAccount_Details.account_numberColumn] = global::System.Convert.DBNull;
+            public string account_name_2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAccount_Details.account_name_2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'account_name_2\' in table \'Account_Details\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAccount_Details.account_name_2Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isaccount_nameNull() {
-                return this.IsNull(this.tableAccount_Details.account_nameColumn);
+            public bool Isaccount_number_1Null() {
+                return this.IsNull(this.tableAccount_Details.account_number_1Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setaccount_nameNull() {
-                this[this.tableAccount_Details.account_nameColumn] = global::System.Convert.DBNull;
+            public void Setaccount_number_1Null() {
+                this[this.tableAccount_Details.account_number_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isaccount_name_1Null() {
+                return this.IsNull(this.tableAccount_Details.account_name_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setaccount_name_1Null() {
+                this[this.tableAccount_Details.account_name_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isaccount_number_2Null() {
+                return this.IsNull(this.tableAccount_Details.account_number_2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setaccount_number_2Null() {
+                this[this.tableAccount_Details.account_number_2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isaccount_name_2Null() {
+                return this.IsNull(this.tableAccount_Details.account_name_2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setaccount_name_2Null() {
+                this[this.tableAccount_Details.account_name_2Column] = global::System.Convert.DBNull;
             }
         }
         
