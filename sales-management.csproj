@@ -518,6 +518,9 @@
     <EmbeddedResource Include="UI\Report_Viewer.resx">
       <DependentUpon>Report_Viewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Vat_Statment_Viewer.resx">
+      <DependentUpon>Vat_Statment_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\___Accounts.resx">
       <DependentUpon>___Accounts.cs</DependentUpon>
     </EmbeddedResource>
