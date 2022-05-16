@@ -4,6 +4,10 @@
 
     partial class Statments
     {
+        partial class StatementDataTable
+        {
+        }
+
         partial class First_BalanceDataTable
         {
         }

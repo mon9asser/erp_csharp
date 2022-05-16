@@ -210,4 +210,4 @@ D:\sales-app\obj\Debug\sales_management.UI.Export_Document.resources
 D:\sales-app\bin\Debug\Reports\Statement.rpt
 D:\sales-app\bin\Debug\Reports\Statement.cs
 D:\sales-app\obj\Debug\sales_management.UI.Vat_Statment_Viewer.resources
-D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
