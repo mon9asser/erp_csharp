@@ -59,25 +59,21 @@ namespace sales_management.UI
             DataTable totals = this.dstables.Tables[2];
 
              
-            // First Balance
-            DataTable define_first_balance = new DataTable();
-            define_first_balance.Columns.Add("balance_title");
-            define_first_balance.Columns.Add("balance_value");
-            define_first_balance.Columns.Add("date");
-            DataRow define_first_balance_row = define_first_balance.NewRow();
+            // First Balance 
+            DataRow define_first_balance_row = this.DSet.Tables["First_Balance"].NewRow();
             define_first_balance_row["balance_title"] = "رصيد أول المدة";
 
             if (first_balance.Rows.Count == 0)
             {
                 define_first_balance_row["balance_value"] = "0.00";
-                define_first_balance_row["date"] = date_from.ToString("yyyy-MM-dd");
+                define_first_balance_row["_date_"] = date_from.ToString("yyyy-MM-dd");
             }
             else
             {
                 define_first_balance_row["balance_value"] = first_balance.Rows[first_balance.Rows.Count - 1]["balance"];
-                define_first_balance_row["date"] = Convert.ToDateTime(first_balance.Rows[first_balance.Rows.Count - 1]["date"]).ToString("yyyy-MM-dd");
+                define_first_balance_row["_date_"] = Convert.ToDateTime(first_balance.Rows[first_balance.Rows.Count - 1]["date"]).ToString("yyyy-MM-dd");
             }
-            define_first_balance.Rows.Add(define_first_balance_row);
+            DSet.Tables["First_Balance"].Rows.Add(define_first_balance_row);
 
             // Totals 
             DataTable define_totals = new DataTable();
@@ -114,8 +110,7 @@ namespace sales_management.UI
 
             DSet.Tables["Account_Details"].Rows.Add(AccRow);
              
-            DSet.Tables["Statement"].Merge(statments);
-            DSet.Tables["First_Balance"].Merge(define_first_balance);
+            DSet.Tables["Statement"].Merge(statments); 
             DSet.Tables["Totals"].Merge(define_totals);
 
             // Fill Statement Data 

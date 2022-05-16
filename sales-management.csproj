@@ -148,6 +148,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesInvoice.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\Statments.cs">
+      <DependentUpon>Statments.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSet\Statments.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -719,7 +719,7 @@ namespace sales_management.DSet {
             
             private global::System.Data.DataColumn columnbalance_value;
             
-            private global::System.Data.DataColumn columndate;
+            private global::System.Data.DataColumn column_date_;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -772,9 +772,9 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn dateColumn {
+            public global::System.Data.DataColumn _date_Column {
                 get {
-                    return this.columndate;
+                    return this.column_date_;
                 }
             }
             
@@ -815,12 +815,12 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public First_BalanceRow AddFirst_BalanceRow(string balance_title, string balance_value, string date) {
+            public First_BalanceRow AddFirst_BalanceRow(string balance_title, string balance_value, string _date_) {
                 First_BalanceRow rowFirst_BalanceRow = ((First_BalanceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         balance_title,
                         balance_value,
-                        date};
+                        _date_};
                 rowFirst_BalanceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFirst_BalanceRow);
                 return rowFirst_BalanceRow;
@@ -845,7 +845,7 @@ namespace sales_management.DSet {
             internal void InitVars() {
                 this.columnbalance_title = base.Columns["balance_title"];
                 this.columnbalance_value = base.Columns["balance_value"];
-                this.columndate = base.Columns["date"];
+                this.column_date_ = base.Columns["_date_"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -855,8 +855,8 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columnbalance_title);
                 this.columnbalance_value = new global::System.Data.DataColumn("balance_value", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbalance_value);
-                this.columndate = new global::System.Data.DataColumn("date", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndate);
+                this.column_date_ = new global::System.Data.DataColumn("_date_", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column_date_);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1806,17 +1806,17 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string date {
+            public string _date_ {
                 get {
                     try {
-                        return ((string)(this[this.tableFirst_Balance.dateColumn]));
+                        return ((string)(this[this.tableFirst_Balance._date_Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'date\' in table \'First_Balance\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'_date_\' in table \'First_Balance\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableFirst_Balance.dateColumn] = value;
+                    this[this.tableFirst_Balance._date_Column] = value;
                 }
             }
             
@@ -1846,14 +1846,14 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsdateNull() {
-                return this.IsNull(this.tableFirst_Balance.dateColumn);
+            public bool Is_date_Null() {
+                return this.IsNull(this.tableFirst_Balance._date_Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetdateNull() {
-                this[this.tableFirst_Balance.dateColumn] = global::System.Convert.DBNull;
+            public void Set_date_Null() {
+                this[this.tableFirst_Balance._date_Column] = global::System.Convert.DBNull;
             }
         }
         
