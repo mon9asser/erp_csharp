@@ -58,10 +58,7 @@ namespace sales_management.UI
             DataTable first_balance = this.dstables.Tables[1];
             DataTable totals = this.dstables.Tables[2];
 
-            if (statments.Rows.Count == 0) {
-                return;
-            }
-
+             
             // First Balance
             DataTable define_first_balance = new DataTable();
             define_first_balance.Columns.Add("balance_title");
