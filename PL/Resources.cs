@@ -12,7 +12,7 @@ namespace sales_management.PL
     class Resources
     {
 
-        public DataTable Create_Resource_Id( int type  )
+        public DataTable Create_Resource_Id( int __type  )
         {
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
             
@@ -21,7 +21,7 @@ namespace sales_management.PL
             SqlParameter[] param = new SqlParameter[1];
 
             param[0] = new SqlParameter("@type", SqlDbType.Int);
-            param[0].Value = type;
+            param[0].Value = __type;
 
             DAL.Open();
             

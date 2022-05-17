@@ -97,7 +97,6 @@ namespace sales_management.UI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "العملاء";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.suppliers_datagridview)).EndInit();
             this.ResumeLayout(false);
 

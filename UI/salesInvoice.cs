@@ -64,7 +64,7 @@ namespace sales_management.UI
 
         public salesInvoice()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         public DataTable Load_All_Products_Codes(DataTable products)
@@ -126,17 +126,6 @@ namespace sales_management.UI
         public void Load_deletion_icon_in_datagridview()
         {
             items_datagridview.Columns["deletion_et_button"].DisplayIndex = items_datagridview.Columns.Count - 1;
-            //DataGridViewImageColumn deletionImage = new DataGridViewImageColumn();
-
-            //deletionImage.ImageLayout = DataGridViewImageCellLayout.NotSet;
-            //deletionImage.Name = "deletion_et_button";
-            //deletionImage.HeaderText = "حذف";
-            //this.items_datagridview.Columns.Add(deletionImage);
-            //UI.salesInvoice.GetForm.items_datagridview.Rows[e.RowIndex].Cells["deletion_et_button"].Value = Properties.Resources.delete_16;
-
-            // for (int i = 0; i < UI.salesInvoice.GetForm.items_datagridview.Rows.Count; i++) {
-            //    UI.salesInvoice.GetForm.items_datagridview.Rows[i].Cells["deletion_et_button"].Value = Properties.Resources.icons8_delete_20;
-            //}
 
         }
         public void Calculate_Datagridview_Row(int index)
@@ -709,7 +698,7 @@ namespace sales_management.UI
                 return;
             }
 
-            UI.Items.GetForm.DGRowIndex = e.RowIndex;
+            this.lastRow = e.RowIndex;
             // Select Item By Code 
             if (e.ColumnIndex == 1 && false == this.is_change_price)
             {
@@ -822,17 +811,14 @@ namespace sales_management.UI
                 return;
             }
 
+            int rowIndex = items_datagridview.CurrentCell.OwningColumn.Index;
 
             if (items_datagridview.CurrentCell.OwningRow.Index == -1) return;
-
-            UI.Items.GetForm.DGRowIndex = items_datagridview.CurrentCell.OwningRow.Index;
-            UI.salesInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
-
-            UI.Items.GetForm.doc_type = this.documentType;
-
+            this.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
             if (items_datagridview.CurrentCell.OwningColumn.Index == 2)
             {
-                UI.Items.GetForm.ShowDialog();
+                UI.Items ITEMS = new Items(rowIndex, this.documentType, this );
+                ITEMS.ShowDialog();
             }
 
             if (items_datagridview.CurrentCell.OwningColumn.Index == 3)
@@ -1014,32 +1000,26 @@ namespace sales_management.UI
             {
                 return;
             }
-
-            UI.salesInvoice.GetForm.lastRow = e.RowIndex;
-            UI.Items.GetForm.DGRowIndex = this.lastRow;
-            UI.Items.GetForm.doc_type = this.documentType;
-
-
-
-
-
-
+             
             if (e.ColumnIndex == 2)
             {
-                UI.Items.GetForm.ShowDialog();
+                UI.Items ITEMS = new UI.Items(
+                    e.RowIndex, this.documentType, this
+                );
+                ITEMS.ShowDialog();
             }
 
             if (e.ColumnIndex == 4)
             {
 
-                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_name"].Value))
+                if (System.DBNull.Value.Equals(items_datagridview.Rows[this.lastRow].Cells["product_name"].Value))
                 {
                     return;
                 }
 
                 this.is_change_price = true;
 
-                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_id"].Value);
+                int product_id = Convert.ToInt32(items_datagridview.Rows[this.lastRow].Cells["product_id"].Value);
 
                 UI.ItemUnit item_units = new UI.ItemUnit(
                     this.documentType,
@@ -1052,24 +1032,7 @@ namespace sales_management.UI
                 item_units.ShowDialog();
 
             }
-
-
-
-            /*
-            if (e.ColumnIndex == 3)
-            {
-                if (items_datagridview.Rows[e.RowIndex].Cells["product_name"].Value.ToString() == "")
-                {
-                    return;
-                }
-
-                this.is_change_price = true;
-
-                // Prices 
-                //price.Set_Document_Type = this.documentType;
-                UI.Price.GetForm.ShowDialog();
-            }
-            */
+             
         }
 
         public void Add_New_Item_Unit(int dataGridIndex, DataTable item_updates)
@@ -1652,6 +1615,14 @@ namespace sales_management.UI
             //items_datagridview.Columns["unit_price"].ReadOnly = true;
             items_datagridview.Columns["total_price"].ReadOnly = true;
             items_datagridview.Columns["unit_name"].ReadOnly = true;
+
+            if (this.Sale_Table.Rows.Count == 0)
+            {
+                edit_button.Visible = false;
+            }
+            else {
+                edit_button.Visible = true;
+            }
         }
 
         private void edit_button_Click(object sender, EventArgs e)
@@ -1711,10 +1682,8 @@ namespace sales_management.UI
         {
             if (customer_name.Enabled == true)
             {
-
-                UI.FRM_Suppliers.GetForm.doc_type = this.documentType;
-                UI.FRM_Suppliers.GetForm.ShowDialog();
-
+                UI.FRM_Customers Customers = new UI.FRM_Customers(this.documentType, this);
+                Customers.ShowDialog();
             }
         }
 

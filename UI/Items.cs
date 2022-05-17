@@ -14,7 +14,13 @@ namespace sales_management.UI
     {
 
         public static Items frm;
+
         public Export_Document expo_doc;
+        public salesInvoice Sales_Document;
+        public purchaseInvoice Purchase_Document;
+        public salesReturnInvoice Return_Sales_Document;
+        public purchaseReturnInvoice Return_Purchase_Document;
+
         public int DGRowIndex = -1;
         public int doc_type = -1;
 
@@ -43,7 +49,7 @@ namespace sales_management.UI
         {
             InitializeComponent();
 
-            
+
             if (frm == null)
             {
                 frm = this;
@@ -55,24 +61,63 @@ namespace sales_management.UI
 
         }
 
-        public Items(int rowIndex, int docType, Export_Document expo_doc )
+        public Items(int rowIndex, int docType, Export_Document expo_doc)
         {
-            InitializeComponent(); 
+            InitializeComponent();
             this.DGRowIndex = rowIndex;
-            this.doc_type   = docType;
+            this.doc_type = docType;
             this.expo_doc = expo_doc;
             this.Load_Grid_View();
 
         }
 
-        public void Load_Grid_View( bool isVis = true ) {
+        public Items(int rowIndex, int docType, salesInvoice sales_document)
+        {
+            InitializeComponent();
+            this.DGRowIndex = rowIndex;
+            this.doc_type = docType;
+            this.Sales_Document = sales_document;
+            this.Load_Grid_View();
+
+        }
+
+        public Items(int rowIndex, int docType, purchaseInvoice purchase_document)
+        {
+            InitializeComponent();
+            this.DGRowIndex = rowIndex;
+            this.doc_type = docType;
+            this.Purchase_Document = purchase_document;
+            this.Load_Grid_View();
+
+        }
+
+        public Items(int rowIndex, int docType, salesReturnInvoice return_sales_document)
+        {
+            InitializeComponent();
+            this.DGRowIndex = rowIndex;
+            this.doc_type = docType;
+            this.Return_Sales_Document = return_sales_document;
+            this.Load_Grid_View();
+
+        }
+        public Items(int rowIndex, int docType, purchaseReturnInvoice return_purchase_document)
+        {
+            InitializeComponent();
+            this.DGRowIndex = rowIndex;
+            this.doc_type = docType;
+            this.Return_Purchase_Document = return_purchase_document;
+            this.Load_Grid_View();
+
+        }
+
+        public void Load_Grid_View(bool isVis = true) {
 
             PL.Products prod = new PL.Products();
             items_view_grids.DataSource = prod.Get_All_Products();
 
 
-            if ( isVis ) { 
-                
+            if (isVis) {
+
                 items_view_grids.Columns.OfType<DataGridViewColumn>().ToList().ForEach(col => col.Visible = false);
                 items_view_grids.Columns["id"].Visible = false;
                 items_view_grids.EnableHeadersVisualStyles = true;
@@ -84,54 +129,53 @@ namespace sales_management.UI
             }
         }
 
+        public void Execute_Event_Callback(int rowIndex, int index )
+        {
+
+            if (index == -1) return;
+            
+
+            // By document type 
+            switch (this.doc_type)
+            {
+
+                    // Sales Invoice
+                    case 0:
+                        this.Sales_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                break;
+
+                    // Purchase Invoice 
+                    case 1: 
+                        this.Purchase_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                break;
+                     
+                    // Sales Invoice
+                    case 2:
+                        this.Return_Sales_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                break;
+
+                    case 3:
+                        this.Return_Purchase_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                break;
+
+                    case 6:
+                        this.expo_doc.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
+                break;
+
+            }
+        }
         private void items_view_grids_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
              
             if (e.RowIndex == -1) return;
 
             int rowIndex = e.RowIndex;
-            int index = UI.Items.GetForm.DGRowIndex;
-            if (index == -1) {
-                index = this.DGRowIndex;
-            }
+            int index = this.DGRowIndex;
 
-            if (UI.Items.GetForm.doc_type == -1) {
-                UI.Items.GetForm.doc_type = this.doc_type;
-            }
-
-            if (index == -1) return;
-            
-
-            // By document type 
-            switch (UI.Items.GetForm.doc_type)
-            {
-
-                // Sales Invoice
-                case 0:
-                    UI.salesInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                // Purchase Invoice 
-                case 1: 
-                    UI.purchaseInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-                     
-                // Sales Invoice
-                case 2:
-                    UI.salesReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                case 3:
-                    UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                case 6:
-                    this.expo_doc.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-            }
+            this.Execute_Event_Callback(rowIndex, index);
 
             this.Close();
+
         }
 
         private void Items_KeyDown(object sender, KeyEventArgs e)
@@ -147,37 +191,11 @@ namespace sales_management.UI
             int rowIndex = items_view_grids.CurrentCell.OwningRow.Index;
             if (rowIndex == -1) return;
 
-            int index = UI.Items.GetForm.DGRowIndex;
+            int index = this.DGRowIndex;
             if (index == -1) return;
-              
+
             // By document type 
-            switch (UI.Items.GetForm.doc_type) {
-
-                // Sales Invoice
-                case 0:
-                    UI.salesInvoice.GetForm.Add_Item_To_Row( index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                // Purchase Invoice 
-                case 1:
-                    UI.purchaseInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                // Sales Return Invoice
-                case 2:
-                    UI.salesReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                case 3:
-                    UI.purchaseReturnInvoice.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-
-                case 6:
-                    UI.Export_Document.GetForm.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                    break;
-            }
-
-             
+            this.Execute_Event_Callback(rowIndex, index); 
             this.Close();
 
         }

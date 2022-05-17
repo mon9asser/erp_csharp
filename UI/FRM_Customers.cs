@@ -14,6 +14,10 @@ namespace sales_management.UI
     {
 
         DataTable resoueceTable;
+
+        public salesReturnInvoice Return_Sales_Document;
+        public salesInvoice Sales_Document;
+
         public static FRM_Customers frm;
         public int doc_type = -1;
 
@@ -38,6 +42,31 @@ namespace sales_management.UI
             }
         }
 
+        public FRM_Customers(int _doc_type, salesReturnInvoice return_sales_document)
+        {
+            this.doc_type = _doc_type;
+            this.Return_Sales_Document = return_sales_document;
+            InitializeComponent();
+            try
+            {
+                this.Read_All_resources();
+            }
+            catch (Exception) { }
+
+        }
+
+        public FRM_Customers(int _doc_type, salesInvoice sales_document)
+        {
+            this.doc_type = _doc_type;
+            this.Sales_Document = sales_document;
+            InitializeComponent();
+            try
+            {
+                this.Read_All_resources();
+            }
+            catch (Exception) { }
+
+        }
 
         public FRM_Customers()
         {
@@ -107,13 +136,10 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try {
-                PL.Resources Resource = new PL.Resources();
-                this.resoueceTable = Resource.Create_Resource_Id(1);
-                UI.FRM_UpdateCustomer.GetForm.Set_Data_Of_Suppliers(this.resoueceTable);
-                UI.FRM_UpdateCustomer.GetForm.ShowDialog();
-            }
-            catch (Exception) { }
+            PL.Resources Resource = new PL.Resources();
+            this.resoueceTable = Resource.Create_Resource_Id(1);
+            UI.FRM_UpdateCustomer Customer = new UI.FRM_UpdateCustomer(this.resoueceTable, this);
+            Customer.ShowDialog(); 
         }
 
         private void suppliers_datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -156,8 +182,8 @@ namespace sales_management.UI
                             table.Rows.Add(row);
 
 
-                            UI.FRM_UpdateCustomer.GetForm.Set_Data_Of_Suppliers(table);
-                            UI.FRM_UpdateCustomer.GetForm.ShowDialog();
+                            UI.FRM_UpdateCustomer Customer = new UI.FRM_UpdateCustomer(table, this);
+                            Customer.ShowDialog();
                         }
                     }
 
@@ -198,8 +224,13 @@ namespace sales_management.UI
                 switch (this.doc_type)
                 {
                     case 0:
-                        UI.AA___salesInvoice.GetForm.customer_id.Text = customerId;
-                        UI.AA___salesInvoice.GetForm.customer_name.Text = customerName;
+                        this.Sales_Document.customer_id.Text = customerId;
+                        this.Sales_Document.customer_name.Text = customerName;
+                        break;
+
+                    case 2:
+                        this.Sales_Document.customer_id.Text = customerId;
+                        this.Sales_Document.customer_name.Text = customerName;
                         break;
                 }
 

@@ -703,8 +703,8 @@ namespace sales_management.UI
             {
                 return;
             }
-
-            UI.Items.GetForm.DGRowIndex = e.RowIndex;
+            this.lastRow = e.RowIndex;
+            //UI.Items.GetForm.DGRowIndex = e.RowIndex;
             // Select Item By Code 
             if (e.ColumnIndex == 1 && false == this.is_change_price)
             {
@@ -817,17 +817,16 @@ namespace sales_management.UI
                 return;
             }
 
+            int rowIndex = items_datagridview.CurrentCell.OwningColumn.Index;
 
             if (items_datagridview.CurrentCell.OwningRow.Index == -1) return;
 
-            UI.Items.GetForm.DGRowIndex = items_datagridview.CurrentCell.OwningRow.Index;
-            UI.purchaseReturnInvoice.GetForm.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
-
-            UI.Items.GetForm.doc_type = this.documentType;
+            this.lastRow = items_datagridview.CurrentCell.OwningRow.Index;
 
             if (items_datagridview.CurrentCell.OwningColumn.Index == 2)
             {
-                UI.Items.GetForm.ShowDialog();
+                UI.Items ITEMS = new Items(rowIndex, this.documentType, this);
+                ITEMS.ShowDialog();
             }
 
             if (items_datagridview.CurrentCell.OwningColumn.Index == 3)
@@ -1011,31 +1010,26 @@ namespace sales_management.UI
                 return;
             }
 
-            UI.purchaseReturnInvoice.GetForm.lastRow = e.RowIndex;
-            UI.Items.GetForm.DGRowIndex = this.lastRow;
-            UI.Items.GetForm.doc_type = this.documentType;
-
-
-
-
-
 
             if (e.ColumnIndex == 2)
             {
-                UI.Items.GetForm.ShowDialog();
+                UI.Items ITEMS = new UI.Items(
+                    e.RowIndex, this.documentType, this
+                );
+                ITEMS.ShowDialog();
             }
 
             if (e.ColumnIndex == 4)
             {
 
-                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.purchaseReturnInvoice.GetForm.lastRow].Cells["product_name"].Value))
+                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_name"].Value))
                 {
                     return;
                 }
 
                 this.is_change_price = true;
 
-                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.purchaseReturnInvoice.GetForm.lastRow].Cells["product_id"].Value);
+                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_id"].Value);
 
                 UI.ItemUnit item_units = new UI.ItemUnit(
                     this.documentType,

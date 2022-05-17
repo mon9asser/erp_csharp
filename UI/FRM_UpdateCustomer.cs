@@ -13,6 +13,8 @@ namespace sales_management.UI
     public partial class FRM_UpdateCustomer : Form
     {
         public static FRM_UpdateCustomer frm;
+        public DataTable Resource_Table;
+        public FRM_Customers Customer_Object;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
         {
@@ -44,21 +46,34 @@ namespace sales_management.UI
                 frm = this;
             }
         }
-        public void Set_Data_Of_Suppliers(DataTable table)
+
+        public FRM_UpdateCustomer(DataTable ResourceTable, FRM_Customers customer_object  )
+        {
+            this.Customer_Object = customer_object;
+            this.Resource_Table = ResourceTable;
+            this.Set_Data_Of_Suppliers(); 
+            InitializeComponent(); 
+        }
+
+        public void Set_Data_Of_Suppliers()
         {
             try {
+
+                DataTable table = this.Resource_Table;
+                
                 if (table.Rows.Count > 0)
                 {
 
                     DataRow row = table.Rows[0];
-                    resource_name.Text = row["resource_name"].ToString();
-                    phone_number.Text = row["resource_phone"].ToString();
-                    address.Text = row["resource_address"].ToString();
-                    email_text.Text = row["resource_email"].ToString();
+                    
+                    resource_name.Text = row["resource_name"] == "" ? "" : row["resource_name"].ToString();
+                    phone_number.Text = row["resource_phone"] == ""? "": row["resource_phone"].ToString();
+                    address.Text = row["resource_address"] ==""? "":row["resource_address"].ToString();
+                    email_text.Text = row["resource_email"] ==""? "" : row["resource_email"].ToString();
                     id_text.Text = row["id"].ToString();
                     account_number.Text = row["resource_code"].ToString();
-                    vat_number.Text = row["vat_number"].ToString();
-                    establishment_name.Text = row["establishment_name"].ToString();
+                    vat_number.Text = row["vat_number"] == ""? "": row["vat_number"].ToString();
+                    establishment_name.Text = row["establishment_name"] ==""?"": row["establishment_name"].ToString();
                 }
             } catch (Exception) { }
         }

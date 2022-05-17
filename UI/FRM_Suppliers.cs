@@ -13,7 +13,10 @@ namespace sales_management.UI
     public partial class FRM_Suppliers : Form
     {
 
-        DataTable resoueceTable;  
+        DataTable resoueceTable;
+        purchaseInvoice Purchase_Document;
+        purchaseReturnInvoice Return_Purchase_Document;
+
         public int doc_type = -1;
         public static FRM_Suppliers frm;
 
@@ -38,7 +41,31 @@ namespace sales_management.UI
             }
         }
 
-         
+        public FRM_Suppliers(int _doc_type, purchaseInvoice purchase_document )
+        {
+            this.doc_type = _doc_type;
+            this.Purchase_Document = purchase_document;
+            InitializeComponent();
+            try
+            {
+                this.Read_All_resources();
+            }
+            catch (Exception) { }
+
+        }
+
+        public FRM_Suppliers(int _doc_type, purchaseReturnInvoice return_purchase_document)
+        {
+            this.doc_type = _doc_type;
+            this.Return_Purchase_Document = return_purchase_document;
+            InitializeComponent();
+            try
+            {
+                this.Read_All_resources();
+            }
+            catch (Exception) { }
+
+        }
 
         public FRM_Suppliers()
         {

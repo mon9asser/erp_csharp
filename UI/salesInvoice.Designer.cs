@@ -607,9 +607,9 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(592, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 102;
-            this.label6.Text = "المورد :";
+            this.label6.Text = "العميل";
             // 
             // enable_zakat_taxes
             // 
@@ -722,7 +722,7 @@ namespace sales_management.UI
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "فاتورة المشتريات";
+            this.Text = "فواتير المبيعات";
             this.Load += new System.EventHandler(this.salesInvoice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).EndInit();
             this.ResumeLayout(false);
