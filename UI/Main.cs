@@ -154,7 +154,7 @@ namespace sales_management.UI
 
         private void الموردينوالتجارToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.FRM_Suppliers Suppliers = new UI.FRM_Suppliers();
+            UI.FND___Suppliers Suppliers = new UI.FND___Suppliers();
             Suppliers.Show();
         }
 
@@ -166,7 +166,8 @@ namespace sales_management.UI
         private void العملاءوالمناديبToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            UI.FRM_Customers.GetForm.Show();
+            UI.FND___Customers Customers = new FND___Customers();
+            Customers.Show();
 
         }
 
@@ -188,7 +189,7 @@ namespace sales_management.UI
 
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.salesInvoice.GetForm.Show();
+            UI.FND___salesInvoice.GetForm.Show();
         }
 
         private void إعداداتالإجراءاتالمخزنهToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,7 +224,7 @@ namespace sales_management.UI
 
         private void مرتجعToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.salesReturnInvoice.GetForm.Show();
+            UI.FND___salesReturnInvoice.GetForm.Show();
         }
 
         private void تقريرالكمياتالحاليةToolStripMenuItem_Click(object sender, EventArgs e)

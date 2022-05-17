@@ -10,48 +10,33 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class FRM_UpdateSupplier : Form
+    public partial class FND___UpdateSupplier : Form
     {
          
-        public static FRM_UpdateSupplier frm;
+        public static FND___UpdateSupplier frm;
+        public FND___Suppliers Supplier_Form;
+        public DataTable Resource_Table;
+          
 
-        static void frm_formClosed(object sernder, FormClosedEventArgs e)
+        public FND___UpdateSupplier(DataTable resoTable, FND___Suppliers supplier )
         {
-            frm = null;
-        }
-
-        public static FRM_UpdateSupplier GetForm
-        {
-            get
+            try
             {
+                this.Supplier_Form = supplier;
+                this.Resource_Table = resoTable;
+                InitializeComponent();
 
-                if (frm == null)
-                {
-                    frm = new FRM_UpdateSupplier();
-                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
-                }
-
-                return frm;
-
+                this.Set_Data_Of_Suppliers();
             }
+            catch (Exception) { }
         }
 
-        public FRM_UpdateSupplier()
-        {
-            InitializeComponent();
-
-            if (frm == null)
-            {
-                frm = this;
-            }
-        }
-
-        public void Set_Data_Of_Suppliers( DataTable table ) {
+        public void Set_Data_Of_Suppliers() {
             try {
-                if (table.Rows.Count > 0)
+                if (this.Resource_Table.Rows.Count > 0)
                 {
 
-                    DataRow row = table.Rows[0];
+                    DataRow row = this.Resource_Table.Rows[0];
                     resource_name.Text = row["resource_name"].ToString();
                     phone_number.Text = row["resource_phone"].ToString();
                     address.Text = row["resource_address"].ToString();
@@ -76,7 +61,7 @@ namespace sales_management.UI
                 PL.Resources Sup = new PL.Resources();
                 Sup.Update_Resource_Data(Convert.ToInt32(id_text.Text), resource_name.Text.ToString(), phone_number.Text.ToString(), address.Text.ToString(), email_text.Text.ToString(), establishment_name.Text.ToString(), vat_number.Text.ToString(), 0);
 
-                UI.FRM_Suppliers.GetForm.Read_All_resources(true);
+                this.Supplier_Form.Read_All_resources(true);
                 this.Close();
             }
             catch (Exception) {  }

@@ -1,6 +1,6 @@
 ﻿namespace sales_management.UI
 {
-    partial class FRM_UpdateSupplier
+    partial class FND___UpdateSupplier
     {
         /// <summary>
         /// Required designer variable.

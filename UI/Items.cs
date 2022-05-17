@@ -16,9 +16,9 @@ namespace sales_management.UI
         public static Items frm;
 
         public Export_Document expo_doc;
-        public salesInvoice Sales_Document;
+        public FND___salesInvoice Sales_Document;
         public purchaseInvoice Purchase_Document;
-        public salesReturnInvoice Return_Sales_Document;
+        public FND___salesReturnInvoice Return_Sales_Document;
         public purchaseReturnInvoice Return_Purchase_Document;
 
         public int DGRowIndex = -1;
@@ -71,7 +71,7 @@ namespace sales_management.UI
 
         }
 
-        public Items(int rowIndex, int docType, salesInvoice sales_document)
+        public Items(int rowIndex, int docType, FND___salesInvoice sales_document)
         {
             InitializeComponent();
             this.DGRowIndex = rowIndex;
@@ -91,7 +91,7 @@ namespace sales_management.UI
 
         }
 
-        public Items(int rowIndex, int docType, salesReturnInvoice return_sales_document)
+        public Items(int rowIndex, int docType, FND___salesReturnInvoice return_sales_document)
         {
             InitializeComponent();
             this.DGRowIndex = rowIndex;

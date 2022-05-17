@@ -1,7 +1,7 @@
 ﻿
 namespace sales_management.UI
 {
-    partial class salesReturnInvoice
+    partial class FND___salesReturnInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace sales_management.UI
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(salesReturnInvoice));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FND___salesReturnInvoice));
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -607,9 +607,9 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(592, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 102;
-            this.label6.Text = "المورد :";
+            this.label6.Text = "العميل";
             // 
             // enable_zakat_taxes
             // 
@@ -722,7 +722,7 @@ namespace sales_management.UI
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "فاتورة مردودات المبيعات";
+            this.Text = "مردودات المبيعات";
             this.Load += new System.EventHandler(this.salesInvoice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).EndInit();
             this.ResumeLayout(false);

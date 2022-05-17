@@ -106,7 +106,6 @@ E:\C#\sales-app\obj\Debug\sales_management.UI.Tree.resources
 D:\sales-app\obj\Debug\sales-management.csproj.CoreCompileInputs.cache
 D:\sales-app\obj\Debug\sales-management.csproj.CopyComplete
 D:\sales-app\obj\Debug\sales_management.UI.Items.resources
-D:\sales-app\obj\Debug\sales_management.UI.salesInvoice.resources
 D:\sales-app\bin\Debug\QRCoder.dll
 D:\sales-app\bin\Debug\IronBarCode.dll
 D:\sales-app\bin\Debug\IronBarCode.xml
@@ -157,11 +156,7 @@ D:\sales-app\obj\Debug\sales_management.UI.___Accounts.resources
 D:\sales-app\obj\Debug\sales_management.UI.___Units.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_AccountsGuid.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_ProductUnits.resources
-D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateCustomer.resources
-D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateSupplier.resources
-D:\sales-app\obj\Debug\sales_management.UI.FRM_Customers.resources
 D:\sales-app\obj\Debug\sales_management.UI.___Customer.resources
-D:\sales-app\obj\Debug\sales_management.UI.FRM_Suppliers.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_Stores.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_UpdateStore.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_CostCenterGuide.resources
@@ -197,7 +192,6 @@ D:\sales-app\bin\Debug\Reports\Daily_Entries.cs
 D:\sales-app\obj\Debug\sales_management.UI.Add_New_Entry.resources
 D:\sales-app\obj\Debug\sales_management.UI.EntriesReportViewer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_ALL_ENTRIES.resources
-D:\sales-app\obj\Debug\sales_management.UI.salesReturnInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.Current_Quantities.resources
 D:\sales-app\bin\Debug\Reports\Inventory_Report.rpt
 D:\sales-app\bin\Debug\Reports\Inventory_Report.cs
@@ -211,3 +205,9 @@ D:\sales-app\bin\Debug\Reports\Statement.rpt
 D:\sales-app\bin\Debug\Reports\Statement.cs
 D:\sales-app\obj\Debug\sales_management.UI.Vat_Statment_Viewer.resources
 D:\sales-app\obj\Debug\sales-management.csproj.AssemblyReference.cache
+D:\sales-app\obj\Debug\sales_management.UI.FND___salesInvoice.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___salesReturnInvoice.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___UpdateSupplier.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___Suppliers.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___UpdateCustomer.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___Customers.resources

@@ -67,3 +67,10 @@ Hide 'Edit Invoice' button when we have no invoices by the floowing cllback
                 edit_button.Visible = true;
             }
         }
+		
+		
+		
+	supplierts Form and add supplier account to journal entry 
+	
+	try catch 
+	

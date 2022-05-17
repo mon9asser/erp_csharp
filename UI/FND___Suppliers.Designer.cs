@@ -1,6 +1,6 @@
 ﻿namespace sales_management.UI
 {
-    partial class FRM_Suppliers
+    partial class FND___Suppliers
     {
         /// <summary>
         /// Required designer variable.
@@ -79,7 +79,7 @@
             this.suppliers_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellContentClick_1);
             this.suppliers_datagridview.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellDoubleClick);
             // 
-            // Supplier
+            // FRM_Suppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,9 +89,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Supplier";
+            this.Name = "FRM_Suppliers";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "الموردين";

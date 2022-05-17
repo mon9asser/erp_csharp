@@ -1022,14 +1022,14 @@ namespace sales_management.UI
             if (e.ColumnIndex == 4)
             {
 
-                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_name"].Value))
+                if (System.DBNull.Value.Equals(items_datagridview.Rows[UI.FND___salesInvoice.GetForm.lastRow].Cells["product_name"].Value))
                 {
                     return;
                 }
 
                 this.is_change_price = true;
 
-                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.salesInvoice.GetForm.lastRow].Cells["product_id"].Value);
+                int product_id = Convert.ToInt32(items_datagridview.Rows[UI.FND___salesInvoice.GetForm.lastRow].Cells["product_id"].Value);
 
                 UI.ItemUnit item_units = new UI.ItemUnit(
                     this.documentType,
@@ -1609,8 +1609,8 @@ namespace sales_management.UI
             if (customer_name.Enabled == true)
             {
 
-                UI.FRM_Suppliers.GetForm.doc_type = this.documentType;
-                UI.FRM_Suppliers.GetForm.ShowDialog();
+                //UI.FND___Suppliers.GetForm.doc_type = this.documentType;
+                //UI.FND___Suppliers.GetForm.ShowDialog();
 
             }
         }

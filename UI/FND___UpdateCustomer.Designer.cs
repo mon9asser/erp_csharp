@@ -1,7 +1,7 @@
 ﻿
 namespace sales_management.UI
 {
-    partial class FRM_UpdateCustomer
+    partial class FND___UpdateCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -45,7 +45,7 @@ namespace sales_management.UI
             this.label2 = new System.Windows.Forms.Label();
             this.resource_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.id_text = new System.Windows.Forms.TextBox();
+            this.resource_id = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // account_number
@@ -65,6 +65,7 @@ namespace sales_management.UI
             this.button2.TabIndex = 32;
             this.button2.Text = "إلغاء";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // save_button
             // 
@@ -82,7 +83,7 @@ namespace sales_management.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(239, 290);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 30;
             this.label7.Text = "الإيميل";
             // 
@@ -99,7 +100,7 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(239, 350);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 28;
             this.label6.Text = "العنوان";
             // 
@@ -132,7 +133,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(204, 178);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 24;
             this.label4.Text = "الرقم الضريبي";
             // 
@@ -148,7 +149,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(211, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 22;
             this.label3.Text = "إسم المنشأة";
             // 
@@ -164,7 +165,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(218, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 20;
             this.label2.Text = "إسم العميل";
             // 
@@ -184,15 +185,15 @@ namespace sales_management.UI
             this.label1.TabIndex = 18;
             this.label1.Text = "كود العميل";
             // 
-            // id_text
+            // resource_id
             // 
-            this.id_text.Location = new System.Drawing.Point(232, 37);
-            this.id_text.Name = "id_text";
-            this.id_text.ReadOnly = true;
-            this.id_text.Size = new System.Drawing.Size(45, 20);
-            this.id_text.TabIndex = 17;
+            this.resource_id.Location = new System.Drawing.Point(232, 37);
+            this.resource_id.Name = "resource_id";
+            this.resource_id.ReadOnly = true;
+            this.resource_id.Size = new System.Drawing.Size(45, 20);
+            this.resource_id.TabIndex = 17;
             // 
-            // AddCustomer
+            // FRM_UpdateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -213,10 +214,10 @@ namespace sales_management.UI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.resource_name);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.id_text);
+            this.Controls.Add(this.resource_id);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddCustomer";
+            this.Name = "FRM_UpdateCustomer";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -246,6 +247,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox resource_name;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox id_text;
+        private System.Windows.Forms.TextBox resource_id;
     }
 }

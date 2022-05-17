@@ -276,11 +276,11 @@ namespace sales_management.UI
                     break;
 
                 case 0:
-                    UI.salesInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    UI.FND___salesInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
                 case 2:
-                    UI.salesReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    UI.FND___salesReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
                 case 3:

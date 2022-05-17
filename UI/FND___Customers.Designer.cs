@@ -1,7 +1,7 @@
 ﻿
 namespace sales_management.UI
 {
-    partial class FRM_Customers
+    partial class FND___Customers
     {
         /// <summary>
         /// Required designer variable.
@@ -81,7 +81,7 @@ namespace sales_management.UI
             this.suppliers_datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellContentClick);
             this.suppliers_datagridview.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliers_datagridview_CellDoubleClick);
             // 
-            // FRM_Customers
+            // FND___Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,12 +91,13 @@ namespace sales_management.UI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FRM_Customers";
+            this.Name = "FND___Customers";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "العملاء";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.suppliers_datagridview)).EndInit();
             this.ResumeLayout(false);
 

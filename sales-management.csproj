@@ -279,17 +279,17 @@
     <Compile Include="UI\purchaseReturnInvoice.Designer.cs">
       <DependentUpon>purchaseReturnInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\salesInvoice.cs">
+    <Compile Include="UI\FND___salesInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\salesInvoice.Designer.cs">
-      <DependentUpon>salesInvoice.cs</DependentUpon>
+    <Compile Include="UI\FND___salesInvoice.Designer.cs">
+      <DependentUpon>FND___salesInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\salesReturnInvoice.cs">
+    <Compile Include="UI\FND___salesReturnInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\salesReturnInvoice.Designer.cs">
-      <DependentUpon>salesReturnInvoice.cs</DependentUpon>
+    <Compile Include="UI\FND___salesReturnInvoice.Designer.cs">
+      <DependentUpon>FND___salesReturnInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Report_Viewer.cs">
       <SubType>Form</SubType>
@@ -315,17 +315,17 @@
     <Compile Include="UI\FRM_AccountsGuide.Designer.cs">
       <DependentUpon>FRM_AccountsGuide.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_UpdateCustomer.cs">
+    <Compile Include="UI\FND___UpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_UpdateCustomer.Designer.cs">
-      <DependentUpon>FRM_UpdateCustomer.cs</DependentUpon>
+    <Compile Include="UI\FND___UpdateCustomer.Designer.cs">
+      <DependentUpon>FND___UpdateCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_UpdateSupplier.cs">
+    <Compile Include="UI\FND___UpdateSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_UpdateSupplier.Designer.cs">
-      <DependentUpon>FRM_UpdateSupplier.cs</DependentUpon>
+    <Compile Include="UI\FND___UpdateSupplier.Designer.cs">
+      <DependentUpon>FND___UpdateSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Backups.cs">
       <SubType>Form</SubType>
@@ -339,11 +339,11 @@
     <Compile Include="UI\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_Customers.cs">
+    <Compile Include="UI\FND___Customers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_Customers.Designer.cs">
-      <DependentUpon>FRM_Customers.cs</DependentUpon>
+    <Compile Include="UI\FND___Customers.Designer.cs">
+      <DependentUpon>FND___Customers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\DefaultData.cs">
       <SubType>Form</SubType>
@@ -417,11 +417,11 @@
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_Suppliers.cs">
+    <Compile Include="UI\FND___Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_Suppliers.Designer.cs">
-      <DependentUpon>FRM_Suppliers.cs</DependentUpon>
+    <Compile Include="UI\FND___Suppliers.Designer.cs">
+      <DependentUpon>FND___Suppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\___Suppliers.cs">
       <SubType>Form</SubType>
@@ -512,11 +512,11 @@
     <EmbeddedResource Include="UI\purchaseReturnInvoice.resx">
       <DependentUpon>purchaseReturnInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\salesInvoice.resx">
-      <DependentUpon>salesInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___salesInvoice.resx">
+      <DependentUpon>FND___salesInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\salesReturnInvoice.resx">
-      <DependentUpon>salesReturnInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___salesReturnInvoice.resx">
+      <DependentUpon>FND___salesReturnInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Report_Viewer.resx">
       <DependentUpon>Report_Viewer.cs</DependentUpon>
@@ -530,11 +530,11 @@
     <EmbeddedResource Include="UI\FRM_AccountsGuide.resx">
       <DependentUpon>FRM_AccountsGuide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_UpdateCustomer.resx">
-      <DependentUpon>FRM_UpdateCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___UpdateCustomer.resx">
+      <DependentUpon>FND___UpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_UpdateSupplier.resx">
-      <DependentUpon>FRM_UpdateSupplier.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___UpdateSupplier.resx">
+      <DependentUpon>FND___UpdateSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Backups.resx">
       <DependentUpon>Backups.cs</DependentUpon>
@@ -542,8 +542,8 @@
     <EmbeddedResource Include="UI\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_Customers.resx">
-      <DependentUpon>FRM_Customers.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___Customers.resx">
+      <DependentUpon>FND___Customers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DefaultData.resx">
       <DependentUpon>DefaultData.cs</DependentUpon>
@@ -584,8 +584,8 @@
     <EmbeddedResource Include="UI\ServerSettings.resx">
       <DependentUpon>ServerSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_Suppliers.resx">
-      <DependentUpon>FRM_Suppliers.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___Suppliers.resx">
+      <DependentUpon>FND___Suppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\___Suppliers.resx">
       <DependentUpon>___Suppliers.cs</DependentUpon>

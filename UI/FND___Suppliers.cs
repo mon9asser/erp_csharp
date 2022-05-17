@@ -10,42 +10,20 @@ using System.Windows.Forms;
 
 namespace sales_management.UI
 {
-    public partial class FRM_Customers : Form
+    public partial class FND___Suppliers : Form
     {
 
         DataTable resoueceTable;
+        purchaseInvoice Purchase_Document;
+        purchaseReturnInvoice Return_Purchase_Document;
+        PL.Resources Resource = new PL.Resources();
+        public int doc_type = -1; 
+ 
 
-        public salesReturnInvoice Return_Sales_Document;
-        public salesInvoice Sales_Document;
-
-        public static FRM_Customers frm;
-        public int doc_type = -1;
-
-        static void frm_formClosed(object sernder, FormClosedEventArgs e)
-        {
-            frm = null;
-        }
-
-        public static FRM_Customers GetForm
-        {
-            get
-            {
-
-                if (frm == null)
-                {
-                    frm = new FRM_Customers();
-                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
-                }
-
-                return frm;
-
-            }
-        }
-
-        public FRM_Customers(int _doc_type, salesReturnInvoice return_sales_document)
+        public FND___Suppliers(int _doc_type, purchaseInvoice purchase_document )
         {
             this.doc_type = _doc_type;
-            this.Return_Sales_Document = return_sales_document;
+            this.Purchase_Document = purchase_document;
             InitializeComponent();
             try
             {
@@ -55,10 +33,10 @@ namespace sales_management.UI
 
         }
 
-        public FRM_Customers(int _doc_type, salesInvoice sales_document)
+        public FND___Suppliers(int _doc_type, purchaseReturnInvoice return_purchase_document)
         {
             this.doc_type = _doc_type;
-            this.Sales_Document = sales_document;
+            this.Return_Purchase_Document = return_purchase_document;
             InitializeComponent();
             try
             {
@@ -68,28 +46,24 @@ namespace sales_management.UI
 
         }
 
-        public FRM_Customers()
+        public FND___Suppliers()
         {
             InitializeComponent();
 
-            try
-            {
-                if (frm == null)
-                {
-                    frm = this;
-                }
+            try { 
 
                 this.Read_All_resources();
             }
             catch (Exception) { }
         }
+         
 
-        public void Read_All_resources(bool isDisable = false)
-        {
+        public void Read_All_resources( bool isDisable = false ) {
+
             try {
                 PL.Resources Sup = new PL.Resources();
 
-                suppliers_datagridview.DataSource = Sup.Get_All_Resource_Data(1);
+                suppliers_datagridview.DataSource = Sup.Get_All_Resource_Data(0);
 
                 if (isDisable == false)
                 {
@@ -105,14 +79,21 @@ namespace sales_management.UI
                     suppliers_datagridview.Columns[8].Visible = false;
 
 
-                    suppliers_datagridview.Columns[1].HeaderText = "كـود العميل";
-                    suppliers_datagridview.Columns[3].HeaderText = "إسم العميل";
+                    suppliers_datagridview.Columns[1].HeaderText = "كـود المورد";
+                    suppliers_datagridview.Columns[3].HeaderText = "إسم المورد";
                     suppliers_datagridview.Columns[4].HeaderText = "الهاتف";
                     suppliers_datagridview.Columns[9].HeaderText = "الرقم الضريبي";
                     suppliers_datagridview.Columns[10].HeaderText = "إسم المنشأة";
 
+                    suppliers_datagridview.Columns[1].ReadOnly = true;
+                    suppliers_datagridview.Columns[3].ReadOnly = true;
+                    suppliers_datagridview.Columns[4].ReadOnly = true;
+                    suppliers_datagridview.Columns[9].ReadOnly = true;
+                    suppliers_datagridview.Columns[10].ReadOnly = true;
+
                     suppliers_datagridview.Columns[3].Width = 150;
                     suppliers_datagridview.Columns[10].Width = 180;
+
 
                     // Add Update Button 
                     DataGridViewButtonColumn edit_btn = new DataGridViewButtonColumn();
@@ -128,23 +109,34 @@ namespace sales_management.UI
                     delete_btn.UseColumnTextForButtonValue = true;
                     suppliers_datagridview.Columns.Add(delete_btn);
 
-                    suppliers_datagridview.Columns[0].ReadOnly = false;
-                    suppliers_datagridview.Columns[1].ReadOnly = false;
+
                 }
-            } catch (Exception) { }
+            }
+            catch (Exception) { }
+            
         }
+
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PL.Resources Resource = new PL.Resources();
-            this.resoueceTable = Resource.Create_Resource_Id(1);
-            UI.FRM_UpdateCustomer Customer = new UI.FRM_UpdateCustomer(this.resoueceTable, this);
-            Customer.ShowDialog(); 
-        }
+            try
+            {
+                
+                PL.Resources Resource = new PL.Resources();
+                this.resoueceTable = Resource.Create_Resource_Id(0);
+                UI.FND___UpdateSupplier Customer = new UI.FND___UpdateSupplier(this.resoueceTable, this);
+                Customer.ShowDialog();
 
-        private void suppliers_datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            }
+            catch (Exception) { }
+        }
+          
+
+        private void suppliers_datagridview_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            try {
+            try
+            {
                 var senderGrid = (DataGridView)sender;
                 if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
                 {
@@ -182,8 +174,8 @@ namespace sales_management.UI
                             table.Rows.Add(row);
 
 
-                            UI.FRM_UpdateCustomer Customer = new UI.FRM_UpdateCustomer(table, this);
-                            Customer.ShowDialog();
+                            UI.FND___UpdateSupplier Supplier = new UI.FND___UpdateSupplier(table, this );
+                            Supplier.ShowDialog();
                         }
                     }
 
@@ -193,12 +185,13 @@ namespace sales_management.UI
 
                         PL.Resources Sup = new PL.Resources();
                         int id = Convert.ToInt32(suppliers_datagridview.Rows[e.RowIndex].Cells[2].Value);
-                        Sup.Delete_Resource_Data(id, 1);
+                        Sup.Delete_Resource_Data(id, 0);
                         suppliers_datagridview.Rows.RemoveAt(e.RowIndex);
                     }
 
                 }
-            } catch (Exception) { }
+            }
+            catch (Exception) { }
         }
 
         private void suppliers_datagridview_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -216,6 +209,7 @@ namespace sales_management.UI
 
                 string customerName = suppliers_datagridview.Rows[e.RowIndex].Cells["resource_name"].Value.ToString();
                 string customerId = suppliers_datagridview.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                string legend_number_ = suppliers_datagridview.Rows[e.RowIndex].Cells["resource_code"].Value.ToString();
                 if (customerName == "")
                 {
                     return;
@@ -223,20 +217,23 @@ namespace sales_management.UI
 
                 switch (this.doc_type)
                 {
-                    case 0:
-                        this.Sales_Document.customer_id.Text = customerId;
-                        this.Sales_Document.customer_name.Text = customerName;
+                    case 1:
+                        this.Purchase_Document.customer_id.Text = customerId;
+                        this.Purchase_Document.customer_name.Text = customerName;
+                        this.Purchase_Document.legend_number.Text = legend_number_;
                         break;
-
-                    case 2:
-                        this.Sales_Document.customer_id.Text = customerId;
-                        this.Sales_Document.customer_name.Text = customerName;
+                    case 3:
+                        this.Purchase_Document.customer_id.Text = customerId;
+                        this.Purchase_Document.customer_name.Text = customerName;
+                        this.Purchase_Document.legend_number.Text = legend_number_;
                         break;
                 }
 
+
                 this.doc_type = -1;
                 this.Close();
-            } catch (Exception) { }
+            }
+            catch (Exception) { }
         }
     }
 }
