@@ -212,8 +212,8 @@ namespace sales_management.UI
 
         private void قيوداليوميةToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.EntriesReportViewer Rpt = new UI.EntriesReportViewer();
-            Rpt.Show();
+            UI.FRM_Date_Range rmrange = new UI.FRM_Date_Range(0);
+            rmrange.ShowDialog();
         }
 
         private void قيدتسويةToolStripMenuItem_Click(object sender, EventArgs e)

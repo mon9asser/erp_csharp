@@ -661,7 +661,10 @@
     <None Include="DSet\Statments.xss">
       <DependentUpon>Statments.xsd</DependentUpon>
     </None>
-    <None Include="FReports\Zakat_Statment.frx">
+    <None Include="FReports\Daily_Entries_Statement.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="FReports\Zakat_Statement.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

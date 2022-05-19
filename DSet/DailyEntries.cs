@@ -4,7 +4,7 @@
 
     partial class DailyEntries
     {
-        partial class EntriesDataTable
+        partial class JournalsDataTable
         {
         }
     }

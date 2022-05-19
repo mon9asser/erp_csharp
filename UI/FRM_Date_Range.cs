@@ -14,17 +14,20 @@ namespace sales_management.UI
     public partial class FRM_Date_Range : Form
     {
         EntriesReportViewer Entries_Form;
-
-        //---------------------- Zakat Report
+         
         Report Repo = new Report();
         PL.DailyEntries Entries = new PL.DailyEntries();
         PL.Installings installs = new PL.Installings();
         PL.AccountingTree __Tree = new PL.AccountingTree();
-        DSet.Statments DSet = new DSet.Statments();
+
+        DSet.Statments DS_Statement = new DSet.Statments();
+        DSet.DailyEntries DS_Entry= new DSet.DailyEntries();
 
         DataTable Accounts;
         DataTable Settings;
         DataSet dstables;
+        DataTable All_Entries;
+        DataTable All_Row_Entries;
 
         public int SearchType = -1;
 
@@ -36,8 +39,9 @@ namespace sales_management.UI
 
         public FRM_Date_Range(int searchType )
         { 
-            this.SearchType = searchType;
+            this.SearchType = searchType;  
             InitializeComponent();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,22 +50,62 @@ namespace sales_management.UI
             DateTime to_date = Convert.ToDateTime(date_to.Value);
 
             // Journal Entries Data 
-            if (this.SearchType == 0) {
+            if ( this.SearchType == 0 ) {
 
-                this.Entries_Form.rearrange_report_date(
-                    from_date, to_date
-                );
+                this.Load_Entries_Statment_Report(from_date, to_date);
 
             } else if (this.SearchType == 1) {
-                this.Load_Zakat_Statment_Report(from_date, to_date); 
+
+                this.Load_Zakat_Statment_Report(from_date, to_date);
+
             }  
 
             this.Close();
 
         }
 
+        /**
+         * ===============================================================================
+         * Entries Statement 
+         * ===============================================================================
+         * 
+         **/
+        public void Load_Entries_Statment_Report( DateTime from_date_var, DateTime to_date_var ) {
+
+            
+             
+            this.DS_Entry.Tables["Dates"].Rows.Clear();
+            this.DS_Entry.Tables["Journals"].Rows.Clear();
+
+            this.All_Entries = this.Entries.Get_All_Journals_By_Date(from_date_var, to_date_var);
+            this.DS_Entry.Tables["Journals"].Merge(All_Entries);
+
+            string from_date_var_string = from_date_var.ToString("yyyy-MM-dd");
+            string to_date_var_string = to_date_var.ToString("yyyy-MM-dd");
+             
+            this.Fill_Target_Dates(from_date_var_string, to_date_var_string);
+
+            // Load Fast Report  
+            UI.Viewer viewer = new UI.Viewer(
+                "\\FReports\\Daily_Entries_Statement.frx",
+                this.DS_Entry,
+                "entries_dataset",
+                "قيود اليومية عن الفترة"
+            );
+            viewer.Show();
+        }
 
 
+        public void Fill_Target_Dates(string from, string to)
+        {
+            this.DS_Entry.Tables["Dates"].Rows.Clear();
+            DataRow datewRow = this.DS_Entry.Tables["Dates"].NewRow();
+            datewRow["from_date"] = from;
+            datewRow["to_date"] = to;
+            this.DS_Entry.Tables["Dates"].Rows.Add(datewRow);
+        }
+
+        
         /**
          * ===============================================================================
          * Zakat Statment Report 
@@ -99,7 +143,7 @@ namespace sales_management.UI
             this.dstables = Entries.Get_Report_Statment(account_number_1, from_date_var, to_date_var, account_number_2);
 
             // Build Query Data 
-            DataRow baccd = DSet.Tables["Query_Data"].NewRow();
+            DataRow baccd = this.DS_Statement.Tables["Query_Data"].NewRow();
             baccd["account_number_1"] = account_number_1;
             baccd["account_name_1"] = account_name_1;
             baccd["account_number_2"] = account_number_2;
@@ -107,18 +151,18 @@ namespace sales_management.UI
             baccd["date_from"] = from_date_var;
             baccd["date_to"] = to_date_var;
             baccd["report_title"] = "هيئة الزكاة والضريبة عن الفترة";
-            DSet.Tables["Query_Data"].Rows.Add(baccd);
+            this.DS_Statement.Tables["Query_Data"].Rows.Add(baccd);
 
             // Build Statments And Queries 
-            DSet.Tables["Statement"].Merge(this.dstables.Tables[0]);
-            DSet.Tables["Totals"].Merge(this.dstables.Tables[1]);
+            this.DS_Statement.Tables["Statement"].Merge(this.dstables.Tables[0]);
+            this.DS_Statement.Tables["Totals"].Merge(this.dstables.Tables[1]);
 
             // Load Fast Report  
             UI.Viewer viewer = new UI.Viewer(
-                "\\FReports\\Zakat_Statment.frx",
-                this.DSet,
+                "\\FReports\\Zakat_Statement.frx",
+                this.DS_Statement,
                 "statements_dataset",
-                this.DSet.Tables["Query_Data"].Rows[0]["report_title"].ToString()
+                this.DS_Statement.Tables["Query_Data"].Rows[0]["report_title"].ToString()
             );
             viewer.Show();
         }

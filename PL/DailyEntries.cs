@@ -200,6 +200,26 @@ namespace sales_management.PL
             return table;
         }
 
+        public DataTable Get_All_Journals_By_Date(DateTime from, DateTime to ) {
+
+            DataTable table = new DataTable();
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[2];
+
+            param[0] = new SqlParameter("@date_from", SqlDbType.VarChar);
+            param[0].Value = from.ToString("yyyy-MM-dd") + " 00:00:00.000";
+
+            param[1] = new SqlParameter("@date_to", SqlDbType.VarChar);
+            param[1].Value = to.ToString("yyyy-MM-dd") + " 23:59:59.000";
+
+            DAL.Open();
+            table = DAL.SelectData("Get_All_Entries_By_Order", param );
+            DAL.Close();
+
+            return table;
+        }
+
         public DataTable Get_All_Entries() {
              
             DataTable table = new DataTable();

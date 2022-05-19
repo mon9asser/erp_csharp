@@ -36,8 +36,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.report1 = new FastReport.Report();
             this.statements_dataset = new sales_management.DSet.Statments();
+            this.entries_dataset = new sales_management.DSet.DailyEntries();
+            this.report2 = new FastReport.Report();
             ((System.ComponentModel.ISupportInitialize)(this.report1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.entries_dataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.report2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -45,7 +49,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "من تاريخ :";
             // 
@@ -54,7 +58,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "إلي تاريخ :";
             // 
@@ -94,6 +98,17 @@
             this.statements_dataset.DataSetName = "Statments";
             this.statements_dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // entries_dataset
+            // 
+            this.entries_dataset.DataSetName = "DailyEntries";
+            this.entries_dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // report2
+            // 
+            this.report2.NeedRefresh = false;
+            this.report2.ReportResourceString = resources.GetString("report2.ReportResourceString");
+            this.report2.RegisterData(this.entries_dataset, "entries_dataset");
+            // 
             // FRM_Date_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +131,8 @@
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.report1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.entries_dataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.report2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +147,7 @@
         private System.Windows.Forms.Button button1;
         private FastReport.Report report1;
         private DSet.Statments statements_dataset;
+        private DSet.DailyEntries entries_dataset;
+        private FastReport.Report report2;
     }
 }
