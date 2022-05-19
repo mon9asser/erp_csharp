@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Date_Range));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.date_from = new System.Windows.Forms.DateTimePicker();
             this.date_to = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.report1 = new FastReport.Report();
+            this.statements_dataset = new sales_management.DSet.Statments();
+            ((System.ComponentModel.ISupportInitialize)(this.report1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -78,6 +83,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // report1
+            // 
+            this.report1.NeedRefresh = false;
+            this.report1.ReportResourceString = resources.GetString("report1.ReportResourceString");
+            this.report1.RegisterData(this.statements_dataset, "statements_dataset");
+            // 
+            // statements_dataset
+            // 
+            this.statements_dataset.DataSetName = "Statments";
+            this.statements_dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FRM_Date_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,6 +114,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "خلال الفترة";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.report1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +128,7 @@
         private System.Windows.Forms.DateTimePicker date_from;
         private System.Windows.Forms.DateTimePicker date_to;
         private System.Windows.Forms.Button button1;
+        private FastReport.Report report1;
+        private DSet.Statments statements_dataset;
     }
 }

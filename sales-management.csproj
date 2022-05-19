@@ -65,6 +65,7 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FastReport, Version=2018.4.19.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="IrisSkin4">
       <HintPath>C:\Users\Montasser Mossallem\Desktop\skin\IrisSkin4.dll</HintPath>
     </Reference>
@@ -303,6 +304,12 @@
     <Compile Include="UI\Vat_Statment_Viewer.Designer.cs">
       <DependentUpon>Vat_Statment_Viewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Viewer.Designer.cs">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\___Accounts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,6 +531,9 @@
     <EmbeddedResource Include="UI\Vat_Statment_Viewer.resx">
       <DependentUpon>Vat_Statment_Viewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Viewer.resx">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\___Accounts.resx">
       <DependentUpon>___Accounts.cs</DependentUpon>
     </EmbeddedResource>
@@ -650,6 +660,9 @@
     </None>
     <None Include="DSet\Statments.xss">
       <DependentUpon>Statments.xsd</DependentUpon>
+    </None>
+    <None Include="FReports\Zakat_Statment.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

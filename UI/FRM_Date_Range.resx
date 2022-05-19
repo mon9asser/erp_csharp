@@ -117,4 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="report1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="report1.ReportResourceString" xml:space="preserve">
+    <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/19/2022 11:42:05" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+  &lt;Dictionary&gt;
+    &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="id" DataType="System.Int32"/&gt;
+      &lt;Column Name="journal_id" DataType="System.Int32"/&gt;
+      &lt;Column Name="description" DataType="System.String"/&gt;
+      &lt;Column Name="cost_center_number" DataType="System.String"/&gt;
+      &lt;Column Name="date" DataType="System.DateTime"/&gt;
+      &lt;Column Name="account_number" DataType="System.String"/&gt;
+      &lt;Column Name="credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="balance" DataType="System.Decimal"/&gt;
+    &lt;/TableDataSource&gt;
+    &lt;TableDataSource Name="Query_Data" ReferenceName="statements_dataset.Query_Data" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="account_number_1" DataType="System.String"/&gt;
+      &lt;Column Name="account_name_1" DataType="System.String"/&gt;
+      &lt;Column Name="account_number_2" DataType="System.String"/&gt;
+      &lt;Column Name="account_name_2" DataType="System.String"/&gt;
+      &lt;Column Name="date_from" DataType="System.DateTime"/&gt;
+      &lt;Column Name="date_to" DataType="System.DateTime"/&gt;
+      &lt;Column Name="report_title" DataType="System.String"/&gt;
+    &lt;/TableDataSource&gt;
+    &lt;TableDataSource Name="Totals" ReferenceName="statements_dataset.Totals" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="balance" DataType="System.Decimal"/&gt;
+    &lt;/TableDataSource&gt;
+  &lt;/Dictionary&gt;
+  &lt;ReportPage Name="Page1"&gt;
+    &lt;ReportTitleBand Name="ReportTitle1" Width="718.2" Height="151.2"&gt;
+      &lt;TextObject Name="Text1" Left="9.45" Top="28.35" Width="699.3" Height="37.8" Text="[Query_Data.report_title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text2" Left="434.7" Top="66.15" Width="56.7" Height="18.9" Text="من تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text3" Left="292.95" Top="66.15" Width="56.7" Height="18.9" Text="إلي تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text4" Left="349.65" Top="66.15" Width="85.05" Height="18.9" Text="[FormatDateTime([Query_Data.date_from], &amp;quot;Short Date&amp;quot;) ]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text5" Left="189" Top="66.15" Width="103.95" Height="18.9" Text="[FormatDateTime([Query_Data.date_to], &amp;quot;Short Date&amp;quot;) ]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text7" Left="415.8" Top="122.85" Width="217.35" Height="18.9" Text="[Query_Data.account_name_1]" HorzAlign="Right" VertAlign="Center"/&gt;
+      &lt;TextObject Name="Text6" Left="9.45" Top="122.85" Width="94.5" Height="18.9" Text="[Query_Data.account_number_1]" HorzAlign="Right" VertAlign="Center"/&gt;
+      &lt;TextObject Name="Text8" Left="633.15" Top="122.85" Width="75.6" Height="18.9" Text="إسم الحساب" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text9" Left="103.95" Top="122.85" Width="75.6" Height="18.9" Text="رقم الحساب" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+    &lt;/ReportTitleBand&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="155.2" Width="718.2" Height="37.8"&gt;
+      &lt;TableObject Name="Table1" Left="9.45" Width="699.3" Height="37.8" RepeatHeaders="false"&gt;
+        &lt;TableColumn Name="Column1" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column2" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column3" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column4" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column5" Width="139.86"/&gt;
+        &lt;TableRow Name="Row1" Height="37.8"&gt;
+          &lt;TableCell Name="Cell1"/&gt;
+          &lt;TableCell Name="Cell2"/&gt;
+          &lt;TableCell Name="Cell3"/&gt;
+          &lt;TableCell Name="Cell4"/&gt;
+          &lt;TableCell Name="Cell5"&gt;
+            &lt;TextObject Name="Text10" Left="37.8" Top="9.45" Width="75.6" Height="18.9" Text="التاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;/TableCell&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/PageHeaderBand&gt;
+    &lt;DataBand Name="Data1" Top="197" Width="718.2" Height="28.35"&gt;
+      &lt;TableObject Name="Table2" Left="9.45" Width="699.3" Height="28.35" GrowToBottom="true" CanBreak="false"&gt;
+        &lt;TableColumn Name="Column6" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column7" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column8" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column9" Width="139.86"/&gt;
+        &lt;TableColumn Name="Column10" Width="139.86"/&gt;
+        &lt;TableRow Name="Row2" Height="28.35"&gt;
+          &lt;TableCell Name="Cell6"/&gt;
+          &lt;TableCell Name="Cell7"/&gt;
+          &lt;TableCell Name="Cell8" Text="[Statement.debit]"/&gt;
+          &lt;TableCell Name="Cell9" Text="[Statement.credit]"/&gt;
+          &lt;TableCell Name="Cell10" Text="[FormatDateTime([Statement.date], &amp;quot;Short Date&amp;quot;) ]" HorzAlign="Center" VertAlign="Center"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/DataBand&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="229.35" Width="718.2" Height="103.95"/&gt;
+  &lt;/ReportPage&gt;
+&lt;/Report&gt;
+</value>
+  </data>
+  <metadata name="statements_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>109, 17</value>
+  </metadata>
 </root>

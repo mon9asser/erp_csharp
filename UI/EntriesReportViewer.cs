@@ -155,11 +155,13 @@ namespace sales_management.UI
         private void button2_Click(object sender, EventArgs e)
         {
 
-            UI.FRM_Date_Range date_frm = new UI.FRM_Date_Range(
+            /**
+             * UI.FRM_Date_Range date_frm = new UI.FRM_Date_Range(
                 DailyEntriesReport
             );
 
             date_frm.ShowDialog();
+            */
 
         }
 
