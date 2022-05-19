@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/19/2022 11:42:02" ReportInfo.CreatorVersion="2018.4.19.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/19/2022 14:04:16" ReportInfo.CreatorVersion="2018.4.19.0">
   <Dictionary>
     <TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true">
       <Column Name="id" DataType="System.Int32"/>
@@ -28,7 +28,7 @@
     </TableDataSource>
   </Dictionary>
   <ReportPage Name="Page1">
-    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="151.2">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="160.65">
       <TextObject Name="Text1" Left="9.45" Top="28.35" Width="699.3" Height="37.8" Text="[Query_Data.report_title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
       <TextObject Name="Text2" Left="434.7" Top="66.15" Width="56.7" Height="18.9" Text="من تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
       <TextObject Name="Text3" Left="292.95" Top="66.15" Width="56.7" Height="18.9" Text="إلي تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
@@ -39,40 +39,78 @@
       <TextObject Name="Text8" Left="633.15" Top="122.85" Width="75.6" Height="18.9" Text="إسم الحساب" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
       <TextObject Name="Text9" Left="103.95" Top="122.85" Width="75.6" Height="18.9" Text="رقم الحساب" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
     </ReportTitleBand>
-    <PageHeaderBand Name="PageHeader1" Top="155.2" Width="718.2" Height="37.8">
-      <TableObject Name="Table1" Left="9.45" Width="699.3" Height="37.8" RepeatHeaders="false">
-        <TableColumn Name="Column1" Width="139.86"/>
-        <TableColumn Name="Column2" Width="139.86"/>
-        <TableColumn Name="Column3" Width="139.86"/>
-        <TableColumn Name="Column4" Width="139.86"/>
-        <TableColumn Name="Column5" Width="139.86"/>
-        <TableRow Name="Row1" Height="37.8">
-          <TableCell Name="Cell1"/>
-          <TableCell Name="Cell2"/>
-          <TableCell Name="Cell3"/>
-          <TableCell Name="Cell4"/>
-          <TableCell Name="Cell5">
-            <TextObject Name="Text10" Left="37.8" Top="9.45" Width="75.6" Height="18.9" Text="التاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    <PageHeaderBand Name="PageHeader1" Top="164.65" Width="718.2" Height="47.25">
+      <TableObject Name="Table1" Left="9.45" Width="699.3" Height="47.25" Border.Lines="Left, Right, Top" Fill.Color="WhiteSmoke">
+        <TableColumn Name="Column11" Width="164.43"/>
+        <TableColumn Name="Column12" Width="98.28"/>
+        <TableColumn Name="Column13" Width="88.83"/>
+        <TableColumn Name="Column14" Width="221.13"/>
+        <TableColumn Name="Column15" Width="126.63"/>
+        <TableRow Name="Row3" Height="47.25">
+          <TableCell Name="Cell11">
+            <TextObject Name="Text14" Left="9.45" Top="9.45" Width="141.75" Height="28.35" Text="الرصيد" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell12" Border.Lines="Left">
+            <TextObject Name="Text13" Left="9.45" Top="9.45" Width="85.05" Height="28.35" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell13" Border.Lines="Left">
+            <TextObject Name="Text12" Left="9.45" Top="9.45" Width="66.15" Height="28.35" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell14" Border.Lines="Left">
+            <TextObject Name="Text11" Left="9.45" Top="9.45" Width="198.45" Height="28.35" Text="البيــــــان" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell15" Border.Lines="Left">
+            <TextObject Name="Text10" Left="9.45" Top="9.45" Width="113.4" Height="28.35" Text="التاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
           </TableCell>
         </TableRow>
       </TableObject>
     </PageHeaderBand>
-    <DataBand Name="Data1" Top="197" Width="718.2" Height="28.35">
-      <TableObject Name="Table2" Left="9.45" Width="699.3" Height="28.35" GrowToBottom="true" CanBreak="false">
-        <TableColumn Name="Column6" Width="139.86"/>
-        <TableColumn Name="Column7" Width="139.86"/>
-        <TableColumn Name="Column8" Width="139.86"/>
-        <TableColumn Name="Column9" Width="139.86"/>
-        <TableColumn Name="Column10" Width="139.86"/>
-        <TableRow Name="Row2" Height="28.35">
-          <TableCell Name="Cell6"/>
-          <TableCell Name="Cell7"/>
-          <TableCell Name="Cell8" Text="[Statement.debit]"/>
-          <TableCell Name="Cell9" Text="[Statement.credit]"/>
-          <TableCell Name="Cell10" Text="[FormatDateTime([Statement.date], &quot;Short Date&quot;) ]" HorzAlign="Center" VertAlign="Center"/>
+    <DataBand Name="Data1" Top="215.9" Width="718.2" Height="47.25" DataSource="Statement">
+      <TableObject Name="Table2" Left="9.45" Width="699.3" Height="47.25" Border.Lines="All">
+        <TableColumn Name="Column16" Width="164.43"/>
+        <TableColumn Name="Column17" Width="98.28"/>
+        <TableColumn Name="Column18" Width="88.83"/>
+        <TableColumn Name="Column19" Width="221.13"/>
+        <TableColumn Name="Column20" Width="126.63"/>
+        <TableRow Name="Row4" Height="47.25">
+          <TableCell Name="Cell16" Text="[Statement.balance]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell17" Border.Lines="Left" Text="[Statement.credit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell18" Border.Lines="Left" Text="[Statement.debit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell19" Border.Lines="Left" Text="[Statement.description]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell20" Border.Lines="Left" Text="[FormatDateTime([Statement.date], &quot;Short Date&quot;) ]" HorzAlign="Center" VertAlign="Center"/>
         </TableRow>
       </TableObject>
     </DataBand>
-    <PageFooterBand Name="PageFooter1" Top="229.35" Width="718.2" Height="103.95"/>
+    <PageFooterBand Name="PageFooter1" Top="267.15" Width="718.2" Height="151.2">
+      <TableObject Name="Table3" Left="9.45" Top="28.35" Width="699.25" Height="103.86" Border.Lines="All" Fill.Color="WhiteSmoke">
+        <TableColumn Name="Column21" Width="164.42"/>
+        <TableColumn Name="Column22" Width="98.27"/>
+        <TableColumn Name="Column23" Width="88.82"/>
+        <TableColumn Name="Column24" Width="221.12"/>
+        <TableColumn Name="Column25" Width="126.62"/>
+        <TableRow Name="Row5" Height="51.94">
+          <TableCell Name="Cell21" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center">
+            <TextObject Name="Text18" Left="9.45" Top="9.45" Width="141.75" Height="28.35" Text="الرصيد" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell22" Border.Lines="All" Border.Color="Transparent" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center">
+            <TextObject Name="Text16" Left="9.45" Top="9.45" Width="85.05" Height="28.35" Fill.Color="WhiteSmoke" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell23" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center">
+            <TextObject Name="Text17" Left="3.78" Top="9.45" Width="66.15" Height="28.35" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell24" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center" ColSpan="2" RowSpan="2">
+            <TextObject Name="Text15" Left="56.7" Top="28.35" Width="255.15" Height="56.7" Text="إجمالي الأرصدة المستحقة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          </TableCell>
+          <TableCell Name="Cell25" Border.Lines="All" HorzAlign="Right" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row6" Height="51.92">
+          <TableCell Name="Cell26" Border.Lines="All" Text="[Totals.balance]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="[Totals.credit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell28" Border.Lines="All" Text="[Totals.debit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell29" Border.Lines="All"/>
+          <TableCell Name="Cell30" Border.Lines="All"/>
+        </TableRow>
+      </TableObject>
+    </PageFooterBand>
   </ReportPage>
 </Report>
