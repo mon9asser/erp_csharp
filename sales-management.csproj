@@ -430,6 +430,12 @@
     <Compile Include="UI\___Units.Designer.cs">
       <DependentUpon>___Units.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Entry_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Entry_Details.Designer.cs">
+      <DependentUpon>Entry_Details.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DailyEntries.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyEntries.cs</LastGenOutput>
@@ -578,6 +584,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\___Units.resx">
       <DependentUpon>___Units.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Entry_Details.resx">
+      <DependentUpon>Entry_Details.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DSet\DailyEntries.xsc">
       <DependentUpon>DailyEntries.xsd</DependentUpon>

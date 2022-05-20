@@ -214,3 +214,4 @@ D:\sales-app\obj\Debug\sales_management.UI.FND___Current_Quantities.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___Date_Range.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND____Date_Range_Form.resources
 D:\sales-app\bin\Debug\FReports\SalesInvoice.frx
+D:\sales-app\obj\Debug\sales_management.UI._ُEntry_Details.resources
