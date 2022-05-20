@@ -117,12 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="report1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>398, 17</value>
+  <metadata name="Statements.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>10, 42</value>
   </metadata>
-  <data name="report1.ReportResourceString" xml:space="preserve">
+  <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/19/2022 20:02:25" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/20/2022 14:20:15" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -204,55 +204,42 @@
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/DataBand&gt;
-    &lt;PageFooterBand Name="PageFooter1" Top="267.15" Width="718.2" Height="151.2"&gt;
-      &lt;TableObject Name="Table3" Left="9.45" Top="28.35" Width="699.25" Height="103.86" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
+    &lt;ReportSummaryBand Name="ReportSummary1" Top="267.15" Width="718.2" Height="56.7"&gt;
+      &lt;TableObject Name="Table3" Left="9.45" Width="699.25" Height="51.94" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
         &lt;TableColumn Name="Column21" Width="164.42"/&gt;
         &lt;TableColumn Name="Column22" Width="98.27"/&gt;
         &lt;TableColumn Name="Column23" Width="88.82"/&gt;
         &lt;TableColumn Name="Column24" Width="221.12"/&gt;
         &lt;TableColumn Name="Column25" Width="126.62"/&gt;
         &lt;TableRow Name="Row5" Height="51.94"&gt;
-          &lt;TableCell Name="Cell21" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center"&gt;
-            &lt;TextObject Name="Text18" Left="9.45" Top="9.45" Width="141.75" Height="28.35" Text="الرصيد" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell22" Border.Lines="All" Border.Color="Transparent" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center"&gt;
-            &lt;TextObject Name="Text16" Top="9.45" Width="85.05" Height="28.35" Fill.Color="WhiteSmoke" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell23" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center"&gt;
-            &lt;TextObject Name="Text17" Left="3.78" Top="9.45" Width="66.15" Height="28.35" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell24" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center" ColSpan="2" RowSpan="2"&gt;
-            &lt;TextObject Name="Text15" Left="56.7" Top="28.35" Width="255.15" Height="56.7" Text="إجمالي الأرصدة المستحقة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;/TableCell&gt;
+          &lt;TableCell Name="Cell21" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[Totals.balance]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell22" Border.Lines="All" Border.Color="Transparent" Fill.Color="WhiteSmoke" Text="[Totals.credit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell23" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[Totals.debit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell24" Border.Lines="All" Fill.Color="WhiteSmoke" Text="إجمالي الأرصدة المستحقة" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" ColSpan="2"/&gt;
           &lt;TableCell Name="Cell25" Border.Lines="All" HorzAlign="Right" VertAlign="Center"/&gt;
         &lt;/TableRow&gt;
-        &lt;TableRow Name="Row6" Height="51.92"&gt;
-          &lt;TableCell Name="Cell26" Border.Lines="All" Text="[Totals.balance]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell27" Border.Lines="All" Text="[Totals.credit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell28" Border.Lines="All" Text="[Totals.debit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell29" Border.Lines="All"/&gt;
-          &lt;TableCell Name="Cell30" Border.Lines="All"/&gt;
-        &lt;/TableRow&gt;
       &lt;/TableObject&gt;
-    &lt;/PageFooterBand&gt;
+      &lt;TextObject Name="Text15" Left="-113.4" Width="255.15" Height="56.7" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+    &lt;/ReportSummaryBand&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="327.85" Width="718.2" Height="151.2"/&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>
   </data>
   <metadata name="statements_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>5, 7</value>
   </metadata>
-  <metadata name="entries_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>173, 17</value>
+  <metadata name="journals_statment.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>176, 14</value>
   </metadata>
-  <metadata name="report2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>306, 17</value>
+  <metadata name="Entry_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>186, 45</value>
   </metadata>
-  <data name="report2.ReportResourceString" xml:space="preserve">
+  <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 17:23:11" ReportInfo.Modified="05/19/2022 20:02:25" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/20/2022 14:20:15" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
-    &lt;TableDataSource Name="Journals" ReferenceName="entries_dataset.Journals" DataType="System.Int32" Enabled="true"&gt;
+    &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
       &lt;Column Name="description" DataType="System.String"/&gt;
       &lt;Column Name="is_forwarded" DataType="System.Boolean" BindableControl="CheckBox"/&gt;
@@ -269,106 +256,106 @@
       &lt;Column Name="account_number" DataType="System.String"/&gt;
       &lt;Column Name="debit" DataType="System.Decimal"/&gt;
       &lt;Column Name="credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="account_name" DataType="System.String"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="Dates" ReferenceName="entries_dataset.Dates" DataType="System.Int32" Enabled="true"&gt;
+    &lt;TableDataSource Name="Dates" ReferenceName="journals_statment.Dates" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="from_date" DataType="System.String"/&gt;
       &lt;Column Name="to_date" DataType="System.String"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;Relation Name="Journals_Entries" ReferenceName="entries_dataset.Journals_Entries" ParentDataSource="Journals" ChildDataSource="null" ParentColumns="id" ChildColumns="journal_id" Enabled="true"/&gt;
   &lt;/Dictionary&gt;
   &lt;ReportPage Name="Page1"&gt;
-    &lt;ReportTitleBand Name="ReportTitle1" Width="718.2" Height="122.85"&gt;
-      &lt;TextObject Name="Text1" Left="18.9" Top="18.9" Width="680.4" Height="37.8" Text="قيود اليومية عن الفترة" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt"/&gt;
-      &lt;TextObject Name="Text2" Left="387.45" Top="56.7" Width="94.5" Height="18.9" Text="[Dates.from_date]" HorzAlign="Center" VertAlign="Center"/&gt;
-      &lt;TextObject Name="Text3" Left="207.9" Top="56.7" Width="94.5" Height="18.9" Text="[Dates.to_date]" HorzAlign="Center" VertAlign="Center"/&gt;
-      &lt;TextObject Name="Text4" Left="472.5" Top="56.7" Width="66.15" Height="18.9" Text="من تاريخ" HorzAlign="Right" VertAlign="Center"/&gt;
-      &lt;TextObject Name="Text5" Left="292.95" Top="56.7" Width="66.15" Height="18.9" Text="إلي تاريخ" HorzAlign="Right" VertAlign="Center"/&gt;
+    &lt;ReportTitleBand Name="ReportTitle1" Width="718.2" Height="132.3"&gt;
+      &lt;TextObject Name="Text7" Left="359.1" Top="66.15" Width="94.5" Height="18.9" Fill.Color="WhiteSmoke" Text="[Dates.to_date]" HorzAlign="Center"/&gt;
+      &lt;TextObject Name="Text8" Left="189" Top="66.15" Width="94.5" Height="18.9" Fill.Color="WhiteSmoke" Text="[Dates.from_date]" HorzAlign="Center"/&gt;
+      &lt;TextObject Name="Text9" Left="18.9" Top="28.35" Width="670.95" Height="37.8" Text="قيود اليومية عن الفترة" HorzAlign="Center" VertAlign="Center" Font="Arial, 14pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text10" Left="406.35" Top="66.15" Width="94.5" Height="18.9" Text="من تاريخ" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text11" Left="283.5" Top="66.15" Width="56.7" Height="18.9" Text="إلى تاريخ" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
     &lt;/ReportTitleBand&gt;
-    &lt;PageHeaderBand Name="PageHeader1" Top="126.85" Width="718.2" Height="37.8"&gt;
-      &lt;TableObject Name="Table1" Left="9.45" Width="699.43" Height="37.8"&gt;
-        &lt;TableColumn Name="Column1" Width="102.4"/&gt;
-        &lt;TableColumn Name="Column2" Width="102.4"/&gt;
-        &lt;TableColumn Name="Column3" Width="215.78"/&gt;
-        &lt;TableColumn Name="Column4" Width="83.5"/&gt;
-        &lt;TableColumn Name="Column5" Width="121.3"/&gt;
-        &lt;TableColumn Name="Column6" Width="74.05"/&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="136.3" Width="718.2" Height="37.8"&gt;
+      &lt;TableObject Name="Table1" Left="9.45" Width="699.87" Height="37.8"&gt;
+        &lt;TableColumn Name="Column1" Width="89.87"/&gt;
+        &lt;TableColumn Name="Column2" Width="89.87"/&gt;
+        &lt;TableColumn Name="Column3" Width="212.72"/&gt;
+        &lt;TableColumn Name="Column4" Width="99.32"/&gt;
+        &lt;TableColumn Name="Column5" Width="99.32"/&gt;
+        &lt;TableColumn Name="Column6" Width="108.77"/&gt;
         &lt;TableRow Name="Row1" Height="37.8"&gt;
-          &lt;TableCell Name="Cell1" Border.Lines="All"&gt;
-            &lt;TextObject Name="Text11" Left="9.45" Top="9.45" Width="85.05" Height="18.9" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell1" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
+            &lt;TextObject Name="Text6" Left="9.45" Top="9.45" Width="66.15" Height="18.9" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell2" Border.Lines="All"&gt;
-            &lt;TextObject Name="Text10" Left="18.9" Top="9.45" Width="66.15" Height="18.9" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell2" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
+            &lt;TextObject Name="Text5" Left="9.45" Top="9.45" Width="66.15" Height="18.9" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell3" Border.Lines="All"&gt;
-            &lt;TextObject Name="Text9" Left="9.45" Top="9.45" Width="198.45" Height="18.9" Text="إسم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell3" Border.Lines="All" Fill.Color="WhiteSmoke" HorzAlign="Center" VertAlign="Center"&gt;
+            &lt;TextObject Name="Text4" Left="9.45" Top="9.45" Width="198.45" Height="18.9" Text="البيــــــــان" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell4" Border.Lines="All"&gt;
-            &lt;TextObject Name="Text8" Left="9.45" Top="9.45" Width="66.15" Height="18.9" Text="رقم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell4" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
+            &lt;TextObject Name="Text3" Left="18.9" Top="9.45" Width="66.15" Height="18.9" Text="رقم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
           &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell5" Border.Lines="All"&gt;
-            &lt;TextObject Name="Text7" Left="9.45" Top="9.45" Width="103.95" Height="18.9" Text="تاريخ القيد" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell5" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
+            &lt;TextObject Name="Text2" Left="9.45" Top="9.45" Width="85.05" Height="18.9" Text="رقم القيد" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableCell&gt;
-          &lt;TableCell Name="Cell6" Border.Lines="All"&gt;
-            &lt;TextObject Name="Text6" Left="9.45" Top="9.45" Width="56.7" Height="18.9" Text="رقم القيد" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell26" Border.Lines="All" Fill.Color="WhiteSmoke"&gt;
+            &lt;TextObject Name="Text1" Left="9.45" Top="9.45" Width="122.85" Height="18.9" Text="تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableCell&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/PageHeaderBand&gt;
-    &lt;GroupHeaderBand Name="GroupHeader1" Top="168.65" Width="718.2" Height="37.8" Condition="[Journals.journal_id]" KeepTogether="true"&gt;
-      &lt;TableObject Name="Table2" Left="9.45" Width="699.43" Height="37.8"&gt;
-        &lt;TableColumn Name="Column7" Width="102.4"/&gt;
-        &lt;TableColumn Name="Column8" Width="102.4"/&gt;
-        &lt;TableColumn Name="Column9" Width="215.78"/&gt;
-        &lt;TableColumn Name="Column10" Width="83.5"/&gt;
-        &lt;TableColumn Name="Column11" Width="121.3"/&gt;
-        &lt;TableColumn Name="Column12" Width="74.05"/&gt;
+    &lt;GroupHeaderBand Name="GroupHeader1" Top="178.1" Width="718.2" Height="37.8" Condition="[Journals.journal_id]" KeepTogether="true"&gt;
+      &lt;TableObject Name="Table2" Left="9.45" Width="699.87" Height="37.8"&gt;
+        &lt;TableColumn Name="Column7" Width="89.87"/&gt;
+        &lt;TableColumn Name="Column8" Width="89.87"/&gt;
+        &lt;TableColumn Name="Column9" Width="212.72"/&gt;
+        &lt;TableColumn Name="Column10" Width="99.32"/&gt;
+        &lt;TableColumn Name="Column11" Width="99.32"/&gt;
+        &lt;TableColumn Name="Column12" Width="108.77"/&gt;
         &lt;TableRow Name="Row2" Height="37.8"&gt;
-          &lt;TableCell Name="Cell7" Border.Lines="Left"/&gt;
-          &lt;TableCell Name="Cell8" Border.Lines="Left"/&gt;
-          &lt;TableCell Name="Cell9" Border.Lines="Left"/&gt;
-          &lt;TableCell Name="Cell10" Border.Lines="Left"/&gt;
-          &lt;TableCell Name="Cell11" Border.Lines="Left" Text="[Journals.updated_date]"/&gt;
-          &lt;TableCell Name="Cell12" Border.Lines="Left, Right" Text="[Journals.entry_number]"/&gt;
+          &lt;TableCell Name="Cell27" Border.Lines="Left"/&gt;
+          &lt;TableCell Name="Cell28" Border.Lines="Left"/&gt;
+          &lt;TableCell Name="Cell29" Border.Lines="Left" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell30" Border.Lines="Left"/&gt;
+          &lt;TableCell Name="Cell31" Border.Lines="Left" Text="[Journals.entry_number]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell32" Border.Lines="Left, Right" Text="[FormatDateTime([Journals.updated_date], &amp;quot;Short Date&amp;quot;)]" Padding="2, 1, 10, 1" HorzAlign="Right" VertAlign="Center"/&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
-      &lt;DataBand Name="Data1" Top="210.45" Width="718.2" Height="37.8" DataSource="Journals"&gt;
-        &lt;TableObject Name="Table3" Left="9.45" Width="699.43" Height="37.8"&gt;
-          &lt;TableColumn Name="Column13" Width="102.4"/&gt;
-          &lt;TableColumn Name="Column14" Width="102.4"/&gt;
-          &lt;TableColumn Name="Column15" Width="215.78"/&gt;
-          &lt;TableColumn Name="Column16" Width="83.5"/&gt;
-          &lt;TableColumn Name="Column17" Width="121.3"/&gt;
-          &lt;TableColumn Name="Column18" Width="74.05"/&gt;
+      &lt;DataBand Name="Data1" Top="219.9" Width="718.2" Height="37.8" DataSource="Journals"&gt;
+        &lt;TableObject Name="Table3" Left="9.45" Width="699.87" Height="37.8"&gt;
+          &lt;TableColumn Name="Column13" Width="89.87"/&gt;
+          &lt;TableColumn Name="Column14" Width="89.87"/&gt;
+          &lt;TableColumn Name="Column15" Width="212.72"/&gt;
+          &lt;TableColumn Name="Column16" Width="99.32"/&gt;
+          &lt;TableColumn Name="Column17" Width="99.32"/&gt;
+          &lt;TableColumn Name="Column18" Width="108.77"/&gt;
           &lt;TableRow Name="Row3" Height="37.8"&gt;
-            &lt;TableCell Name="Cell13" Border.Lines="Left" Text="[Journals.credit]"/&gt;
-            &lt;TableCell Name="Cell14" Border.Lines="Left" Text="[Journals.debit]"/&gt;
-            &lt;TableCell Name="Cell15" Border.Lines="Left"/&gt;
-            &lt;TableCell Name="Cell16" Border.Lines="Left" Text="[Journals.account_number]"/&gt;
-            &lt;TableCell Name="Cell17" Border.Lines="Left"/&gt;
-            &lt;TableCell Name="Cell18" Border.Lines="Left, Right"/&gt;
+            &lt;TableCell Name="Cell33" Border.Lines="Left" Text="[IIf([Journals.credit] == 0,&amp;quot;&amp;quot;, [Journals.credit])]" HorzAlign="Center" VertAlign="Center"/&gt;
+            &lt;TableCell Name="Cell34" Border.Lines="Left" Text="[IIf([Journals.debit] == 0,&amp;quot;&amp;quot;, [Journals.debit])]" HorzAlign="Center" VertAlign="Center"/&gt;
+            &lt;TableCell Name="Cell35" Border.Lines="Left" Text="[IIf([Journals.debit] &amp;gt; 0, &amp;quot; من حـ / &amp;quot;, &amp;quot; إلى حـ /  &amp;quot;)] [Journals.account_name]" Padding="5, 1, 15, 1" HorzAlign="Right" VertAlign="Center"/&gt;
+            &lt;TableCell Name="Cell36" Border.Lines="Left" Text="[Journals.account_number]" HorzAlign="Center" VertAlign="Center"/&gt;
+            &lt;TableCell Name="Cell37" Border.Lines="Left"/&gt;
+            &lt;TableCell Name="Cell38" Border.Lines="Left, Right"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
       &lt;/DataBand&gt;
-      &lt;GroupFooterBand Name="GroupFooter1" Top="252.25" Width="718.2" Height="37.8"&gt;
-        &lt;TableObject Name="Table4" Left="9.45" Width="699.43" Height="37.8"&gt;
-          &lt;TableColumn Name="Column19" Width="102.4"/&gt;
-          &lt;TableColumn Name="Column20" Width="102.4"/&gt;
-          &lt;TableColumn Name="Column21" Width="215.78"/&gt;
-          &lt;TableColumn Name="Column22" Width="83.5"/&gt;
-          &lt;TableColumn Name="Column23" Width="121.3"/&gt;
-          &lt;TableColumn Name="Column24" Width="74.05"/&gt;
+      &lt;GroupFooterBand Name="GroupFooter1" Top="261.7" Width="718.2" Height="37.8"&gt;
+        &lt;TableObject Name="Table4" Left="9.45" Width="699.87" Height="37.8"&gt;
+          &lt;TableColumn Name="Column19" Width="89.87"/&gt;
+          &lt;TableColumn Name="Column20" Width="89.87"/&gt;
+          &lt;TableColumn Name="Column21" Width="212.72"/&gt;
+          &lt;TableColumn Name="Column22" Width="99.32"/&gt;
+          &lt;TableColumn Name="Column23" Width="99.32"/&gt;
+          &lt;TableColumn Name="Column24" Width="108.77"/&gt;
           &lt;TableRow Name="Row4" Height="37.8"&gt;
-            &lt;TableCell Name="Cell19" Border.Lines="Left, Bottom"/&gt;
-            &lt;TableCell Name="Cell20" Border.Lines="Left, Bottom"/&gt;
-            &lt;TableCell Name="Cell21" Border.Lines="Left, Bottom" Text="[Journals.description]"/&gt;
-            &lt;TableCell Name="Cell22" Border.Lines="Left, Bottom"/&gt;
-            &lt;TableCell Name="Cell23" Border.Lines="Left, Bottom"/&gt;
-            &lt;TableCell Name="Cell24" Border.Lines="Left, Right, Bottom"/&gt;
+            &lt;TableCell Name="Cell39" Border.Lines="Left, Bottom"/&gt;
+            &lt;TableCell Name="Cell40" Border.Lines="Left, Bottom"/&gt;
+            &lt;TableCell Name="Cell41" Border.Lines="Left, Bottom" Text="[Journals.description]" Padding="2, 1, 10, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+            &lt;TableCell Name="Cell42" Border.Lines="Left, Bottom"/&gt;
+            &lt;TableCell Name="Cell43" Border.Lines="Left, Bottom"/&gt;
+            &lt;TableCell Name="Cell44" Border.Lines="Left, Right, Bottom"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
       &lt;/GroupFooterBand&gt;
     &lt;/GroupHeaderBand&gt;
-    &lt;PageFooterBand Name="PageFooter1" Top="294.05" Width="718.2" Height="103.95"/&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="303.5" Width="718.2" Height="37.8"/&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>

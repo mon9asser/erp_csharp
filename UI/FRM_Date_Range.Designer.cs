@@ -34,14 +34,14 @@
             this.date_from = new System.Windows.Forms.DateTimePicker();
             this.date_to = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
-            this.report1 = new FastReport.Report();
+            this.Statements = new FastReport.Report();
             this.statements_dataset = new sales_management.DSet.Statments();
-            this.entries_dataset = new sales_management.DSet.DailyEntries();
-            this.report2 = new FastReport.Report();
-            ((System.ComponentModel.ISupportInitialize)(this.report1)).BeginInit();
+            this.journals_statment = new sales_management.DSet.DailyEntries();
+            this.Entry_Report = new FastReport.Report();
+            ((System.ComponentModel.ISupportInitialize)(this.Statements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.entries_dataset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.report2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.journals_statment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Entry_Report)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +49,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "من تاريخ :";
             // 
@@ -58,7 +58,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "إلي تاريخ :";
             // 
@@ -87,27 +87,27 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // report1
+            // Statements
             // 
-            this.report1.NeedRefresh = false;
-            this.report1.ReportResourceString = resources.GetString("report1.ReportResourceString");
-            this.report1.RegisterData(this.statements_dataset, "statements_dataset");
+            this.Statements.NeedRefresh = false;
+            this.Statements.ReportResourceString = resources.GetString("Statements.ReportResourceString");
+            this.Statements.RegisterData(this.statements_dataset, "statements_dataset");
             // 
             // statements_dataset
             // 
             this.statements_dataset.DataSetName = "Statments";
             this.statements_dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // entries_dataset
+            // journals_statment
             // 
-            this.entries_dataset.DataSetName = "DailyEntries";
-            this.entries_dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.journals_statment.DataSetName = "DailyEntries";
+            this.journals_statment.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // report2
+            // Entry_Report
             // 
-            this.report2.NeedRefresh = false;
-            this.report2.ReportResourceString = resources.GetString("report2.ReportResourceString");
-            this.report2.RegisterData(this.entries_dataset, "entries_dataset");
+            this.Entry_Report.NeedRefresh = false;
+            this.Entry_Report.ReportResourceString = resources.GetString("Entry_Report.ReportResourceString");
+            this.Entry_Report.RegisterData(this.journals_statment, "journals_statment");
             // 
             // FRM_Date_Range
             // 
@@ -129,10 +129,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "خلال الفترة";
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.report1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Statements)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.entries_dataset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.report2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.journals_statment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Entry_Report)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,9 +145,9 @@
         private System.Windows.Forms.DateTimePicker date_from;
         private System.Windows.Forms.DateTimePicker date_to;
         private System.Windows.Forms.Button button1;
-        private FastReport.Report report1;
+        private FastReport.Report Statements;
         private DSet.Statments statements_dataset;
-        private DSet.DailyEntries entries_dataset;
-        private FastReport.Report report2;
+        private DSet.DailyEntries journals_statment;
+        private FastReport.Report Entry_Report;
     }
 }

@@ -346,6 +346,8 @@ namespace sales_management.DSet {
             
             private global::System.Data.DataColumn columncredit;
             
+            private global::System.Data.DataColumn columnaccount_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public JournalsDataTable() {
@@ -509,6 +511,14 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn account_nameColumn {
+                get {
+                    return this.columnaccount_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -560,7 +570,8 @@ namespace sales_management.DSet {
                         System.DateTime date, 
                         string account_number, 
                         decimal debit, 
-                        decimal credit) {
+                        decimal credit, 
+                        string account_name) {
                 JournalsRow rowJournalsRow = ((JournalsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -578,7 +589,8 @@ namespace sales_management.DSet {
                         date,
                         account_number,
                         debit,
-                        credit};
+                        credit,
+                        account_name};
                 rowJournalsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowJournalsRow);
                 return rowJournalsRow;
@@ -617,6 +629,7 @@ namespace sales_management.DSet {
                 this.columnaccount_number = base.Columns["account_number"];
                 this.columndebit = base.Columns["debit"];
                 this.columncredit = base.Columns["credit"];
+                this.columnaccount_name = base.Columns["account_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -654,6 +667,8 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columndebit);
                 this.columncredit = new global::System.Data.DataColumn("credit", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncredit);
+                this.columnaccount_name = new global::System.Data.DataColumn("account_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaccount_name);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1313,6 +1328,22 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string account_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableJournals.account_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'account_name\' in table \'Journals\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableJournals.account_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsidNull() {
                 return this.IsNull(this.tableJournals.idColumn);
             }
@@ -1501,6 +1532,18 @@ namespace sales_management.DSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcreditNull() {
                 this[this.tableJournals.creditColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isaccount_nameNull() {
+                return this.IsNull(this.tableJournals.account_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setaccount_nameNull() {
+                this[this.tableJournals.account_nameColumn] = global::System.Convert.DBNull;
             }
         }
         

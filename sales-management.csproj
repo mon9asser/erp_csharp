@@ -226,12 +226,6 @@
     <Compile Include="UI\Current_Quantities.Designer.cs">
       <DependentUpon>Current_Quantities.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\EntriesReportViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\EntriesReportViewer.Designer.cs">
-      <DependentUpon>EntriesReportViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\Export_Document.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,18 +285,6 @@
     </Compile>
     <Compile Include="UI\FND___salesReturnInvoice.Designer.cs">
       <DependentUpon>FND___salesReturnInvoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Report_Viewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Report_Viewer.Designer.cs">
-      <DependentUpon>Report_Viewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Vat_Statment_Viewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Vat_Statment_Viewer.Designer.cs">
-      <DependentUpon>Vat_Statment_Viewer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Viewer.cs">
       <SubType>Form</SubType>
@@ -492,9 +474,6 @@
     <EmbeddedResource Include="UI\Current_Quantities.resx">
       <DependentUpon>Current_Quantities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EntriesReportViewer.resx">
-      <DependentUpon>EntriesReportViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\Export_Document.resx">
       <DependentUpon>Export_Document.cs</DependentUpon>
     </EmbeddedResource>
@@ -524,12 +503,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FND___salesReturnInvoice.resx">
       <DependentUpon>FND___salesReturnInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Report_Viewer.resx">
-      <DependentUpon>Report_Viewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Vat_Statment_Viewer.resx">
-      <DependentUpon>Vat_Statment_Viewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Viewer.resx">
       <DependentUpon>Viewer.cs</DependentUpon>
@@ -661,7 +634,10 @@
     <None Include="DSet\Statments.xss">
       <DependentUpon>Statments.xsd</DependentUpon>
     </None>
-    <None Include="FReports\Daily_Entries_Statement.frx">
+    <None Include="FReports\Journal_Entry_Report.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="FReports\Report_Sources.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\Zakat_Statement.frx">

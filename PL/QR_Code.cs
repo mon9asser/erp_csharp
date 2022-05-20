@@ -10,7 +10,7 @@ using System.Drawing;
 namespace sales_management.PL
 {
     class QR_Code
-    {
+    { 
         public QRCode GeneratedQrCode(string name, string total_price, string vat_value, string datemade, string vat_number)
         {
             string[,] filds = new string[5, 2] {

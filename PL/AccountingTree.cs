@@ -8,7 +8,7 @@ using System.Data;
 
 namespace sales_management.PL
 {
-    class AccountingTree
+    class AccountingTree 
     {
         public void Update_Tree_Of_Accounts(DataTable table) {
 

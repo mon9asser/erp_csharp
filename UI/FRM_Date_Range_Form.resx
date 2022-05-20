@@ -117,4 +117,116 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="reportSources1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="report_source.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>151, 17</value>
+  </metadata>
+  <data name="report_source.ReportResourceString" xml:space="preserve">
+    <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 12:35:27" ReportInfo.Modified="05/20/2022 14:11:57" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+  &lt;Dictionary&gt;
+    &lt;TableDataSource Name="Totals" ReferenceName="reportSources1.Totals" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="total" DataType="System.Decimal"/&gt;
+      &lt;Column Name="vat_amount" DataType="System.Decimal"/&gt;
+      &lt;Column Name="dicount_amount" DataType="System.Decimal"/&gt;
+    &lt;/TableDataSource&gt;
+    &lt;TableDataSource Name="Sources" ReferenceName="reportSources1.Sources" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="id" DataType="System.Int32"/&gt;
+      &lt;Column Name="payment_method" DataType="System.Int32"/&gt;
+      &lt;Column Name="payment_condition_id" DataType="System.Int32"/&gt;
+      &lt;Column Name="customer_id" DataType="System.Int32"/&gt;
+      &lt;Column Name="account_id" DataType="System.Int32"/&gt;
+      &lt;Column Name="cost_center_id" DataType="System.Int32"/&gt;
+      &lt;Column Name="created_by" DataType="System.Int32"/&gt;
+      &lt;Column Name="updated_by" DataType="System.Int32"/&gt;
+      &lt;Column Name="price_include_vat" DataType="System.Boolean" BindableControl="CheckBox"/&gt;
+      &lt;Column Name="enabled_zakat_vat" DataType="System.Boolean" BindableControl="CheckBox"/&gt;
+      &lt;Column Name="date" DataType="System.DateTime"/&gt;
+      &lt;Column Name="details" DataType="System.String"/&gt;
+      &lt;Column Name="customer_name" DataType="System.String"/&gt;
+      &lt;Column Name="account_number" DataType="System.String"/&gt;
+      &lt;Column Name="account_name" DataType="System.String"/&gt;
+      &lt;Column Name="cost_center_number" DataType="System.String"/&gt;
+      &lt;Column Name="cost_center_name" DataType="System.String"/&gt;
+      &lt;Column Name="net_total" DataType="System.String"/&gt;
+      &lt;Column Name="discount_name" DataType="System.String"/&gt;
+      &lt;Column Name="discount_percentage" DataType="System.String"/&gt;
+      &lt;Column Name="discount_not_more" DataType="System.String"/&gt;
+      &lt;Column Name="total_without_vat" DataType="System.String"/&gt;
+      &lt;Column Name="total_with_vat" DataType="System.String"/&gt;
+      &lt;Column Name="vat_amount" DataType="System.String"/&gt;
+      &lt;Column Name="serial" DataType="System.String"/&gt;
+      &lt;Column Name="qrcode" DataType="System.Byte[]" BindableControl="Picture"/&gt;
+    &lt;/TableDataSource&gt;
+    &lt;TableDataSource Name="Details" ReferenceName="reportSources1.Details" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="date_from" DataType="System.String"/&gt;
+      &lt;Column Name="date_to" DataType="System.String"/&gt;
+      &lt;Column Name="title" DataType="System.String"/&gt;
+    &lt;/TableDataSource&gt;
+  &lt;/Dictionary&gt;
+  &lt;ReportPage Name="Page1"&gt;
+    &lt;ReportTitleBand Name="ReportTitle1" Width="718.2" Height="94.5"&gt;
+      &lt;TextObject Name="Text1" Left="9.45" Top="9.45" Width="689.85" Height="28.35" Text="[Details.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text2" Left="359.1" Top="47.25" Width="94.5" Height="18.9" Text="[Details.date_from]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text3" Left="198.45" Top="47.25" Width="94.5" Height="18.9" Text="[Details.date_to]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text4" Left="453.6" Top="47.25" Width="56.7" Height="18.9" Text="من تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text5" Left="292.95" Top="47.25" Width="56.7" Height="18.9" Text="إلى تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+    &lt;/ReportTitleBand&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="98.5" Width="718.2" Height="47.25"&gt;
+      &lt;TableObject Name="Table1" Left="9.45" Width="698.92" Height="47.25"&gt;
+        &lt;TableColumn Name="Column1" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column2" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column3" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column4" Width="174.73"/&gt;
+        &lt;TableRow Name="Row1" Height="47.25"&gt;
+          &lt;TableCell Name="Cell1" Border.Lines="All" Fill.Color="Snow"&gt;
+            &lt;TextObject Name="Text9" Left="18.9" Top="9.45" Width="141.75" Height="28.35" Text="إجمالى سعر الفاتورة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;/TableCell&gt;
+          &lt;TableCell Name="Cell2" Border.Lines="All" Fill.Color="Snow"&gt;
+            &lt;TextObject Name="Text8" Left="18.9" Top="9.45" Width="141.75" Height="28.35" Text="ضريبة القيمة المضافة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;/TableCell&gt;
+          &lt;TableCell Name="Cell3" Border.Lines="All" Fill.Color="Snow"&gt;
+            &lt;TextObject Name="Text7" Left="18.9" Top="9.45" Width="141.75" Height="28.35" Text="الخصم التجارى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;/TableCell&gt;
+          &lt;TableCell Name="Cell4" Border.Lines="All" Fill.Color="Snow"&gt;
+            &lt;TextObject Name="Text6" Left="18.9" Top="9.45" Width="141.75" Height="28.35" Text="رقم الفاتورة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;/TableCell&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/PageHeaderBand&gt;
+    &lt;DataBand Name="Data1" Top="149.75" Width="718.2" Height="47.25" CanBreak="true" DataSource="Sources" KeepDetail="true"&gt;
+      &lt;TableObject Name="Table2" Left="9.45" Width="698.92" Height="47.25"&gt;
+        &lt;TableColumn Name="Column5" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column6" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column7" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column8" Width="174.73"/&gt;
+        &lt;TableRow Name="Row2" Height="47.25"&gt;
+          &lt;TableCell Name="Cell5" Border.Lines="Left, Top, Bottom" Fill.Color="White" Text="[Sources.total_with_vat]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell6" Border.Lines="Left, Top, Bottom" Fill.Color="White" Text="[Sources.vat_amount]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell7" Border.Lines="Left, Top, Bottom" Fill.Color="White" Text="[Sources.discount_name]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell8" Border.Lines="All" Fill.Color="White" Text="[Sources.id]" HorzAlign="Center" VertAlign="Center"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/DataBand&gt;
+    &lt;ReportSummaryBand Name="ReportSummary1" Top="201" Width="718.2" Height="47.25"&gt;
+      &lt;TableObject Name="Table3" Left="9.45" Width="698.92" Height="47.25"&gt;
+        &lt;TableColumn Name="Column9" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column10" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column11" Width="174.73"/&gt;
+        &lt;TableColumn Name="Column12" Width="174.73"/&gt;
+        &lt;TableRow Name="Row3" Height="47.25"&gt;
+          &lt;TableCell Name="Cell9" Border.Lines="All" Fill.Color="Snow" Text="[Totals.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell10" Border.Lines="All" Fill.Color="Snow" Text="[Totals.vat_amount]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell11" Border.Lines="All" Fill.Color="Snow" Text="[Totals.dicount_amount]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell12" Border.Lines="All" Fill.Color="Snow" Text="الإجمالى" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/ReportSummaryBand&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="252.25" Width="718.2" Height="47.25"/&gt;
+  &lt;/ReportPage&gt;
+&lt;/Report&gt;
+</value>
+  </data>
 </root>

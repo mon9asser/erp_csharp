@@ -190,20 +190,17 @@ D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range.resources
 D:\sales-app\bin\Debug\Reports\Daily_Entries.rpt
 D:\sales-app\bin\Debug\Reports\Daily_Entries.cs
 D:\sales-app\obj\Debug\sales_management.UI.Add_New_Entry.resources
-D:\sales-app\obj\Debug\sales_management.UI.EntriesReportViewer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_ALL_ENTRIES.resources
 D:\sales-app\obj\Debug\sales_management.UI.Current_Quantities.resources
 D:\sales-app\bin\Debug\Reports\Inventory_Report.rpt
 D:\sales-app\bin\Debug\Reports\Inventory_Report.cs
 D:\sales-app\obj\Debug\sales_management.UI.purchaseReturnInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range_Form.resources
-D:\sales-app\obj\Debug\sales_management.UI.Report_Viewer.resources
 D:\sales-app\bin\Debug\Reports\ReportSources.rpt
 D:\sales-app\bin\Debug\Reports\ReportSources.cs
 D:\sales-app\obj\Debug\sales_management.UI.Export_Document.resources
 D:\sales-app\bin\Debug\Reports\Statement.rpt
 D:\sales-app\bin\Debug\Reports\Statement.cs
-D:\sales-app\obj\Debug\sales_management.UI.Vat_Statment_Viewer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___salesInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___salesReturnInvoice.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___UpdateSupplier.resources
@@ -213,4 +210,5 @@ D:\sales-app\obj\Debug\sales_management.UI.FND___Customers.resources
 D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
 D:\sales-app\obj\Debug\sales_management.UI.Viewer.resources
 D:\sales-app\bin\Debug\FReports\Zakat_Statement.frx
-D:\sales-app\bin\Debug\FReports\Daily_Entries_Statement.frx
+D:\sales-app\bin\Debug\FReports\Journal_Entry_Report.frx
+D:\sales-app\bin\Debug\FReports\Report_Sources.frx

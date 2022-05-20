@@ -71,8 +71,8 @@ namespace sales_management.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            EntriesReportViewer rptviewer = new EntriesReportViewer();
-            rptviewer.ShowDialog();
+            //EntriesReportViewer rptviewer = new EntriesReportViewer();
+            //rptviewer.ShowDialog();
         }
     }
 }

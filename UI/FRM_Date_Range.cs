@@ -13,7 +13,7 @@ namespace sales_management.UI
 {
     public partial class FRM_Date_Range : Form
     {
-        EntriesReportViewer Entries_Form;
+         
          
         Report Repo = new Report();
         PL.DailyEntries Entries = new PL.DailyEntries();
@@ -78,8 +78,15 @@ namespace sales_management.UI
             this.DS_Entry.Tables["Journals"].Rows.Clear();
 
             this.All_Entries = this.Entries.Get_All_Journals_By_Date(from_date_var, to_date_var);
-            this.DS_Entry.Tables["Journals"].Merge(All_Entries);
-
+            this.All_Entries.Columns.Remove("parent_account");
+            this.All_Entries.Columns.Remove("balance");
+            this.All_Entries.Columns.Remove("debit_credit");
+            this.All_Entries.Columns.Remove("main_account");
+            this.All_Entries.Columns.Remove("account_number1");
+            this.All_Entries.Columns.Remove("id2");
+            this.All_Entries.Columns.Remove("is_main_account");
+            this.DS_Entry.Tables["Journals"].Merge(this.All_Entries);
+             
             string from_date_var_string = from_date_var.ToString("yyyy-MM-dd");
             string to_date_var_string = to_date_var.ToString("yyyy-MM-dd");
              
@@ -87,9 +94,9 @@ namespace sales_management.UI
 
             // Load Fast Report  
             UI.Viewer viewer = new UI.Viewer(
-                "\\FReports\\Daily_Entries_Statement.frx",
+                "\\FReports\\Journal_Entry_Report.frx",
                 this.DS_Entry,
-                "entries_dataset",
+                "journals_statment",
                 "قيود اليومية عن الفترة"
             );
             viewer.Show();

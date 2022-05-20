@@ -29,6 +29,7 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Date_Range_Form));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.date_from = new System.Windows.Forms.DateTimePicker();
@@ -36,6 +37,10 @@ namespace sales_management.UI
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.display_invoices_item_with = new System.Windows.Forms.ComboBox();
+            this.reportSources1 = new sales_management.DSet.ReportSources();
+            this.report_source = new FastReport.Report();
+            ((System.ComponentModel.ISupportInitialize)(this.reportSources1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.report_source)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,7 +48,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "من تاريخ :";
             // 
@@ -52,7 +57,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "إلي تاريخ :";
             // 
@@ -103,6 +108,17 @@ namespace sales_management.UI
             this.display_invoices_item_with.Size = new System.Drawing.Size(254, 21);
             this.display_invoices_item_with.TabIndex = 8;
             // 
+            // reportSources1
+            // 
+            this.reportSources1.DataSetName = "ReportSources";
+            this.reportSources1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // report_source
+            // 
+            this.report_source.NeedRefresh = false;
+            this.report_source.ReportResourceString = resources.GetString("report_source.ReportResourceString");
+            this.report_source.RegisterData(this.reportSources1, "reportSources1");
+            // 
             // FRM_Date_Range_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +141,8 @@ namespace sales_management.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "خلال الفترة";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.reportSources1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.report_source)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +157,7 @@ namespace sales_management.UI
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox display_invoices_item_with;
+        private DSet.ReportSources reportSources1;
+        private FastReport.Report report_source;
     }
 }

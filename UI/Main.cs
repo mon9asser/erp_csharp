@@ -178,7 +178,9 @@ namespace sales_management.UI
 
         private void فاتورةالمشترياتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.purchaseInvoice.GetForm.Show();
+            UI.purchaseInvoice pinvoice = new UI.purchaseInvoice();
+            //pinvoice.MdiParent = this;  
+            pinvoice.Show();
             //UI.purchaseInvoice.GetForm.Show();
         }
 
