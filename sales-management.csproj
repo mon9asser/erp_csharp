@@ -220,11 +220,11 @@
     <Compile Include="UI\Add_New_Entry.Designer.cs">
       <DependentUpon>Add_New_Entry.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Current_Quantities.cs">
+    <Compile Include="UI\FND___Current_Quantities.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Current_Quantities.Designer.cs">
-      <DependentUpon>Current_Quantities.cs</DependentUpon>
+    <Compile Include="UI\FND___Current_Quantities.Designer.cs">
+      <DependentUpon>FND___Current_Quantities.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Export_Document.cs">
       <SubType>Form</SubType>
@@ -244,17 +244,17 @@
     <Compile Include="UI\FRM_CostCenterGuide.Designer.cs">
       <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_Date_Range.cs">
+    <Compile Include="UI\FND___Date_Range.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_Date_Range.Designer.cs">
-      <DependentUpon>FRM_Date_Range.cs</DependentUpon>
+    <Compile Include="UI\FND___Date_Range.Designer.cs">
+      <DependentUpon>FND___Date_Range.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FRM_Date_Range_Form.cs">
+    <Compile Include="UI\FND____Date_Range_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FRM_Date_Range_Form.Designer.cs">
-      <DependentUpon>FRM_Date_Range_Form.cs</DependentUpon>
+    <Compile Include="UI\FND____Date_Range_Form.Designer.cs">
+      <DependentUpon>FND____Date_Range_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FRM_Stores.cs">
       <SubType>Form</SubType>
@@ -471,8 +471,8 @@
     <EmbeddedResource Include="UI\Add_New_Entry.resx">
       <DependentUpon>Add_New_Entry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Current_Quantities.resx">
-      <DependentUpon>Current_Quantities.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___Current_Quantities.resx">
+      <DependentUpon>FND___Current_Quantities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Export_Document.resx">
       <DependentUpon>Export_Document.cs</DependentUpon>
@@ -483,11 +483,11 @@
     <EmbeddedResource Include="UI\FRM_CostCenterGuide.resx">
       <DependentUpon>FRM_CostCenterGuide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_Date_Range.resx">
-      <DependentUpon>FRM_Date_Range.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND___Date_Range.resx">
+      <DependentUpon>FND___Date_Range.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FRM_Date_Range_Form.resx">
-      <DependentUpon>FRM_Date_Range_Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FND____Date_Range_Form.resx">
+      <DependentUpon>FND____Date_Range_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FRM_Stores.resx">
       <DependentUpon>FRM_Stores.cs</DependentUpon>
@@ -634,10 +634,16 @@
     <None Include="DSet\Statments.xss">
       <DependentUpon>Statments.xsd</DependentUpon>
     </None>
+    <None Include="FReports\Inventory_Report.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="FReports\Journal_Entry_Report.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\Report_Sources.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="FReports\SalesInvoice.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\Zakat_Statement.frx">

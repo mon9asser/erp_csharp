@@ -19,8 +19,7 @@ namespace sales_management.UI
         public Viewer(string file_source, DataSet dataSource, string dataSetName, string title )
         {
             InitializeComponent();
-
-
+             
             this.Text = title;
             this.Repo.RegisterData(dataSource, dataSetName);
             this.Repo.Load(Application.StartupPath + file_source );

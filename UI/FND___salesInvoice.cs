@@ -8,8 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
+using FastReport;
 
 namespace sales_management.UI
 {
@@ -20,7 +19,7 @@ namespace sales_management.UI
         PL.Sales Sale = new PL.Sales();
         PL.Journals journals = new PL.Journals();
         DSet.SalesInvoice CRT_DataSet = new DSet.SalesInvoice();
-
+        Report Repo = new Report();
         DataSet dataSetDb;
         DataTable Sale_Table;
         DataTable Sale_Details;
@@ -1399,6 +1398,7 @@ namespace sales_management.UI
                  * Build Invoice Items
                  * ===============================================
                  */
+                
                 DataTable items = new DataTable();
                 this.CRT_DataSet.Tables["Sales_Invoice_Items"].Rows.Clear();
                 // add columns 
@@ -1663,15 +1663,26 @@ namespace sales_management.UI
         }
 
         private void Print_This_Invoice() {
-
+             
+            
+           
             try
             {
+                /* 
+                 * 
+                this.Text = title;
+                this.Repo.RegisterData(dataSource, dataSetName);
+                this.Repo.Load(Application.StartupPath + file_source );
+                this.Repo.Preview = this.previewControl1;
+                this.Repo.Show();
+
+
                 ReportDocument cryRpt = new ReportDocument();
                 string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
                 cryRpt.Load(path);
                 cryRpt.SetDataSource(this.CRT_DataSet);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
-                /*
+                
                 if (File.Exists(@"D:\\file.pdf"))
                     File.Delete(@"D:\\file.pdf");
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"D:\\file.pdf");
@@ -2053,11 +2064,21 @@ namespace sales_management.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try {
-                this.Store_Invoice_Data();
-                this.Build_Data_Set_Of_Crystal_Report();
-                this.Print_This_Invoice();
-            } catch( Exception ) { }
+
+            
+            this.Store_Invoice_Data();
+            this.Build_Data_Set_Of_Crystal_Report();
+            this.Print_This_Invoice(); 
+
+            UI.Viewer vier = new UI.Viewer(
+               "\\FReports\\SalesInvoice.frx",
+               this.CRT_DataSet,
+               "sales_invoice_datasource",
+               "فاتورة المبيعات"
+           );
+           
+           vier.Show();
+
         }
     }
 }

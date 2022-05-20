@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 18:28:39" ReportInfo.Modified="05/20/2022 21:01:21" ReportInfo.CreatorVersion="2018.4.19.0">
+  <Dictionary>
+    <TableDataSource Name="Sales_Invoice" ReferenceName="sales_invoice_datasource.Sales_Invoice" DataType="System.Int32" Enabled="true">
+      <Column Name="id" DataType="System.String"/>
+      <Column Name="date" DataType="System.String"/>
+      <Column Name="customer_name" DataType="System.String"/>
+      <Column Name="price_include_vat" DataType="System.String"/>
+      <Column Name="net_total" DataType="System.String"/>
+      <Column Name="discount_name" DataType="System.String"/>
+      <Column Name="total_without_vat" DataType="System.String"/>
+      <Column Name="total_with_vat" DataType="System.String"/>
+      <Column Name="vat_amount" DataType="System.String"/>
+      <Column Name="serial" DataType="System.String"/>
+      <Column Name="enabled_zakat_vat" DataType="System.String"/>
+      <Column Name="qrcode" DataType="System.Byte[]" BindableControl="Picture"/>
+    </TableDataSource>
+    <TableDataSource Name="Sales_Invoice_Items" ReferenceName="sales_invoice_datasource.Sales_Invoice_Items" DataType="System.Int32" Enabled="true">
+      <Column Name="doc_id" DataType="System.String"/>
+      <Column Name="doc_type" DataType="System.String"/>
+      <Column Name="product_name" DataType="System.String"/>
+      <Column Name="unit_name" DataType="System.String"/>
+      <Column Name="unit_price" DataType="System.String"/>
+      <Column Name="quantity" DataType="System.String"/>
+      <Column Name="total_quantity" DataType="System.String"/>
+      <Column Name="total_price" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="System_Settings" ReferenceName="sales_invoice_datasource.System_Settings" DataType="System.Int32" Enabled="true">
+      <Column Name="establishment_name" DataType="System.String"/>
+      <Column Name="address" DataType="System.String"/>
+      <Column Name="vat_number" DataType="System.String"/>
+      <Column Name="logo" DataType="System.Byte[]" BindableControl="Picture"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="80" PaperHeight="296.93" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" MirrorMargins="true" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="302.4" Height="314.55">
+      <TableObject Name="Table1" Top="18.9" Width="274.05" Height="28.35" Border.Lines="Bottom" Border.Style="Dot" Border.Width="0.5">
+        <TableColumn Name="Column1" Width="274.05"/>
+        <TableRow Name="Row1" Height="28.35">
+          <TableCell Name="Cell1" Text="فاتورة ضريبية مبسطة" HorzAlign="Center"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text5" Left="9.45" Top="56.7" Width="255.15" Height="37.8" Text="[System_Settings.establishment_name]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text6" Left="9.45" Top="85.05" Width="264.6" Height="18.9" Text="[System_Settings.address]" HorzAlign="Center" VertAlign="Center"/>
+      <PictureObject Name="Picture1" Left="37.8" Top="122.85" Width="189" Height="85.05" DataColumn="System_Settings.logo"/>
+      <TextObject Name="Text7" Top="226.8" Width="264.6" Height="37.8" Border.Lines="Bottom" Border.Style="Dot" Border.Width="0.5" Text="[System_Settings.vat_number]   الرقم الضريبى" HorzAlign="Center"/>
+      <TableObject Name="Table2" Top="274.05" Width="264.58" Height="40.5" Border.Lines="Bottom" Border.Style="Dot" Border.Width="0.5">
+        <TableColumn Name="Column2" Width="179.53"/>
+        <TableColumn Name="Column3" Width="85.05"/>
+        <TableRow Name="Row2" Height="40.5">
+          <TableCell Name="Cell2" Text="التاريخ  [Sales_Invoice.date]" VertAlign="Center" RightToLeft="true" Font="Arial, 8pt"/>
+          <TableCell Name="Cell3" Text="رقم #[Sales_Invoice.id]" HorzAlign="Right" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="318.55" Width="302.4" Height="28.35">
+      <TextObject Name="Text2" Left="444.15" Width="94.5" Height="18.9" Text="product_name"/>
+      <TableObject Name="Table3" Width="264.61" Height="28.35">
+        <TableColumn Name="Column4" Width="54.34"/>
+        <TableColumn Name="Column5" Width="35.44"/>
+        <TableColumn Name="Column6" Width="44.89"/>
+        <TableColumn Name="Column7" Width="129.94"/>
+        <TableRow Name="Row3" Height="28.35">
+          <TableCell Name="Cell4" Border.Lines="Left, Top, Bottom" Border.Width="0.25" Fill.Color="White" Text="الإجمالى" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+          <TableCell Name="Cell5" Border.Lines="Top, Bottom" Border.Width="0.25" Fill.Color="White" Text="السعر" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+          <TableCell Name="Cell6" Border.Lines="Right, Top, Bottom" Border.Width="0.25" Fill.Color="White" Text="الكمية" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+          <TableCell Name="Cell7" Border.Lines="Right, Top, Bottom" Border.Width="0.25" Fill.Color="White" Text="الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="350.9" Width="302.4" Height="37.8" DataSource="Sales_Invoice_Items">
+      <TableObject Name="Table4" Width="264.61" Height="37.8">
+        <TableColumn Name="Column8" Width="54.34"/>
+        <TableColumn Name="Column9" Width="35.44"/>
+        <TableColumn Name="Column10" Width="44.89"/>
+        <TableColumn Name="Column11" Width="129.94"/>
+        <TableRow Name="Row4" Height="37.8">
+          <TableCell Name="Cell8" Border.Lines="Left, Top, Bottom" Border.Width="0.25" Text="[Sales_Invoice_Items.total_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/>
+          <TableCell Name="Cell9" Border.Lines="Left, Top, Bottom" Border.Width="0.25" Text="[Sales_Invoice_Items.unit_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/>
+          <TableCell Name="Cell10" Border.Lines="Left, Top, Bottom" Border.Width="0.25" Text="[Sales_Invoice_Items.quantity] ( [Sales_Invoice_Items.unit_name]  ) " HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/>
+          <TableCell Name="Cell11" Border.Lines="Right, Top, Bottom" Border.Width="0.25" Text="[Sales_Invoice_Items.product_name]" Padding="2, 8, 2, 8" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="392.7" Width="302.4" Height="28.35"/>
+  </ReportPage>
+</Report>

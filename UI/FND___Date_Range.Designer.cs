@@ -1,6 +1,6 @@
 ﻿namespace sales_management.UI
 {
-    partial class FRM_Date_Range
+    partial class FND___Date_Range
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Date_Range));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FND___Date_Range));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.date_from = new System.Windows.Forms.DateTimePicker();

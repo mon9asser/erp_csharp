@@ -186,16 +186,13 @@ D:\sales-app\obj\Debug\sales-management.exe.manifest
 D:\sales-app\obj\Debug\sales-management.application
 D:\sales-app\bin\Debug\Reports\SalesInvoice.rpt
 D:\sales-app\bin\Debug\Reports\SalesInvoice.cs
-D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range.resources
 D:\sales-app\bin\Debug\Reports\Daily_Entries.rpt
 D:\sales-app\bin\Debug\Reports\Daily_Entries.cs
 D:\sales-app\obj\Debug\sales_management.UI.Add_New_Entry.resources
 D:\sales-app\obj\Debug\sales_management.UI.FRM_ALL_ENTRIES.resources
-D:\sales-app\obj\Debug\sales_management.UI.Current_Quantities.resources
 D:\sales-app\bin\Debug\Reports\Inventory_Report.rpt
 D:\sales-app\bin\Debug\Reports\Inventory_Report.cs
 D:\sales-app\obj\Debug\sales_management.UI.purchaseReturnInvoice.resources
-D:\sales-app\obj\Debug\sales_management.UI.FRM_Date_Range_Form.resources
 D:\sales-app\bin\Debug\Reports\ReportSources.rpt
 D:\sales-app\bin\Debug\Reports\ReportSources.cs
 D:\sales-app\obj\Debug\sales_management.UI.Export_Document.resources
@@ -212,3 +209,8 @@ D:\sales-app\obj\Debug\sales_management.UI.Viewer.resources
 D:\sales-app\bin\Debug\FReports\Zakat_Statement.frx
 D:\sales-app\bin\Debug\FReports\Journal_Entry_Report.frx
 D:\sales-app\bin\Debug\FReports\Report_Sources.frx
+D:\sales-app\bin\Debug\FReports\Inventory_Report.frx
+D:\sales-app\obj\Debug\sales_management.UI.FND___Current_Quantities.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___Date_Range.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND____Date_Range_Form.resources
+D:\sales-app\bin\Debug\FReports\SalesInvoice.frx
