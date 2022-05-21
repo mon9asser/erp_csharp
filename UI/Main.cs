@@ -282,5 +282,11 @@ namespace sales_management.UI
             UI.FND___Date_Range rmrange = new UI.FND___Date_Range(1);
             rmrange.ShowDialog();
         }
+
+        private void قيدجديدToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Entry_Details entry = new Entry_Details();
+            entry.Show();
+        }
     }
 }

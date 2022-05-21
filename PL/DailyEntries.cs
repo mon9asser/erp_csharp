@@ -11,6 +11,45 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+        public DataTable Get_Entries_Except_Fields( int [] not_in ) {
+
+            DataTable tble;
+
+
+            
+            if (not_in.Length == 0) {
+
+                not_in = new int[4];
+                not_in[0] = 0;
+                not_in[1] = 1;
+                not_in[2] = 2;
+                not_in[3] = 3;
+            }
+
+            DataTable numbers = new DataTable();
+            numbers.Columns.Add("document_types");
+            DataRow rowx;
+            for (int i = 0; i < not_in.Length; i++)
+            {
+                rowx = numbers.NewRow();
+                rowx["document_types"] = not_in[i];
+                numbers.Rows.Add(rowx);
+            }
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+            SqlParameter[] param = new SqlParameter[1];
+
+            param[0] = new SqlParameter("@not_in", SqlDbType.Structured);
+            param[0].Value = numbers;
+
+            DAL.Open();
+            tble = DAL.SelectData("Get_Entries_Except_Fields", param);
+            DAL.Close();
+
+            return tble;
+
+        }
+
 
         public DataSet Get_Report_Statment( string account_1, DateTime date_from, DateTime date_to, string account_2 = "-1" ) {
 

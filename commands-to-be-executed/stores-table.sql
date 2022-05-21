@@ -1,4 +1,8 @@
-
+this.Text = title;
+this.Repo.RegisterData(dataSource, dataSetName);
+this.Repo.Load(Application.StartupPath + file_source );
+this.Repo.Preview = this.previewControl1;
+this.Repo.Show();
 /*
 id 
 date_made
@@ -10,6 +14,23 @@ total_price
 type ==> 0 => decrement 1 => 
 */ 
  
+ 
+ 
+create type documents_type as table (
+	document_types int
+) 
+
+
+create proc Get_Entries_Except_Fields
+
+@not_in as dbo.documents_type ReadOnly
+
+as
+
+select * from journals, journal_details
+inner join accounts on journal_details.account_number = accounts.account_number
+where journals.id = journal_details.journal_id and journals.doc_type not in (select document_types from @not_in)
+
 -----------------------------------
 ------ تقرير المسحوبات عن الفترة
 -- كميات البيع
@@ -25,14 +46,4 @@ type ==> 0 => decrement 1 =>
 -- إلي ح / المخزون
 -- صرف بضاعه بإذن
  
-
-create proc [dbo].[Get_All_Entries_By_Order]
-	@date_from varchar(50),
-	@date_to varchar(50)
-as
-SELECT * FROM journals, journal_details 
-inner join accounts on journal_details.account_number = accounts.account_number 
-where journal_details.journal_id = journals.id AND updated_date  BETWEEN @date_from AND @date_to
-order by journal_details.id, journals.id
-
  

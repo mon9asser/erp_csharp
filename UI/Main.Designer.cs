@@ -98,6 +98,7 @@ namespace sales_management.UI
             this.إعداداتالإجراءاتالمخزنهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تهيةالبياناتالأفتراضيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تقريربأخطاءالنظامToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.قيدجديدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -378,7 +379,8 @@ namespace sales_management.UI
             this.القيوداليوميةToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.قيدتسويةToolStripMenuItem,
             this.سندقبضToolStripMenuItem1,
-            this.سندصرفنقودToolStripMenuItem});
+            this.سندصرفنقودToolStripMenuItem,
+            this.قيدجديدToolStripMenuItem});
             resources.ApplyResources(this.القيوداليوميةToolStripMenuItem, "القيوداليوميةToolStripMenuItem");
             this.القيوداليوميةToolStripMenuItem.Name = "القيوداليوميةToolStripMenuItem";
             // 
@@ -546,6 +548,12 @@ namespace sales_management.UI
             this.تقريربأخطاءالنظامToolStripMenuItem.Name = "تقريربأخطاءالنظامToolStripMenuItem";
             resources.ApplyResources(this.تقريربأخطاءالنظامToolStripMenuItem, "تقريربأخطاءالنظامToolStripMenuItem");
             // 
+            // قيدجديدToolStripMenuItem
+            // 
+            this.قيدجديدToolStripMenuItem.Name = "قيدجديدToolStripMenuItem";
+            resources.ApplyResources(this.قيدجديدToolStripMenuItem, "قيدجديدToolStripMenuItem");
+            this.قيدجديدToolStripMenuItem.Click += new System.EventHandler(this.قيدجديدToolStripMenuItem_Click);
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -633,5 +641,6 @@ namespace sales_management.UI
         private System.Windows.Forms.ToolStripMenuItem ميزانالمراجعهToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem قائمةالدخلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تقريربأخطاءالنظامToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem قيدجديدToolStripMenuItem;
     }
 }
