@@ -116,10 +116,15 @@
             // datagridview_items
             // 
             this.datagridview_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridview_items.Location = new System.Drawing.Point(10, 110);
+            this.datagridview_items.Location = new System.Drawing.Point(11, 109);
             this.datagridview_items.Name = "datagridview_items";
             this.datagridview_items.Size = new System.Drawing.Size(868, 294);
             this.datagridview_items.TabIndex = 8;
+            this.datagridview_items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_items_CellContentClick);
+            this.datagridview_items.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_items_CellDoubleClick);
+            this.datagridview_items.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.datagridview_items_CellParsing);
+            this.datagridview_items.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.datagridview_items_DataError);
+            this.datagridview_items.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // current_invoice_page
             // 
@@ -226,6 +231,7 @@
             this.edit_button.Text = "تعديل";
             this.edit_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.edit_button.UseVisualStyleBackColor = true;
+            this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
             // 
             // search_button
             // 
@@ -313,7 +319,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "قيود اليومية";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.datagridview_items)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

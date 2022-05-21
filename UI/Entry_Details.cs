@@ -17,8 +17,7 @@ namespace sales_management.UI
         PL.DailyEntries entry = new PL.DailyEntries();
         DataSet DataSource;
         DataTable Journals;
-        DataTable Journal_Details;
-
+        DataTable Journal_Details; 
         public int Document_Type = 4;
 
         public Entry_Details()
@@ -35,6 +34,7 @@ namespace sales_management.UI
             if (this.Journals.Rows.Count != 0) {
                 id = Convert.ToInt32(this.Journals.Rows[this.Journals.Rows.Count - 1]["id"]);
             }
+             
             this.Fill_Data_Fields(id);
         }
 
@@ -47,8 +47,8 @@ namespace sales_management.UI
             except_types[3] = 3;
 
             this.DataSource = this.entry.Get_Entries_Except_Fields(except_types);
-            this.Journals = DataSource.Tables[0];
-            this.Journal_Details = DataSource.Tables[1];
+            this.Journals = this.DataSource.Tables[0]; 
+            this.Journal_Details = this.DataSource.Tables[1]; 
         }
 
         public void Fill_Data_Fields(int jorunal_id = -1 ) {
@@ -58,6 +58,7 @@ namespace sales_management.UI
                 table = this.Journal_Details.Select("journal_id = '"+ jorunal_id  + "'", "journal_id DESC").CopyToDataTable();
             }
 
+            //MessageBox.Show(this.Journal_Details.Rows.Count.ToString());
             // Re Ordering 
             table.Columns["account_number"].SetOrdinal(0);
             table.Columns["account_name"].SetOrdinal(1);
@@ -65,14 +66,13 @@ namespace sales_management.UI
             table.Columns["debit"].SetOrdinal(3);
             table.Columns["credit"].SetOrdinal(4);
 
-            if (table.Rows.Count == 0)
-            {
-                this.Fill_DataGridView_Items(table);
-                return;
+            DataTable table_header = this.Journal_Details;
+            if (this.Journal_Details.Rows.Count == 0) {
+                table_header = this.Journals;
             }
 
             // Prepare Basic Fields 
-            this.Fill_Journal_Fields(table);
+            this.Fill_Journal_Fields(table_header);  
 
             // Prepare DataGrid Items 
             this.Fill_DataGridView_Items(table);
@@ -81,7 +81,11 @@ namespace sales_management.UI
 
         public void Fill_Journal_Fields(DataTable table) {
 
-            DataRow row__ = table.Rows[0];
+            if (table.Rows.Count == 0) {
+                return;
+            }
+
+            DataRow row__ = table.Rows[table.Rows.Count - 1];
             entry_number_field.Text = row__["entry_number"].ToString();
             entry_id_field.Text = row__["id"].ToString();
             description_field.Text = row__["description"].ToString();
@@ -135,7 +139,10 @@ namespace sales_management.UI
             datagridview_items.Columns["description"].HeaderText = "شرح";
             datagridview_items.Columns["account_number"].HeaderText = "رقم الحساب";
             datagridview_items.Columns["account_name"].HeaderText = "اسم الحساب";
-            
+
+            datagridview_items.Columns["account_name"].ReadOnly = true;
+            datagridview_items.Columns["account_number"].ReadOnly = true;
+
             // Add new Column Of Deletion Button
             DataGridViewButtonColumn deletion_button = new DataGridViewButtonColumn();
             deletion_button.FlatStyle = FlatStyle.Flat;
@@ -155,7 +162,7 @@ namespace sales_management.UI
             entry_id_field.Enabled = !disabled;
             description_field.Enabled = !disabled;
             datetime_field.Enabled = !disabled;
-            datagridview_items.ReadOnly = !disabled;
+            datagridview_items.ReadOnly = disabled;
 
 
             add_new_button.Enabled = disabled;
@@ -165,7 +172,7 @@ namespace sales_management.UI
             current_invoice_page.Enabled = disabled;
             previous_button.Enabled = disabled;
             last_record_button.Enabled = disabled;
-            edit_button.Enabled = !disabled;
+            edit_button.Enabled = disabled;
             search_button.Enabled = disabled;
 
             datetime_field.Value = DateTime.Now;
@@ -254,40 +261,43 @@ namespace sales_management.UI
             journs_dets.Columns.Add("date");// datetime
             journs_dets.Columns.Add("account_number"); // string
 
+            
+            DataTable CheckViewTable = (DataTable)datagridview_items.DataSource;
 
             DataRow drow;
-            foreach (DataGridViewRow rw in datagridview_items.Rows) {
-                if (rw.Cells["account_number"].Value != null || rw.Cells["account_number"].Value != DBNull.Value || ! String.IsNullOrWhiteSpace(rw.Cells["account_number"].Value.ToString()) )
-                {
+            foreach (DataRow rw in CheckViewTable.Rows) {
 
-                    if (rw.Cells["account_number"].Value != null) {
-                        continue;
-                    }
+                if (rw["account_number"].ToString() != "") {
 
                     drow = journs_dets.NewRow();
+
                     drow["journal_id"] = Convert.ToInt32(entry_id_field.Text); // int
 
-                    if (rw.Cells["debit"].Value != System.DBNull.Value)
-                        drow["debit"] = Convert.ToDecimal(rw.Cells["debit"].Value);// decimal
+                    if (rw["debit"] != System.DBNull.Value)
+                        drow["debit"] = Convert.ToDecimal(rw["debit"]);// decimal
                     else drow["debit"] = 0;
 
-                    if (rw.Cells["credit"].Value != System.DBNull.Value)
-                        drow["credit"] = Convert.ToDecimal(rw.Cells["credit"].Value); // decimal
+                    if (rw["credit"] != System.DBNull.Value)
+                        drow["credit"] = Convert.ToDecimal(rw["credit"]); // decimal
                     else drow["credit"] = 0;
 
-                    if (rw.Cells["description"].Value != null)
-                        drow["description"] = rw.Cells["description"].Value.ToString(); // string
+                    if (rw["description"] != null)
+                        drow["description"] = rw["description"].ToString(); // string
                     else drow["description"] = "";
 
-                    if (rw.Cells["cost_center_number"].Value != null)
-                        drow["cost_center_number"] = rw.Cells["cost_center_number"].Value.ToString(); // string
+                    if (rw["cost_center_number"] != null)
+                        drow["cost_center_number"] = rw["cost_center_number"].ToString(); // string
                     else drow["cost_center_number"] = "";
 
+                    if (rw["account_number"] != null)
+                        drow["account_number"] = rw["account_number"].ToString(); // string
+                    else drow["account_number"] = -1;
 
-                    drow["date"] = Convert.ToDateTime(datetime_field.Value);// datetime 
-                    drow["account_number"] = rw.Cells["account_number"].Value.ToString(); // string
+                    drow["date"] = datetime_field.Value;
+
                     journs_dets.Rows.Add(drow);
                 }
+
             }
 
             // Storing 
@@ -298,6 +308,95 @@ namespace sales_management.UI
 
             // Get Data Of Journals and Details 
             this.Extract_Data_Set_In_Data_Source();
+
+        }
+
+        private void edit_button_Click(object sender, EventArgs e)
+        {
+            // Disable 
+            this.Disable_Form_Fields(false);
+        }
+
+        private void datagridview_items_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == -1 || e.RowIndex == -1 )
+            {
+                return;
+            }
+
+            if(datagridview_items.Columns[e.ColumnIndex].Name.ToString() == "deletion_et_button") {
+  
+                datagridview_items.Rows[e.RowIndex].Cells["account_number"].Value = "";
+                datagridview_items.Rows[e.RowIndex].Cells["account_name"].Value = "";
+                datagridview_items.Rows[e.RowIndex].Cells["description"].Value = "";
+                datagridview_items.Rows[e.RowIndex].Cells["debit"].Value = 0;
+                datagridview_items.Rows[e.RowIndex].Cells["credit"].Value =0;
+
+            }
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (datagridview_items.Columns[datagridview_items.CurrentCell.ColumnIndex].Name.ToString() == "debit" || datagridview_items.Columns[datagridview_items.CurrentCell.ColumnIndex].Name.ToString() == "credit") //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+              
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' )
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void datagridview_items_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            if (e.RowIndex == -1 || e.ColumnIndex == -1) {
+                return;
+            }
+
+            if (datagridview_items.Columns[e.ColumnIndex].Name.ToString() == "debit" || datagridview_items.Columns[e.ColumnIndex].Name.ToString() == "credit")
+            {
+
+                string cell_name = datagridview_items.Columns[e.ColumnIndex].Name.ToString();
+                int index = e.RowIndex;
+
+                string value = datagridview_items.Rows[index].Cells[cell_name].Value.ToString();
+
+                 
+
+               // datagridview_items.Rows[e.RowIndex].Cells[datagridview_items.Columns[e.ColumnIndex].Name.ToString()].Value = 200.00;
+
+            } 
+        }
+
+        private void datagridview_items_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
+        }
+         
+
+        private void datagridview_items_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            return;
+        }
+
+        private void datagridview_items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == -1 || e.RowIndex == -1) {
+                return;
+            }
+
+
 
         }
     }

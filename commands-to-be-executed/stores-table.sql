@@ -18,42 +18,36 @@ total_quantity
 total_price 
 type ==> 0 => decrement 1 => 
 */ 
- 
- 
- 
- entry_id_field
- entry_number_field
- 
- datetime_field
- description_field
- 
- 
- 
- 
- 
-alter proc Get_Entries_Except_Fields
+  
+CREATE TYPE [dbo].[entry_accounts_table] AS TABLE(
+	[journal_id] [int] NULL,
+	[debit] [decimal](18, 0) NULL,
+	[credit] [decimal](18, 0) NULL,
+	[description] TExt NULL,
+	[cost_center_number] [varchar](50) NULL,
+	[account_number] [varchar](50) NULL,
+	[date] [datetime] NULL
+)
+GO
 
-@not_in as dbo.documents_type ReadOnly
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Update_DataSet_Of_Daily_Entries]    Script Date: 5/21/2022 5:12:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 
-as
-
-select * from journals where doc_type not in (select document_types from @not_in);
-
-select * from journals, journal_details
-inner join accounts on journal_details.account_number = accounts.account_number
-where journals.id = journal_details.journal_id and journals.doc_type not in (select document_types from @not_in);
-
-
-
-
-
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Update_DataSet_Of_Daily_Entries]    Script Date: 5/21/2022 5:12:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 
 
-
-
-
-
-ALTER proc Update_DataSet_Of_Daily_Entries
+ALTER proc [dbo].[Update_DataSet_Of_Daily_Entries]
 	
 	@journal_id int, 
 	@header_entry as dbo.journal_header ReadOnly,
@@ -79,14 +73,21 @@ AS
 				WHERE [dbo].journals.id = @journal_id
 		END
 
-		-- UPDATE ITEMS FIELD 
-		IF EXISTS( SELECT 1 FROM @details_entry )
-		BEGIN
-			DELETE FROM journal_details WHERE journal_id = @journal_id;
-			INSERT INTO journal_details( [description], account_number, journal_id, debit, credit, [date] ) SELECT [description], account_number, journal_id, debit, credit, [date] FROM @details_entry
-		END
+		
 	END
 	
+
+
+-- UPDATE ITEMS FIELD 
+	IF EXISTS( SELECT 1 FROM @details_entry )
+	BEGIN
+
+		delete from [dbo].journal_details where journal_details.journal_id = @journal_id;
+		INSERT INTO [dbo].journal_details( journal_id, debit, credit, [description], cost_center_number, account_number, [date] ) 
+			SELECT journal_id, debit, credit, [description], cost_center_number, account_number, [date] FROM @details_entry
+			
+			 
+	END
 	
 	
 -----------------------------------
