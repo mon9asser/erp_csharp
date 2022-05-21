@@ -15,39 +15,47 @@ namespace sales_management.UI
 
 
         PL.DailyEntries entry = new PL.DailyEntries();
-        DataTable DataSource;
-        public int Document_Type = -1;
+        DataSet DataSource;
+        DataTable Journals;
+        DataTable Journal_Details;
+
+        public int Document_Type = 4;
 
         public Entry_Details()
         {
             InitializeComponent();
 
-            int[] except_types = new int [4];
-            except_types[0] = 0;
-            except_types[1] = 1;
-            except_types[2] = 2;
-            except_types[3] = 3; 
-            this.DataSource = this.entry.Get_Entries_Except_Fields(except_types);
+            this.Extract_Data_Set_In_Data_Source();
 
             // Disable Elements 
-            this.Disable_Form_Fields();
-
-            // Extract Only Journal Table To Do Paging
-
+            this.Disable_Form_Fields(); 
 
             // Fill All Data 
             int id = -1;
-            if (this.DataSource.Rows.Count != 0) {
-                id = Convert.ToInt32(this.DataSource.Rows[this.DataSource.Rows.Count - 1]["journal_id"]);
+            if (this.Journals.Rows.Count != 0) {
+                id = Convert.ToInt32(this.Journals.Rows[this.Journals.Rows.Count - 1]["id"]);
             }
             this.Fill_Data_Fields(id);
         }
 
+        public void Extract_Data_Set_In_Data_Source() {
+
+            int[] except_types = new int[4];
+            except_types[0] = 0;
+            except_types[1] = 1;
+            except_types[2] = 2;
+            except_types[3] = 3;
+
+            this.DataSource = this.entry.Get_Entries_Except_Fields(except_types);
+            this.Journals = DataSource.Tables[0];
+            this.Journal_Details = DataSource.Tables[1];
+        }
+
         public void Fill_Data_Fields(int jorunal_id = -1 ) {
 
-            DataTable table = this.DataSource; 
-            if (jorunal_id != -1) {
-                table = this.DataSource.Select("journal_id = '"+ jorunal_id  + "'", "journal_id DESC").CopyToDataTable();
+            DataTable table = this.Journal_Details; 
+            if (jorunal_id != -1 && this.Journal_Details.Rows.Count != 0) {
+                table = this.Journal_Details.Select("journal_id = '"+ jorunal_id  + "'", "journal_id DESC").CopyToDataTable();
             }
 
             // Re Ordering 
@@ -62,16 +70,22 @@ namespace sales_management.UI
                 this.Fill_DataGridView_Items(table);
                 return;
             }
-             
+
             // Prepare Basic Fields 
+            this.Fill_Journal_Fields(table);
+
+            // Prepare DataGrid Items 
+            this.Fill_DataGridView_Items(table);
+
+        }
+
+        public void Fill_Journal_Fields(DataTable table) {
+
             DataRow row__ = table.Rows[0];
             entry_number_field.Text = row__["entry_number"].ToString();
             entry_id_field.Text = row__["id"].ToString();
             description_field.Text = row__["description"].ToString();
-            datetime_field.Value = (row__["updated_date"] == "" )? DateTime.Now:Convert.ToDateTime(row__["updated_date"]);
-
-            // Prepare DataGrid Items 
-            this.Fill_DataGridView_Items(table);
+            datetime_field.Value = ( row__["updated_date"] == "" ) ? DateTime.Now : Convert.ToDateTime(row__["updated_date"]);
 
         }
 
@@ -121,8 +135,7 @@ namespace sales_management.UI
             datagridview_items.Columns["description"].HeaderText = "شرح";
             datagridview_items.Columns["account_number"].HeaderText = "رقم الحساب";
             datagridview_items.Columns["account_name"].HeaderText = "اسم الحساب";
-
-
+            
             // Add new Column Of Deletion Button
             DataGridViewButtonColumn deletion_button = new DataGridViewButtonColumn();
             deletion_button.FlatStyle = FlatStyle.Flat;
@@ -131,6 +144,7 @@ namespace sales_management.UI
             deletion_button.Text = "حذف";
             deletion_button.UseColumnTextForButtonValue = true;
             datagridview_items.Columns.Add(deletion_button); 
+
 
         }
          
@@ -152,19 +166,139 @@ namespace sales_management.UI
             previous_button.Enabled = disabled;
             last_record_button.Enabled = disabled;
             edit_button.Enabled = !disabled;
-            search_button.Enabled = !disabled;
+            search_button.Enabled = disabled;
 
             datetime_field.Value = DateTime.Now;
         }
 
+        public bool Is_Empty_Grid_View(DataGridView name, string cell_name) {
+
+            bool empty = true;
+            foreach (DataGridViewRow rw in name.Rows)
+            {
+                if (rw.Cells[cell_name].Value != null || rw.Cells[cell_name].Value != DBNull.Value  )
+                {
+                    empty = false; 
+                }
+            }
+
+            return empty;
+        }
+
         private void add_new_button_Click(object sender, EventArgs e)
         {
+            // Create new Id 
+            DataTable tble = entry.Create_Entry_Id();
+
+            if (tble.Rows.Count == 0) {
+                return;
+            }
+
+            // Clear DataGridView 
+            if ( this.Is_Empty_Grid_View( datagridview_items, "account_name" ) == false ) {
+
+                DataTable table = this.Journal_Details;
+                table.Rows.Clear();
+                this.Fill_DataGridView_Items(table);
+
+            }
+
+            // Fill IDs
+            this.Fill_Journal_Fields(tble);
+
+            // Disable 
             this.Disable_Form_Fields(false);
+
         }
 
         private void save_button_Click(object sender, EventArgs e)
         {
+
+
+            // Disable Elements 
             this.Disable_Form_Fields(true);
+
+            //--------------------------------------------
+            // Journals
+            //--------------------------------------------
+            DataTable journs = new DataTable();
+            journs.Columns.Add("id"); // int
+            journs.Columns.Add("updated_by");// int
+            journs.Columns.Add("doc_id"); // int
+            journs.Columns.Add("doc_type"); // int 
+            journs.Columns.Add("description"); // string
+            journs.Columns.Add("is_forwarded");// bool
+            journs.Columns.Add("entry_number"); // string
+            journs.Columns.Add("updated_date"); // datetime
+
+            DataRow journs_rw = journs.NewRow();
+            journs_rw["id"] = Convert.ToInt32(entry_id_field.Text); // int
+            journs_rw["updated_by"] = Convert.ToInt32(-1);// int
+            journs_rw["doc_id"] = Convert.ToInt32(entry_id_field.Text); // int
+            journs_rw["doc_type"] = this.Document_Type; // int 
+            journs_rw["description"] = description_field.Text.ToString(); // string
+            journs_rw["is_forwarded"] = true;// bool
+            journs_rw["entry_number"] = entry_number_field.Text.ToString(); // string
+            journs_rw["updated_date"] = Convert.ToDateTime(datetime_field.Value); // datetime
+            journs.Rows.Add(journs_rw);
+
+            //--------------------------------------------
+            // Journal Details 
+            //--------------------------------------------
+            DataTable journs_dets = new DataTable();
+            journs_dets.Columns.Add("journal_id"); // int
+            journs_dets.Columns.Add("debit");// decimal
+            journs_dets.Columns.Add("credit"); // decimal
+            journs_dets.Columns.Add("description"); // string
+            journs_dets.Columns.Add("cost_center_number"); // string
+            journs_dets.Columns.Add("date");// datetime
+            journs_dets.Columns.Add("account_number"); // string
+
+
+            DataRow drow;
+            foreach (DataGridViewRow rw in datagridview_items.Rows) {
+                if (rw.Cells["account_number"].Value != null || rw.Cells["account_number"].Value != DBNull.Value || ! String.IsNullOrWhiteSpace(rw.Cells["account_number"].Value.ToString()) )
+                {
+
+                    if (rw.Cells["account_number"].Value != null) {
+                        continue;
+                    }
+
+                    drow = journs_dets.NewRow();
+                    drow["journal_id"] = Convert.ToInt32(entry_id_field.Text); // int
+
+                    if (rw.Cells["debit"].Value != System.DBNull.Value)
+                        drow["debit"] = Convert.ToDecimal(rw.Cells["debit"].Value);// decimal
+                    else drow["debit"] = 0;
+
+                    if (rw.Cells["credit"].Value != System.DBNull.Value)
+                        drow["credit"] = Convert.ToDecimal(rw.Cells["credit"].Value); // decimal
+                    else drow["credit"] = 0;
+
+                    if (rw.Cells["description"].Value != null)
+                        drow["description"] = rw.Cells["description"].Value.ToString(); // string
+                    else drow["description"] = "";
+
+                    if (rw.Cells["cost_center_number"].Value != null)
+                        drow["cost_center_number"] = rw.Cells["cost_center_number"].Value.ToString(); // string
+                    else drow["cost_center_number"] = "";
+
+
+                    drow["date"] = Convert.ToDateTime(datetime_field.Value);// datetime 
+                    drow["account_number"] = rw.Cells["account_number"].Value.ToString(); // string
+                    journs_dets.Rows.Add(drow);
+                }
+            }
+
+            // Storing 
+            entry.Update_DataSet_Of_Daily_Entries(Convert.ToInt32(entry_id_field.Text), journs, journs_dets);
+
+            // Referesh DataTables
+            this.Extract_Data_Set_In_Data_Source();
+
+            // Get Data Of Journals and Details 
+            this.Extract_Data_Set_In_Data_Source();
+
         }
     }
 }

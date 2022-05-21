@@ -11,9 +11,9 @@ namespace sales_management.PL
     class DailyEntries
     {
 
-        public DataTable Get_Entries_Except_Fields( int [] not_in ) {
+        public DataSet Get_Entries_Except_Fields( int [] not_in ) {
 
-            DataTable tble;
+            DataSet tble;
 
 
             
@@ -43,7 +43,7 @@ namespace sales_management.PL
             param[0].Value = numbers;
 
             DAL.Open();
-            tble = DAL.SelectData("Get_Entries_Except_Fields", param);
+            tble = DAL.SelectDataSet("Get_Entries_Except_Fields", param);
             DAL.Close();
 
             return tble;
@@ -162,6 +162,26 @@ namespace sales_management.PL
             DAL.ExecuteCommand("Update_Withdraw_Document", param );
             DAL.Close();
              
+        }
+        public void Update_DataSet_Of_Daily_Entries( int journal_id, DataTable header_entry, DataTable details_entry ) {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            SqlParameter[] param = new SqlParameter[3];
+
+            param[0] = new SqlParameter("@journal_id", SqlDbType.Int);
+            param[0].Value = journal_id; 
+
+            param[1] = new SqlParameter("@header_entry", SqlDbType.Structured);
+            param[1].Value = header_entry;
+
+            param[2] = new SqlParameter("@details_entry", SqlDbType.Structured);
+            param[2].Value = details_entry;
+
+            DAL.Open();
+            DAL.ExecuteCommand( "Update_DataSet_Of_Daily_Entries" , param );
+            DAL.Close();
+
         }
 
         public DataSet Search_On_Process_Reports( DateTime date_from, DateTime date_to, int enable_zakat ) {
