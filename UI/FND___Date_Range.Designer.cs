@@ -109,7 +109,7 @@
             this.Entry_Report.ReportResourceString = resources.GetString("Entry_Report.ReportResourceString");
             this.Entry_Report.RegisterData(this.journals_statment, "journals_statment");
             // 
-            // FRM_Date_Range
+            // FND___Date_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,7 +121,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "FRM_Date_Range";
+            this.Name = "FND___Date_Range";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;

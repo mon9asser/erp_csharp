@@ -122,7 +122,7 @@
   </metadata>
   <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/20/2022 14:20:15" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/22/2022 23:27:48" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -157,8 +157,8 @@
       &lt;TextObject Name="Text3" Left="292.95" Top="66.15" Width="56.7" Height="18.9" Text="إلي تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
       &lt;TextObject Name="Text4" Left="349.65" Top="66.15" Width="85.05" Height="18.9" Text="[FormatDateTime([Query_Data.date_from], &amp;quot;Short Date&amp;quot;) ]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
       &lt;TextObject Name="Text5" Left="189" Top="66.15" Width="103.95" Height="18.9" Text="[FormatDateTime([Query_Data.date_to], &amp;quot;Short Date&amp;quot;) ]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-      &lt;TextObject Name="Text7" Left="415.8" Top="122.85" Width="217.35" Height="18.9" Text="[Query_Data.account_name_1]" HorzAlign="Right" VertAlign="Center"/&gt;
-      &lt;TextObject Name="Text6" Left="9.45" Top="122.85" Width="94.5" Height="18.9" Text="[Query_Data.account_number_1]" HorzAlign="Right" VertAlign="Center"/&gt;
+      &lt;TextObject Name="Text7" Left="415.8" Top="122.85" Width="217.35" Height="18.9" Text="[Query_Data.account_name_1][IIf([Query_Data.account_name_2] != &amp;quot;&amp;quot;,&amp;quot; | &amp;quot; + [Query_Data.account_name_2] ,&amp;quot;&amp;quot;)]" HorzAlign="Right" VertAlign="Center"/&gt;
+      &lt;TextObject Name="Text6" Left="9.45" Top="122.85" Width="94.5" Height="18.9" Text="[Query_Data.account_number_1][IIf([Query_Data.account_number_2] != &amp;quot;&amp;quot;,&amp;quot; | &amp;quot; + [Query_Data.account_number_2] ,&amp;quot;&amp;quot;)]" HorzAlign="Right" VertAlign="Center"/&gt;
       &lt;TextObject Name="Text8" Left="633.15" Top="122.85" Width="75.6" Height="18.9" Text="إسم الحساب" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
       &lt;TextObject Name="Text9" Left="103.95" Top="122.85" Width="75.6" Height="18.9" Text="رقم الحساب" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
     &lt;/ReportTitleBand&gt;
@@ -237,7 +237,7 @@
   </metadata>
   <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/20/2022 14:20:15" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/22/2022 23:27:48" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;

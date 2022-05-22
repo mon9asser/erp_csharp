@@ -460,16 +460,20 @@ namespace sales_management.UI
             decimal credits = 0;
 
             DataTable table = (DataTable)datagridview_items.DataSource;
-            foreach (DataRow row in table.Rows)
+            try
             {
+                foreach (DataRow row in table.Rows)
+                {
 
-                if (row["debit"] != "" && row["debit"] != System.DBNull.Value )
-                    debits += Convert.ToDecimal(row["debit"]);
+                    if (row["debit"] != "" && row["debit"] != System.DBNull.Value)
+                        debits += Convert.ToDecimal(row["debit"]);
 
-                if(row["credit"] != "" && row["credit"] != System.DBNull.Value)
-                    credits += Convert.ToDecimal(row["credit"]);
+                    if (row["credit"] != "" && row["credit"] != System.DBNull.Value)
+                        credits += Convert.ToDecimal(row["credit"]);
 
+                }
             }
+            catch (Exception) { }
 
             decimal[] calculated = new decimal[2];
 

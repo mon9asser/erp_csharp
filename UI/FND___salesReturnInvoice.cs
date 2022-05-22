@@ -1526,7 +1526,7 @@ namespace sales_management.UI
                     salesRow_vat_to["debit"] = Convert.ToDecimal(vat_amount.Text);
                     salesRow_vat_to["description"] = "ض.ق.م مردودات";
                     salesRow_vat_to["cost_center_number"] = "-1";
-                    salesRow_vat_to["date"] = datemade.Value;
+                    salesRow_vat_to["date"] = Convert.ToDateTime(datemade.Value);
                     salesRow_vat_to["account_number"] = setting["sales_vat_account"].ToString();
                     entry_details.Rows.Add(salesRow_vat_to);
                 }
