@@ -15,9 +15,10 @@ namespace sales_management.UI
 
 
         PL.DailyEntries entry = new PL.DailyEntries();
-        DataSet DataSource;
-        DataTable Journals;
-        DataTable Journal_Details; 
+        public DataSet DataSource;
+        public DataTable Journals;
+        public DataTable Journal_Details;
+        public int Current_Index = 0;
         public int Document_Type = 4;
 
         public Entry_Details()
@@ -27,15 +28,23 @@ namespace sales_management.UI
             this.Extract_Data_Set_In_Data_Source();
 
             // Disable Elements 
-            this.Disable_Form_Fields(); 
+            this.Disable_Form_Fields();
 
+            // Load Data 
+            this.Load_data_Entries();
+        }
+
+        public void Load_data_Entries() {
             // Fill All Data 
             int id = -1;
-            if (this.Journals.Rows.Count != 0) {
+            if (this.Journals.Rows.Count != 0)
+            {
                 id = Convert.ToInt32(this.Journals.Rows[this.Journals.Rows.Count - 1]["id"]);
             }
              
-            this.Fill_Data_Fields(id);
+            this.Fill_Datagridview_accounts(id);
+            this.Fill_Journal_Fields(id);
+
         }
 
         public void Extract_Data_Set_In_Data_Source() {
@@ -48,48 +57,79 @@ namespace sales_management.UI
 
             this.DataSource = this.entry.Get_Entries_Except_Fields(except_types);
             this.Journals = this.DataSource.Tables[0]; 
-            this.Journal_Details = this.DataSource.Tables[1]; 
+            this.Journal_Details = this.DataSource.Tables[1];
+
+            if (this.Journals.Rows.Count == 0) {
+                this.Current_Index = 0;
+            } else 
+            this.Current_Index = (this.Journals.Rows.Count - 1);
+
+
+            this.set_paging_number();
         }
 
-        public void Fill_Data_Fields(int jorunal_id = -1 ) {
+   
 
-            DataTable table = this.Journal_Details; 
-            if (jorunal_id != -1 && this.Journal_Details.Rows.Count != 0) {
-                table = this.Journal_Details.Select("journal_id = '"+ jorunal_id  + "'", "journal_id DESC").CopyToDataTable();
+        public void Fill_Datagridview_accounts(int journal_id = -1 ) {
+
+            DataTable details_table = new DataTable();
+
+            // Copy Columns 
+            foreach (DataColumn colums in this.Journal_Details.Columns)
+            {
+                details_table.Columns.Add(colums.ColumnName.ToString());
             }
 
-            //MessageBox.Show(this.Journal_Details.Rows.Count.ToString());
-            // Re Ordering 
-            table.Columns["account_number"].SetOrdinal(0);
-            table.Columns["account_name"].SetOrdinal(1);
-            table.Columns["description"].SetOrdinal(2);
-            table.Columns["debit"].SetOrdinal(3);
-            table.Columns["credit"].SetOrdinal(4);
+            
+            // Copy Selected Rows 
+            DataRow drow;
+            foreach (DataRow rox in this.Journal_Details.Rows)
+            {
+                 
+                if (rox["journal_id"].ToString() == journal_id.ToString()) {
+                   
+                    drow = details_table.NewRow();
+                    foreach (DataColumn colums in this.Journal_Details.Columns)
+                    {
+                        drow[colums.ColumnName.ToString()] = rox[colums.ColumnName.ToString()];
+                    }
+                    details_table.Rows.Add(drow);
 
-            DataTable table_header = this.Journal_Details;
-            if (this.Journal_Details.Rows.Count == 0) {
-                table_header = this.Journals;
+                }
             }
 
-            // Prepare Basic Fields 
-            this.Fill_Journal_Fields(table_header);  
-
+            // ReOrdering Data 
+            details_table.Columns["account_number"].SetOrdinal(0);
+            details_table.Columns["account_name"].SetOrdinal(1);
+            details_table.Columns["description"].SetOrdinal(2);
+            details_table.Columns["debit"].SetOrdinal(3);
+            details_table.Columns["credit"].SetOrdinal(4);
+             
             // Prepare DataGrid Items 
-            this.Fill_DataGridView_Items(table);
-
+            this.Fill_DataGridView_Items(details_table);
         }
 
-        public void Fill_Journal_Fields(DataTable table) {
+        public void Fill_Journal_Fields(int id ) {
 
-            if (table.Rows.Count == 0) {
+            
+            if (this.Journals.Rows.Count == 0) {
                 return;
             }
 
-            DataRow row__ = table.Rows[table.Rows.Count - 1];
+            DataRow row__ = this.Journals.Rows[this.Journals.Rows.Count - 1];
+
+            foreach (DataRow row in this.Journals.Rows) {
+                if (row["id"].ToString().Equals(id.ToString()) ) {
+                    row__ = row;
+                }
+            }
+
+            
             entry_number_field.Text = row__["entry_number"].ToString();
             entry_id_field.Text = row__["id"].ToString();
             description_field.Text = row__["description"].ToString();
-            datetime_field.Value = ( row__["updated_date"] == "" ) ? DateTime.Now : Convert.ToDateTime(row__["updated_date"]);
+            if(row__["updated_date"] != System.DBNull.Value)
+            datetime_field.Value = Convert.ToDateTime(row__["updated_date"]);
 
         }
 
@@ -196,22 +236,19 @@ namespace sales_management.UI
         {
             // Create new Id 
             DataTable tble = entry.Create_Entry_Id();
+            this.Extract_Data_Set_In_Data_Source();
 
             if (tble.Rows.Count == 0) {
                 return;
             }
+             
+            // Fill Top Fields 
+            this.Fill_Journal_Fields(Convert.ToInt32(tble.Rows[0]["id"]));
 
-            // Clear DataGridView 
-            if ( this.Is_Empty_Grid_View( datagridview_items, "account_name" ) == false ) {
+            // Fill Data Grid Items  
+            this.Fill_Datagridview_accounts(Convert.ToInt32(tble.Rows[0]["id"]));
 
-                DataTable table = this.Journal_Details;
-                table.Rows.Clear();
-                this.Fill_DataGridView_Items(table);
-
-            }
-
-            // Fill IDs
-            this.Fill_Journal_Fields(tble);
+            this.nextCallback();
 
             // Disable 
             this.Disable_Form_Fields(false);
@@ -221,6 +258,11 @@ namespace sales_management.UI
         private void save_button_Click(object sender, EventArgs e)
         {
 
+
+            if ((total_credit.Text != total_debit.Text) && (total_credit.Text != "" && total_debit.Text != "")) {
+                MessageBox.Show("من فضلك تأكد من البيانات يجب ان يكون الجانب المدين متساوي مع الجانب الدائن تماما", "حدث خطأ", MessageBoxButtons.OK );
+                return;
+            }
 
             // Disable Elements 
             this.Disable_Form_Fields(true);
@@ -319,7 +361,7 @@ namespace sales_management.UI
 
         private void datagridview_items_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == -1 || e.RowIndex == -1 )
+            if (e.ColumnIndex == -1 || e.RowIndex == -1 || datagridview_items.ReadOnly )
             {
                 return;
             }
@@ -409,6 +451,195 @@ namespace sales_management.UI
                 journal.ShowDialog();
 
             }
+
+        }
+
+        public decimal[] calculate_debit_credit_values() {
+
+            decimal debits = 0;
+            decimal credits = 0;
+
+            DataTable table = (DataTable)datagridview_items.DataSource;
+            foreach (DataRow row in table.Rows)
+            {
+
+                if (row["debit"] != "" && row["debit"] != System.DBNull.Value )
+                    debits += Convert.ToDecimal(row["debit"]);
+
+                if(row["credit"] != "" && row["credit"] != System.DBNull.Value)
+                    credits += Convert.ToDecimal(row["credit"]);
+
+            }
+
+            decimal[] calculated = new decimal[2];
+
+            calculated[0] = debits;
+            calculated[1] = credits;
+
+            return calculated;
+        }
+
+        private void datagridview_items_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+            decimal[] calcs = this.calculate_debit_credit_values();
+
+            decimal debit = calcs[0];
+            decimal credit = calcs[1];
+
+            total_credit.Text = credit.ToString();
+            total_debit.Text = debit.ToString();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            if (entry_id_field.Text == "") {
+                return;
+            }
+
+            // Delete Entry
+            this.entry.Delete_Records_With_Entries(Convert.ToInt32(entry_id_field.Text));
+
+            // Referesh The Data 
+            this.Extract_Data_Set_In_Data_Source();
+
+            // Disable Elements 
+            this.Disable_Form_Fields();
+
+            // Prev Row 
+            this.prevCallback();
+
+            // Load Data 
+            this.Load_data_Entries();
+
+        }
+
+        private void search_button_Click(object sender, EventArgs e)
+        {
+            UI.Search_On_Entries soe = new UI.Search_On_Entries(this.Document_Type, this );
+            soe.ShowDialog();
+        }
+
+        private void first_record_button_Click(object sender, EventArgs e)
+        {
+            if (this.Journals.Rows.Count == 0) {
+                return;
+            }
+            this.Current_Index = 0;
+
+            // Search On Data 
+            int id = Convert.ToInt32(this.Journals.Rows[this.Current_Index]["id"]);
+            this.Fill_Datagridview_accounts(id);
+            this.Fill_Journal_Fields(id);
+
+            this.set_paging_number();
+        }
+
+        public void prevCallback() {
+
+            if (this.Journals.Rows.Count == 0) {
+                return;
+            }
+
+            this.Current_Index = this.Current_Index - 1;
+            if (this.Current_Index < 0)
+            {
+                this.Current_Index = 0;
+            }
+
+            // Search On Data 
+            int id = Convert.ToInt32(this.Journals.Rows[this.Current_Index]["id"]);
+            this.Fill_Datagridview_accounts(id);
+            this.Fill_Journal_Fields(id);
+
+            this.set_paging_number();
+        }
+
+        public void nextCallback()
+        {
+            if (this.Journals.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.Current_Index = this.Current_Index + 1;
+            if (this.Current_Index >= this.Journals.Rows.Count)
+            {
+                this.Current_Index = this.Journals.Rows.Count - 1;
+            }
+
+            // Search On Data 
+            int id = Convert.ToInt32(this.Journals.Rows[this.Current_Index]["id"]);
+            this.Fill_Datagridview_accounts(id);
+            this.Fill_Journal_Fields(id);
+
+            this.set_paging_number();
+        }
+
+        private void last_record_button_Click(object sender, EventArgs e)
+        {
+            if (this.Journals.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.Current_Index = this.Journals.Rows.Count - 1;
+            if (this.Journals.Rows.Count == 0) {
+                this.Current_Index = 0;
+            }
+
+            // Search On Data 
+            int id = Convert.ToInt32(this.Journals.Rows[this.Current_Index]["id"]);
+            this.Fill_Datagridview_accounts(id);
+            this.Fill_Journal_Fields(id);
+
+            this.set_paging_number();
+
+        }
+
+        private void next_button_Click(object sender, EventArgs e)
+        {
+            if (this.Journals.Rows.Count == 0)
+            {
+                return;
+            }
+
+            this.Current_Index = this.Current_Index + 1;
+            if (this.Current_Index >= this.Journals.Rows.Count) {
+                this.Current_Index = this.Journals.Rows.Count - 1;
+            }
+
+            // Search On Data 
+            int id = Convert.ToInt32(this.Journals.Rows[this.Current_Index]["id"]);
+            this.Fill_Datagridview_accounts(id);
+            this.Fill_Journal_Fields(id);
+
+            this.set_paging_number();
+        }
+
+        private void previous_button_Click(object sender, EventArgs e)
+        {
+            this.prevCallback();
+        }
+
+        public void set_paging_number() {
+
+            
+            // Left Part 
+            string all_pages = this.Journals.Rows.Count.ToString();
+            if (this.Journals.Rows.Count < 10) {
+                all_pages = "0" + all_pages;
+            }
+
+            // Right Part ( Current Page )
+            string current_page = (this.Current_Index + 1 ).ToString();
+            if ((this.Current_Index + 1 ) < 10) {
+                current_page = "0" + current_page;
+            }
+
+            current_invoice_page.Text = (all_pages + " / " + current_page);
 
         }
     }

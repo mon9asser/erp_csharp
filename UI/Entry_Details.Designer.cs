@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.entry_number_field = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.entry_id_field = new System.Windows.Forms.TextBox();
@@ -50,6 +50,7 @@
             this.total_debit = new System.Windows.Forms.TextBox();
             this.total_credit = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview_items)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,8 +121,8 @@
             this.datagridview_items.AllowUserToDeleteRows = false;
             this.datagridview_items.AllowUserToResizeColumns = false;
             this.datagridview_items.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            this.datagridview_items.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
+            this.datagridview_items.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datagridview_items.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.datagridview_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview_items.Location = new System.Drawing.Point(11, 109);
@@ -134,6 +135,7 @@
             this.datagridview_items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_items_CellContentClick);
             this.datagridview_items.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_items_CellDoubleClick);
             this.datagridview_items.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.datagridview_items_CellParsing);
+            this.datagridview_items.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_items_CellValueChanged);
             this.datagridview_items.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.datagridview_items_DataError);
             this.datagridview_items.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
@@ -141,7 +143,7 @@
             // 
             this.current_invoice_page.AutoSize = true;
             this.current_invoice_page.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.current_invoice_page.Location = new System.Drawing.Point(449, 429);
+            this.current_invoice_page.Location = new System.Drawing.Point(412, 428);
             this.current_invoice_page.Name = "current_invoice_page";
             this.current_invoice_page.Size = new System.Drawing.Size(82, 27);
             this.current_invoice_page.TabIndex = 145;
@@ -170,11 +172,12 @@
             this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.first_record_button.Image = global::sales_management.Properties.Resources.last_btn;
-            this.first_record_button.Location = new System.Drawing.Point(329, 424);
+            this.first_record_button.Location = new System.Drawing.Point(292, 423);
             this.first_record_button.Name = "first_record_button";
             this.first_record_button.Size = new System.Drawing.Size(50, 38);
             this.first_record_button.TabIndex = 144;
             this.first_record_button.UseVisualStyleBackColor = false;
+            this.first_record_button.Click += new System.EventHandler(this.first_record_button_Click);
             // 
             // last_record_button
             // 
@@ -182,11 +185,12 @@
             this.last_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.last_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.last_record_button.Image = global::sales_management.Properties.Resources.first_btn;
-            this.last_record_button.Location = new System.Drawing.Point(599, 424);
+            this.last_record_button.Location = new System.Drawing.Point(562, 422);
             this.last_record_button.Name = "last_record_button";
             this.last_record_button.Size = new System.Drawing.Size(50, 38);
             this.last_record_button.TabIndex = 143;
             this.last_record_button.UseVisualStyleBackColor = false;
+            this.last_record_button.Click += new System.EventHandler(this.last_record_button_Click);
             // 
             // next_button
             // 
@@ -194,11 +198,12 @@
             this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.next_button.Image = global::sales_management.Properties.Resources.next_btn;
-            this.next_button.Location = new System.Drawing.Point(385, 424);
+            this.next_button.Location = new System.Drawing.Point(348, 423);
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(50, 38);
             this.next_button.TabIndex = 142;
             this.next_button.UseVisualStyleBackColor = false;
+            this.next_button.Click += new System.EventHandler(this.next_button_Click);
             // 
             // previous_button
             // 
@@ -206,11 +211,12 @@
             this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previous_button.Image = global::sales_management.Properties.Resources.prev_btn;
-            this.previous_button.Location = new System.Drawing.Point(543, 424);
+            this.previous_button.Location = new System.Drawing.Point(506, 422);
             this.previous_button.Name = "previous_button";
             this.previous_button.Size = new System.Drawing.Size(50, 38);
             this.previous_button.TabIndex = 141;
             this.previous_button.UseVisualStyleBackColor = false;
+            this.previous_button.Click += new System.EventHandler(this.previous_button_Click);
             // 
             // save_button
             // 
@@ -258,6 +264,7 @@
             this.search_button.Text = "بحث";
             this.search_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.search_button.UseVisualStyleBackColor = true;
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // label4
             // 
@@ -295,11 +302,28 @@
             this.label5.Text = "إجمالى الدائن :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::sales_management.Properties.Resources.icons8_update_20;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(650, 422);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(72, 39);
+            this.button1.TabIndex = 153;
+            this.button1.Text = "حذف";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Entry_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 476);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.total_credit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.total_debit);
@@ -359,5 +383,6 @@
         private System.Windows.Forms.TextBox total_credit;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.DataGridView datagridview_items;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -19,6 +19,15 @@ total_price
 type ==> 0 => decrement 1 => 
 */ 
 
+
+ALTER proc [dbo].[Delete_Entries_And_Record]
+@id INT
+AS
+	delete from journals WHERE id=@id;
+	delete from journal_details where journal_id = @id;
+	
+	
+	
 CREATE PROC Get_Useful_Accounts
 	AS
 select * from accounts where account_number NOT IN(100,110,120,200,210,220,300,400,410,420,500,510,520) 

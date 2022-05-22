@@ -173,7 +173,7 @@ namespace sales_management.UI
                 baccd["account_name_2"] = account_name_2;
                 baccd["date_from"] = from_date_var;
                 baccd["date_to"] = to_date_var;
-                baccd["report_title"] = "هيئة الزكاة والضريبة عن الفترة";
+                baccd["report_title"] = "كشف حركة ضريبة القيمة المضافة";
                 this.DS_Statement.Tables["Query_Data"].Rows.Add(baccd);
 
                 // Build Statments And Queries 
