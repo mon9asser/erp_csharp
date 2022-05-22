@@ -140,8 +140,9 @@ namespace sales_management.UI
             datagridview_items.Columns["account_number"].HeaderText = "رقم الحساب";
             datagridview_items.Columns["account_name"].HeaderText = "اسم الحساب";
 
-            datagridview_items.Columns["account_name"].ReadOnly = true;
-            datagridview_items.Columns["account_number"].ReadOnly = true;
+            datagridview_items.Columns["debit"].ReadOnly = false;
+            datagridview_items.Columns["credit"].ReadOnly = false;
+            datagridview_items.Columns["description"].ReadOnly = false;
 
             // Add new Column Of Deletion Button
             DataGridViewButtonColumn deletion_button = new DataGridViewButtonColumn();
@@ -162,8 +163,7 @@ namespace sales_management.UI
             entry_id_field.Enabled = !disabled;
             description_field.Enabled = !disabled;
             datetime_field.Enabled = !disabled;
-            datagridview_items.ReadOnly = disabled;
-
+            datagridview_items.ReadOnly = disabled; 
 
             add_new_button.Enabled = disabled;
             save_button.Enabled = !disabled;
@@ -392,11 +392,23 @@ namespace sales_management.UI
         private void datagridview_items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (datagridview_items.ReadOnly) {
+                return;
+            }
+
             if (e.ColumnIndex == -1 || e.RowIndex == -1) {
                 return;
             }
 
 
+            string columnName = datagridview_items.Columns[e.ColumnIndex].Name.ToString();
+            
+            if (columnName == "account_number" || columnName == "account_name") {
+
+                UI.Select_Journal_Account journal = new UI.Select_Journal_Account(this.Document_Type, e.RowIndex, this );
+                journal.ShowDialog();
+
+            }
 
         }
     }

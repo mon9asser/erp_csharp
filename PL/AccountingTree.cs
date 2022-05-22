@@ -95,6 +95,22 @@ namespace sales_management.PL
             return table;
         }
 
+        public DataTable Get_Useful_Accounts()
+        {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            DataTable table = new DataTable();
+
+            DAL.Open();
+
+            table = DAL.SelectData("Get_Useful_Accounts", null);
+
+            DAL.Close();
+
+            return table;
+        }
+
         public void Delete_All_Accounts() {
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer(); 

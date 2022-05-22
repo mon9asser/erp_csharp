@@ -18,7 +18,11 @@ total_quantity
 total_price 
 type ==> 0 => decrement 1 => 
 */ 
-  
+
+CREATE PROC Get_Useful_Accounts
+	AS
+select * from accounts where account_number NOT IN(100,110,120,200,210,220,300,400,410,420,500,510,520) 
+
 CREATE TYPE [dbo].[entry_accounts_table] AS TABLE(
 	[journal_id] [int] NULL,
 	[debit] [decimal](18, 0) NULL,

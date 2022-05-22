@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.entry_number_field = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.entry_id_field = new System.Windows.Forms.TextBox();
@@ -115,9 +116,19 @@
             // 
             // datagridview_items
             // 
+            this.datagridview_items.AllowUserToAddRows = false;
+            this.datagridview_items.AllowUserToDeleteRows = false;
+            this.datagridview_items.AllowUserToResizeColumns = false;
+            this.datagridview_items.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            this.datagridview_items.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagridview_items.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.datagridview_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview_items.Location = new System.Drawing.Point(11, 109);
             this.datagridview_items.Name = "datagridview_items";
+            this.datagridview_items.ReadOnly = true;
+            this.datagridview_items.RowHeadersVisible = false;
+            this.datagridview_items.RowTemplate.Height = 30;
             this.datagridview_items.Size = new System.Drawing.Size(868, 294);
             this.datagridview_items.TabIndex = 8;
             this.datagridview_items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_items_CellContentClick);
@@ -334,7 +345,6 @@
         private System.Windows.Forms.TextBox description_field;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker datetime_field;
-        private System.Windows.Forms.DataGridView datagridview_items;
         private System.Windows.Forms.Label current_invoice_page;
         private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.Button first_record_button;
@@ -348,5 +358,6 @@
         private System.Windows.Forms.TextBox total_debit;
         private System.Windows.Forms.TextBox total_credit;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.DataGridView datagridview_items;
     }
 }

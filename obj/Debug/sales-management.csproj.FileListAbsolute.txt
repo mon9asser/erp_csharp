@@ -215,3 +215,4 @@ D:\sales-app\obj\Debug\sales_management.UI.FND___Date_Range.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND____Date_Range_Form.resources
 D:\sales-app\bin\Debug\FReports\SalesInvoice.frx
 D:\sales-app\obj\Debug\sales_management.UI.Entry_Details.resources
+D:\sales-app\obj\Debug\sales_management.UI.Select_Journal_Account.resources
