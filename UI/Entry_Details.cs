@@ -15,17 +15,23 @@ namespace sales_management.UI
 
 
         PL.DailyEntries entry = new PL.DailyEntries();
+        PL.Installings sets = new PL.Installings();
+
         public DataSet DataSource;
         public DataTable Journals;
         public DataTable Journal_Details;
+        public DataTable Settings;
         public int Current_Index = 0;
         public int Document_Type = 4;
+
+
 
         public Entry_Details()
         {
             InitializeComponent();
 
             this.Extract_Data_Set_In_Data_Source();
+            this.Settings = sets.Get_All_System_Settings();
 
             // Disable Elements 
             this.Disable_Form_Fields();
@@ -255,6 +261,45 @@ namespace sales_management.UI
 
         }
 
+        public bool zakat_vat_detection() {
+
+            bool is_right = false;
+
+            if (this.Settings.Rows.Count != 0) {
+
+                bool account_1 = false;
+                bool account_2 = false; 
+
+                string number_1 = this.Settings.Rows[0]["sales_vat_account"].ToString();
+                string number_2 = this.Settings.Rows[0]["purchases_vat_account"].ToString();
+
+                DataTable tbl = (DataTable)datagridview_items.DataSource;
+                foreach ( DataRow row in tbl.Rows ) {
+                    if (row["account_number"] != "" && row["account_number"] != System.DBNull.Value ) {
+
+                        if (number_1 == row["account_number"].ToString() ) {
+                            account_1 = true;
+                            continue;
+                        }
+
+                        if (number_2 == row["account_number"].ToString())
+                        {
+                            account_2 = true;
+                            continue;
+                        }
+                    }
+                }
+
+                if (account_1 && account_2) {
+                    is_right = true;
+                }
+
+            }
+
+            return is_right;
+        
+        }
+
         private void save_button_Click(object sender, EventArgs e)
         {
 
@@ -279,6 +324,7 @@ namespace sales_management.UI
             journs.Columns.Add("is_forwarded");// bool
             journs.Columns.Add("entry_number"); // string
             journs.Columns.Add("updated_date"); // datetime
+            journs.Columns.Add("show_balances_in_period"); // datetime
 
             DataRow journs_rw = journs.NewRow();
             journs_rw["id"] = Convert.ToInt32(entry_id_field.Text); // int
@@ -289,6 +335,7 @@ namespace sales_management.UI
             journs_rw["is_forwarded"] = true;// bool
             journs_rw["entry_number"] = entry_number_field.Text.ToString(); // string
             journs_rw["updated_date"] = Convert.ToDateTime(datetime_field.Value); // datetime
+            journs_rw["show_balances_in_period"] = this.zakat_vat_detection(); // bit 
             journs.Rows.Add(journs_rw);
 
             //--------------------------------------------
