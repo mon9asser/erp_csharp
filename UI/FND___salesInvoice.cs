@@ -594,6 +594,8 @@ namespace sales_management.UI
         {
             try
             {
+                this.lastRow = e.RowIndex;
+
                 if (e.ColumnIndex == 0)
                 {
                     this.items_datagridview.Cursor = Cursors.Hand;
@@ -1062,16 +1064,16 @@ namespace sales_management.UI
 
         private void items_datagridview_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+           
             try
             {
                 if (e.RowIndex == -1 || e.ColumnIndex == -1) return;
-
-                if (items_datagridview.ReadOnly == true)
+                this.lastRow = e.RowIndex;
+                if (items_datagridview.ReadOnly)
                 {
                     return;
                 }
-
+                
                 if (e.ColumnIndex == 2)
                 {
                     UI.Items ITEMS = new UI.Items(
@@ -1082,7 +1084,7 @@ namespace sales_management.UI
 
                 if (e.ColumnIndex == 4)
                 {
-
+                    
                     if (System.DBNull.Value.Equals(items_datagridview.Rows[this.lastRow].Cells["product_name"].Value))
                     {
                         return;
@@ -1091,13 +1093,14 @@ namespace sales_management.UI
                     this.is_change_price = true;
 
                     int product_id = Convert.ToInt32(items_datagridview.Rows[this.lastRow].Cells["product_id"].Value);
-
+                    
                     UI.ItemUnit item_units = new UI.ItemUnit(
                         this.documentType,
                         product_id,
                         this.Prods,
                         this.unitName,
-                        e.RowIndex
+                        e.RowIndex,
+                        this
                     );
 
                     item_units.ShowDialog();
@@ -1110,13 +1113,11 @@ namespace sales_management.UI
 
         public void Add_New_Item_Unit(int dataGridIndex, DataTable item_updates)
         {
-
-            try
-            {
-                if (item_updates.Rows.Count < 1)
+              if (item_updates.Rows.Count < 1)
                 {
                     return;
                 }
+               
 
                 foreach (DataRow row in item_updates.Rows)
                 {
@@ -1127,8 +1128,6 @@ namespace sales_management.UI
                 }
 
                 this.is_change_price = false;
-            }
-            catch (Exception) { }
         }
 
 
@@ -1476,6 +1475,7 @@ namespace sales_management.UI
                 entry_header.Columns.Add("is_forwarded");
                 entry_header.Columns.Add("entry_number");
                 entry_header.Columns.Add("updated_date");
+                entry_header.Columns.Add("show_balances_in_period");
 
                 DataRow entry_header_row = entry_header.NewRow();
                 entry_header_row["id"] = entry_id.Text;
@@ -1486,6 +1486,7 @@ namespace sales_management.UI
                 entry_header_row["is_forwarded"] = true;
                 entry_header_row["entry_number"] = Convert.ToDateTime(datemade.Value).Day + "/" + invoice_id.Text;
                 entry_header_row["updated_date"] = Convert.ToDateTime(datemade.Value);
+                entry_header_row["show_balances_in_period"] = false;
                 entry_header.Rows.Add(entry_header_row);
 
                 /*
@@ -1827,6 +1828,8 @@ namespace sales_management.UI
         {
             try
             {
+                this.lastRow = e.RowIndex;
+
                 if (items_datagridview.ReadOnly == true)
                 {
                     return;

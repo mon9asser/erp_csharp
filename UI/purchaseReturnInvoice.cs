@@ -1036,7 +1036,8 @@ namespace sales_management.UI
                     product_id,
                     this.Prods,
                     this.unitName,
-                    e.RowIndex
+                    e.RowIndex,
+                    this
                 );
 
                 item_units.ShowDialog();
@@ -1381,7 +1382,7 @@ namespace sales_management.UI
             entry_header.Columns.Add("is_forwarded");
             entry_header.Columns.Add("entry_number");
             entry_header.Columns.Add("updated_date");
-
+            entry_header.Columns.Add("show_balances_in_period");
             DataRow entry_header_row = entry_header.NewRow();
             entry_header_row["id"] = entry_id.Text;
             entry_header_row["updated_by"] = "-1";
@@ -1391,6 +1392,7 @@ namespace sales_management.UI
             entry_header_row["is_forwarded"] = true;
             entry_header_row["entry_number"] = Convert.ToDateTime(datemade.Value).Day + "/" + invoice_id.Text;
             entry_header_row["updated_date"] = Convert.ToDateTime(datemade.Value);
+            entry_header_row["show_balances_in_period"] = false;
             entry_header.Rows.Add(entry_header_row);
 
             /*

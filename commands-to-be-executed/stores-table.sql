@@ -13,89 +13,100 @@ Document Types
 -- إلي ح / المخزون
 -- صرف بضاعه بإذن
 */
+  
+/****** Object:  StoredProcedure [dbo].[Report_Statement_Document]    Script Date: 5/23/2022 4:10:06 PM ******/
+ALTER PROC [dbo].[Report_Statement_Document]
 
-
-
-In journals table 
-----------------------------------------------
-show_balances_in_period
-(default value or bindings => (0))
- 
- 
- 
- 
- ----------------------------------------------
- 
- USE [zakat_invoices]
-GO
-
-/****** Object:  UserDefinedTableType [dbo].[journal_header]    Script Date: 5/23/2022 2:30:08 PM ******/
-CREATE TYPE [dbo].[journal_header] AS TABLE(
-	[id] [int] NULL,
-	[updated_by] [int] NULL,
-	[doc_id] [int] NULL,
-	[doc_type] [int] NULL,
-	[description] [text] NULL,
-	[is_forwarded] [bit] NULL,
-	[entry_number] [varchar](50) NULL,
-	[updated_date] [datetime] NULL,
-	[show_balances_in_period] BIT
-)
-GO
-
-
-
- 
- 
- ---------------------------------------
- 
- 
- 
- USE [zakat_invoices]
-GO
-/****** Object:  StoredProcedure [dbo].[Update_DataSet_Of_Daily_Entries]    Script Date: 5/23/2022 2:27:41 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER proc [dbo].[Update_DataSet_Of_Daily_Entries]
-	
-	@journal_id int, 
-	@header_entry as dbo.journal_header ReadOnly,
-	@details_entry as dbo.journal_details ReadOnly
-
+	@account_1 varchar(50),
+	@account_2 varchar(50),
+	@date_from varchar(50),
+	@date_to varchar(50)
+	 
 AS 
-
 	
-	IF EXISTS ( SELECT * FROM journals WHERE id = @journal_id ) 
-	BEGIN
+-- BUILDING OPENING BALANCE WITH AUTOMAIC ROW 
+DECLARE @id AS INT 
+SET @id = NULL;
 
-	    -- DATE TIME AND DESCRIPTION  
-		IF EXISTS( SELECT 1 FROM @header_entry )
-		BEGIN
+DECLARE @jid AS INT 
+SET @jid = NULL;
 
-			UPDATE journals SET
-				[description] = header_entry.[description],
-				[updated_date] = header_entry.[updated_date],
-				[show_balances_in_period] = header_entry.[show_balances_in_period]
-			FROM [dbo].journals
-				INNER JOIN @header_entry AS header_entry 
-				ON [dbo].journals.id = header_entry.id
-				WHERE [dbo].journals.id = @journal_id
-		END
+DECLARE @description AS VARCHAR(50) 
+SET @description = 'رصيد أول المدة';
 
-		
-	END
+DECLARE @ccid AS VARCHAR(50) 
+SET @ccid = NULL;
+
+DECLARE @cdate AS DATETIME
+SET @cdate = @date_from;
+
+DECLARE @accnumber AS VARCHAR(50)
+SET @accnumber = NULL;
+
+DECLARE @credit AS DECIMAL(18,2)
+SET @credit = NULL;
+
+DECLARE @debit AS DECIMAL(18,2)
+SET @debit = NULL;
+
+DECLARE @paid_balance AS DECIMAL(18,2)
+SET @paid_balance = (SELECT  SUM( COALESCE(debit ,0) + COALESCE(credit ,0) ) from journal_details inner join journals on journal_details.journal_id = journals.id where journals.show_balances_in_period = 1 AND account_number = @account_1);
+
+DECLARE @balance AS DECIMAL(18,2) 
+SET @balance = ( SELECT SUM(COALESCE(credit ,0)) - SUM(COALESCE(debit ,0)) FROM journal_details where [date] < @date_from AND account_number = @account_1 ); 
+
+IF @account_2 != '-1'
+	SET @balance = ( SELECT SUM(COALESCE(credit ,0)) - SUM(COALESCE(debit ,0)) FROM journal_details where [date] < @date_from AND ( account_number = @account_1 OR account_number = @account_2 ) );
+
+IF @account_2 != '-1'
+	SET @paid_balance = (SELECT  SUM( COALESCE(debit ,0) + COALESCE(credit ,0) ) from journal_details inner join journals on journal_details.journal_id = journals.id where journals.show_balances_in_period = 1 and (account_number = @account_1 OR account_number = @account_2));
+
+IF @balance IS NULL 
+	SET @balance= 0.00;
 
 
+-- BUILDING MAIN QUERY ( COLLECT IT WITH THE OPENING BALANCE )
+SELECT @id AS 'id', 
+	   @jid AS 'journal_id',
+	   @description AS 'description',
+	   @ccid AS 'cost_center_number',
+	   @cdate AS 'date',
+	   @accnumber AS 'account_number',
+	   @credit AS 'credit',
+	   @debit AS 'debit',
+	   @balance AS 'balance' 
+	
+	   UNION ALL   
 
-	-- UPDATE ITEMS FIELD 
-	IF EXISTS( SELECT 1 FROM @details_entry )
-	BEGIN
+	   SELECT 
+			id,
+			journal_id,
+			[description],
+			cost_center_number,
+			[date], 
+			[account_number],
+			credit,
+			debit,
+			( SELECT @balance ) + SUM( COALESCE(credit ,0) - COALESCE(debit,0) )  OVER(ORDER BY id)  balance
+			FROM journal_details WHERE [date] BETWEEN @date_from AND @date_to AND ( account_number = @account_1 OR account_number = @account_2  )
 
-		delete from [dbo].journal_details where journal_details.journal_id = @journal_id;
-		INSERT INTO [dbo].journal_details( journal_id, debit, credit, [description], cost_center_number, account_number, [date] ) 
-			SELECT journal_id, debit, credit, [description], cost_center_number, account_number, [date] FROM @details_entry
-			
-			 
-	END
+-- CLOSING BALANCE 
+
+/*
+SELECT 
+	SUM( COALESCE(credit ,0)) AS 'credit', 
+	SUM( COALESCE(debit ,0)) AS 'debit',
+	( SUM( COALESCE(credit ,0)) - SUM( COALESCE(debit ,0) ) ) AS 'balance',
+	'الإجمالي' As 'title'
+	FROM journal_details 
+	WHERE (account_number = @account_1 OR account_number = @account_2 ) 
+	
+	UNION ALL
+	*/
+SELECT 
+	( SUM( COALESCE(credit ,0) ) - ( SELECT @paid_balance ))  AS 'credit', 
+	( SUM( COALESCE(debit ,0) ) - ( SELECT @paid_balance ))  AS 'debit', 
+	( SUM( COALESCE(credit ,0)) - SUM( COALESCE(debit ,0) ) ) AS 'balance',
+	'إجمالي الأرصدة المستحقة' As 'title'
+	FROM journal_details 
+	WHERE (account_number = @account_1 OR account_number = @account_2 );

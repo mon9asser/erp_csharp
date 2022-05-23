@@ -175,7 +175,7 @@ namespace sales_management.UI
                 baccd["date_to"] = to_date_var;
                 baccd["report_title"] = "كشف حركة ضريبة القيمة المضافة";
                 this.DS_Statement.Tables["Query_Data"].Rows.Add(baccd);
-
+                 
                 // Build Statments And Queries 
                 this.DS_Statement.Tables["Statement"].Merge(this.dstables.Tables[0]);
                 this.DS_Statement.Tables["Totals"].Merge(this.dstables.Tables[1]);

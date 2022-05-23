@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/22/2022 23:27:45" ReportInfo.CreatorVersion="2018.4.19.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/23/2022 17:41:55" ReportInfo.CreatorVersion="2018.4.19.0">
   <Dictionary>
     <TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true">
       <Column Name="id" DataType="System.Int32"/>
@@ -25,6 +25,7 @@
       <Column Name="debit" DataType="System.Decimal"/>
       <Column Name="credit" DataType="System.Decimal"/>
       <Column Name="balance" DataType="System.Decimal"/>
+      <Column Name="title" DataType="System.String"/>
     </TableDataSource>
   </Dictionary>
   <ReportPage Name="Page1">
@@ -65,7 +66,7 @@
         </TableRow>
       </TableObject>
     </PageHeaderBand>
-    <DataBand Name="Data1" Top="215.9" Width="718.2" Height="47.25" DataSource="Statement">
+    <DataBand Name="Data1" Top="215.9" Width="718.2" Height="47.25" DataSource="Statement" KeepDetail="true">
       <TableObject Name="Table2" Left="9.45" Width="699.3" Height="47.25" Border.Lines="All">
         <TableColumn Name="Column16" Width="164.43"/>
         <TableColumn Name="Column17" Width="98.28"/>
@@ -81,7 +82,7 @@
         </TableRow>
       </TableObject>
     </DataBand>
-    <ReportSummaryBand Name="ReportSummary1" Top="267.15" Width="718.2" Height="56.7">
+    <DataBand Name="Data2" Top="267.15" Width="718.2" Height="56.7" DataSource="Totals">
       <TableObject Name="Table3" Left="9.45" Width="699.25" Height="51.94" Border.Lines="All" Fill.Color="WhiteSmoke">
         <TableColumn Name="Column21" Width="164.42"/>
         <TableColumn Name="Column22" Width="98.27"/>
@@ -92,12 +93,13 @@
           <TableCell Name="Cell21" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[Totals.balance]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
           <TableCell Name="Cell22" Border.Lines="All" Border.Color="Transparent" Fill.Color="WhiteSmoke" Text="[Totals.credit]" HorzAlign="Center" VertAlign="Center"/>
           <TableCell Name="Cell23" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[Totals.debit]" HorzAlign="Center" VertAlign="Center"/>
-          <TableCell Name="Cell24" Border.Lines="All" Fill.Color="WhiteSmoke" Text="إجمالي الأرصدة المستحقة" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell24" Border.Lines="All" Fill.Color="WhiteSmoke" Text="[Totals.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" ColSpan="2"/>
           <TableCell Name="Cell25" Border.Lines="All" HorzAlign="Right" VertAlign="Center"/>
         </TableRow>
       </TableObject>
       <TextObject Name="Text15" Left="-113.4" Width="255.15" Height="56.7" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
-    </ReportSummaryBand>
-    <PageFooterBand Name="PageFooter1" Top="327.85" Width="718.2" Height="151.2"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="327.85" Width="718.2"/>
+    <PageFooterBand Name="PageFooter1" Top="331.85" Width="718.2"/>
   </ReportPage>
 </Report>

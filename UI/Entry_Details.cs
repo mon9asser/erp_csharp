@@ -64,7 +64,7 @@ namespace sales_management.UI
             this.DataSource = this.entry.Get_Entries_Except_Fields(except_types);
             this.Journals = this.DataSource.Tables[0]; 
             this.Journal_Details = this.DataSource.Tables[1];
-
+             
             if (this.Journals.Rows.Count == 0) {
                 this.Current_Index = 0;
             } else 
@@ -107,7 +107,7 @@ namespace sales_management.UI
             // ReOrdering Data 
             details_table.Columns["account_number"].SetOrdinal(0);
             details_table.Columns["account_name"].SetOrdinal(1);
-            details_table.Columns["description"].SetOrdinal(2);
+            details_table.Columns["description1"].SetOrdinal(2);
             details_table.Columns["debit"].SetOrdinal(3);
             details_table.Columns["credit"].SetOrdinal(4);
              
@@ -171,24 +171,24 @@ namespace sales_management.UI
             // VISIBLE SOME COLUMNS
             datagridview_items.Columns["debit"].ReadOnly = false;
             datagridview_items.Columns["credit"].ReadOnly = false;
-            datagridview_items.Columns["description"].ReadOnly = false;
+            datagridview_items.Columns["description1"].ReadOnly = false;
             datagridview_items.Columns["debit"].Visible = true;
             datagridview_items.Columns["credit"].Visible = true;
-            datagridview_items.Columns["description"].Visible = true;
+            datagridview_items.Columns["description1"].Visible = true;
             datagridview_items.Columns["account_number"].Visible = true;
             datagridview_items.Columns["account_name"].Visible = true;
             datagridview_items.Columns["account_name"].Width = 190;
-            datagridview_items.Columns["description"].Width = 230;
+            datagridview_items.Columns["description1"].Width = 230;
 
             datagridview_items.Columns["debit"].HeaderText = "مدين";
             datagridview_items.Columns["credit"].HeaderText = "دائن";
-            datagridview_items.Columns["description"].HeaderText = "شرح";
+            datagridview_items.Columns["description1"].HeaderText = "شرح";
             datagridview_items.Columns["account_number"].HeaderText = "رقم الحساب";
             datagridview_items.Columns["account_name"].HeaderText = "اسم الحساب";
 
             datagridview_items.Columns["debit"].ReadOnly = false;
             datagridview_items.Columns["credit"].ReadOnly = false;
-            datagridview_items.Columns["description"].ReadOnly = false;
+            datagridview_items.Columns["description1"].ReadOnly = false;
 
             // Add new Column Of Deletion Button
             DataGridViewButtonColumn deletion_button = new DataGridViewButtonColumn();
@@ -370,9 +370,7 @@ namespace sales_management.UI
                         drow["credit"] = Convert.ToDecimal(rw["credit"]); // decimal
                     else drow["credit"] = 0;
 
-                    if (rw["description"] != null)
-                        drow["description"] = rw["description"].ToString(); // string
-                    else drow["description"] = "";
+                    drow["description"] = rw["description1"].ToString(); // string
 
                     if (rw["cost_center_number"] != null)
                         drow["cost_center_number"] = rw["cost_center_number"].ToString(); // string
@@ -417,7 +415,7 @@ namespace sales_management.UI
   
                 datagridview_items.Rows[e.RowIndex].Cells["account_number"].Value = "";
                 datagridview_items.Rows[e.RowIndex].Cells["account_name"].Value = "";
-                datagridview_items.Rows[e.RowIndex].Cells["description"].Value = "";
+                datagridview_items.Rows[e.RowIndex].Cells["description1"].Value = "";
                 datagridview_items.Rows[e.RowIndex].Cells["debit"].Value = 0;
                 datagridview_items.Rows[e.RowIndex].Cells["credit"].Value =0;
 

@@ -18,7 +18,64 @@ namespace sales_management.UI
         private int product_id; 
         DataTable products;
         DataTable units;
+
         Export_Document Expo_doc;
+        FND___salesReturnInvoice SalesReturnInv;
+        FND___salesInvoice SalesInv;
+        purchaseInvoice purchaseInc;
+        purchaseReturnInvoice purchaseReturnInv;
+
+        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, FND___salesReturnInvoice documentinvoices)
+        {
+
+            InitializeComponent();
+
+            this.doc_type = type;
+            this.product_id = product_id;
+            this.products = products;
+            this.units = units;
+            this.datagrid_row_index = index;
+            this.SalesReturnInv = documentinvoices;
+
+            this.load_combo_box();
+            this.load_item_name();
+            this.load_dataGrid_prices();
+        }
+
+        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, FND___salesInvoice documentinvoices)
+        {
+
+            InitializeComponent();
+
+            
+            this.doc_type = type;
+            this.product_id = product_id;
+            this.products = products;
+            this.units = units;
+            this.datagrid_row_index = index;
+            this.SalesInv = documentinvoices;
+
+            this.load_combo_box();
+            this.load_item_name();
+            this.load_dataGrid_prices();
+        }
+
+        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, purchaseReturnInvoice documentinvoices)
+        {
+
+            InitializeComponent();
+
+            this.doc_type = type;
+            this.product_id = product_id;
+            this.products = products;
+            this.units = units;
+            this.datagrid_row_index = index;
+            this.purchaseReturnInv = documentinvoices;
+
+            this.load_combo_box();
+            this.load_item_name();
+            this.load_dataGrid_prices();
+        }
 
         public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, Export_Document expdocs ) {
 
@@ -36,11 +93,29 @@ namespace sales_management.UI
             this.load_dataGrid_prices();
         }
 
+        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, purchaseInvoice purchaseinvoice )
+        {
+
+            InitializeComponent();
+
+            this.doc_type = type;
+            this.product_id = product_id;
+            this.products = products;
+            this.units = units;
+            this.datagrid_row_index = index;
+            this.purchaseInc = purchaseinvoice;
+
+            this.load_combo_box();
+            this.load_item_name();
+            this.load_dataGrid_prices();
+        }
+
         public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index)
         {
 
             InitializeComponent();
 
+           // MessageBox.Show(index.ToString());
             this.doc_type = type;
             this.product_id = product_id;
             this.products = products;
@@ -265,26 +340,24 @@ namespace sales_management.UI
             row["unit_name"] = datagridprices_items.Rows[e.RowIndex].Cells["unit_shortcut"].Value.ToString();
             row["unit_price"] = datagridprices_items.Rows[e.RowIndex].Cells["unit_price"].Value.ToString();
             currentItem.Rows.Add(row);
-
              
-
             switch (this.doc_type)
             {
 
                 case 1:
-                    UI.purchaseInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem );
+                    this.purchaseInc.Add_New_Item_Unit(this.datagrid_row_index, currentItem );
                     break;
 
                 case 0:
-                    UI.FND___salesInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    this.SalesInv.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
                 case 2:
-                    UI.FND___salesReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    this.SalesReturnInv.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
                 case 3:
-                    UI.purchaseReturnInvoice.GetForm.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
+                    this.purchaseReturnInv.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 
                 case 6:

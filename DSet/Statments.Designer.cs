@@ -1045,6 +1045,8 @@ namespace sales_management.DSet {
             
             private global::System.Data.DataColumn columnbalance;
             
+            private global::System.Data.DataColumn columntitle;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TotalsDataTable() {
@@ -1104,6 +1106,14 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn titleColumn {
+                get {
+                    return this.columntitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1139,12 +1149,13 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TotalsRow AddTotalsRow(decimal debit, decimal credit, decimal balance) {
+            public TotalsRow AddTotalsRow(decimal debit, decimal credit, decimal balance, string title) {
                 TotalsRow rowTotalsRow = ((TotalsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         debit,
                         credit,
-                        balance};
+                        balance,
+                        title};
                 rowTotalsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTotalsRow);
                 return rowTotalsRow;
@@ -1170,6 +1181,7 @@ namespace sales_management.DSet {
                 this.columndebit = base.Columns["debit"];
                 this.columncredit = base.Columns["credit"];
                 this.columnbalance = base.Columns["balance"];
+                this.columntitle = base.Columns["title"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1181,6 +1193,8 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columncredit);
                 this.columnbalance = new global::System.Data.DataColumn("balance", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbalance);
+                this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntitle);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1849,6 +1863,22 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string title {
+                get {
+                    try {
+                        return ((string)(this[this.tableTotals.titleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'title\' in table \'Totals\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotals.titleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdebitNull() {
                 return this.IsNull(this.tableTotals.debitColumn);
             }
@@ -1881,6 +1911,18 @@ namespace sales_management.DSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetbalanceNull() {
                 this[this.tableTotals.balanceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IstitleNull() {
+                return this.IsNull(this.tableTotals.titleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SettitleNull() {
+                this[this.tableTotals.titleColumn] = global::System.Convert.DBNull;
             }
         }
         
