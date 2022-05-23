@@ -567,6 +567,8 @@ namespace sales_management.UI
             {
                 this.items_datagridview.Cursor = Cursors.Default;
             }
+
+            this.lastRow = e.RowIndex;
         }
 
         public void Load_Target_Accounts(int paymentType)
@@ -996,7 +998,7 @@ namespace sales_management.UI
             {
                 return;
             }
-
+            this.lastRow = e.RowIndex;
 
             if (e.ColumnIndex == 2)
             {
@@ -1600,6 +1602,7 @@ namespace sales_management.UI
                 return;
             }
 
+            this.lastRow = e.RowIndex;
             string colName = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
 
             if (colName != "deletion_et_button")
@@ -1745,6 +1748,11 @@ namespace sales_management.UI
             int id = Convert.ToInt32(this.Purchase_Table.Rows[this.currentInvoiceRowIndex]["id"]);
 
             this.refill_datagridview(id, items_datagridview);
+        }
+
+        private void items_datagridview_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }

@@ -576,6 +576,8 @@ namespace sales_management.UI
             {
                 this.items_datagridview.Cursor = Cursors.Default;
             }
+
+            this.lastRow = e.RowIndex;
         }
 
         public void Load_Target_Accounts(int paymentType)
@@ -1009,7 +1011,7 @@ namespace sales_management.UI
             {
                 return;
             }
-
+            this.lastRow = e.RowIndex;
 
             if (e.ColumnIndex == 2)
             {
@@ -1629,7 +1631,7 @@ namespace sales_management.UI
             {
                 return;
             }
-
+            this.lastRow = e.RowIndex;
             string colName = items_datagridview.Columns[e.ColumnIndex].Name.ToString();
 
             if (colName != "deletion_et_button")

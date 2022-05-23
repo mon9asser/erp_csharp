@@ -2083,5 +2083,10 @@ namespace sales_management.UI
            vier.Show();
 
         }
+
+        private void items_datagridview_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
 }
