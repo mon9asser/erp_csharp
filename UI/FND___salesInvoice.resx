@@ -305,7 +305,7 @@
   </metadata>
   <data name="salesInvoice_frx.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 18:28:39" ReportInfo.Modified="05/23/2022 23:58:46" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 18:28:39" ReportInfo.Modified="05/24/2022 15:48:26" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Sales_Invoice" ReferenceName="sales_invoice_datasource.Sales_Invoice" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.String"/&gt;
@@ -359,7 +359,7 @@
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/ReportTitleBand&gt;
-    &lt;PageHeaderBand Name="PageHeader1" Top="316.55" Width="302.4" Height="28.35"&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="316.33" Width="302.4" Height="28.35"&gt;
       &lt;TextObject Name="Text2" Left="444.15" Width="94.5" Height="18.9" Text="product_name"/&gt;
       &lt;TableObject Name="Table3" Width="264.61" Height="28.35"&gt;
         &lt;TableColumn Name="Column4" Width="54.34"/&gt;
@@ -375,21 +375,23 @@
       &lt;/TableObject&gt;
       &lt;LineObject Name="Line1" Left="264.6" Top="28.35" Width="-264.6" Border.Width="0.5" Diagonal="true"/&gt;
     &lt;/PageHeaderBand&gt;
-    &lt;DataBand Name="Data1" Top="346.9" Width="302.4" Height="37.8" DataSource="Sales_Invoice_Items"&gt;
+    &lt;DataBand Name="Data1" Top="346.46" Width="302.4" Height="37.8" DataSource="Sales_Invoice_Items"&gt;
       &lt;TableObject Name="Table4" Width="264.61" Height="37.8"&gt;
         &lt;TableColumn Name="Column8" Width="54.34"/&gt;
         &lt;TableColumn Name="Column9" Width="35.44"/&gt;
-        &lt;TableColumn Name="Column10" Width="73.24"/&gt;
-        &lt;TableColumn Name="Column11" Width="101.59"/&gt;
+        &lt;TableColumn Name="Column10" Width="25.99"/&gt;
+        &lt;TableColumn Name="Column11" Width="44.89"/&gt;
+        &lt;TableColumn Name="Column16" Width="103.95"/&gt;
         &lt;TableRow Name="Row4" Height="37.8"&gt;
           &lt;TableCell Name="Cell8" Border.Lines="Left, Top, Bottom" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.total_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt"/&gt;
           &lt;TableCell Name="Cell9" Border.Lines="Top, Bottom" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.unit_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt"/&gt;
-          &lt;TableCell Name="Cell10" Border.Lines="Top, Bottom" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.quantity] ( [Sales_Invoice_Items.unit_name]  ) " HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt"/&gt;
-          &lt;TableCell Name="Cell11" Border.Lines="Right, Top, Bottom" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.product_name]" Padding="5, 5, 5, 5" HorzAlign="Right" VertAlign="Center" Font="Arial, 7pt"/&gt;
+          &lt;TableCell Name="Cell10" Border.Lines="Top, Bottom" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.unit_name]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="Arial, 6pt"/&gt;
+          &lt;TableCell Name="Cell11" Border.Lines="Right, Top, Bottom" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.quantity]" Padding="5, 5, 5, 5" HorzAlign="Right" VertAlign="Center" Font="Arial, 7pt"/&gt;
+          &lt;TableCell Name="Cell21" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="[Sales_Invoice_Items.product_name]" Padding="1, 1, 5, 1" HorzAlign="Right" Font="Arial, 8pt"/&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/DataBand&gt;
-    &lt;ReportSummaryBand Name="ReportSummary1" Top="386.7" Width="302.4" Height="302.4" Guides="198.45"&gt;
+    &lt;ReportSummaryBand Name="ReportSummary1" Top="386.03" Width="302.4" Height="302.4" Guides="198.45"&gt;
       &lt;TextObject Name="Text8" Top="18.9" Width="264.6" Height="18.9" Text=" %الإجمالى شامل ضريبة القيمة المضافة 15 " HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
       &lt;TableObject Name="Table5" Top="47.25" Width="264.63" Height="37.8"&gt;
         &lt;TableColumn Name="Column12" Width="106.32"/&gt;
@@ -413,7 +415,7 @@
       &lt;TextObject Name="Text9" Top="255.15" Width="264.6" Height="18.9" Text="رابط المتجر" HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt, style=Bold"/&gt;
       &lt;TextObject Name="Text10" Top="264.6" Width="264.6" Height="18.9" Text="https://anbareloud.com/" HorzAlign="Center" VertAlign="Center" Font="Arial, 6pt, style=Bold"/&gt;
     &lt;/ReportSummaryBand&gt;
-    &lt;PageFooterBand Name="PageFooter1" Top="691.1" Width="302.4"/&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="690.21" Width="302.4"/&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FastReport;
 
 namespace sales_management.UI
 {
@@ -1682,11 +1683,13 @@ namespace sales_management.UI
 
             try
             {
-                ReportDocument cryRpt = new ReportDocument();
+                /*
+                 * ReportDocument cryRpt = new ReportDocument();
                 string path = Application.StartupPath + "\\Reports\\SalesInvoice.rpt";
                 cryRpt.Load(path);
                 cryRpt.SetDataSource(this.CRT_DataSet);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
+                */
             }
              catch (Exception) { }
         }
@@ -2067,7 +2070,16 @@ namespace sales_management.UI
             {
                 this.Store_Invoice_Data();
                 this.Build_Data_Set_Of_Crystal_Report();
-                this.Print_This_Invoice();
+                this.Print_This_Invoice(); 
+
+                UI.FND___Viewer vier = new UI.FND___Viewer(
+                   "\\FReports\\SalesInvoice.frx",
+                   this.CRT_DataSet,
+                   "sales_invoice_datasource",
+                   "فاتورة المبيعات", 
+                   true
+               );
+            
             }
             catch (Exception) { }
 

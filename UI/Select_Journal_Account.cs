@@ -13,7 +13,7 @@ namespace sales_management.UI
     public partial class Select_Journal_Account : Form
     {
 
-        Entry_Details Entry;
+        FND___Entry_Details Entry;
 
         public int document_type = -1;
         public int DG_Index = -1;
@@ -24,7 +24,7 @@ namespace sales_management.UI
 
 
         // Add Journal Entries => doc type 4
-        public Select_Journal_Account( int doc_type, int index, Entry_Details entry )
+        public Select_Journal_Account( int doc_type, int index, FND___Entry_Details entry )
         {
             this.Useful_Accounts = this.Tree.Get_Useful_Accounts();
             this.document_type = doc_type;

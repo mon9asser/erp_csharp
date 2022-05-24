@@ -2068,19 +2068,22 @@ namespace sales_management.UI
         private void button2_Click(object sender, EventArgs e)
         {
 
-            
-            this.Store_Invoice_Data();
-            this.Build_Data_Set_Of_Crystal_Report();
-            this.Print_This_Invoice(); 
 
-            UI.Viewer vier = new UI.Viewer(
-               "\\FReports\\SalesInvoice.frx",
-               this.CRT_DataSet,
-               "sales_invoice_datasource",
-               "فاتورة المبيعات"
-           );
-           
-           vier.Show();
+            try
+            {
+                this.Store_Invoice_Data();
+                this.Build_Data_Set_Of_Crystal_Report();
+                this.Print_This_Invoice();
+
+                UI.FND___Viewer vier = new UI.FND___Viewer(
+                   "\\FReports\\SalesInvoice.frx",
+                   this.CRT_DataSet,
+                   "sales_invoice_datasource",
+                   "فاتورة المبيعات",
+                   true
+               );
+            }
+            catch (Exception) { }
 
         }
 

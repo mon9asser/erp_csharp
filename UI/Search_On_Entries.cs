@@ -13,10 +13,10 @@ namespace sales_management.UI
     public partial class Search_On_Entries : Form
     {
 
-        Entry_Details Entries;
+        FND___Entry_Details Entries;
         public int document_type = -1;
 
-        public Search_On_Entries( int doc_type, Entry_Details entry )
+        public Search_On_Entries( int doc_type, FND___Entry_Details entry )
         {
 
             this.Entries = entry;

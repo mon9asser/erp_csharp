@@ -16,7 +16,7 @@ namespace sales_management.UI
         DataTable table;
         public int InstanceType = 0;
         public UI.Add_New_Entry Entry;
-        public Export_Document Expo_Doc;
+        public FND___Export_Document Expo_Doc;
         public static ___Accounts frm;
 
         static void frm_formClosed(object sernder, FormClosedEventArgs e)
@@ -56,7 +56,7 @@ namespace sales_management.UI
             } catch (Exception) { }
         }
 
-        public ___Accounts(int instanceId, Export_Document expo_doc)
+        public ___Accounts(int instanceId, FND___Export_Document expo_doc)
         {
 
             InitializeComponent();

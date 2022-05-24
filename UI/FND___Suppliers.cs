@@ -223,9 +223,9 @@ namespace sales_management.UI
                         this.Purchase_Document.legend_number.Text = legend_number_;
                         break;
                     case 3:
-                        this.Purchase_Document.customer_id.Text = customerId;
-                        this.Purchase_Document.customer_name.Text = customerName;
-                        this.Purchase_Document.legend_number.Text = legend_number_;
+                        this.Return_Purchase_Document.customer_id.Text = customerId;
+                        this.Return_Purchase_Document.customer_name.Text = customerName;
+                        this.Return_Purchase_Document.legend_number.Text = legend_number_;
                         break;
                 }
 

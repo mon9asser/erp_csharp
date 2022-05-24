@@ -13,100 +13,102 @@ Document Types
 -- إلي ح / المخزون
 -- صرف بضاعه بإذن
 */
-  
-/****** Object:  StoredProcedure [dbo].[Report_Statement_Document]    Script Date: 5/23/2022 4:10:06 PM ******/
-ALTER PROC [dbo].[Report_Statement_Document]
 
-	@account_1 varchar(50),
-	@account_2 varchar(50),
-	@date_from varchar(50),
-	@date_to varchar(50)
+
+
+declare @date_from as datetime
+set @date_from = '2022-05-19 00:00:00.000';
+
+declare @date_to as datetime
+set @date_to = '2022-05-23 23:59:59.000';
+
+
+declare @vat_value as decimal(18,2);
+set @vat_value = (select CAST(vat_value as decimal(18,2)) from settings where vat_value != ''); 
+ 
+
+SELECT 
+	product_id, 
+	name,
+	shortcut,
+	count(*) 'sale_number', 
+	sum(CAST(total_quantity AS DECIMAL(18,2))) 'quantity', 
+	sum(CAST(total_price  AS DECIMAL(18,2))) 'sale_price', 
+	sum(CAST(total_cost  AS DECIMAL(18,2))) 'cost_price', 
+	( sum(CAST(total_price  AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) 'net_profit' 
+FROM products
+	INNER JOIN document_details  
+		ON document_details.product_id = products.id   
+	INNER JOIN invoice_sales
+		ON document_details.doc_id = invoice_sales.id
+	INNER JOIN product_untis
+		ON products.unit_id = product_untis.id 
+	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to  GROUP BY product_id, name, shortcut;
+
+SELECT 
+	count(*) 'sale_number', 
+	sum(CAST(total_quantity AS DECIMAL(18,2))) 'quantity', 
+	sum(CAST(total_price AS DECIMAL(18,2))) 'sale_price', 
+	sum(CAST(total_cost AS DECIMAL(18,2))) 'cost_price', 
+	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) 'net_profit'  ,
+	@date_from 'date_from',
+	@date_to 'date_to',
+	'تقرير المسحوبات عن الفترة' 'title',
+	@vat_value 'vat_value'
+FROM document_details 
+	INNER JOIN invoice_sales
+		ON document_details.doc_id = invoice_sales.id
+	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to;
 	 
-AS 
-	
--- BUILDING OPENING BALANCE WITH AUTOMAIC ROW 
-DECLARE @id AS INT 
-SET @id = NULL;
-
-DECLARE @jid AS INT 
-SET @jid = NULL;
-
-DECLARE @description AS VARCHAR(50) 
-SET @description = 'رصيد أول المدة';
-
-DECLARE @ccid AS VARCHAR(50) 
-SET @ccid = NULL;
-
-DECLARE @cdate AS DATETIME
-SET @cdate = @date_from;
-
-DECLARE @accnumber AS VARCHAR(50)
-SET @accnumber = NULL;
-
-DECLARE @credit AS DECIMAL(18,2)
-SET @credit = NULL;
-
-DECLARE @debit AS DECIMAL(18,2)
-SET @debit = NULL;
-
-DECLARE @paid_balance AS DECIMAL(18,2)
-SET @paid_balance = (SELECT  SUM( COALESCE(debit ,0) + COALESCE(credit ,0) ) from journal_details inner join journals on journal_details.journal_id = journals.id where journals.show_balances_in_period = 1 AND account_number = @account_1);
-
-DECLARE @balance AS DECIMAL(18,2) 
-SET @balance = ( SELECT SUM(COALESCE(credit ,0)) - SUM(COALESCE(debit ,0)) FROM journal_details where [date] < @date_from AND account_number = @account_1 ); 
-
-IF @account_2 != '-1'
-	SET @balance = ( SELECT SUM(COALESCE(credit ,0)) - SUM(COALESCE(debit ,0)) FROM journal_details where [date] < @date_from AND ( account_number = @account_1 OR account_number = @account_2 ) );
-
-IF @account_2 != '-1'
-	SET @paid_balance = (SELECT  SUM( COALESCE(debit ,0) + COALESCE(credit ,0) ) from journal_details inner join journals on journal_details.journal_id = journals.id where journals.show_balances_in_period = 1 and (account_number = @account_1 OR account_number = @account_2));
-
-IF @balance IS NULL 
-	SET @balance= 0.00;
 
 
--- BUILDING MAIN QUERY ( COLLECT IT WITH THE OPENING BALANCE )
-SELECT @id AS 'id', 
-	   @jid AS 'journal_id',
-	   @description AS 'description',
-	   @ccid AS 'cost_center_number',
-	   @cdate AS 'date',
-	   @accnumber AS 'account_number',
-	   @credit AS 'credit',
-	   @debit AS 'debit',
-	   @balance AS 'balance' 
-	
-	   UNION ALL   
 
-	   SELECT 
-			id,
-			journal_id,
-			[description],
-			cost_center_number,
-			[date], 
-			[account_number],
-			credit,
-			debit,
-			( SELECT @balance ) + SUM( COALESCE(credit ,0) - COALESCE(debit,0) )  OVER(ORDER BY id)  balance
-			FROM journal_details WHERE [date] BETWEEN @date_from AND @date_to AND ( account_number = @account_1 OR account_number = @account_2  )
 
--- CLOSING BALANCE 
 
-/*
+
+
+
+
+
+
+----=================================================
+  CREATE PROC WithdraW_Summery_Report
+
+
+@date_from varchar(50),
+@date_to varchar(50)
+
+
+AS
 SELECT 
-	SUM( COALESCE(credit ,0)) AS 'credit', 
-	SUM( COALESCE(debit ,0)) AS 'debit',
-	( SUM( COALESCE(credit ,0)) - SUM( COALESCE(debit ,0) ) ) AS 'balance',
-	'الإجمالي' As 'title'
-	FROM journal_details 
-	WHERE (account_number = @account_1 OR account_number = @account_2 ) 
-	
-	UNION ALL
-	*/
+	product_id, 
+	name,
+	shortcut,
+	count(*) 'sale_number', 
+	sum(CAST(total_quantity AS DECIMAL(18,2))) 'quantity', 
+	sum(CAST(total_price  AS DECIMAL(18,2))) 'sale_price', 
+	sum(CAST(total_cost  AS DECIMAL(18,2))) 'cost_price', 
+	( sum(CAST(total_price  AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) 'net_profit' 
+FROM products
+	INNER JOIN document_details  
+		ON document_details.product_id = products.id   
+	INNER JOIN invoice_sales
+		ON document_details.doc_id = invoice_sales.id
+	INNER JOIN product_untis
+		ON products.unit_id = product_untis.id 
+	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to  GROUP BY product_id, name, shortcut;
+
 SELECT 
-	( SUM( COALESCE(credit ,0) ) - ( SELECT @paid_balance ))  AS 'credit', 
-	( SUM( COALESCE(debit ,0) ) - ( SELECT @paid_balance ))  AS 'debit', 
-	( SUM( COALESCE(credit ,0)) - SUM( COALESCE(debit ,0) ) ) AS 'balance',
-	'إجمالي الأرصدة المستحقة' As 'title'
-	FROM journal_details 
-	WHERE (account_number = @account_1 OR account_number = @account_2 );
+	count(*) 'sale_number', 
+	sum(CAST(total_quantity AS DECIMAL(18,2))) 'quantity', 
+	sum(CAST(total_price AS DECIMAL(18,2))) 'sale_price', 
+	sum(CAST(total_cost AS DECIMAL(18,2))) 'cost_price', 
+	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) 'net_profit'  ,
+	@date_from 'date_from',
+	@date_to 'date_to',
+	'تقرير المسحوبات عن الفترة' 'title'
+FROM document_details 
+	INNER JOIN invoice_sales
+		ON document_details.doc_id = invoice_sales.id
+	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to;
+	 

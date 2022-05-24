@@ -19,7 +19,7 @@ namespace sales_management.UI
         DataTable products;
         DataTable units;
 
-        Export_Document Expo_doc;
+        FND___Export_Document Expo_doc;
         FND___salesReturnInvoice SalesReturnInv;
         FND___salesInvoice SalesInv;
         purchaseInvoice purchaseInc;
@@ -77,7 +77,7 @@ namespace sales_management.UI
             this.load_dataGrid_prices();
         }
 
-        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, Export_Document expdocs ) {
+        public ItemUnit(int type, int product_id, DataTable products, DataTable units, int index, FND___Export_Document expdocs ) {
 
             InitializeComponent();
 

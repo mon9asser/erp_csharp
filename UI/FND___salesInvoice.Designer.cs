@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FND___salesInvoice));
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
@@ -284,7 +284,7 @@ namespace sales_management.UI
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(34, 143);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.Size = new System.Drawing.Size(70, 13);
             this.label17.TabIndex = 123;
             this.label17.Text = "مركز التكلفة :";
             this.label17.Visible = false;
@@ -302,7 +302,7 @@ namespace sales_management.UI
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(693, 449);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(51, 13);
+            this.label16.Size = new System.Drawing.Size(55, 13);
             this.label16.TabIndex = 121;
             this.label16.Text = "الإجمالي :";
             // 
@@ -311,7 +311,7 @@ namespace sales_management.UI
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(693, 529);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(108, 13);
+            this.label15.Size = new System.Drawing.Size(113, 13);
             this.label15.TabIndex = 120;
             this.label15.Text = "ريال سعودي فقط لا غير";
             // 
@@ -335,7 +335,7 @@ namespace sales_management.UI
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(424, 526);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.Size = new System.Drawing.Size(72, 13);
             this.label13.TabIndex = 117;
             this.label13.Text = "قيمة الضريبة :";
             // 
@@ -346,7 +346,7 @@ namespace sales_management.UI
             this.price_includ_vat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.price_includ_vat.Location = new System.Drawing.Point(426, 488);
             this.price_includ_vat.Name = "price_includ_vat";
-            this.price_includ_vat.Size = new System.Drawing.Size(124, 17);
+            this.price_includ_vat.Size = new System.Drawing.Size(129, 17);
             this.price_includ_vat.TabIndex = 116;
             this.price_includ_vat.Text = "الأسعار شاملة الضريبة";
             this.price_includ_vat.UseVisualStyleBackColor = true;
@@ -357,7 +357,7 @@ namespace sales_management.UI
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(424, 455);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 13);
+            this.label12.Size = new System.Drawing.Size(99, 13);
             this.label12.TabIndex = 114;
             this.label12.Text = "الصافي بعد الخصم :";
             // 
@@ -367,9 +367,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -378,14 +378,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -419,7 +419,7 @@ namespace sales_management.UI
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(592, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 99;
             this.label5.Text = "حساب الأستاذ :";
             // 
@@ -461,7 +461,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 95;
             this.label4.Text = "طريقة الدقع :";
             // 
@@ -485,7 +485,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 92;
             this.label2.Text = "التاريخ :";
             // 
@@ -494,7 +494,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 91;
             this.label1.Text = "رقم الفاتوره :";
             // 
@@ -525,7 +525,7 @@ namespace sales_management.UI
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(11, 529);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 13);
+            this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 112;
             this.label11.Text = "الخصم لا يزيد عن :";
             // 
@@ -542,7 +542,7 @@ namespace sales_management.UI
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(216, 490);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 110;
             this.label10.Text = "( % ) :";
             // 
@@ -559,7 +559,7 @@ namespace sales_management.UI
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(11, 491);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 108;
             this.label9.Text = "خصم :";
             // 
@@ -584,7 +584,7 @@ namespace sales_management.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 214);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 105;
             this.label7.Text = "شرط الدفع :";
             this.label7.Visible = false;
@@ -612,7 +612,7 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(592, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 102;
             this.label6.Text = "العميل";
             // 
@@ -623,7 +623,7 @@ namespace sales_management.UI
             this.enable_zakat_taxes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.enable_zakat_taxes.Location = new System.Drawing.Point(377, 54);
             this.enable_zakat_taxes.Name = "enable_zakat_taxes";
-            this.enable_zakat_taxes.Size = new System.Drawing.Size(93, 17);
+            this.enable_zakat_taxes.Size = new System.Drawing.Size(94, 17);
             this.enable_zakat_taxes.TabIndex = 143;
             this.enable_zakat_taxes.Text = "خاضعة للضريبه";
             this.enable_zakat_taxes.UseVisualStyleBackColor = true;

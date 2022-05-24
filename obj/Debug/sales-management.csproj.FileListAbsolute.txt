@@ -195,7 +195,6 @@ D:\sales-app\bin\Debug\Reports\Inventory_Report.cs
 D:\sales-app\obj\Debug\sales_management.UI.purchaseReturnInvoice.resources
 D:\sales-app\bin\Debug\Reports\ReportSources.rpt
 D:\sales-app\bin\Debug\Reports\ReportSources.cs
-D:\sales-app\obj\Debug\sales_management.UI.Export_Document.resources
 D:\sales-app\bin\Debug\Reports\Statement.rpt
 D:\sales-app\bin\Debug\Reports\Statement.cs
 D:\sales-app\obj\Debug\sales_management.UI.FND___salesInvoice.resources
@@ -205,7 +204,6 @@ D:\sales-app\obj\Debug\sales_management.UI.FND___Suppliers.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___UpdateCustomer.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___Customers.resources
 D:\sales-app\obj\Debug\sales-management.csprojAssemblyReference.cache
-D:\sales-app\obj\Debug\sales_management.UI.Viewer.resources
 D:\sales-app\bin\Debug\FReports\Zakat_Statement.frx
 D:\sales-app\bin\Debug\FReports\Journal_Entry_Report.frx
 D:\sales-app\bin\Debug\FReports\Report_Sources.frx
@@ -214,6 +212,8 @@ D:\sales-app\obj\Debug\sales_management.UI.FND___Current_Quantities.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND___Date_Range.resources
 D:\sales-app\obj\Debug\sales_management.UI.FND____Date_Range_Form.resources
 D:\sales-app\bin\Debug\FReports\SalesInvoice.frx
-D:\sales-app\obj\Debug\sales_management.UI.Entry_Details.resources
 D:\sales-app\obj\Debug\sales_management.UI.Select_Journal_Account.resources
 D:\sales-app\obj\Debug\sales_management.UI.Search_On_Entries.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___Viewer.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___Entry_Details.resources
+D:\sales-app\obj\Debug\sales_management.UI.FND___Export_Document.resources

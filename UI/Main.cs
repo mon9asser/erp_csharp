@@ -220,8 +220,13 @@ namespace sales_management.UI
 
         private void قيدتسويةToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.FRM_ALL_ENTRIES _entryfrm = new FRM_ALL_ENTRIES();
-            _entryfrm.Show();
+            /*
+             * UI.FRM_ALL_ENTRIES _entryfrm = new FRM_ALL_ENTRIES();
+             *_entryfrm.Show();
+             */
+
+            UI.FND___Entry_Details entry = new FND___Entry_Details();
+            entry.Show();
         }
 
         private void مرتجعToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,7 +278,7 @@ namespace sales_management.UI
 
         private void إذنصرفبضاعةToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Export_Document EXP = new UI.Export_Document();
+            UI.FND___Export_Document EXP = new UI.FND___Export_Document();
             EXP.Show();
         }
 
@@ -285,8 +290,43 @@ namespace sales_management.UI
 
         private void قيدجديدToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.Entry_Details entry = new Entry_Details();
+            UI.FND___Entry_Details entry = new FND___Entry_Details();
             entry.Show();
+        }
+
+        private void إغــــلاقToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void تقريرالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Document Type here is sales report 
+            UI.FND____Date_Range_Form frm = new UI.FND____Date_Range_Form(0);
+            frm.Show();
+        }
+
+        private void سندصرفنقودToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void سندقبضToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UI.FND___Date_Range rmrange = new UI.FND___Date_Range(0);
+            rmrange.ShowDialog();
+        }
+
+        private void تقريرالمشترياتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FND____Date_Range_Form frm = new UI.FND____Date_Range_Form(1);
+            frm.Show();
+        }
+
+        private void تقريرالمسحوباتعنالفترةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FND___Date_Range rmrange = new UI.FND___Date_Range(2);
+            rmrange.ShowDialog();
         }
     }
 }

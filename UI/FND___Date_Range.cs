@@ -63,12 +63,37 @@ namespace sales_management.UI
 
                     this.Load_Zakat_Statment_Report(from_date, to_date);
 
+                } else if (this.SearchType == 2) {
+
+                    this.Load_goods_Withdraw_Report(from_date, to_date);
                 }
 
                 this.Close();
             }
             catch (Exception) { }
 
+        }
+
+
+
+        /**
+         * ===============================================================================
+         * Withdraw Report 
+         * ===============================================================================
+         * 
+         **/
+        public void Load_goods_Withdraw_Report(DateTime from_date_var, DateTime to_date_var ) {
+            try
+            {
+
+                DataSet dset = Entries.Get_Withdraw_Report_DataSet(from_date_var, to_date_var);
+
+                DataTable 
+
+            }
+            catch (Exception) {
+
+            }
         }
 
         /**
@@ -100,7 +125,7 @@ namespace sales_management.UI
                 this.Fill_Target_Dates(from_date_var_string, to_date_var_string);
 
                 // Load Fast Report  
-                UI.Viewer viewer = new UI.Viewer(
+                UI.FND___Viewer viewer = new UI.FND___Viewer(
                     "\\FReports\\Journal_Entry_Report.frx",
                     this.DS_Entry,
                     "journals_statment",
@@ -181,7 +206,7 @@ namespace sales_management.UI
                 this.DS_Statement.Tables["Totals"].Merge(this.dstables.Tables[1]);
 
                 // Load Fast Report  
-                UI.Viewer viewer = new UI.Viewer(
+                UI.FND___Viewer viewer = new UI.FND___Viewer(
                     "\\FReports\\Zakat_Statement.frx",
                     this.DS_Statement,
                     "statements_dataset",

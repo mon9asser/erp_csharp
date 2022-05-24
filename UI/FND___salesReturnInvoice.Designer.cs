@@ -31,10 +31,8 @@ namespace sales_management.UI
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FND___salesReturnInvoice));
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.add_new_button = new System.Windows.Forms.Button();
             this.total_label_text = new System.Windows.Forms.Label();
             this.payment_condition = new System.Windows.Forms.ComboBox();
@@ -87,8 +85,9 @@ namespace sales_management.UI
             this.enable_zakat_taxes = new System.Windows.Forms.CheckBox();
             this.entry_id = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.sales_invoice_datasource = new sales_management.DSet.SalesInvoice();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sales_invoice_datasource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewImageColumn1
@@ -647,17 +646,12 @@ namespace sales_management.UI
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // printPreviewDialog1
+            // sales_invoice_datasource
             // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
+            this.sales_invoice_datasource.DataSetName = "SalesInvoice";
+            this.sales_invoice_datasource.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // salesReturnInvoice
+            // FND___salesReturnInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -716,7 +710,7 @@ namespace sales_management.UI
             this.Controls.Add(this.label6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "salesReturnInvoice";
+            this.Name = "FND___salesReturnInvoice";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
@@ -725,6 +719,7 @@ namespace sales_management.UI
             this.Text = "مردودات المبيعات";
             this.Load += new System.EventHandler(this.salesInvoice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sales_invoice_datasource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -734,7 +729,6 @@ namespace sales_management.UI
 
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Label current_invoice_page;
-        public System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.Label total_label_text;
         public System.Windows.Forms.ComboBox payment_condition;
@@ -787,6 +781,6 @@ namespace sales_management.UI
         public System.Windows.Forms.CheckBox enable_zakat_taxes;
         private System.Windows.Forms.TextBox entry_id;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private DSet.SalesInvoice sales_invoice_datasource;
     }
 }

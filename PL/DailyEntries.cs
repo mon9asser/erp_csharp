@@ -11,6 +11,27 @@ namespace sales_management.PL
     class DailyEntries
     {
 
+        public DataSet Get_Withdraw_Report_DataSet(DateTime date_from, DateTime date_to )
+        {
+
+            DataSet tble;
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+            SqlParameter[] param = new SqlParameter[2];
+
+            param[0] = new SqlParameter("@date_from", SqlDbType.Structured);
+            param[0].Value = date_from.ToString("yyyy-MM-dd") + " 00:00:00.000";
+
+            param[1] = new SqlParameter("@date_to", SqlDbType.Structured);
+            param[1].Value = date_to.ToString("yyyy-MM-dd") + " 23:59:59.000";
+
+            DAL.Open();
+            tble = DAL.SelectDataSet("WithdraW_Summery_Report", param);
+            DAL.Close();
+
+            return tble;
+        }
+
         public DataSet Get_Entries_Except_Fields( int [] not_in ) {
 
             DataSet tble;

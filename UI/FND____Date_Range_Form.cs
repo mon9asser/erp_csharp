@@ -74,7 +74,7 @@ namespace sales_management.UI
                 this.DSources.Merge(this.ReportTable);
 
 
-                UI.Viewer viewer = new UI.Viewer(
+                UI.FND___Viewer viewer = new UI.FND___Viewer(
                     "\\FReports\\Report_Sources.frx",
                     this.DSources,
                     "reportSources1",
