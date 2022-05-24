@@ -157,6 +157,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Statments.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\Withdraw_Report.cs">
+      <DependentUpon>Withdraw_Report.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSet\Withdraw_Report.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Withdraw_Report.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PL\AccountingTree.cs" />
     <Compile Include="PL\DailyEntries.cs" />
     <Compile Include="PL\doc_items.cs" />
@@ -661,6 +669,17 @@
     <None Include="DSet\Statments.xss">
       <DependentUpon>Statments.xsd</DependentUpon>
     </None>
+    <None Include="DSet\Withdraw_Report.xsc">
+      <DependentUpon>Withdraw_Report.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Withdraw_Report.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Withdraw_Report.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\Withdraw_Report.xss">
+      <DependentUpon>Withdraw_Report.xsd</DependentUpon>
+    </None>
     <None Include="FReports\Inventory_Report.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -671,6 +690,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\SalesInvoice.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="FReports\Withdraw_Report.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\Zakat_Statement.frx">

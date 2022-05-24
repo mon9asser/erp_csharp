@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="Statements.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>10, 42</value>
+    <value>471, 17</value>
   </metadata>
   <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/23/2022 17:41:59" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/25/2022 01:21:41" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -229,17 +229,17 @@
 </value>
   </data>
   <metadata name="journals_statment.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>176, 14</value>
+    <value>323, 17</value>
   </metadata>
   <metadata name="statements_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>5, 7</value>
+    <value>167, 17</value>
   </metadata>
   <metadata name="Entry_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>186, 45</value>
+    <value>584, 17</value>
   </metadata>
   <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/23/2022 17:41:59" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/25/2022 01:20:40" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -358,6 +358,76 @@
       &lt;/GroupFooterBand&gt;
     &lt;/GroupHeaderBand&gt;
     &lt;PageFooterBand Name="PageFooter1" Top="303.5" Width="718.2" Height="37.8"/&gt;
+  &lt;/ReportPage&gt;
+&lt;/Report&gt;
+</value>
+  </data>
+  <metadata name="withdraw_Report1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="Withdraw_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <data name="Withdraw_Report.ReportResourceString" xml:space="preserve">
+    <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/25/2022 01:21:41" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+  &lt;Dictionary&gt;
+    &lt;TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report1.withdraw_report" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="sale_number" DataType="System.Decimal"/&gt;
+      &lt;Column Name="quantity" DataType="System.Decimal"/&gt;
+      &lt;Column Name="sale_price" DataType="System.Decimal"/&gt;
+      &lt;Column Name="cost_price" DataType="System.Decimal"/&gt;
+      &lt;Column Name="net_profit_with_vat" DataType="System.Decimal"/&gt;
+      &lt;Column Name="vat_amount" DataType="System.Decimal"/&gt;
+      &lt;Column Name="net_profit_without_vat" DataType="System.Decimal"/&gt;
+      &lt;Column Name="shortcut" DataType="System.String"/&gt;
+      &lt;Column Name="name" DataType="System.String"/&gt;
+      &lt;Column Name="product_id" DataType="System.Int32"/&gt;
+    &lt;/TableDataSource&gt;
+    &lt;TableDataSource Name="report_sumary" ReferenceName="withdraw_Report1.report_sumary" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="sale_number" DataType="System.Decimal"/&gt;
+      &lt;Column Name="quantity" DataType="System.Decimal"/&gt;
+      &lt;Column Name="sale_price" DataType="System.Decimal"/&gt;
+      &lt;Column Name="cost_price" DataType="System.Decimal"/&gt;
+      &lt;Column Name="net_profit_with_vat" DataType="System.Decimal"/&gt;
+      &lt;Column Name="vat_amount" DataType="System.Decimal"/&gt;
+      &lt;Column Name="net_profit_without_vat" DataType="System.Decimal"/&gt;
+      &lt;Column Name="date_from" DataType="System.DateTime"/&gt;
+      &lt;Column Name="date_to" DataType="System.DateTime"/&gt;
+      &lt;Column Name="title" DataType="System.String"/&gt;
+    &lt;/TableDataSource&gt;
+  &lt;/Dictionary&gt;
+  &lt;ReportPage Name="Page1"&gt;
+    &lt;ReportTitleBand Name="ReportTitle1" Width="718.2" Height="113.4"&gt;
+      &lt;TextObject Name="Text1" Left="9.45" Top="18.9" Width="699.3" Height="37.8" Text="[report_sumary.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text2" Left="207.9" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_from]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text3" Left="359.1" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_to]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text4" Left="453.6" Top="56.7" Width="47.25" Height="18.9" Text="من تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text5" Left="302.4" Top="56.7" Width="47.25" Height="18.9" Text=" إلى تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+    &lt;/ReportTitleBand&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="117.4" Width="718.2" Height="75.6"&gt;
+      &lt;TableObject Name="Table1" Left="9.45" Width="699.3" Height="37.8"&gt;
+        &lt;TableColumn Name="Column1" Width="99.9"/&gt;
+        &lt;TableColumn Name="Column2" Width="99.9"/&gt;
+        &lt;TableColumn Name="Column3" Width="99.9"/&gt;
+        &lt;TableColumn Name="Column4" Width="99.9"/&gt;
+        &lt;TableColumn Name="Column5" Width="99.9"/&gt;
+        &lt;TableColumn Name="Column6" Width="99.9"/&gt;
+        &lt;TableColumn Name="Column7" Width="99.9"/&gt;
+        &lt;TableRow Name="Row1" Height="37.8"&gt;
+          &lt;TableCell Name="Cell1"/&gt;
+          &lt;TableCell Name="Cell2"/&gt;
+          &lt;TableCell Name="Cell3"/&gt;
+          &lt;TableCell Name="Cell4"/&gt;
+          &lt;TableCell Name="Cell5"/&gt;
+          &lt;TableCell Name="Cell26"/&gt;
+          &lt;TableCell Name="Cell27"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/PageHeaderBand&gt;
+    &lt;DataBand Name="Data1" Top="197" Width="718.2" Height="75.6"/&gt;
+    &lt;ReportSummaryBand Name="ReportSummary1" Top="276.6" Width="718.2" Height="37.8"/&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="318.4" Width="718.2" Height="18.9"/&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>

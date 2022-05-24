@@ -22,6 +22,7 @@ namespace sales_management.UI
 
         DSet.Statments DS_Statement = new DSet.Statments();
         DSet.DailyEntries DS_Entry= new DSet.DailyEntries();
+        DSet.Withdraw_Report DS_Withdraw = new DSet.Withdraw_Report();
 
         DataTable Accounts;
         DataTable Settings;
@@ -46,11 +47,12 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DateTime from_date = Convert.ToDateTime(date_from.Value);
+            DateTime to_date = Convert.ToDateTime(date_to.Value);
+            this.Load_goods_Withdraw_Report(from_date, to_date);
             try
             {
-                DateTime from_date = Convert.ToDateTime(date_from.Value);
-                DateTime to_date = Convert.ToDateTime(date_to.Value);
-
+                
                 // Journal Entries Data 
                 if (this.SearchType == 0)
                 {
@@ -63,9 +65,12 @@ namespace sales_management.UI
 
                     this.Load_Zakat_Statment_Report(from_date, to_date);
 
-                } else if (this.SearchType == 2) {
+                }
+                else if (this.SearchType == 2)
+                {
 
-                    this.Load_goods_Withdraw_Report(from_date, to_date);
+                    
+
                 }
 
                 this.Close();
@@ -83,17 +88,50 @@ namespace sales_management.UI
          * 
          **/
         public void Load_goods_Withdraw_Report(DateTime from_date_var, DateTime to_date_var ) {
-            try
+            DataSet dset = Entries.Get_Withdraw_Report_DataSet(from_date_var, to_date_var);
+
+            DataTable withdraw_report = dset.Tables[0];
+            DataTable withdraw_summary = dset.Tables[1];
+
+            if (withdraw_report.Rows.Count == 0)
             {
 
-                DataSet dset = Entries.Get_Withdraw_Report_DataSet(from_date_var, to_date_var);
+                DataRow row_rpt = withdraw_report.NewRow();
+                row_rpt["sale_number"] = 0;
+                row_rpt["quantity"] = 0;
+                row_rpt["sale_price"] = 0;
+                row_rpt["cost_price"] = 0;
+                row_rpt["net_profit_with_vat"] = 0;
+                row_rpt["vat_amount"] = 0;
+                row_rpt["net_profit_without_vat"] = 0;
+                withdraw_report.Rows.Add(row_rpt);
 
-                DataTable 
-
+                DataRow row_smry = withdraw_summary.NewRow();
+                row_rpt["sale_number"] = 0;
+                row_rpt["quantity"] = 0;
+                row_rpt["sale_price"] = 0;
+                row_rpt["cost_price"] = 0;
+                row_rpt["net_profit_with_vat"] = 0;
+                row_rpt["vat_amount"] = 0;
+                row_rpt["net_profit_without_vat"] = 0;
+                row_rpt["date_from"] = 0;
+                row_rpt["date_to"] = 0;
+                row_rpt["title"] = "كشف المسحوبات عن الفترة";
+                withdraw_summary.Rows.Add(row_smry);
             }
-            catch (Exception) {
 
-            }
+            // Collect Table 
+            this.DS_Withdraw.Tables["withdraw_report"].Merge(withdraw_report);
+            this.DS_Withdraw.Tables["withdraw_report"].Merge(withdraw_summary);
+
+            // Load Fast Report  
+            UI.FND___Viewer viewer = new UI.FND___Viewer(
+                "\\FReports\\Withdraw_Report.frx",
+                this.DS_Withdraw,
+                "Withdraw_Report_DS",
+                "كشف المسحوبات عن الفترة"
+            );
+            viewer.Show();
         }
 
         /**

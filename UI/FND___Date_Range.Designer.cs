@@ -38,10 +38,14 @@
             this.journals_statment = new sales_management.DSet.DailyEntries();
             this.statements_dataset = new sales_management.DSet.Statments();
             this.Entry_Report = new FastReport.Report();
+            this.withdraw_Report1 = new sales_management.DSet.Withdraw_Report();
+            this.Withdraw_Report = new FastReport.Report();
             ((System.ComponentModel.ISupportInitialize)(this.Statements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journals_statment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Entry_Report)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.withdraw_Report1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Withdraw_Report)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +53,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "من تاريخ :";
             // 
@@ -58,7 +62,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "إلي تاريخ :";
             // 
@@ -109,6 +113,17 @@
             this.Entry_Report.ReportResourceString = resources.GetString("Entry_Report.ReportResourceString");
             this.Entry_Report.RegisterData(this.journals_statment, "journals_statment");
             // 
+            // withdraw_Report1
+            // 
+            this.withdraw_Report1.DataSetName = "Withdraw_Report_DS";
+            this.withdraw_Report1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // Withdraw_Report
+            // 
+            this.Withdraw_Report.NeedRefresh = false;
+            this.Withdraw_Report.ReportResourceString = resources.GetString("Withdraw_Report.ReportResourceString");
+            this.Withdraw_Report.RegisterData(this.withdraw_Report1, "withdraw_Report1");
+            // 
             // FND___Date_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,6 +148,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.journals_statment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Entry_Report)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.withdraw_Report1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Withdraw_Report)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +166,7 @@
         private DSet.Statments statements_dataset;
         private DSet.DailyEntries journals_statment;
         private FastReport.Report Entry_Report;
+        private DSet.Withdraw_Report withdraw_Report1;
+        private FastReport.Report Withdraw_Report;
     }
 }

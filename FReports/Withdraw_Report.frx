@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/25/2022 01:17:30" ReportInfo.CreatorVersion="2018.4.19.0">
+  <Dictionary>
+    <TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report2.withdraw_report" DataType="System.Int32" Enabled="true">
+      <Column Name="sale_number" DataType="System.Decimal"/>
+      <Column Name="quantity" DataType="System.Decimal"/>
+      <Column Name="sale_price" DataType="System.Decimal"/>
+      <Column Name="cost_price" DataType="System.Decimal"/>
+      <Column Name="net_profit_with_vat" DataType="System.Decimal"/>
+      <Column Name="vat_amount" DataType="System.Decimal"/>
+      <Column Name="net_profit_without_vat" DataType="System.Decimal"/>
+      <Column Name="shortcut" DataType="System.String"/>
+      <Column Name="name" DataType="System.String"/>
+      <Column Name="product_id" DataType="System.Int32"/>
+    </TableDataSource>
+    <TableDataSource Name="report_sumary" ReferenceName="withdraw_Report2.report_sumary" DataType="System.Int32" Enabled="true">
+      <Column Name="sale_number" DataType="System.Decimal"/>
+      <Column Name="quantity" DataType="System.Decimal"/>
+      <Column Name="sale_price" DataType="System.Decimal"/>
+      <Column Name="cost_price" DataType="System.Decimal"/>
+      <Column Name="net_profit_with_vat" DataType="System.Decimal"/>
+      <Column Name="vat_amount" DataType="System.Decimal"/>
+      <Column Name="net_profit_without_vat" DataType="System.Decimal"/>
+      <Column Name="date_from" DataType="System.DateTime"/>
+      <Column Name="date_to" DataType="System.DateTime"/>
+      <Column Name="title" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="113.4">
+      <TextObject Name="Text1" Left="9.45" Top="18.9" Width="699.3" Height="37.8" Text="[report_sumary.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text2" Left="207.9" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_from]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text3" Left="359.1" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_to]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text4" Left="453.6" Top="56.7" Width="47.25" Height="18.9" Text="من تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text5" Left="302.4" Top="56.7" Width="47.25" Height="18.9" Text=" إلى تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="117.4" Width="718.2" Height="75.6">
+      <TableObject Name="Table1" Left="9.45" Width="699.3" Height="37.8">
+        <TableColumn Name="Column1" Width="99.9"/>
+        <TableColumn Name="Column2" Width="99.9"/>
+        <TableColumn Name="Column3" Width="99.9"/>
+        <TableColumn Name="Column4" Width="99.9"/>
+        <TableColumn Name="Column5" Width="99.9"/>
+        <TableColumn Name="Column6" Width="99.9"/>
+        <TableColumn Name="Column7" Width="99.9"/>
+        <TableRow Name="Row1" Height="37.8">
+          <TableCell Name="Cell1"/>
+          <TableCell Name="Cell2"/>
+          <TableCell Name="Cell3"/>
+          <TableCell Name="Cell4"/>
+          <TableCell Name="Cell5"/>
+          <TableCell Name="Cell26"/>
+          <TableCell Name="Cell27"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="197" Width="718.2" Height="75.6"/>
+    <ReportSummaryBand Name="ReportSummary1" Top="276.6" Width="718.2" Height="37.8"/>
+    <PageFooterBand Name="PageFooter1" Top="318.4" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>
