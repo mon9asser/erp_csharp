@@ -1083,6 +1083,7 @@ namespace sales_management.UI
                 {
                     return;
                 }
+                this.lastRow = e.RowIndex;
 
 
                 if (e.ColumnIndex == 2)
