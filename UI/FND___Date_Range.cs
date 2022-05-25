@@ -49,7 +49,7 @@ namespace sales_management.UI
         {
             DateTime from_date = Convert.ToDateTime(date_from.Value);
             DateTime to_date = Convert.ToDateTime(date_to.Value);
-            this.Load_goods_Withdraw_Report(from_date, to_date);
+            
             try
             {
                 
@@ -69,7 +69,7 @@ namespace sales_management.UI
                 else if (this.SearchType == 2)
                 {
 
-                    
+                    this.Load_goods_Withdraw_Report(from_date, to_date);
 
                 }
 
@@ -92,6 +92,7 @@ namespace sales_management.UI
 
             DataTable withdraw_report = dset.Tables[0];
             DataTable withdraw_summary = dset.Tables[1];
+             
 
             if (withdraw_report.Rows.Count == 0)
             {
@@ -107,29 +108,31 @@ namespace sales_management.UI
                 withdraw_report.Rows.Add(row_rpt);
 
                 DataRow row_smry = withdraw_summary.NewRow();
-                row_rpt["sale_number"] = 0;
-                row_rpt["quantity"] = 0;
-                row_rpt["sale_price"] = 0;
-                row_rpt["cost_price"] = 0;
-                row_rpt["net_profit_with_vat"] = 0;
-                row_rpt["vat_amount"] = 0;
-                row_rpt["net_profit_without_vat"] = 0;
-                row_rpt["date_from"] = 0;
-                row_rpt["date_to"] = 0;
-                row_rpt["title"] = "كشف المسحوبات عن الفترة";
+                row_smry["sale_number"] = 0;
+                row_smry["quantity"] = 0;
+                row_smry["sale_price"] = 0;
+                row_smry["cost_price"] = 0;
+                row_smry["net_profit_with_vat"] = 0;
+                row_smry["vat_amount"] = 0;
+                row_smry["net_profit_without_vat"] = 0;
+                row_smry["date_from"] = from_date_var;
+                row_smry["date_to"] = to_date_var;
+                row_smry["title"] = "كشف المسحوبات عن الفترة";
                 withdraw_summary.Rows.Add(row_smry);
+
             }
 
             // Collect Table 
             this.DS_Withdraw.Tables["withdraw_report"].Merge(withdraw_report);
-            this.DS_Withdraw.Tables["withdraw_report"].Merge(withdraw_summary);
+            this.DS_Withdraw.Tables["report_sumary"].Merge(withdraw_summary);
 
             // Load Fast Report  
             UI.FND___Viewer viewer = new UI.FND___Viewer(
                 "\\FReports\\Withdraw_Report.frx",
                 this.DS_Withdraw,
-                "Withdraw_Report_DS",
-                "كشف المسحوبات عن الفترة"
+                "withdraw_Report1",
+                "كشف المسحوبات عن الفترة",
+                false
             );
             viewer.Show();
         }

@@ -484,7 +484,7 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public withdraw_reportRow Addwithdraw_reportRow(decimal sale_number, decimal quantity, decimal sale_price, decimal cost_price, decimal net_profit_with_vat, decimal vat_amount, decimal net_profit_without_vat, string shortcut, string name, int product_id) {
+            public withdraw_reportRow Addwithdraw_reportRow(int sale_number, decimal quantity, decimal sale_price, decimal cost_price, decimal net_profit_with_vat, decimal vat_amount, decimal net_profit_without_vat, string shortcut, string name, int product_id) {
                 withdraw_reportRow rowwithdraw_reportRow = ((withdraw_reportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sale_number,
@@ -534,7 +534,7 @@ namespace sales_management.DSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnsale_number = new global::System.Data.DataColumn("sale_number", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnsale_number = new global::System.Data.DataColumn("sale_number", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsale_number);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
@@ -857,7 +857,7 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public report_sumaryRow Addreport_sumaryRow(decimal sale_number, decimal quantity, decimal sale_price, decimal cost_price, decimal net_profit_with_vat, decimal vat_amount, decimal net_profit_without_vat, System.DateTime date_from, System.DateTime date_to, string title) {
+            public report_sumaryRow Addreport_sumaryRow(int sale_number, decimal quantity, decimal sale_price, decimal cost_price, decimal net_profit_with_vat, decimal vat_amount, decimal net_profit_without_vat, System.DateTime date_from, System.DateTime date_to, string title) {
                 report_sumaryRow rowreport_sumaryRow = ((report_sumaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sale_number,
@@ -907,7 +907,7 @@ namespace sales_management.DSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnsale_number = new global::System.Data.DataColumn("sale_number", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnsale_number = new global::System.Data.DataColumn("sale_number", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsale_number);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
@@ -1069,10 +1069,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal sale_number {
+            public int sale_number {
                 get {
                     try {
-                        return ((decimal)(this[this.tablewithdraw_report.sale_numberColumn]));
+                        return ((int)(this[this.tablewithdraw_report.sale_numberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'sale_number\' in table \'withdraw_report\' is DBNull.", e);
@@ -1365,10 +1365,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal sale_number {
+            public int sale_number {
                 get {
                     try {
-                        return ((decimal)(this[this.tablereport_sumary.sale_numberColumn]));
+                        return ((int)(this[this.tablereport_sumary.sale_numberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'sale_number\' in table \'report_sumary\' is DBNull.", e);

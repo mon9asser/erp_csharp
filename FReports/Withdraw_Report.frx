@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/25/2022 01:17:30" ReportInfo.CreatorVersion="2018.4.19.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/25/2022 11:44:15" ReportInfo.CreatorVersion="2018.4.19.0">
   <Dictionary>
-    <TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report2.withdraw_report" DataType="System.Int32" Enabled="true">
+    <TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report1.withdraw_report" DataType="System.Int32" Enabled="true">
       <Column Name="sale_number" DataType="System.Decimal"/>
       <Column Name="quantity" DataType="System.Decimal"/>
       <Column Name="sale_price" DataType="System.Decimal"/>
@@ -13,7 +13,7 @@
       <Column Name="name" DataType="System.String"/>
       <Column Name="product_id" DataType="System.Int32"/>
     </TableDataSource>
-    <TableDataSource Name="report_sumary" ReferenceName="withdraw_Report2.report_sumary" DataType="System.Int32" Enabled="true">
+    <TableDataSource Name="report_sumary" ReferenceName="withdraw_Report1.report_sumary" DataType="System.Int32" Enabled="true">
       <Column Name="sale_number" DataType="System.Decimal"/>
       <Column Name="quantity" DataType="System.Decimal"/>
       <Column Name="sale_price" DataType="System.Decimal"/>
@@ -27,35 +27,73 @@
     </TableDataSource>
   </Dictionary>
   <ReportPage Name="Page1">
-    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="113.4">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
       <TextObject Name="Text1" Left="9.45" Top="18.9" Width="699.3" Height="37.8" Text="[report_sumary.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
-      <TextObject Name="Text2" Left="207.9" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_from]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
-      <TextObject Name="Text3" Left="359.1" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_to]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
-      <TextObject Name="Text4" Left="453.6" Top="56.7" Width="47.25" Height="18.9" Text="من تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
-      <TextObject Name="Text5" Left="302.4" Top="56.7" Width="47.25" Height="18.9" Text=" إلى تاريخ" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text2" Left="198.45" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_to]" Format="Date" Format.Format="d" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text3" Left="359.1" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_from]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text4" Left="453.6" Top="56.7" Width="56.7" Height="18.9" Text="من تاريخ" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text5" Left="292.95" Top="56.7" Width="56.7" Height="18.9" Text="إلي تاريخ" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
     </ReportTitleBand>
-    <PageHeaderBand Name="PageHeader1" Top="117.4" Width="718.2" Height="75.6">
-      <TableObject Name="Table1" Left="9.45" Width="699.3" Height="37.8">
-        <TableColumn Name="Column1" Width="99.9"/>
-        <TableColumn Name="Column2" Width="99.9"/>
-        <TableColumn Name="Column3" Width="99.9"/>
-        <TableColumn Name="Column4" Width="99.9"/>
-        <TableColumn Name="Column5" Width="99.9"/>
-        <TableColumn Name="Column6" Width="99.9"/>
-        <TableColumn Name="Column7" Width="99.9"/>
-        <TableRow Name="Row1" Height="37.8">
-          <TableCell Name="Cell1"/>
-          <TableCell Name="Cell2"/>
-          <TableCell Name="Cell3"/>
-          <TableCell Name="Cell4"/>
-          <TableCell Name="Cell5"/>
-          <TableCell Name="Cell26"/>
-          <TableCell Name="Cell27"/>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="718.2" Height="37.8">
+      <TableObject Name="Table2" Left="9.45" Width="699.3" Height="37.8">
+        <TableColumn Name="Column8" Width="141.75"/>
+        <TableColumn Name="Column9" Width="103.95"/>
+        <TableColumn Name="Column10" Width="94.5"/>
+        <TableColumn Name="Column11" Width="47.25"/>
+        <TableColumn Name="Column12" Width="56.7"/>
+        <TableColumn Name="Column13"/>
+        <TableColumn Name="Column14" Width="189"/>
+        <TableRow Name="Row2" Height="37.8">
+          <TableCell Name="Cell28" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="صافى الربح بعد الضريبة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell29" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="إجمالى التكلفة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell30" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="إجمالي البيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell31" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="الكميات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell32" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell53" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="عدد مرات البيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell54" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="إسم الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
         </TableRow>
       </TableObject>
     </PageHeaderBand>
-    <DataBand Name="Data1" Top="197" Width="718.2" Height="75.6"/>
-    <ReportSummaryBand Name="ReportSummary1" Top="276.6" Width="718.2" Height="37.8"/>
-    <PageFooterBand Name="PageFooter1" Top="318.4" Width="718.2" Height="18.9"/>
+    <DataBand Name="Data1" Top="149.75" Width="718.2" Height="37.8">
+      <TableObject Name="Table3" Left="9.45" Width="699.3" Height="37.8">
+        <TableColumn Name="Column15" Width="141.75"/>
+        <TableColumn Name="Column16" Width="103.95"/>
+        <TableColumn Name="Column17" Width="94.5"/>
+        <TableColumn Name="Column18" Width="47.25"/>
+        <TableColumn Name="Column19" Width="56.7"/>
+        <TableColumn Name="Column20"/>
+        <TableColumn Name="Column21" Width="189"/>
+        <TableRow Name="Row3" Height="37.8">
+          <TableCell Name="Cell55" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell56" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell57" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell58" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell59" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell60" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell61" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="191.55" Width="718.2" Height="37.8">
+      <TableObject Name="Table4" Left="9.45" Width="699.3" Height="37.8">
+        <TableColumn Name="Column22" Width="141.75"/>
+        <TableColumn Name="Column23" Width="103.95"/>
+        <TableColumn Name="Column24" Width="94.5"/>
+        <TableColumn Name="Column25" Width="47.25"/>
+        <TableColumn Name="Column26" Width="56.7"/>
+        <TableColumn Name="Column27"/>
+        <TableColumn Name="Column28" Width="189"/>
+        <TableRow Name="Row4" Height="37.8">
+          <TableCell Name="Cell62" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell63" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell64" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell65" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell66" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell67" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell68" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="233.35" Width="718.2" Height="18.9"/>
   </ReportPage>
 </Report>

@@ -19,10 +19,10 @@ namespace sales_management.PL
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
             SqlParameter[] param = new SqlParameter[2];
 
-            param[0] = new SqlParameter("@date_from", SqlDbType.Structured);
+            param[0] = new SqlParameter("@date_from", SqlDbType.VarChar);
             param[0].Value = date_from.ToString("yyyy-MM-dd") + " 00:00:00.000";
 
-            param[1] = new SqlParameter("@date_to", SqlDbType.Structured);
+            param[1] = new SqlParameter("@date_to", SqlDbType.VarChar);
             param[1].Value = date_to.ToString("yyyy-MM-dd") + " 23:59:59.000";
 
             DAL.Open();

@@ -13,7 +13,6 @@ Document Types
 -- إلي ح / المخزون
 -- صرف بضاعه بإذن
 */
-
 alter PROC WithdraW_Summery_Report
 
 
@@ -32,12 +31,12 @@ SELECT
 	name,
 	shortcut,
 	count(*) 'sale_number', 
-	sum(CAST(total_quantity AS DECIMAL(18,2))) 'quantity', 
-	sum(CAST(total_price  AS DECIMAL(18,2))) 'sale_price', 
-	sum(CAST(total_cost  AS DECIMAL(18,2))) 'cost_price', 
-	( sum(CAST(total_price  AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) 'net_profit_with_vat',
-	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) - (( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value) 'vat_amount',
-	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value 'net_profit_without_vat'
+	CAST( sum(CAST(total_quantity AS DECIMAL(18,2))) as decimal(18,2)) 'quantity', 
+	CAST(sum(CAST(total_price  AS DECIMAL(18,2))) as DECIMAL(18,2)) 'sale_price', 
+	CAST(sum(CAST(total_cost  AS DECIMAL(18,2))) as decimal(18,2)) 'cost_price', 
+	CAST(( sum(CAST(total_price  AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) as decimal(18,2)) 'net_profit_with_vat',
+	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) - (( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value) as decimal(18,2)) 'vat_amount',
+	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value as decimal(18,2)) 'net_profit_without_vat'
 FROM products
 	INNER JOIN document_details  
 		ON document_details.product_id = products.id   
@@ -49,18 +48,17 @@ FROM products
 
 SELECT 
 	count(*) 'sale_number', 
-	sum(CAST(total_quantity AS DECIMAL(18,2))) 'quantity', 
-	sum(CAST(total_price AS DECIMAL(18,2))) 'sale_price', 
-	sum(CAST(total_cost AS DECIMAL(18,2))) 'cost_price', 
-	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) 'net_profit_with_vat',
-	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) - (( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value) 'vat_amount',
-	( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value 'net_profit_without_vat',
-	@date_from 'date_from',
-	@date_to 'date_to',
+	CAST(sum(CAST(total_quantity AS DECIMAL(18,2))) as decimal(18,2)) 'quantity', 
+	CAST(sum(CAST(total_price AS DECIMAL(18,2))) as decimal(18,2)) 'sale_price', 
+	CAST(sum(CAST(total_cost AS DECIMAL(18,2))) as decimal(18,2)) 'cost_price', 
+	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) as decimal(18,2)) 'net_profit_with_vat',
+	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) - (( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value) as decimal(8,2)) 'vat_amount',
+	CAST( ( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value  as decimal(18,2))'net_profit_without_vat',
+	CAST(@date_from as datetime) 'date_from',
+	CAST(@date_to as datetime) 'date_to',
 	'تقرير المسحوبات عن الفترة' 'title'
 	
 FROM document_details 
 	INNER JOIN invoice_sales
 		ON document_details.doc_id = invoice_sales.id
 	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to;
-	 
