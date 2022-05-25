@@ -122,7 +122,7 @@
   </metadata>
   <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/25/2022 11:44:21" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/25/2022 13:21:12" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -239,7 +239,7 @@
   </metadata>
   <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/25/2022 11:44:21" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/25/2022 12:58:02" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -370,7 +370,7 @@
   </metadata>
   <data name="Withdraw_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/25/2022 11:44:21" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/25/2022 13:21:12" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report1.withdraw_report" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="sale_number" DataType="System.Decimal"/&gt;
@@ -400,8 +400,8 @@
   &lt;ReportPage Name="Page1"&gt;
     &lt;ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95"&gt;
       &lt;TextObject Name="Text1" Left="9.45" Top="18.9" Width="699.3" Height="37.8" Text="[report_sumary.title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
-      &lt;TextObject Name="Text2" Left="198.45" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_to]" Format="Date" Format.Format="d" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/&gt;
-      &lt;TextObject Name="Text3" Left="359.1" Top="56.7" Width="94.5" Height="18.9" Text="[report_sumary.date_from]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text2" Left="198.45" Top="56.7" Width="94.5" Height="18.9" Text="[FormatDateTime([report_sumary.date_to], &amp;quot;Short Date&amp;quot;)]" Format="Date" Format.Format="d" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text3" Left="359.1" Top="56.7" Width="94.5" Height="18.9" Text="[FormatDateTime([report_sumary.date_from], &amp;quot;Short Date&amp;quot;)]" Format="Date" Format.Format="d" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
       &lt;TextObject Name="Text4" Left="453.6" Top="56.7" Width="56.7" Height="18.9" Text="من تاريخ" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
       &lt;TextObject Name="Text5" Left="292.95" Top="56.7" Width="56.7" Height="18.9" Text="إلي تاريخ" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
     &lt;/ReportTitleBand&gt;
@@ -415,17 +415,17 @@
         &lt;TableColumn Name="Column13"/&gt;
         &lt;TableColumn Name="Column14" Width="189"/&gt;
         &lt;TableRow Name="Row2" Height="37.8"&gt;
-          &lt;TableCell Name="Cell28" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="صافى الربح بعد الضريبة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell29" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="إجمالى التكلفة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell30" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="إجمالي البيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell31" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="الكميات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/&gt;
-          &lt;TableCell Name="Cell32" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell53" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="عدد مرات البيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell54" Border.Lines="All" Border.Style="Dot" Border.Width="0.5" Text="إسم الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell28" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Text="صافى الربح بعد الضريبة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell29" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Text="إجمالى التكلفة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell30" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Text="إجمالي البيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell31" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Text="الكميات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/&gt;
+          &lt;TableCell Name="Cell32" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell53" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Text="عدد مرات البيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell54" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Fill.Color="MistyRose" Text="إسم الصنف" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/PageHeaderBand&gt;
-    &lt;DataBand Name="Data1" Top="149.75" Width="718.2" Height="37.8"&gt;
+    &lt;DataBand Name="Data1" Top="149.75" Width="718.2" Height="37.8" DataSource="withdraw_report"&gt;
       &lt;TableObject Name="Table3" Left="9.45" Width="699.3" Height="37.8"&gt;
         &lt;TableColumn Name="Column15" Width="141.75"/&gt;
         &lt;TableColumn Name="Column16" Width="103.95"/&gt;
@@ -435,13 +435,13 @@
         &lt;TableColumn Name="Column20"/&gt;
         &lt;TableColumn Name="Column21" Width="189"/&gt;
         &lt;TableRow Name="Row3" Height="37.8"&gt;
-          &lt;TableCell Name="Cell55" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell56" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell57" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell58" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell59" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell60" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell61" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell55" Border.Lines="Left, Top, Bottom" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.net_profit_without_vat]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell56" Border.Lines="Left, Top, Bottom" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.cost_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell57" Border.Lines="Left, Top, Bottom" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.sale_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell58" Border.Lines="Left, Top, Bottom" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.shortcut]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell59" Border.Lines="Top, Bottom" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.quantity]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell60" Border.Lines="Left, Top, Bottom" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.sale_number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell61" Border.Lines="All" Border.Color="MistyRose" Border.Style="Dot" Border.Width="0.5" Text="[withdraw_report.name]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/DataBand&gt;
@@ -455,17 +455,17 @@
         &lt;TableColumn Name="Column27"/&gt;
         &lt;TableColumn Name="Column28" Width="189"/&gt;
         &lt;TableRow Name="Row4" Height="37.8"&gt;
-          &lt;TableCell Name="Cell62" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell63" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell64" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell65" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell62" Fill.Color="MistyRose" Text="[report_sumary.net_profit_without_vat]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell63" Fill.Color="MistyRose" Text="[report_sumary.cost_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell64" Fill.Color="MistyRose" Text="[report_sumary.sale_price]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell65" Fill.Color="MistyRose" Text="[report_sumary.quantity]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/&gt;
           &lt;TableCell Name="Cell66" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell67" HorzAlign="Center" VertAlign="Center"/&gt;
-          &lt;TableCell Name="Cell68" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell67" Fill.Color="MistyRose" Text="[report_sumary.sale_number]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell68" Fill.Color="MistyRose" Text="الإجمالى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
     &lt;/ReportSummaryBand&gt;
-    &lt;PageFooterBand Name="PageFooter1" Top="233.35" Width="718.2" Height="18.9"/&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="233.35" Width="718.2" Height="28.35"/&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>
