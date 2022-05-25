@@ -294,14 +294,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sales-management.exe" size="1058784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sales-management.exe" size="1060320">
       <assemblyIdentity name="sales-management" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>th6qnnY3lE4yfv0zWm1Nk1sG7hAjdKFtc+f+Zu7zS6s=</dsig:DigestValue>
+        <dsig:DigestValue>u34AJvyKLeMNihTzOHtPPDIRK/xpRKAxkcFky/7eUE0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -313,7 +313,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NPx+jzEtAOBidtGG/InDfmpaBAs9AGwXbhUhC27A6XU=</dsig:DigestValue>
+        <dsig:DigestValue>1FcY2TNDkWBmQPxe0IRStpP1tdKaLv1VS7QhblL4FHE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

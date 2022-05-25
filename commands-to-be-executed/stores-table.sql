@@ -13,52 +13,31 @@ Document Types
 -- إلي ح / المخزون
 -- صرف بضاعه بإذن
 */
-alter PROC WithdraW_Summery_Report
-
-
-@date_from varchar(50),
-@date_to varchar(50)
-
-
-AS
-
-declare @vat_value as decimal(18,2);
-set @vat_value = (select CAST(vat_value as decimal(18,2)) from settings where vat_value != ''); 
- 
-
-SELECT 
-	product_id, 
-	name,
-	shortcut,
-	count(*) 'sale_number', 
-	CAST( sum(CAST(total_quantity AS DECIMAL(18,2))) as decimal(18,2)) 'quantity', 
-	CAST(sum(CAST(total_price  AS DECIMAL(18,2))) as DECIMAL(18,2)) 'sale_price', 
-	CAST(sum(CAST(total_cost  AS DECIMAL(18,2))) as decimal(18,2)) 'cost_price', 
-	CAST(( sum(CAST(total_price  AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) as decimal(18,2)) 'net_profit_with_vat',
-	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) - (( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value) as decimal(18,2)) 'vat_amount',
-	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value as decimal(18,2)) 'net_profit_without_vat'
-FROM products
-	INNER JOIN document_details  
-		ON document_details.product_id = products.id   
-	INNER JOIN invoice_sales
-		ON document_details.doc_id = invoice_sales.id
-	INNER JOIN product_untis
-		ON products.unit_id = product_untis.id 
-	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to  GROUP BY product_id, name, shortcut;
-
-SELECT 
-	count(*) 'sale_number', 
-	CAST(sum(CAST(total_quantity AS DECIMAL(18,2))) as decimal(18,2)) 'quantity', 
-	CAST(sum(CAST(total_price AS DECIMAL(18,2))) as decimal(18,2)) 'sale_price', 
-	CAST(sum(CAST(total_cost AS DECIMAL(18,2))) as decimal(18,2)) 'cost_price', 
-	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) as decimal(18,2)) 'net_profit_with_vat',
-	CAST(( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) - (( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value) as decimal(8,2)) 'vat_amount',
-	CAST( ( sum(CAST(total_price AS DECIMAL(18,2))) - sum(CAST(total_cost AS DECIMAL(18,2)))) / @vat_value  as decimal(18,2))'net_profit_without_vat',
-	CAST(@date_from as datetime) 'date_from',
-	CAST(@date_to as datetime) 'date_to',
-	'تقرير المسحوبات عن الفترة' 'title'
-	
-FROM document_details 
-	INNER JOIN invoice_sales
-		ON document_details.doc_id = invoice_sales.id
-	WHERE is_out = 1 AND doc_type = 0 AND invoice_sales.date BETWEEN @date_from AND @date_to;
+truncate table withdraw_document;
+truncate table withdraw_document;
+truncate table withdraw_document;
+truncate table withdraw_document;
+truncate table stores;
+truncate table settings;
+truncate table ReturnPayment;
+truncate table ReturnInvoice;
+truncate table resources;
+truncate table products;
+truncate table product_untis;
+truncate table Payment;
+truncate table journals;
+truncate table journal_details;
+truncate table invoice_sales;
+truncate table invoice_return_sales;
+truncate table invoice_return_purchases;
+truncate table invoice_purchases;
+truncate table inventory;
+truncate table Invoice;
+truncate table employees;
+truncate table Customer;
+truncate table cost_centers;
+truncate table categories;
+truncate table accounts;
+truncate table __purchase_invoice;
+truncate table ____purchase_invoice;
+truncate table ____invoice_sales; 
