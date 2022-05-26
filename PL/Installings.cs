@@ -80,12 +80,18 @@ namespace sales_management.PL
             string suppliers_account,
 
             string return_sales_account,
-            string return_purchase_account
+            string return_purchase_account,
+
+            string asset_account_field,
+            string debits_account_field,
+            string profits_account_field,
+            string owners_account_field,
+            string expenses_account_field
             ) {
             
             DB.DataAccessLayer Layer = new DB.DataAccessLayer();
 
-            SqlParameter[] param = new SqlParameter[31];
+            SqlParameter[] param = new SqlParameter[36];
 
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = id;
@@ -180,6 +186,22 @@ namespace sales_management.PL
 
             param[30] = new SqlParameter("@return_purchase_account", SqlDbType.VarChar);
             param[30].Value = return_purchase_account;
+
+            param[31] = new SqlParameter("@asset_account", SqlDbType.VarChar);
+            param[31].Value = asset_account_field;
+
+            param[32] = new SqlParameter("@debits_account", SqlDbType.VarChar);
+            param[32].Value = debits_account_field;
+
+            param[33] = new SqlParameter("@profits_account", SqlDbType.VarChar);
+            param[33].Value = profits_account_field;
+
+            param[34] = new SqlParameter("@owners_account", SqlDbType.VarChar);
+            param[34].Value = owners_account_field;
+
+            param[35] = new SqlParameter("@expenses_account", SqlDbType.VarChar);
+            param[35].Value = expenses_account_field;
+
 
             Layer.Open();
             Layer.ExecuteCommand("Update_System_Settings", param);

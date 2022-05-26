@@ -172,7 +172,12 @@ namespace sales_management.UI
                 isIncludeUpdate.Checked = Convert.ToBoolean(drow["enable_edit_invoices"]);
                 isIncludeDelete.Checked = Convert.ToBoolean(drow["enable_delete_invoices"]);
                 checkbox_enable_vat.Checked = (bool) drow["enabled_vat"];
-
+                 
+                asset_account_field.Text = drow["asset_account"].ToString();
+                debits_account_field.Text = drow["debits_account"].ToString();
+                profits_account_field.Text = drow["profits_account"].ToString();
+                owners_account_field.Text = drow["owners_account"].ToString();
+                expenses_account_field.Text = drow["expenses_account"].ToString();
 
                 if ( (bool)drow["enabled_vat"] == true) {
                     panel1.Enabled = true;
@@ -255,7 +260,14 @@ namespace sales_management.UI
                 suppliers_account_field.Text, 
 
                 return_sales_account_field.Text,
-                return_purchase_account_field.Text
+                return_purchase_account_field.Text,
+
+
+                asset_account_field.Text,
+                debits_account_field.Text,
+                profits_account_field.Text,
+                owners_account_field.Text,
+                expenses_account_field.Text
             );
 
             if ( logoImage_byte.ImageLocation != "" && logoImage_byte.ImageLocation != null ) {
@@ -453,7 +465,40 @@ namespace sales_management.UI
             UI.___Accounts.GetForm.ShowDialog();
         }
 
-        /// -
-        /// 
-    }
+        private void asset_account_field_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = asset_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+
+        private void debits_account_field_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = debits_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+
+        private void profits_account_field_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = profits_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+
+        private void owners_account_field_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = owners_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+
+        private void expenses_account_field_Click(object sender, EventArgs e)
+        {
+            UI.SystemSettings.GetForm.input = expenses_account_field;
+            UI.___Accounts.GetForm.InstanceType = 0;
+            UI.___Accounts.GetForm.ShowDialog();
+        }
+    } 
+
 }
