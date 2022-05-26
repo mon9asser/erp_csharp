@@ -80,21 +80,23 @@ namespace sales_management.UI
                 table = tree.Get_Accounting_Tree();
                 datagrid_accounts_tree.DataSource = table;
 
-                datagrid_accounts_tree.Columns["id"].Visible = false;
-                datagrid_accounts_tree.Columns["account_name_en"].Visible = false;
+                datagrid_accounts_tree.Columns["id"].Visible = false; 
                 datagrid_accounts_tree.Columns["debit_credit"].Visible = false;
                 datagrid_accounts_tree.Columns["balance"].Visible = false;
                 datagrid_accounts_tree.Columns["is_main_account"].Visible = false;
 
-
                 datagrid_accounts_tree.Columns["account_number"].HeaderText = "رقم الحساب";
                 datagrid_accounts_tree.Columns["account_name"].HeaderText = "إسم الحســـاب";
-                datagrid_accounts_tree.Columns["main_account"].HeaderText = "الحساب الرئيسي";
+                datagrid_accounts_tree.Columns["account_name_en"].HeaderText = "الإسم باللغة الإنجليزية";
+                datagrid_accounts_tree.Columns["main_account"].HeaderText = "الحساب الفرعي";
+                datagrid_accounts_tree.Columns["parent_account"].HeaderText = "الحساب الرئيسى";
 
+                datagrid_accounts_tree.Columns["account_name"].Width = 285;
+                datagrid_accounts_tree.Columns["account_name_en"].Width = 285;
 
-                datagrid_accounts_tree.Columns["account_number"].Width = 130;
-                datagrid_accounts_tree.Columns["account_name"].Width = 295;
-                datagrid_accounts_tree.Columns["main_account"].Width = 130;
+                //datagrid_accounts_tree.Columns["account_number"].Width = 130;
+                //datagrid_accounts_tree.Columns["account_name"].Width = 295;
+                // datagrid_accounts_tree.Columns["main_account"].Width = 130;
 
                 foreach (DataRow row in table.Rows)
                 {
@@ -116,7 +118,7 @@ namespace sales_management.UI
 
         }
          
-        public void Fill_Tree_View(string acc_number, string acc_title, string parent_account) {
+        public void Fill_Tree_View(string acc_number, string acc_title, string parent_account ) {
 
             try
             {
@@ -374,31 +376,41 @@ namespace sales_management.UI
              
             try
             {
-                
+
+                DataTable table_2 = new DataTable();
+
+                table_2.Columns.Add("account_number", typeof(string));
+                table_2.Columns.Add("account_name", typeof(string));
+                table_2.Columns.Add("main_account", typeof(string));
+                table_2.Columns.Add("parent_account", typeof(string));
+                table_2.Columns.Add("account_name_en", typeof(string));
+
+                DataRow newRow;
+                foreach (DataGridViewRow row in datagrid_accounts_tree.Rows)
+                {
+                    if (row.Cells["account_number"].Value != null && row.Cells["account_number"].Value != DBNull.Value && !String.IsNullOrWhiteSpace(row.Cells["account_number"].ToString()))
+                    {
+                        newRow = table_2.NewRow();
+                        newRow["account_number"] = row.Cells["account_number"].Value.ToString();
+                        newRow["account_name"] = row.Cells["account_name"].Value.ToString();
+                        newRow["main_account"] = row.Cells["main_account"].Value.ToString();
+
+                        newRow["parent_account"] = row.Cells["parent_account"].Value.ToString();
+                        newRow["account_name_en"] = row.Cells["account_name_en"].Value.ToString();
+
+
+                        table_2.Rows.Add(newRow);
+                    }
+                }
+
+                tree.Update_Tree_Of_Accounts(table_2);
+
             }
             catch (Exception) {
 
             }
 
-            DataTable table_2 = new DataTable();
-            table_2.Columns.Add("account_number", typeof(string));
-            table_2.Columns.Add("account_name", typeof(string));
-            table_2.Columns.Add("main_account", typeof(string));
-
-            DataRow newRow;
-            foreach (DataGridViewRow row in datagrid_accounts_tree.Rows)
-            {
-                if (row.Cells["account_number"].Value != null && row.Cells["account_number"].Value != DBNull.Value && !String.IsNullOrWhiteSpace(row.Cells["account_number"].ToString()))
-                {
-                    newRow = table_2.NewRow();
-                    newRow["account_number"] = row.Cells["account_number"].Value.ToString();
-                    newRow["account_name"] = row.Cells["account_name"].Value.ToString();
-                    newRow["main_account"] = row.Cells["main_account"].Value.ToString();
-                    table_2.Rows.Add(newRow);
-                }
-            }
-
-            tree.Update_Tree_Of_Accounts(table_2);
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)

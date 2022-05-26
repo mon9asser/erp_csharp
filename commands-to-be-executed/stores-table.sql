@@ -239,3 +239,42 @@ ELSE
 
 
 
+-----------------------
+USE [old_data]
+GO
+
+/****** Object:  UserDefinedTableType [dbo].[Accounting_Tree]    Script Date: 5/26/2022 7:43:16 PM ******/
+CREATE TYPE [dbo].[Accounting_Tree] AS TABLE(
+	[account_number] [varchar](50) NULL,
+	[account_name] [text] NULL,
+	[main_account] [varchar](50) NULL,
+	[parent_account] [varchar](50) NULL,
+	[account_name_en] [varchar](50) NULL 
+)
+GO
+
+
+
+-----------------------
+
+USE [old_data]
+GO
+/****** Object:  StoredProcedure [dbo].[Update_Tree_Of_Accounts_TableSet]    Script Date: 5/26/2022 7:42:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Update_Tree_Of_Accounts_TableSet]
+
+@accounting_tree AS [dbo].Accounting_Tree READONLY
+
+AS
+
+DELETE FROM [dbo].accounts;
+
+IF EXISTS( SELECT 1 FROM @accounting_tree )
+	BEGIN 
+		INSERT INTO [dbo].accounts(account_number, account_name, main_account, parent_account, account_name_en)
+			SELECT account_number, account_name, main_account, parent_account, account_name_en FROM @accounting_tree
+
+	END

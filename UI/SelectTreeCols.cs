@@ -18,7 +18,7 @@ namespace sales_management.UI
         public SelectTreeCols()
         {
             InitializeComponent();
-        }
+        } 
 
         public SelectTreeCols(Microsoft.Office.Interop.Excel.Range rang )
         {
@@ -26,7 +26,7 @@ namespace sales_management.UI
             InitializeComponent();
 
             try {
-
+                
                 int rowCount = rang.Rows.Count;
                 int colCount = rang.Columns.Count;
 
@@ -34,7 +34,7 @@ namespace sales_management.UI
                 excelSheetCol.Items.Clear();
 
                 DataTable ExcelSheetTable = new DataTable();
-
+               
                 // Build DataTable Columns
                 for (int i = 1; i <= rowCount; i++)
                 {
@@ -88,7 +88,7 @@ namespace sales_management.UI
                     }
                 }
 
-
+                
                 foreach (KeyValuePair<int, string> res in projectsDictionary)
                 {
                     excelSheetCol.Items.Add(res.Value);
@@ -100,12 +100,14 @@ namespace sales_management.UI
                 // Fill THE DATA GRIDVIEW 
                 DataTable SourcesTable = new DataTable();
                 SourcesTable.Columns.Add("AccountingTreeData");
-                SourcesTable.Columns.Add("excelSheetCol");
+                SourcesTable.Columns.Add("excelSheetCol"); 
 
-                string[] AccountsData = new string[3];
+                string[] AccountsData = new string[5];
                 AccountsData[0] = "رقم الحساب";
                 AccountsData[1] = "إسم الحساب";
-                AccountsData[2] = "الحساب الرئيسى";
+                AccountsData[2] = "الإسم الإنجليزي";
+                AccountsData[3] = "الحساب الرئيسى";
+                AccountsData[4] = "الحساب الفرعي"; 
 
 
                 for (int i = 0; i < AccountsData.Length; i++)
@@ -115,8 +117,8 @@ namespace sales_management.UI
                     row.Cells["AccountingTreeData"].Value = AccountsData[i];
                     row.Cells["excelSheetCol"].Value = (row.Cells["excelSheetCol"] as DataGridViewComboBoxCell).Items[0];
                 }
-
-                 this.ExcelSheetDataTable = ExcelSheetTable;
+                
+                this.ExcelSheetDataTable = ExcelSheetTable;
 
             } catch (Exception) { }
 
@@ -135,15 +137,24 @@ namespace sales_management.UI
 
                 DataGridViewRow account_number_row = datagrid_accounts_tree_columns.Rows[0];
                 DataGridViewComboBoxCell account_number_row_dc = (DataGridViewComboBoxCell)account_number_row.Cells["excelSheetCol"];
-                int account_number_col_index = account_number_row_dc.Items.IndexOf(account_number_row_dc.Value);
+                int account_number_index = account_number_row_dc.Items.IndexOf(account_number_row_dc.Value);
 
                 DataGridViewRow account_name_row = datagrid_accounts_tree_columns.Rows[1];
                 DataGridViewComboBoxCell account_name_row_dc = (DataGridViewComboBoxCell)account_name_row.Cells["excelSheetCol"];
-                int account_name_col_index = account_name_row_dc.Items.IndexOf(account_name_row_dc.Value);
+                int arabic_account_name_index = account_name_row_dc.Items.IndexOf(account_name_row_dc.Value);
 
-                DataGridViewRow main_account_row = datagrid_accounts_tree_columns.Rows[2];
+                DataGridViewRow account_name_row_en = datagrid_accounts_tree_columns.Rows[2];
+                DataGridViewComboBoxCell account_name_row_dc_en = (DataGridViewComboBoxCell)account_name_row_en.Cells["excelSheetCol"];
+                int english_account_name_index = account_name_row_dc_en.Items.IndexOf(account_name_row_dc_en.Value);
+
+                DataGridViewRow main_account_row = datagrid_accounts_tree_columns.Rows[3];
                 DataGridViewComboBoxCell main_account_row_dc = (DataGridViewComboBoxCell)main_account_row.Cells["excelSheetCol"];
-                int main_account_col_index = main_account_row_dc.Items.IndexOf(main_account_row_dc.Value);
+                int main_account_index = main_account_row_dc.Items.IndexOf(main_account_row_dc.Value);
+
+                DataGridViewRow main_account_in_row = datagrid_accounts_tree_columns.Rows[4];
+                DataGridViewComboBoxCell main_account_row_in_dc = (DataGridViewComboBoxCell)main_account_in_row.Cells["excelSheetCol"];
+                int parent_account_index = main_account_row_in_dc.Items.IndexOf(main_account_row_in_dc.Value);
+
 
                 // Clear Current DataGridview Items 
                 if (UI.FRM_AccountsGuid.GetForm.datagrid_accounts_tree.Rows.Count > 1)
@@ -166,7 +177,7 @@ namespace sales_management.UI
                 DataTableSource.Columns.Add("account_name_en");
                 DataTableSource.Columns.Add("main_account");
                 DataTableSource.Columns.Add("debit_credit");
-                DataTableSource.Columns.Add("balance");
+                DataTableSource.Columns.Add("parent_account");
                 DataTableSource.Columns.Add("is_main_account");
                 DataRow dgrow;
                  
@@ -175,16 +186,20 @@ namespace sales_management.UI
 
                     // Add to Tree View 
                     UI.FRM_AccountsGuid.GetForm.Fill_Tree_View(
-                        row[account_number_col_index].ToString(),
-                        row[account_name_col_index].ToString(),
-                        row[main_account_col_index].ToString()
+                        row[account_number_index].ToString(),
+                        row[arabic_account_name_index].ToString(),
+                        row[english_account_name_index].ToString() 
                     );
 
                     // Add to DataTable
                     dgrow = DataTableSource.NewRow();
-                    dgrow["account_number"] = row[account_number_col_index].ToString();
-                    dgrow["main_account"] = row[main_account_col_index].ToString();
-                    dgrow["account_name"] = row[account_name_col_index].ToString();
+                    dgrow["account_number"] = row[account_number_index].ToString();
+                    dgrow["main_account"] = row[parent_account_index].ToString(); 
+                    dgrow["account_name"] = row[arabic_account_name_index].ToString();
+
+                    dgrow["account_name_en"] = row[english_account_name_index].ToString();
+                    dgrow["parent_account"] = row[main_account_index].ToString();
+
                     DataTableSource.Rows.Add(dgrow);
                 }
                  
