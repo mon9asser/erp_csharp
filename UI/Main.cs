@@ -18,7 +18,7 @@ namespace sales_management.UI
         private int userId = 1;
         private string userName = "Montasser";
         private string fullName = "Montasser Mossallem"; 
-        public Sunisoft.IrisSkin.SkinEngine skin;
+        
 
         public static Main frm;
         static void frm_formClosed(object sernder, FormClosedEventArgs e) {
@@ -93,11 +93,7 @@ namespace sales_management.UI
         }
 
         public void ChangeLayoutTheme( string skinName ) {
-
-            // Change Layout Theme 
-            UI.Main.getMainForm.skin = new Sunisoft.IrisSkin.SkinEngine();
-            UI.Main.getMainForm.skin.SerialNumber = "kUb2DF5pvGF3X9dKPFvIdkXQ0sE8LkAVp9fMme9wCnjZ+ArdRVlxKw==";
-            UI.Main.getMainForm.skin.SkinFile = "Skins/" + skinName;
+ 
 
         }
 

@@ -89,13 +89,13 @@ namespace sales_management.UI
             DataRow drow;
             foreach (DataGridViewRow row in datagrid_product_units.Rows)
             {
-                if (row.Cells["title"].Value == System.DBNull.Value)
+                if (row.Cells["title"].Value == System.DBNull.Value || row.Cells["title"].Value == null || string.IsNullOrEmpty(row.Cells["title"].Value.ToString()) )
                 {
                     continue;
                 }
 
 
-                if (row.Cells["title"].Value != null && row.Cells["shortcut"].Value != null && row.Cells["datagride_id"].Value != null)
+                if (row.Cells["title"].Value != null && row.Cells["title"].Value.ToString() != "")
                 {
                     drow = table.NewRow();
                     drow["title"] = row.Cells["title"].Value.ToString();

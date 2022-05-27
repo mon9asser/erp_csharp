@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QRCoder;
-using IronBarCode;
+using QRCoder; 
 using System.Drawing;
 
 namespace sales_management.PL
