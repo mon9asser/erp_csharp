@@ -49,45 +49,13 @@ truncate table ____invoice_sales;
 
 
 
+ 
+CREATE PROC Income_Statement_List
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CREATE PROC Profit_Statement_List
+@date_from DATETIME,
+@date_to DATETIME
 
 AS 
-
-declare @date_from as datetime
-set @date_from = '2022-05-05 00:00:00.000';
-
-declare @date_to as datetime
-set @date_to = '2023-05-05 00:00:00.000';
-
-
 
 --==========================================================
 --			SALES NET TOTAL
@@ -182,9 +150,60 @@ SET @other_revenuse = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - C
 INNER JOIN journals ON journal_details.journal_id = journals.id 
 WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '420%'); 
 
+IF @other_revenuse IS NULL 
+SET @other_revenuse = 0;
+
+
 --==========================================================
---			NEEDED GIVENS
+--			MARKETING AND PUBLISHING EXPENSES
 --========================================================== 
-SELECT @total_net_sales AS total_net_sales;
-SELECT @total_cost AS total_cost;
-SELECT @other_revenuse AS other_revenues;
+DECLARE @market_publish AS DECIMAL;
+SET @market_publish = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
+INNER JOIN journals ON journal_details.journal_id = journals.id 
+WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '520%'); 
+
+IF @market_publish IS NULL 
+SET @market_publish = 0;
+
+
+
+--==========================================================
+--			MANAGEMENT AND INGENERAL EXPENSES
+--========================================================== 
+DECLARE @management_ingeneral_exp AS DECIMAL;
+SET @management_ingeneral_exp = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
+INNER JOIN journals ON journal_details.journal_id = journals.id 
+WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '530%'); 
+
+IF @management_ingeneral_exp IS NULL 
+SET @management_ingeneral_exp = 0;
+
+ 
+
+ --==========================================================
+--			CALCULATIONS 
+--========================================================== 
+DECLARE @net_profit AS DECIMAL
+SET @net_profit = ( ( SELECT @total_net_sales ) - ( SELECT @total_cost ) );
+ 
+
+
+SET @other_revenuse = ( SELECT @other_revenuse ) - ( ( SELECT @market_publish ) + (SELECT @management_ingeneral_exp) );
+
+DECLARE @total_income AS DECIMAL;
+SET @total_income = ( SELECT @net_profit) + (SELECT @other_revenuse);
+
+
+SELECT 
+	CAST(@total_net_sales AS DECIMAL(18,2)) 'total_sales',
+	CAST(@total_cost AS DECIMAL(18,2)) 'total_costs',
+	CAST(@net_profit AS DECIMAL(18,2)) 'net_profit',
+	-----------------------------
+	CAST(@other_revenuse AS DECIMAL(18,2)) 'other_revenues',
+	CAST(@market_publish AS DECIMAL(18,2)) 'sells_marketing_expenses',
+	CAST(@management_ingeneral_exp AS DECIMAL(18,2)) 'management_expenses',
+	--------------------------------
+	CAST(@total_income AS DECIMAL(18,2)) 'total_income',
+	@date_from 'date_from',
+	@date_to 'date_to',
+	'قائمة الدخل عن الفترة' 'title'

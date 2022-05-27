@@ -498,8 +498,9 @@ namespace sales_management.UI
             // 
             // قائمةالدخلToolStripMenuItem
             // 
-            resources.ApplyResources(this.قائمةالدخلToolStripMenuItem, "قائمةالدخلToolStripMenuItem");
             this.قائمةالدخلToolStripMenuItem.Name = "قائمةالدخلToolStripMenuItem";
+            resources.ApplyResources(this.قائمةالدخلToolStripMenuItem, "قائمةالدخلToolStripMenuItem");
+            this.قائمةالدخلToolStripMenuItem.Click += new System.EventHandler(this.قائمةالدخلToolStripMenuItem_Click);
             // 
             // قائمةالمركزالماليToolStripMenuItem
             // 

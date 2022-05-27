@@ -324,5 +324,11 @@ namespace sales_management.UI
             UI.FND___Date_Range rmrange = new UI.FND___Date_Range(2);
             rmrange.ShowDialog();
         }
+
+        private void قائمةالدخلToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FND___Date_Range rmrange = new UI.FND___Date_Range(3);
+            rmrange.ShowDialog();
+        }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.entry_number_field = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.entry_id_field = new System.Windows.Forms.TextBox();
@@ -67,7 +67,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(19, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "رقم القيد :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,7 +103,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(19, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "التاريخ :";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -121,8 +121,8 @@
             this.datagridview_items.AllowUserToDeleteRows = false;
             this.datagridview_items.AllowUserToResizeColumns = false;
             this.datagridview_items.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
-            this.datagridview_items.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            this.datagridview_items.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagridview_items.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.datagridview_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview_items.Location = new System.Drawing.Point(11, 109);
@@ -271,7 +271,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(693, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 149;
             this.label4.Text = "إجمالى المدين :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -297,7 +297,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(693, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.Size = new System.Drawing.Size(74, 13);
             this.label5.TabIndex = 151;
             this.label5.Text = "إجمالى الدائن :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -318,7 +318,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Entry_Details
+            // FND___Entry_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -347,7 +347,7 @@
             this.Controls.Add(this.entry_number_field);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Entry_Details";
+            this.Name = "FND___Entry_Details";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;

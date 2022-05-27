@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="05/28/2022 00:37:12" ReportInfo.CreatorVersion="2018.4.19.0">
+  <Dictionary>
+    <TableDataSource Name="income_statement" ReferenceName="income_Statement1.income_statement" DataType="System.Int32" Enabled="true">
+      <Column Name="total_sales" DataType="System.Decimal"/>
+      <Column Name="total_costs" DataType="System.Decimal"/>
+      <Column Name="net_profit" DataType="System.Decimal"/>
+      <Column Name="other_revenues" DataType="System.Decimal"/>
+      <Column Name="sells_marketing_expenses" DataType="System.Decimal"/>
+      <Column Name="management_expenses" DataType="System.Decimal"/>
+      <Column Name="total_income" DataType="System.Decimal"/>
+      <Column Name="date_from" DataType="System.DateTime"/>
+      <Column Name="date_to" DataType="System.DateTime"/>
+      <Column Name="title" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="122.85"/>
+    <PageHeaderBand Name="PageHeader1" Top="126.85" Width="718.2" Height="28.35">
+      <TextObject Name="Text2" Left="245.7" Width="94.5" Height="18.9" Text="total_income"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="159.2" Width="718.2" Height="75.6" DataSource="income_statement">
+      <TextObject Name="Text1" Left="245.7" Top="28.35" Width="94.5" Height="18.9" Text="[income_statement.total_income]" Format="Currency" Format.UseLocale="true" HorzAlign="Right" WordWrap="false" Trimming="EllipsisCharacter"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="238.8" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

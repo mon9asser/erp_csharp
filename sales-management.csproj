@@ -103,6 +103,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DailyEntries.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\Income_Statement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Income_Statement.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSet\Inventory.cs">
       <DependentUpon>Inventory.xsd</DependentUpon>
     </Compile>
@@ -535,6 +540,17 @@
     <None Include="DSet\DailyEntries.xss">
       <DependentUpon>DailyEntries.xsd</DependentUpon>
     </None>
+    <None Include="DSet\Income_Statement.xsc">
+      <DependentUpon>Income_Statement.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Income_Statement.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Income_Statement.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\Income_Statement.xss">
+      <DependentUpon>Income_Statement.xsd</DependentUpon>
+    </None>
     <None Include="DSet\Inventory.xsc">
       <DependentUpon>Inventory.xsd</DependentUpon>
     </None>
@@ -589,6 +605,9 @@
     </None>
     <None Include="DSet\Withdraw_Report.xss">
       <DependentUpon>Withdraw_Report.xsd</DependentUpon>
+    </None>
+    <None Include="FReports\Income_Statement.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\Inventory_Report.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

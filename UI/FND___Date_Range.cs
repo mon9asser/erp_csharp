@@ -23,6 +23,7 @@ namespace sales_management.UI
         DSet.Statments DS_Statement = new DSet.Statments();
         DSet.DailyEntries DS_Entry= new DSet.DailyEntries();
         DSet.Withdraw_Report DS_Withdraw = new DSet.Withdraw_Report();
+        DSet.Income_Statement DS_Income = new DSet.Income_Statement();
 
         DataTable Accounts;
         DataTable Settings;
@@ -52,7 +53,7 @@ namespace sales_management.UI
             
             try
             {
-                
+
                 // Journal Entries Data 
                 if (this.SearchType == 0)
                 {
@@ -72,6 +73,11 @@ namespace sales_management.UI
                     this.Load_goods_Withdraw_Report(from_date, to_date);
 
                 }
+                else if (this.SearchType == 3){
+
+                    this.Load_Income_Statement_Report(from_date, to_date);
+
+                }
 
                 this.Close();
             }
@@ -79,7 +85,26 @@ namespace sales_management.UI
 
         }
 
+        /**
+        * ===============================================================================
+        * Withdraw Report 
+        * ===============================================================================
+        * 
+        **/
+        public void Load_Income_Statement_Report(DateTime from_date , DateTime date_to  ) {
 
+
+            DataTable Income_Statement_Table = Entries.Income_Statement_List(from_date, from_date);
+            this.DS_Income.Tables["income_statement"].Merge(Income_Statement_Table);
+             
+            UI.FND___Viewer viewer = new UI.FND___Viewer(
+                "\\FReports\\Income_Statement.frx",
+                this.DS_Income,
+                "income_statment_ds",
+                "قائمة الدخل عن الفترة"
+            );
+            viewer.Show();
+        }
 
         /**
          * ===============================================================================
@@ -92,7 +117,8 @@ namespace sales_management.UI
 
             DataTable withdraw_report = dset.Tables[0];
             DataTable withdraw_summary = dset.Tables[1];
-             
+            
+
 
             if (withdraw_report.Rows.Count == 0)
             {
