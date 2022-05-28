@@ -53,8 +53,7 @@ alter PROC Income_Statement_List
 @date_from DATETIME,
 @date_to DATETIME
 
-AS 
-
+AS  
 --==========================================================
 --			SALES NET TOTAL
 --========================================================== 
@@ -156,7 +155,7 @@ SET @other_revenuse = 0;
 --			MARKETING AND PUBLISHING EXPENSES
 --========================================================== 
 DECLARE @market_publish AS DECIMAL;
-SET @market_publish = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
+SET @market_publish = (SELECT SUM(CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
 INNER JOIN journals ON journal_details.journal_id = journals.id 
 WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '520%'); 
 
@@ -169,7 +168,7 @@ SET @market_publish = 0;
 --			MANAGEMENT AND INGENERAL EXPENSES
 --========================================================== 
 DECLARE @management_ingeneral_exp AS DECIMAL;
-SET @management_ingeneral_exp = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
+SET @management_ingeneral_exp = (SELECT SUM(CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
 INNER JOIN journals ON journal_details.journal_id = journals.id 
 WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '530%'); 
 
@@ -185,11 +184,12 @@ DECLARE @net_profit AS DECIMAL
 SET @net_profit = ( ( SELECT @total_net_sales ) - ( SELECT @total_cost ) );
  
 
-declare @other_revenuse_x as decimal
-SET @other_revenuse_x = ( ( SELECT @other_revenuse ) - ( SELECT @market_publish ) ) - ( (SELECT @management_ingeneral_exp) );
-
+declare @total_expenses as decimal
+SET @total_expenses =  ( SELECT @market_publish ) + (SELECT @management_ingeneral_exp);
+ 
+  --( SELECT @other_revenuse )
 DECLARE @total_income AS DECIMAL;
-SET @total_income = ( SELECT @net_profit) + (SELECT @other_revenuse_x);
+SET @total_income = ( ( SELECT @net_profit ) + ( select @other_revenuse ) ) - (SELECT @total_expenses);
 
 
 SELECT 
@@ -201,7 +201,7 @@ SELECT
 	CAST(@market_publish AS DECIMAL(18,2)) 'sells_marketing_expenses',
 	CAST(@management_ingeneral_exp AS DECIMAL(18,2)) 'management_expenses',
 
-	CAST(@other_revenuse_x AS DECIMAL(18,2)) 'total_revenues',
+	CAST(@total_expenses AS DECIMAL(18,2)) 'total_expenses',
 	--------------------------------
 	CAST(@total_income AS DECIMAL(18,2)) 'total_income',
 	@date_from 'date_from',

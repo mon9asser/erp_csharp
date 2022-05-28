@@ -299,7 +299,7 @@ namespace sales_management.DSet {
             
             private global::System.Data.DataColumn columntitle;
             
-            private global::System.Data.DataColumn columntotal_revenues;
+            private global::System.Data.DataColumn columntotal_expenses;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -416,9 +416,9 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn total_revenuesColumn {
+            public global::System.Data.DataColumn total_expensesColumn {
                 get {
-                    return this.columntotal_revenues;
+                    return this.columntotal_expenses;
                 }
             }
             
@@ -459,7 +459,7 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public income_statementRow Addincome_statementRow(decimal total_sales, decimal total_costs, decimal net_profit, decimal other_revenues, decimal sells_marketing_expenses, decimal management_expenses, decimal total_income, System.DateTime date_from, System.DateTime date_to, string title, decimal total_revenues) {
+            public income_statementRow Addincome_statementRow(decimal total_sales, decimal total_costs, decimal net_profit, decimal other_revenues, decimal sells_marketing_expenses, decimal management_expenses, decimal total_income, System.DateTime date_from, System.DateTime date_to, string title, decimal total_expenses) {
                 income_statementRow rowincome_statementRow = ((income_statementRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         total_sales,
@@ -472,7 +472,7 @@ namespace sales_management.DSet {
                         date_from,
                         date_to,
                         title,
-                        total_revenues};
+                        total_expenses};
                 rowincome_statementRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowincome_statementRow);
                 return rowincome_statementRow;
@@ -505,7 +505,7 @@ namespace sales_management.DSet {
                 this.columndate_from = base.Columns["date_from"];
                 this.columndate_to = base.Columns["date_to"];
                 this.columntitle = base.Columns["title"];
-                this.columntotal_revenues = base.Columns["total_revenues"];
+                this.columntotal_expenses = base.Columns["total_expenses"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -531,8 +531,8 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columndate_to);
                 this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntitle);
-                this.columntotal_revenues = new global::System.Data.DataColumn("total_revenues", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntotal_revenues);
+                this.columntotal_expenses = new global::System.Data.DataColumn("total_expenses", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_expenses);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -837,17 +837,17 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal total_revenues {
+            public decimal total_expenses {
                 get {
                     try {
-                        return ((decimal)(this[this.tableincome_statement.total_revenuesColumn]));
+                        return ((decimal)(this[this.tableincome_statement.total_expensesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'total_revenues\' in table \'income_statement\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_expenses\' in table \'income_statement\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableincome_statement.total_revenuesColumn] = value;
+                    this[this.tableincome_statement.total_expensesColumn] = value;
                 }
             }
             
@@ -973,14 +973,14 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Istotal_revenuesNull() {
-                return this.IsNull(this.tableincome_statement.total_revenuesColumn);
+            public bool Istotal_expensesNull() {
+                return this.IsNull(this.tableincome_statement.total_expensesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Settotal_revenuesNull() {
-                this[this.tableincome_statement.total_revenuesColumn] = global::System.Convert.DBNull;
+            public void Settotal_expensesNull() {
+                this[this.tableincome_statement.total_expensesColumn] = global::System.Convert.DBNull;
             }
         }
         
