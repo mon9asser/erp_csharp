@@ -504,8 +504,9 @@ namespace sales_management.UI
             // 
             // قائمةالمركزالماليToolStripMenuItem
             // 
-            resources.ApplyResources(this.قائمةالمركزالماليToolStripMenuItem, "قائمةالمركزالماليToolStripMenuItem");
             this.قائمةالمركزالماليToolStripMenuItem.Name = "قائمةالمركزالماليToolStripMenuItem";
+            resources.ApplyResources(this.قائمةالمركزالماليToolStripMenuItem, "قائمةالمركزالماليToolStripMenuItem");
+            this.قائمةالمركزالماليToolStripMenuItem.Click += new System.EventHandler(this.قائمةالمركزالماليToolStripMenuItem_Click);
             // 
             // مديرالنظامToolStripMenuItem
             // 

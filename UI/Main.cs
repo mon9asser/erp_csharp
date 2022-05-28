@@ -187,7 +187,8 @@ namespace sales_management.UI
 
         private void فاتورةالمبيعاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.FND___salesInvoice.GetForm.Show();
+            UI.FND___salesInvoice frm = new FND___salesInvoice();
+            frm.Show();
         }
 
         private void إعداداتالإجراءاتالمخزنهToolStripMenuItem_Click(object sender, EventArgs e)
@@ -329,6 +330,11 @@ namespace sales_management.UI
         {
             UI.FND___Date_Range rmrange = new UI.FND___Date_Range(3);
             rmrange.ShowDialog();
+        }
+
+        private void قائمةالمركزالماليToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

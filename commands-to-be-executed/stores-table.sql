@@ -47,163 +47,417 @@ truncate table ____invoice_sales;
 
 
 
+------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Get_Sale_Invoice_Data_Set]    Script Date: 5/28/2022 4:08:57 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Get_Sale_Invoice_Data_Set]
 
-alter PROC Income_Statement_List
 
-@date_from DATETIME,
-@date_to DATETIME
+@doc_type INT
 
-AS  
---==========================================================
---			SALES NET TOTAL
---========================================================== 
+AS
 
-DECLARE @net_total_sales AS DECIMAL; 
+SELECT * FROM [dbo].invoice_sales INNER JOIN [dbo].journals ON [dbo].invoice_sales.id = [dbo].journals.doc_id and [dbo].journals.doc_type = 0;
+SELECT * FROM [dbo].document_details WHERE doc_type = @doc_type;
+SELECT * FROM [dbo].accounts;
+SELECT * FROM [dbo].settings;
+SELECT * FROM [dbo].products;
+SELECT * FROM [dbo].product_untis;
+SELECT * FROM [dbo].resources;
+---------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Get_Return_Sales_Invoice_Data_Set]    Script Date: 5/28/2022 4:10:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Get_Return_Sales_Invoice_Data_Set]
 
--- SALES DATA
-DECLARE @total_sales AS DECIMAL
-SET @total_sales = (SELECT SUM(COALESCE(CAST(total_price AS DECIMAL(18,2)), 0 )) FROM document_details 
-	INNER JOIN invoice_sales ON document_details.doc_id = invoice_sales.id  
-WHERE document_details.is_out=  1 AND document_details.doc_type = 0 and invoice_sales.[date] between @date_from and @date_to) ;
---SELECT @total_sales AS sales_value;
 
--- Commercial Discounts 
-DECLARE @commercial_discount AS DECIMAL
-SET @commercial_discount = (SELECT SUM(COALESCE(CAST(discount_name AS DECIMAL(18,2)), 0 )) FROM invoice_sales WHERE invoice_sales.[date] between @date_from and @date_to );
---SELECT @commercial_discount AS commercial_discount;
+@doc_type INT
+
+AS
+
+SELECT * FROM [dbo].invoice_return_sales INNER JOIN [dbo].journals ON [dbo].invoice_return_sales.id = [dbo].journals.doc_id and [dbo].journals.doc_type = 2;
+SELECT * FROM [dbo].document_details WHERE doc_type = @doc_type;
+SELECT * FROM [dbo].accounts;
+SELECT * FROM [dbo].settings;
+SELECT * FROM [dbo].products;
+SELECT * FROM [dbo].product_untis;
+SELECT * FROM [dbo].resources;
+-----------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Get_Return_Purchase_Invoice_Data_Set]    Script Date: 5/28/2022 4:11:43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER PROC [dbo].[Get_Return_Purchase_Invoice_Data_Set]
+
+@doc_type INT
+
+AS
+
+SELECT * FROM [dbo].invoice_return_purchases INNER JOIN [dbo].journals ON [dbo].invoice_return_purchases.id = [dbo].journals.doc_id and [dbo].journals.doc_type = 3;
+SELECT * FROM [dbo].document_details WHERE doc_type = @doc_type;
+SELECT * FROM [dbo].accounts;
+SELECT * FROM [dbo].settings;
+SELECT * FROM [dbo].products;
+SELECT * FROM [dbo].product_untis;
+SELECT * FROM [dbo].resources;
+
+----------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Report_Statement_Document]    Script Date: 5/28/2022 4:24:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Report_Statement_Document]
+
+	@account_1 varchar(50),
+	@account_2 varchar(50),
+	@date_from varchar(50),
+	@date_to varchar(50)
+	 
+AS 
+	
+-- BUILDING OPENING BALANCE WITH AUTOMAIC ROW 
+DECLARE @id AS INT 
+SET @id = NULL;
+
+DECLARE @jid AS INT 
+SET @jid = NULL;
+
+DECLARE @description AS VARCHAR(50) 
+SET @description = 'رصيد أول المدة';
+
+DECLARE @ccid AS VARCHAR(50) 
+SET @ccid = NULL;
+
+DECLARE @cdate AS DATETIME
+SET @cdate = @date_from;
+
+DECLARE @accnumber AS VARCHAR(50)
+SET @accnumber = NULL;
+
+DECLARE @credit AS DECIMAL(18,2)
+SET @credit = NULL;
+
+DECLARE @debit AS DECIMAL(18,2)
+SET @debit = NULL;
+
+DECLARE @paid_balance AS DECIMAL(18,2)
+SET @paid_balance = (SELECT  SUM( COALESCE(debit ,0) + COALESCE(credit ,0) ) from journal_details inner join journals on journal_details.journal_id = journals.id where journals.show_balances_in_period = 1 AND account_number = @account_1);
+
+DECLARE @balance AS DECIMAL(18,2) 
+SET @balance = ( SELECT SUM(COALESCE(credit ,0)) - SUM(COALESCE(debit ,0)) FROM journal_details where [date] < @date_from AND account_number = @account_1 ); 
+
+IF @account_2 != '-1'
+	SET @balance = ( SELECT SUM(COALESCE(credit ,0)) - SUM(COALESCE(debit ,0)) FROM journal_details where [date] < @date_from AND ( account_number = @account_1 OR account_number = @account_2 ) );
+
+IF @account_2 != '-1'
+	SET @paid_balance = (SELECT  SUM( COALESCE(debit ,0) + COALESCE(credit ,0) ) from journal_details inner join journals on journal_details.journal_id = journals.id where journals.show_balances_in_period = 1 and (account_number = @account_1 OR account_number = @account_2));
+
+IF @paid_balance IS NULL 
+	SET @paid_balance = 0;
+	
+IF @balance IS NULL 
+	SET @balance= 0.00;
+
  
--- RETURN SALES DATA
-DECLARE @return_sales AS DECIMAL
-SET @return_sales = (SELECT SUM(COALESCE(CAST(total_price AS DECIMAL(18,2)), 0 )) FROM document_details 
-	INNER JOIN invoice_return_sales ON document_details.doc_id = invoice_return_sales.id  
-WHERE document_details.is_out=  0 AND document_details.doc_type = 2 and invoice_return_sales.[date] between @date_from and @date_to) ;
---SELECT @return_sales AS return_sales;
+-- BUILDING MAIN QUERY ( COLLECT IT WITH THE OPENING BALANCE )
+SELECT @id AS 'id', 
+	   @jid AS 'journal_id',
+	   @description AS 'description',
+	   @ccid AS 'cost_center_number',
+	   @cdate AS 'date',
+	   @accnumber AS 'account_number',
+	   @credit AS 'credit',
+	   @debit AS 'debit',
+	   @balance AS 'balance' 
+	
+	   UNION ALL   
 
+	   SELECT 
+			id,
+			journal_id,
+			[description],
+			cost_center_number,
+			[date], 
+			[account_number],
+			credit,
+			debit,
+			( SELECT @balance ) + SUM( COALESCE(credit ,0) - COALESCE(debit,0) )  OVER(ORDER BY id)  balance
+			FROM journal_details WHERE [date] BETWEEN @date_from AND @date_to AND ( account_number = @account_1 OR account_number = @account_2  )
 
--- Commercial Discounts FOR RETURNS 
-DECLARE @return_commercial_discount AS DECIMAL
-SET @return_commercial_discount = (SELECT SUM(COALESCE(CAST(discount_name AS DECIMAL(18,2)), 0 )) FROM invoice_return_sales WHERE invoice_return_sales.[date] between @date_from and @date_to );
---SELECT @return_commercial_discount AS commercial_discount;
+-- CLOSING BALANCE 
 
--- ALLOWED DISCOUNTS
-DECLARE @sales_allowed_discounts AS DECIMAL
-SET @sales_allowed_discounts = (select SUM(COALESCE(debit, 0)) from journal_details INNER JOIN journals ON journal_details.journal_id = journals.id where account_number = '5104' AND journals.updated_date between @date_from and @date_to);
-
-
-SET @total_sales = ( ( SELECT @total_sales ) - ( SELECT @commercial_discount ) );
-SET @return_sales = ( ( SELECT @return_sales ) - ( SELECT @return_commercial_discount ) );
-DECLARE @total_net_sales AS DECIMAL ;
-SET @total_net_sales = (SELECT @total_sales) - (SELECT @return_sales);
-
---==========================================================
---			COST OF SELL GODS
---========================================================== 
-
--- COST OF SOLD GODS
-DECLARE @total_cost AS DECIMAL
-SET @total_cost = (SELECT SUM(COALESCE(CAST(total_cost AS DECIMAL(18,2)), 0 )) FROM document_details 
-	INNER JOIN invoice_sales ON document_details.doc_id = invoice_sales.id  
-WHERE document_details.is_out=  1 AND document_details.doc_type = 0 and invoice_sales.[date] between @date_from and @date_to) ;
---SELECT @total_cost AS total_cost;
-
-
--- RETURN SALES COST 
-DECLARE @return_sales_cost AS DECIMAL
-SET @return_sales_cost = (SELECT SUM(COALESCE(CAST(total_cost AS DECIMAL(18,2)), 0 )) FROM document_details 
-	INNER JOIN invoice_return_sales ON document_details.doc_id = invoice_return_sales.id  
-WHERE document_details.is_out= 0 AND document_details.doc_type = 2 and invoice_return_sales.[date] between @date_from and @date_to) ;
---SELECT @return_sales_cost AS return_total_cost;
-
-
--- ALLOWED DISCOUNTS
-DECLARE @cost_allowed_discounts AS DECIMAL
-SET @cost_allowed_discounts = (select SUM(CAST(COALESCE(credit, 0) AS decimal(18,2))) from journal_details INNER JOIN journals ON journal_details.journal_id = journals.id where account_number = '4103' AND journals.updated_date between @date_from and @date_to);
---select @cost_allowed_discounts;
-
--- PURCHASE EXPENSES
-DECLARE @purchase_expenses AS DECIMAL
-SET @purchase_expenses = (select SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) from journal_details INNER JOIN journals ON journal_details.journal_id = journals.id where account_number = '5102' AND journals.updated_date between @date_from and @date_to);
---select @purchase_expenses;
-IF @return_sales_cost IS NULL 
-SET @return_sales_cost = 0;
-
-IF @cost_allowed_discounts IS NULL 
-SET @cost_allowed_discounts = 0;
-
-IF @purchase_expenses IS NULL 
-SET @purchase_expenses = 0;
-
-SET @total_cost = ( SELECT @total_cost ) - ( SELECT @return_sales_cost );
-SET @total_cost = ( SELECT @total_cost ) - ( SELECT @cost_allowed_discounts );
-SET @total_cost = ( SELECT @total_cost ) + ( SELECT @purchase_expenses );
-
-
-
---==========================================================
---			OTHER REVENUES
---========================================================== 
-DECLARE @other_revenuse AS DECIMAL;
-SET @other_revenuse = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
-INNER JOIN journals ON journal_details.journal_id = journals.id 
-WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '420%'); 
-
-IF @other_revenuse IS NULL 
-SET @other_revenuse = 0;
-
-
---==========================================================
---			MARKETING AND PUBLISHING EXPENSES
---========================================================== 
-DECLARE @market_publish AS DECIMAL;
-SET @market_publish = (SELECT SUM(CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
-INNER JOIN journals ON journal_details.journal_id = journals.id 
-WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '520%'); 
-
-IF @market_publish IS NULL 
-SET @market_publish = 0;
-
-
-
---==========================================================
---			MANAGEMENT AND INGENERAL EXPENSES
---========================================================== 
-DECLARE @management_ingeneral_exp AS DECIMAL;
-SET @management_ingeneral_exp = (SELECT SUM(CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
-INNER JOIN journals ON journal_details.journal_id = journals.id 
-WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '530%'); 
-
-IF @management_ingeneral_exp IS NULL 
-SET @management_ingeneral_exp = 0;
-
- 
-
- --==========================================================
---			CALCULATIONS 
---========================================================== 
-DECLARE @net_profit AS DECIMAL
-SET @net_profit = ( ( SELECT @total_net_sales ) - ( SELECT @total_cost ) );
- 
-
-declare @total_expenses as decimal
-SET @total_expenses =  ( SELECT @market_publish ) + (SELECT @management_ingeneral_exp);
- 
-  --( SELECT @other_revenuse )
-DECLARE @total_income AS DECIMAL;
-SET @total_income = ( ( SELECT @net_profit ) + ( select @other_revenuse ) ) - (SELECT @total_expenses);
-
-
+/*
 SELECT 
-	CAST(@total_net_sales AS DECIMAL(18,2)) 'total_sales',
-	CAST(@total_cost AS DECIMAL(18,2)) 'total_costs',
-	CAST(@net_profit AS DECIMAL(18,2)) 'net_profit',
-	-----------------------------
-	CAST(@other_revenuse AS DECIMAL(18,2)) 'other_revenues',
-	CAST(@market_publish AS DECIMAL(18,2)) 'sells_marketing_expenses',
-	CAST(@management_ingeneral_exp AS DECIMAL(18,2)) 'management_expenses',
+	SUM( COALESCE(credit ,0)) AS 'credit', 
+	SUM( COALESCE(debit ,0)) AS 'debit',
+	( SUM( COALESCE(credit ,0)) - SUM( COALESCE(debit ,0) ) ) AS 'balance',
+	'الإجمالي' As 'title'
+	FROM journal_details 
+	WHERE (account_number = @account_1 OR account_number = @account_2 ) 
+	
+	UNION ALL
+	*/
+SELECT 
+	( SUM( COALESCE(credit ,0) ) - ( SELECT @paid_balance ))  AS 'credit', 
+	( SUM( COALESCE(debit ,0) ) - ( SELECT @paid_balance ))  AS 'debit', 
+	( SUM( COALESCE(credit ,0)) - SUM( COALESCE(debit ,0) ) ) AS 'balance',
+	'إجمالي الأرصدة المستحقة' As 'title'
+	FROM journal_details 
+	WHERE (account_number = @account_1 OR account_number = @account_2 );
 
-	CAST(@total_expenses AS DECIMAL(18,2)) 'total_expenses',
-	--------------------------------
-	CAST(@total_income AS DECIMAL(18,2)) 'total_income',
-	@date_from 'date_from',
-	@date_to 'date_to',
-	'قائمة الدخل عن الفترة' 'title'
+
+----------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Get_Purchase_Invoice_Data_Set]    Script Date: 5/28/2022 4:12:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER PROC [dbo].[Get_Purchase_Invoice_Data_Set]
+
+@doc_type INT
+
+AS
+
+SELECT * FROM [dbo].invoice_purchases INNER JOIN [dbo].journals ON [dbo].invoice_purchases.id = [dbo].journals.doc_id and [dbo].journals.doc_type = 1;
+SELECT * FROM [dbo].document_details WHERE doc_type = @doc_type;
+SELECT * FROM [dbo].accounts;
+SELECT * FROM [dbo].settings;
+SELECT * FROM [dbo].products;
+SELECT * FROM [dbo].product_untis;
+SELECT * FROM [dbo].resources;
+
+
+
+------------------------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Create_Purchase_Invoice_Id]    Script Date: 5/28/2022 7:18:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+ALTER PROC [dbo].[Create_Purchase_Invoice_Id]
+
+AS
+
+DECLARE @MyCounter AS INT;
+	SET @MyCounter = CASE WHEN EXISTS(SELECT * FROM  [dbo].invoice_purchases) THEN ( SELECT TOP 1 serial FROM  [dbo].invoice_purchases ORDER BY id DESC ) + 1 ELSE 1 END; 
+
+DECLARE @DayNumber AS VARCHAR(50)
+	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+
+	-- Open New Invoice
+	INSERT INTO  [dbo].invoice_purchases(payment_method, total_with_vat, serial, price_include_vat, details) VALUES(0, '00', @MyCounter, 1, 'شراء بضاعه نقدا' );
+
+	-- Open New Entry 
+	INSERT INTO [dbo].journals( 
+			[updated_date],
+			[description], 
+			entry_number, 
+			doc_id, 
+			doc_type
+		) VALUES( 
+		(SELECT GETDATE()), 
+		'مشتريات', 
+		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
+		, @@IDENTITY, 
+		1 );
+
+	-- Update Entry Number 
+	--UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
+
+	-- Return New Data 
+	SELECT TOP 1 * FROM  [dbo].invoice_purchases  
+			INNER JOIN 	[dbo].journals ON [dbo].invoice_purchases.id = [dbo].journals.doc_id AND [dbo].journals.doc_type = 1
+			ORDER BY  [dbo].invoice_purchases.id DESC;
+			
+			
+			
+--------------------------------------------------------------------------
+
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Create_Return_Purchase_Invoice_Id]    Script Date: 5/28/2022 7:20:17 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+ALTER PROC [dbo].[Create_Return_Purchase_Invoice_Id]
+
+AS
+
+DECLARE @MyCounter AS INT;
+	SET @MyCounter = CASE WHEN EXISTS(SELECT * FROM  [dbo].invoice_return_purchases) THEN ( SELECT TOP 1 serial FROM  [dbo].invoice_return_purchases ORDER BY id DESC ) + 1 ELSE 1 END; 
+
+DECLARE @DayNumber AS VARCHAR(50)
+	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+
+	-- Open New Invoice
+	INSERT INTO  [dbo].invoice_return_purchases(payment_method, total_with_vat, serial, price_include_vat, details) VALUES(0, '00', @MyCounter, 1, 'مردود مشتريات' );
+
+	-- Open New Entry 
+	INSERT INTO [dbo].journals( 
+			[updated_date],
+			[description], 
+			entry_number, 
+			doc_id, 
+			doc_type
+		) VALUES( 
+		(SELECT GETDATE()), 
+		'مردود مشتريات', 
+		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
+		, @@IDENTITY, 
+		3 );
+
+	-- Update Entry Number 
+	--UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
+
+	-- Return New Data 
+	SELECT TOP 1 * FROM  [dbo].invoice_return_purchases  
+			INNER JOIN 	[dbo].journals ON [dbo].invoice_return_purchases.id = [dbo].journals.doc_id and [dbo].journals.doc_type = 3
+			ORDER BY  [dbo].invoice_return_purchases.id DESC;
+
+
+
+
+--------------------------------------------------------------------------
+
+ALTER PROC [dbo].[Create_Return_Sales_Invoice_Id]
+
+AS
+
+DECLARE @MyCounter AS INT;
+	SET @MyCounter = CASE WHEN EXISTS(SELECT * FROM  [dbo].invoice_return_sales) THEN ( SELECT TOP 1 serial FROM  [dbo].invoice_return_sales ORDER BY id DESC ) + 1 ELSE 1 END; 
+
+DECLARE @DayNumber AS VARCHAR(50)
+	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+
+	-- Open New Invoice
+	INSERT INTO  [dbo].invoice_return_sales(payment_method, total_with_vat, serial, price_include_vat, details) VALUES(0, '00', @MyCounter, 1, 'مردود فاتورة مبيعات' );
+
+	-- Open New Entry 
+	INSERT INTO [dbo].journals( 
+			[updated_date],
+			[description], 
+			entry_number, 
+			doc_id, 
+			doc_type
+		) VALUES( 
+		(SELECT GETDATE()), 
+		'مردود مببعات', 
+		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
+		, @@IDENTITY, 
+		2 );
+
+	-- Update Entry Number 
+	--UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
+
+	-- Return New Data 
+	SELECT TOP 1 * FROM  [dbo].invoice_return_sales  
+			INNER JOIN 	[dbo].journals ON [dbo].invoice_return_sales.id = [dbo].journals.doc_id AND [dbo].journals.doc_type = 2
+			ORDER BY  [dbo].invoice_return_sales.id DESC;
+			
+
+--------------------------------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Create_Sale_Invoice_Id]    Script Date: 5/28/2022 7:25:06 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+ 
+ALTER PROC [dbo].[Create_Sale_Invoice_Id]
+
+AS
+
+DECLARE @MyCounter AS INT;
+	SET @MyCounter = CASE WHEN EXISTS(SELECT * FROM  [dbo].invoice_sales) THEN ( SELECT TOP 1 serial FROM  [dbo].invoice_sales ORDER BY id DESC ) + 1 ELSE 1 END; 
+
+DECLARE @DayNumber AS VARCHAR(50)
+	SET @DayNumber =  CONVERT( VARCHAR , DATEPART( DAY, GETDATE() ) );
+
+	-- Open New Invoice
+	INSERT INTO  [dbo].invoice_sales(payment_method, total_with_vat, serial, price_include_vat, details) VALUES(0, '00', @MyCounter, 1, 'بيع بضاعه نقدا' );
+
+	-- Open New Entry 
+	INSERT INTO [dbo].journals( 
+			[updated_date],
+			[description], 
+			entry_number, 
+			doc_id, 
+			doc_type
+		) VALUES( 
+		(SELECT GETDATE()), 
+		'مبيعات', 
+		( SELECT CONCAT(CAST( @DayNumber AS varchar ), CAST( '/' AS VARCHAR) , '00000' ) ) 
+		, @@IDENTITY, 
+		0 );
+
+	-- Update Entry Number 
+	--UPDATE [dbo].journals SET entry_number = CONCAT( CAST( @DayNumber AS VARCHAR ), '/',  CAST( @@IDENTITY AS VARCHAR ) ) WHERE id= @@IDENTITY;
+
+	-- Return New Data 
+	SELECT TOP 1 * FROM  [dbo].invoice_sales  
+			INNER JOIN 	[dbo].journals ON [dbo].invoice_sales.id = [dbo].journals.doc_id AND [dbo].journals.doc_type = 0
+			ORDER BY  [dbo].invoice_sales.id DESC;
+
+
+
+
+
+
+
+
+
+
+
+============================================
+DECLARE @assets_number AS VARCHAR(50);
+SET @assets_number = ( select asset_account from settings WHERE asset_account != '');
+
+DECLARE @equity_number AS VARCHAR(50);
+SET @equity_number = ( select debits_account from settings WHERE debits_account != '');
+
+DECLARE @revenues_number AS VARCHAR(50);
+SET @revenues_number = ( select profits_account from settings WHERE profits_account != '');
+
+DECLARE @owners_number AS VARCHAR(50);
+SET @owners_number = ( select owners_account from settings WHERE owners_account != '');
+
+DECLARE @expenses_number AS VARCHAR(50);
+SET @expenses_number = ( select expenses_account from settings WHERE expenses_account != '');
+ 
+
+SELECT SUM(credit), SUM(debit) FROM journal_details WHERE account_number LIKE '1%'; 
+SELECT SUM(credit), SUM(debit) FROM journal_details WHERE account_number LIKE '2%'; 
+SELECT SUM(credit), SUM(debit) FROM journal_details WHERE account_number LIKE '3%'; 
+SELECT SUM(credit), SUM(debit) FROM journal_details WHERE account_number LIKE '4%'; 
+SELECT SUM(credit), SUM(debit) FROM journal_details WHERE account_number LIKE '5%'; 
+
+
+SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1101%' OR account_number LIKE '1102%'; 

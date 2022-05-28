@@ -38,29 +38,7 @@ namespace sales_management.UI
         public int documentType = 0;
         public int currentInvoiceRowIndex = -1;
         public int lastRow = -1;
-        public static FND___salesInvoice frm;
-
-        static void frm_formClosed(object sernder, FormClosedEventArgs e)
-        {
-            frm = null;
-        }
-
-        public static FND___salesInvoice GetForm
-        {
-            get
-            {
-
-                if (frm == null)
-                {
-                    frm = new FND___salesInvoice();
-                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
-                }
-
-                return frm;
-
-            }
-        }
-
+        
         public FND___salesInvoice()
         {
             InitializeComponent(); 

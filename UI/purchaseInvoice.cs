@@ -1371,27 +1371,14 @@ namespace sales_management.UI
             entry_details.Columns.Add("date");
             entry_details.Columns.Add("account_number");
 
-            DataRow entry_details_from = entry_details.NewRow();
-            entry_details_from["journal_id"] = entry_id.Text;
-            entry_details_from["debit"] = enable_zakat_taxes.Checked ? Convert.ToDecimal(total_without_vat_field.Text) : Convert.ToDecimal(total_field_text.Text);
-            entry_details_from["description"] = "إثبات مخزون مشتريات";
-            // entry_details_from["credit"]
-            if (salesPaymentType == 0)
-            {
-                entry_details_from["account_number"] = setting["purchase_cash_account"].ToString(); 
-            }
-            else if (salesPaymentType == 1)
-            { 
-                entry_details_from["account_number"] = setting["purchase_credit_account"].ToString();
-            }
-            else if (salesPaymentType == 2 || salesPaymentType == 3)
-            { 
-                entry_details_from["account_number"] = setting["purchase_bank_account"].ToString();
-            }
-            entry_details_from["cost_center_number"] = "-1";
-            entry_details_from["date"] = datemade.Value;
-            entry_details.Rows.Add(entry_details_from);
-
+            DataRow entry_details_to = entry_details.NewRow();
+            entry_details_to["journal_id"] = entry_id.Text;
+            entry_details_to["debit"] = Convert.ToDecimal(total_field_text.Text);
+            entry_details_to["account_number"] = setting["purchases_account"].ToString(); 
+            entry_details_to["description"] = "إثبات مخزون فاتورة المشتريات";
+            entry_details_to["cost_center_number"] = "-1";
+            entry_details_to["date"] = datemade.Value;
+            entry_details.Rows.Add(entry_details_to);
 
             if (enable_zakat_taxes.Checked)
             {
@@ -1405,31 +1392,34 @@ namespace sales_management.UI
                 entry_details.Rows.Add(salesRow_vat_to);
             }
 
-            DataRow entry_details_to = entry_details.NewRow();
-            entry_details_to["journal_id"] = entry_id.Text;
-            entry_details_to["credit"] = Convert.ToDecimal(total_field_text.Text);
-            entry_details_to["account_number"] = setting["purchases_account"].ToString();
+            DataRow entry_details_from = entry_details.NewRow();
+            entry_details_from["journal_id"] = entry_id.Text;
+            entry_details_from["credit"] = enable_zakat_taxes.Checked ? Convert.ToDecimal(total_without_vat_field.Text) : Convert.ToDecimal(total_field_text.Text);
+            entry_details_from["description"] = "شراء بضاعة ";
             // entry_details_from["credit"]
             if (salesPaymentType == 0)
             {
-                entry_details_to["description"] = "عملية شراء نقدا"; 
+                entry_details_from["account_number"] = setting["purchase_cash_account"].ToString();
+                entry_details_from["description"] = "عملية شراء نقدا";
             }
             else if (salesPaymentType == 1)
             {
-                entry_details_to["description"] = "عملية شراء أجل";
-
+                entry_details_from["account_number"] = setting["purchase_credit_account"].ToString();
+                entry_details_from["description"] = "عملية شراء أجل";
                 if (customer_id.Text != "")
                 {
-                    entry_details_to["account_number"] = this.get_resource_code(customer_id.Text);
-                } 
+                    entry_details_from["account_number"] = this.get_resource_code(customer_id.Text);
+                }
             }
             else if (salesPaymentType == 2 || salesPaymentType == 3)
             {
-                entry_details_to["description"] = "عملية شراء عن طريق البنك"; 
+                entry_details_from["account_number"] = setting["purchase_bank_account"].ToString();
+                entry_details_from["description"] = "عملية شراء عن طريق البنك";
             }
-            entry_details_to["cost_center_number"] = "-1";
-            entry_details_to["date"] = datemade.Value;
-            entry_details.Rows.Add(entry_details_to);
+            entry_details_from["cost_center_number"] = "-1";
+            entry_details_from["date"] = datemade.Value;
+            entry_details.Rows.Add(entry_details_from);
+
 
             /*
              * ===============================================

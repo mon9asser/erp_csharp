@@ -304,7 +304,7 @@ namespace sales_management.UI
         {
 
 
-            if ((total_credit.Text != total_debit.Text) && (total_credit.Text != "" && total_debit.Text != "")) {
+            if ((Convert.ToDecimal(total_credit.Text) != Convert.ToDecimal(total_debit.Text)) && (total_credit.Text != "" && total_debit.Text != "")) {
                 MessageBox.Show("من فضلك تأكد من البيانات يجب ان يكون الجانب المدين متساوي مع الجانب الدائن تماما", "حدث خطأ", MessageBoxButtons.OK );
                 return;
             }

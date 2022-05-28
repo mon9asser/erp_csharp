@@ -82,5 +82,50 @@ namespace sales_management.UI
 
             this.Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            this.Fill_DataGridView_Data();
+
+            string searchValue = textBox1.Text;
+            if (searchValue == "")
+            {
+                return;
+            }
+
+            DataTable tbl = (DataTable)dataGridView1.DataSource;
+            DataTable newTable = new DataTable();
+            foreach (DataColumn col in tbl.Columns)
+            {
+                newTable.Columns.Add(col.ToString());
+            }
+
+            DataRow[] filteredRows = tbl.Select("account_name LIKE '%" + searchValue + "%' OR account_number LIKE '%" + searchValue + "%'");
+
+            if (filteredRows.Length != 0)
+            {
+
+                DataRow new_row;
+
+                for (int i = 0; i < filteredRows.Length; i++)
+                {
+
+                    new_row = newTable.NewRow();
+
+                    foreach (DataGridViewColumn col in dataGridView1.Columns)
+                    {
+                        new_row[col.Name.ToString()] = filteredRows[i][col.Name.ToString()];
+                    }
+
+                    newTable.Rows.Add(new_row);
+
+                }
+
+            }
+
+            dataGridView1.DataSource = newTable;
+
+        }
     }
 }
