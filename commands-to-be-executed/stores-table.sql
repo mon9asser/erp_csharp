@@ -48,9 +48,7 @@ truncate table ____invoice_sales;
 
 
 
-
- 
-CREATE PROC Income_Statement_List
+alter PROC Income_Statement_List
 
 @date_from DATETIME,
 @date_to DATETIME
@@ -187,11 +185,11 @@ DECLARE @net_profit AS DECIMAL
 SET @net_profit = ( ( SELECT @total_net_sales ) - ( SELECT @total_cost ) );
  
 
-
-SET @other_revenuse = ( SELECT @other_revenuse ) - ( ( SELECT @market_publish ) + (SELECT @management_ingeneral_exp) );
+declare @other_revenuse_x as decimal
+SET @other_revenuse_x = ( ( SELECT @other_revenuse ) - ( SELECT @market_publish ) ) - ( (SELECT @management_ingeneral_exp) );
 
 DECLARE @total_income AS DECIMAL;
-SET @total_income = ( SELECT @net_profit) + (SELECT @other_revenuse);
+SET @total_income = ( SELECT @net_profit) + (SELECT @other_revenuse_x);
 
 
 SELECT 
@@ -202,6 +200,8 @@ SELECT
 	CAST(@other_revenuse AS DECIMAL(18,2)) 'other_revenues',
 	CAST(@market_publish AS DECIMAL(18,2)) 'sells_marketing_expenses',
 	CAST(@management_ingeneral_exp AS DECIMAL(18,2)) 'management_expenses',
+
+	CAST(@other_revenuse_x AS DECIMAL(18,2)) 'total_revenues',
 	--------------------------------
 	CAST(@total_income AS DECIMAL(18,2)) 'total_income',
 	@date_from 'date_from',

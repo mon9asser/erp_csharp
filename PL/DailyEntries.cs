@@ -28,9 +28,10 @@ namespace sales_management.PL
 
             DAL.Open();
             tble = DAL.SelectData("Income_Statement_List", param);
-            DAL.Close();
+            DAL.Close(); 
 
             return tble;
+
         }
 
 

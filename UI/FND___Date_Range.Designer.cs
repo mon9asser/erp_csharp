@@ -41,7 +41,7 @@
             this.withdraw_Report1 = new sales_management.DSet.Withdraw_Report();
             this.Withdraw_Report = new FastReport.Report();
             this.Income_Statement = new FastReport.Report();
-            this.income_Statement1 = new sales_management.DSet.Income_Statement();
+            this.income_statment_ds__ = new sales_management.DSet.Income_Statement();
             ((System.ComponentModel.ISupportInitialize)(this.Statements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journals_statment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).BeginInit();
@@ -49,7 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.withdraw_Report1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Withdraw_Report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Income_Statement)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.income_Statement1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.income_statment_ds__)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +57,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "من تاريخ :";
             // 
@@ -66,7 +66,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "إلي تاريخ :";
             // 
@@ -132,12 +132,12 @@
             // 
             this.Income_Statement.NeedRefresh = false;
             this.Income_Statement.ReportResourceString = resources.GetString("Income_Statement.ReportResourceString");
-            this.Income_Statement.RegisterData(this.income_Statement1, "income_Statement1");
+            this.Income_Statement.RegisterData(this.income_statment_ds__, "income_statment_ds__");
             // 
-            // income_Statement1
+            // income_statment_ds__
             // 
-            this.income_Statement1.DataSetName = "income_statment_ds";
-            this.income_Statement1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.income_statment_ds__.DataSetName = "income_statment_ds";
+            this.income_statment_ds__.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // FND___Date_Range
             // 
@@ -166,7 +166,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.withdraw_Report1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Withdraw_Report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Income_Statement)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.income_Statement1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.income_statment_ds__)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,6 +186,6 @@
         private DSet.Withdraw_Report withdraw_Report1;
         private FastReport.Report Withdraw_Report;
         private FastReport.Report Income_Statement;
-        private DSet.Income_Statement income_Statement1;
+        private DSet.Income_Statement income_statment_ds__;
     }
 }

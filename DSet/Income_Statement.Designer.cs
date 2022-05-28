@@ -299,6 +299,8 @@ namespace sales_management.DSet {
             
             private global::System.Data.DataColumn columntitle;
             
+            private global::System.Data.DataColumn columntotal_revenues;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public income_statementDataTable() {
@@ -414,6 +416,14 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn total_revenuesColumn {
+                get {
+                    return this.columntotal_revenues;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public income_statementRow Addincome_statementRow(decimal total_sales, decimal total_costs, decimal net_profit, decimal other_revenues, decimal sells_marketing_expenses, decimal management_expenses, decimal total_income, System.DateTime date_from, System.DateTime date_to, string title) {
+            public income_statementRow Addincome_statementRow(decimal total_sales, decimal total_costs, decimal net_profit, decimal other_revenues, decimal sells_marketing_expenses, decimal management_expenses, decimal total_income, System.DateTime date_from, System.DateTime date_to, string title, decimal total_revenues) {
                 income_statementRow rowincome_statementRow = ((income_statementRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         total_sales,
@@ -461,7 +471,8 @@ namespace sales_management.DSet {
                         total_income,
                         date_from,
                         date_to,
-                        title};
+                        title,
+                        total_revenues};
                 rowincome_statementRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowincome_statementRow);
                 return rowincome_statementRow;
@@ -494,6 +505,7 @@ namespace sales_management.DSet {
                 this.columndate_from = base.Columns["date_from"];
                 this.columndate_to = base.Columns["date_to"];
                 this.columntitle = base.Columns["title"];
+                this.columntotal_revenues = base.Columns["total_revenues"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columndate_to);
                 this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntitle);
+                this.columntotal_revenues = new global::System.Data.DataColumn("total_revenues", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_revenues);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -823,6 +837,22 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal total_revenues {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableincome_statement.total_revenuesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_revenues\' in table \'income_statement\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableincome_statement.total_revenuesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Istotal_salesNull() {
                 return this.IsNull(this.tableincome_statement.total_salesColumn);
             }
@@ -939,6 +969,18 @@ namespace sales_management.DSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SettitleNull() {
                 this[this.tableincome_statement.titleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Istotal_revenuesNull() {
+                return this.IsNull(this.tableincome_statement.total_revenuesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Settotal_revenuesNull() {
+                this[this.tableincome_statement.total_revenuesColumn] = global::System.Convert.DBNull;
             }
         }
         

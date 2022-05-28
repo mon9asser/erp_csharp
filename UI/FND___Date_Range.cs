@@ -18,8 +18,7 @@ namespace sales_management.UI
         Report Repo = new Report();
         PL.DailyEntries Entries = new PL.DailyEntries();
         PL.Installings installs = new PL.Installings();
-        PL.AccountingTree __Tree = new PL.AccountingTree();
-
+        PL.AccountingTree __Tree = new PL.AccountingTree(); 
         DSet.Statments DS_Statement = new DSet.Statments();
         DSet.DailyEntries DS_Entry= new DSet.DailyEntries();
         DSet.Withdraw_Report DS_Withdraw = new DSet.Withdraw_Report();
@@ -94,16 +93,18 @@ namespace sales_management.UI
         public void Load_Income_Statement_Report(DateTime from_date , DateTime date_to  ) {
 
 
-            DataTable Income_Statement_Table = Entries.Income_Statement_List(from_date, from_date);
+            DataTable Income_Statement_Table = Entries.Income_Statement_List(from_date, date_to);
             this.DS_Income.Tables["income_statement"].Merge(Income_Statement_Table);
              
             UI.FND___Viewer viewer = new UI.FND___Viewer(
-                "\\FReports\\Income_Statement.frx",
-                this.DS_Income,
-                "income_statment_ds",
-                "قائمة الدخل عن الفترة"
-            );
-            viewer.Show();
+               "\\FReports\\Income_Statement.frx",
+               this.DS_Income,
+               "income_statment_ds__",
+               "بيان قائمة الدخل عن الفترة"
+           );
+
+            viewer.Show(); 
+
         }
 
         /**
