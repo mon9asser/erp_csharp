@@ -313,7 +313,8 @@ namespace sales_management.UI
         {
             this.datagridprices_items.DataSource = this.get_price_type(combobox_price_type.SelectedIndex);
         }
- 
+
+        
 
         private void datagridprices_items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -340,7 +341,9 @@ namespace sales_management.UI
             row["unit_name"] = datagridprices_items.Rows[e.RowIndex].Cells["unit_shortcut"].Value.ToString();
             row["unit_price"] = datagridprices_items.Rows[e.RowIndex].Cells["unit_price"].Value.ToString();
             currentItem.Rows.Add(row);
-             
+            
+
+
             switch (this.doc_type)
             {
 
@@ -348,13 +351,7 @@ namespace sales_management.UI
                     this.purchaseInc.Add_New_Item_Unit(this.datagrid_row_index, currentItem );
                     break;
 
-                case 0:
-
-                    DataTable tble = (DataTable)this.SalesInv.items_datagridview.DataSource;
-                    foreach (DataRow rowx in tble.Rows ) {
-                        if(rowx.)
-                    }
-                    
+                case 0: 
                     this.SalesInv.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 

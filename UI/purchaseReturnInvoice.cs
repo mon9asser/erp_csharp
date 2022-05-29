@@ -640,7 +640,7 @@ namespace sales_management.UI
                 else if (paymentType == 1)
                 {
                     // Deferred payment
-                    account = Get_Account_Details(this.Settings.Rows[0]["purchase_credit_account"].ToString());
+                    account = Get_Account_Details(this.Settings.Rows[0]["suppliers_account"].ToString());
 
                     legend_id.Text = account[0].ToString();
                     legend_number.Text = account[1].ToString();

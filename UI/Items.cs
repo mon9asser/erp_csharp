@@ -129,11 +129,27 @@ namespace sales_management.UI
             }
         }
 
+        public bool Item_Already_exists(int item_id, DataGridView dg)
+        {
+
+            bool item_exists = false;
+
+            DataTable table = (DataTable) dg.DataSource;
+            DataRow[] foundRows = table.Select("product_id =" + item_id);
+            if (foundRows.Length != 0) {
+                item_exists = true;
+            }
+
+            return item_exists;
+
+        }
+
         public void Execute_Event_Callback(int rowIndex, int index )
         {
 
             if (index == -1) return;
-            
+
+            int id_ = Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells["id"].Value);
 
             // By document type 
             switch (this.doc_type)
@@ -141,26 +157,46 @@ namespace sales_management.UI
 
                     // Sales Invoice
                     case 0:
+
+                    if (this.Item_Already_exists(id_, this.Sales_Document.items_datagridview) == false)
+                    { 
                         this.Sales_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                break;
+                    }
+
+                    break;
 
                     // Purchase Invoice 
-                    case 1: 
+                    case 1:
+
+                    if (this.Item_Already_exists(id_, this.Purchase_Document.items_datagridview) == false)
+                    {
                         this.Purchase_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                break;
+                    }
+
+                    break;
                      
                     // Sales Invoice
                     case 2:
+
+                    if (this.Item_Already_exists(id_, this.Return_Sales_Document.items_datagridview) == false)
+                    { 
                         this.Return_Sales_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                break;
+                    }
+
+                    break;
 
                     case 3:
+                    if (this.Item_Already_exists(id_, this.Return_Purchase_Document.items_datagridview) == false)
+                    {
                         this.Return_Purchase_Document.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                break;
+                    }
+                    break;
 
                     case 6:
+                    if (this.Item_Already_exists(id_, this.expo_doc.items_datagridview) == false) { 
                         this.expo_doc.Add_Item_To_Row(index, Convert.ToInt32(items_view_grids.Rows[rowIndex].Cells[0].Value));
-                break;
+                    }
+                    break;
 
             }
         }
