@@ -75,14 +75,16 @@ namespace sales_management.UI
             this.sales_vat_account_field_name = new System.Windows.Forms.TextBox();
             this.sales_account_field = new System.Windows.Forms.TextBox();
             this.sales_account_field_name = new System.Windows.Forms.TextBox();
-            this.sale_bank_account_field_name = new System.Windows.Forms.TextBox();
+            this.bank_account_field_name = new System.Windows.Forms.TextBox();
             this.cash_account_number_field_name = new System.Windows.Forms.TextBox();
             this.sales_vat_account_field = new System.Windows.Forms.TextBox();
-            this.sale_bank_account_field = new System.Windows.Forms.TextBox();
+            this.bank_account_field = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cash_account_number_field = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.settingsIdText = new System.Windows.Forms.TextBox();
             this.expenses_account_field = new System.Windows.Forms.TextBox();
             this.owners_account_field = new System.Windows.Forms.TextBox();
             this.profits_account_field = new System.Windows.Forms.TextBox();
@@ -93,16 +95,12 @@ namespace sales_management.UI
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.settingsIdText = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoImage_byte)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -138,7 +136,7 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(298, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 13);
+            this.label6.Size = new System.Drawing.Size(151, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "ضريبة القيمة المضافة ( المئوية ) :";
             // 
@@ -155,7 +153,7 @@ namespace sales_management.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(203, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.Size = new System.Drawing.Size(15, 13);
             this.label7.TabIndex = 7;
             this.label7.Text = "%";
             // 
@@ -172,7 +170,7 @@ namespace sales_management.UI
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(75, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
+            this.label8.Size = new System.Drawing.Size(103, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "النسبة والتناســــــــب";
             // 
@@ -181,7 +179,7 @@ namespace sales_management.UI
             this.checkbox_enable_vat.AutoSize = true;
             this.checkbox_enable_vat.Location = new System.Drawing.Point(361, 33);
             this.checkbox_enable_vat.Name = "checkbox_enable_vat";
-            this.checkbox_enable_vat.Size = new System.Drawing.Size(154, 17);
+            this.checkbox_enable_vat.Size = new System.Drawing.Size(148, 17);
             this.checkbox_enable_vat.TabIndex = 16;
             this.checkbox_enable_vat.Text = "تفعيل ضريبة القيمة المضافة";
             this.checkbox_enable_vat.UseVisualStyleBackColor = true;
@@ -192,7 +190,7 @@ namespace sales_management.UI
             this.isIncludeDelete.AutoSize = true;
             this.isIncludeDelete.Location = new System.Drawing.Point(380, 197);
             this.isIncludeDelete.Name = "isIncludeDelete";
-            this.isIncludeDelete.Size = new System.Drawing.Size(137, 17);
+            this.isIncludeDelete.Size = new System.Drawing.Size(138, 17);
             this.isIncludeDelete.TabIndex = 14;
             this.isIncludeDelete.Text = "تنشيط ذرار حذف الفاتورة";
             this.isIncludeDelete.UseVisualStyleBackColor = true;
@@ -202,7 +200,7 @@ namespace sales_management.UI
             this.isIncludeUpdate.AutoSize = true;
             this.isIncludeUpdate.Location = new System.Drawing.Point(376, 161);
             this.isIncludeUpdate.Name = "isIncludeUpdate";
-            this.isIncludeUpdate.Size = new System.Drawing.Size(140, 17);
+            this.isIncludeUpdate.Size = new System.Drawing.Size(143, 17);
             this.isIncludeUpdate.TabIndex = 13;
             this.isIncludeUpdate.Text = "تنشيط ذرار تعديل الفاتورة";
             this.isIncludeUpdate.UseVisualStyleBackColor = true;
@@ -212,7 +210,7 @@ namespace sales_management.UI
             this.isIncludeAddress.AutoSize = true;
             this.isIncludeAddress.Location = new System.Drawing.Point(386, 124);
             this.isIncludeAddress.Name = "isIncludeAddress";
-            this.isIncludeAddress.Size = new System.Drawing.Size(129, 17);
+            this.isIncludeAddress.Size = new System.Drawing.Size(134, 17);
             this.isIncludeAddress.TabIndex = 12;
             this.isIncludeAddress.Text = "تضمين العنوان بالفاتورة";
             this.isIncludeAddress.UseVisualStyleBackColor = true;
@@ -222,7 +220,6 @@ namespace sales_management.UI
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
@@ -302,7 +299,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(451, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "شعار الشركة :";
             // 
@@ -311,7 +308,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(451, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "الرقم الضريبي :";
             // 
@@ -329,12 +326,22 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(440, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "الإسم التجــــاري :";
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.expenses_account_field);
+            this.tabPage3.Controls.Add(this.owners_account_field);
+            this.tabPage3.Controls.Add(this.profits_account_field);
+            this.tabPage3.Controls.Add(this.debits_account_field);
+            this.tabPage3.Controls.Add(this.asset_account_field);
+            this.tabPage3.Controls.Add(this.label36);
+            this.tabPage3.Controls.Add(this.label35);
+            this.tabPage3.Controls.Add(this.label34);
+            this.tabPage3.Controls.Add(this.label33);
+            this.tabPage3.Controls.Add(this.label32);
             this.tabPage3.Controls.Add(this.label24);
             this.tabPage3.Controls.Add(this.return_sales_account_name);
             this.tabPage3.Controls.Add(this.return_sales_account_field);
@@ -358,10 +365,10 @@ namespace sales_management.UI
             this.tabPage3.Controls.Add(this.sales_vat_account_field_name);
             this.tabPage3.Controls.Add(this.sales_account_field);
             this.tabPage3.Controls.Add(this.sales_account_field_name);
-            this.tabPage3.Controls.Add(this.sale_bank_account_field_name);
+            this.tabPage3.Controls.Add(this.bank_account_field_name);
             this.tabPage3.Controls.Add(this.cash_account_number_field_name);
             this.tabPage3.Controls.Add(this.sales_vat_account_field);
-            this.tabPage3.Controls.Add(this.sale_bank_account_field);
+            this.tabPage3.Controls.Add(this.bank_account_field);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.cash_account_number_field);
             this.tabPage3.Controls.Add(this.label12);
@@ -370,7 +377,7 @@ namespace sales_management.UI
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(643, 465);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "حسابات دفتر الأستاذ";
+            this.tabPage3.Text = "البنود الرئيسية";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label24
@@ -378,7 +385,7 @@ namespace sales_management.UI
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(546, 410);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(75, 13);
+            this.label24.Size = new System.Drawing.Size(73, 13);
             this.label24.TabIndex = 114;
             this.label24.Text = "مردود المبيعات";
             // 
@@ -471,7 +478,7 @@ namespace sales_management.UI
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(552, 182);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(80, 13);
+            this.label28.Size = new System.Drawing.Size(75, 13);
             this.label28.TabIndex = 103;
             this.label28.Text = "ضريبة المدخلات";
             // 
@@ -498,7 +505,7 @@ namespace sales_management.UI
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(552, 137);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 13);
+            this.label17.Size = new System.Drawing.Size(79, 13);
             this.label17.TabIndex = 100;
             this.label17.Text = "ضريبة المخرجات";
             // 
@@ -507,7 +514,7 @@ namespace sales_management.UI
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(550, 225);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(80, 13);
+            this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 94;
             this.label22.Text = "حساب المبيعات";
             // 
@@ -583,13 +590,13 @@ namespace sales_management.UI
             this.sales_account_field_name.Size = new System.Drawing.Size(121, 20);
             this.sales_account_field_name.TabIndex = 72;
             // 
-            // sale_bank_account_field_name
+            // bank_account_field_name
             // 
-            this.sale_bank_account_field_name.Location = new System.Drawing.Point(332, 95);
-            this.sale_bank_account_field_name.Name = "sale_bank_account_field_name";
-            this.sale_bank_account_field_name.ReadOnly = true;
-            this.sale_bank_account_field_name.Size = new System.Drawing.Size(121, 20);
-            this.sale_bank_account_field_name.TabIndex = 68;
+            this.bank_account_field_name.Location = new System.Drawing.Point(332, 95);
+            this.bank_account_field_name.Name = "bank_account_field_name";
+            this.bank_account_field_name.ReadOnly = true;
+            this.bank_account_field_name.Size = new System.Drawing.Size(121, 20);
+            this.bank_account_field_name.TabIndex = 68;
             // 
             // cash_account_number_field_name
             // 
@@ -609,22 +616,22 @@ namespace sales_management.UI
             this.sales_vat_account_field.Click += new System.EventHandler(this.vat_acc_number_Click);
             this.sales_vat_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
-            // sale_bank_account_field
+            // bank_account_field
             // 
-            this.sale_bank_account_field.Location = new System.Drawing.Point(465, 95);
-            this.sale_bank_account_field.Name = "sale_bank_account_field";
-            this.sale_bank_account_field.ReadOnly = true;
-            this.sale_bank_account_field.Size = new System.Drawing.Size(63, 20);
-            this.sale_bank_account_field.TabIndex = 51;
-            this.sale_bank_account_field.Click += new System.EventHandler(this.sales_bank_acc_number_Click);
-            this.sale_bank_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
+            this.bank_account_field.Location = new System.Drawing.Point(465, 95);
+            this.bank_account_field.Name = "bank_account_field";
+            this.bank_account_field.ReadOnly = true;
+            this.bank_account_field.Size = new System.Drawing.Size(63, 20);
+            this.bank_account_field.TabIndex = 51;
+            this.bank_account_field.Click += new System.EventHandler(this.sales_bank_acc_number_Click);
+            this.bank_account_field.TextChanged += new System.EventHandler(this.vat_acc_number_TextChanged_1);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(556, 98);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 13);
+            this.label10.Size = new System.Drawing.Size(75, 13);
             this.label10.TabIndex = 52;
             this.label10.Text = "الحساب البنكي";
             // 
@@ -643,119 +650,9 @@ namespace sales_management.UI
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(551, 19);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 13);
+            this.label12.Size = new System.Drawing.Size(74, 13);
             this.label12.TabIndex = 46;
             this.label12.Text = "الحساب النقدي";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.expenses_account_field);
-            this.tabPage4.Controls.Add(this.owners_account_field);
-            this.tabPage4.Controls.Add(this.profits_account_field);
-            this.tabPage4.Controls.Add(this.debits_account_field);
-            this.tabPage4.Controls.Add(this.asset_account_field);
-            this.tabPage4.Controls.Add(this.label36);
-            this.tabPage4.Controls.Add(this.label35);
-            this.tabPage4.Controls.Add(this.label34);
-            this.tabPage4.Controls.Add(this.label33);
-            this.tabPage4.Controls.Add(this.label32);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(643, 465);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "البنود الرئيسية";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // expenses_account_field
-            // 
-            this.expenses_account_field.Location = new System.Drawing.Point(389, 246);
-            this.expenses_account_field.Name = "expenses_account_field";
-            this.expenses_account_field.ReadOnly = true;
-            this.expenses_account_field.Size = new System.Drawing.Size(108, 20);
-            this.expenses_account_field.TabIndex = 9;
-            this.expenses_account_field.Click += new System.EventHandler(this.expenses_account_field_Click);
-            // 
-            // owners_account_field
-            // 
-            this.owners_account_field.Location = new System.Drawing.Point(389, 194);
-            this.owners_account_field.Name = "owners_account_field";
-            this.owners_account_field.ReadOnly = true;
-            this.owners_account_field.Size = new System.Drawing.Size(108, 20);
-            this.owners_account_field.TabIndex = 8;
-            this.owners_account_field.Click += new System.EventHandler(this.owners_account_field_Click);
-            // 
-            // profits_account_field
-            // 
-            this.profits_account_field.Location = new System.Drawing.Point(389, 143);
-            this.profits_account_field.Name = "profits_account_field";
-            this.profits_account_field.ReadOnly = true;
-            this.profits_account_field.Size = new System.Drawing.Size(108, 20);
-            this.profits_account_field.TabIndex = 7;
-            this.profits_account_field.Click += new System.EventHandler(this.profits_account_field_Click);
-            // 
-            // debits_account_field
-            // 
-            this.debits_account_field.Location = new System.Drawing.Point(389, 99);
-            this.debits_account_field.Name = "debits_account_field";
-            this.debits_account_field.ReadOnly = true;
-            this.debits_account_field.Size = new System.Drawing.Size(108, 20);
-            this.debits_account_field.TabIndex = 6;
-            this.debits_account_field.Click += new System.EventHandler(this.debits_account_field_Click);
-            // 
-            // asset_account_field
-            // 
-            this.asset_account_field.Location = new System.Drawing.Point(389, 53);
-            this.asset_account_field.Name = "asset_account_field";
-            this.asset_account_field.ReadOnly = true;
-            this.asset_account_field.Size = new System.Drawing.Size(108, 20);
-            this.asset_account_field.TabIndex = 5;
-            this.asset_account_field.Click += new System.EventHandler(this.asset_account_field_Click);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(528, 249);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(56, 13);
-            this.label36.TabIndex = 4;
-            this.label36.Text = "المصروفات";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(514, 194);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(71, 13);
-            this.label35.TabIndex = 3;
-            this.label35.Text = "حقوق الملكية";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(543, 143);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(45, 13);
-            this.label34.TabIndex = 2;
-            this.label34.Text = "الإيرادات";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(546, 99);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(41, 13);
-            this.label33.TabIndex = 1;
-            this.label33.Text = "الخصوم";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(547, 56);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(38, 13);
-            this.label32.TabIndex = 0;
-            this.label32.Text = "الأصول";
             // 
             // button2
             // 
@@ -798,6 +695,91 @@ namespace sales_management.UI
             this.settingsIdText.TabIndex = 16;
             this.settingsIdText.Visible = false;
             // 
+            // expenses_account_field
+            // 
+            this.expenses_account_field.Location = new System.Drawing.Point(28, 212);
+            this.expenses_account_field.Name = "expenses_account_field";
+            this.expenses_account_field.ReadOnly = true;
+            this.expenses_account_field.Size = new System.Drawing.Size(108, 20);
+            this.expenses_account_field.TabIndex = 124;
+            // 
+            // owners_account_field
+            // 
+            this.owners_account_field.Location = new System.Drawing.Point(28, 160);
+            this.owners_account_field.Name = "owners_account_field";
+            this.owners_account_field.ReadOnly = true;
+            this.owners_account_field.Size = new System.Drawing.Size(108, 20);
+            this.owners_account_field.TabIndex = 123;
+            // 
+            // profits_account_field
+            // 
+            this.profits_account_field.Location = new System.Drawing.Point(28, 109);
+            this.profits_account_field.Name = "profits_account_field";
+            this.profits_account_field.ReadOnly = true;
+            this.profits_account_field.Size = new System.Drawing.Size(108, 20);
+            this.profits_account_field.TabIndex = 122;
+            // 
+            // debits_account_field
+            // 
+            this.debits_account_field.Location = new System.Drawing.Point(28, 65);
+            this.debits_account_field.Name = "debits_account_field";
+            this.debits_account_field.ReadOnly = true;
+            this.debits_account_field.Size = new System.Drawing.Size(108, 20);
+            this.debits_account_field.TabIndex = 121;
+            // 
+            // asset_account_field
+            // 
+            this.asset_account_field.Location = new System.Drawing.Point(28, 19);
+            this.asset_account_field.Name = "asset_account_field";
+            this.asset_account_field.ReadOnly = true;
+            this.asset_account_field.Size = new System.Drawing.Size(108, 20);
+            this.asset_account_field.TabIndex = 120;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(167, 215);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(56, 13);
+            this.label36.TabIndex = 119;
+            this.label36.Text = "المصروفات";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(153, 160);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(66, 13);
+            this.label35.TabIndex = 118;
+            this.label35.Text = "حقوق الملكية";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(182, 109);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(44, 13);
+            this.label34.TabIndex = 117;
+            this.label34.Text = "الإيرادات";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(185, 65);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(40, 13);
+            this.label33.TabIndex = 116;
+            this.label33.Text = "الخصوم";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(186, 22);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(38, 13);
+            this.label32.TabIndex = 115;
+            this.label32.Text = "الأصول";
+            // 
             // SystemSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,8 +810,6 @@ namespace sales_management.UI
             ((System.ComponentModel.ISupportInitialize)(this.logoImage_byte)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -865,11 +845,11 @@ namespace sales_management.UI
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.TextBox sale_bank_account_field;
+        public System.Windows.Forms.TextBox bank_account_field;
         public System.Windows.Forms.TextBox cash_account_number_field;
         public System.Windows.Forms.TextBox sales_vat_account_field;
         public System.Windows.Forms.TextBox sales_account_field_name;
-        public System.Windows.Forms.TextBox sale_bank_account_field_name;
+        public System.Windows.Forms.TextBox bank_account_field_name;
         public System.Windows.Forms.TextBox cash_account_number_field_name;
         public System.Windows.Forms.TextBox sales_vat_account_field_name;
         public System.Windows.Forms.TextBox sales_account_field;
@@ -893,16 +873,15 @@ namespace sales_management.UI
         private System.Windows.Forms.Label label24;
         public System.Windows.Forms.TextBox return_sales_account_name;
         public System.Windows.Forms.TextBox return_sales_account_field;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox expenses_account_field;
         private System.Windows.Forms.TextBox owners_account_field;
         private System.Windows.Forms.TextBox profits_account_field;
         private System.Windows.Forms.TextBox debits_account_field;
         private System.Windows.Forms.TextBox asset_account_field;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
     }
 }

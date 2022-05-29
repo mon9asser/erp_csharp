@@ -69,7 +69,7 @@ namespace sales_management.UI
             
             UI.SystemSettings.GetForm.cash_account_number_field_name.Text = this.Get_Account_Name(cash_account_number_field.Text.ToString());
             //UI.SystemSettings.GetForm.sale_credit_account_field_name.Text = this.Get_Account_Name(sale_credit_account_field.Text.ToString());
-            UI.SystemSettings.GetForm.sale_bank_account_field_name.Text = this.Get_Account_Name(sale_bank_account_field.Text.ToString());
+            UI.SystemSettings.GetForm.bank_account_field_name.Text = this.Get_Account_Name(bank_account_field.Text.ToString());
             //UI.SystemSettings.GetForm.purchases_account_field_name.Text = this.Get_Account_Name(purchases_account_field.Text.ToString());
             //UI.SystemSettings.GetForm.purchase_text_name_acc_credit.Text = this.Get_Account_Name(purchase_credit_acc_number.Text.ToString());
             //UI.SystemSettings.GetForm.purchase_text_name_acc_bank.Text = this.Get_Account_Name(purchase_bank_acc_number.Text.ToString());
@@ -78,9 +78,9 @@ namespace sales_management.UI
             UI.SystemSettings.GetForm.sales_vat_account_field_name.Text = this.Get_Account_Name(sales_account_field.Text.ToString());
             //UI.SystemSettings.GetForm.part_2_sales_text_name_acc_credit.Text = this.Get_Account_Name(part_2_sales_credit_acc_number.Text.ToString());
             //UI.SystemSettings.GetForm.part_2_sales_text_name_acc_bank.Text = this.Get_Account_Name(part_2_sales_bank_acc_number.Text.ToString());
-            //UI.SystemSettings.GetForm.purchase_cash_account_field_name.Text = this.Get_Account_Name(purchase_cash_account_field.Text.ToString());
+            //UI.SystemSettings.GetForm.cash_account_field_name.Text = this.Get_Account_Name(cash_account_field.Text.ToString());
             //UI.SystemSettings.GetForm.purchase_credit_account_field_name.Text = this.Get_Account_Name(purchase_credit_account_field.Text.ToString());
-            //UI.SystemSettings.GetForm.purchase_bank_account_field_name.Text = this.Get_Account_Name(purchase_bank_account_field.Text.ToString());
+            //UI.SystemSettings.GetForm.bank_account_field_name.Text = this.Get_Account_Name(bank_account_field.Text.ToString());
             UI.SystemSettings.GetForm.cost_of_goods_account_field_name.Text = this.Get_Account_Name(cost_of_goods_account_field.Text.ToString());
             UI.SystemSettings.GetForm.inventory_account_field_name.Text = this.Get_Account_Name(inventory_account_field.Text.ToString());
             UI.SystemSettings.GetForm.purchases_vat_account_field_name.Text = this.Get_Account_Name(purchases_vat_account_field.Text.ToString());
@@ -152,22 +152,16 @@ namespace sales_management.UI
                 vat_percentage_number.Text = drow["vat_percentage"].ToString();
                 vat_percentage_value.Text = drow["vat_value"].ToString();
 
-                cash_account_number_field.Text = drow["sale_cash_account"].ToString();
-                //sale_credit_account_field.Text = drow["sale_credit_account"].ToString();
-                sale_bank_account_field.Text = drow["sale_bank_account"].ToString();
+                cash_account_number_field.Text = drow["cash_account"].ToString(); 
+                bank_account_field.Text = drow["bank_account"].ToString();
                 sales_account_field.Text = drow["sales_account"].ToString();
-                sales_vat_account_field.Text = drow["sales_vat_account"].ToString();
-                //purchase_cash_account_field.Text = drow["purchase_cash_account"].ToString();
-                //purchase_credit_account_field.Text = drow["purchase_credit_account"].ToString();
-                //purchase_bank_account_field.Text = drow["purchase_bank_account"].ToString();
-                //purchases_account_field.Text = drow["purchases_account"].ToString();
+                sales_vat_account_field.Text = drow["sales_vat_account"].ToString(); 
                 purchases_vat_account_field.Text = drow["purchases_vat_account"].ToString();
                 cost_of_goods_account_field.Text = drow["cost_of_goods_account"].ToString();
                 inventory_account_field.Text = drow["inventory_account"].ToString();
                 customers_account_field.Text = drow["customers_account"].ToString();
                 suppliers_account_field.Text = drow["suppliers_account"].ToString();
-                return_sales_account_field.Text = drow["return_sales_account"].ToString();
-                //return_purchase_account_field.Text = drow["return_purchase_account"].ToString();
+                return_sales_account_field.Text = drow["return_sales_account"].ToString(); 
                 isIncludeAddress.Checked = Convert.ToBoolean(drow["show_address_in_invoice"]);
                 isIncludeUpdate.Checked = Convert.ToBoolean(drow["enable_edit_invoices"]);
                 isIncludeDelete.Checked = Convert.ToBoolean(drow["enable_delete_invoices"]);
@@ -245,7 +239,7 @@ namespace sales_management.UI
                 isEnabledVat, 
 
                 cash_account_number_field.Text, 
-                sale_bank_account_field.Text,
+                bank_account_field.Text,
                 sales_account_field.Text,
                 sales_vat_account_field.Text, 
                 purchases_vat_account_field.Text,
@@ -291,7 +285,7 @@ namespace sales_management.UI
 
         private void sales_bank_acc_number_Click(object sender, EventArgs e)
         {
-            UI.SystemSettings.GetForm.input = sale_bank_account_field;
+            UI.SystemSettings.GetForm.input = bank_account_field;
             UI.___Accounts.GetForm.InstanceType = 0;
             UI.___Accounts.GetForm.ShowDialog();
         }

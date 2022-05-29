@@ -247,7 +247,7 @@ namespace sales_management.UI
 
             if (legend_number.Text == "")
             {
-                string[] account = Get_Account_Details(this.Settings.Rows[0]["purchase_cash_account"].ToString());
+                string[] account = Get_Account_Details(this.Settings.Rows[0]["cash_account"].ToString());
                 if (account.Length != 0)
                 {
                     legend_id.Text = account[0].ToString();
@@ -584,7 +584,7 @@ namespace sales_management.UI
             if (paymentType == 0)
             {
                 // Cash
-                account = Get_Account_Details(this.Settings.Rows[0]["purchase_cash_account"].ToString());
+                account = Get_Account_Details(this.Settings.Rows[0]["cash_account"].ToString());
 
                 legend_id.Text = account[0].ToString();
                 legend_number.Text = account[1].ToString();
@@ -593,7 +593,7 @@ namespace sales_management.UI
             else if (paymentType == 1)
             {
                 // Deferred payment
-                account = Get_Account_Details(this.Settings.Rows[0]["purchase_credit_account"].ToString());
+                account = Get_Account_Details(this.Settings.Rows[0]["suppliers_account"].ToString());
 
                 legend_id.Text = account[0].ToString();
                 legend_number.Text = account[1].ToString();
@@ -602,7 +602,7 @@ namespace sales_management.UI
             else if (paymentType == 2)
             {
                 // Banks
-                account = Get_Account_Details(this.Settings.Rows[0]["purchase_bank_account"].ToString());
+                account = Get_Account_Details(this.Settings.Rows[0]["bank_account"].ToString());
 
                 legend_id.Text = account[0].ToString();
                 legend_number.Text = account[1].ToString();
@@ -1373,8 +1373,8 @@ namespace sales_management.UI
 
             DataRow entry_details_to = entry_details.NewRow();
             entry_details_to["journal_id"] = entry_id.Text;
-            entry_details_to["debit"] = Convert.ToDecimal(total_field_text.Text);
-            entry_details_to["account_number"] = setting["purchases_account"].ToString(); 
+            entry_details_to["debit"] = enable_zakat_taxes.Checked ? Convert.ToDecimal(total_without_vat_field.Text) : Convert.ToDecimal(total_field_text.Text);
+            entry_details_to["account_number"] = setting["inventory_account"].ToString(); 
             entry_details_to["description"] = "إثبات مخزون فاتورة المشتريات";
             entry_details_to["cost_center_number"] = "-1";
             entry_details_to["date"] = datemade.Value;
@@ -1394,17 +1394,17 @@ namespace sales_management.UI
 
             DataRow entry_details_from = entry_details.NewRow();
             entry_details_from["journal_id"] = entry_id.Text;
-            entry_details_from["credit"] = enable_zakat_taxes.Checked ? Convert.ToDecimal(total_without_vat_field.Text) : Convert.ToDecimal(total_field_text.Text);
+            entry_details_from["credit"] = Convert.ToDecimal(total_field_text.Text);
             entry_details_from["description"] = "شراء بضاعة ";
             // entry_details_from["credit"]
             if (salesPaymentType == 0)
             {
-                entry_details_from["account_number"] = setting["purchase_cash_account"].ToString();
+                entry_details_from["account_number"] = setting["cash_account"].ToString();
                 entry_details_from["description"] = "عملية شراء نقدا";
             }
             else if (salesPaymentType == 1)
             {
-                entry_details_from["account_number"] = setting["purchase_credit_account"].ToString();
+                entry_details_from["account_number"] = setting["suppliers_account"].ToString();
                 entry_details_from["description"] = "عملية شراء أجل";
                 if (customer_id.Text != "")
                 {
@@ -1413,7 +1413,7 @@ namespace sales_management.UI
             }
             else if (salesPaymentType == 2 || salesPaymentType == 3)
             {
-                entry_details_from["account_number"] = setting["purchase_bank_account"].ToString();
+                entry_details_from["account_number"] = setting["bank_account"].ToString();
                 entry_details_from["description"] = "عملية شراء عن طريق البنك";
             }
             entry_details_from["cost_center_number"] = "-1";

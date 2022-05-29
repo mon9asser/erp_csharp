@@ -267,7 +267,7 @@ namespace sales_management.UI
 
                 if (legend_number.Text == "")
                 {
-                    string[] account = Get_Account_Details(this.Settings.Rows[0]["sale_cash_account"].ToString());
+                    string[] account = Get_Account_Details(this.Settings.Rows[0]["cash_account"].ToString());
                     if (account.Length != 0)
                     {
                         legend_id.Text = account[0].ToString();
@@ -630,7 +630,7 @@ namespace sales_management.UI
                 if (paymentType == 0)
                 {
                     // Cash
-                    account = Get_Account_Details(this.Settings.Rows[0]["sale_cash_account"].ToString());
+                    account = Get_Account_Details(this.Settings.Rows[0]["cash_account"].ToString());
 
                     legend_id.Text = account[0].ToString();
                     legend_number.Text = account[1].ToString();
@@ -648,7 +648,7 @@ namespace sales_management.UI
                 else if (paymentType == 2)
                 {
                     // Banks
-                    account = Get_Account_Details(this.Settings.Rows[0]["sale_bank_account"].ToString());
+                    account = Get_Account_Details(this.Settings.Rows[0]["bank_account"].ToString());
 
                     legend_id.Text = account[0].ToString();
                     legend_number.Text = account[1].ToString();
@@ -1529,10 +1529,10 @@ namespace sales_management.UI
                     DataRow salesRow_vat_to = entry_details.NewRow();
                     salesRow_vat_to["journal_id"] = entry_id.Text;
                     salesRow_vat_to["debit"] = Convert.ToDecimal(vat_amount.Text);
-                    salesRow_vat_to["description"] = "ض.ق.م مردودات";
+                    salesRow_vat_to["description"] = "ض.ق.م مردود مبيعات";
                     salesRow_vat_to["cost_center_number"] = "-1";
                     salesRow_vat_to["date"] = Convert.ToDateTime(datemade.Value);
-                    salesRow_vat_to["account_number"] = setting["sales_vat_account"].ToString();
+                    salesRow_vat_to["account_number"] = setting["purchases_vat_account"].ToString();
                     entry_details.Rows.Add(salesRow_vat_to);
                 }
 
@@ -1556,6 +1556,7 @@ namespace sales_management.UI
                 salesRow_sales_to["date"] = datemade.Value;
                 salesRow_sales_to["account_number"] = setting["return_sales_account"].ToString();
                 entry_details.Rows.Add(salesRow_sales_to);
+                 
 
 
                 // TO : 
@@ -1567,12 +1568,12 @@ namespace sales_management.UI
                 if (salesPaymentType == 0)
                 {
                     salesRow_from["description"] = "مردود بضاعه وسيتم رد المبلغ نقدا";
-                    salesRow_from["account_number"] = setting["sale_cash_account"].ToString();
+                    salesRow_from["account_number"] = setting["cash_account"].ToString();
                 }
                 else if (salesPaymentType == 1)
                 {
                     salesRow_from["description"] = "مردود بضاعه وسيتم رد المبلغ أجل";
-                    salesRow_from["account_number"] = setting["sale_credit_account"].ToString();
+                    salesRow_from["account_number"] = setting["customers_account"].ToString();
 
 
                     if (legend_number.Text != "")
@@ -1583,7 +1584,7 @@ namespace sales_management.UI
                 else if (salesPaymentType == 2 || salesPaymentType == 3)
                 {
                     salesRow_from["description"] = "مردود بضاعه وسيتم رد المبلغ عن طريق البنك";
-                    salesRow_from["account_number"] = setting["sale_bank_account"].ToString();
+                    salesRow_from["account_number"] = setting["bank_account"].ToString();
                 }
 
                 // Case Discount 
@@ -1612,11 +1613,12 @@ namespace sales_management.UI
                         cost_total += Convert.ToDecimal(row.Cells["total_cost"].Value);
                     }
                 }
+
                 //- FROM: 
                 DataRow salesRow_cost_goods_to = entry_details.NewRow();
                 salesRow_cost_goods_to["journal_id"] = entry_id.Text;
                 salesRow_cost_goods_to["debit"] = Convert.ToDecimal(cost_total);
-                salesRow_cost_goods_to["description"] = "إثبات  مردودات  لفاتورة المبيعات";
+                salesRow_cost_goods_to["description"] = "مرتجعات فاتورةى مبيعات علي المخزون";
                 salesRow_cost_goods_to["cost_center_number"] = "-1";
                 salesRow_cost_goods_to["date"] = datemade.Value;
                 salesRow_cost_goods_to["account_number"] = setting["inventory_account"].ToString();
@@ -1631,6 +1633,7 @@ namespace sales_management.UI
                 salesRow_cost_goods["date"] = datemade.Value;
                 salesRow_cost_goods["account_number"] = setting["cost_of_goods_account"].ToString();
                 entry_details.Rows.Add(salesRow_cost_goods);
+
 
                 /*
                  * ===============================================

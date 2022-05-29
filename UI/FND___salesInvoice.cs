@@ -239,7 +239,7 @@ namespace sales_management.UI
 
                 if (legend_number.Text == "")
                 {
-                    string[] account = Get_Account_Details(this.Settings.Rows[0]["sale_cash_account"].ToString());
+                    string[] account = Get_Account_Details(this.Settings.Rows[0]["cash_account"].ToString());
                     if (account.Length != 0)
                     {
                         legend_id.Text = account[0].ToString();
@@ -601,7 +601,7 @@ namespace sales_management.UI
                 if (paymentType == 0)
                 {
                     // Cash
-                    account = Get_Account_Details(this.Settings.Rows[0]["sale_cash_account"].ToString());
+                    account = Get_Account_Details(this.Settings.Rows[0]["cash_account"].ToString());
 
                     legend_id.Text = account[0].ToString();
                     legend_number.Text = account[1].ToString();
@@ -619,7 +619,7 @@ namespace sales_management.UI
                 else if (paymentType == 2)
                 {
                     // Banks
-                    account = Get_Account_Details(this.Settings.Rows[0]["sale_bank_account"].ToString());
+                    account = Get_Account_Details(this.Settings.Rows[0]["bank_account"].ToString());
 
                     legend_id.Text = account[0].ToString();
                     legend_number.Text = account[1].ToString();
@@ -1493,7 +1493,7 @@ namespace sales_management.UI
                 if (salesPaymentType == 0)
                 {
                     salesRow_from["description"] = "عملية بيع نقدا";
-                    salesRow_from["account_number"] = setting["sale_cash_account"].ToString();
+                    salesRow_from["account_number"] = setting["cash_account"].ToString();
                 }
                 else if (salesPaymentType == 1)
                 {
@@ -1509,7 +1509,7 @@ namespace sales_management.UI
                 else if (salesPaymentType == 2 || salesPaymentType == 3)
                 {
                     salesRow_from["description"] = "عملية بيع عن طريق البنك";
-                    salesRow_from["account_number"] = setting["sale_bank_account"].ToString();
+                    salesRow_from["account_number"] = setting["bank_account"].ToString();
                 }
 
                 // Case Discount 
