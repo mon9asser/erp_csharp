@@ -16,6 +16,7 @@ namespace sales_management.UI
         // New Updates
         PL.Purchase Purchase = new PL.Purchase();
         PL.Journals journals = new PL.Journals();
+        PL.AccountingTree AllAccounts = new PL.AccountingTree();
 
         DataSet dataSetDb;
         DataTable Purchase_Table;
@@ -34,32 +35,12 @@ namespace sales_management.UI
         public bool is_change_price = false;
         public int documentType = 1; // Purchase Invoice
         public int currentInvoiceRowIndex = -1;
-        public int lastRow = -1;
-        public static purchaseInvoice frm;
-
-        static void frm_formClosed(object sernder, FormClosedEventArgs e)
-        {
-            frm = null;
-        }
-
-        public static purchaseInvoice GetForm
-        {
-            get
-            {
-
-                if (frm == null)
-                {
-                    frm = new purchaseInvoice();
-                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
-                }
-
-                return frm;
-
-            }
-        }
-
+        public int lastRow = -1; 
+        public decimal Current_Balance = 0;
+         
         public purchaseInvoice()
         {
+           
             InitializeComponent(); 
         }
 
@@ -68,7 +49,7 @@ namespace sales_management.UI
 
             DataTable table = new DataTable();
             DataTable Items = products;
-
+            
             table.Columns.Add("id");
             table.Columns.Add("code");
             table.Columns.Add("name");
@@ -1246,7 +1227,10 @@ namespace sales_management.UI
 
         private void save_button_Click(object sender, EventArgs e)
         {
+
+            this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
              
+
             if (total_field_text.Text == "00" || total_field_text.Text == "")
             {
                 return;
@@ -1260,6 +1244,11 @@ namespace sales_management.UI
             if (customer_id.Text == "")
             {
                 customer_id.Text = "-1";
+            }
+
+            if (this.Current_Balance < Convert.ToDecimal(total_field_text.Text)) {
+                MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
+                return;
             }
 
             if ( payment_methods.SelectedIndex == 1 && customer_id.Text == "-1") {
@@ -1518,13 +1507,17 @@ namespace sales_management.UI
 
         private void add_new_button_Click(object sender, EventArgs e)
         {
+
+            if (this.Current_Balance == 0)
+            {
+                MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
+                return;
+            }
+
             invoice_id.Text = "";
             this.is_getting_data = false; 
             this.disable_elements(true);
-
-
-            
-
+             
             // Clear Current Datagridview 
             foreach (DataGridViewRow row in items_datagridview.Rows)
             {
@@ -1632,6 +1625,7 @@ namespace sales_management.UI
 
             // Load DataSet Of Purchase Invoices
             this.dataSetDb = Purchase.Get_Purchase_Invoice_Data_Set();
+            this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
 
             // Extract Tables From DataSet 
             this.Purchase_Table = this.dataSetDb.Tables[0];
@@ -1641,8 +1635,9 @@ namespace sales_management.UI
             this.Prods = this.dataSetDb.Tables[4];
             this.Codes = this.Load_All_Products_Codes(this.dataSetDb.Tables[4]);
             this.unitName = this.dataSetDb.Tables[5];
-            this.Resources = this.dataSetDb.Tables[6]; 
+            this.Resources = this.dataSetDb.Tables[6];
 
+            
         }
 
         private void purchaseInvoice_Load(object sender, EventArgs e)

@@ -18,9 +18,13 @@ namespace sales_management.UI
         // New Updates 
         PL.Sales Sale = new PL.Sales();
         PL.Journals journals = new PL.Journals();
+        PL.AccountingTree AllAccounts = new PL.AccountingTree();
+
         DSet.SalesInvoice CRT_DataSet = new DSet.SalesInvoice();
         Report Repo = new Report();
+        DataSet Dset_Inventory;
         DataSet dataSetDb;
+        DataTable Inventory;
         DataTable Sale_Table;
         DataTable Sale_Details;
         DataTable Accounts;
@@ -155,7 +159,8 @@ namespace sales_management.UI
                 }
 
                 // Total Quantity 
-                row.Cells["total_quantity"].Value = (quantity * factor).ToString();
+                decimal total_quantity = (quantity * factor);
+                row.Cells["total_quantity"].Value = total_quantity.ToString();
 
                 // Calculate Total 
                 row.Cells["total_price"].Value = (quantity * unitPrice).ToString();
@@ -163,10 +168,37 @@ namespace sales_management.UI
                 // Calculate Unit Cost (purchase is the default price)
                 row.Cells["unit_cost"].Value = (unitCost).ToString();
                 row.Cells["total_cost"].Value = (quantity * unitCost).ToString();
+
+                int pid = Convert.ToInt32(row.Cells["product_id"].Value);
+                decimal currentInventory = this.Get_Item_Inventory(pid);
+                if (currentInventory < total_quantity)
+                {
+                    row.Cells["quantity"].Value = (currentInventory / factor).ToString(); 
+                    items_datagridview.Rows[index].DefaultCellStyle.BackColor = Color.Gold;
+                }
+                else {
+
+                    if (items_datagridview.Rows[index].DefaultCellStyle.BackColor == Color.Gold) {
+
+                        
+                        if ((index % 2) == 0)
+                        {
+                            items_datagridview.Rows[index].DefaultCellStyle.BackColor = Color.White;
+                        }
+                        else {
+                            items_datagridview.Rows[index].DefaultCellStyle.BackColor = Color.SeaShell;
+                        }
+                            
+                        
+                    }
+
+                }
+
             }
             catch (Exception) { }
 
         }
+         
 
         public string[] Get_Account_Details(string account_number)
         {
@@ -1862,7 +1894,8 @@ namespace sales_management.UI
             {
                 // Load DataSet Of Purchase Invoices
                 this.dataSetDb = Sale.Get_Sale_Invoice_Data_Set();
-
+                
+                 
                 // Extract Tables From DataSet 
                 this.Sale_Table = this.dataSetDb.Tables[0];
                 this.Sale_Details = this.dataSetDb.Tables[1];
@@ -1872,9 +1905,70 @@ namespace sales_management.UI
                 this.Codes = this.Load_All_Products_Codes(this.dataSetDb.Tables[4]);
                 this.unitName = this.dataSetDb.Tables[5];
                 this.Resources = this.dataSetDb.Tables[6];
+
+                this.Calculate_Inventory_Rows(this.Prods );
+
             }
             catch (Exception) { }
 
+        }
+
+        public decimal Get_Item_Inventory ( int product_id ) {
+
+            decimal quantity = 0;
+            foreach (DataRow row in this.Inventory.Rows) {
+                if (product_id == Convert.ToInt32(row["id"])) {
+                    quantity = Convert.ToDecimal(row["total_quantity"]);
+                    break;
+                }
+            }
+
+            return quantity;
+
+        }
+
+        public void Calculate_Inventory_Rows( DataTable All_Products )
+        {
+
+            this.Dset_Inventory = this.AllAccounts.Get_Inventory_Counts();
+
+            this.Inventory = new DataTable();
+            this.Inventory.Columns.Add("id");
+            this.Inventory.Columns.Add("total_quantity");
+
+            DataRow inventory_row;
+            foreach (DataRow row in All_Products.Rows) {
+
+                inventory_row = this.Inventory.NewRow();
+                decimal in_counts = 0;
+                decimal out_counts = 0;
+
+                foreach (DataRow in_row in this.Dset_Inventory.Tables[0].Rows ) {
+
+                    if (Convert.ToInt32(in_row["product_id"]) == Convert.ToInt32(row["id"])) {
+                        in_counts = Convert.ToDecimal(in_row["total_quantity"]);
+                        break;
+                    }
+                }
+
+
+                foreach (DataRow out_row in this.Dset_Inventory.Tables[1].Rows)
+                {
+
+                    if (Convert.ToInt32(out_row["product_id"]) == Convert.ToInt32(row["id"]))
+                    {
+                        out_counts = Convert.ToDecimal(out_row["total_quantity"]);
+                        break;
+                    }
+                }
+
+                // Calcs  
+                inventory_row["id"] = Convert.ToInt32(row["id"]);
+                inventory_row["total_quantity"] = (in_counts - out_counts);
+                this.Inventory.Rows.Add(inventory_row);
+            }
+
+            
         }
 
         private void salesInvoice_Load(object sender, EventArgs e)
@@ -1970,6 +2064,7 @@ namespace sales_management.UI
 
         private void first_record_button_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 if (this.Sale_Table.Rows.Count == 0)

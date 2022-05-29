@@ -10,6 +10,41 @@ namespace sales_management.PL
 {
     class AccountingTree 
     {
+
+        public decimal Get_Current_Cash_Bank_Balance() {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            DataTable table;
+
+            DAL.Open();
+            table = DAL.SelectData("Get_Current_Cash_Bank_Balance", null);
+            DAL.Close();
+
+            decimal balance = 0;
+
+            if (table.Rows.Count != 0) {
+                balance = Convert.ToDecimal(table.Rows[0]["balance"]);
+            }
+
+            return balance;
+        }
+
+        public DataSet Get_Inventory_Counts()
+        {
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+
+            DataSet dset;
+
+            DAL.Open();
+            dset = DAL.SelectDataSet("Get_Inventory_Counts", null);
+            DAL.Close();
+
+            return dset;
+        }
+
+
         public void Update_Tree_Of_Accounts(DataTable table) {
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();

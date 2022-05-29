@@ -17,6 +17,7 @@ namespace sales_management.UI
         // New Updates 
         PL.Return_Sales Sale = new PL.Return_Sales();
         PL.Journals journals = new PL.Journals();
+        PL.AccountingTree AllAccounts = new PL.AccountingTree();
         DSet.SalesInvoice CRT_DataSet = new DSet.SalesInvoice();
 
         DataSet dataSetDb;
@@ -38,27 +39,7 @@ namespace sales_management.UI
         public int currentInvoiceRowIndex = -1;
         public int lastRow = -1;
         public static FND___salesReturnInvoice frm;
-
-        static void frm_formClosed(object sernder, FormClosedEventArgs e)
-        {
-            frm = null;
-        }
-
-        public static FND___salesReturnInvoice GetForm
-        {
-            get
-            {
-
-                if (frm == null)
-                {
-                    frm = new FND___salesReturnInvoice();
-                    frm.FormClosed += new FormClosedEventHandler(frm_formClosed);
-                }
-
-                return frm;
-
-            }
-        }
+        public decimal Current_Balance = 0;
 
         public FND___salesReturnInvoice()
         {
@@ -1398,6 +1379,12 @@ namespace sales_management.UI
                     customer_id.Text = "-1";
                 }
 
+                if (this.Current_Balance < Convert.ToDecimal(total_field_text.Text))
+                {
+                    MessageBox.Show("لا يوجد رصيد كافي لمردود المبيعات");
+                    return;
+                }
+
                 if (payment_methods.SelectedIndex == 1 && customer_id.Text == "-1")
                 {
                     MessageBox.Show("من فضلك قم بإختيار حساب العميل الأجل");
@@ -1699,6 +1686,7 @@ namespace sales_management.UI
 
         private void save_button_Click(object sender, EventArgs e)
         {
+            this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
             this.Store_Invoice_Data();
         }
 
@@ -1765,6 +1753,13 @@ namespace sales_management.UI
         {
             try
             {
+
+                if (this.Current_Balance == 0)
+                {
+                    MessageBox.Show("لا يوجد رصيد كافي لمردود المبيعات");
+                    return;
+                }
+
                 invoice_id.Text = "";
                 this.is_getting_data = false;
                 this.disable_elements(true);
@@ -1885,6 +1880,7 @@ namespace sales_management.UI
 
                 // Load DataSet Of Purchase Invoices
                 this.dataSetDb = Sale.Get_Sale_Invoice_Data_Set();
+                this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
 
                 // Extract Tables From DataSet 
                 this.Sale_Table = this.dataSetDb.Tables[0];

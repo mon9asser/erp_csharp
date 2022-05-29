@@ -349,6 +349,12 @@ namespace sales_management.UI
                     break;
 
                 case 0:
+
+                    DataTable tble = (DataTable)this.SalesInv.items_datagridview.DataSource;
+                    foreach (DataRow rowx in tble.Rows ) {
+                        if(rowx.)
+                    }
+                    
                     this.SalesInv.Add_New_Item_Unit(this.datagrid_row_index, currentItem);
                     break;
 

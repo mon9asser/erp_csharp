@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FND___salesInvoice));
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
@@ -103,7 +103,7 @@ namespace sales_management.UI
             // 
             this.current_invoice_page.AutoSize = true;
             this.current_invoice_page.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.current_invoice_page.Location = new System.Drawing.Point(485, 584);
+            this.current_invoice_page.Location = new System.Drawing.Point(485, 572);
             this.current_invoice_page.Name = "current_invoice_page";
             this.current_invoice_page.Size = new System.Drawing.Size(82, 27);
             this.current_invoice_page.TabIndex = 137;
@@ -115,7 +115,7 @@ namespace sales_management.UI
             this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.add_new_button.Image = global::sales_management.Properties.Resources.add_new;
             this.add_new_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_new_button.Location = new System.Drawing.Point(13, 579);
+            this.add_new_button.Location = new System.Drawing.Point(13, 567);
             this.add_new_button.Name = "add_new_button";
             this.add_new_button.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.add_new_button.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -169,7 +169,7 @@ namespace sales_management.UI
             this.first_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.first_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.first_record_button.Image = global::sales_management.Properties.Resources.last_btn;
-            this.first_record_button.Location = new System.Drawing.Point(349, 579);
+            this.first_record_button.Location = new System.Drawing.Point(349, 567);
             this.first_record_button.Name = "first_record_button";
             this.first_record_button.Size = new System.Drawing.Size(50, 38);
             this.first_record_button.TabIndex = 134;
@@ -182,7 +182,7 @@ namespace sales_management.UI
             this.last_record_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.last_record_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.last_record_button.Image = global::sales_management.Properties.Resources.first_btn;
-            this.last_record_button.Location = new System.Drawing.Point(649, 579);
+            this.last_record_button.Location = new System.Drawing.Point(649, 567);
             this.last_record_button.Name = "last_record_button";
             this.last_record_button.Size = new System.Drawing.Size(50, 38);
             this.last_record_button.TabIndex = 133;
@@ -195,7 +195,7 @@ namespace sales_management.UI
             this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.next_button.Image = global::sales_management.Properties.Resources.next_btn;
-            this.next_button.Location = new System.Drawing.Point(405, 579);
+            this.next_button.Location = new System.Drawing.Point(405, 567);
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(50, 38);
             this.next_button.TabIndex = 132;
@@ -208,7 +208,7 @@ namespace sales_management.UI
             this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.previous_button.Image = global::sales_management.Properties.Resources.prev_btn;
-            this.previous_button.Location = new System.Drawing.Point(593, 579);
+            this.previous_button.Location = new System.Drawing.Point(593, 567);
             this.previous_button.Name = "previous_button";
             this.previous_button.Size = new System.Drawing.Size(50, 38);
             this.previous_button.TabIndex = 131;
@@ -229,7 +229,7 @@ namespace sales_management.UI
             this.edit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.edit_button.Image = global::sales_management.Properties.Resources.icons8_update_20;
             this.edit_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edit_button.Location = new System.Drawing.Point(928, 582);
+            this.edit_button.Location = new System.Drawing.Point(928, 569);
             this.edit_button.Name = "edit_button";
             this.edit_button.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.edit_button.Size = new System.Drawing.Size(72, 39);
@@ -245,7 +245,7 @@ namespace sales_management.UI
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.save_button.Image = global::sales_management.Properties.Resources.save_data;
             this.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.save_button.Location = new System.Drawing.Point(171, 579);
+            this.save_button.Location = new System.Drawing.Point(171, 567);
             this.save_button.Name = "save_button";
             this.save_button.Padding = new System.Windows.Forms.Padding(20, 0, 5, 0);
             this.save_button.Size = new System.Drawing.Size(92, 38);
@@ -325,7 +325,7 @@ namespace sales_management.UI
             // 
             // vat_amount
             // 
-            this.vat_amount.Location = new System.Drawing.Point(505, 525);
+            this.vat_amount.Location = new System.Drawing.Point(510, 510);
             this.vat_amount.Name = "vat_amount";
             this.vat_amount.Size = new System.Drawing.Size(123, 20);
             this.vat_amount.TabIndex = 118;
@@ -333,7 +333,7 @@ namespace sales_management.UI
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(424, 526);
+            this.label13.Location = new System.Drawing.Point(429, 513);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 13);
             this.label13.TabIndex = 117;
@@ -344,7 +344,7 @@ namespace sales_management.UI
             this.price_includ_vat.AutoSize = true;
             this.price_includ_vat.Checked = true;
             this.price_includ_vat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.price_includ_vat.Location = new System.Drawing.Point(426, 488);
+            this.price_includ_vat.Location = new System.Drawing.Point(431, 485);
             this.price_includ_vat.Name = "price_includ_vat";
             this.price_includ_vat.Size = new System.Drawing.Size(129, 17);
             this.price_includ_vat.TabIndex = 116;
@@ -355,7 +355,7 @@ namespace sales_management.UI
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(424, 455);
+            this.label12.Location = new System.Drawing.Point(429, 459);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(99, 13);
             this.label12.TabIndex = 114;
@@ -367,9 +367,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SeaShell;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -378,14 +378,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -507,14 +507,14 @@ namespace sales_management.UI
             // 
             // total_without_vat_field
             // 
-            this.total_without_vat_field.Location = new System.Drawing.Point(526, 452);
+            this.total_without_vat_field.Location = new System.Drawing.Point(531, 456);
             this.total_without_vat_field.Name = "total_without_vat_field";
             this.total_without_vat_field.Size = new System.Drawing.Size(98, 20);
             this.total_without_vat_field.TabIndex = 115;
             // 
             // discount_not_more_than
             // 
-            this.discount_not_more_than.Location = new System.Drawing.Point(109, 526);
+            this.discount_not_more_than.Location = new System.Drawing.Point(114, 513);
             this.discount_not_more_than.Name = "discount_not_more_than";
             this.discount_not_more_than.Size = new System.Drawing.Size(228, 20);
             this.discount_not_more_than.TabIndex = 113;
@@ -523,7 +523,7 @@ namespace sales_management.UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 529);
+            this.label11.Location = new System.Drawing.Point(16, 516);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 112;
@@ -531,7 +531,7 @@ namespace sales_management.UI
             // 
             // dicount_percentage
             // 
-            this.dicount_percentage.Location = new System.Drawing.Point(261, 487);
+            this.dicount_percentage.Location = new System.Drawing.Point(266, 483);
             this.dicount_percentage.Name = "dicount_percentage";
             this.dicount_percentage.Size = new System.Drawing.Size(75, 20);
             this.dicount_percentage.TabIndex = 111;
@@ -540,7 +540,7 @@ namespace sales_management.UI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(216, 490);
+            this.label10.Location = new System.Drawing.Point(221, 486);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 110;
@@ -548,7 +548,7 @@ namespace sales_management.UI
             // 
             // discount_value
             // 
-            this.discount_value.Location = new System.Drawing.Point(65, 487);
+            this.discount_value.Location = new System.Drawing.Point(70, 483);
             this.discount_value.Name = "discount_value";
             this.discount_value.Size = new System.Drawing.Size(124, 20);
             this.discount_value.TabIndex = 109;
@@ -557,7 +557,7 @@ namespace sales_management.UI
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 491);
+            this.label9.Location = new System.Drawing.Point(16, 487);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 108;
@@ -565,7 +565,7 @@ namespace sales_management.UI
             // 
             // net_total
             // 
-            this.net_total.Location = new System.Drawing.Point(66, 450);
+            this.net_total.Location = new System.Drawing.Point(71, 454);
             this.net_total.Name = "net_total";
             this.net_total.Size = new System.Drawing.Size(271, 20);
             this.net_total.TabIndex = 107;
@@ -573,7 +573,7 @@ namespace sales_management.UI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 453);
+            this.label8.Location = new System.Drawing.Point(16, 457);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 13);
             this.label8.TabIndex = 106;
@@ -641,7 +641,7 @@ namespace sales_management.UI
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = global::sales_management.Properties.Resources.print_btn;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(797, 582);
+            this.button2.Location = new System.Drawing.Point(797, 569);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -677,7 +677,7 @@ namespace sales_management.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 634);
+            this.ClientSize = new System.Drawing.Size(1019, 615);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.entry_id);
             this.Controls.Add(this.enable_zakat_taxes);

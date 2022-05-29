@@ -228,7 +228,8 @@ namespace sales_management.UI
 
         private void مرتجعToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.FND___salesReturnInvoice.GetForm.Show();
+            UI.FND___salesReturnInvoice frm = new FND___salesReturnInvoice();
+            frm.Show();
         }
 
         private void تقريرالكمياتالحاليةToolStripMenuItem_Click(object sender, EventArgs e)
