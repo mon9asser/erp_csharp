@@ -19,8 +19,8 @@ namespace sales_management.UI
         PL.Sales Sale = new PL.Sales();
         PL.Journals journals = new PL.Journals();
         PL.AccountingTree AllAccounts = new PL.AccountingTree();
-
         DSet.SalesInvoice CRT_DataSet = new DSet.SalesInvoice();
+
         Report Repo = new Report();
         DataSet Dset_Inventory;
         DataSet dataSetDb;

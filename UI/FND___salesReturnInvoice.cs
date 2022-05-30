@@ -1686,7 +1686,7 @@ namespace sales_management.UI
 
         private void save_button_Click(object sender, EventArgs e)
         {
-            this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
+            //this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
             this.Store_Invoice_Data();
         }
 
@@ -1880,7 +1880,7 @@ namespace sales_management.UI
 
                 // Load DataSet Of Purchase Invoices
                 this.dataSetDb = Sale.Get_Sale_Invoice_Data_Set();
-                this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
+                //this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
 
                 // Extract Tables From DataSet 
                 this.Sale_Table = this.dataSetDb.Tables[0];

@@ -47,3 +47,40 @@ truncate table __purchase_invoice;
 truncate table ____purchase_invoice;
 truncate table ____invoice_sales; 
 
+
+
+
+
+
+
+
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Get_Current_Cash_Bank_Balance]    Script Date: 5/30/2022 1:22:54 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Get_Current_Cash_Bank_Balance]
+
+AS
+
+
+select accounts.account_number, 0 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
+where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '11010%'
+group by accounts.account_number
+
+UNION ALL
+
+SELECT '1101' 'account_number', 0 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1101%' 
+
+UNION ALL
+
+select accounts.account_number, 1 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
+where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '11020%'
+group by accounts.account_number
+	
+UNION ALL
+
+SELECT '1102' 'account_number', 1 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1102%';
+

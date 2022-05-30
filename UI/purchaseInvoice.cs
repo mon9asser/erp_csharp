@@ -27,6 +27,7 @@ namespace sales_management.UI
         DataTable Codes;
         DataTable Resources;
         DataTable unitName;
+        DataTable Balances;
 
         // -----------------------------------
         PL.doc_items docs;     
@@ -40,8 +41,63 @@ namespace sales_management.UI
          
         public purchaseInvoice()
         {
-           
-            InitializeComponent(); 
+            InitializeComponent();
+
+            // Load DataSet Of Purchase Invoices
+            this.load_invoice_data_tables();
+
+            if (0 != this.Purchase_Table.Rows.Count)
+            {
+                this.currentInvoiceRowIndex = this.Purchase_Table.Rows.Count - 1;
+                DataRow rw = this.Purchase_Table.Rows[this.currentInvoiceRowIndex];
+                this.Fill_Invoice_Fields(rw);
+            }
+
+            int id = this.Purchase_Table.Rows.Count != 0 ? Convert.ToInt32(this.Purchase_Table.Rows[this.Purchase_Table.Rows.Count - 1]["id"]) : -1;
+
+            items_datagridview.DataSource = Purchase.Get_Purchase_Invoice_Items(this.documentType, id);
+
+
+            //table.Columns["product_code"].Count;
+            items_datagridview.Columns["id"].Visible = false;
+            items_datagridview.Columns["doc_id"].Visible = false;
+            items_datagridview.Columns["doc_type"].Visible = false;
+            items_datagridview.Columns["product_id"].Visible = false;
+            items_datagridview.Columns["unit_id"].Visible = false;
+            items_datagridview.Columns["factor"].Visible = false;
+            items_datagridview.Columns["total_quantity"].Visible = false;
+            items_datagridview.Columns["datagrid_id"].Visible = false;
+            items_datagridview.Columns["is_out"].Visible = false;
+            items_datagridview.Columns["unit_cost"].Visible = false;
+            items_datagridview.Columns["total_cost"].Visible = false;
+            //items_datagridview.Columns["datemade"].Visible = false;
+
+            this.Set_Invoice_Row_Page_Index();
+
+            items_datagridview.Columns["product_code"].HeaderText = "كود الصنف";
+            items_datagridview.Columns["product_name"].HeaderText = "الصنف";
+            items_datagridview.Columns["unit_name"].HeaderText = "اسم الوحدة";
+            items_datagridview.Columns["quantity"].HeaderText = "الكميات";
+            items_datagridview.Columns["total_price"].HeaderText = "إجمالي السعر";
+            items_datagridview.Columns["unit_price"].HeaderText = "سعر الوحدة";
+
+
+            items_datagridview.Columns[2].Width = 330;
+            items_datagridview.ColumnHeadersHeight = 40;
+
+            items_datagridview.Columns["product_name"].ReadOnly = true;
+            items_datagridview.Columns["unit_price"].ReadOnly = true;
+            items_datagridview.Columns["total_price"].ReadOnly = true;
+            items_datagridview.Columns["unit_name"].ReadOnly = true;
+
+            // Add Button To Remove The Item From invoice 
+            this.Load_deletion_icon_in_datagridview();
+            this.disable_elements();
+            
+            //- Load Balances 
+            this.Load_Account_Balances();
+            this.Load_Current_Balances();
+
         }
 
         public DataTable Load_All_Products_Codes( DataTable products )
@@ -1228,8 +1284,10 @@ namespace sales_management.UI
         private void save_button_Click(object sender, EventArgs e)
         {
 
-            this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
-             
+
+            //- Load Balances 
+            this.Load_Account_Balances();
+            this.Load_Current_Balances();
 
             if (total_field_text.Text == "00" || total_field_text.Text == "")
             {
@@ -1508,6 +1566,10 @@ namespace sales_management.UI
         private void add_new_button_Click(object sender, EventArgs e)
         {
 
+            //- Load Balances 
+            this.Load_Account_Balances();
+            this.Load_Current_Balances();
+            MessageBox.Show(this.Current_Balance.ToString());
             if (this.Current_Balance == 0)
             {
                 MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
@@ -1621,12 +1683,34 @@ namespace sales_management.UI
             }
         }
 
+        public void Load_Account_Balances() {
+            this.Balances = AllAccounts.Get_Current_Cash_Bank_Balance();  
+        }
+
+        public void Load_Current_Balances( string account_number = "-1" ) {
+
+            string acc_number = account_number;
+            if (account_number == "-1") {
+                acc_number = legend_number.Text;
+            }
+
+            this.Current_Balance = 0;
+
+            foreach (DataRow row in this.Balances.Rows) {
+                MessageBox.Show(acc_number.ToString() + " - " + row["account_number"].ToString());
+                if (acc_number.ToString().Equals(row["account_number"].ToString())) {
+                    this.Current_Balance = (row["balance"] == System.DBNull.Value) ? 0: Convert.ToDecimal(row["balance"]);
+                    break;
+                }
+            }
+            
+        }
+
         public void load_invoice_data_tables() {
 
             // Load DataSet Of Purchase Invoices
             this.dataSetDb = Purchase.Get_Purchase_Invoice_Data_Set();
-            this.Current_Balance = AllAccounts.Get_Current_Cash_Bank_Balance();
-
+             
             // Extract Tables From DataSet 
             this.Purchase_Table = this.dataSetDb.Tables[0];
             this.Purchase_Details = this.dataSetDb.Tables[1];
@@ -1635,63 +1719,13 @@ namespace sales_management.UI
             this.Prods = this.dataSetDb.Tables[4];
             this.Codes = this.Load_All_Products_Codes(this.dataSetDb.Tables[4]);
             this.unitName = this.dataSetDb.Tables[5];
-            this.Resources = this.dataSetDb.Tables[6];
+            this.Resources = this.dataSetDb.Tables[6]; 
 
-            
         }
 
         private void purchaseInvoice_Load(object sender, EventArgs e)
         {
-            // Load DataSet Of Purchase Invoices
-            this.load_invoice_data_tables();
-
-            if (0 != this.Purchase_Table.Rows.Count)
-            {
-                this.currentInvoiceRowIndex = this.Purchase_Table.Rows.Count - 1;
-                DataRow rw = this.Purchase_Table.Rows[this.currentInvoiceRowIndex];
-                this.Fill_Invoice_Fields(rw);
-            }
-
-            int id = this.Purchase_Table.Rows.Count != 0 ? Convert.ToInt32(this.Purchase_Table.Rows[this.Purchase_Table.Rows.Count - 1]["id"]) : -1;
-
-            items_datagridview.DataSource = Purchase.Get_Purchase_Invoice_Items(this.documentType, id);
-
-
-            //table.Columns["product_code"].Count;
-            items_datagridview.Columns["id"].Visible = false;
-            items_datagridview.Columns["doc_id"].Visible = false;
-            items_datagridview.Columns["doc_type"].Visible = false;
-            items_datagridview.Columns["product_id"].Visible = false;
-            items_datagridview.Columns["unit_id"].Visible = false;
-            items_datagridview.Columns["factor"].Visible = false;
-            items_datagridview.Columns["total_quantity"].Visible = false;
-            items_datagridview.Columns["datagrid_id"].Visible = false;
-            items_datagridview.Columns["is_out"].Visible = false;
-            items_datagridview.Columns["unit_cost"].Visible = false;
-            items_datagridview.Columns["total_cost"].Visible = false;
-            //items_datagridview.Columns["datemade"].Visible = false;
-
-            this.Set_Invoice_Row_Page_Index();
-
-            items_datagridview.Columns["product_code"].HeaderText = "كود الصنف";
-            items_datagridview.Columns["product_name"].HeaderText = "الصنف";
-            items_datagridview.Columns["unit_name"].HeaderText = "اسم الوحدة";
-            items_datagridview.Columns["quantity"].HeaderText = "الكميات";
-            items_datagridview.Columns["total_price"].HeaderText = "إجمالي السعر";
-            items_datagridview.Columns["unit_price"].HeaderText = "سعر الوحدة";
-             
-
-            items_datagridview.Columns[2].Width = 330;
-            items_datagridview.ColumnHeadersHeight = 40;
-
-            items_datagridview.Columns["product_name"].ReadOnly = true;
-            items_datagridview.Columns["unit_price"].ReadOnly = true;
-            items_datagridview.Columns["total_price"].ReadOnly = true;
-            items_datagridview.Columns["unit_name"].ReadOnly = true;
-
-            // Add Button To Remove The Item From invoice 
-            this.Load_deletion_icon_in_datagridview();
-            this.disable_elements();
+           
 
         }
 
