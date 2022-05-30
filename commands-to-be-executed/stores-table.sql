@@ -84,3 +84,63 @@ UNION ALL
 
 SELECT '1102' 'account_number', 1 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1102%';
 
+
+
+
+
+
+------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------
+
+select (SUM(debit) - SUM(credit)), COUNT(*) from journal_details where account_number LIKE '11020%';
+
+
+
+select accounts.account_number, 0 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
+where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '11010%'
+group by accounts.account_number
+
+UNION ALL
+
+SELECT '1101' 'account_number', 0 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1101%' 
+
+UNION ALL
+
+select accounts.account_number, 1 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
+where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '11020%'
+group by accounts.account_number
+	
+UNION ALL
+
+SELECT '1102' 'account_number', 1 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1102%';
+

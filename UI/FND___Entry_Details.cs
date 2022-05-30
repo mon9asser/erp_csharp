@@ -16,14 +16,16 @@ namespace sales_management.UI
 
         PL.DailyEntries entry = new PL.DailyEntries();
         PL.Installings sets = new PL.Installings();
+        PL.AccountingTree AllAccounts = new PL.AccountingTree();
 
         public DataSet DataSource;
         public DataTable Journals;
         public DataTable Journal_Details;
         public DataTable Settings;
+        public DataTable Balances;
         public int Current_Index = 0;
         public int Document_Type = 4;
-
+         
 
 
         public FND___Entry_Details()
@@ -38,6 +40,32 @@ namespace sales_management.UI
 
             // Load Data 
             this.Load_data_Entries();
+            this.Load_Account_Balances();
+        }
+
+        public void Load_Account_Balances()
+        {
+            this.Balances = AllAccounts.Get_Current_Cash_Bank_Balance();
+        }
+
+        public decimal[] Load_Current_Balances(string account_number )
+        {
+            decimal[] Current_Balance = new decimal[2];
+            Current_Balance[0] = 0; // balance 
+            Current_Balance[1] = 0; // is cash or bank 
+
+            foreach (DataRow row in this.Balances.Rows)
+            {
+
+                if (account_number.ToString().Equals(row["account_number"].ToString()))
+                {
+                    Current_Balance[0] = (row["balance"] == System.DBNull.Value) ? 0 : Convert.ToDecimal(row["balance"]);
+                    Current_Balance[1] = 1;
+                    break;
+                }
+            }
+
+            return Current_Balance;
         }
 
         public void Load_data_Entries() {
@@ -401,6 +429,9 @@ namespace sales_management.UI
             // Get Data Of Journals and Details 
             this.Extract_Data_Set_In_Data_Source();
 
+            // Load Current Balances 
+            this.Load_Account_Balances();
+
         }
 
         private void edit_button_Click(object sender, EventArgs e)
@@ -543,6 +574,62 @@ namespace sales_management.UI
 
             total_credit.Text = credit.ToString();
             total_debit.Text = debit.ToString();
+
+            if( e.ColumnIndex == -1 || e.RowIndex == -1 )
+            {
+                return;
+            }
+
+            if ( datagridview_items.Columns[e.ColumnIndex].Name == "credit") {
+
+                if (datagridview_items.Rows[e.RowIndex].Cells["credit"].Value == System.DBNull.Value || datagridview_items.Rows[e.RowIndex].Cells["credit"].Value == null)
+                {
+                    return;
+                }
+
+                if (datagridview_items.Rows[e.RowIndex].Cells["account_number"].Value == System.DBNull.Value || datagridview_items.Rows[e.RowIndex].Cells["account_number"].Value == null)
+                {
+                    return;
+                }
+
+                string account_number = datagridview_items.Rows[e.RowIndex].Cells["account_number"].Value.ToString();
+                decimal entry_balance = Convert.ToDecimal(datagridview_items.Rows[e.RowIndex].Cells["credit"].Value);
+
+                decimal[] balance = this.Load_Current_Balances(account_number);
+
+                if (balance[1] > 0) {
+                    decimal balance_ = balance[0];
+                    if (entry_balance > balance_)
+                    {
+                        datagridview_items.Rows[e.RowIndex].Cells["credit"].Value = balance_.ToString();
+
+                        // Show Error Highlighted
+                        datagridview_items.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gold;
+
+                    }
+                    else {
+                        // Remove Error Highlighted 
+                        if (datagridview_items.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.Gold)
+                        {
+
+
+                            if ((e.RowIndex % 2) == 0)
+                            {
+                                datagridview_items.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                            }
+                            else
+                            {
+                                datagridview_items.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.AliceBlue;
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+
+
 
         }
 

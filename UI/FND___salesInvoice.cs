@@ -1530,7 +1530,7 @@ namespace sales_management.UI
                 else if (salesPaymentType == 1)
                 {
                     salesRow_from["description"] = "عملية بيع أجل";
-                    salesRow_from["account_number"] = setting["sale_credit_account"].ToString();
+                    salesRow_from["account_number"] = setting["customers_account"].ToString();
 
 
                     if (legend_number.Text != "")
@@ -1670,7 +1670,9 @@ namespace sales_management.UI
                 // Diable Invoices
                 this.disable_elements(false);
             }
-            catch (Exception) { }
+            catch (Exception E) {
+                MessageBox.Show(E.Message.ToString());
+            }
         }
 
         private void Print_This_Invoice() {

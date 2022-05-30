@@ -1304,9 +1304,11 @@ namespace sales_management.UI
                 customer_id.Text = "-1";
             }
 
-            if (this.Current_Balance < Convert.ToDecimal(total_field_text.Text)) {
-                MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
-                return;
+            if (payment_methods.SelectedIndex != 1) { 
+                if (this.Current_Balance < Convert.ToDecimal(total_field_text.Text)) {
+                    MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
+                    return;
+                }
             }
 
             if ( payment_methods.SelectedIndex == 1 && customer_id.Text == "-1") {
@@ -1569,13 +1571,16 @@ namespace sales_management.UI
             //- Load Balances 
             this.Load_Account_Balances();
             this.Load_Current_Balances();
-            MessageBox.Show(this.Current_Balance.ToString());
-            if (this.Current_Balance == 0)
-            {
-                MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
-                return;
-            }
 
+            if (payment_methods.SelectedIndex != 1)
+            {
+
+                if (this.Current_Balance == 0)
+                {
+                    MessageBox.Show("لا يوجد رصيد كافي لعمليات الشراء");
+                    return;
+                }
+            }
             invoice_id.Text = "";
             this.is_getting_data = false; 
             this.disable_elements(true);
@@ -1694,10 +1699,21 @@ namespace sales_management.UI
                 acc_number = legend_number.Text;
             }
 
+            if (this.Settings.Rows.Count != 0) {
+
+                if (acc_number == "-1" || acc_number == "") {
+                    acc_number = this.Settings.Rows[0]["cash_account"].ToString();
+                }
+            }
+
+            if (acc_number == "-1" || acc_number == "") {
+                acc_number = "1101";
+            }
+
             this.Current_Balance = 0;
 
             foreach (DataRow row in this.Balances.Rows) {
-                MessageBox.Show(acc_number.ToString() + " - " + row["account_number"].ToString());
+                
                 if (acc_number.ToString().Equals(row["account_number"].ToString())) {
                     this.Current_Balance = (row["balance"] == System.DBNull.Value) ? 0: Convert.ToDecimal(row["balance"]);
                     break;
