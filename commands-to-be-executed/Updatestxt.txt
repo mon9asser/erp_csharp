@@ -32,99 +32,167 @@
 
 
 
-declare @date_from  as DATETIME;
-set @date_from = '2014-10-10 00:00:00.000';
 
-declare @date_to as DATETIME;
-set @date_to = '2025-10-10 00:00:00.000';
+
+
+
+
+
+
+
+
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Update_DataSet_Of_Daily_Entries]    Script Date: 5/30/2022 10:51:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[Update_DataSet_Of_Daily_Entries]
+	
+	@journal_id int, 
+	@header_entry as dbo.journal_header ReadOnly,
+	@details_entry as dbo.journal_details ReadOnly
+
+AS 
+
+DECLARE @balance AS DECIMAL(18,2);
+SET @balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1101%' OR account_number LIKE '1102%'); 
+
+IF @balance IS NULL 
+SET @balance = 0;
+
+
+DECLARE @entry_balance AS DECIMAL(18,2);
+
+	IF EXISTS ( SELECT * FROM journals WHERE id = @journal_id ) 
+	BEGIN
+
+	    -- DATE TIME AND DESCRIPTION  
+		IF EXISTS( SELECT 1 FROM @header_entry )
+		BEGIN
+
+			UPDATE journals SET
+				[description] = header_entry.[description],
+				[updated_date] = header_entry.[updated_date],
+				[show_balances_in_period] = header_entry.[show_balances_in_period]
+			FROM [dbo].journals
+				INNER JOIN @header_entry AS header_entry 
+				ON [dbo].journals.id = header_entry.id
+				WHERE [dbo].journals.id = @journal_id
+		END
+
+		
+	END
+
+
+
+	-- UPDATE ITEMS FIELD 
+	IF EXISTS( SELECT 1 FROM @details_entry )
+	BEGIN
+		
+		IF EXISTS ( SELECT *  FROM @details_entry WHERE account_number LIKE '1101%' OR account_number LIKE '1102%' )
+		BEGIN
+			SET @entry_balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM @details_entry WHERE account_number LIKE '1101%' OR account_number LIKE '1102%'); 
+			
+			IF @entry_balance > @balance
+			BEGIN
+				SELECT * FROM [dbo].journal_details;
+			END
+				ELSE
+			BEGIN
+				delete from [dbo].journal_details where journal_details.journal_id = @journal_id;
+				INSERT INTO [dbo].journal_details( journal_id, debit, credit, [description], cost_center_number, account_number, [date] ) 
+					SELECT journal_id, debit, credit, [description], cost_center_number, account_number, [date] FROM @details_entry
+			END
+
+		END
+			ELSE
+		BEGIN
+			delete from [dbo].journal_details where journal_details.journal_id = @journal_id;
+			INSERT INTO [dbo].journal_details( journal_id, debit, credit, [description], cost_center_number, account_number, [date] ) 
+				SELECT journal_id, debit, credit, [description], cost_center_number, account_number, [date] FROM @details_entry
+		END
+			 
+	END
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+
+DECLARE @cash_balance AS DECIMAL(18,2);
+SET @cash_balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1101%'); 
+
+IF @cash_balance IS NULL 
+SET @cash_balance = 0;
+
+
+
+DECLARE @bank_balance AS DECIMAL(18,2);
+SET @bank_balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1102%'); 
+
+IF @bank_balance IS NULL 
+SET @bank_balance = 0;
  
+SELECT @cash_balance 'cash_balance', @bank_balance 'bank_balance';
 
---==========================================================
---			SALES NET TOTAL
---========================================================== 
+SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1102%' group by account_number
 
--- total sales
-DECLARE @net_total_sales AS DECIMAL(18,2);
-SET @net_total_sales = (SELECT SUM(COALESCE(CAST(credit AS DECIMAL(18,2)), 0 )) FROM journal_details 
-	INNER JOIN journals ON journal_details.journal_id = journals.id 
-	WHERE journal_details.account_number IN ( SELECT sales_account FROM settings WHERE sales_account != '' ) AND journals.updated_date BETWEEN @date_from AND @date_to);
+ 
+ SELECT (SUM(debit) - SUM(credit)) FROM journal_details  inner join accounts on journal_details.account_number = accounts.account_number WHERE journal_details.account_number LIKE '1101%' group by journal_details.account_number;
 
-IF @net_total_sales IS NULL 
-	SET @net_total_sales = 0;
-
--- total return sales
-DECLARE @net_return_sales AS DECIMAL(18,2);
-SET @net_return_sales = (SELECT SUM(COALESCE(CAST(debit AS DECIMAL(18,2)), 0 )) FROM journal_details 
-	INNER JOIN journals ON journal_details.journal_id = journals.id 
-	WHERE journal_details.account_number IN ( SELECT return_sales_account FROM settings WHERE return_sales_account != '' ) AND journals.updated_date BETWEEN @date_from AND @date_to);
-
-IF @net_return_sales IS NULL 
-	SET @net_return_sales = 0;
-
--- allowed discount 
-DECLARE @sales_allowed_discounts AS DECIMAL(18,2);
-SET @sales_allowed_discounts = (select SUM(COALESCE(debit, 0)) from journal_details INNER JOIN journals ON journal_details.journal_id = journals.id where account_number = '5104' AND journals.updated_date between @date_from and @date_to);
-
-IF @sales_allowed_discounts IS NULL
-	SET @sales_allowed_discounts = 0;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+select (SUM(debit) - SUM(credit)) 'balance', accounts.account_number, accounts.main_account from accounts, journal_details 
+where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '1101%'
+group by accounts.account_number, accounts.main_account;
 
 
--- Net Sales Calculations 
-DECLARE @net_sales AS DECIMAL(18,2);
-SET @net_sales = ( SELECT @net_total_sales ) - ( ( SELECT @net_return_sales ) + ( SELECT @sales_allowed_discounts ) );
-
-IF @net_sales IS NULL
-SET @net_sales = 0;
-
---==========================================================
---			COST OF GOOD SOLD 
---========================================================== 
-
--- cost of sold goods 
-DECLARE @cost_of_good_sold AS DECIMAL(18,2);
-SET @cost_of_good_sold = (SELECT   SUM(COALESCE(CAST(credit AS DECIMAL(18,2)), 0 )) FROM journal_details 
-	INNER JOIN journals ON journal_details.journal_id = journals.id 
-	WHERE journal_details.account_number IN ( SELECT cost_of_goods_account FROM settings WHERE cost_of_goods_account != '' ) AND journals.updated_date BETWEEN @date_from AND @date_to);
-
-IF @cost_of_good_sold IS NULL
-SET @cost_of_good_sold = 0;
-
--- allowed discount 
-DECLARE @cost_allowed_discounts AS DECIMAL(18,2);
-SET @cost_allowed_discounts = (select SUM(CAST(COALESCE(credit, 0) AS decimal(18,2))) from journal_details INNER JOIN journals ON journal_details.journal_id = journals.id where account_number = '4103' AND journals.updated_date between @date_from and @date_to);
-
-IF @cost_allowed_discounts IS NULL
-SET @cost_allowed_discounts = 0;
-
--- Net Cost Of Goods Calculations 
-DECLARE @net_cost_of_goods AS DECIMAL(18,2);
-SET @net_cost_of_goods = ((SELECT @cost_of_good_sold) - (SELECT @cost_allowed_discounts));
-
-IF @net_cost_of_goods IS NULL
-SET @net_cost_of_goods = 0;
-
---==========================================================
---			Total Profit
---========================================================== 
-
-DECLARE @total_profits AS DECIMAL(18,2);
-SET @total_profits = (( SELECT @net_sales ) - (SELECT @net_cost_of_goods));
-
-IF @total_profits IS NULL 
-SET @total_profits = 0;
-
---==========================================================
---			Other Revenues 
---========================================================== 
-DECLARE @other_revenuse AS DECIMAL;
-SET @other_revenuse = (SELECT SUM(CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2))) FROM journal_details 
-INNER JOIN journals ON journal_details.journal_id = journals.id 
-WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '420%'); 
-
-IF @other_revenuse IS NULL 
-SET @other_revenuse = 0;
 
 
-======================================================================================================================
-======================================================================================================================
+
+
+
 
