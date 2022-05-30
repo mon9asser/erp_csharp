@@ -388,7 +388,12 @@ namespace sales_management.UI
             }
 
             // Storing 
-            entry.Update_DataSet_Of_Daily_Entries(Convert.ToInt32(entry_id_field.Text), journs, journs_dets);
+            DataTable tble = entry.Update_DataSet_Of_Daily_Entries(Convert.ToInt32(entry_id_field.Text), journs, journs_dets);
+            /*
+             * if (tble.Rows.Count != 0) {
+                MessageBox.Show( "لا يوجد رصيد كافي لإتمام القيد" );
+                return;
+            }*/
 
             // Referesh DataTables
             this.Extract_Data_Set_In_Data_Source();

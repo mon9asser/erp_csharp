@@ -240,7 +240,8 @@ namespace sales_management.UI
 
         private void مسترداتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UI.purchaseReturnInvoice.GetForm.Show();
+            UI.purchaseReturnInvoice FRM = new UI.purchaseReturnInvoice();
+            FRM.Show();
         }
 
         private void تقريرالمبيعاتToolStripMenuItem1_Click(object sender, EventArgs e)

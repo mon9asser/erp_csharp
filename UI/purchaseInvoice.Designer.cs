@@ -37,7 +37,6 @@ namespace sales_management.UI
             this.add_new_button = new System.Windows.Forms.Button();
             this.total_label_text = new System.Windows.Forms.Label();
             this.payment_condition = new System.Windows.Forms.ComboBox();
-            this.search_button = new System.Windows.Forms.Button();
             this.first_record_button = new System.Windows.Forms.Button();
             this.last_record_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
@@ -142,19 +141,6 @@ namespace sales_management.UI
             this.payment_condition.Size = new System.Drawing.Size(219, 21);
             this.payment_condition.TabIndex = 136;
             this.payment_condition.Visible = false;
-            // 
-            // search_button
-            // 
-            this.search_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.search_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Location = new System.Drawing.Point(377, 12);
-            this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(68, 29);
-            this.search_button.TabIndex = 135;
-            this.search_button.Text = "بحث";
-            this.search_button.UseVisualStyleBackColor = false;
-            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // first_record_button
             // 
@@ -277,7 +263,7 @@ namespace sales_management.UI
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(34, 143);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.Size = new System.Drawing.Size(70, 13);
             this.label17.TabIndex = 123;
             this.label17.Text = "مركز التكلفة :";
             this.label17.Visible = false;
@@ -295,7 +281,7 @@ namespace sales_management.UI
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(693, 449);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(51, 13);
+            this.label16.Size = new System.Drawing.Size(55, 13);
             this.label16.TabIndex = 121;
             this.label16.Text = "الإجمالي :";
             // 
@@ -304,7 +290,7 @@ namespace sales_management.UI
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(693, 529);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(108, 13);
+            this.label15.Size = new System.Drawing.Size(113, 13);
             this.label15.TabIndex = 120;
             this.label15.Text = "ريال سعودي فقط لا غير";
             // 
@@ -320,6 +306,7 @@ namespace sales_management.UI
             // 
             this.vat_amount.Location = new System.Drawing.Point(505, 525);
             this.vat_amount.Name = "vat_amount";
+            this.vat_amount.ReadOnly = true;
             this.vat_amount.Size = new System.Drawing.Size(123, 20);
             this.vat_amount.TabIndex = 118;
             // 
@@ -328,7 +315,7 @@ namespace sales_management.UI
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(424, 526);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.Size = new System.Drawing.Size(72, 13);
             this.label13.TabIndex = 117;
             this.label13.Text = "قيمة الضريبة :";
             // 
@@ -339,7 +326,7 @@ namespace sales_management.UI
             this.price_includ_vat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.price_includ_vat.Location = new System.Drawing.Point(426, 488);
             this.price_includ_vat.Name = "price_includ_vat";
-            this.price_includ_vat.Size = new System.Drawing.Size(124, 17);
+            this.price_includ_vat.Size = new System.Drawing.Size(129, 17);
             this.price_includ_vat.TabIndex = 116;
             this.price_includ_vat.Text = "الأسعار شاملة الضريبة";
             this.price_includ_vat.UseVisualStyleBackColor = true;
@@ -350,7 +337,7 @@ namespace sales_management.UI
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(424, 455);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 13);
+            this.label12.Size = new System.Drawing.Size(99, 13);
             this.label12.TabIndex = 114;
             this.label12.Text = "الصافي بعد الخصم :";
             // 
@@ -412,7 +399,7 @@ namespace sales_management.UI
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(592, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 99;
             this.label5.Text = "حساب الأستاذ :";
             // 
@@ -454,7 +441,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 95;
             this.label4.Text = "طريقة الدقع :";
             // 
@@ -462,23 +449,22 @@ namespace sales_management.UI
             // 
             this.invoice_id.Location = new System.Drawing.Point(105, 17);
             this.invoice_id.Name = "invoice_id";
-            this.invoice_id.Size = new System.Drawing.Size(212, 20);
+            this.invoice_id.Size = new System.Drawing.Size(252, 20);
             this.invoice_id.TabIndex = 94;
             // 
             // invoice_serial
             // 
-            this.invoice_serial.Location = new System.Drawing.Point(334, 17);
+            this.invoice_serial.Location = new System.Drawing.Point(427, 16);
             this.invoice_serial.Name = "invoice_serial";
             this.invoice_serial.Size = new System.Drawing.Size(37, 20);
             this.invoice_serial.TabIndex = 93;
-            this.invoice_serial.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 92;
             this.label2.Text = "التاريخ :";
             // 
@@ -487,7 +473,7 @@ namespace sales_management.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 91;
             this.label1.Text = "رقم الفاتوره :";
             // 
@@ -495,13 +481,14 @@ namespace sales_management.UI
             // 
             this.datemade.Location = new System.Drawing.Point(105, 54);
             this.datemade.Name = "datemade";
-            this.datemade.Size = new System.Drawing.Size(197, 20);
+            this.datemade.Size = new System.Drawing.Size(252, 20);
             this.datemade.TabIndex = 90;
             // 
             // total_without_vat_field
             // 
             this.total_without_vat_field.Location = new System.Drawing.Point(526, 452);
             this.total_without_vat_field.Name = "total_without_vat_field";
+            this.total_without_vat_field.ReadOnly = true;
             this.total_without_vat_field.Size = new System.Drawing.Size(98, 20);
             this.total_without_vat_field.TabIndex = 115;
             // 
@@ -518,7 +505,7 @@ namespace sales_management.UI
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(11, 529);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 13);
+            this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 112;
             this.label11.Text = "الخصم لا يزيد عن :";
             // 
@@ -535,7 +522,7 @@ namespace sales_management.UI
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(216, 490);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 110;
             this.label10.Text = "( % ) :";
             // 
@@ -552,7 +539,7 @@ namespace sales_management.UI
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(11, 491);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 108;
             this.label9.Text = "خصم :";
             // 
@@ -560,6 +547,7 @@ namespace sales_management.UI
             // 
             this.net_total.Location = new System.Drawing.Point(66, 450);
             this.net_total.Name = "net_total";
+            this.net_total.ReadOnly = true;
             this.net_total.Size = new System.Drawing.Size(271, 20);
             this.net_total.TabIndex = 107;
             // 
@@ -577,7 +565,7 @@ namespace sales_management.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 214);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 105;
             this.label7.Text = "شرط الدفع :";
             this.label7.Visible = false;
@@ -605,7 +593,7 @@ namespace sales_management.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(592, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 102;
             this.label6.Text = "المورد :";
             // 
@@ -614,9 +602,9 @@ namespace sales_management.UI
             this.enable_zakat_taxes.AutoSize = true;
             this.enable_zakat_taxes.Checked = true;
             this.enable_zakat_taxes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enable_zakat_taxes.Location = new System.Drawing.Point(377, 54);
+            this.enable_zakat_taxes.Location = new System.Drawing.Point(363, 57);
             this.enable_zakat_taxes.Name = "enable_zakat_taxes";
-            this.enable_zakat_taxes.Size = new System.Drawing.Size(93, 17);
+            this.enable_zakat_taxes.Size = new System.Drawing.Size(94, 17);
             this.enable_zakat_taxes.TabIndex = 143;
             this.enable_zakat_taxes.Text = "خاضعة للضريبه";
             this.enable_zakat_taxes.UseVisualStyleBackColor = true;
@@ -628,6 +616,7 @@ namespace sales_management.UI
             this.entry_id.Name = "entry_id";
             this.entry_id.Size = new System.Drawing.Size(100, 20);
             this.entry_id.TabIndex = 144;
+            this.entry_id.Visible = false;
             // 
             // purchaseInvoice
             // 
@@ -640,7 +629,6 @@ namespace sales_management.UI
             this.Controls.Add(this.add_new_button);
             this.Controls.Add(this.total_label_text);
             this.Controls.Add(this.payment_condition);
-            this.Controls.Add(this.search_button);
             this.Controls.Add(this.first_record_button);
             this.Controls.Add(this.last_record_button);
             this.Controls.Add(this.next_button);
@@ -710,7 +698,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.Label total_label_text;
         public System.Windows.Forms.ComboBox payment_condition;
-        public System.Windows.Forms.Button search_button;
         private System.Windows.Forms.Button first_record_button;
         private System.Windows.Forms.Button last_record_button;
         private System.Windows.Forms.Button next_button;

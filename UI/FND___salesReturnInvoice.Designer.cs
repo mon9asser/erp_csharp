@@ -29,14 +29,13 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
             this.add_new_button = new System.Windows.Forms.Button();
             this.total_label_text = new System.Windows.Forms.Label();
             this.payment_condition = new System.Windows.Forms.ComboBox();
-            this.search_button = new System.Windows.Forms.Button();
             this.first_record_button = new System.Windows.Forms.Button();
             this.last_record_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
@@ -144,19 +143,6 @@ namespace sales_management.UI
             this.payment_condition.Size = new System.Drawing.Size(219, 21);
             this.payment_condition.TabIndex = 136;
             this.payment_condition.Visible = false;
-            // 
-            // search_button
-            // 
-            this.search_button.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.search_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Location = new System.Drawing.Point(377, 12);
-            this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(68, 29);
-            this.search_button.TabIndex = 135;
-            this.search_button.Text = "بحث";
-            this.search_button.UseVisualStyleBackColor = false;
-            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // first_record_button
             // 
@@ -322,6 +308,7 @@ namespace sales_management.UI
             // 
             this.vat_amount.Location = new System.Drawing.Point(505, 525);
             this.vat_amount.Name = "vat_amount";
+            this.vat_amount.ReadOnly = true;
             this.vat_amount.Size = new System.Drawing.Size(123, 20);
             this.vat_amount.TabIndex = 118;
             // 
@@ -362,9 +349,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -373,14 +360,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -463,12 +450,13 @@ namespace sales_management.UI
             // 
             this.invoice_id.Location = new System.Drawing.Point(105, 17);
             this.invoice_id.Name = "invoice_id";
-            this.invoice_id.Size = new System.Drawing.Size(212, 20);
+            this.invoice_id.ReadOnly = true;
+            this.invoice_id.Size = new System.Drawing.Size(250, 20);
             this.invoice_id.TabIndex = 94;
             // 
             // invoice_serial
             // 
-            this.invoice_serial.Location = new System.Drawing.Point(334, 17);
+            this.invoice_serial.Location = new System.Drawing.Point(530, 43);
             this.invoice_serial.Name = "invoice_serial";
             this.invoice_serial.Size = new System.Drawing.Size(37, 20);
             this.invoice_serial.TabIndex = 93;
@@ -496,13 +484,14 @@ namespace sales_management.UI
             // 
             this.datemade.Location = new System.Drawing.Point(105, 54);
             this.datemade.Name = "datemade";
-            this.datemade.Size = new System.Drawing.Size(197, 20);
+            this.datemade.Size = new System.Drawing.Size(250, 20);
             this.datemade.TabIndex = 90;
             // 
             // total_without_vat_field
             // 
             this.total_without_vat_field.Location = new System.Drawing.Point(526, 452);
             this.total_without_vat_field.Name = "total_without_vat_field";
+            this.total_without_vat_field.ReadOnly = true;
             this.total_without_vat_field.Size = new System.Drawing.Size(98, 20);
             this.total_without_vat_field.TabIndex = 115;
             // 
@@ -561,6 +550,7 @@ namespace sales_management.UI
             // 
             this.net_total.Location = new System.Drawing.Point(66, 450);
             this.net_total.Name = "net_total";
+            this.net_total.ReadOnly = true;
             this.net_total.Size = new System.Drawing.Size(271, 20);
             this.net_total.TabIndex = 107;
             // 
@@ -615,7 +605,7 @@ namespace sales_management.UI
             this.enable_zakat_taxes.AutoSize = true;
             this.enable_zakat_taxes.Checked = true;
             this.enable_zakat_taxes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enable_zakat_taxes.Location = new System.Drawing.Point(377, 54);
+            this.enable_zakat_taxes.Location = new System.Drawing.Point(363, 56);
             this.enable_zakat_taxes.Name = "enable_zakat_taxes";
             this.enable_zakat_taxes.Size = new System.Drawing.Size(94, 17);
             this.enable_zakat_taxes.TabIndex = 143;
@@ -629,6 +619,7 @@ namespace sales_management.UI
             this.entry_id.Name = "entry_id";
             this.entry_id.Size = new System.Drawing.Size(100, 20);
             this.entry_id.TabIndex = 144;
+            this.entry_id.Visible = false;
             // 
             // button2
             // 
@@ -663,7 +654,6 @@ namespace sales_management.UI
             this.Controls.Add(this.add_new_button);
             this.Controls.Add(this.total_label_text);
             this.Controls.Add(this.payment_condition);
-            this.Controls.Add(this.search_button);
             this.Controls.Add(this.first_record_button);
             this.Controls.Add(this.last_record_button);
             this.Controls.Add(this.next_button);
@@ -732,7 +722,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.Label total_label_text;
         public System.Windows.Forms.ComboBox payment_condition;
-        public System.Windows.Forms.Button search_button;
         private System.Windows.Forms.Button first_record_button;
         private System.Windows.Forms.Button last_record_button;
         private System.Windows.Forms.Button next_button;

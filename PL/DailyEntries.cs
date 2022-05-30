@@ -208,10 +208,10 @@ namespace sales_management.PL
             DAL.Close();
              
         }
-        public void Update_DataSet_Of_Daily_Entries( int journal_id, DataTable header_entry, DataTable details_entry ) {
+        public DataTable Update_DataSet_Of_Daily_Entries( int journal_id, DataTable header_entry, DataTable details_entry ) {
 
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-
+            DataTable tbl;
             SqlParameter[] param = new SqlParameter[3];
 
             param[0] = new SqlParameter("@journal_id", SqlDbType.Int);
@@ -224,9 +224,9 @@ namespace sales_management.PL
             param[2].Value = details_entry;
 
             DAL.Open();
-            DAL.ExecuteCommand( "Update_DataSet_Of_Daily_Entries" , param );
+            tbl = DAL.SelectData( "Update_DataSet_Of_Daily_Entries" , param );
             DAL.Close();
-
+            return tbl;
         }
 
         public DataSet Search_On_Process_Reports( DateTime date_from, DateTime date_to, int enable_zakat ) {

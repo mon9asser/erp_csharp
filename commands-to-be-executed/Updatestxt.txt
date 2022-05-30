@@ -24,3 +24,175 @@
 
 نسبة الضريبة 
 الارباح بعد الضريبة 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Update_DataSet_Of_Daily_Entries]    Script Date: 5/30/2022 10:51:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[Update_DataSet_Of_Daily_Entries]
+	
+	@journal_id int, 
+	@header_entry as dbo.journal_header ReadOnly,
+	@details_entry as dbo.journal_details ReadOnly
+
+AS 
+
+DECLARE @balance AS DECIMAL(18,2);
+SET @balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1101%' OR account_number LIKE '1102%'); 
+
+IF @balance IS NULL 
+SET @balance = 0;
+
+
+DECLARE @entry_balance AS DECIMAL(18,2);
+
+	IF EXISTS ( SELECT * FROM journals WHERE id = @journal_id ) 
+	BEGIN
+
+	    -- DATE TIME AND DESCRIPTION  
+		IF EXISTS( SELECT 1 FROM @header_entry )
+		BEGIN
+
+			UPDATE journals SET
+				[description] = header_entry.[description],
+				[updated_date] = header_entry.[updated_date],
+				[show_balances_in_period] = header_entry.[show_balances_in_period]
+			FROM [dbo].journals
+				INNER JOIN @header_entry AS header_entry 
+				ON [dbo].journals.id = header_entry.id
+				WHERE [dbo].journals.id = @journal_id
+		END
+
+		
+	END
+
+
+
+	-- UPDATE ITEMS FIELD 
+	IF EXISTS( SELECT 1 FROM @details_entry )
+	BEGIN
+		
+		IF EXISTS ( SELECT *  FROM @details_entry WHERE account_number LIKE '1101%' OR account_number LIKE '1102%' )
+		BEGIN
+			SET @entry_balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM @details_entry WHERE account_number LIKE '1101%' OR account_number LIKE '1102%'); 
+			
+			IF @entry_balance > @balance
+			BEGIN
+				SELECT * FROM [dbo].journal_details;
+			END
+				ELSE
+			BEGIN
+				delete from [dbo].journal_details where journal_details.journal_id = @journal_id;
+				INSERT INTO [dbo].journal_details( journal_id, debit, credit, [description], cost_center_number, account_number, [date] ) 
+					SELECT journal_id, debit, credit, [description], cost_center_number, account_number, [date] FROM @details_entry
+			END
+
+		END
+			ELSE
+		BEGIN
+			delete from [dbo].journal_details where journal_details.journal_id = @journal_id;
+			INSERT INTO [dbo].journal_details( journal_id, debit, credit, [description], cost_center_number, account_number, [date] ) 
+				SELECT journal_id, debit, credit, [description], cost_center_number, account_number, [date] FROM @details_entry
+		END
+			 
+	END
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+
+DECLARE @cash_balance AS DECIMAL(18,2);
+SET @cash_balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1101%'); 
+
+IF @cash_balance IS NULL 
+SET @cash_balance = 0;
+
+
+
+DECLARE @bank_balance AS DECIMAL(18,2);
+SET @bank_balance = (SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1102%'); 
+
+IF @bank_balance IS NULL 
+SET @bank_balance = 0;
+ 
+SELECT @cash_balance 'cash_balance', @bank_balance 'bank_balance';
+
+SELECT (SUM(debit) - SUM(credit)) 'balance'  FROM journal_details WHERE account_number LIKE '1102%' group by account_number
+
+ 
+ SELECT (SUM(debit) - SUM(credit)) FROM journal_details  inner join accounts on journal_details.account_number = accounts.account_number WHERE journal_details.account_number LIKE '1101%' group by journal_details.account_number;
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ select (SUM(debit) - SUM(credit)) 'balance', accounts.account_number, accounts.main_account from accounts, journal_details 
+where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '1101%'
+group by accounts.account_number, accounts.main_account;
+
+
+
+
+
+
+
+
