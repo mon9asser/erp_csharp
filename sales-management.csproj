@@ -103,6 +103,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DailyEntries.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSet\Income_Statement.cs">
+      <DependentUpon>Income_Statement.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSet\Income_Statement.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

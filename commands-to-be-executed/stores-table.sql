@@ -42,57 +42,13 @@ truncate table categories;
 
 
 
+---------------------------------------------------------------------------------------
+ALTER PROC [dbo].[Income_Statement_List]
 
-
-USE [zakat_invoices]
-GO
-/****** Object:  StoredProcedure [dbo].[Get_Current_Cash_Bank_Balance]    Script Date: 5/30/2022 1:22:54 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER PROC [dbo].[Get_Current_Cash_Bank_Balance]
-
-AS
-
-
-select accounts.account_number, 0 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
-where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '11010%'
-group by accounts.account_number
-
-UNION ALL
-
-SELECT '1101' 'account_number', 0 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1101%' 
-
-UNION ALL
-
-select accounts.account_number, 1 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
-where accounts.account_number = journal_details.account_number and accounts.account_number LIKE '11020%'
-group by accounts.account_number
-	
-UNION ALL
-
-SELECT '1102' 'account_number', 1 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1102%';
-
-
-
-
-
-
-------------------------------------------------------------------------------------------
-
-
-
-
-
-
-declare @date_from  as DATETIME;
-set @date_from = '2014-10-10 00:00:00.000';
-
-declare @date_to as DATETIME;
-set @date_to = '2025-10-10 00:00:00.000';
+@date_from DATETIME,
+@date_to DATETIME
  
-
+ AS
 --==========================================================
 --			SALES NET TOTAL
 --========================================================== 
@@ -111,7 +67,7 @@ DECLARE @net_return_sales AS DECIMAL(18,2);
 SET @net_return_sales = (SELECT SUM(COALESCE(CAST(debit AS DECIMAL(18,2)), 0 )) FROM journal_details 
 	INNER JOIN journals ON journal_details.journal_id = journals.id 
 	WHERE journal_details.account_number IN ( SELECT return_sales_account FROM settings WHERE return_sales_account != '' ) AND journals.updated_date BETWEEN @date_from AND @date_to);
-
+	 
 IF @net_return_sales IS NULL 
 	SET @net_return_sales = 0;
 
@@ -122,13 +78,14 @@ SET @sales_allowed_discounts = (select SUM(COALESCE(debit, 0)) from journal_deta
 IF @sales_allowed_discounts IS NULL
 	SET @sales_allowed_discounts = 0;
 
-
+ 
 -- Net Sales Calculations 
 DECLARE @net_sales AS DECIMAL(18,2);
 SET @net_sales = ( SELECT @net_total_sales ) - ( ( SELECT @net_return_sales ) + ( SELECT @sales_allowed_discounts ) );
 
 IF @net_sales IS NULL
 SET @net_sales = 0;
+ 
 
 --==========================================================
 --			COST OF GOOD SOLD 
@@ -139,9 +96,9 @@ DECLARE @cost_of_good_sold AS DECIMAL(18,2);
 SET @cost_of_good_sold = (SELECT   SUM(COALESCE(CAST(debit AS DECIMAL(18,2)), 0 )) - SUM(COALESCE(CAST(credit AS DECIMAL(18,2)), 0 )) FROM journal_details 
 	INNER JOIN journals ON journal_details.journal_id = journals.id 
 	WHERE journal_details.account_number IN ( SELECT cost_of_goods_account FROM settings WHERE cost_of_goods_account != '' ) AND journals.updated_date BETWEEN @date_from AND @date_to);
-
+ 
 IF @cost_of_good_sold IS NULL
-SET @cost_of_good_sold = 0;
+SET @cost_of_good_sold = 0; 
 
 -- allowed discount 
 DECLARE @cost_allowed_discounts AS DECIMAL(18,2);
@@ -149,15 +106,15 @@ SET @cost_allowed_discounts = (select SUM(CAST(COALESCE(credit, 0) AS decimal(18
 
 IF @cost_allowed_discounts IS NULL
 SET @cost_allowed_discounts = 0;
- 
+
 -- Net Cost Of Goods Calculations 
 DECLARE @net_cost_of_goods AS DECIMAL(18,2);
 SET @net_cost_of_goods = ((SELECT @cost_of_good_sold) - (SELECT @cost_allowed_discounts));
 
 IF @net_cost_of_goods IS NULL
 SET @net_cost_of_goods = 0;
-
-SELECT @cost_of_good_sold;
+ 
+ 
 --==========================================================
 --			Total Profit
 --========================================================== 
@@ -172,7 +129,7 @@ SET @total_profits = 0;
 --			Other Revenues 
 --========================================================== 
 DECLARE @other_revenuse AS DECIMAL(18,2);
-SET @other_revenuse = (SELECT SUM( CAST(COALESCE(debit, 0) AS decimal(18,2)) - CAST(COALESCE(credit, 0) AS decimal(18,2)) ) FROM journal_details 
+SET @other_revenuse = (SELECT SUM( CAST(COALESCE(credit, 0) AS decimal(18,2)) - CAST(COALESCE(debit, 0) AS decimal(18,2)) ) FROM journal_details 
 INNER JOIN journals ON journal_details.journal_id = journals.id 
 WHERE journals.updated_date BETWEEN @date_from AND @date_to AND account_number LIKE '420%'); 
 
@@ -219,7 +176,7 @@ SET @other_expenses = 0;
 --			Calculations   
 --==========================================================
 DECLARE @total_expenses AS DECIMAL(18,2);
-SET @total_expenses = ( SELECT @other_expenses ) + ( SELECT @management_ingeneral_exp ) + (SELECT @market_publish) + (SELECT @other_expenses);
+SET @total_expenses =  ( SELECT @management_ingeneral_exp ) + (SELECT @market_publish) + (SELECT @other_expenses);
 
 DECLARE @total_income AS DECIMAL(18,2);
 SET @total_income = ( (  ( SELECT @total_profits ) + ( SELECT @other_revenuse )  ) - ( SELECT @total_expenses ) );
@@ -227,13 +184,13 @@ SET @total_income = ( (  ( SELECT @total_profits ) + ( SELECT @other_revenuse ) 
 
 
 SELECT 
-	CAST(@net_sales AS DECIMAL(18,2)) 'total_sales',
-	CAST(@net_cost_of_goods AS DECIMAL(18,2)) 'total_costs',
+	CAST(@net_sales AS DECIMAL(18,2)) 'net_sales',
+	CAST(@net_cost_of_goods AS DECIMAL(18,2)) 'sales_cost',
 	CAST(@total_profits AS DECIMAL(18,2)) 'net_profit',
 	-----------------------------
 	CAST(@other_revenuse AS DECIMAL(18,2)) 'other_revenues',
-	
 	CAST(@market_publish AS DECIMAL(18,2)) 'sells_marketing_expenses',
+	-----------------------------
 	CAST(@management_ingeneral_exp AS DECIMAL(18,2)) 'management_expenses',
 	CAST(@other_expenses AS DECIMAL(18,2)) 'other_expenses',
 	CAST(@total_expenses AS DECIMAL(18,2)) 'total_expenses',
@@ -246,32 +203,17 @@ SELECT
 
 
 
+---------------------------------------------------------------------------------------
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Get_Current_Cash_Bank_Balance]    Script Date: 5/30/2022 1:22:54 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[Get_Current_Cash_Bank_Balance]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-----------------------------
-
-select (SUM(debit) - SUM(credit)), COUNT(*) from journal_details where account_number LIKE '11020%';
-
+AS
 
 
 select accounts.account_number, 0 'type', (SUM(debit) - SUM(credit)) 'balance' from accounts, journal_details 
@@ -292,3 +234,6 @@ UNION ALL
 
 SELECT '1102' 'account_number', 1 'type', (SUM(debit) - SUM(credit)) 'balance' FROM journal_details WHERE account_number LIKE '1102%';
 
+
+
+ 

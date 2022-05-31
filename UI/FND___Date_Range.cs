@@ -27,9 +27,7 @@ namespace sales_management.UI
         DataTable Accounts;
         DataTable Settings;
         DataSet dstables;
-        DataTable All_Entries;
-        DataTable All_Row_Entries;
-
+        DataTable All_Entries;  
         public int SearchType = -1;
 
         public FND___Date_Range()

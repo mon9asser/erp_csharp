@@ -1401,7 +1401,7 @@ namespace sales_management.UI
             entry_header_row["description"] = details.Text.ToString();
             entry_header_row["is_forwarded"] = true;
             entry_header_row["show_balances_in_period"] = false;
-            entry_header_row["entry_number"] = Convert.ToDateTime(datemade.Value).Day + "/" + invoice_id.Text;
+            entry_header_row["entry_number"] = Convert.ToDateTime(datemade.Value).Day + "/" + entry_id.Text;
             entry_header_row["updated_date"] = Convert.ToDateTime(datemade.Value);
             entry_header.Rows.Add(entry_header_row);
 

@@ -122,7 +122,7 @@
   </metadata>
   <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/28/2022 14:05:47" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -239,7 +239,7 @@
   </metadata>
   <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/28/2022 13:45:18" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -370,7 +370,7 @@
   </metadata>
   <data name="Withdraw_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/28/2022 13:45:18" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report1.withdraw_report" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="sale_number" DataType="System.Decimal"/&gt;
@@ -481,11 +481,9 @@
   </metadata>
   <data name="Income_Statement.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="05/28/2022 14:05:47" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="income_statement" ReferenceName="income_statment_ds__.income_statement" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="total_sales" DataType="System.Decimal"/&gt;
-      &lt;Column Name="total_costs" DataType="System.Decimal"/&gt;
       &lt;Column Name="net_profit" DataType="System.Decimal"/&gt;
       &lt;Column Name="other_revenues" DataType="System.Decimal"/&gt;
       &lt;Column Name="sells_marketing_expenses" DataType="System.Decimal"/&gt;
@@ -495,6 +493,9 @@
       &lt;Column Name="date_to" DataType="System.DateTime"/&gt;
       &lt;Column Name="title" DataType="System.String"/&gt;
       &lt;Column Name="total_expenses" DataType="System.Decimal"/&gt;
+      &lt;Column Name="net_sales" DataType="System.Decimal"/&gt;
+      &lt;Column Name="sales_cost" DataType="System.Decimal"/&gt;
+      &lt;Column Name="other_expenses" DataType="System.Decimal"/&gt;
     &lt;/TableDataSource&gt;
   &lt;/Dictionary&gt;
   &lt;ReportPage Name="Page1"&gt;
@@ -503,61 +504,66 @@
       &lt;TextObject Name="Text2" Left="207.9" Top="56.7" Width="292.95" Height="18.9" Text="من تاريخ [FormatDateTime([income_statement.date_from], &amp;quot;Short Date&amp;quot;)]  إلي تاريخ  [FormatDateTime([income_statement.date_to], &amp;quot;Short Date&amp;quot;)]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
     &lt;/ReportTitleBand&gt;
     &lt;PageHeaderBand Name="PageHeader1" Top="98.5" Width="718.2"/&gt;
-    &lt;ReportSummaryBand Name="ReportSummary1" Top="102.5" Width="718.2" Height="519.75"&gt;
-      &lt;TableObject Name="Table1" Left="75.6" Top="18.9" Width="557.55" Height="330.62"&gt;
+    &lt;ReportSummaryBand Name="ReportSummary1" Top="102.5" Width="718.2" Height="614.25"&gt;
+      &lt;TableObject Name="Table1" Left="75.6" Top="18.9" Width="557.55" Height="378.87"&gt;
         &lt;TableColumn Name="Column1" Width="286.65"/&gt;
         &lt;TableColumn Name="Column2" Width="135.45"/&gt;
         &lt;TableColumn Name="Column3" Width="135.45"/&gt;
         &lt;TableRow Name="Row1" Height="36.34"&gt;
-          &lt;TableCell Name="Cell1" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="SkyBlue" Text="البيان" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell2" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="SkyBlue" Text="المبلغ الجزئي" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell3" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="SkyBlue" Text="المبلغ الكلى" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell1" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="البيان" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell2" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="المبلغ الجزئي" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell3" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="المبلغ الكلى" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row2" Height="36.34"&gt;
-          &lt;TableCell Name="Cell6" Border.Lines="Left" Border.Color="DimGray" Text="صافى المبيعات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell7" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.total_sales]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell8" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell6" Border.Lines="Left" Border.Color="CornflowerBlue" Text="صافى المبيعات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell7" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.net_sales] " HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell8" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row3" Height="36.34"&gt;
-          &lt;TableCell Name="Cell11" Border.Lines="Left" Border.Color="DimGray" Text="صافي تكلفة البضاعه المباعه" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell12" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.total_costs]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell13" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell11" Border.Lines="Left" Border.Color="CornflowerBlue" Text="صافي تكلفة البضاعه المباعه" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell12" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.sales_cost]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell13" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row4" Height="36.34"&gt;
-          &lt;TableCell Name="Cell16" Border.Lines="Left" Border.Color="DimGray" Text="مجمل الربح" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell17" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell18" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.net_profit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell16" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مجمل الربح" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell17" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell18" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.net_profit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row5" Height="36.34"&gt;
-          &lt;TableCell Name="Cell21" Border.Lines="Left" Border.Color="DimGray" Text="إجمالي الإيرادات الأخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell22" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell23" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.other_revenues]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell21" Border.Lines="Left" Border.Color="CornflowerBlue" Text="إجمالي الإيرادات الأخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell22" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell23" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.other_revenues]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row6" Height="36.34"&gt;
-          &lt;TableCell Name="Cell24" Border.Lines="Left" Border.Color="DimGray" Text="مصاريف عامة و الدعاية والتسويق" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell25" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.sells_marketing_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell26" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell24" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مصاريف البيع والتوزيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell25" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.sells_marketing_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell26" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row7" Height="36.34"&gt;
-          &lt;TableCell Name="Cell27" Border.Lines="Left" Border.Color="DimGray" Text="مصاريف عمومية وإدارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell28" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.management_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell29" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell27" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مصاريف عمومية وإدارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell28" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.management_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell29" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row8" Height="36.34"&gt;
-          &lt;TableCell Name="Cell30" Border.Lines="Left" Border.Color="DimGray" Text="صافى المصروفات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell31" Border.Lines="Left" Border.Color="DimGray" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell32" Border.Lines="Left, Right" Border.Color="DimGray" Border.Width="0.5" Text="[income_statement.total_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell30" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مصروفات أخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell31" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.other_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell32" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
         &lt;/TableRow&gt;
         &lt;TableRow Name="Row9" Height="39.9"&gt;
-          &lt;TableCell Name="Cell33" Border.Lines="Left, Top, Bottom" Border.Color="DimGray" Fill.Color="SkyBlue" Text="إجمالي الربح او الخسارة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-          &lt;TableCell Name="Cell34" Border.Lines="Left, Top, Bottom" Border.Color="DimGray" Border.Width="0.5" Fill.Color="SkyBlue" Text="[income_statement.total_income]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" TextFill.Color="Maroon" ColSpan="2"/&gt;
-          &lt;TableCell Name="Cell35" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="SkyBlue" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" TextFill.Color="Maroon"/&gt;
+          &lt;TableCell Name="Cell33" Border.Lines="Left, Bottom" Border.Color="CornflowerBlue" Fill.Color="White" Text="إجمالي المصروفات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell34" Border.Lines="Left, Bottom" Border.Color="CornflowerBlue" Border.Width="0.5" Fill.Color="White" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell35" Border.Lines="Left, Right, Bottom" Border.Color="CornflowerBlue" Border.Width="0.5" Fill.Color="White" Text="[income_statement.total_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+        &lt;/TableRow&gt;
+        &lt;TableRow Name="Row10" Height="48.25"&gt;
+          &lt;TableCell Name="Cell36" Border.Lines="All" Fill.Color="CornflowerBlue" Text="إجمالي الربح او الخسارة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell37" Border.Lines="All" Fill.Color="CornflowerBlue" Text="[income_statement.total_income]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" ColSpan="2"/&gt;
+          &lt;TableCell Name="Cell38" Border.Lines="All" Fill.Color="CornflowerBlue" HorzAlign="Center" VertAlign="Center"/&gt;
         &lt;/TableRow&gt;
       &lt;/TableObject&gt;
-      &lt;TextObject Name="Text3" Left="529.2" Top="378" Width="94.5" Height="18.9" Text="ملاحظات  " HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt, style=Bold" TextFill.Color="Maroon"/&gt;
-      &lt;TextObject Name="Text4" Left="103.95" Top="396.9" Width="529.2" Height="113.4" Text="إذا كان إجمالى الربح او الخسارة سالبا فيعتبر خسارة علي المنشأة&amp;#13;&amp;#10;&amp;#13;&amp;#10;ضمن بنود المحاسبة العالمية المعترف بها دوليا قائمة الدخل لا تشمل مطلقا علي ضريبة القيمة المضافة وذلك لإن المنشأة تعتبر وسيط ومن يتحمل تكلفة ضريبة القيمة المضافه هو المستهلك وليس التاجر بمعني ان التاجر يعتبر مجرد وسيط جامع لضريبة القيمة المضافه" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text3" Left="538.65" Top="415.8" Width="94.5" Height="18.9" Text="ملاحظات  " HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt, style=Bold" TextFill.Color="Maroon"/&gt;
+      &lt;TextObject Name="Text4" Left="103.95" Top="444.15" Width="529.2" Height="113.4" Text="إذا كان إجمالى الربح او الخسارة سالبا فيعتبر خسارة علي المنشأة&amp;#13;&amp;#10;&amp;#13;&amp;#10;ضمن بنود المحاسبة العالمية المعترف بها دوليا قائمة الدخل لا تشمل مطلقا علي ضريبة القيمة المضافة وذلك لإن المنشأة تعتبر وسيط ومن يتحمل تكلفة ضريبة القيمة المضافه هو المستهلك وليس التاجر بمعني ان التاجر يعتبر مجرد وسيط جامع لضريبة القيمة المضافه" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
     &lt;/ReportSummaryBand&gt;
-    &lt;PageFooterBand Name="PageFooter1" Top="626.25" Width="718.2" Height="18.9"/&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="720.75" Width="718.2" Height="18.9"/&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>

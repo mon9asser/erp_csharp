@@ -608,6 +608,7 @@ namespace sales_management.UI
 
                     }
                     else {
+                        
                         // Remove Error Highlighted 
                         if (datagridview_items.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.Gold)
                         {
@@ -624,6 +625,7 @@ namespace sales_management.UI
 
 
                         }
+
                     }
                 }
 
