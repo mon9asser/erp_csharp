@@ -42,6 +42,8 @@
             this.Withdraw_Report = new FastReport.Report();
             this.Income_Statement = new FastReport.Report();
             this.income_statment_ds__ = new sales_management.DSet.Income_Statement();
+            this.trial_balance_dataset = new sales_management.DSet.TrialBalanceStatement();
+            this.Trial_Balance_Report = new FastReport.Report();
             ((System.ComponentModel.ISupportInitialize)(this.Statements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journals_statment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statements_dataset)).BeginInit();
@@ -50,6 +52,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Withdraw_Report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Income_Statement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.income_statment_ds__)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trial_balance_dataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Trial_Balance_Report)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -139,6 +143,17 @@
             this.income_statment_ds__.DataSetName = "income_statment_ds";
             this.income_statment_ds__.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // trial_balance_dataset
+            // 
+            this.trial_balance_dataset.DataSetName = "trial_balance_dataset";
+            this.trial_balance_dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // Trial_Balance_Report
+            // 
+            this.Trial_Balance_Report.NeedRefresh = false;
+            this.Trial_Balance_Report.ReportResourceString = resources.GetString("Trial_Balance_Report.ReportResourceString");
+            this.Trial_Balance_Report.RegisterData(this.trial_balance_dataset, "trial_balance_dataset");
+            // 
             // FND___Date_Range
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +182,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Withdraw_Report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Income_Statement)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.income_statment_ds__)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trial_balance_dataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Trial_Balance_Report)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,5 +204,7 @@
         private FastReport.Report Withdraw_Report;
         private FastReport.Report Income_Statement;
         private DSet.Income_Statement income_statment_ds__;
+        private DSet.TrialBalanceStatement trial_balance_dataset;
+        private FastReport.Report Trial_Balance_Report;
     }
 }

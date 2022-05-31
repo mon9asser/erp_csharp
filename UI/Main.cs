@@ -338,5 +338,11 @@ namespace sales_management.UI
         {
             
         }
+
+        private void ميزانالمراجعهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.FND___Date_Range rmrange = new UI.FND___Date_Range(4);
+            rmrange.ShowDialog();
+        }
     }
 }

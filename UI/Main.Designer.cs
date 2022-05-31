@@ -493,8 +493,9 @@ namespace sales_management.UI
             // 
             // ميزانالمراجعهToolStripMenuItem
             // 
-            resources.ApplyResources(this.ميزانالمراجعهToolStripMenuItem, "ميزانالمراجعهToolStripMenuItem");
             this.ميزانالمراجعهToolStripMenuItem.Name = "ميزانالمراجعهToolStripMenuItem";
+            resources.ApplyResources(this.ميزانالمراجعهToolStripMenuItem, "ميزانالمراجعهToolStripMenuItem");
+            this.ميزانالمراجعهToolStripMenuItem.Click += new System.EventHandler(this.ميزانالمراجعهToolStripMenuItem_Click);
             // 
             // قائمةالدخلToolStripMenuItem
             // 

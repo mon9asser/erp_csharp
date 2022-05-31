@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TrialBalanceStatement" targetNamespace="http://tempuri.org/TrialBalanceStatement.xsd" xmlns:mstns="http://tempuri.org/TrialBalanceStatement.xsd" xmlns="http://tempuri.org/TrialBalanceStatement.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TrialBalanceStatement" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TrialBalanceStatement" msprop:Generator_UserDSName="TrialBalanceStatement">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="trial_balance_statement" msprop:Generator_TableClassName="trial_balance_statementDataTable" msprop:Generator_TableVarName="tabletrial_balance_statement" msprop:Generator_RowChangedName="trial_balance_statementRowChanged" msprop:Generator_TablePropName="trial_balance_statement" msprop:Generator_RowDeletingName="trial_balance_statementRowDeleting" msprop:Generator_RowChangingName="trial_balance_statementRowChanging" msprop:Generator_RowEvHandlerName="trial_balance_statementRowChangeEventHandler" msprop:Generator_RowDeletedName="trial_balance_statementRowDeleted" msprop:Generator_RowClassName="trial_balance_statementRow" msprop:Generator_UserTableName="trial_balance_statement" msprop:Generator_RowEvArgName="trial_balance_statementRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="account_number" msprop:Generator_ColumnVarNameInTable="columnaccount_number" msprop:Generator_ColumnPropNameInRow="account_number" msprop:Generator_ColumnPropNameInTable="account_numberColumn" msprop:Generator_UserColumnName="account_number" type="xs:string" minOccurs="0" />
+              <xs:element name="account_name" msprop:Generator_ColumnVarNameInTable="columnaccount_name" msprop:Generator_ColumnPropNameInRow="account_name" msprop:Generator_ColumnPropNameInTable="account_nameColumn" msprop:Generator_UserColumnName="account_name" type="xs:string" minOccurs="0" />
+              <xs:element name="opening_debit" msprop:Generator_ColumnVarNameInTable="columnopening_debit" msprop:Generator_ColumnPropNameInRow="opening_debit" msprop:Generator_ColumnPropNameInTable="opening_debitColumn" msprop:Generator_UserColumnName="opening_debit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="opening_credit" msprop:Generator_ColumnVarNameInTable="columnopening_credit" msprop:Generator_ColumnPropNameInRow="opening_credit" msprop:Generator_ColumnPropNameInTable="opening_creditColumn" msprop:Generator_UserColumnName="opening_credit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="transaction_debit" msprop:Generator_ColumnVarNameInTable="columntransaction_debit" msprop:Generator_ColumnPropNameInRow="transaction_debit" msprop:Generator_ColumnPropNameInTable="transaction_debitColumn" msprop:Generator_UserColumnName="transaction_debit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="transaction_credit" msprop:Generator_ColumnVarNameInTable="columntransaction_credit" msprop:Generator_ColumnPropNameInRow="transaction_credit" msprop:Generator_ColumnPropNameInTable="transaction_creditColumn" msprop:Generator_UserColumnName="transaction_credit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ending_debit" msprop:Generator_ColumnVarNameInTable="columnending_debit" msprop:Generator_ColumnPropNameInRow="ending_debit" msprop:Generator_ColumnPropNameInTable="ending_debitColumn" msprop:Generator_UserColumnName="ending_debit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ending_credit" msprop:Generator_ColumnVarNameInTable="columnending_credit" msprop:Generator_ColumnPropNameInRow="ending_credit" msprop:Generator_ColumnPropNameInTable="ending_creditColumn" msprop:Generator_UserColumnName="ending_credit" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="trial_balance_summary" msprop:Generator_TableClassName="trial_balance_summaryDataTable" msprop:Generator_TableVarName="tabletrial_balance_summary" msprop:Generator_RowChangedName="trial_balance_summaryRowChanged" msprop:Generator_TablePropName="trial_balance_summary" msprop:Generator_RowDeletingName="trial_balance_summaryRowDeleting" msprop:Generator_RowChangingName="trial_balance_summaryRowChanging" msprop:Generator_RowEvHandlerName="trial_balance_summaryRowChangeEventHandler" msprop:Generator_RowDeletedName="trial_balance_summaryRowDeleted" msprop:Generator_RowClassName="trial_balance_summaryRow" msprop:Generator_UserTableName="trial_balance_summary" msprop:Generator_RowEvArgName="trial_balance_summaryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tran_debit" msprop:Generator_ColumnVarNameInTable="columntran_debit" msprop:Generator_ColumnPropNameInRow="tran_debit" msprop:Generator_ColumnPropNameInTable="tran_debitColumn" msprop:Generator_UserColumnName="tran_debit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tran_credit" msprop:Generator_ColumnVarNameInTable="columntran_credit" msprop:Generator_ColumnPropNameInRow="tran_credit" msprop:Generator_ColumnPropNameInTable="tran_creditColumn" msprop:Generator_UserColumnName="tran_credit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="end_debit" msprop:Generator_ColumnVarNameInTable="columnend_debit" msprop:Generator_ColumnPropNameInRow="end_debit" msprop:Generator_ColumnPropNameInTable="end_debitColumn" msprop:Generator_UserColumnName="end_debit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="end_credit" msprop:Generator_ColumnVarNameInTable="columnend_credit" msprop:Generator_ColumnPropNameInRow="end_credit" msprop:Generator_ColumnPropNameInTable="end_creditColumn" msprop:Generator_UserColumnName="end_credit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="date_from" msprop:Generator_ColumnVarNameInTable="columndate_from" msprop:Generator_ColumnPropNameInRow="date_from" msprop:Generator_ColumnPropNameInTable="date_fromColumn" msprop:Generator_UserColumnName="date_from" type="xs:string" minOccurs="0" />
+              <xs:element name="date_to" msprop:Generator_ColumnVarNameInTable="columndate_to" msprop:Generator_ColumnPropNameInRow="date_to" msprop:Generator_ColumnPropNameInTable="date_toColumn" msprop:Generator_UserColumnName="date_to" type="xs:string" minOccurs="0" />
+              <xs:element name="titel" msprop:Generator_ColumnVarNameInTable="columntitel" msprop:Generator_ColumnPropNameInRow="titel" msprop:Generator_ColumnPropNameInTable="titelColumn" msprop:Generator_UserColumnName="titel" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

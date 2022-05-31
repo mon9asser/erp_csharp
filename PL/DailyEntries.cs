@@ -12,6 +12,26 @@ namespace sales_management.PL
     {
 
 
+        public DataSet Get_Trial_Balances_By_Date(DateTime date_from, DateTime date_to ) {
+
+            DataSet tble;
+
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
+            SqlParameter[] param = new SqlParameter[2];
+
+            param[0] = new SqlParameter("@date_from", SqlDbType.VarChar);
+            param[0].Value = date_from.ToString("yyyy-MM-dd") + " 00:00:00.000";
+
+            param[1] = new SqlParameter("@date_to", SqlDbType.VarChar);
+            param[1].Value = date_to.ToString("yyyy-MM-dd") + " 23:59:59.000";
+
+            DAL.Open();
+            tble = DAL.SelectDataSet("Get_Trial_Balance", param);
+            DAL.Close();
+
+            return tble;
+        }
+
         public DataTable Income_Statement_List(DateTime date_from, DateTime date_to)
         {
 

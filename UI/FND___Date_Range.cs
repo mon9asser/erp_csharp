@@ -23,6 +23,7 @@ namespace sales_management.UI
         DSet.DailyEntries DS_Entry= new DSet.DailyEntries();
         DSet.Withdraw_Report DS_Withdraw = new DSet.Withdraw_Report();
         DSet.Income_Statement DS_Income = new DSet.Income_Statement();
+        DSet.TrialBalanceStatement DS_TrialBalance = new DSet.TrialBalanceStatement();
 
         DataTable Accounts;
         DataTable Settings;
@@ -50,7 +51,7 @@ namespace sales_management.UI
             
             try
             {
-
+                 
                 // Journal Entries Data 
                 if (this.SearchType == 0)
                 {
@@ -70,18 +71,49 @@ namespace sales_management.UI
                     this.Load_goods_Withdraw_Report(from_date, to_date);
 
                 }
-                else if (this.SearchType == 3){
+                else if (this.SearchType == 3)
+                {
 
                     this.Load_Income_Statement_Report(from_date, to_date);
 
                 }
+                else if (this.SearchType == 4) {
 
+                    this.Load_Trial_Balances(from_date, to_date);
+
+                }
                 this.Close();
             }
             catch (Exception) { }
 
         }
+        /**
+       * ===============================================================================
+       * Trial Balance 
+       * ===============================================================================
+       * 
+       **/
+        public void Load_Trial_Balances(DateTime from_date, DateTime date_to ) {
 
+            DataSet TrialBalances = Entries.Get_Trial_Balances_By_Date(from_date, date_to);
+
+            DataTable CollectedTable = TrialBalances.Tables[0];
+            DataTable TableSummary = TrialBalances.Tables[1];
+
+            this.DS_TrialBalance.Tables["trial_balance_statement"].Merge(CollectedTable);
+            this.DS_TrialBalance.Tables["trial_balance_summary"].Merge(TableSummary);
+           
+
+            UI.FND___Viewer viewer = new UI.FND___Viewer(
+               "\\FReports\\Trial_Balanace_Statement.frx",
+               this.DS_TrialBalance,
+               "trial_balance_dataset",
+               "ميزان المراجعه عن الفترة"
+           );
+
+            viewer.Show();
+
+        }
         /**
         * ===============================================================================
         * Withdraw Report 

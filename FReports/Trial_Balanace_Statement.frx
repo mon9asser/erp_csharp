@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/31/2022 19:58:03" ReportInfo.Modified="05/31/2022 20:22:41" ReportInfo.CreatorVersion="2018.4.19.0">
+  <Dictionary>
+    <TableDataSource Name="trial_balance_statement" ReferenceName="trial_balance_dataset.trial_balance_statement" DataType="System.Int32" Enabled="true">
+      <Column Name="account_number" DataType="System.String"/>
+      <Column Name="account_name" DataType="System.String"/>
+      <Column Name="opening_debit" DataType="System.Decimal"/>
+      <Column Name="opening_credit" DataType="System.Decimal"/>
+      <Column Name="transaction_debit" DataType="System.Decimal"/>
+      <Column Name="transaction_credit" DataType="System.Decimal"/>
+      <Column Name="ending_debit" DataType="System.Decimal"/>
+      <Column Name="ending_credit" DataType="System.Decimal"/>
+    </TableDataSource>
+    <TableDataSource Name="trial_balance_summary" ReferenceName="trial_balance_dataset.trial_balance_summary" DataType="System.Int32" Enabled="true">
+      <Column Name="tran_debit" DataType="System.Decimal"/>
+      <Column Name="tran_credit" DataType="System.Decimal"/>
+      <Column Name="end_debit" DataType="System.Decimal"/>
+      <Column Name="end_credit" DataType="System.Decimal"/>
+      <Column Name="date_from" DataType="System.String"/>
+      <Column Name="date_to" DataType="System.String"/>
+      <Column Name="titel" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="94.5">
+      <TextObject Name="Text1" Left="18.9" Top="18.9" Width="1011.15" Height="37.8" Text="[trial_balance_summary.titel]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text2" Left="396.9" Top="47.25" Width="274.05" Height="18.9" Text="من تاريخ [trial_balance_summary.date_from] إلى تاريخ [trial_balance_summary.date_to]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="99.83" Width="1047.06" Height="75.6">
+      <TableObject Name="Table1" Left="9.45" Width="1029.53" Height="75.6">
+        <TableColumn Name="Column1" Width="127.51"/>
+        <TableColumn Name="Column2" Width="127.51"/>
+        <TableColumn Name="Column3" Width="127.51"/>
+        <TableColumn Name="Column4" Width="127.51"/>
+        <TableColumn Name="Column5" Width="80.26"/>
+        <TableColumn Name="Column6" Width="70.81"/>
+        <TableColumn Name="Column7" Width="240.91"/>
+        <TableColumn Name="Column8" Width="127.51"/>
+        <TableRow Name="Row1" Height="37.8">
+          <TableCell Name="Cell1" Border.Lines="All" Border.Width="0.5" Text="الرصيد الختامى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell2" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell3" Border.Lines="All" Border.Width="0.5" Text="العمليات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell4" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell5" Border.Lines="All" Border.Width="0.5" Text="الرصيد الإفتتاحى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell26" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell27" Border.Lines="All" Border.Width="0.5" Text="إسم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" RowSpan="2"/>
+          <TableCell Name="Cell28" Border.Lines="All" Border.Width="0.5" Text="رقم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" RowSpan="2"/>
+        </TableRow>
+        <TableRow Name="Row4" Height="37.8">
+          <TableCell Name="Cell45" Border.Lines="All" Border.Width="0.5" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell46" Border.Lines="All" Border.Width="0.5" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell47" Border.Lines="All" Border.Width="0.5" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell48" Border.Lines="All" Border.Width="0.5" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell49" Border.Lines="All" Border.Width="0.5" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell50" Border.Lines="All" Border.Width="0.5" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell51" Border.Lines="All" Border.Width="0.5" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell52" Border.Lines="All" Border.Width="0.5" Font="Arial, 10pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="180.77" Width="1047.06" Height="37.8" DataSource="trial_balance_statement">
+      <TableObject Name="Table2" Left="9.45" Width="1029.53" Height="37.8">
+        <TableColumn Name="Column9" Width="127.51"/>
+        <TableColumn Name="Column10" Width="127.51"/>
+        <TableColumn Name="Column11" Width="127.51"/>
+        <TableColumn Name="Column12" Width="127.51"/>
+        <TableColumn Name="Column13" Width="80.26"/>
+        <TableColumn Name="Column14" Width="70.81"/>
+        <TableColumn Name="Column15" Width="240.91"/>
+        <TableColumn Name="Column16" Width="127.51"/>
+        <TableRow Name="Row2" Height="37.8">
+          <TableCell Name="Cell29" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.ending_credit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell30" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.ending_debit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell31" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.transaction_credit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell32" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.transaction_debit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell33" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.opening_credit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell34" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.opening_debit]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell35" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.account_name]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell36" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_statement.account_number]" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="223.9" Width="1047.06" Height="37.8">
+      <TableObject Name="Table3" Left="9.45" Width="1029.53" Height="37.8">
+        <TableColumn Name="Column17" Width="127.51"/>
+        <TableColumn Name="Column18" Width="127.51"/>
+        <TableColumn Name="Column19" Width="127.51"/>
+        <TableColumn Name="Column20" Width="127.51"/>
+        <TableColumn Name="Column21" Width="80.26"/>
+        <TableColumn Name="Column22" Width="70.81"/>
+        <TableColumn Name="Column23" Width="240.91"/>
+        <TableColumn Name="Column24" Width="127.51"/>
+        <TableRow Name="Row3" Height="37.8">
+          <TableCell Name="Cell37" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.tran_credit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell38" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.end_debit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell39" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.tran_credit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell40" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.tran_debit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell41" Border.Lines="All" Border.Width="0.5" Text="0" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell42" Border.Lines="All" Border.Width="0.5" Text="0" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+          <TableCell Name="Cell43" Border.Lines="All" Border.Width="0.5" Text="إجمالى العمليات" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt" ColSpan="2"/>
+          <TableCell Name="Cell44" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/>
+        </TableRow>
+      </TableObject>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="267.03" Width="1047.06" Height="113.4"/>
+  </ReportPage>
+</Report>

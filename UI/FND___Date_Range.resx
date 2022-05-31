@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="Statements.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>644, 17</value>
+    <value>17, 56</value>
   </metadata>
   <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="05/31/2022 20:54:27" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -229,17 +229,17 @@
 </value>
   </data>
   <metadata name="journals_statment.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>496, 17</value>
+    <value>660, 17</value>
   </metadata>
   <metadata name="statements_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>340, 17</value>
+    <value>504, 17</value>
   </metadata>
   <metadata name="Entry_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>130, 56</value>
   </metadata>
   <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="05/31/2022 20:54:27" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -363,14 +363,14 @@
 </value>
   </data>
   <metadata name="withdraw_Report1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 17</value>
+    <value>354, 17</value>
   </metadata>
   <metadata name="Withdraw_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>138, 56</value>
+    <value>251, 56</value>
   </metadata>
   <data name="Withdraw_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="05/31/2022 20:54:27" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report1.withdraw_report" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="sale_number" DataType="System.Decimal"/&gt;
@@ -477,11 +477,11 @@
 </value>
   </data>
   <metadata name="Income_Statement.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>284, 56</value>
+    <value>397, 56</value>
   </metadata>
   <data name="Income_Statement.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="05/31/2022 11:37:23" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="05/31/2022 20:54:27" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="income_statement" ReferenceName="income_statment_ds__.income_statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="net_profit" DataType="System.Decimal"/&gt;
@@ -569,6 +569,122 @@
 </value>
   </data>
   <metadata name="income_statment_ds__.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>181, 17</value>
+  </metadata>
+  <metadata name="trial_balance_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="Trial_Balance_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>550, 56</value>
+  </metadata>
+  <data name="Trial_Balance_Report.ReportResourceString" xml:space="preserve">
+    <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/31/2022 19:58:03" ReportInfo.Modified="05/31/2022 20:54:27" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+  &lt;Dictionary&gt;
+    &lt;TableDataSource Name="trial_balance_statement" ReferenceName="trial_balance_dataset.trial_balance_statement" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="account_number" DataType="System.String"/&gt;
+      &lt;Column Name="account_name" DataType="System.String"/&gt;
+      &lt;Column Name="opening_debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="opening_credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="transaction_debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="transaction_credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="ending_debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="ending_credit" DataType="System.Decimal"/&gt;
+    &lt;/TableDataSource&gt;
+    &lt;TableDataSource Name="trial_balance_summary" ReferenceName="trial_balance_dataset.trial_balance_summary" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="tran_debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="tran_credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="end_debit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="end_credit" DataType="System.Decimal"/&gt;
+      &lt;Column Name="date_from" DataType="System.String"/&gt;
+      &lt;Column Name="date_to" DataType="System.String"/&gt;
+      &lt;Column Name="titel" DataType="System.String"/&gt;
+    &lt;/TableDataSource&gt;
+  &lt;/Dictionary&gt;
+  &lt;ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" FirstPageSource="15" OtherPagesSource="15"&gt;
+    &lt;ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="94.5"&gt;
+      &lt;TextObject Name="Text1" Left="18.9" Top="18.9" Width="1011.15" Height="37.8" Text="[trial_balance_summary.titel]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text2" Left="396.9" Top="47.25" Width="274.05" Height="18.9" Text="من تاريخ [trial_balance_summary.date_from] إلى تاريخ [trial_balance_summary.date_to]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt, style=Bold"/&gt;
+    &lt;/ReportTitleBand&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Top="99.83" Width="1047.06" Height="75.6"&gt;
+      &lt;TableObject Name="Table1" Left="9.45" Width="1029.53" Height="75.6"&gt;
+        &lt;TableColumn Name="Column1" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column2" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column3" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column4" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column5" Width="80.26"/&gt;
+        &lt;TableColumn Name="Column6" Width="70.81"/&gt;
+        &lt;TableColumn Name="Column7" Width="240.91"/&gt;
+        &lt;TableColumn Name="Column8" Width="127.51"/&gt;
+        &lt;TableRow Name="Row1" Height="37.8"&gt;
+          &lt;TableCell Name="Cell1" Border.Lines="All" Border.Width="0.5" Text="الرصيد الختامى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/&gt;
+          &lt;TableCell Name="Cell2" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell3" Border.Lines="All" Border.Width="0.5" Text="العمليات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/&gt;
+          &lt;TableCell Name="Cell4" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell5" Border.Lines="All" Border.Width="0.5" Text="الرصيد الإفتتاحى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" ColSpan="2"/&gt;
+          &lt;TableCell Name="Cell26" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell27" Border.Lines="All" Border.Width="0.5" Text="إسم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" RowSpan="2"/&gt;
+          &lt;TableCell Name="Cell28" Border.Lines="All" Border.Width="0.5" Text="رقم الحساب" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold" RowSpan="2"/&gt;
+        &lt;/TableRow&gt;
+        &lt;TableRow Name="Row4" Height="37.8"&gt;
+          &lt;TableCell Name="Cell45" Border.Lines="All" Border.Width="0.5" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell46" Border.Lines="All" Border.Width="0.5" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell47" Border.Lines="All" Border.Width="0.5" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell48" Border.Lines="All" Border.Width="0.5" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell49" Border.Lines="All" Border.Width="0.5" Text="دائن" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell50" Border.Lines="All" Border.Width="0.5" Text="مدين" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell51" Border.Lines="All" Border.Width="0.5" Font="Arial, 10pt, style=Bold"/&gt;
+          &lt;TableCell Name="Cell52" Border.Lines="All" Border.Width="0.5" Font="Arial, 10pt, style=Bold"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/PageHeaderBand&gt;
+    &lt;DataBand Name="Data1" Top="180.77" Width="1047.06" Height="37.8" DataSource="trial_balance_statement"&gt;
+      &lt;TableObject Name="Table2" Left="9.45" Width="1029.53" Height="37.8"&gt;
+        &lt;TableColumn Name="Column9" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column10" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column11" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column12" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column13" Width="80.26"/&gt;
+        &lt;TableColumn Name="Column14" Width="70.81"/&gt;
+        &lt;TableColumn Name="Column15" Width="240.91"/&gt;
+        &lt;TableColumn Name="Column16" Width="127.51"/&gt;
+        &lt;TableRow Name="Row2" Height="37.8"&gt;
+          &lt;TableCell Name="Cell29" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.ending_credit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell30" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.ending_debit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell31" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.transaction_credit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell32" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.transaction_debit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell33" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.opening_credit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell34" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.opening_debit]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell35" Border.Lines="Left, Top, Bottom" Border.Width="0.5" Text="[trial_balance_statement.account_name]" HorzAlign="Center" VertAlign="Center"/&gt;
+          &lt;TableCell Name="Cell36" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_statement.account_number]" HorzAlign="Center" VertAlign="Center"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/DataBand&gt;
+    &lt;ReportSummaryBand Name="ReportSummary1" Top="223.9" Width="1047.06" Height="37.8"&gt;
+      &lt;TableObject Name="Table3" Left="9.45" Width="1029.53" Height="37.8"&gt;
+        &lt;TableColumn Name="Column17" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column18" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column19" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column20" Width="127.51"/&gt;
+        &lt;TableColumn Name="Column21" Width="80.26"/&gt;
+        &lt;TableColumn Name="Column22" Width="70.81"/&gt;
+        &lt;TableColumn Name="Column23" Width="240.91"/&gt;
+        &lt;TableColumn Name="Column24" Width="127.51"/&gt;
+        &lt;TableRow Name="Row3" Height="37.8"&gt;
+          &lt;TableCell Name="Cell37" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.tran_credit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell38" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.end_debit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell39" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.tran_credit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell40" Border.Lines="All" Border.Width="0.5" Text="[trial_balance_summary.tran_debit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell41" Border.Lines="All" Border.Width="0.5" Text="0" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell42" Border.Lines="All" Border.Width="0.5" Text="0" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+          &lt;TableCell Name="Cell43" Border.Lines="All" Border.Width="0.5" Text="إجمالى العمليات" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt" ColSpan="2"/&gt;
+          &lt;TableCell Name="Cell44" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+        &lt;/TableRow&gt;
+      &lt;/TableObject&gt;
+    &lt;/ReportSummaryBand&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="267.03" Width="1047.06" Height="113.4"/&gt;
+  &lt;/ReportPage&gt;
+&lt;/Report&gt;
+</value>
+  </data>
 </root>
