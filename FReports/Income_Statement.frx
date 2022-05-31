@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="05/31/2022 11:04:10" ReportInfo.CreatorVersion="2018.4.19.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="06/01/2022 01:32:39" ReportInfo.CreatorVersion="2018.4.19.0">
   <Dictionary>
     <TableDataSource Name="income_statement" ReferenceName="income_statment_ds__.income_statement" DataType="System.Int32" Enabled="true">
       <Column Name="net_profit" DataType="System.Decimal"/>
@@ -23,59 +23,70 @@
     </ReportTitleBand>
     <PageHeaderBand Name="PageHeader1" Top="98.5" Width="718.2"/>
     <ReportSummaryBand Name="ReportSummary1" Top="102.5" Width="718.2" Height="614.25">
-      <TableObject Name="Table1" Left="75.6" Top="18.9" Width="557.55" Height="378.87">
-        <TableColumn Name="Column1" Width="286.65"/>
+      <TableObject Name="Table1" Left="75.6" Top="18.9" Width="585.9" Height="378.87">
+        <TableColumn Name="Column1" Width="211.05"/>
         <TableColumn Name="Column2" Width="135.45"/>
         <TableColumn Name="Column3" Width="135.45"/>
+        <TableColumn Name="Column4" Width="103.95"/>
         <TableRow Name="Row1" Height="36.34">
-          <TableCell Name="Cell1" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="البيان" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
-          <TableCell Name="Cell2" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="المبلغ الجزئي" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
-          <TableCell Name="Cell3" Border.Lines="All" Border.Color="DimGray" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="المبلغ الكلى" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell1" Border.Lines="All" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="البيان" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell2" Border.Lines="All" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="المبلغ الجزئي" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell3" Border.Lines="All" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="المبلغ الكلى" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell39" Border.Lines="Right, Top, Bottom" Border.Width="0.5" Fill.Color="CornflowerBlue" Text="هامش الربح" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
         </TableRow>
         <TableRow Name="Row2" Height="36.34">
-          <TableCell Name="Cell6" Border.Lines="Left" Border.Color="CornflowerBlue" Text="صافى المبيعات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell7" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.net_sales] " HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell8" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell6" Border.Lines="Left" Text="صافى المبيعات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell7" Border.Lines="Left" Border.Width="0.5" Text="[income_statement.net_sales] " HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell8" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell40" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row3" Height="36.34">
-          <TableCell Name="Cell11" Border.Lines="Left" Border.Color="CornflowerBlue" Text="صافي تكلفة البضاعه المباعه" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell12" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.sales_cost]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell13" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell11" Border.Lines="Left" Text="صافي تكلفة البضاعه المباعه" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell12" Border.Lines="Left" Border.Width="0.5" Text="[income_statement.sales_cost]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell13" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell41" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row4" Height="36.34">
-          <TableCell Name="Cell16" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مجمل الربح" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell17" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell18" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.net_profit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell16" Border.Lines="Left" Text="مجمل الربح" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell17" Border.Lines="Left" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell18" Border.Lines="Left, Right" Border.Width="0.5" Text="[income_statement.net_profit]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell42" Border.Lines="Right" Border.Width="0.5" Text="%[Ceiling(([income_statement.net_profit] * 100 ) / [income_statement.net_sales])]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
         </TableRow>
         <TableRow Name="Row5" Height="36.34">
-          <TableCell Name="Cell21" Border.Lines="Left" Border.Color="CornflowerBlue" Text="إجمالي الإيرادات الأخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell22" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell23" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.other_revenues]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell21" Border.Lines="Left" Text="إجمالي الإيرادات الأخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell22" Border.Lines="Left" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell23" Border.Lines="Left, Right" Border.Width="0.5" Text="[income_statement.other_revenues]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell43" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row6" Height="36.34">
-          <TableCell Name="Cell24" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مصاريف البيع والتوزيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell25" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.sells_marketing_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell26" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell24" Border.Lines="Left" Text="مصاريف البيع والتوزيع" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell25" Border.Lines="Left" Border.Width="0.5" Text="[income_statement.sells_marketing_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell26" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell44" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row7" Height="36.34">
-          <TableCell Name="Cell27" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مصاريف عمومية وإدارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell28" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.management_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell29" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell27" Border.Lines="Left" Text="مصاريف عمومية وإدارية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell28" Border.Lines="Left" Border.Width="0.5" Text="[income_statement.management_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell29" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell45" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row8" Height="36.34">
-          <TableCell Name="Cell30" Border.Lines="Left" Border.Color="CornflowerBlue" Text="مصروفات أخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell31" Border.Lines="Left" Border.Color="CornflowerBlue" Border.Width="0.5" Text="[income_statement.other_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell32" Border.Lines="Left, Right" Border.Color="CornflowerBlue" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell30" Border.Lines="Left" Text="مصروفات أخرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell31" Border.Lines="Left" Border.Width="0.5" Text="[income_statement.other_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell32" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell46" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row9" Height="39.9">
-          <TableCell Name="Cell33" Border.Lines="Left, Bottom" Border.Color="CornflowerBlue" Fill.Color="White" Text="إجمالي المصروفات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
-          <TableCell Name="Cell34" Border.Lines="Left, Bottom" Border.Color="CornflowerBlue" Border.Width="0.5" Fill.Color="White" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
-          <TableCell Name="Cell35" Border.Lines="Left, Right, Bottom" Border.Color="CornflowerBlue" Border.Width="0.5" Fill.Color="White" Text="[income_statement.total_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell33" Border.Lines="Left, Bottom" Fill.Color="White" Text="إجمالي المصروفات" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell34" Border.Lines="Left, Bottom" Border.Width="0.5" Fill.Color="White" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell35" Border.Lines="Left, Right, Bottom" Border.Width="0.5" Fill.Color="White" Text="[income_statement.total_expenses]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell47" Border.Lines="Right" Border.Width="0.5"/>
         </TableRow>
         <TableRow Name="Row10" Height="48.25">
           <TableCell Name="Cell36" Border.Lines="All" Fill.Color="CornflowerBlue" Text="إجمالي الربح او الخسارة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
           <TableCell Name="Cell37" Border.Lines="All" Fill.Color="CornflowerBlue" Text="[income_statement.total_income]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" ColSpan="2"/>
           <TableCell Name="Cell38" Border.Lines="All" Fill.Color="CornflowerBlue" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell48" Border.Lines="Right, Bottom" Border.Width="0.5" Fill.Color="White" Text="%[Ceiling(([income_statement.total_income] * 100 ) /[income_statement.net_sales] )]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
         </TableRow>
       </TableObject>
       <TextObject Name="Text3" Left="538.65" Top="415.8" Width="94.5" Height="18.9" Text="ملاحظات  " HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt, style=Bold" TextFill.Color="Maroon"/>

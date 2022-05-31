@@ -1472,7 +1472,7 @@ namespace sales_management.UI
                     customer_id.Text = "-1";
                 }
 
-                if (payment_methods.SelectedIndex == 1 && customer_id.Text == "-1")
+                if (payment_methods.SelectedIndex == 1 && (customer_id.Text == "-1"))
                 {
                     MessageBox.Show("من فضلك قم بإختيار حساب المورد الأجل");
                     return;

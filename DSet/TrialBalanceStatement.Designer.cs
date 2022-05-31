@@ -799,7 +799,7 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public trial_balance_summaryRow Addtrial_balance_summaryRow(decimal tran_debit, decimal tran_credit, decimal end_debit, decimal end_credit, string date_from, string date_to, string titel) {
+            public trial_balance_summaryRow Addtrial_balance_summaryRow(decimal tran_debit, decimal tran_credit, decimal end_debit, decimal end_credit, System.DateTime date_from, System.DateTime date_to, string titel) {
                 trial_balance_summaryRow rowtrial_balance_summaryRow = ((trial_balance_summaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         tran_debit,
@@ -851,9 +851,9 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columnend_debit);
                 this.columnend_credit = new global::System.Data.DataColumn("end_credit", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnend_credit);
-                this.columndate_from = new global::System.Data.DataColumn("date_from", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columndate_from = new global::System.Data.DataColumn("date_from", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndate_from);
-                this.columndate_to = new global::System.Data.DataColumn("date_to", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columndate_to = new global::System.Data.DataColumn("date_to", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndate_to);
                 this.columntitel = new global::System.Data.DataColumn("titel", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntitel);
@@ -1310,10 +1310,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string date_from {
+            public System.DateTime date_from {
                 get {
                     try {
-                        return ((string)(this[this.tabletrial_balance_summary.date_fromColumn]));
+                        return ((global::System.DateTime)(this[this.tabletrial_balance_summary.date_fromColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'date_from\' in table \'trial_balance_summary\' is DBNull.", e);
@@ -1326,10 +1326,10 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string date_to {
+            public System.DateTime date_to {
                 get {
                     try {
-                        return ((string)(this[this.tabletrial_balance_summary.date_toColumn]));
+                        return ((global::System.DateTime)(this[this.tabletrial_balance_summary.date_toColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'date_to\' in table \'trial_balance_summary\' is DBNull.", e);

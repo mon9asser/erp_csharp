@@ -95,15 +95,16 @@ namespace sales_management.UI
        **/
         public void Load_Trial_Balances(DateTime from_date, DateTime date_to ) {
 
+           
             DataSet TrialBalances = Entries.Get_Trial_Balances_By_Date(from_date, date_to);
 
             DataTable CollectedTable = TrialBalances.Tables[0];
             DataTable TableSummary = TrialBalances.Tables[1];
-
+            
             this.DS_TrialBalance.Tables["trial_balance_statement"].Merge(CollectedTable);
+             
             this.DS_TrialBalance.Tables["trial_balance_summary"].Merge(TableSummary);
            
-
             UI.FND___Viewer viewer = new UI.FND___Viewer(
                "\\FReports\\Trial_Balanace_Statement.frx",
                this.DS_TrialBalance,
