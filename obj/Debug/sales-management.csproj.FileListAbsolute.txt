@@ -192,3 +192,5 @@ D:\sales-app\obj\Debug\sales_management.UI.FND___Export_Document.resources
 D:\sales-app\bin\Debug\FReports\Withdraw_Report.frx
 D:\sales-app\bin\Debug\FReports\Income_Statement.frx
 D:\sales-app\bin\Debug\FReports\Trial_Balanace_Statement.frx
+D:\sales-app\obj\Debug\sales_management.UI.Balance_Sheet.resources
+D:\sales-app\bin\Debug\FReports\Balanace_Sheet_Statement.frx

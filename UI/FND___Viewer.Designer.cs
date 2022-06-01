@@ -44,13 +44,13 @@
             this.previewControl1.Size = new System.Drawing.Size(800, 450);
             this.previewControl1.TabIndex = 0;
             // 
-            // Viewer
+            // FND___Viewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.previewControl1);
-            this.Name = "Viewer";
+            this.Name = "FND___Viewer";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;

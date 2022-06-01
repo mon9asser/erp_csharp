@@ -19,11 +19,9 @@ WHERE  Object_definition(object_id) LIKE '%purchase_credit_account%'+
 */
 
 
+CREATE PROC Prepare_Balance_Sheet
 
-
-
-
-
+AS
 --==========================================================
 --			INCOME STATEMENT 
 --========================================================== 
@@ -138,47 +136,55 @@ SET @total_income = ( (  ( SELECT @total_profits ) + ( SELECT @other_revenuse ) 
 --			BALANCE SHEET   
 --========================================================== 
 
--- current assets 
-select journal_details.account_number, cast(accounts.account_name as varchar(50)), sum(COALESCE(debit,0) - COALESCE(credit,0))  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '11%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+------------------------------------------------
+-- ASSETS 
+------------------------------------------------
+----------------------
+-- CURRENT ASSETS 
+---------------------
+select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '11%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+select  'الأصول المتداولة' 'title', 'الإجمالى' 'total_title', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details where journal_details.account_number like '11%';
 
--- fixed assets 
-select journal_details.account_number, cast(accounts.account_name as varchar(50)), sum(COALESCE(debit,0) - COALESCE(credit,0))  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '12%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+----------------------
+-- FIXED ASSETS 
+---------------------
+select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '12%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+select  'الأصول الثابتة' 'title', 'الإجمالى' 'total_title', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details where journal_details.account_number like '12%';
 
--- current equty
-select journal_details.account_number, cast(accounts.account_name as varchar(50)), sum( COALESCE(credit,0) - COALESCE(debit,0))  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '21%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+------------------------------------------------
+-- LIABILITIES AND EQUTY 
+------------------------------------------------
+----------------------
+-- CURRENT EQUTY 
+---------------------
+select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '21%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+select  'الخصوم المتداولة' 'title', 'الإجمالى' 'total_title', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details where journal_details.account_number like '21%';
 
--- long equty 
- select journal_details.account_number, cast(accounts.account_name as varchar(50)), sum( COALESCE(credit,0) - COALESCE(debit,0))  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '22%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+----------------------
+-- LONG EQUTY 
+---------------------
+select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '22%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+select  'الخصوم طويلة الأجل' 'title', 'الإجمالى' 'total_title', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details where journal_details.account_number like '22%';
 
- -- Owners 
- select journal_details.account_number, cast(accounts.account_name as varchar(50)), sum( COALESCE(credit,0) - COALESCE(debit,0))  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '3%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+
+----------------------
+-- OWNERS EQUTY 
+---------------------
+DECLARE @balance_year_profits AS DECIMAL(18,2);
+SET @balance_year_profits = (SELECT sum(COALESCE(credit,0) - COALESCE(debit,0)) + ( SELECT @total_income ) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number = '350' group by journal_details.account_number, cast(accounts.account_name as varchar(50)));
+
+IF @balance_year_profits IS NULL
+SET @balance_year_profits = 0;
+
+select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '3%' AND journal_details.account_number != '350' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+
+			UNION ALL
+
+			SELECT '350' 'account_number', 'الأرباح المحتجزة' 'account_name', (( SELECT @total_income ) + ( SELECT @balance_year_profits ) ) 'total' ;
+			
+
  
-
--- income list 
-
-
-
--- summery
- 
-select sum(COALESCE(debit,0) - COALESCE(credit,0))  from journal_details where account_number like '1%'; 
-
-select ( select sum(COALESCE(credit,0) - COALESCE(debit,0))  from journal_details where account_number like '2%' ) +  (select sum(COALESCE(credit,0) - COALESCE(debit,0)) from journal_details where account_number like '3%') + (select @total_income);
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT  'حقوق الملكية' 'title', 'الإجمالى' 'total_title', sum(COALESCE(credit,0) - COALESCE(debit,0)) + ( SELECT @total_income ) 'total'  from journal_details where journal_details.account_number like '3%';
 
 
 

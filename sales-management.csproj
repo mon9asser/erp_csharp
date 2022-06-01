@@ -95,6 +95,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DB\Config.cs" />
     <Compile Include="DB\DataAccessLayer.cs" />
+    <Compile Include="DSet\Balance_Sheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Balance_Sheet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSet\DailyEntries.cs">
       <DependentUpon>DailyEntries.xsd</DependentUpon>
     </Compile>
@@ -183,6 +188,12 @@
     </Compile>
     <Compile Include="UI\Add_New_Entry.Designer.cs">
       <DependentUpon>Add_New_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Balance_Sheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Balance_Sheet.Designer.cs">
+      <DependentUpon>Balance_Sheet.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FND___Current_Quantities.cs">
       <SubType>Form</SubType>
@@ -420,6 +431,9 @@
     <EmbeddedResource Include="UI\Add_New_Entry.resx">
       <DependentUpon>Add_New_Entry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Balance_Sheet.resx">
+      <DependentUpon>Balance_Sheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FND___Current_Quantities.resx">
       <DependentUpon>FND___Current_Quantities.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,6 +551,17 @@
     <EmbeddedResource Include="UI\FND___Entry_Details.resx">
       <DependentUpon>FND___Entry_Details.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DSet\Balance_Sheet.xsc">
+      <DependentUpon>Balance_Sheet.xsd</DependentUpon>
+    </None>
+    <None Include="DSet\Balance_Sheet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Balance_Sheet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSet\Balance_Sheet.xss">
+      <DependentUpon>Balance_Sheet.xsd</DependentUpon>
+    </None>
     <None Include="DSet\DailyEntries.xsc">
       <DependentUpon>DailyEntries.xsd</DependentUpon>
     </None>
@@ -624,6 +649,9 @@
     </None>
     <None Include="DSet\Withdraw_Report.xss">
       <DependentUpon>Withdraw_Report.xsd</DependentUpon>
+    </None>
+    <None Include="FReports\Balanace_Sheet_Statement.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FReports\Income_Statement.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

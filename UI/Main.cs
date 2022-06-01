@@ -336,7 +336,8 @@ namespace sales_management.UI
 
         private void قائمةالمركزالماليToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            UI.Balance_Sheet balance = new UI.Balance_Sheet();
+            balance.Show();
         }
 
         private void ميزانالمراجعهToolStripMenuItem_Click(object sender, EventArgs e)

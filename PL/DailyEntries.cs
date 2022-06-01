@@ -10,7 +10,20 @@ namespace sales_management.PL
 {
     class DailyEntries
     {
+        public DataSet Get_Balance_Sheet()
+        {
 
+            DataSet tble;
+
+            
+            DB.DataAccessLayer DAL = new DB.DataAccessLayer(); 
+             
+            DAL.Open();
+            tble = DAL.SelectDataSet("Prepare_Balance_Sheet", null); 
+            DAL.Close();
+
+            return tble;
+        }
 
         public DataSet Get_Trial_Balances_By_Date(DateTime date_from, DateTime date_to ) {
 
