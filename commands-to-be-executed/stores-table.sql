@@ -18,8 +18,15 @@ WHERE  Object_definition(object_id) LIKE '%purchase_credit_account%'+
 -- صرف بضاعه بإذن
 */
 
+USE [zakat_invoices]
+GO
+/****** Object:  StoredProcedure [dbo].[Prepare_Balance_Sheet]    Script Date: 6/2/2022 4:33:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 
-CREATE PROC Prepare_Balance_Sheet
+ALTER PROC [dbo].[Prepare_Balance_Sheet]
 
 AS
 --==========================================================
@@ -142,13 +149,28 @@ SET @total_income = ( (  ( SELECT @total_profits ) + ( SELECT @other_revenuse ) 
 ----------------------
 -- CURRENT ASSETS 
 ---------------------
-select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '11%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+IF EXISTS ( select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '11%' group by journal_details.account_number, cast(accounts.account_name as varchar(50)) )
+BEGIN
+	select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '11%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+END
+	ELSE
+BEGIN
+	select '' 'account_number', '' 'account_name', 0 'total'  
+END
+
 select  'الأصول المتداولة' 'title', 'الإجمالى' 'total_title', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details where journal_details.account_number like '11%';
 
 ----------------------
 -- FIXED ASSETS 
 ---------------------
-select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '12%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+IF EXISTS( select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '12%' group by journal_details.account_number, cast(accounts.account_name as varchar(50)) )
+BEGIN
+	select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '12%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+END
+	ELSE
+BEGIN
+	select '' 'account_number', '' 'account_name', 0 'total' 
+END
 select  'الأصول الثابتة' 'title', 'الإجمالى' 'total_title', sum(COALESCE(debit,0) - COALESCE(credit,0)) 'total'  from journal_details where journal_details.account_number like '12%';
 
 ------------------------------------------------
@@ -157,13 +179,27 @@ select  'الأصول الثابتة' 'title', 'الإجمالى' 'total_title',
 ----------------------
 -- CURRENT EQUTY 
 ---------------------
-select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '21%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+IF EXISTS( select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '21%' group by journal_details.account_number, cast(accounts.account_name as varchar(50)) )
+BEGIN
+	select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '21%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+END
+	ELSE
+BEGIN
+	select '' 'account_number', '' 'account_name', 0 'total'
+END
 select  'الخصوم المتداولة' 'title', 'الإجمالى' 'total_title', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details where journal_details.account_number like '21%';
 
 ----------------------
 -- LONG EQUTY 
 ---------------------
-select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '22%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+IF EXISTS( select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '22%' group by journal_details.account_number, cast(accounts.account_name as varchar(50)) )
+BEGIN
+	select journal_details.account_number 'account_number', cast(accounts.account_name as varchar(50)) 'account_name', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details, accounts where accounts.account_number = journal_details.account_number and journal_details.account_number like '22%' group by journal_details.account_number, cast(accounts.account_name as varchar(50))
+END
+	ELSE
+BEGIN
+	select '' 'account_number', '' 'account_name', 0 'total'
+END
 select  'الخصوم طويلة الأجل' 'title', 'الإجمالى' 'total_title', sum(COALESCE(credit,0) - COALESCE(debit,0)) 'total'  from journal_details where journal_details.account_number like '22%';
 
 
@@ -188,16 +224,29 @@ SELECT  'حقوق الملكية' 'title', 'الإجمالى' 'total_title', sum
 
 
 
+-----------------------------------
+-- TOTAL ASSETS AND LIABILITIES
+-----------------------------------
+DECLARE @total_assets AS DECIMAL(18,2);
+DECLARE @total_liabilities AS DECIMAL(18,2);
 
+SET @total_assets = (
+	
+	( CASE WHEN ( ( SELECT  SUM(COALESCE(debit,0) - COALESCE(credit,0)) from journal_details where journal_details.account_number like '11%' ) ) IS NULL THEN 0 ELSE ( SELECT  SUM(COALESCE(debit,0) - COALESCE(credit,0)) from journal_details where journal_details.account_number like '11%' ) END )
+	+
+	( CASE WHEN ( ( SELECT SUM(COALESCE(debit,0) - COALESCE(credit,0)) from journal_details where journal_details.account_number like '12%' ) ) IS NULL THEN 0 ELSE ( SELECT SUM(COALESCE(debit,0) - COALESCE(credit,0)) from journal_details where journal_details.account_number like '12%' ) END )
 
+);
 
+SET @total_liabilities = (
+	( CASE WHEN ( SELECT SUM(COALESCE(credit,0) - COALESCE(debit,0)) from journal_details where journal_details.account_number like '21%') IS NULL THEN 0 ELSE ( SELECT SUM(COALESCE(credit,0) - COALESCE(debit,0)) from journal_details where journal_details.account_number like '21%' ) END )
+	+
+	( CASE WHEN ( SELECT  SUM(COALESCE(credit,0) - COALESCE(debit,0)) from journal_details where journal_details.account_number like '22%' ) IS NULL THEN 0 ELSE ( SELECT  SUM(COALESCE(credit,0) - COALESCE(debit,0)) from journal_details where journal_details.account_number like '22%' ) END )
+	+
+	( CASE WHEN ( SELECT SUM(COALESCE(credit,0) - COALESCE(debit,0)) + ( SELECT @total_income ) from journal_details where journal_details.account_number like '3%' ) IS NULL THEN 0 ELSE ( SELECT SUM(COALESCE(credit,0) - COALESCE(debit,0)) + ( SELECT @total_income ) from journal_details where journal_details.account_number like '3%' ) END )
+);
 
-
-
-
-
-
-
+SELECT @total_assets 'total_assets', @total_liabilities 'total_liabilities';
 
 
 

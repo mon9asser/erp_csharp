@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="report1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>195, 17</value>
   </metadata>
   <data name="report1.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="06/01/2022 18:21:27" ReportInfo.Modified="06/02/2022 11:39:10" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="06/01/2022 18:21:27" ReportInfo.Modified="06/02/2022 21:02:50" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;ScriptText&gt;using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -146,55 +146,40 @@ namespace FastReport
 }
 &lt;/ScriptText&gt;
   &lt;Dictionary&gt;
-    &lt;TableDataSource Name="current_assets" ReferenceName="balance_Sheet1.current_assets" DataType="System.Int32" Enabled="true"&gt;
+    &lt;TableDataSource Name="current_assets" ReferenceName="balance_ssheet_dataset.current_assets" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="account_number" DataType="System.String"/&gt;
       &lt;Column Name="account_name" DataType="System.String"/&gt;
       &lt;Column Name="total" DataType="System.Decimal"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="current_assets_totals" ReferenceName="balance_Sheet1.current_assets_totals" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="title" DataType="System.String"/&gt;
-      &lt;Column Name="total_title" DataType="System.String"/&gt;
-      &lt;Column Name="total" DataType="System.Decimal"/&gt;
-    &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="none_current_assets" ReferenceName="balance_Sheet1.none_current_assets" DataType="System.Int32" Enabled="true"&gt;
+    &lt;TableDataSource Name="fixed_assets" ReferenceName="balance_ssheet_dataset.fixed_assets" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="account_number" DataType="System.String"/&gt;
       &lt;Column Name="account_name" DataType="System.String"/&gt;
       &lt;Column Name="total" DataType="System.Decimal"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="none_current_assets_totals" ReferenceName="balance_Sheet1.none_current_assets_totals" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="title" DataType="System.String"/&gt;
-      &lt;Column Name="total_title" DataType="System.String"/&gt;
-      &lt;Column Name="total" DataType="System.Decimal"/&gt;
-    &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="current_liabilities" ReferenceName="balance_Sheet1.current_liabilities" DataType="System.Int32" Enabled="true"&gt;
+    &lt;TableDataSource Name="current_liabilities" ReferenceName="balance_ssheet_dataset.current_liabilities" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="account_number" DataType="System.String"/&gt;
       &lt;Column Name="account_name" DataType="System.String"/&gt;
       &lt;Column Name="total" DataType="System.Decimal"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="current_liabilities_totals" ReferenceName="balance_Sheet1.current_liabilities_totals" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="title" DataType="System.String"/&gt;
-      &lt;Column Name="total_title" DataType="System.String"/&gt;
-      &lt;Column Name="total" DataType="System.Decimal"/&gt;
+    &lt;TableDataSource Name="long_liabilities" ReferenceName="balance_ssheet_dataset.long_liabilities" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="account_number" DataType="System.String"/&gt;
+      &lt;Column Name="account_name" DataType="System.String"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="none_current_liabilities" ReferenceName="balance_Sheet1.none_current_liabilities" DataType="System.Int32" Enabled="true"&gt;
+    &lt;TableDataSource Name="owner_equity" ReferenceName="balance_ssheet_dataset.owner_equity" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="account_number" DataType="System.String"/&gt;
       &lt;Column Name="account_name" DataType="System.String"/&gt;
       &lt;Column Name="total" DataType="System.Decimal"/&gt;
     &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="none_current_liabilities_total" ReferenceName="balance_Sheet1.none_current_liabilities_total" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="title" DataType="System.String"/&gt;
-      &lt;Column Name="total_title" DataType="System.String"/&gt;
-      &lt;Column Name="total" DataType="System.Decimal"/&gt;
-    &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="owner_equity" ReferenceName="balance_Sheet1.owner_equity" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="account_number" DataType="System.String"/&gt;
-      &lt;Column Name="account_name" DataType="System.String"/&gt;
-      &lt;Column Name="total" DataType="System.Decimal"/&gt;
-    &lt;/TableDataSource&gt;
-    &lt;TableDataSource Name="owner_equity_title" ReferenceName="balance_Sheet1.owner_equity_title" DataType="System.Int32" Enabled="true"&gt;
-      &lt;Column Name="title" DataType="System.String"/&gt;
-      &lt;Column Name="total_title" DataType="System.String"/&gt;
-      &lt;Column Name="total" DataType="System.Decimal"/&gt;
+    &lt;TableDataSource Name="balance_sheet_totals" ReferenceName="balance_ssheet_dataset.balance_sheet_totals" DataType="System.Int32" Enabled="true"&gt;
+      &lt;Column Name="total_assets" DataType="System.Decimal"/&gt;
+      &lt;Column Name="total_liabilities" DataType="System.Decimal"/&gt;
+      &lt;Column Name="current_assets" DataType="System.Decimal"/&gt;
+      &lt;Column Name="fixed_assets" DataType="System.Decimal"/&gt;
+      &lt;Column Name="current_liabilities" DataType="System.Decimal"/&gt;
+      &lt;Column Name="long_liabilities" DataType="System.Decimal"/&gt;
+      &lt;Column Name="owner_equity" DataType="System.Decimal"/&gt;
+      &lt;Column Name="balance_title" DataType="System.String"/&gt;
+      &lt;Column Name="date_time" DataType="System.DateTime"/&gt;
     &lt;/TableDataSource&gt;
   &lt;/Dictionary&gt;
   &lt;ReportPage Name="Page1"&gt;
@@ -221,7 +206,7 @@ namespace FastReport
           &lt;TableColumn Name="Column9" Width="141.75"/&gt;
           &lt;TableRow Name="Row3" Height="37.8"&gt;
             &lt;TableCell Name="Cell27" Border.Lines="Left, Right" Border.Width="0.5" Text="[current_assets.account_name]" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
-            &lt;TableCell Name="Cell28" Border.Lines="Left, Right" Border.Width="0.5" Text="[FormatNumber([current_assets.total])]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell28" Border.Lines="Left, Right" Border.Width="0.5" Text="[current_assets.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
             &lt;TableCell Name="Cell29" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
@@ -233,20 +218,20 @@ namespace FastReport
             &lt;TableRow Name="Row8" Height="37.8"&gt;
               &lt;TableCell Name="Cell42" Border.Lines="Left, Right" Border.Width="0.5" Text="الأصول المتداولة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold, Underline"/&gt;
               &lt;TableCell Name="Cell43" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-              &lt;TableCell Name="Cell44" Border.Lines="Left, Right" Border.Width="0.5" Text="[current_assets_totals.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+              &lt;TableCell Name="Cell44" Border.Lines="Left, Right" Border.Width="0.5" Text="[balance_sheet_totals.current_assets]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
             &lt;/TableRow&gt;
           &lt;/TableObject&gt;
         &lt;/DataHeaderBand&gt;
         &lt;DataFooterBand Name="DataFooter2" Top="180.65" Width="718.2"/&gt;
       &lt;/DataBand&gt;
-      &lt;DataBand Name="Data3" Top="226.45" Width="718.2" Height="37.8" DataSource="none_current_assets"&gt;
+      &lt;DataBand Name="Data3" Top="226.45" Width="718.2" Height="37.8" DataSource="fixed_assets"&gt;
         &lt;TableObject Name="Table4" Left="18.9" Width="670.95" Height="37.8"&gt;
           &lt;TableColumn Name="Column10" Width="378"/&gt;
           &lt;TableColumn Name="Column11" Width="151.2"/&gt;
           &lt;TableColumn Name="Column12" Width="141.75"/&gt;
           &lt;TableRow Name="Row4" Height="37.8"&gt;
-            &lt;TableCell Name="Cell30" Border.Lines="Left, Right" Border.Width="0.5" Text="[none_current_assets.account_name]" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
-            &lt;TableCell Name="Cell31" Border.Lines="Left, Right" Border.Width="0.5" Text="[FormatNumber([none_current_assets.total])]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell30" Border.Lines="Left, Right" Border.Width="0.5" Text="[fixed_assets.account_number]" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell31" Border.Lines="Left, Right" Border.Width="0.5" Text="[fixed_assets.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
             &lt;TableCell Name="Cell32" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
@@ -258,7 +243,7 @@ namespace FastReport
             &lt;TableRow Name="Row9" Height="37.8"&gt;
               &lt;TableCell Name="Cell45" Border.Lines="Left, Right" Border.Width="0.5" Text="الأصول الثابتة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold, Underline"/&gt;
               &lt;TableCell Name="Cell46" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
-              &lt;TableCell Name="Cell47" Border.Lines="Left, Right" Border.Width="0.5" Text="[none_current_assets_totals.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+              &lt;TableCell Name="Cell47" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
             &lt;/TableRow&gt;
           &lt;/TableObject&gt;
         &lt;/DataHeaderBand&gt;
@@ -270,7 +255,7 @@ namespace FastReport
             &lt;TableRow Name="Row14" Height="37.8"&gt;
               &lt;TableCell Name="Cell60" Border.Lines="All" Border.Width="0.5" Fill.Color="MistyRose" Text="إجمالى الأصول" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
               &lt;TableCell Name="Cell61" Border.Lines="All" Border.Width="0.5" Fill.Color="MistyRose" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
-              &lt;TableCell Name="Cell62" Border.Lines="All" Border.Width="0.5" Fill.Color="MistyRose" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+              &lt;TableCell Name="Cell62" Border.Lines="All" Border.Width="0.5" Fill.Color="MistyRose" Text="[balance_sheet_totals.total_assets]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
             &lt;/TableRow&gt;
           &lt;/TableObject&gt;
         &lt;/DataFooterBand&gt;
@@ -282,7 +267,7 @@ namespace FastReport
           &lt;TableColumn Name="Column15" Width="141.75"/&gt;
           &lt;TableRow Name="Row5" Height="37.8"&gt;
             &lt;TableCell Name="Cell33" Border.Lines="Left, Right" Border.Width="0.5" Text="[current_liabilities.account_name]" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
-            &lt;TableCell Name="Cell34" Border.Lines="Left, Right" Border.Width="0.5" Text="[FormatNumber([current_liabilities.total])]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell34" Border.Lines="Left, Right" Border.Width="0.5" Text="[current_liabilities.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
             &lt;TableCell Name="Cell35" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
@@ -294,20 +279,20 @@ namespace FastReport
             &lt;TableRow Name="Row10" Height="37.8"&gt;
               &lt;TableCell Name="Cell48" Border.Lines="Left, Right" Border.Width="0.5" Text="الخصوم المتداولة" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold, Underline"/&gt;
               &lt;TableCell Name="Cell49" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
-              &lt;TableCell Name="Cell50" Border.Lines="Left, Right" Border.Width="0.5" Text="[current_liabilities_totals.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+              &lt;TableCell Name="Cell50" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
             &lt;/TableRow&gt;
           &lt;/TableObject&gt;
         &lt;/DataHeaderBand&gt;
         &lt;DataFooterBand Name="DataFooter4" Top="393.65" Width="718.2"/&gt;
       &lt;/DataBand&gt;
-      &lt;DataBand Name="Data5" Top="439.45" Width="718.2" Height="37.8" DataSource="none_current_liabilities_total"&gt;
+      &lt;DataBand Name="Data5" Top="439.45" Width="718.2" Height="37.8"&gt;
         &lt;TableObject Name="Table6" Left="18.9" Width="670.95" Height="37.8"&gt;
           &lt;TableColumn Name="Column16" Width="378"/&gt;
           &lt;TableColumn Name="Column17" Width="151.2"/&gt;
           &lt;TableColumn Name="Column18" Width="141.75"/&gt;
           &lt;TableRow Name="Row6" Height="37.8"&gt;
-            &lt;TableCell Name="Cell36" Border.Lines="Left, Right" Border.Width="0.5" Text="[none_current_liabilities.account_name]" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
-            &lt;TableCell Name="Cell37" Border.Lines="Left, Right" Border.Width="0.5" Text="[FormatNumber([none_current_liabilities.total])]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell36" Border.Lines="Left, Right" Border.Width="0.5" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell37" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
             &lt;TableCell Name="Cell38" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
@@ -319,20 +304,20 @@ namespace FastReport
             &lt;TableRow Name="Row11" Height="37.8"&gt;
               &lt;TableCell Name="Cell51" Border.Lines="Left, Right" Border.Width="0.5" Text="الخصوم طويلة الأجل" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold, Underline"/&gt;
               &lt;TableCell Name="Cell52" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
-              &lt;TableCell Name="Cell53" Border.Lines="Left, Right" Border.Width="0.5" Text="[none_current_liabilities_total.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+              &lt;TableCell Name="Cell53" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
             &lt;/TableRow&gt;
           &lt;/TableObject&gt;
         &lt;/DataHeaderBand&gt;
         &lt;DataFooterBand Name="DataFooter5" Top="481.25" Width="718.2"/&gt;
       &lt;/DataBand&gt;
-      &lt;DataBand Name="Data6" Top="527.05" Width="718.2" Height="37.8" DataSource="owner_equity"&gt;
+      &lt;DataBand Name="Data6" Top="527.05" Width="718.2" Height="37.8"&gt;
         &lt;TableObject Name="Table7" Left="18.9" Width="670.95" Height="37.8"&gt;
           &lt;TableColumn Name="Column19" Width="378"/&gt;
           &lt;TableColumn Name="Column20" Width="151.2"/&gt;
           &lt;TableColumn Name="Column21" Width="141.75"/&gt;
           &lt;TableRow Name="Row7" Height="37.8"&gt;
-            &lt;TableCell Name="Cell39" Border.Lines="Left, Right" Border.Width="0.5" Text="[owner_equity.account_name]" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
-            &lt;TableCell Name="Cell40" Border.Lines="Left, Right" Border.Width="0.5" Text="[FormatNumber([owner_equity.total])]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell39" Border.Lines="Left, Right" Border.Width="0.5" Padding="2, 1, 20, 1" HorzAlign="Right" VertAlign="Center" Font="Arial, 12pt"/&gt;
+            &lt;TableCell Name="Cell40" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt"/&gt;
             &lt;TableCell Name="Cell41" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
@@ -344,7 +329,7 @@ namespace FastReport
             &lt;TableRow Name="Row12" Height="37.8"&gt;
               &lt;TableCell Name="Cell54" Border.Lines="Left, Right" Border.Width="0.5" Text="حقوق الملكية" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold, Underline"/&gt;
               &lt;TableCell Name="Cell55" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/&gt;
-              &lt;TableCell Name="Cell56" Border.Lines="Left, Right" Border.Width="0.5" Text="[owner_equity_title.total]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
+              &lt;TableCell Name="Cell56" Border.Lines="Left, Right" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/&gt;
             &lt;/TableRow&gt;
           &lt;/TableObject&gt;
         &lt;/DataHeaderBand&gt;
@@ -361,17 +346,12 @@ namespace FastReport
           &lt;/TableObject&gt;
         &lt;/DataFooterBand&gt;
       &lt;/DataBand&gt;
-      &lt;DataBand Name="Data7" Top="652.45" Width="718.2" Height="37.8"&gt;
-        &lt;DataHeaderBand Name="DataHeader6" Top="610.65" Width="718.2" Height="37.8"/&gt;
-        &lt;DataFooterBand Name="DataFooter7" Top="694.25" Width="718.2" Height="37.8"/&gt;
-      &lt;/DataBand&gt;
-      &lt;DataFooterBand Name="DataFooter1" Top="736.05" Width="718.2" Height="37.8"/&gt;
     &lt;/DataBand&gt;
   &lt;/ReportPage&gt;
 &lt;/Report&gt;
 </value>
   </data>
-  <metadata name="balance_Sheet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>109, 17</value>
+  <metadata name="balance_ssheet_dataset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

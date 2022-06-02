@@ -95,10 +95,10 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DB\Config.cs" />
     <Compile Include="DB\DataAccessLayer.cs" />
-    <Compile Include="DSet\Balance_Sheet.Designer.cs">
+    <Compile Include="DSet\Balance_Sheet_.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Balance_Sheet.xsd</DependentUpon>
+      <DependentUpon>Balance_Sheet_.xsd</DependentUpon>
     </Compile>
     <Compile Include="DSet\DailyEntries.cs">
       <DependentUpon>DailyEntries.xsd</DependentUpon>
@@ -551,16 +551,16 @@
     <EmbeddedResource Include="UI\FND___Entry_Details.resx">
       <DependentUpon>FND___Entry_Details.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DSet\Balance_Sheet.xsc">
-      <DependentUpon>Balance_Sheet.xsd</DependentUpon>
+    <None Include="DSet\Balance_Sheet_.xsc">
+      <DependentUpon>Balance_Sheet_.xsd</DependentUpon>
     </None>
-    <None Include="DSet\Balance_Sheet.xsd">
+    <None Include="DSet\Balance_Sheet_.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Balance_Sheet.Designer.cs</LastGenOutput>
+      <LastGenOutput>Balance_Sheet_.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DSet\Balance_Sheet.xss">
-      <DependentUpon>Balance_Sheet.xsd</DependentUpon>
+    <None Include="DSet\Balance_Sheet_.xss">
+      <DependentUpon>Balance_Sheet_.xsd</DependentUpon>
     </None>
     <None Include="DSet\DailyEntries.xsc">
       <DependentUpon>DailyEntries.xsd</DependentUpon>
