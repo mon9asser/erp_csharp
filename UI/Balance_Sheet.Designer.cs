@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Balance_Sheet));
             this.report1 = new FastReport.Report();
-            this.previewControl1 = new FastReport.Preview.PreviewControl();
             this.balance_Sheet1 = new sales_management.DSet.Balance_Sheet();
+            this.previewControl1 = new FastReport.Preview.PreviewControl();
             ((System.ComponentModel.ISupportInitialize)(this.report1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.balance_Sheet1)).BeginInit();
             this.SuspendLayout();
@@ -41,6 +41,11 @@
             this.report1.NeedRefresh = false;
             this.report1.ReportResourceString = resources.GetString("report1.ReportResourceString");
             this.report1.RegisterData(this.balance_Sheet1, "balance_Sheet1");
+            // 
+            // balance_Sheet1
+            // 
+            this.balance_Sheet1.DataSetName = "Balance_Sheet";
+            this.balance_Sheet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // previewControl1
             // 
@@ -54,11 +59,6 @@
             this.previewControl1.SaveInitialDirectory = null;
             this.previewControl1.Size = new System.Drawing.Size(800, 450);
             this.previewControl1.TabIndex = 0;
-            // 
-            // balance_Sheet1
-            // 
-            this.balance_Sheet1.DataSetName = "Balance_Sheet";
-            this.balance_Sheet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Balance_Sheet
             // 
