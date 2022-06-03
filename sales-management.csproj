@@ -261,6 +261,12 @@
     <Compile Include="UI\FND___salesReturnInvoice.Designer.cs">
       <DependentUpon>FND___salesReturnInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Receipt_Document.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Receipt_Document.Designer.cs">
+      <DependentUpon>Receipt_Document.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Search_On_Entries.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FND___salesReturnInvoice.resx">
       <DependentUpon>FND___salesReturnInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Receipt_Document.resx">
+      <DependentUpon>Receipt_Document.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Search_On_Entries.resx">
       <DependentUpon>Search_On_Entries.cs</DependentUpon>

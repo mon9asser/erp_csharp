@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:current_assets" ZOrder="6" X="141" Y="60" Height="86" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
     <Shape ID="DesignTable:fixed_assets" ZOrder="5" X="306" Y="59" Height="86" Width="154" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
     <Shape ID="DesignTable:current_liabilities" ZOrder="4" X="140" Y="161" Height="86" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
-    <Shape ID="DesignTable:long_liabilities" ZOrder="3" X="309" Y="164" Height="67" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
+    <Shape ID="DesignTable:long_liabilities" ZOrder="3" X="309" Y="164" Height="87" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:owner_equity" ZOrder="2" X="140" Y="257" Height="86" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
     <Shape ID="DesignTable:balance_sheet_totals" ZOrder="1" X="510" Y="82" Height="200" Width="184" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
   </Shapes>

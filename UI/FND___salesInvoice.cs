@@ -131,10 +131,10 @@ namespace sales_management.UI
                     return;
                 }
 
-                decimal quantity = Convert.ToDecimal(0);
-                decimal factor = Convert.ToDecimal(0);
+                decimal quantity  = Convert.ToDecimal(0);
+                decimal factor    = Convert.ToDecimal(0);
                 decimal unitPrice = Convert.ToDecimal(0);
-                decimal unitCost = Convert.ToDecimal(0);
+                decimal unitCost  = Convert.ToDecimal(0);
 
                 // Calculate Factors AND Quantity 
                 if (System.DBNull.Value.ToString() != row.Cells["quantity"].Value.ToString())
@@ -742,6 +742,7 @@ namespace sales_management.UI
         {
 
             try {
+
                 if (items_datagridview.ReadOnly == true)
                 {
                     return;

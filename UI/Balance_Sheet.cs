@@ -33,13 +33,7 @@ namespace sales_management.UI
             DataTable owner_equity = dstbls.Tables[4];
             DataTable balance_sheet_totals = dstbls.Tables[5];
 
-            foreach (DataColumn colx in long_liabilities.Columns) {
-                foreach (DataRow rowx in long_liabilities.Rows)
-                {
-                    Console.WriteLine(colx.ColumnName.ToString() + " : " + rowx[colx.ColumnName.ToString()] );
-                }
-            }
-
+            
            
             BalanceSheet.Tables["current_assets"].Merge(current_assets);
             BalanceSheet.Tables["fixed_assets"].Merge(fixed_assets);

@@ -1283,6 +1283,8 @@ namespace sales_management.DSet {
             
             private global::System.Data.DataColumn columnaccount_name;
             
+            private global::System.Data.DataColumn columntotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long_liabilitiesDataTable() {
@@ -1334,6 +1336,14 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn totalColumn {
+                get {
+                    return this.columntotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1369,11 +1379,12 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public long_liabilitiesRow Addlong_liabilitiesRow(string account_number, string account_name) {
+            public long_liabilitiesRow Addlong_liabilitiesRow(string account_number, string account_name, decimal total) {
                 long_liabilitiesRow rowlong_liabilitiesRow = ((long_liabilitiesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         account_number,
-                        account_name};
+                        account_name,
+                        total};
                 rowlong_liabilitiesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlong_liabilitiesRow);
                 return rowlong_liabilitiesRow;
@@ -1398,6 +1409,7 @@ namespace sales_management.DSet {
             internal void InitVars() {
                 this.columnaccount_number = base.Columns["account_number"];
                 this.columnaccount_name = base.Columns["account_name"];
+                this.columntotal = base.Columns["total"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1407,6 +1419,8 @@ namespace sales_management.DSet {
                 base.Columns.Add(this.columnaccount_number);
                 this.columnaccount_name = new global::System.Data.DataColumn("account_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaccount_name);
+                this.columntotal = new global::System.Data.DataColumn("total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2512,6 +2526,22 @@ namespace sales_management.DSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal total {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablelong_liabilities.totalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total\' in table \'long_liabilities\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelong_liabilities.totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isaccount_numberNull() {
                 return this.IsNull(this.tablelong_liabilities.account_numberColumn);
             }
@@ -2532,6 +2562,18 @@ namespace sales_management.DSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setaccount_nameNull() {
                 this[this.tablelong_liabilities.account_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IstotalNull() {
+                return this.IsNull(this.tablelong_liabilities.totalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SettotalNull() {
+                this[this.tablelong_liabilities.totalColumn] = global::System.Convert.DBNull;
             }
         }
         
