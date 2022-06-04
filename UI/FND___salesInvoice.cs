@@ -995,7 +995,12 @@ namespace sales_management.UI
 
         public Decimal Extract_Vat(decimal amount)
         {
-            return amount - (amount / Convert.ToDecimal(1.15));
+            double vat_value = 1.15;
+            if (this.Settings.Rows.Count != 0)
+            {
+                vat_value = Convert.ToDouble(this.Settings.Rows[0]["vat_value"]);
+            }
+            return amount - (amount / Convert.ToDecimal(vat_value));
 
         }
 
@@ -1009,9 +1014,15 @@ namespace sales_management.UI
                 decimal netval = net - discount_val;
                 vat = this.Extract_Vat(netval);
 
+                double vat_value = 1.15;
+                if (this.Settings.Rows.Count != 0)
+                {
+                    vat_value = Convert.ToDouble(this.Settings.Rows[0]["vat_value"]);
+                }
+
                 if (!price_includ_vat.Checked)
                 {
-                    vat = (netval * Convert.ToDecimal(1.15)) - netval;
+                    vat = (netval * Convert.ToDecimal(vat_value)) - netval;
                 }
             }
             catch (Exception) { }
@@ -1032,7 +1043,13 @@ namespace sales_management.UI
 
                 if (!price_includ_vat.Checked)
                 {
-                    total = total * Convert.ToDecimal(1.15);
+                    double vat_value = 1.15;
+                    if (this.Settings.Rows.Count != 0)
+                    {
+                        vat_value = Convert.ToDouble(this.Settings.Rows[0]["vat_value"]);
+                    }
+
+                    total = total * Convert.ToDecimal(vat_value);
                 }
             }
             catch (Exception)
@@ -2086,12 +2103,7 @@ namespace sales_management.UI
             }
             catch (Exception) { }
         }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
+         
 
         private void Build_Data_Set_Of_Crystal_Report() {
 
