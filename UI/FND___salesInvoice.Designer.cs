@@ -282,6 +282,7 @@ namespace sales_management.UI
             this.legend_number.ReadOnly = true;
             this.legend_number.Size = new System.Drawing.Size(58, 20);
             this.legend_number.TabIndex = 122;
+            this.legend_number.MouseClick += new System.Windows.Forms.MouseEventHandler(this.legend_name_MouseClick);
             // 
             // label16
             // 

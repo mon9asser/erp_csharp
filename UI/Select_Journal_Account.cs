@@ -17,11 +17,78 @@ namespace sales_management.UI
 
         public int document_type = -1;
         public int DG_Index = -1;
-
+        FND___salesInvoice Sales_Document;
+        FND___salesReturnInvoice Return_Sales_Document;
+        purchaseInvoice Purchase_Document;
+        purchaseReturnInvoice Return_Purchase_Document;
         PL.AccountingTree Tree = new PL.AccountingTree();
         DataTable Useful_Accounts;
 
+        public Select_Journal_Account(int doc_type, int index, purchaseReturnInvoice Purchase_Return_Document)
+        {
+            this.Useful_Accounts = this.Tree.Get_Useful_Accounts();
+            this.document_type = doc_type;
+            this.Return_Purchase_Document = Purchase_Return_Document;
+            this.DG_Index = index;
 
+            InitializeComponent();
+
+            // Load All Accounts 
+            this.Fill_DataGridView_Data();
+
+            this.Useful_Accounts = this.Search_Extract_Accounts(this.Useful_Accounts, "11010", "11020");
+            this.Fill_DataGridView_Data();
+        }
+
+        public Select_Journal_Account(int doc_type, int index, purchaseInvoice Purchase_Document)
+        {
+            this.Useful_Accounts = this.Tree.Get_Useful_Accounts();
+            this.document_type = doc_type;
+            this.Purchase_Document = Purchase_Document;
+            this.DG_Index = index;
+
+            InitializeComponent();
+
+            // Load All Accounts 
+            this.Fill_DataGridView_Data();
+
+            this.Useful_Accounts = this.Search_Extract_Accounts(this.Useful_Accounts, "11010", "11020");
+            this.Fill_DataGridView_Data();
+        }
+
+        // Return Sales Invoices 
+        public Select_Journal_Account(int doc_type, int index, FND___salesReturnInvoice Return_Sales_Document)
+        {
+            this.Useful_Accounts = this.Tree.Get_Useful_Accounts();
+            this.document_type = doc_type;
+            this.Return_Sales_Document = Return_Sales_Document;
+            this.DG_Index = index;
+
+            InitializeComponent();
+
+            // Load All Accounts 
+            this.Fill_DataGridView_Data();
+
+            this.Useful_Accounts = this.Search_Extract_Accounts(this.Useful_Accounts, "11010", "11020");
+            this.Fill_DataGridView_Data();
+        }
+
+        // Sales Invoices 
+        public Select_Journal_Account(int doc_type, int index, FND___salesInvoice Sales_Document )
+        {
+            this.Useful_Accounts = this.Tree.Get_Useful_Accounts();
+            this.document_type = doc_type;
+            this.Sales_Document = Sales_Document;
+            this.DG_Index = index;
+
+            InitializeComponent(); 
+
+            // Load All Accounts 
+            this.Fill_DataGridView_Data();
+
+            this.Useful_Accounts = this.Search_Extract_Accounts(this.Useful_Accounts, "11010", "11020");
+            this.Fill_DataGridView_Data();
+        }
 
         // Add Journal Entries => doc type 4
         public Select_Journal_Account( int doc_type, int index, FND___Entry_Details entry )
@@ -64,6 +131,34 @@ namespace sales_management.UI
             string account_name   = dataGridView1.Rows[e.RowIndex].Cells["account_name"].Value.ToString();
 
             // ------------------------------------------------
+            // Sales - Purchases And Returns  
+            // ------------------------------------------------
+            if (this.document_type == 0  )
+            {
+                this.Sales_Document.legend_name.Text = "حـ / " + account_name;
+                this.Sales_Document.legend_number.Text = account_number;
+            }
+
+            if (this.document_type == 1)
+            {
+                this.Purchase_Document.legend_name.Text = "حـ / " + account_name;
+                this.Purchase_Document.legend_number.Text = account_number;
+            }
+
+            if (this.document_type == 2)
+            {
+                this.Return_Sales_Document.legend_name.Text = "حـ / " + account_name;
+                this.Return_Sales_Document.legend_number.Text = account_number;
+            }
+
+            if (this.document_type == 3)
+            {
+
+                this.Return_Purchase_Document.legend_name.Text = "حـ / " + account_name;
+                this.Return_Purchase_Document.legend_number.Text = account_number;
+
+            }
+            // ------------------------------------------------
             // Journal Entry 
             // ------------------------------------------------
 
@@ -83,25 +178,22 @@ namespace sales_management.UI
             this.Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        public DataTable Search_Extract_Accounts(DataTable tbl, string searchValue, string secvalue) {
 
-            this.Fill_DataGridView_Data();
-
-            string searchValue = textBox1.Text;
-            if (searchValue == "")
-            {
-                return;
-            }
-
-            DataTable tbl = (DataTable)dataGridView1.DataSource;
             DataTable newTable = new DataTable();
+
             foreach (DataColumn col in tbl.Columns)
             {
                 newTable.Columns.Add(col.ToString());
             }
 
-            DataRow[] filteredRows = tbl.Select("account_name LIKE '%" + searchValue + "%' OR account_number LIKE '%" + searchValue + "%'");
+            string search = "account_name LIKE '%" + searchValue + "%' OR account_number LIKE '%" + secvalue + "%'";
+
+            if (searchValue != secvalue) {
+                search = "account_number LIKE '%" + searchValue + "%' OR account_number LIKE '%" + secvalue + "%'";
+            }
+
+            DataRow[] filteredRows = tbl.Select(search);
 
             if (filteredRows.Length != 0)
             {
@@ -115,7 +207,7 @@ namespace sales_management.UI
 
                     foreach (DataGridViewColumn col in dataGridView1.Columns)
                     {
-                        new_row[col.Name.ToString()] = filteredRows[i][col.Name.ToString()];
+                        new_row[col.Name.ToString()] = filteredRows[i][col.Name.ToString()]; 
                     }
 
                     newTable.Rows.Add(new_row);
@@ -124,7 +216,22 @@ namespace sales_management.UI
 
             }
 
-            dataGridView1.DataSource = newTable;
+            return newTable;
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            this.Fill_DataGridView_Data();
+
+            string searchValue = textBox1.Text;
+            if (searchValue == "")
+            {
+                return;
+            }
+
+            // Search_Extract_Accounts
+            DataTable tbl = (DataTable)dataGridView1.DataSource; 
+            dataGridView1.DataSource = this.Search_Extract_Accounts(tbl, searchValue, searchValue);
 
         }
     }

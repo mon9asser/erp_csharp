@@ -772,12 +772,8 @@ namespace sales_management.UI
         {
             try
             {
-                if (legend_name.Enabled == true)
-                {
-                    UI.___Accounts accounts = new UI.___Accounts();
-                    accounts.InstanceType = 0;
-                    accounts.ShowDialog();
-                }
+                UI.Select_Journal_Account accounts = new Select_Journal_Account(this.documentType, -1, this);
+                accounts.ShowDialog();
             }
             catch (Exception) { }
         }

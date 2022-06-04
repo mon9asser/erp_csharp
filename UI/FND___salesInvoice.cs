@@ -728,14 +728,9 @@ namespace sales_management.UI
 
         private void legend_name_MouseClick(object sender, MouseEventArgs e)
         {
-            try {
-                if (legend_name.Enabled == true)
-                {
-                    UI.___Accounts accounts = new UI.___Accounts();
-                    accounts.InstanceType = 0;
-                    accounts.ShowDialog();
-                }
-            } catch (Exception) { }
+             
+            UI.Select_Journal_Account accounts = new Select_Journal_Account(this.documentType,-1,this);
+            accounts.ShowDialog();
         }
 
         private void items_datagridview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
