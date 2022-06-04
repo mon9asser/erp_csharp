@@ -1548,8 +1548,7 @@ namespace sales_management.UI
                 {
                     salesRow_from["description"] = "عملية بيع أجل";
                     salesRow_from["account_number"] = setting["customers_account"].ToString();
-
-
+                    
                     if (legend_number.Text != "")
                     {
                         salesRow_from["account_number"] = legend_number.Text.ToString();

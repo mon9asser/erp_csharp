@@ -124,9 +124,15 @@ namespace sales_management.UI
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+
+            if (vat_percentage_number.Text == "") {
+                vat_percentage_number.Text = "0";
+            }
+
             int percentValueHun = Convert.ToInt32(vat_percentage_number.Text) + 100;
             decimal percentVal = percentValueHun / 100m;
             vat_percentage_value.Text = percentVal.ToString();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
