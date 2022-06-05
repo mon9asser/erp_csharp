@@ -122,7 +122,7 @@
   </metadata>
   <data name="Statements.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="06/01/2022 10:01:50" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2022 10:17:09" ReportInfo.Modified="06/05/2022 17:38:12" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Statement" ReferenceName="statements_dataset.Statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -239,7 +239,7 @@
   </metadata>
   <data name="Entry_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="06/01/2022 09:41:49" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 01:23:02" ReportInfo.Modified="06/05/2022 17:38:12" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="Journals" ReferenceName="journals_statment.Journals" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="id" DataType="System.Int32"/&gt;
@@ -337,6 +337,9 @@
             &lt;TableCell Name="Cell38" Border.Lines="Left, Right"/&gt;
           &lt;/TableRow&gt;
         &lt;/TableObject&gt;
+        &lt;Sort&gt;
+          &lt;Sort Expression="[Journals.id]" Descending="true"/&gt;
+        &lt;/Sort&gt;
       &lt;/DataBand&gt;
       &lt;GroupFooterBand Name="GroupFooter1" Top="261.7" Width="718.2" Height="37.8"&gt;
         &lt;TableObject Name="Table4" Left="9.45" Width="699.87" Height="37.8"&gt;
@@ -370,7 +373,7 @@
   </metadata>
   <data name="Withdraw_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="06/01/2022 09:41:49" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/25/2022 01:06:06" ReportInfo.Modified="06/05/2022 17:36:52" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="withdraw_report" ReferenceName="withdraw_Report1.withdraw_report" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="sale_number" DataType="System.Decimal"/&gt;
@@ -481,7 +484,7 @@
   </metadata>
   <data name="Income_Statement.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="06/01/2022 10:01:50" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/28/2022 00:25:24" ReportInfo.Modified="06/05/2022 17:36:52" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="income_statement" ReferenceName="income_statment_ds__.income_statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="net_profit" DataType="System.Decimal"/&gt;
@@ -590,7 +593,7 @@
   </metadata>
   <data name="Trial_Balance_Report.ReportResourceString" xml:space="preserve">
     <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/31/2022 19:58:03" ReportInfo.Modified="06/01/2022 09:41:49" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="05/31/2022 19:58:03" ReportInfo.Modified="06/05/2022 17:36:52" ReportInfo.CreatorVersion="2018.4.19.0"&gt;
   &lt;Dictionary&gt;
     &lt;TableDataSource Name="trial_balance_statement" ReferenceName="trial_balance_dataset.trial_balance_statement" DataType="System.Int32" Enabled="true"&gt;
       &lt;Column Name="account_number" DataType="System.String"/&gt;
