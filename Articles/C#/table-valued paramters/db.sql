@@ -33,7 +33,14 @@ GO
 
 
 --------------------------------------------
-create PROC table_valued_parameter 
+USE [dbtest]
+GO
+/****** Object:  StoredProcedure [dbo].[table_valued_parameter]    Script Date: 6/5/2022 10:16:33 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[table_valued_parameter] 
 
 @table_params AS [dbo].[Accounting_Tree] READONLY
 
@@ -41,5 +48,22 @@ create PROC table_valued_parameter
 
 IF EXISTS( SELECT 1 FROM @table_params )
 	BEGIN
-		INSERT INTO accounts (account_name, account_number, parent_account ) SELECT account_name, account_number, parent_account FROM @table_params  
+		
+		-- UPDATE TABLE VALUED PARAMTERS 
+		UPDATE [dbo].accounts SET 
+			account_name   = udtts.account_name ,
+			parent_account = udtts.parent_account
+			FROM [dbo].accounts
+			INNER JOIN @table_params AS udtts
+			ON [dbo].accounts.account_number = udtts.account_number 
+		
+		-- INSERT NEW RECOREDS TO DATABASE
+		INSERT INTO [dbo].accounts(account_name,parent_account,account_number)
+			SELECT account_name,parent_account,account_number FROM @table_params
+			WHERE account_number NOT IN (SELECT account_number FROM [dbo].accounts )
+		
+		-- DELETE ROWS FROM DATABASE THAT DOES'NT EXISTS IN @table_params
+		DELETE FROM [dbo].accounts 
+		WHERE account_number NOT IN (SELECT account_number FROM @table_params )
+
 	END
