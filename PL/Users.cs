@@ -16,7 +16,7 @@ namespace sales_management.PL
             USERS DATA
             =====================================================================
         */
-        public void Update( string fname, string lname, string password, int responsability, int userId = -1)
+        public void Update( string username, string fullname, string password, bool is_manager, int userId = -1)
         {
             DB.DataAccessLayer DAL = new DB.DataAccessLayer();
 
@@ -25,17 +25,17 @@ namespace sales_management.PL
             param[0] = new SqlParameter("@id", SqlDbType.Int);
             param[0].Value = userId;
 
-            param[1] = new SqlParameter("@first_name", SqlDbType.VarChar);
-            param[1].Value = fname;
+            param[1] = new SqlParameter("@username", SqlDbType.VarChar);
+            param[1].Value = username;
 
-            param[2] = new SqlParameter("@last_name", SqlDbType.VarChar);
-            param[2].Value = lname;
+            param[2] = new SqlParameter("@fullname", SqlDbType.VarChar);
+            param[2].Value = fullname;
 
             param[3] = new SqlParameter("@password", SqlDbType.VarChar);
             param[3].Value = password;
 
-            param[4] = new SqlParameter("@responsability_id", SqlDbType.Int);
-            param[4].Value = responsability;
+            param[4] = new SqlParameter("@is_manager", SqlDbType.Bit);
+            param[4].Value = is_manager;
              
             DAL.Open();
             DAL.ExecuteCommand("Update_User_Data", param);
@@ -75,23 +75,9 @@ namespace sales_management.PL
 
         /*
            =====================================================================
-           PRIVILEGE AND RESP DATA
+           PRIVILEGE AND RESP DATA -> FOR NEXT VERSION 
            =====================================================================
-       */
-        public void Delete_Responsability_With_Privileges(int resp_id = -1)
-        {
-            DB.DataAccessLayer DAL = new DB.DataAccessLayer();
-
-            SqlParameter[] param = new SqlParameter[1];
-
-            param[0] = new SqlParameter("@id", SqlDbType.Int);
-            param[0].Value = resp_id;
-
-            DAL.Open();
-            DAL.ExecuteCommand("Delete_Responsability_With_Privileges", param);
-            DAL.Close();
-
-        }
+       */ 
 
     }
 }

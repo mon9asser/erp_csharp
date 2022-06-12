@@ -15,12 +15,22 @@ namespace sales_management.UI
     public partial class Main : Form
     {
         
-        private int userId = 1;
-        private string userName = "Montasser";
-        private string fullName = "Montasser Mossallem"; 
-        
-
+        private int userId = -1;
+        private string userName = "";
+        private bool is_manager = false;
         public static Main frm;
+
+        public void Login_User_Data(int id, string namedata, bool manager) {
+
+            // Store Data 
+            this.userId = id;
+            this.userName = namedata;
+            this.is_manager = manager;
+             
+
+        }
+         
+        
         static void frm_formClosed(object sernder, FormClosedEventArgs e) {
             frm = null; 
         }
@@ -42,7 +52,7 @@ namespace sales_management.UI
         public void setUserInfo( int userId, string userName, string fullName ) {
             this.userId = userId;
             this.userName = userName;
-            this.fullName = fullName;
+            //this.fullName = fullName;
         }
 
         public string[] getUserInfo() {
@@ -51,7 +61,7 @@ namespace sales_management.UI
 
             userInfo[0] = this.userId.ToString();
             userInfo[1] = this.userName;
-            userInfo[2] = this.fullName;
+            userInfo[2] = "";
 
             return userInfo;
         }
@@ -93,7 +103,8 @@ namespace sales_management.UI
         }
 
         public void ChangeLayoutTheme( string skinName ) {
- 
+
+            
 
         }
 
@@ -344,6 +355,23 @@ namespace sales_management.UI
         {
             UI.FND___Date_Range rmrange = new UI.FND___Date_Range(4);
             rmrange.ShowDialog();
+        }
+
+        private void إدارةالمستخدمينToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.employees user = new UI.employees();
+            user.Show();
+        }
+
+        private void تسجيلالخروجToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void تسجيلالدخولToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.Login log = new UI.Login(this);
+            log.Show();
         }
     }
 }

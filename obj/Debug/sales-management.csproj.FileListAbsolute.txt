@@ -195,3 +195,6 @@ D:\sales-app\bin\Debug\FReports\Trial_Balanace_Statement.frx
 D:\sales-app\obj\Debug\sales_management.UI.Balance_Sheet.resources
 D:\sales-app\bin\Debug\FReports\Balanace_Sheet_Statement.frx
 D:\sales-app\obj\Debug\sales_management.UI.Receipt_Document.resources
+D:\sales-app\obj\Debug\sales_management.UI.employees.resources
+D:\sales-app\obj\Debug\sales_management.UI.Load_Products.resources
+D:\sales-app\obj\Debug\sales_management.UI.Login.resources
