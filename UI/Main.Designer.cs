@@ -62,8 +62,8 @@ namespace sales_management.UI
             this.report_journals = new System.Windows.Forms.ToolStripMenuItem();
             this.report_sales = new System.Windows.Forms.ToolStripMenuItem();
             this.report_purchase = new System.Windows.Forms.ToolStripMenuItem();
-            this.report_sales_return = new System.Windows.Forms.ToolStripMenuItem();
             this.report_purchase_return = new System.Windows.Forms.ToolStripMenuItem();
+            this.report_sales_return = new System.Windows.Forms.ToolStripMenuItem();
             this.report_inventory = new System.Windows.Forms.ToolStripMenuItem();
             this.report_withdraw = new System.Windows.Forms.ToolStripMenuItem();
             this.report_vat = new System.Windows.Forms.ToolStripMenuItem();
@@ -312,17 +312,17 @@ namespace sales_management.UI
             this.report_purchase.Name = "report_purchase";
             this.report_purchase.Click += new System.EventHandler(this.تقريرالمشترياتToolStripMenuItem1_Click);
             // 
-            // report_sales_return
-            // 
-            resources.ApplyResources(this.report_sales_return, "report_sales_return");
-            this.report_sales_return.Name = "report_sales_return";
-            this.report_sales_return.Click += new System.EventHandler(this.تقريرمردودالمبيعاتToolStripMenuItem_Click);
-            // 
             // report_purchase_return
             // 
             resources.ApplyResources(this.report_purchase_return, "report_purchase_return");
             this.report_purchase_return.Name = "report_purchase_return";
             this.report_purchase_return.Click += new System.EventHandler(this.تقريرمردودالمشترياتToolStripMenuItem_Click);
+            // 
+            // report_sales_return
+            // 
+            resources.ApplyResources(this.report_sales_return, "report_sales_return");
+            this.report_sales_return.Name = "report_sales_return";
+            this.report_sales_return.Click += new System.EventHandler(this.تقريرمردودالمبيعاتToolStripMenuItem_Click);
             // 
             // report_inventory
             // 

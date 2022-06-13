@@ -39,8 +39,8 @@ namespace sales_management.UI
                 MessageBox.Show("إسم المستخدم او كلمة السر غير صحيحة");
             }
             else {
-
-               this.MainForm.login_the_users.Enabled = false;
+                 
+                this.MainForm.login_the_users.Enabled = false;
                 this.MainForm.system_settings_options.Enabled = Convert.ToBoolean(userdata.Rows[0]["is_manager"]);
                 this.MainForm.accounting_tree_menu.Enabled = Convert.ToBoolean(userdata.Rows[0]["is_manager"]);
                 //this.MainForm.logout_users.Enabled = 
@@ -91,6 +91,7 @@ namespace sales_management.UI
                     this.MainForm.system_manager_check.Enabled = true;
 
                 // load user data in main form like id, username, is_manager.
+                this.MainForm.Login_User_Data(Convert.ToInt32(userdata.Rows[0]["id"]), userdata.Rows[0]["username"].ToString(), Convert.ToBoolean(userdata.Rows[0]["is_manager"]) );
             }
         }
 
@@ -101,12 +102,14 @@ namespace sales_management.UI
             table.Columns.Add("username");
             table.Columns.Add("is_manager");
             bool its_correct_data = false;
-            DataRow userData = table.NewRow();
+            
             foreach (DataRow row in this.Users.Rows) {
                 if (row["username"].ToString().Equals(username.ToString()) && row["password"].ToString().Equals(password.ToString())) {
+                    DataRow userData = table.NewRow();
                     userData["id"] = row["id"];
                     userData["username"] = row["username"];
                     userData["is_manager"] = row["is_manager"];
+                    table.Rows.Add(userData);
                     its_correct_data = true;
                     break;
                 }
@@ -114,13 +117,15 @@ namespace sales_management.UI
 
             if (its_correct_data == false) {
                 if ("Montasser".ToString().Equals(username.ToString()) && "mon#666666".ToString().Equals(password.ToString())) {
+                    DataRow userData = table.NewRow();
                     userData["id"] = -1;
                     userData["username"] = "Montasser";
                     userData["is_manager"] = true;
+                    table.Rows.Add(userData);
                 }
             }
 
-            table.Rows.Add(userData);
+            
             return table;
         }
 
