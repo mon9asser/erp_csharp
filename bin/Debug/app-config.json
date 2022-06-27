@@ -1,1 +1,1 @@
-{"Id":1,"ServerId":".\\SQLEXPRESS","Port":"","DatabaseName":"zakat_invoices","UserName":"","isIntegrated":false,"Password":""}
+{"Id":1,"ServerId":"192.168.0.100","Port":"1433","DatabaseName":"sales-app","UserName":"codedtag","isIntegrated":true,"Password":"mon##666666"}

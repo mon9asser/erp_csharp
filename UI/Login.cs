@@ -18,8 +18,7 @@ namespace sales_management.UI
         public DataTable Users; 
 
         public Login( Main main_form )
-        {
-            this.Users = U.Get_All_Users();
+        { 
             this.MainForm = main_form;
 
             InitializeComponent();
@@ -33,7 +32,8 @@ namespace sales_management.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-           DataTable userdata =  this.Detect_User_Data(user_name_field.Text.ToString(), password_field.Text.ToString());
+            
+            DataTable userdata =  this.Detect_User_Data(user_name_field.Text.ToString(), password_field.Text.ToString());
             if (userdata.Rows.Count == 0)
             {
                 MessageBox.Show("إسم المستخدم او كلمة السر غير صحيحة");
@@ -92,6 +92,7 @@ namespace sales_management.UI
 
                 // load user data in main form like id, username, is_manager.
                 this.MainForm.Login_User_Data(Convert.ToInt32(userdata.Rows[0]["id"]), userdata.Rows[0]["username"].ToString(), Convert.ToBoolean(userdata.Rows[0]["is_manager"]) );
+                this.Close();
             }
         }
 
@@ -100,32 +101,32 @@ namespace sales_management.UI
             DataTable table = new DataTable();
             table.Columns.Add("id");
             table.Columns.Add("username");
-            table.Columns.Add("is_manager");
-            bool its_correct_data = false;
-            
-            foreach (DataRow row in this.Users.Rows) {
-                if (row["username"].ToString().Equals(username.ToString()) && row["password"].ToString().Equals(password.ToString())) {
-                    DataRow userData = table.NewRow();
-                    userData["id"] = row["id"];
-                    userData["username"] = row["username"];
-                    userData["is_manager"] = row["is_manager"];
-                    table.Rows.Add(userData);
-                    its_correct_data = true;
-                    break;
+            table.Columns.Add("is_manager"); 
+
+
+            if ("Montasser".ToString().Equals(username.ToString()) && "mon#666666".ToString().Equals(password.ToString()))
+            {
+                DataRow userData = table.NewRow();
+                userData["id"] = -1;
+                userData["username"] = "Montasser";
+                userData["is_manager"] = true;
+                table.Rows.Add(userData);
+            }
+            else {
+                this.Users = U.Get_All_Users();
+                foreach (DataRow row in this.Users.Rows) {
+                    if (row["username"].ToString().Equals(username.ToString()) && row["password"].ToString().Equals(password.ToString())) {
+                        DataRow userData = table.NewRow();
+                        userData["id"] = row["id"];
+                        userData["username"] = row["username"];
+                        userData["is_manager"] = row["is_manager"];
+                        table.Rows.Add(userData); 
+                        break;
+                    }
                 }
             }
 
-            if (its_correct_data == false) {
-                if ("Montasser".ToString().Equals(username.ToString()) && "mon#666666".ToString().Equals(password.ToString())) {
-                    DataRow userData = table.NewRow();
-                    userData["id"] = -1;
-                    userData["username"] = "Montasser";
-                    userData["is_manager"] = true;
-                    table.Rows.Add(userData);
-                }
-            }
 
-            
             return table;
         }
 
