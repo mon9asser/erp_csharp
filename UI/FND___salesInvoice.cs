@@ -20,6 +20,7 @@ namespace sales_management.UI
         PL.Journals journals = new PL.Journals();
         PL.AccountingTree AllAccounts = new PL.AccountingTree();
         DSet.SalesInvoice CRT_DataSet = new DSet.SalesInvoice();
+        DB.Config SystemConf = new DB.Config();
 
         Report Repo = new Report();
         DataSet Dset_Inventory;
@@ -1748,7 +1749,7 @@ namespace sales_management.UI
                 next_button.Enabled = !yes;
                 previous_button.Enabled = !yes;
                 last_record_button.Enabled = !yes;
-                edit_button.Enabled = !yes;
+                //edit_button.Enabled = !yes;
 
 
                 items_datagridview.Columns["product_name"].ReadOnly = true;
@@ -1758,11 +1759,11 @@ namespace sales_management.UI
 
                 if (this.Sale_Table.Rows.Count == 0)
                 {
-                    edit_button.Visible = false;
+                    //edit_button.Visible = false;
                 }
                 else
                 {
-                    edit_button.Visible = true;
+                    //edit_button.Visible = true;
                 }
             }
             catch (Exception) { }
@@ -1986,8 +1987,13 @@ namespace sales_management.UI
 
         private void salesInvoice_Load(object sender, EventArgs e)
         {
-            try
+            if (SystemConf.isFileExists())
             {
+                checked_elem.Checked = Convert.ToBoolean(SystemConf.isEnabledEditable());
+            }
+
+            try
+            { 
                 // Load DataSet Of Purchase Invoices
                 this.load_invoice_data_tables();
 
@@ -2043,6 +2049,9 @@ namespace sales_management.UI
             }
             catch (Exception) { }
 
+            
+
+            //edit_button.Visible = Convert.ToBoolean(SystemConf.isEnabledEditable());
         }
 
         private void price_includ_vat_CheckedChanged_1(object sender, EventArgs e)
@@ -2171,6 +2180,16 @@ namespace sales_management.UI
         private void items_datagridview_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void invoice_serial_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void label5_DoubleClick(object sender, EventArgs e)
+        {
+            edit_button.Visible = true;
         }
     }
 }

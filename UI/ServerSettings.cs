@@ -24,7 +24,7 @@ namespace sales_management.UI
          
 
         public void LoadSystemConfiguration() {
-
+    
             if (SystemConf.isFileExists()) { 
                 
                 SystemConf.LoadSystemConfiguration();
@@ -34,7 +34,8 @@ namespace sales_management.UI
                 username_text.Text = SystemConf.GetUserName();
                 networkpost_text.Text = SystemConf.GetPort();
                 isIntegratedCheckbox.Checked = Convert.ToBoolean(SystemConf.isIntegratedSecurity());
-
+                //isIntegratedCheckbox.Checked = Convert.ToBoolean(SystemConf.isIntegratedSecurity());
+                enable_edit.Checked = Convert.ToBoolean(SystemConf.isEnabledEditable());
             }
         }
 
@@ -52,7 +53,8 @@ namespace sales_management.UI
                     DatabaseName = databasename_text.Text.ToString(),
                     UserName = username_text.Text.ToString(),
                     Password = password_text.Text.ToString(),
-                    isIntegrated = Convert.ToBoolean(isIntegratedCheckbox.Checked) 
+                    isIntegrated = Convert.ToBoolean(isIntegratedCheckbox.Checked),
+                    isEnabled = Convert.ToBoolean(enable_edit.Checked)
                 };
 
                 SystemConf.CreateServerInformation(serverInformation);

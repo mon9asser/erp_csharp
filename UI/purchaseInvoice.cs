@@ -17,7 +17,8 @@ namespace sales_management.UI
         PL.Purchase Purchase = new PL.Purchase();
         PL.Journals journals = new PL.Journals();
         PL.AccountingTree AllAccounts = new PL.AccountingTree();
-
+        DB.Config SystemConf = new DB.Config();
+        
         DataSet dataSetDb;
         DataTable Purchase_Table;
         DataTable Purchase_Details;
@@ -43,6 +44,7 @@ namespace sales_management.UI
         {
             InitializeComponent();
 
+            
             // Load DataSet Of Purchase Invoices
             this.load_invoice_data_tables();
 
@@ -71,6 +73,8 @@ namespace sales_management.UI
             items_datagridview.Columns["unit_cost"].Visible = false;
             items_datagridview.Columns["total_cost"].Visible = false;
             //items_datagridview.Columns["datemade"].Visible = false;
+
+            
 
             this.Set_Invoice_Row_Page_Index();
 
@@ -1539,7 +1543,7 @@ namespace sales_management.UI
             next_button.Enabled = !yes;
             previous_button.Enabled = !yes;
             last_record_button.Enabled = !yes;
-            edit_button.Enabled = !yes;
+           // edit_button.Enabled = !yes;
 
 
             items_datagridview.Columns["product_name"].ReadOnly = true;
@@ -1549,11 +1553,11 @@ namespace sales_management.UI
 
             if (this.Purchase_Details.Rows.Count == 0)
             {
-                edit_button.Visible = false;
+               // edit_button.Visible = false;
             }
             else
             {
-                edit_button.Visible = true;
+               // edit_button.Visible = true;
             }
         }
 
@@ -1740,8 +1744,13 @@ namespace sales_management.UI
 
         private void purchaseInvoice_Load(object sender, EventArgs e)
         {
-           
-
+            bool EditEnabled = Convert.ToBoolean(SystemConf.isEnabledEditable());
+            
+            if (EditEnabled == false)
+            {
+                //edit_button.Visible = false;
+            }
+             
         }
 
         private void price_includ_vat_CheckedChanged_1(object sender, EventArgs e)
@@ -1787,6 +1796,16 @@ namespace sales_management.UI
         private void items_datagridview_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
+
+        private void label5_DoubleClick(object sender, EventArgs e)
+        {
+            edit_button.Visible = true;
         }
     }
 }

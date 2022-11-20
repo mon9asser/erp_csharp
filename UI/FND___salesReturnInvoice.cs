@@ -1781,7 +1781,7 @@ namespace sales_management.UI
                 next_button.Enabled = !yes;
                 previous_button.Enabled = !yes;
                 last_record_button.Enabled = !yes;
-                edit_button.Enabled = !yes;
+                //edit_button.Enabled = !yes;
 
 
                 items_datagridview.Columns["product_name"].ReadOnly = true;
@@ -1791,11 +1791,11 @@ namespace sales_management.UI
 
                 if (this.Sale_Table.Rows.Count == 0)
                 {
-                    edit_button.Visible = false;
+                   // edit_button.Visible = false;
                 }
                 else
                 {
-                    edit_button.Visible = true;
+                  //  edit_button.Visible = true;
                 }
             }
             catch (Exception) { }
@@ -2135,6 +2135,11 @@ namespace sales_management.UI
             }
             catch (Exception) { }
 
+        }
+
+        private void label5_DoubleClick(object sender, EventArgs e)
+        {
+            edit_button.Visible = true;
         }
     }
 }

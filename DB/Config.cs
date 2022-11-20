@@ -25,6 +25,8 @@ namespace sales_management.DB
 
         public bool isIntegrated { get; set; }
 
+        public bool isEnabled { get; set; }
+
         public String Password { get; set; }
 
     }
@@ -43,6 +45,7 @@ namespace sales_management.DB
         private string userName;
         private string password;
         private bool isIntegrated;
+        private bool isEnabled;
 
         public string GetNetworkId() {
             return this.networkId;
@@ -72,6 +75,11 @@ namespace sales_management.DB
             return this.isIntegrated;
         }
 
+        public bool isEnabledEditable()
+        {
+            return this.isEnabled;
+        }
+
         public bool isFileExists()
         {
             return File.Exists(this.dir + this.fileName);
@@ -81,8 +89,9 @@ namespace sales_management.DB
 
             string _dir = this.dir + this.fileName;
             string strJson = File.ReadAllText(_dir);
-            var dirctionary = JsonConvert.DeserializeObject<IDictionary>(strJson);
 
+            var dirctionary = JsonConvert.DeserializeObject<IDictionary>(strJson);
+            
             foreach(DictionaryEntry entry in dirctionary)
             {
                 switch ( entry.Key.ToString()) {
@@ -110,6 +119,11 @@ namespace sales_management.DB
                     case "isIntegrated":
                         this.isIntegrated = Convert.ToBoolean(entry.Value);
                         break;
+
+                    case "isEnabled":
+                        this.isEnabled = Convert.ToBoolean(entry.Value);
+                        break;
+
                 } 
 
             }

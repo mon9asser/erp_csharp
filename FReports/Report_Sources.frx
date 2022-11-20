@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 12:35:27" ReportInfo.Modified="05/20/2022 14:11:53" ReportInfo.CreatorVersion="2018.4.19.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 12:35:27" ReportInfo.Modified="11/20/2022 16:07:25" ReportInfo.CreatorVersion="2018.4.19.0">
   <Dictionary>
     <TableDataSource Name="Totals" ReferenceName="reportSources1.Totals" DataType="System.Int32" Enabled="true">
       <Column Name="total" DataType="System.Decimal"/>
@@ -80,7 +80,7 @@
           <TableCell Name="Cell5" Border.Lines="Left, Top, Bottom" Fill.Color="White" Text="[Sources.total_with_vat]" HorzAlign="Center" VertAlign="Center"/>
           <TableCell Name="Cell6" Border.Lines="Left, Top, Bottom" Fill.Color="White" Text="[Sources.vat_amount]" HorzAlign="Center" VertAlign="Center"/>
           <TableCell Name="Cell7" Border.Lines="Left, Top, Bottom" Fill.Color="White" Text="[Sources.discount_name]" HorzAlign="Center" VertAlign="Center"/>
-          <TableCell Name="Cell8" Border.Lines="All" Fill.Color="White" Text="[Sources.id]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell8" Border.Lines="All" Fill.Color="White" Text="[Sources.serial]" HorzAlign="Center" VertAlign="Center"/>
         </TableRow>
       </TableObject>
     </DataBand>

@@ -42,6 +42,7 @@ namespace sales_management.UI
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.isIntegratedCheckbox = new System.Windows.Forms.CheckBox();
+            this.enable_edit = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +59,7 @@ namespace sales_management.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(22, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Database Name";
             // 
@@ -67,7 +68,7 @@ namespace sales_management.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(22, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Network Port";
             // 
@@ -76,7 +77,7 @@ namespace sales_management.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(22, 149);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "User Name";
             // 
@@ -152,17 +153,28 @@ namespace sales_management.UI
             this.isIntegratedCheckbox.AutoSize = true;
             this.isIntegratedCheckbox.Location = new System.Drawing.Point(129, 235);
             this.isIntegratedCheckbox.Name = "isIntegratedCheckbox";
-            this.isIntegratedCheckbox.Size = new System.Drawing.Size(126, 17);
+            this.isIntegratedCheckbox.Size = new System.Drawing.Size(132, 17);
             this.isIntegratedCheckbox.TabIndex = 12;
             this.isIntegratedCheckbox.Text = "Is Integrated Security";
             this.isIntegratedCheckbox.UseVisualStyleBackColor = true;
             this.isIntegratedCheckbox.CheckedChanged += new System.EventHandler(this.isIntegratedCheckbox_CheckedChanged);
+            // 
+            // enable_edit
+            // 
+            this.enable_edit.AutoSize = true;
+            this.enable_edit.Location = new System.Drawing.Point(283, 235);
+            this.enable_edit.Name = "enable_edit";
+            this.enable_edit.Size = new System.Drawing.Size(58, 17);
+            this.enable_edit.TabIndex = 13;
+            this.enable_edit.Text = "Enable";
+            this.enable_edit.UseVisualStyleBackColor = true;
             // 
             // ServerSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 328);
+            this.Controls.Add(this.enable_edit);
             this.Controls.Add(this.isIntegratedCheckbox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -202,5 +214,6 @@ namespace sales_management.UI
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox isIntegratedCheckbox;
+        private System.Windows.Forms.CheckBox enable_edit;
     }
 }

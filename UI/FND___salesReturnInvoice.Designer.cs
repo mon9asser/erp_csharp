@@ -218,6 +218,7 @@ namespace sales_management.UI
             this.edit_button.Text = "تعديل";
             this.edit_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.edit_button.UseVisualStyleBackColor = true;
+            this.edit_button.Visible = false;
             this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
             // 
             // save_button
@@ -404,6 +405,7 @@ namespace sales_management.UI
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 99;
             this.label5.Text = "حساب الأستاذ :";
+            this.label5.DoubleClick += new System.EventHandler(this.label5_DoubleClick);
             // 
             // details
             // 
@@ -620,7 +622,6 @@ namespace sales_management.UI
             this.entry_id.Name = "entry_id";
             this.entry_id.Size = new System.Drawing.Size(100, 20);
             this.entry_id.TabIndex = 144;
-            this.entry_id.Visible = false;
             // 
             // button2
             // 

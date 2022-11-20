@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/20/2022 16:23:17" ReportInfo.Modified="05/20/2022 17:27:08" ReportInfo.CreatorVersion="2018.4.19.0">
+  <Dictionary>
+    <TableDataSource Name="Inventory" ReferenceName="inventory1.Inventory" DataType="System.Int32" Enabled="true">
+      <Column Name="product_id" DataType="System.String"/>
+      <Column Name="product_name" DataType="System.String"/>
+      <Column Name="total_quantity_min" Alias="total_quantity" DataType="System.String"/>
+      <Column Name="total_quantity_max" DataType="System.String"/>
+      <Column Name="min_unit_name" DataType="System.String"/>
+      <Column Name="max_unit_name" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="Totals" ReferenceName="inventory1.Totals" DataType="System.Int32" Enabled="true">
+      <Column Name="total_field" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
+      <TextObject Name="Text1" Left="18.9" Top="18.9" Width="680.4" Height="37.8" Text="تقرير الكميات الحاليه في تاريخه" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text2" Left="491.4" Top="75.6" Width="207.9" Height="18.9" Text="[Date]" HorzAlign="Right" VertAlign="Center"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="718.2" Height="66.18">
+      <TableObject Name="Table1" Left="18.9" Width="680.4" Height="66.18">
+        <TableColumn Name="Column1" Width="173.88"/>
+        <TableColumn Name="Column2" Width="164.43"/>
+        <TableColumn Name="Column3" Width="136.08"/>
+        <TableColumn Name="Column4" Width="69.93"/>
+        <TableColumn Name="Column5" Width="136.08"/>
+        <TableRow Name="Row1" Height="33.09">
+          <TableCell Name="Cell1" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" Text="الكميـــــــات" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell2" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell3" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" Text="إسم المنتج" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold" ColSpan="3" RowSpan="2"/>
+          <TableCell Name="Cell4" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+          <TableCell Name="Cell5" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="33.09">
+          <TableCell Name="Cell6" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" Text="الوحدة الكبرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell7" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" Text="الوحدة الصغرى" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell8" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+          <TableCell Name="Cell9" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+          <TableCell Name="Cell10" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="178.13" Width="718.2" Height="33.09" DataSource="Inventory" KeepTogether="true" KeepDetail="true">
+      <TableObject Name="Table2" Left="18.9" Width="680.4" Height="33.09">
+        <TableColumn Name="Column6" Width="173.88"/>
+        <TableColumn Name="Column7" Width="164.43"/>
+        <TableColumn Name="Column8" Width="136.08"/>
+        <TableColumn Name="Column9" Width="69.93"/>
+        <TableColumn Name="Column10" Width="136.08"/>
+        <TableRow Name="Row3" Height="33.09">
+          <TableCell Name="Cell11" Border.Lines="All" Border.Width="0.5" Text="(  [Inventory.max_unit_name]  )   [Inventory.total_quantity_max]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell12" Border.Lines="All" Border.Width="0.5" Text="( [Inventory.min_unit_name] )   [Inventory.total_quantity]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell13" Border.Lines="All" Border.Width="0.5" Text="[Inventory.product_name]" Padding="10, 1, 10, 1" VertAlign="Center" RightToLeft="true" Font="Arial, 11pt, style=Bold" ColSpan="3"/>
+          <TableCell Name="Cell14" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+          <TableCell Name="Cell15" Border.Lines="All" Border.Width="0.5" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="215.22" Width="718.2" Height="33.09">
+      <TableObject Name="Table3" Left="18.9" Width="680.4" Height="33.09">
+        <TableColumn Name="Column11" Width="173.88"/>
+        <TableColumn Name="Column12" Width="164.43"/>
+        <TableColumn Name="Column13" Width="136.08"/>
+        <TableColumn Name="Column14" Width="69.93"/>
+        <TableColumn Name="Column15" Width="136.08"/>
+        <TableRow Name="Row4" Height="33.09">
+          <TableCell Name="Cell16" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" Text="[Totals.total_field]" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="Arial, 12pt, style=Bold" ColSpan="2"/>
+          <TableCell Name="Cell17" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+          <TableCell Name="Cell18" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" Text="الإجمـــالى" HorzAlign="Center" VertAlign="Center" RightToLeft="true" Font="Arial, 11pt, style=Bold" ColSpan="3"/>
+          <TableCell Name="Cell19" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+          <TableCell Name="Cell20" Border.Lines="All" Border.Width="0.5" Fill.Color="Snow" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="252.31" Width="718.2" Height="85.05"/>
+  </ReportPage>
+</Report>

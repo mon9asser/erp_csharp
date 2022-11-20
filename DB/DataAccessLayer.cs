@@ -23,8 +23,10 @@ namespace sales_management.DB
 
             if (this.isIntegratedSecurity())
             {
-                connectionString = @"Server=" + this.GetNetworkId() + "," + this.GetPort() + "; Database=" + this.GetDatabaseName() + "; User ID=" + this.GetUserName() + "; Password=" + this.GetPassword() + "; Integrated Security=false;";
+                connectionString = @"Server=" + this.GetNetworkId() + "," + this.GetPort() + "; Database=" + this.GetDatabaseName() + "; User ID=" + this.GetUserName() + "; Password=" + this.GetPassword() + "; Integrated Security=false;pooling=true;";
             }
+
+            
 
             sqlConnectionState = new SqlConnection(connectionString);
 

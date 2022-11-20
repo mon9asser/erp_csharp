@@ -29,8 +29,8 @@ namespace sales_management.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FND___salesInvoice));
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.current_invoice_page = new System.Windows.Forms.Label();
@@ -89,6 +89,7 @@ namespace sales_management.UI
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.sales_invoice_datasource = new sales_management.DSet.SalesInvoice();
             this.salesInvoice_frx = new FastReport.Report();
+            this.checked_elem = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.items_datagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sales_invoice_datasource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesInvoice_frx)).BeginInit();
@@ -223,6 +224,7 @@ namespace sales_management.UI
             this.edit_button.Text = "تعديل";
             this.edit_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.edit_button.UseVisualStyleBackColor = true;
+            this.edit_button.Visible = false;
             this.edit_button.Click += new System.EventHandler(this.edit_button_Click);
             // 
             // save_button
@@ -355,9 +357,9 @@ namespace sales_management.UI
             this.items_datagridview.AllowUserToDeleteRows = false;
             this.items_datagridview.AllowUserToResizeColumns = false;
             this.items_datagridview.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SeaShell;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SeaShell;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.items_datagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.items_datagridview.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.items_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.items_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -366,14 +368,14 @@ namespace sales_management.UI
             this.items_datagridview.MultiSelect = false;
             this.items_datagridview.Name = "items_datagridview";
             this.items_datagridview.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items_datagridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.items_datagridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.items_datagridview.RowTemplate.Height = 35;
             this.items_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -410,6 +412,7 @@ namespace sales_management.UI
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 99;
             this.label5.Text = "حساب الأستاذ :";
+            this.label5.DoubleClick += new System.EventHandler(this.label5_DoubleClick);
             // 
             // details
             // 
@@ -455,19 +458,21 @@ namespace sales_management.UI
             // 
             // invoice_id
             // 
-            this.invoice_id.Location = new System.Drawing.Point(105, 17);
+            this.invoice_id.Location = new System.Drawing.Point(395, 16);
             this.invoice_id.Name = "invoice_id";
             this.invoice_id.ReadOnly = true;
-            this.invoice_id.Size = new System.Drawing.Size(237, 20);
+            this.invoice_id.Size = new System.Drawing.Size(25, 20);
             this.invoice_id.TabIndex = 94;
+            this.invoice_id.Visible = false;
             // 
             // invoice_serial
             // 
-            this.invoice_serial.Location = new System.Drawing.Point(426, 17);
+            this.invoice_serial.Location = new System.Drawing.Point(105, 16);
             this.invoice_serial.Name = "invoice_serial";
-            this.invoice_serial.Size = new System.Drawing.Size(37, 20);
+            this.invoice_serial.ReadOnly = true;
+            this.invoice_serial.Size = new System.Drawing.Size(271, 20);
             this.invoice_serial.TabIndex = 93;
-            this.invoice_serial.Visible = false;
+            this.invoice_serial.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.invoice_serial_MouseDoubleClick);
             // 
             // label2
             // 
@@ -665,11 +670,23 @@ namespace sales_management.UI
             this.salesInvoice_frx.ReportResourceString = resources.GetString("salesInvoice_frx.ReportResourceString");
             this.salesInvoice_frx.RegisterData(this.sales_invoice_datasource, "sales_invoice_datasource");
             // 
+            // checked_elem
+            // 
+            this.checked_elem.AutoSize = true;
+            this.checked_elem.Enabled = false;
+            this.checked_elem.Location = new System.Drawing.Point(490, 74);
+            this.checked_elem.Name = "checked_elem";
+            this.checked_elem.Size = new System.Drawing.Size(93, 17);
+            this.checked_elem.TabIndex = 147;
+            this.checked_elem.Text = "checked_elem";
+            this.checked_elem.UseVisualStyleBackColor = true;
+            // 
             // FND___salesInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 615);
+            this.Controls.Add(this.checked_elem);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.entry_id);
             this.Controls.Add(this.enable_zakat_taxes);
@@ -798,5 +815,6 @@ namespace sales_management.UI
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private DSet.SalesInvoice sales_invoice_datasource;
         private FastReport.Report salesInvoice_frx;
+        public System.Windows.Forms.CheckBox checked_elem;
     }
 }
