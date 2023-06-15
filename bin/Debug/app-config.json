@@ -1,1 +1,1 @@
-{"Id":1,"ServerId":"192.168.0.100","Port":"1433","DatabaseName":"sales-app","UserName":"codedtag","isIntegrated":true,"isEnabled":true,"Password":"aa666666"}
+{"Id":1,"ServerId":"DESKTOP-BKG9UIG\\SQLEXPRESS01","Port":"1433","DatabaseName":"sales-app-vat","UserName":"nexycode","isIntegrated":false,"isEnabled":true,"Password":"aa555555"}
